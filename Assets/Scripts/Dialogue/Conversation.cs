@@ -1,33 +1,42 @@
 using UnityEngine;
 
-[System.Serializable]
-public class Speech
-{
-    public Character character;
-
-    [TextArea(3, 10)]
-    public string text;
-}
-
 [CreateAssetMenu(fileName = "Conversation", menuName = "Dialogue/Conversation")]
 public class Conversation : ScriptableObject
 {
-    public Speech[] converstation;
+    [field: Range(0, 1)]
+    [field: SerializeField] public float ConversationStartDelay { get; private set; } = 0.0f;
+    [field: Range(0, 1)]
+    [field: SerializeField] public float ConversationEndDelay { get; private set; } = 0.2f;
 
-    [Space(10)] 
-
-    [Range(0, 1)]
-    public float ConversationStartDelay = 0.0f;
-    [Range(0, 1)]
-    public float ConversationEndDelay = 0.2f;
-
-    //public Objective triggeredObjective;
+    [field: Space(20)]
+    [field: SerializeField] public ConversationEvent[] ConversationEvents { get; private set; }
 }
 
-[CreateAssetMenu(fileName = "Character", menuName = "Dialogue/Character")]
-public class Character : ScriptableObject
+[System.Serializable]
+public class ConversationEvent
 {
-    public string characterName;
-    public Sprite image;
-    public Color color;
+    public enum ConversationEventType { SPEECH, BRANCH, QUEST, CUTSCENE }
+
+    #region Variables
+    [field: SerializeField] public ConversationEventType EventType { get; private set; } = ConversationEventType.SPEECH;
+
+    #region Speech
+    [field: SerializeField] public Character Character { get; private set; }
+
+    [field: TextArea(3, 10)]
+    [field: SerializeField] public string Text { get; private set; }
+    #endregion
+
+    #region Branch
+    //[field: SerializeField] public ConversationEvent[] BranchEvents { get; private set; }
+    #endregion
+
+    #region Quest
+    [field: SerializeField] public GameObject Quest { get; private set; }
+    #endregion
+
+    #region Cutscene
+    [field: SerializeField] public GameObject Cutscene { get; private set; }
+    #endregion
+    #endregion
 }

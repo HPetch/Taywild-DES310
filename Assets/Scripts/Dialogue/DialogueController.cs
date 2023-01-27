@@ -30,11 +30,10 @@ public class DialogueController : MonoBehaviour
     [SerializeField] private TextMeshProUGUI characterName = null;
     [SerializeField] private TextMeshProUGUI textField = null;
 
-    private Queue<Speech> conversationEventQueue = new Queue<Speech>();
+    private Queue<ConversationEvent> conversationEventQueue = new Queue<ConversationEvent>();
     private Queue<Conversation> conversationQueue = new Queue<Conversation>();
-    //private Objective triggeredObjective;
 
-    private Speech speech;
+    private ConversationEvent conversationEvent;
 
     // Cortoutines need to be referenced so they can be stopped prematurly in case of a skip
     private Coroutine textType = null;
@@ -89,7 +88,7 @@ public class DialogueController : MonoBehaviour
         // Limit player inputs while a dialogue sequence is playing
         GameStateController.Instance.DialoguePause();
 
-        foreach (Speech speech in CurrentConversation.converstation) conversationEventQueue.Enqueue(speech);
+        foreach (ConversationEvent conversationEvent in CurrentConversation.ConversationEvents) conversationEventQueue.Enqueue(conversationEvent);
         //triggeredObjective = _conversation.triggeredObjective;
         OnConversationStart?.Invoke(CurrentConversation);
     }
@@ -105,7 +104,7 @@ public class DialogueController : MonoBehaviour
         {
             StopCoroutine(textType);
             textType = null;
-            textField.text = speech.text;
+            textField.text = conversationEvent.Text;
             return;
         }
 
@@ -117,15 +116,15 @@ public class DialogueController : MonoBehaviour
         }
 
         // else, if the next conversation event is a different character than the current one, change the character
-        if (speech.character != conversationEventQueue.Peek().character)
+        if (conversationEvent.Character != conversationEventQueue.Peek().Character)
         {
             changeCharacter = StartCoroutine(ChangeCharacter(true));
             return;
         }
 
         // else, remove the current event from the queue, and start typing the next one
-        speech = conversationEventQueue.Dequeue();
-        textType = StartCoroutine(TypeSentance(speech.text));
+        conversationEvent = conversationEventQueue.Dequeue();
+        textType = StartCoroutine(TypeSentance(conversationEvent.Text));
     }
 
     // Text-Type coroutine
@@ -163,11 +162,10 @@ public class DialogueController : MonoBehaviour
             yield return new WaitForSeconds(0.33f);
         }
 
-        speech = conversationEventQueue.Peek();
-
-        characterName.text = speech.character.characterName;
-        characterName.color = speech.character.color;
-        characterImage.sprite = speech.character.image;
+        conversationEvent = conversationEventQueue.Peek();
+        characterName.text = conversationEvent.Character.CharacterName;
+        characterName.color = conversationEvent.Character.Colour;
+        characterImage.sprite = conversationEvent.Character.Image;
         textField.text = "";
 
         //animator.SetTrigger("Open");
