@@ -1,6 +1,4 @@
-using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 [CreateAssetMenu(fileName = "Conversation", menuName = "Dialogue/Conversation")]
 public class Conversation : ScriptableObject

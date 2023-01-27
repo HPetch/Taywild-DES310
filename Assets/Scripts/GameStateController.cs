@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class GameStateController : MonoBehaviour
@@ -7,12 +5,20 @@ public class GameStateController : MonoBehaviour
     public static GameStateController Instance { get; private set; }
 
     public enum GameStates { PLAY, DIALOGUE, PAUSED }
+
     public GameStates GameState { get; private set; } = GameStates.PLAY;
     private bool wasDialoguePaused = false;
+
+    [SerializeField] private Conversation conversation;
 
     private void Awake()
     {
         Instance = this;
+    }
+
+    private void Start()
+    {
+        DialogueController.Instance.TriggerConversation(conversation);
     }
 
     private void Update()

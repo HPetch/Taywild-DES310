@@ -567,6 +567,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f948b1eaf128654c8dcc566406f9245, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  conversation: {fileID: 11400000, guid: 38f08e45ee44e8d4eb0d6cebcf7d4dc5, type: 2}
 --- !u!1 &1325356524 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6613144180521518251, guid: 835d58c0911c9814283cfbf718e2bcf0, type: 3}
@@ -654,10 +655,6 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 1105591785}
     m_Modifications:
-    - target: {fileID: 2226161084525959038, guid: 835d58c0911c9814283cfbf718e2bcf0, type: 3}
-      propertyPath: conversationUITemplates.Array.size
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 6613144180521518250, guid: 835d58c0911c9814283cfbf718e2bcf0, type: 3}
       propertyPath: m_RootOrder
       value: -1

@@ -96,8 +96,10 @@ public class DialogueController : MonoBehaviour
         // Limit player inputs while a dialogue sequence is playing
         GameStateController.Instance.DialoguePause();
 
-        foreach (ConversationEvent conversationEvent in conversation.ConversationEvents) conversationEventQueue.Enqueue(conversationEvent);
+        foreach (ConversationEvent convoEvent in conversation.ConversationEvents) conversationEventQueue.Enqueue(convoEvent);
         OnConversationStart?.Invoke(conversation);
+
+        changeCharacter = StartCoroutine(ChangeCharacter(false));
     }
 
     // Displays the next conversation event
@@ -123,7 +125,8 @@ public class DialogueController : MonoBehaviour
         }
 
         // else, if the next conversation event is a different character than the current one, change the character
-        if (conversationEvent.Character != conversationEventQueue.Peek().Character)
+        if (conversationEvent.Character != conversationEventQueue.Peek().Character || 
+            conversationEvent.UITemplate != conversationEventQueue.Peek().UITemplate)
         {
             changeCharacter = StartCoroutine(ChangeCharacter(true));
             return;
@@ -164,11 +167,11 @@ public class DialogueController : MonoBehaviour
 
     private IEnumerator ChangeCharacter(bool _isOpen)
     {
-        if (_isOpen)
+        /*if (_isOpen)
         {
             //animator.SetTrigger("Closed");
             yield return new WaitForSeconds(0.33f);
-        }
+        }*/
 
         conversationEvent = conversationEventQueue.Peek();
         uiTemplate = conversationUITemplates[(int)conversationEvent.UITemplate];
@@ -178,7 +181,7 @@ public class DialogueController : MonoBehaviour
         uiTemplate.TextField.text = "";
 
         //animator.SetTrigger("Open");
-        yield return new WaitForSeconds(0.33f);
+        yield return new WaitForSeconds(0.05f);
 
         changeCharacter = null;
         DisplayNext();
@@ -206,8 +209,7 @@ public class DialogueController : MonoBehaviour
 
         if (conversationQueue.Count > 0)
         {
-            Conversation conversation = conversationQueue.Dequeue();
-            TriggerConversation(conversation);
+            TriggerConversation(conversationQueue.Dequeue());
         }
     }
     #endregion
