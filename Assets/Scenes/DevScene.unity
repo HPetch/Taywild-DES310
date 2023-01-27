@@ -654,6 +654,10 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 1105591785}
     m_Modifications:
+    - target: {fileID: 2226161084525959038, guid: 835d58c0911c9814283cfbf718e2bcf0, type: 3}
+      propertyPath: conversationUITemplates.Array.size
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 6613144180521518250, guid: 835d58c0911c9814283cfbf718e2bcf0, type: 3}
       propertyPath: m_RootOrder
       value: -1
