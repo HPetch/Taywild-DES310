@@ -6,12 +6,12 @@ public class ConversationEventDrawer : PropertyDrawer
 {
     private const int lineHeightOffset = 2;
     private float lineHeight = EditorGUIUtility.singleLineHeight + lineHeightOffset;
-    private int[] expandedHeight = { 6, 8, 3, 3 };
+    private int[] expandedHeight = { 6, 8, 2, 2 };
 
     public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
     {
         SerializedProperty EventType = property.FindPropertyRelative("<EventType>k__BackingField");
-        int totalLines = 0;
+        int totalLines = 1;
 
         if (property.isExpanded)
         {
@@ -24,6 +24,7 @@ public class ConversationEventDrawer : PropertyDrawer
     public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
     {
         SerializedProperty EventType = property.FindPropertyRelative("<EventType>k__BackingField");
+        SerializedProperty UITemplate = property.FindPropertyRelative("<UITemplate>k__BackingField");
         SerializedProperty Character = property.FindPropertyRelative("<Character>k__BackingField");
         SerializedProperty Text = property.FindPropertyRelative("<Text>k__BackingField");
         SerializedProperty Quest = property.FindPropertyRelative("<Quest>k__BackingField");
@@ -44,8 +45,11 @@ public class ConversationEventDrawer : PropertyDrawer
             {
                 case (int)ConversationEvent.ConversationEventType.SPEECH:
                     {
+                        Rect rectTemplate = new Rect(position.min.x, position.min.y + lines++ * lineHeight, position.size.x, lineHeight);
                         Rect rectCharacter = new Rect(position.min.x, position.min.y + lines * lineHeight, position.size.x, lineHeight);
                         Rect rectText = new Rect(position.min.x, position.min.y + lines++ * lineHeight + lineHeightOffset * 2, position.size.x, lineHeight * 4);
+                        
+                        EditorGUI.PropertyField(rectTemplate, UITemplate);
                         EditorGUI.PropertyField(rectCharacter, Character);
                         EditorGUI.PropertyField(rectText, Text, GUIContent.none);
                     }
@@ -53,11 +57,18 @@ public class ConversationEventDrawer : PropertyDrawer
 
                 case (int)ConversationEvent.ConversationEventType.BRANCH:
                     {
+                        Rect rectTemplate = new Rect(position.min.x, position.min.y + lines++ * lineHeight, position.size.x, lineHeight);
                         Rect rectCharacter = new Rect(position.min.x, position.min.y + lines * lineHeight, position.size.x, lineHeight);
                         Rect rectText = new Rect(position.min.x, position.min.y + lines++ * lineHeight + lineHeightOffset * 2, position.size.x, lineHeight * 4);
+
+                        EditorGUI.PropertyField(rectTemplate, UITemplate);
                         EditorGUI.PropertyField(rectCharacter, Character);
                         EditorGUI.PropertyField(rectText, Text, GUIContent.none);
                         // Branch code
+
+                        lines += 5;
+                        Rect rectHelpBox = new Rect(position.min.x, position.min.y + lines++ * lineHeight, position.size.x, lineHeight);
+                        EditorGUI.HelpBox(rectHelpBox, "Branch is the last node, any other events will *not* be processed", MessageType.Info);
                     }
                     break;
 
@@ -72,9 +83,6 @@ public class ConversationEventDrawer : PropertyDrawer
                     break;
             }
         }
-
-        /*Rect rectHelpBox = new Rect(position.min.x, position.min.y + lines++ * lineHeight, position.size.x, lineHeight);
-        EditorGUI.HelpBox(rectHelpBox, "This is our property drawer", MessageType.Info);*/
 
         EditorGUI.EndProperty();
     }

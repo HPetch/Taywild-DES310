@@ -1,4 +1,6 @@
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 [CreateAssetMenu(fileName = "Conversation", menuName = "Dialogue/Conversation")]
 public class Conversation : ScriptableObject
@@ -21,6 +23,7 @@ public class ConversationEvent
     [field: SerializeField] public ConversationEventType EventType { get; private set; } = ConversationEventType.SPEECH;
 
     #region Speech
+    [field: SerializeField] public ConversationUITemplate.ConversationUITemplates UITemplate { get; private set; }
     [field: SerializeField] public Character Character { get; private set; }
 
     [field: TextArea(3, 10)]

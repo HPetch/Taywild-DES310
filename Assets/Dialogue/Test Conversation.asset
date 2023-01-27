@@ -12,6 +12,42 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cbc4b41b77721d4595252707209aee3, type: 3}
   m_Name: Test Conversation
   m_EditorClassIdentifier: 
-  <ConversationEvents>k__BackingField: []
   <ConversationStartDelay>k__BackingField: 0
   <ConversationEndDelay>k__BackingField: 0.2
+  <ConversationEvents>k__BackingField:
+  - <EventType>k__BackingField: 0
+    <UITemplate>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: e2befdcf19b4cd144ac943318946bf54, type: 2}
+    <Text>k__BackingField: 01
+    <Quest>k__BackingField: {fileID: 0}
+    <Cutscene>k__BackingField: {fileID: 0}
+  - <EventType>k__BackingField: 3
+    <UITemplate>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 0}
+    <Text>k__BackingField: 
+    <Quest>k__BackingField: {fileID: 0}
+    <Cutscene>k__BackingField: {fileID: 0}
+  - <EventType>k__BackingField: 0
+    <UITemplate>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: f8c55e6d759f3c54c9abfc9dd41a32da, type: 2}
+    <Text>k__BackingField: 02
+    <Quest>k__BackingField: {fileID: 0}
+    <Cutscene>k__BackingField: {fileID: 0}
+  - <EventType>k__BackingField: 0
+    <UITemplate>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: e2befdcf19b4cd144ac943318946bf54, type: 2}
+    <Text>k__BackingField: 03
+    <Quest>k__BackingField: {fileID: 0}
+    <Cutscene>k__BackingField: {fileID: 0}
+  - <EventType>k__BackingField: 0
+    <UITemplate>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 0}
+    <Text>k__BackingField: 04
+    <Quest>k__BackingField: {fileID: 0}
+    <Cutscene>k__BackingField: {fileID: 0}
+  - <EventType>k__BackingField: 1
+    <UITemplate>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 0}
+    <Text>k__BackingField: 'Branch                                  '
+    <Quest>k__BackingField: {fileID: 0}
+    <Cutscene>k__BackingField: {fileID: 0}

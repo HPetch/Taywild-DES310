@@ -11,6 +11,16 @@ using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 
+[Serializable]
+public class ConversationUITemplate
+{
+    public enum ConversationUITemplates { BOTTOM_RIGHT, BOTTOM_MIDDLE, TOP_RIGHT }
+
+    [field: SerializeField] public Image CharacterImage { get; private set; } = null;
+    [field: SerializeField] public TextMeshProUGUI CharacterName { get; private set; } = null;
+    [field: SerializeField] public TextMeshProUGUI TextField { get; private set; } = null;
+}
+
 public class DialogueController : MonoBehaviour
 {
     public static DialogueController Instance { get; private set; }
@@ -21,19 +31,18 @@ public class DialogueController : MonoBehaviour
     #endregion
 
     #region public Variables
-    public Conversation CurrentConversation { get; private set; }
     public bool IsConversing { get; private set; } = false;
     #endregion
 
     #region Private Variables
-    [SerializeField] private Image characterImage = null;    
-    [SerializeField] private TextMeshProUGUI characterName = null;
-    [SerializeField] private TextMeshProUGUI textField = null;
+    [SerializeField] private ConversationUITemplate[] conversationUITemplates;
 
     private Queue<ConversationEvent> conversationEventQueue = new Queue<ConversationEvent>();
     private Queue<Conversation> conversationQueue = new Queue<Conversation>();
 
-    private ConversationEvent conversationEvent;
+    private Conversation conversation = null;
+    private ConversationEvent conversationEvent = null;
+    private ConversationUITemplate uiTemplate = null;
 
     // Cortoutines need to be referenced so they can be stopped prematurly in case of a skip
     private Coroutine textType = null;
@@ -71,8 +80,7 @@ public class DialogueController : MonoBehaviour
             return;
         }
 
-        CurrentConversation = _conversation;
-
+        conversation = _conversation;
         // Queue each conversation event so they can be processed
         conversationEventQueue.Clear();
 
@@ -83,14 +91,13 @@ public class DialogueController : MonoBehaviour
     {
         IsConversing = true;
 
-        yield return new WaitForSeconds(CurrentConversation.ConversationStartDelay);
+        yield return new WaitForSeconds(conversation.ConversationStartDelay);
 
         // Limit player inputs while a dialogue sequence is playing
         GameStateController.Instance.DialoguePause();
 
-        foreach (ConversationEvent conversationEvent in CurrentConversation.ConversationEvents) conversationEventQueue.Enqueue(conversationEvent);
-        //triggeredObjective = _conversation.triggeredObjective;
-        OnConversationStart?.Invoke(CurrentConversation);
+        foreach (ConversationEvent conversationEvent in conversation.ConversationEvents) conversationEventQueue.Enqueue(conversationEvent);
+        OnConversationStart?.Invoke(conversation);
     }
 
     // Displays the next conversation event
@@ -104,7 +111,7 @@ public class DialogueController : MonoBehaviour
         {
             StopCoroutine(textType);
             textType = null;
-            textField.text = conversationEvent.Text;
+            uiTemplate.TextField.text = conversationEvent.Text;
             return;
         }
 
@@ -131,13 +138,14 @@ public class DialogueController : MonoBehaviour
     private IEnumerator TypeSentance(string _sentence)
     {
         // Set text field to blank
-        textField.text = "";
+        
+        uiTemplate.TextField.text = "";
 
         // For each character
         foreach (char letter in _sentence.ToCharArray())
         {
             // Add that character to the string
-            textField.text += letter;
+            uiTemplate.TextField.text += letter;
 
             // If the current letter is part of some rich text we do not want to delay between the 'char's as the user won't see them
             if (letter == '<') richText = true;
@@ -163,10 +171,11 @@ public class DialogueController : MonoBehaviour
         }
 
         conversationEvent = conversationEventQueue.Peek();
-        characterName.text = conversationEvent.Character.CharacterName;
-        characterName.color = conversationEvent.Character.Colour;
-        characterImage.sprite = conversationEvent.Character.Image;
-        textField.text = "";
+        uiTemplate = conversationUITemplates[(int)conversationEvent.UITemplate];
+        uiTemplate.CharacterName.text = conversationEvent.Character.CharacterName;
+        uiTemplate.CharacterName.color = conversationEvent.Character.Colour;
+        uiTemplate.CharacterImage.sprite = conversationEvent.Character.Image;
+        uiTemplate.TextField.text = "";
 
         //animator.SetTrigger("Open");
         yield return new WaitForSeconds(0.33f);
@@ -180,7 +189,7 @@ public class DialogueController : MonoBehaviour
     {
         //animator.SetTrigger("Closed");
 
-        yield return new WaitForSeconds(CurrentConversation.ConversationEndDelay);
+        yield return new WaitForSeconds(conversation.ConversationEndDelay);
 
         //if (triggeredObjective) ObjectiveController.Instance.AddObjective(triggeredObjective);
 
@@ -191,8 +200,9 @@ public class DialogueController : MonoBehaviour
         textType = null;
         changeCharacter = null;
 
-        OnConversationEnd?.Invoke(CurrentConversation);
-        CurrentConversation = null;
+        OnConversationEnd?.Invoke(conversation);
+        conversation = null;
+        uiTemplate = null;
 
         if (conversationQueue.Count > 0)
         {
