@@ -362,6 +362,7 @@ GameObject:
   - component: {fileID: 223171580420486436}
   - component: {fileID: 3843256701234682684}
   - component: {fileID: 4362945119613668376}
+  - component: {fileID: 6613144181832552777}
   m_Layer: 0
   m_Name: Dialgoue Text
   m_TagString: Untagged
@@ -488,6 +489,18 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &6613144181832552777
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4870665291798198991}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7a45b4e51cfd86438ea907c7850d9ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6613144180521518251
 GameObject:
   m_ObjectHideFlags: 0

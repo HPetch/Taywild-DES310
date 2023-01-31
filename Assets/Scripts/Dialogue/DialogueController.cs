@@ -50,6 +50,10 @@ public class DialogueController : MonoBehaviour
 
     // Tracks wether the current char is rich text or not (TextTyper)
     private bool richText = false;
+    // Tracks wether the current char is fancy text or not (TextTyper)
+    private bool fancyText = false;
+    // Delay between each char in the TextType Coroutine
+    private float textTypeDelay = 0.01f;
     #endregion
 
     #region Functions
@@ -158,7 +162,15 @@ public class DialogueController : MonoBehaviour
                 continue;
             }
 
-            yield return new WaitForSeconds(0.01f);
+            // If the current letter is part of some fancy text we do not want to delay between the 'char's as the user won't see them
+            if (letter == '[') fancyText = true;
+            if (fancyText)
+            {
+                if (letter == ']') fancyText = false;
+                continue;
+            }
+
+            yield return new WaitForSeconds(textTypeDelay);
         }
 
         // Sets coroutine to null, to track when it's finished
@@ -177,7 +189,7 @@ public class DialogueController : MonoBehaviour
         uiTemplate = conversationUITemplates[(int)conversationEvent.UITemplate];
         uiTemplate.CharacterName.text = conversationEvent.Character.CharacterName;
         uiTemplate.CharacterName.color = conversationEvent.Character.Colour;
-        uiTemplate.CharacterImage.sprite = conversationEvent.Character.Image;
+        uiTemplate.CharacterImage.sprite = conversationEvent.Character.Portraits[0];
         uiTemplate.TextField.text = "";
 
         //animator.SetTrigger("Open");
