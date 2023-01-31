@@ -25,6 +25,61 @@ public class ConversationEventDrawerBase : PropertyDrawer
         Cutscene = property.FindPropertyRelative("<Cutscene>k__BackingField");
     }
 
+    public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
+    {
+        Initialise(property);
+
+        if (property.isExpanded)
+        {
+            int totalLines = 1 + expandedHeight[EventType.intValue];
+
+            float height = GetHeight(totalLines);
+            height += GetBranchHeight();
+
+            return height;
+        }
+
+        return GetHeight(1);
+    }
+
+    public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
+    {
+        Initialise(property);
+
+        EditorGUI.BeginProperty(position, label, property);
+
+        Rect rectFoldout = new Rect(position.min.x, position.min.y, position.size.x, lineHeight);
+        property.isExpanded = EditorGUI.Foldout(rectFoldout, property.isExpanded, System.Enum.GetName(typeof(ConversationEvent.ConversationEventTypes), EventType.intValue));
+        int lines = 1;
+
+        if (property.isExpanded)
+        {
+            EditorGUI.PropertyField(new Rect(position.min.x, position.min.y + lines++ * lineHeight, position.size.x, lineHeight), EventType);
+
+            switch (EventType.intValue)
+            {
+                case (int)ConversationEventBase.ConversationEventTypes.SPEECH:
+                    lines = DrawSpeech(position, lines);
+                    break;
+
+                case (int)ConversationEventBase.ConversationEventTypes.BRANCH:                    
+                    lines = DrawSpeech(position, lines);
+                    lines += DrawBranch(position, lines);                  
+                    break;
+
+                case (int)ConversationEventBase.ConversationEventTypes.QUEST:
+                    EditorGUI.PropertyField(new Rect(position.min.x, position.min.y + lines++ * lineHeight, position.size.x, lineHeight), Quest);
+                    break;
+
+                case (int)ConversationEventBase.ConversationEventTypes.CUTSCENE:
+                    EditorGUI.PropertyField(new Rect(position.min.x, position.min.y + lines++ * lineHeight, position.size.x, lineHeight), Cutscene);
+                    break;
+            }
+        }
+
+        EditorGUI.EndProperty();
+    }
+
     // The property drawer for the speech event, returns the lines used
     protected int DrawSpeech(Rect position, int lines)
     {
@@ -39,10 +94,8 @@ public class ConversationEventDrawerBase : PropertyDrawer
         return lines + 4;
     }
 
-    protected virtual int DrawBranch(Rect position, int lines)
-    {
-        return 0;
-    }
+    protected virtual int DrawBranch(Rect position, int lines) { return 0; }
+    protected virtual float GetBranchHeight() { return 0; }
 
     protected float GetHeight(int lines)
     {
@@ -66,85 +119,44 @@ public class ConversationEventDrawer : ConversationEventDrawerBase
         BranchConversations = property.FindPropertyRelative("<BranchConversations>k__BackingField");
     }
 
-    public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
-    {
-        Initialise(property);
-
-        if (property.isExpanded)
+    protected override float GetBranchHeight()
+    {        
+        if (EventType.intValue == (int)ConversationEventBase.ConversationEventTypes.BRANCH)
         {
-            int totalLines = 1 + expandedHeight[EventType.intValue];
-
-            float height = GetHeight(totalLines);
-            if (EventType.intValue == (int)ConversationEvent.ConversationEventTypes.BRANCH)
+            if (BranchType.intValue == (int)ConversationEvent.BranchTypes.SHALLOW && BranchEvents.isExpanded)
             {
-                if (BranchType.intValue == (int)ConversationEvent.BranchTypes.SHALLOW && BranchEvents.isExpanded)
-                {
-                    height += EditorGUI.GetPropertyHeight(BranchEvents);
-                }
-                else if (BranchType.intValue == (int)ConversationEvent.BranchTypes.DEEP && BranchConversations.isExpanded)
-                {
-                    height += EditorGUI.GetPropertyHeight(BranchConversations) + GetHeight(1);
-                }
+                return EditorGUI.GetPropertyHeight(BranchEvents);
             }
-            return height;
+            else if (BranchType.intValue == (int)ConversationEvent.BranchTypes.DEEP && BranchConversations.isExpanded)
+            {
+                return EditorGUI.GetPropertyHeight(BranchConversations) + GetHeight(1);
+            }
         }
 
-        return GetHeight(1);
+        return 0;
     }
 
-    public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
+    protected override int DrawBranch(Rect position, int lines)
     {
-        Initialise(property);
+        EditorGUI.PropertyField(new Rect(position.min.x, position.min.y + lines++ * lineHeight, position.size.x, lineHeight), BranchType);
 
-        EditorGUI.BeginProperty(position, label, property);
-
-        Rect rectFoldout = new Rect(position.min.x, position.min.y, position.size.x, lineHeight);
-        property.isExpanded = EditorGUI.Foldout(rectFoldout, property.isExpanded, System.Enum.GetName(typeof(ConversationEvent.ConversationEventTypes), EventType.intValue));
-        int lines = 1;
-
-        if (property.isExpanded)
+        switch (BranchType.intValue)
         {
-            EditorGUI.PropertyField(new Rect(position.min.x, position.min.y + lines++ * lineHeight, position.size.x, lineHeight), EventType);
+            case (int)ConversationEvent.BranchTypes.SHALLOW:
+                BranchEvents.arraySize = BranchEvents.arraySize < 2 ? 2 : BranchEvents.arraySize > 4 ? 4 : BranchEvents.arraySize;
+                EditorGUI.PropertyField(new Rect(position.min.x, position.min.y + lines++ * lineHeight, position.size.x, lineHeight), BranchEvents);
+                lines += (int)(EditorGUI.GetPropertyHeight(BranchEvents) / lineHeight);
+                break;
 
-            switch (EventType.intValue)
-            {
-                case (int)ConversationEvent.ConversationEventTypes.SPEECH:
-                    lines = DrawSpeech(position, lines);
-                    break;
-
-                case (int)ConversationEvent.ConversationEventTypes.BRANCH:
-                    lines = DrawSpeech(position, lines);
-                    EditorGUI.PropertyField(new Rect(position.min.x, position.min.y + lines++ * lineHeight, position.size.x, lineHeight), BranchType);
-
-                    switch (BranchType.intValue)
-                    {
-                        case (int)ConversationEvent.BranchTypes.SHALLOW:
-                            BranchEvents.arraySize = BranchEvents.arraySize < 2 ? 2 : BranchEvents.arraySize > 4 ? 4 : BranchEvents.arraySize;
-                            EditorGUI.PropertyField(new Rect(position.min.x, position.min.y + lines++ * lineHeight, position.size.x, lineHeight), BranchEvents);
-                            lines += (int)(EditorGUI.GetPropertyHeight(BranchEvents) / lineHeight);
-                            break;
-
-                        case (int)ConversationEvent.BranchTypes.DEEP:
-                            BranchConversations.arraySize = BranchConversations.arraySize < 2 ? 2 : BranchConversations.arraySize > 4 ? 4 : BranchConversations.arraySize;
-                            EditorGUI.PropertyField(new Rect(position.min.x, position.min.y + lines++ * lineHeight, position.size.x, lineHeight), BranchConversations);
-                            lines += (int)(EditorGUI.GetPropertyHeight(BranchConversations) / lineHeight);
-                            EditorGUI.HelpBox(new Rect(position.min.x, position.min.y + lines++ * lineHeight + 6, position.size.x, lineHeight), "Deep Branch is the last node, any other events will *not* be processed", MessageType.Info);
-                            break;
-                    }
-
-                    break;
-
-                case (int)ConversationEvent.ConversationEventTypes.QUEST:
-                    EditorGUI.PropertyField(new Rect(position.min.x, position.min.y + lines++ * lineHeight, position.size.x, lineHeight), Quest);
-                    break;
-
-                case (int)ConversationEvent.ConversationEventTypes.CUTSCENE:
-                    EditorGUI.PropertyField(new Rect(position.min.x, position.min.y + lines++ * lineHeight, position.size.x, lineHeight), Cutscene);
-                    break;
-            }
+            case (int)ConversationEvent.BranchTypes.DEEP:
+                BranchConversations.arraySize = BranchConversations.arraySize < 2 ? 2 : BranchConversations.arraySize > 4 ? 4 : BranchConversations.arraySize;
+                EditorGUI.PropertyField(new Rect(position.min.x, position.min.y + lines++ * lineHeight, position.size.x, lineHeight), BranchConversations);
+                lines += (int)(EditorGUI.GetPropertyHeight(BranchConversations) / lineHeight);
+                EditorGUI.HelpBox(new Rect(position.min.x, position.min.y + lines++ * lineHeight + 6, position.size.x, lineHeight), "Deep Branch is the last node, any other events will *not* be processed", MessageType.Info);
+                break;
         }
 
-        EditorGUI.EndProperty();
+        return lines;
     }
 }
 
@@ -159,66 +171,23 @@ public class ShallowBranchConversationEventDrawer : ConversationEventDrawerBase
         BranchConversations = property.FindPropertyRelative("<BranchConversations>k__BackingField");
     }
 
-    public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
+    protected override float GetBranchHeight()
     {
-        Initialise(property);
-
-        if (property.isExpanded)
+        if (EventType.intValue == (int)ConversationEventBase.ConversationEventTypes.BRANCH)
         {
-            int totalLines = 1 + expandedHeight[EventType.intValue];
-
-            float height = GetHeight(totalLines);
-            if (EventType.intValue == (int)ConversationEvent.ConversationEventTypes.BRANCH)
-            {
-                height += EditorGUI.GetPropertyHeight(BranchConversations) + GetHeight(1);
-
-            }
-            return height;
+            return EditorGUI.GetPropertyHeight(BranchConversations) + GetHeight(1);
         }
 
-        return GetHeight(1);
+        return 0;
     }
 
-    public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
+    protected override int DrawBranch(Rect position, int lines)
     {
-        Initialise(property);
+        BranchConversations.arraySize = BranchConversations.arraySize < 2 ? 2 : BranchConversations.arraySize > 4 ? 4 : BranchConversations.arraySize;
+        EditorGUI.PropertyField(new Rect(position.min.x, position.min.y + lines++ * lineHeight, position.size.x, lineHeight), BranchConversations);
+        lines += (int)(EditorGUI.GetPropertyHeight(BranchConversations) / lineHeight);
+        EditorGUI.HelpBox(new Rect(position.min.x, position.min.y + lines++ * lineHeight + 6, position.size.x, lineHeight), "Deep Branch is the last node, any other events will *not* be processed", MessageType.Info);
 
-        EditorGUI.BeginProperty(position, label, property);
-
-        Rect rectFoldout = new Rect(position.min.x, position.min.y, position.size.x, lineHeight);
-        property.isExpanded = EditorGUI.Foldout(rectFoldout, property.isExpanded, System.Enum.GetName(typeof(ConversationEvent.ConversationEventTypes), EventType.intValue));
-        int lines = 1;
-
-        if (property.isExpanded)
-        {
-            EditorGUI.PropertyField(new Rect(position.min.x, position.min.y + lines++ * lineHeight, position.size.x, lineHeight), EventType);
-
-            switch (EventType.intValue)
-            {
-                case (int)ConversationEvent.ConversationEventTypes.SPEECH:
-                    lines = DrawSpeech(position, lines);
-                    break;
-
-                case (int)ConversationEvent.ConversationEventTypes.BRANCH:
-                    lines = DrawSpeech(position, lines);
-
-                    BranchConversations.arraySize = BranchConversations.arraySize < 2 ? 2 : BranchConversations.arraySize > 4 ? 4 : BranchConversations.arraySize;
-                    EditorGUI.PropertyField(new Rect(position.min.x, position.min.y + lines++ * lineHeight, position.size.x, lineHeight), BranchConversations);
-                    lines += (int)(EditorGUI.GetPropertyHeight(BranchConversations) / lineHeight);
-                    EditorGUI.HelpBox(new Rect(position.min.x, position.min.y + lines++ * lineHeight + 6, position.size.x, lineHeight), "Deep Branch is the last node, any other events will *not* be processed", MessageType.Info);
-
-                    break;
-
-                case (int)ConversationEvent.ConversationEventTypes.QUEST:
-                    EditorGUI.PropertyField(new Rect(position.min.x, position.min.y + lines++ * lineHeight, position.size.x, lineHeight), Quest);
-                    break;
-
-                case (int)ConversationEvent.ConversationEventTypes.CUTSCENE:
-                    EditorGUI.PropertyField(new Rect(position.min.x, position.min.y + lines++ * lineHeight, position.size.x, lineHeight), Cutscene);
-                    break;
-            }
-        }
-
-        EditorGUI.EndProperty();
+        return lines;
     }
 }

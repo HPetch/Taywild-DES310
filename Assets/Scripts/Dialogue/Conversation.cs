@@ -45,7 +45,7 @@ public class ConversationEvent : ConversationEventBase
     #region Variables  
     #region Branch
     [field: SerializeField] public BranchTypes BranchType { get; private set; } = BranchTypes.SHALLOW;
-    [field: SerializeField] public BranchEvent[] BranchEvents { get; private set; } = new BranchEvent[0];
+    [field: SerializeField] public BranchEvent[] BranchEvents { get; private set; }
     [field: SerializeField] public BranchConversation[] BranchConversations { get; private set; }
     #endregion
     #endregion
@@ -55,15 +55,7 @@ public class ConversationEvent : ConversationEventBase
 public class BranchEvent
 {
     [field: SerializeField] public string ButtonText { get; private set; }
-    [field: SerializeField] public ShallowBranchConversationEvent[] Conversation { get; private set; } = new ShallowBranchConversationEvent[0];
-}
-
-[System.Serializable]
-public class BranchConversation
-{
-    [field: SerializeField] public string ButtonText { get; private set; }
-    
-    [field: SerializeField] public Conversation Conversation { get; private set; }
+    [field: SerializeField] public ShallowBranchConversationEvent[] Conversation { get; private set; }
 }
 
 [System.Serializable]
@@ -72,4 +64,12 @@ public class ShallowBranchConversationEvent : ConversationEventBase
     #region Branch
     [field: SerializeField] public BranchConversation[] BranchConversations { get; private set; }
     #endregion
+}
+
+[System.Serializable]
+public class BranchConversation
+{
+    [field: SerializeField] public string ButtonText { get; private set; }
+    
+    [field: SerializeField] public Conversation Conversation { get; private set; }
 }

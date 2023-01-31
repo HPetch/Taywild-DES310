@@ -32,17 +32,18 @@ public class DialogueController : MonoBehaviour
 
     #region public Variables
     public bool IsConversing { get; private set; } = false;
+    public ConversationUITemplate UITemplate { get; private set; }
     #endregion
 
     #region Private Variables
-    [SerializeField] private ConversationUITemplate[] conversationUITemplates;
 
     private Queue<ConversationEvent> conversationEventQueue = new Queue<ConversationEvent>();
     private Queue<Conversation> conversationQueue = new Queue<Conversation>();
 
+    [SerializeField] private  ConversationUITemplate[] conversationUITemplates;
+
     private Conversation conversation = null;
     private ConversationEvent conversationEvent = null;
-    private ConversationUITemplate uiTemplate = null;
 
     // Cortoutines need to be referenced so they can be stopped prematurly in case of a skip
     private Coroutine textType = null;
@@ -62,6 +63,7 @@ public class DialogueController : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+        UITemplate = conversationUITemplates[0];
     }
     #endregion
 
@@ -117,7 +119,7 @@ public class DialogueController : MonoBehaviour
         {
             StopCoroutine(textType);
             textType = null;
-            uiTemplate.TextField.text = conversationEvent.Text;
+            UITemplate.TextField.text = conversationEvent.Text;
             return;
         }
 
@@ -145,14 +147,14 @@ public class DialogueController : MonoBehaviour
     private IEnumerator TypeSentance(string _sentence)
     {
         // Set text field to blank
-        
-        uiTemplate.TextField.text = "";
+
+        UITemplate.TextField.text = "";
 
         // For each character
         foreach (char letter in _sentence.ToCharArray())
         {
             // Add that character to the string
-            uiTemplate.TextField.text += letter;
+            UITemplate.TextField.text += letter;
 
             // If the current letter is part of some rich text we do not want to delay between the 'char's as the user won't see them
             if (letter == '<') richText = true;
@@ -186,11 +188,11 @@ public class DialogueController : MonoBehaviour
         }*/
 
         conversationEvent = conversationEventQueue.Peek();
-        uiTemplate = conversationUITemplates[(int)conversationEvent.UITemplate];
-        uiTemplate.CharacterName.text = conversationEvent.Character.CharacterName;
-        uiTemplate.CharacterName.color = conversationEvent.Character.Colour;
-        uiTemplate.CharacterImage.sprite = conversationEvent.Character.Portraits[0];
-        uiTemplate.TextField.text = "";
+        UITemplate = conversationUITemplates[(int)conversationEvent.UITemplate];
+        UITemplate.CharacterName.text = conversationEvent.Character.CharacterName;
+        UITemplate.CharacterName.color = conversationEvent.Character.Colour;
+        UITemplate.CharacterImage.sprite = conversationEvent.Character.Portraits[0];
+        UITemplate.TextField.text = "";
 
         //animator.SetTrigger("Open");
         yield return new WaitForSeconds(0.05f);
@@ -217,7 +219,6 @@ public class DialogueController : MonoBehaviour
 
         OnConversationEnd?.Invoke(conversation);
         conversation = null;
-        uiTemplate = null;
 
         if (conversationQueue.Count > 0)
         {
