@@ -63,10 +63,8 @@ public class BranchConversation
 [System.Serializable]
 public class ShallowBranchConversationEvent
 {
-    public enum ShallowBranchConversationEventTypes { SPEECH, QUEST, CUTSCENE }
-
     #region Variables
-    [field: SerializeField] public ShallowBranchConversationEventTypes EventType { get; private set; } = ShallowBranchConversationEventTypes.SPEECH;
+    [field: SerializeField] public ConversationEvent.ConversationEventTypes EventType { get; private set; } = ConversationEvent.ConversationEventTypes.SPEECH;
 
     #region Speech
     [field: SerializeField] public ConversationUITemplate.ConversationUITemplates UITemplate { get; private set; }
@@ -74,6 +72,10 @@ public class ShallowBranchConversationEvent
 
     [field: TextArea(3, 10)]
     [field: SerializeField] public string Text { get; private set; }
+    #endregion
+
+    #region Branch
+    [field: SerializeField] public BranchConversation[] BranchConversations { get; private set; }
     #endregion
 
     #region Quest
