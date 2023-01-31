@@ -12,11 +12,9 @@ public class Conversation : ScriptableObject
     [field: SerializeField] public ConversationEvent[] ConversationEvents { get; private set; }
 }
 
-[System.Serializable]
-public class ConversationEvent
+public class ConversationEventBase
 {
     public enum ConversationEventTypes { SPEECH, BRANCH, QUEST, CUTSCENE }
-    public enum BranchTypes { SHALLOW, DEEP,}
 
     #region Variables
     [field: SerializeField] public ConversationEventTypes EventType { get; private set; } = ConversationEventTypes.SPEECH;
@@ -29,18 +27,26 @@ public class ConversationEvent
     [field: SerializeField] public string Text { get; private set; }
     #endregion
 
-    #region Branch
-    [field: SerializeField] public BranchTypes BranchType { get; private set; } = BranchTypes.SHALLOW;
-    [field: SerializeField] public BranchEvent[] BranchEvents { get; private set; } = new BranchEvent[0];
-    [field: SerializeField] public BranchConversation[] BranchConversations { get; private set; }
-    #endregion
-
     #region Quest
     [field: SerializeField] public GameObject Quest { get; private set; }
     #endregion
 
     #region Cutscene
     [field: SerializeField] public GameObject Cutscene { get; private set; }
+    #endregion
+    #endregion
+}
+
+[System.Serializable]
+public class ConversationEvent : ConversationEventBase
+{
+    public enum BranchTypes { SHALLOW, DEEP,}
+
+    #region Variables  
+    #region Branch
+    [field: SerializeField] public BranchTypes BranchType { get; private set; } = BranchTypes.SHALLOW;
+    [field: SerializeField] public BranchEvent[] BranchEvents { get; private set; } = new BranchEvent[0];
+    [field: SerializeField] public BranchConversation[] BranchConversations { get; private set; }
     #endregion
     #endregion
 }
@@ -61,29 +67,9 @@ public class BranchConversation
 }
 
 [System.Serializable]
-public class ShallowBranchConversationEvent
+public class ShallowBranchConversationEvent : ConversationEventBase
 {
-    #region Variables
-    [field: SerializeField] public ConversationEvent.ConversationEventTypes EventType { get; private set; } = ConversationEvent.ConversationEventTypes.SPEECH;
-
-    #region Speech
-    [field: SerializeField] public ConversationUITemplate.ConversationUITemplates UITemplate { get; private set; }
-    [field: SerializeField] public Character Character { get; private set; }
-
-    [field: TextArea(3, 10)]
-    [field: SerializeField] public string Text { get; private set; }
-    #endregion
-
     #region Branch
     [field: SerializeField] public BranchConversation[] BranchConversations { get; private set; }
-    #endregion
-
-    #region Quest
-    [field: SerializeField] public GameObject Quest { get; private set; }
-    #endregion
-
-    #region Cutscene
-    [field: SerializeField] public GameObject Cutscene { get; private set; }
-    #endregion
     #endregion
 }

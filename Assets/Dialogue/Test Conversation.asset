@@ -17,17 +17,6 @@ MonoBehaviour:
   <ConversationEvents>k__BackingField:
   - <EventType>k__BackingField: 0
     <UITemplate>k__BackingField: 0
-    <Character>k__BackingField: {fileID: 11400000, guid: e2befdcf19b4cd144ac943318946bf54, type: 2}
-    <Text>k__BackingField: This is some sample text for the dialogue system. It supports
-      <color=#00C9D7>Rich Text</color> and some custom Images <sprite="Heart" index=0>
-      embeded within the text.
-    <BranchType>k__BackingField: 0
-    <BranchEvents>k__BackingField: []
-    <BranchConversations>k__BackingField: []
-    <Quest>k__BackingField: {fileID: 0}
-    <Cutscene>k__BackingField: {fileID: 0}
-  - <EventType>k__BackingField: 0
-    <UITemplate>k__BackingField: 0
     <Character>k__BackingField: {fileID: 11400000, guid: f8c55e6d759f3c54c9abfc9dd41a32da, type: 2}
     <Text>k__BackingField: Any font can become<mspace=1.75em> monospace</mspace>,
       if you really want it.
@@ -63,22 +52,36 @@ MonoBehaviour:
         <UITemplate>k__BackingField: 0
         <Character>k__BackingField: {fileID: 0}
         <Text>k__BackingField: 
-        <Quest>k__BackingField: {fileID: 0}
-        <Cutscene>k__BackingField: {fileID: 0}
-      - <EventType>k__BackingField: 1
-        <UITemplate>k__BackingField: 0
-        <Character>k__BackingField: {fileID: 0}
-        <Text>k__BackingField: 
+        <BranchConversations>k__BackingField: []
         <Quest>k__BackingField: {fileID: 0}
         <Cutscene>k__BackingField: {fileID: 0}
       - <EventType>k__BackingField: 2
         <UITemplate>k__BackingField: 0
         <Character>k__BackingField: {fileID: 0}
         <Text>k__BackingField: 
+        <BranchConversations>k__BackingField: []
+        <Quest>k__BackingField: {fileID: 0}
+        <Cutscene>k__BackingField: {fileID: 0}
+      - <EventType>k__BackingField: 1
+        <UITemplate>k__BackingField: 0
+        <Character>k__BackingField: {fileID: 0}
+        <Text>k__BackingField: 
+        <BranchConversations>k__BackingField:
+        - <ButtonText>k__BackingField: 
+          <Conversation>k__BackingField: {fileID: 0}
+        - <ButtonText>k__BackingField: 
+          <Conversation>k__BackingField: {fileID: 0}
         <Quest>k__BackingField: {fileID: 0}
         <Cutscene>k__BackingField: {fileID: 0}
     - <ButtonText>k__BackingField: I hate him
-      <Conversation>k__BackingField: []
+      <Conversation>k__BackingField:
+      - <EventType>k__BackingField: 0
+        <UITemplate>k__BackingField: 0
+        <Character>k__BackingField: {fileID: 0}
+        <Text>k__BackingField: 
+        <BranchConversations>k__BackingField: []
+        <Quest>k__BackingField: {fileID: 0}
+        <Cutscene>k__BackingField: {fileID: 0}
     <BranchConversations>k__BackingField:
     - <ButtonText>k__BackingField: Option 1
       <Conversation>k__BackingField: {fileID: 11400000, guid: 3587b3a42da954e499e75505ff6b0300, type: 2}
