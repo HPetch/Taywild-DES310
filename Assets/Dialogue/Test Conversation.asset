@@ -18,10 +18,10 @@ MonoBehaviour:
   - <EventType>k__BackingField: 0
     <UITemplate>k__BackingField: 0
     <Character>k__BackingField: {fileID: 11400000, guid: f8c55e6d759f3c54c9abfc9dd41a32da, type: 2}
-    <Text>k__BackingField: This is <link="rainbow">some sample text</link> for the
-      dialogue system. It supports <color=#00C9D7>Rich Text</color> and some custom
-      Images <sprite="Heart" index=0> embeded within the text. <link="rainbow"> Test
-      Rainbow</link>. Did it work?
+    <Text>k__BackingField: This is <link="rainbow">some sample</link> text for <link="wave">the
+      dialogue system</link>. It <link="jiggle">supports</link> <color=#00C9D7>Rich
+      Text</color> and some <link="wave">custom</link> Images <sprite="Heart" index=0>
+      embeded within the text. <link="rainbow"> Test Rainbow </link>.
     <Quest>k__BackingField: {fileID: 0}
     <Cutscene>k__BackingField: {fileID: 0}
     <BranchType>k__BackingField: 0
@@ -29,13 +29,10 @@ MonoBehaviour:
     <BranchConversations>k__BackingField: []
   - <EventType>k__BackingField: 0
     <UITemplate>k__BackingField: 0
-    <Character>k__BackingField: {fileID: 11400000, guid: f8c55e6d759f3c54c9abfc9dd41a32da, type: 2}
-    <Text>k__BackingField: 'Text <mark=#ffff00aa>can be marked with</mark> an overlay.
-
-      <cspace=1em>Spacing</cspace>
-      is just as important as <cspace=0.2em>timing.</cspace>
-
-'
+    <Character>k__BackingField: {fileID: 11400000, guid: e2befdcf19b4cd144ac943318946bf54, type: 2}
+    <Text>k__BackingField: "Test Test Test Test Test Test Test Test <link=\"wave\">Test
+      Test</link> \nText <mark=#ffff00aa>can be marked with</mark> an overlay.\n<cspace=1em>Spacing</cspace>
+      is just as important as <cspace=0.2em>timing.</cspace>\n"
     <Quest>k__BackingField: {fileID: 0}
     <Cutscene>k__BackingField: {fileID: 0}
     <BranchType>k__BackingField: 0

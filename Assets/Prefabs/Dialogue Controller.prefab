@@ -419,7 +419,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: This is some sample text for the dialogue system. It supports <color=#00C9D7>Rich
     Text</color> and some custom Images <sprite="Heart" index=0> embeded within the
-    text. <link="rainbow"> Test Rainbow </link>
+    text. Test Rainbow.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -557,9 +557,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textComponent: {fileID: 4362945119613668376}
-  movementStrength: {x: 0.1, y: 0.1}
-  movementSpeed: 1
   rainbowStrength: 10
+  rainbowSpeed: 0.25
+  waveStrength: {x: 0.1, y: 0.1}
+  waveSpeed: 1
+  jiggleStrength: {x: 200, y: 100}
 --- !u!1 &7332860847709649322
 GameObject:
   m_ObjectHideFlags: 0

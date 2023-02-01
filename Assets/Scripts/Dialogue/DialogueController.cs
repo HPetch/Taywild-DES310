@@ -49,10 +49,12 @@ public class DialogueController : MonoBehaviour
     private Coroutine textType = null;
     private Coroutine changeCharacter = null;
 
+    private string textTypeString = "";
+
     // Tracks wether the current char is rich text or not (TextTyper)
     private bool richText = false;
-    // Tracks wether the current char is fancy text or not (TextTyper)
-    private bool fancyText = false;
+
+    private bool linkStarted = false;
     // Delay between each char in the TextType Coroutine
     private float textTypeDelay = 0.01f;
     #endregion
@@ -140,38 +142,56 @@ public class DialogueController : MonoBehaviour
 
         // else, remove the current event from the queue, and start typing the next one
         conversationEvent = conversationEventQueue.Dequeue();
+
         textType = StartCoroutine(TypeSentance(conversationEvent.Text));
     }
 
     // Text-Type coroutine
     private IEnumerator TypeSentance(string _sentence)
     {
-        // Set text field to blank
-
-        UITemplate.TextField.text = "";
+        // Set text field to blank      
+        textTypeString = "";
+        TextEffectController.Instance.ClearText();
 
         // For each character
-        foreach (char letter in _sentence.ToCharArray())
+        for (int letterIndex = 0; letterIndex < _sentence.Length; letterIndex++)
         {
+            char letter = _sentence[letterIndex];
+
             // Add that character to the string
-            UITemplate.TextField.text += letter;
+            textTypeString += letter;
 
             // If the current letter is part of some rich text we do not want to delay between the 'char's as the user won't see them
-            if (letter == '<') richText = true;
+            if (letter == '<')
+            {
+                richText = true;
+                if(_sentence.Substring(letterIndex+1,4) == "link")
+                {
+                    linkStarted = true;
+                }
+                else if (_sentence.Substring(letterIndex + 1, 5) == "/link")
+                {
+                    linkStarted = false;
+                }
+            }
             if (richText)
             {
-                if (letter == '>') richText = false;
+                if (letter == '>')
+                {
+                    richText = false;
+                }
+
                 continue;
             }
 
-            // If the current letter is part of some fancy text we do not want to delay between the 'char's as the user won't see them
-            if (letter == '[') fancyText = true;
-            if (fancyText)
+            UITemplate.TextField.SetText(textTypeString);
+
+            if(linkStarted && !richText)
             {
-                if (letter == ']') fancyText = false;
-                continue;
+                UITemplate.TextField.text += "</link>";
             }
 
+            TextEffectController.Instance.UpdateText();
             yield return new WaitForSeconds(textTypeDelay);
         }
 
@@ -192,7 +212,8 @@ public class DialogueController : MonoBehaviour
         UITemplate.CharacterName.text = conversationEvent.Character.CharacterName;
         UITemplate.CharacterName.color = conversationEvent.Character.Colour;
         UITemplate.CharacterImage.sprite = conversationEvent.Character.Portraits[0];
-        UITemplate.TextField.text = "";
+
+        TextEffectController.Instance.ClearText();
 
         //animator.SetTrigger("Open");
         yield return new WaitForSeconds(0.05f);
