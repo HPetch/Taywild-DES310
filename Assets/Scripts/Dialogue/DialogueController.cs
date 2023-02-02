@@ -191,7 +191,12 @@ public class DialogueController : MonoBehaviour
                 UITemplate.TextField.text += "</link>";
             }
 
-            TextEffectController.Instance.UpdateText();
+            if (letter == ' ')
+            {
+                continue;
+            }
+
+                TextEffectController.Instance.UpdateText();
             yield return new WaitForSeconds(textTypeDelay);
         }
 
