@@ -32,7 +32,6 @@ public class DialogueController : MonoBehaviour
 
     #region public Variables
     public bool IsConversing { get; private set; } = false;
-    public ConversationUITemplate UITemplate { get; private set; }
     #endregion
 
     #region Private Variables
@@ -41,6 +40,7 @@ public class DialogueController : MonoBehaviour
     private Queue<Conversation> conversationQueue = new Queue<Conversation>();
 
     [SerializeField] private  ConversationUITemplate[] conversationUITemplates;
+    private ConversationUITemplate uiTemplate;
 
     private Conversation conversation = null;
     private ConversationEvent conversationEvent = null;
@@ -65,7 +65,6 @@ public class DialogueController : MonoBehaviour
     private void Awake()
     {
         Instance = this;
-        UITemplate = conversationUITemplates[0];
     }
     #endregion
 
@@ -116,12 +115,12 @@ public class DialogueController : MonoBehaviour
         // If the character changing animation is not complete, return and wait (when switched to tween this will skip the transition)
         if (changeCharacter != null) { return; }
 
-        // If the text type is not complete, stop that coroutine and displat they final result
+        // If the text type is not complete, stop that coroutine and display they final result
         if (textType != null)
         {
             StopCoroutine(textType);
             textType = null;
-            UITemplate.TextField.text = conversationEvent.Text;
+            uiTemplate.TextField.text = conversationEvent.Text;
             return;
         }
 
@@ -151,7 +150,7 @@ public class DialogueController : MonoBehaviour
     {
         // Set text field to blank      
         textTypeString = "";
-        TextEffectController.Instance.ClearText();
+        uiTemplate.TextField.GetComponent<TextEffect>().ClearText();
 
         // For each character
         for (int letterIndex = 0; letterIndex < _sentence.Length; letterIndex++)
@@ -184,11 +183,11 @@ public class DialogueController : MonoBehaviour
                 continue;
             }
 
-            UITemplate.TextField.SetText(textTypeString);
+            uiTemplate.TextField.SetText(textTypeString);
 
             if(linkStarted && !richText)
             {
-                UITemplate.TextField.text += "</link>";
+                uiTemplate.TextField.text += "</link>";
             }
 
             if (letter == ' ')
@@ -196,7 +195,7 @@ public class DialogueController : MonoBehaviour
                 continue;
             }
 
-                TextEffectController.Instance.UpdateText();
+            uiTemplate.TextField.GetComponent<TextEffect>().UpdateText();
             yield return new WaitForSeconds(textTypeDelay);
         }
 
@@ -213,12 +212,12 @@ public class DialogueController : MonoBehaviour
         }*/
 
         conversationEvent = conversationEventQueue.Peek();
-        UITemplate = conversationUITemplates[(int)conversationEvent.UITemplate];
-        UITemplate.CharacterName.text = conversationEvent.Character.CharacterName;
-        UITemplate.CharacterName.color = conversationEvent.Character.Colour;
-        UITemplate.CharacterImage.sprite = conversationEvent.Character.Portraits[0];
+        uiTemplate = conversationUITemplates[(int)conversationEvent.UITemplate];
 
-        TextEffectController.Instance.ClearText();
+        uiTemplate.TextField.GetComponent<TextEffect>().ClearText();
+        uiTemplate.CharacterName.SetText(conversationEvent.Character.CharacterName);
+        uiTemplate.CharacterName.color = conversationEvent.Character.Colour;
+        uiTemplate.CharacterImage.sprite = conversationEvent.Character.Portraits[0];
 
         //animator.SetTrigger("Open");
         yield return new WaitForSeconds(0.05f);

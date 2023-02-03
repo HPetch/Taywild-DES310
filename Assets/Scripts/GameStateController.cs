@@ -9,16 +9,9 @@ public class GameStateController : MonoBehaviour
     public GameStates GameState { get; private set; } = GameStates.PLAY;
     private bool wasDialoguePaused = false;
 
-    [SerializeField] private Conversation conversation;
-
     private void Awake()
     {
         Instance = this;
-    }
-
-    private void Start()
-    {
-        DialogueController.Instance.TriggerConversation(conversation);
     }
 
     private void Update()

@@ -1,30 +1,25 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-//[ExecuteInEditMode]
-public class TextEffectController : MonoBehaviour
+[ExecuteInEditMode]
+public class TextEffect : MonoBehaviour
 {
-    public static TextEffectController Instance { get; private set; }
+    private TextMeshProUGUI textComponent;
 
-    [Tooltip("This component is **only** used for the ExecuteInEditMode")]
-    [SerializeField] private TextMeshProUGUI textComponent;
+    // Rainbow Settings
+    private float rainbowStrength = 10f;
+    private float rainbowSpeed = 0.25f;
 
-    [Header("Rainbow Settings")]
-    [SerializeField] private float rainbowStrength = 10f;
-    [SerializeField] private float rainbowSpeed = 1f;
+    // Wave Settings
+    private Vector2 waveStrength = new Vector2(0.1f, 0.1f);
+    private float waveSpeed = 1f;
 
-    [Header("Wave Settings")]
-    [SerializeField] private Vector2 waveStrength;
-    [SerializeField] private float waveSpeed = 1f;
-
-    [Header("Jiggle Settings")]
-    [SerializeField] private Vector2 jiggleStrength;
+    // Jiggle Settings
+    private Vector2 jiggleStrength = new Vector2(10f, 4f);
 
     private void Awake()
     {
-        Instance = this;
+        textComponent = GetComponent<TextMeshProUGUI>();
     }
 
     private void Update()
@@ -34,8 +29,8 @@ public class TextEffectController : MonoBehaviour
 
     public void UpdateText()
     {
-#if !UNITY_EDITOR
-        textComponent = DialogueController.Instance.UITemplate.TextField;
+#if UNITY_EDITOR
+        textComponent = textComponent = GetComponent<TextMeshProUGUI>();
 #endif
         textComponent.ForceMeshUpdate();
 
@@ -113,17 +108,16 @@ public class TextEffectController : MonoBehaviour
                             int vertexIndex = charInfo.vertexIndex + vert;
 
                             // jiggle effect.
-                            Vector3 offset = new Vector2(Random.Range(-jiggleStrength.x, jiggleStrength.x) * Time.deltaTime, Random.Range(-jiggleStrength.y, jiggleStrength.y) * Time.deltaTime);
-
+                            Vector3 offset = new Vector2(Random.Range(-jiggleStrength.x, jiggleStrength.x) * 100f * Time.deltaTime, Random.Range(-jiggleStrength.y, jiggleStrength.y) * 100f * Time.deltaTime);                            
                             // Sets the new effect
                             newVertices[vertexIndex] += offset;
                         }
                     }
                     break;
             }
-
         }
-            textComponent.UpdateVertexData(TMP_VertexDataUpdateFlags.All); // IMPORTANT! applies all vertex and color changes.
+
+        textComponent.UpdateVertexData(TMP_VertexDataUpdateFlags.All); // IMPORTANT! applies all vertex and color changes.
     }
 
     public void ClearText()
