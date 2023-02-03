@@ -62,7 +62,7 @@ Camera:
   far clip plane: 1000
   field of view: 34
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 10
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -131,8 +131,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e885bd487068587418f212a696b594b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  smoothSpeed: 0.12
-  screenLimitX: {x: -10, y: 10}
+  cameraSpeed: 4
+  screenLimitX: {x: -50, y: 50}
   screenLimitY: {x: -20, y: 50}
-  playerOffset: {x: 0, y: 1, z: 0}
+  playerOffset: {x: 0, y: 1}
   zoomSpeed: 10

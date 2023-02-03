@@ -8,12 +8,13 @@ public class CameraController : MonoBehaviour
 
     #region Variables
     private Camera cameraComponent;
-    private Transform player;
+    private Transform playerTransform;
 
-    [SerializeField] private float smoothSpeed = 0.12f;
+    [Space(20)]
+    [SerializeField] private float cameraSpeed = 2;
     [SerializeField] private Vector2 screenLimitX = new Vector2();
     [SerializeField] private Vector2 screenLimitY = new Vector2();
-    [SerializeField] private Vector3 playerOffset = new Vector2(0, 1);
+    [SerializeField] private Vector2 playerOffset = new Vector3(0, 1);
 
     // Shaking Variables
     private bool isShaking = false;
@@ -35,20 +36,22 @@ public class CameraController : MonoBehaviour
 
     private void Start()
     {
-        player = PlayerController.Instance.transform;
+        playerTransform = PlayerController.Instance.transform;
 
         defaultSize = cameraComponent.orthographicSize;
         targetSize = defaultSize;
-        playerOffset.z = transform.position.z;
     }
 
     private void FixedUpdate()
     {
         // Get target position
-        Vector3 targetPosition = player.position + playerOffset;
-        // Interpolate towards the target position
-        transform.position = Vector3.Lerp(transform.position, targetPosition, smoothSpeed);
+        Vector2 targetPosition = (Vector2)playerTransform.position + playerOffset;
 
+        // Move towards the target position
+        transform.position = Vector3.Lerp(transform.position, new Vector3(targetPosition.x, targetPosition.y, transform.position.z), Time.fixedDeltaTime * cameraSpeed);
+
+
+        // Shake
         if (isShaking)
         {
             // Get random direction multiplied by the magnitude
@@ -56,12 +59,14 @@ public class CameraController : MonoBehaviour
             transform.position += new Vector3(shake.x, shake.y, 0);
 
             // Decrement the duration
-            shakeDuration -= Time.deltaTime;
+            shakeDuration -= Time.fixedDeltaTime;
             if (shakeDuration <= 0f) isShaking = false;
         }
 
+        // Clamp
         transform.position = new Vector3(Mathf.Clamp(transform.position.x, screenLimitX.x, screenLimitX.y), Mathf.Clamp(transform.position.y, screenLimitY.x, screenLimitY.y), transform.position.z);
 
+        // Zoom
         if (cameraComponent.orthographicSize != targetSize)
         {
             cameraComponent.orthographicSize = Mathf.Lerp(cameraComponent.orthographicSize, targetSize, Time.fixedDeltaTime * zoomSpeed);

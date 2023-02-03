@@ -362,6 +362,7 @@ GameObject:
   - component: {fileID: 223171580420486436}
   - component: {fileID: 3843256701234682684}
   - component: {fileID: 4362945119613668376}
+  - component: {fileID: 1935293281}
   m_Layer: 0
   m_Name: Dialgoue Text
   m_TagString: Untagged
@@ -489,6 +490,18 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &1935293281
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4870665291798198991}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e757198efea021b47a4cc0a8425f49c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6613144180521518251
 GameObject:
   m_ObjectHideFlags: 0
@@ -499,14 +512,13 @@ GameObject:
   m_Component:
   - component: {fileID: 6613144180521518250}
   - component: {fileID: 2226161084525959038}
-  - component: {fileID: 1325356526}
   m_Layer: 0
   m_Name: Dialogue Controller
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6613144180521518250
 Transform:
   m_ObjectHideFlags: 0
@@ -545,24 +557,6 @@ MonoBehaviour:
   - <CharacterImage>k__BackingField: {fileID: 0}
     <CharacterName>k__BackingField: {fileID: 0}
     <TextField>k__BackingField: {fileID: 0}
---- !u!114 &1325356526
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6613144180521518251}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e757198efea021b47a4cc0a8425f49c0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  textComponent: {fileID: 4362945119613668376}
-  rainbowStrength: 10
-  rainbowSpeed: 0.25
-  waveStrength: {x: 0.1, y: 0.1}
-  waveSpeed: 1
-  jiggleStrength: {x: 10, y: 4}
 --- !u!1 &7332860847709649322
 GameObject:
   m_ObjectHideFlags: 0
