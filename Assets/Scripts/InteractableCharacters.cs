@@ -6,6 +6,8 @@ public class InteractableCharacters : MonoBehaviour
 {
     [SerializeField] GameObject canvas;
 
+    private bool isPlayerWithinInteractionDistance = false;
+
     #region Initialisation
     private void Awake()
     {
@@ -13,12 +15,21 @@ public class InteractableCharacters : MonoBehaviour
     }
     #endregion
 
+    private void Update()
+    {
+        if (isPlayerWithinInteractionDistance && Input.GetButtonDown("Interact"))
+        {
+
+        }
+    }
+
     #region Collision
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
             canvas.SetActive(true);
+            isPlayerWithinInteractionDistance = true;
         }
     }
 
@@ -27,6 +38,7 @@ public class InteractableCharacters : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             canvas.SetActive(false);
+            isPlayerWithinInteractionDistance = false;
         }
     }
     #endregion

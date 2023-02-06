@@ -108,7 +108,11 @@ public class TextEffect : MonoBehaviour
                             int vertexIndex = charInfo.vertexIndex + vert;
 
                             // jiggle effect.
-                            Vector3 offset = new Vector2(Random.Range(-jiggleStrength.x, jiggleStrength.x) * 100f * Time.deltaTime, Random.Range(-jiggleStrength.y, jiggleStrength.y) * 100f * Time.deltaTime);                            
+                            Vector3 offset = new Vector2(Random.Range(-jiggleStrength.x, jiggleStrength.x) * 100f * Time.deltaTime, Random.Range(-jiggleStrength.y, jiggleStrength.y) * 100f * Time.deltaTime);
+
+#if UNITY_EDITOR
+                            offset = new Vector2(Random.Range(-4, 4), Random.Range(-2, 2));
+#endif
                             // Sets the new effect
                             newVertices[vertexIndex] += offset;
                         }

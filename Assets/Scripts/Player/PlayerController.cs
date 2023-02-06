@@ -179,7 +179,7 @@ public class PlayerController : MonoBehaviour
         if (collision.transform.CompareTag("Ground"))
         {
             if (transform.position.y + 0.1f > collision.contacts[0].point.y && Mathf.Abs(collision.contacts[0].point.x - transform.position.x) < 0.2f)
-            {
+            { 
                 Grounded = true;
                 remainingJumps = maxJumps;
 
