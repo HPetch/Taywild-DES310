@@ -223,7 +223,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.4433962, g: 0.4433962, b: 0.4433962, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.78431374}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -291,6 +291,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe37c0bf5a070bc4faf6a73ed21f4cab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <UITemplate>k__BackingField: 0
   <CharacterPortrait>k__BackingField: {fileID: 4726873175732327307}
   characterPortraitBorder: {fileID: 2794705139157378312}
   <CharacterName>k__BackingField: {fileID: 5474963865310807159}
@@ -943,6 +944,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe37c0bf5a070bc4faf6a73ed21f4cab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <UITemplate>k__BackingField: 0
   <CharacterPortrait>k__BackingField: {fileID: 0}
   characterPortraitBorder: {fileID: 6123459669822360899}
   <CharacterName>k__BackingField: {fileID: 0}
@@ -2034,6 +2036,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe37c0bf5a070bc4faf6a73ed21f4cab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <UITemplate>k__BackingField: 0
   <CharacterPortrait>k__BackingField: {fileID: 6715051365439191158}
   characterPortraitBorder: {fileID: 7638896069401964654}
   <CharacterName>k__BackingField: {fileID: 1620192249770757384}
@@ -3324,6 +3327,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe37c0bf5a070bc4faf6a73ed21f4cab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <UITemplate>k__BackingField: 0
   <CharacterPortrait>k__BackingField: {fileID: 6292779558843213326}
   characterPortraitBorder: {fileID: 6437920687608898990}
   <CharacterName>k__BackingField: {fileID: 6912671816740663129}
@@ -3601,7 +3605,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.49411768, g: 0.49411768, b: 0.49411768, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.78431374}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -3939,7 +3943,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.49411768, g: 0.49411768, b: 0.49411768, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.78431374}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -4351,7 +4355,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.49411768, g: 0.49411768, b: 0.49411768, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.78431374}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -4718,7 +4722,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.49411768, g: 0.49411768, b: 0.49411768, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.78431374}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -4841,7 +4845,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.49411768, g: 0.49411768, b: 0.49411768, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.78431374}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -5601,7 +5605,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.49411768, g: 0.49411768, b: 0.49411768, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.78431374}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -5940,7 +5944,7 @@ Transform:
   m_Children:
   - {fileID: 3481324932519818402}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2226161084525959038
 MonoBehaviour:
