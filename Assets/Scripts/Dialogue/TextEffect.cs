@@ -15,7 +15,7 @@ public class TextEffect : MonoBehaviour
     private float waveSpeed = 1f;
 
     // Jiggle Settings
-    private Vector2 jiggleStrength = new Vector2(10f, 4f);
+    private Vector2 jiggleStrength = new Vector2(4f, 1f);
 
     private void Awake()
     {
@@ -108,7 +108,7 @@ public class TextEffect : MonoBehaviour
                             int vertexIndex = charInfo.vertexIndex + vert;
 
                             // jiggle effect.
-                            Vector3 offset = new Vector2(Random.Range(-jiggleStrength.x, jiggleStrength.x) * 100f * Time.deltaTime, Random.Range(-jiggleStrength.y, jiggleStrength.y) * 100f * Time.deltaTime);
+                            Vector3 offset = new Vector2(Random.Range(-jiggleStrength.x, jiggleStrength.x) * 10f * Time.deltaTime, Random.Range(-jiggleStrength.y, jiggleStrength.y) * 10f * Time.deltaTime);
 
 #if UNITY_EDITOR
                             offset = new Vector2(Random.Range(-4, 4), Random.Range(-2, 2));
