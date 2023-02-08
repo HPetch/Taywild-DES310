@@ -30,7 +30,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private int maxJumps = 2;
     private int remainingJumps = 1;
     private bool jumpQueued = false;
-    
+
     [Space(10)]
     [Header("Slide Settings")]
     [SerializeField] private float slideForce;
@@ -48,13 +48,14 @@ public class PlayerController : MonoBehaviour
     {
         Instance = this;
         rb = GetComponent<Rigidbody2D>();
-        animator = GetComponent<Animator>();
+        animator = GetComponentInChildren<Animator>();
     }
     #endregion
 
     private void Update()
     {
         HandleInput();
+        UpdateAnimationController();
     }
 
     private void FixedUpdate()
@@ -92,8 +93,6 @@ public class PlayerController : MonoBehaviour
         }
 
         ResolveQue();
-
-        // Animations
 
         transform.localScale = new Vector3(
             Mathf.Abs(input.x) > 0.2f ? (input.x < 0 ? -1 : 1) : transform.localScale.x,
@@ -141,7 +140,7 @@ public class PlayerController : MonoBehaviour
         Grounded = false;
         rb.velocity = new Vector2(rb.velocity.x, jumpForce);
 
-        // Animation
+        //animator.Play("Player_Jump");
         //source.PlayOneShot(jumpClip);
 
         OnPlayerJump?.Invoke();
@@ -155,7 +154,7 @@ public class PlayerController : MonoBehaviour
         slideTimeElapsed = 0;
         slideCurveSamplePoint = 0;
 
-        // Animation
+        //animator.Play("Player_Slide");
 
         OnPlayerSlide?.Invoke();
     }
@@ -173,13 +172,19 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    void UpdateAnimationController()
+    {
+        animator.SetBool("Running", Mathf.Abs(Input.GetAxis("Horizontal")) > 0.2f);
+        animator.SetBool("Grounded", Grounded);
+    }
+
     #region Collision
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.transform.CompareTag("Ground"))
         {
             if (transform.position.y + 0.1f > collision.contacts[0].point.y && Mathf.Abs(collision.contacts[0].point.x - transform.position.x) < 0.2f)
-            { 
+            {
                 Grounded = true;
                 remainingJumps = maxJumps;
 
