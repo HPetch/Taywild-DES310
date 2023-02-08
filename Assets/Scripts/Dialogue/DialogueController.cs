@@ -4,22 +4,10 @@
 // If multiple converstaions are triggered they join a queue, they are processed in the order they are triggered
 // When a conversation starts or ends an event is fired alerting the other systems, primarily the objective system
 
-using TMPro;
 using System;
 using UnityEngine;
-using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
-
-[Serializable]
-public class ConversationUITemplate
-{
-    public enum ConversationUITemplates { BOTTOM_RIGHT, BOTTOM_MIDDLE, TOP_RIGHT }
-
-    [field: SerializeField] public Image CharacterImage { get; private set; } = null;
-    [field: SerializeField] public TextMeshProUGUI CharacterName { get; private set; } = null;
-    [field: SerializeField] public TextMeshProUGUI TextField { get; private set; } = null;
-}
 
 public class DialogueController : MonoBehaviour
 {
@@ -217,7 +205,7 @@ public class DialogueController : MonoBehaviour
         uiTemplate.TextField.GetComponent<TextEffect>().ClearText();
         uiTemplate.CharacterName.SetText(conversationEvent.Character.CharacterName);
         uiTemplate.CharacterName.color = conversationEvent.Character.Colour;
-        uiTemplate.CharacterImage.sprite = conversationEvent.Character.Portraits[0];
+        uiTemplate.CharacterPortrait.sprite = conversationEvent.Character.Portraits[0];
 
         //animator.SetTrigger("Open");
         yield return new WaitForSeconds(0.05f);
@@ -250,5 +238,10 @@ public class DialogueController : MonoBehaviour
             TriggerConversation(conversationQueue.Dequeue());
         }
     }
+
+    public void BranchButton(int _buttonID)
+    {
+
+    }    
     #endregion
 }

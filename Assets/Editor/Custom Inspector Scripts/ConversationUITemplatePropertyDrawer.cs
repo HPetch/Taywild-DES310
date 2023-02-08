@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEditor;
 
-[CustomPropertyDrawer(typeof(ConversationUITemplate))]
+/*[CustomPropertyDrawer(typeof(ConversationUITemplate))]
 public class ConversationUITemplatePropertyDrawer : PropertyDrawer
 {
     private readonly float lineHeight = EditorGUIUtility.singleLineHeight + 2;
@@ -46,4 +46,4 @@ public class ConversationUITemplatePropertyDrawer : PropertyDrawer
 
         EditorGUI.EndProperty();
     }
-}
+}*/
