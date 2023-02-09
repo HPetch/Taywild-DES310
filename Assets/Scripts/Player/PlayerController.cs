@@ -1,3 +1,9 @@
+// Player Controller
+//
+//
+//
+//
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,12 +17,12 @@ public class PlayerController : MonoBehaviour
     public event Action OnPlayerJump;
     public event Action OnPlayerLand;
     public event Action OnPlayerSlide;
-    //public event Action OnInteract;
     #endregion
 
     #region Variables
     public bool Grounded { get; private set; } = true;
     public bool Sliding { get; private set; } = false;
+    public bool IsLockedInput { get; private set; } = false;
 
     private Rigidbody2D rb;
     private Animator animator;
@@ -46,9 +52,19 @@ public class PlayerController : MonoBehaviour
     #region Initialisation
     private void Awake()
     {
-        Instance = this;
+        // If there already exists an Instance of this singleton then destroy this object, else this is the singleton instance
+        if (Instance != null) Destroy(gameObject);
+        else Instance = this;
+        
+        // Reference local components
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponentInChildren<Animator>();
+    }
+
+    private void Start()
+    {
+        TransitionController.Instance.OnTransitionStart += LockPlayerInput;
+        TransitionController.Instance.OnTransitionEnd += UnLockPlayerInput;
     }
     #endregion
 
@@ -70,8 +86,12 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    #region Input
     private void HandleInput()
     {
+        // If the dialogue or transition systems have locked the player's input
+        if (IsLockedInput) return;
+
         Vector2 input = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
 
 
@@ -133,6 +153,18 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private void LockPlayerInput(Partition partition)
+    {
+        IsLockedInput = true;
+    }
+
+    private void UnLockPlayerInput()
+    {
+        IsLockedInput = false;
+    }
+    #endregion
+
+    #region Movement
     private void Jump()
     {
         remainingJumps--;
@@ -171,12 +203,15 @@ public class PlayerController : MonoBehaviour
             Sliding = slideTimeElapsed <= slideDuration;
         }
     }
+    #endregion
 
+    #region Visuals
     void UpdateAnimationController()
     {
         animator.SetBool("Running", Mathf.Abs(Input.GetAxis("Horizontal")) > 0.2f);
         animator.SetBool("Grounded", Grounded);
     }
+    #endregion
 
     #region Collision
     private void OnCollisionEnter2D(Collision2D collision)

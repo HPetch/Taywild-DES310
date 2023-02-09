@@ -56,7 +56,9 @@ public class DialogueController : MonoBehaviour
     }
     #endregion
 
-    // Each frame if a dialogue is in progress check for player input
+    /// <summary>
+    /// Each frame if a dialogue is in progress check for player input
+    /// </summary>
     private void Update()
     {
         if (GameStateController.Instance.GameState != GameStateController.GameStates.DIALOGUE) return;
@@ -65,7 +67,9 @@ public class DialogueController : MonoBehaviour
         if (Input.GetMouseButtonDown(0)) DisplayNext();
     }
 
-    // Starts a new conversation
+    /// <summary>
+    /// Starts a new conversation
+    /// </summary>
     public void TriggerConversation(Conversation _conversation)
     {
         // If there is already a conversation ongoing add the triggered conversation to the queue and return
@@ -133,7 +137,9 @@ public class DialogueController : MonoBehaviour
         textType = StartCoroutine(TypeSentance(conversationEvent.Text));
     }
 
-    // Text-Type coroutine
+    /// <summary>
+    /// Text-Type coroutine
+    /// </summary>
     private IEnumerator TypeSentance(string _sentence)
     {
         // Set text field to blank      
@@ -214,7 +220,9 @@ public class DialogueController : MonoBehaviour
         DisplayNext();
     }
 
-    // Ends the current conversation after the end conversation delay
+    /// <summary>
+    /// Ends the current conversation after the end conversation delay
+    /// </summary>
     private IEnumerator EndConversation()
     {
         //animator.SetTrigger("Closed");
