@@ -16,6 +16,9 @@ public class CameraController : MonoBehaviour
     [SerializeField] private Vector2 screenLimitY = new Vector2();
     [SerializeField] private Vector2 playerOffset = new Vector3(0, 1);
 
+    public bool IsLocked { get; private set; } = true;
+    private Vector2 targetPosition = Vector2.zero;
+
     // Shaking Variables
     private bool isShaking = false;
     private float shakeDuration = 0f;
@@ -45,7 +48,7 @@ public class CameraController : MonoBehaviour
     private void FixedUpdate()
     {
         // Get target position
-        Vector2 targetPosition = (Vector2)playerTransform.position + playerOffset;
+        targetPosition = !IsLocked ? (Vector2)playerTransform.position + playerOffset : targetPosition;
 
         // Move towards the target position
         transform.position = Vector3.Lerp(transform.position, new Vector3(targetPosition.x, targetPosition.y, transform.position.z), Time.fixedDeltaTime * cameraSpeed);
@@ -83,5 +86,16 @@ public class CameraController : MonoBehaviour
     public void Zoom(float _targetSize = 0)
     {
         targetSize = _targetSize == 0 ? defaultSize : _targetSize;
+    }
+
+    public void LockCamera(Vector2 _targetPosition)
+    {
+        IsLocked = true;
+        targetPosition = _targetPosition;
+    }
+
+    public void UnLockCamera()
+    {
+        IsLocked = false;
     }
 }
