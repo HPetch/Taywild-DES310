@@ -33,7 +33,7 @@ Transform:
   m_Children:
   - {fileID: 3013080773383515439}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3013080772066457372
 MonoBehaviour:
@@ -48,6 +48,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 10
+  platformLayerMask:
+    serializedVersion: 2
+    m_Bits: 64
+  jumpResetCircleOffset: {x: 0, y: 0}
+  jumpResetCircleRadius: 0.2
   jumpForce: 20
   maxJumps: 2
   slideForce: 15

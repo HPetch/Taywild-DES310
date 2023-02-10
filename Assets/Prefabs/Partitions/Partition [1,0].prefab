@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1941401245}
   - component: {fileID: 1941401246}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Ground Branch
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -112,7 +112,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2421724255354481829, guid: 99b61d49414731f459f135c08f634db3, type: 3}
       propertyPath: m_Name
-      value: Partition [0,1]
+      value: Partition [1,0]
       objectReference: {fileID: 0}
     - target: {fileID: 2421724255354481831, guid: 99b61d49414731f459f135c08f634db3, type: 3}
       propertyPath: <IsCameraFixed>k__BackingField
@@ -120,7 +120,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2421724255354481831, guid: 99b61d49414731f459f135c08f634db3, type: 3}
       propertyPath: <TargetCameraSize>k__BackingField
-      value: 8
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2421724256494391740, guid: 99b61d49414731f459f135c08f634db3, type: 3}
       propertyPath: m_Color.b
