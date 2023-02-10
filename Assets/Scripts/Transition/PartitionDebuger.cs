@@ -26,6 +26,8 @@ public class PartitionDebuger : MonoBehaviour
             Random.InitState(Mathf.RoundToInt(transform.position.x + transform.position.y));
             // Set colour
             GetComponent<SpriteRenderer>().color = new Color(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f), 0.6f);
+            // Set the seed back to random
+            Random.InitState((int)System.DateTime.Now.Ticks);
         }
         else
         {
