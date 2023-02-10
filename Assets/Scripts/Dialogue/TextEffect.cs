@@ -7,15 +7,16 @@ public class TextEffect : MonoBehaviour
     private TextMeshProUGUI textComponent;
 
     // Rainbow Settings
-    private float rainbowStrength = 10f;
-    private float rainbowSpeed = 0.25f;
+    private readonly float rainbowStrength = 10f;
+    private readonly float rainbowSpeed = 0.25f;
 
     // Wave Settings
-    private Vector2 waveStrength = new Vector2(0.1f, 0.1f);
-    private float waveSpeed = 1f;
+    private readonly Vector2 waveStrength = new(0.1f, 0.1f);
+    private readonly float waveHeight = 4f;
+    private readonly float waveSpeed = 2f;
 
     // Jiggle Settings
-    private Vector2 jiggleStrength = new Vector2(4f, 1f);
+    private readonly Vector2 jiggleStrength = new(4f, 2f);
 
     private void Awake()
     {
@@ -30,8 +31,9 @@ public class TextEffect : MonoBehaviour
     public void UpdateText()
     {
 #if UNITY_EDITOR
-        textComponent = textComponent = GetComponent<TextMeshProUGUI>();
+        textComponent = GetComponent<TextMeshProUGUI>();
 #endif
+
         textComponent.ForceMeshUpdate();
 
         // Loops each link tag
@@ -83,7 +85,8 @@ public class TextEffect : MonoBehaviour
                             int vertexIndex = charInfo.vertexIndex + vert;
 
                             // Wave effect.
-                            Vector3 offset = new Vector2(Mathf.Sin((Time.time * waveSpeed) + (vertexIndex * waveStrength.x)), Mathf.Cos((Time.time * waveSpeed) + (vertexIndex * waveStrength.y))) * 10f;
+                            //Vector3 offset = new Vector2(Mathf.Sin((Time.time * waveSpeed) + (vertexIndex * waveStrength.x)), Mathf.Cos((Time.time * waveSpeed) + (vertexIndex * waveStrength.y))) * waveHeight;
+                            Vector3 offset = new Vector2(0f, Mathf.Cos((Time.time * waveSpeed) + (vertexIndex * waveStrength.y))) * waveHeight;
 
                             // Sets the new effect
                             newVertices[vertexIndex] += offset;
@@ -97,9 +100,12 @@ public class TextEffect : MonoBehaviour
                     for (int character = link.linkTextfirstCharacterIndex; character < link.linkTextfirstCharacterIndex + link.linkTextLength; character++)
                     {
                         TMP_CharacterInfo charInfo = textComponent.textInfo.characterInfo[character]; // Gets info on the current character
-                        int materialIndex = charInfo.materialReferenceIndex; // Gets the index of the current character material
+                        int materialIndex = charInfo.materialReferenceIndex; // Gets the index of the current character material                                               
 
                         Vector3[] newVertices = textComponent.textInfo.meshInfo[materialIndex].vertices;
+
+                        // jiggle effect.                        
+                        Vector3 offset = Application.isPlaying ? new Vector2(Random.Range(-1, 1) * Time.deltaTime, Random.Range(-1, 1) * Time.deltaTime) * jiggleStrength * 100f : new Vector2(Random.Range(-2, 2), Random.Range(-1, 1));
 
                         // Loop all vertexes of the current characters
                         for (int vert = 0; vert < 4; vert++)
@@ -107,12 +113,6 @@ public class TextEffect : MonoBehaviour
                             if (charInfo.character == ' ') continue; // Skips spaces
                             int vertexIndex = charInfo.vertexIndex + vert;
 
-                            // jiggle effect.
-                            Vector3 offset = new Vector2(Random.Range(-jiggleStrength.x, jiggleStrength.x) * 10f * Time.deltaTime, Random.Range(-jiggleStrength.y, jiggleStrength.y) * 10f * Time.deltaTime);
-
-#if UNITY_EDITOR
-                            offset = new Vector2(Random.Range(-4, 4), Random.Range(-2, 2));
-#endif
                             // Sets the new effect
                             newVertices[vertexIndex] += offset;
                         }
