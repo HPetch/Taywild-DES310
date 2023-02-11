@@ -64,7 +64,7 @@ public class DialogueController : MonoBehaviour
         if (GameStateController.Instance.GameState != GameStateController.GameStates.DIALOGUE) return;
 
         // If the player inputed continue the conversation
-        if (Input.GetMouseButtonDown(0)) DisplayNext();
+        if (Input.GetMouseButtonDown(0)) DisplayNext();        
     }
 
     /// <summary>
