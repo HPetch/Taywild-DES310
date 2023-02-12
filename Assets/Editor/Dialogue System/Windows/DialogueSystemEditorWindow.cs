@@ -13,7 +13,7 @@ namespace DialogueSystem.Windows
         private DialogueSystemGraphView graphView;
 
         private readonly string defaultFileName = "DialogueFileName";
-        private TextField fileNameTextField;
+        private static TextField fileNameTextField;
         private Button saveButton;
 
         [MenuItem("Window/Dialogue Graph")]
@@ -47,9 +47,14 @@ namespace DialogueSystem.Windows
             });
 
             saveButton = DialogueSystemElementUtility.CreateButton("Save", () => Save());
+
+            Button clearButton = DialogueSystemElementUtility.CreateButton("Clear", () => Clear());
+            Button resetButton = DialogueSystemElementUtility.CreateButton("Reset", () => ResetGraph());
             
             toolBar.Add(fileNameTextField);
             toolBar.Add(saveButton);
+            toolBar.Add(clearButton);
+            toolBar.Add(resetButton);
 
             toolBar.AddStyleSheets("Dialogue System/DialogueSystemToolbarStyles.uss");
             rootVisualElement.Add(toolBar);
@@ -78,9 +83,25 @@ namespace DialogueSystem.Windows
             DialogueSystemIOUtility.Initialise(graphView, fileNameTextField.value);
             DialogueSystemIOUtility.Save();
         }
+
+        private void Clear()
+        {
+            graphView.ClearGraph();
+        }
+
+        private void ResetGraph()
+        {
+            Clear();
+            UpdateFileName(defaultFileName);
+        }
         #endregion
 
         #region Utility
+        public static void UpdateFileName(string newFileName)
+        {
+            fileNameTextField.value = newFileName;
+        }
+
         public void EnableSaving()
         {
             saveButton.SetEnabled(true);
