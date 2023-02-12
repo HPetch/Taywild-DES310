@@ -42,6 +42,8 @@ public static class TextUtility
 
     public static string RemoveWhitespaces(this string text)
     {
+        if (string.IsNullOrEmpty(text)) return text;
+
         int textLength = text.Length;
 
         char[] textCharacters = text.ToCharArray();
