@@ -37,6 +37,16 @@ namespace DialogueSystem.Elements
             extensionContainer.AddToClassList("ds-node__extension-container");
         }
 
+        #region Overrided Methods
+        public override void BuildContextualMenu(ContextualMenuPopulateEvent evt)
+        {
+            evt.menu.AppendAction("Disconnect Input Ports", actionEvent => DisconnectInputPorts());
+            evt.menu.AppendAction("Disconnect Output Ports", actionEvent => DisconnectOutputPorts());
+
+            base.BuildContextualMenu(evt);
+        }
+        #endregion
+
         public virtual void Draw()
         {
             /* TITLE CONTAINER */
@@ -87,6 +97,36 @@ namespace DialogueSystem.Elements
             extensionContainer.Add(customDataContainer);
         }
 
+        #region Utility
+        public void DisconnetAllPorts()
+        {
+            DisconnectInputPorts();
+            DisconnectOutputPorts();
+        }
+
+        private void DisconnectInputPorts()
+        {
+            DisconnectPorts(inputContainer);
+        }
+
+        private void DisconnectOutputPorts()
+        {
+            DisconnectPorts(outputContainer);
+        }
+
+        private void DisconnectPorts(VisualElement container)
+        {
+            foreach(Port port in container.Children())
+            {
+                if (!port.connected)
+                {
+                    continue;
+                }
+
+                graphView.DeleteElements(port.connections);
+            }
+        }
+
         public void SetErrorStyle(Color color)
         {
             mainContainer.style.backgroundColor = color;
@@ -96,5 +136,6 @@ namespace DialogueSystem.Elements
         {
             mainContainer.style.backgroundColor = defaultBackgroundColor;
         }
+        #endregion
     }
 }

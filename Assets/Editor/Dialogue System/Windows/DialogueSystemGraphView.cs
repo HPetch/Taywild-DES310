@@ -128,8 +128,7 @@ namespace DialogueSystem.Windows
         {
             deleteSelection = (operationName, askUser) =>
             {
-                Type groupType = typeof(DialogueSystemGroup);
-
+                List<Edge> edgesToDelete = new List<Edge>();
                 List<DialogueSystemNode> nodesToDelete = new List<DialogueSystemNode>();
                 List<DialogueSystemGroup> groupsToDelete = new List<DialogueSystemGroup>();
 
@@ -141,7 +140,13 @@ namespace DialogueSystem.Windows
                         continue;
                     }
 
-                    if (element.GetType() != groupType) { continue; }
+                    if (element.GetType() == typeof(Edge))
+                    {
+                        edgesToDelete.Add((Edge)element);
+                        continue;
+                    }
+
+                    if (element.GetType() != typeof(DialogueSystemGroup)) { continue; }
 
                     groupsToDelete.Add((DialogueSystemGroup)element);
                 }
@@ -162,12 +167,15 @@ namespace DialogueSystem.Windows
                     RemoveElement(group);
                 }
 
+                DeleteElements(edgesToDelete);
+
                 foreach (DialogueSystemNode node in nodesToDelete)
                 {
                     // Remove the node from the group, This calls the 'ElementsRemovedFromGroup' callback automatically
                     if (node.Group != null) node.Group.RemoveElement(node);
 
                     RemoveUngroupedNode(node);
+                    node.DisconnetAllPorts();
                     RemoveElement(node);
                 }
             };
