@@ -52,10 +52,13 @@ namespace DialogueSystem.Elements
             /* TITLE CONTAINER */
             TextField dialogueNameTextField = DialogueSystemElementUtility.CreateTextField(DialogueName, null, callback =>
              {
+                 TextField target = (TextField)callback.target;
+                 target.value = callback.newValue.RemoveWhitespaces().RemoveSpecialCharacters();
+
                  if (Group == null)
                  {
                      graphView.RemoveUngroupedNode(this);
-                     DialogueName = callback.newValue;
+                     DialogueName = target.value;
                      graphView.AddUngroupedNode(this);
                      return;
                  }
@@ -63,7 +66,7 @@ namespace DialogueSystem.Elements
                  // Temporarly assign Group as RemoveGroupedNode will set this to null, and it's needed for AddGroupedNode
                  DialogueSystemGroup currentGroup = Group;
                  graphView.RemoveGroupedNode(this, Group);
-                 DialogueName = callback.newValue;
+                 DialogueName = target.value;
                  graphView.AddGroupedNode(this, currentGroup);
              });
             

@@ -240,8 +240,10 @@ namespace DialogueSystem.Windows
             groupTitleChanged = (group, newTitle) =>
             {
                 DialogueSystemGroup dsGroup = (DialogueSystemGroup)group;
+                dsGroup.title = newTitle.RemoveWhitespaces().RemoveSpecialCharacters();
+
                 RemoveGroup(dsGroup);
-                dsGroup.oldTitle = newTitle;
+                dsGroup.oldTitle = dsGroup.title;
                 AddGroup(dsGroup);
             };
         }
@@ -251,7 +253,7 @@ namespace DialogueSystem.Windows
         public void AddUngroupedNode(DialogueSystemNode node)
         {
             // Reference the name once here
-            string nodeName = node.DialogueName;
+            string nodeName = node.DialogueName.ToLower();
 
             // If ungrouped nodes does not contain a node with this name
             if(!ungroupedNodes.ContainsKey(nodeName))
@@ -283,7 +285,7 @@ namespace DialogueSystem.Windows
 
         public void RemoveUngroupedNode(DialogueSystemNode node)
         {
-            string nodeName = node.DialogueName;
+            string nodeName = node.DialogueName.ToLower();
 
             List<DialogueSystemNode> ungroupedNodesList = ungroupedNodes[nodeName].Nodes;
 
@@ -310,7 +312,7 @@ namespace DialogueSystem.Windows
         public void AddGroupedNode(DialogueSystemNode node, DialogueSystemGroup group)
         {
             // Reference the name once here
-            string nodeName = node.DialogueName;
+            string nodeName = node.DialogueName.ToLower();
 
             // Set the Group refernece in the Node
             node.Group = group;
@@ -354,7 +356,7 @@ namespace DialogueSystem.Windows
         public void RemoveGroupedNode(DialogueSystemNode node, DialogueSystemGroup group)
         {
             // Reference these variables once here
-            string nodeName = node.DialogueName;
+            string nodeName = node.DialogueName.ToLower();
             List<DialogueSystemNode> groupedNodesList = groupedNodes[group][nodeName].Nodes;
 
             // Remove the Group reference from the Node
@@ -388,17 +390,18 @@ namespace DialogueSystem.Windows
 
         public void AddGroup(DialogueSystemGroup group)
         {
-            if(!groups.ContainsKey(group.title))
+            string groupName = group.title.ToLower();
+            if (!groups.ContainsKey(groupName))
             {
                 DialogueSystemGroupErrorData groupErrorData = new DialogueSystemGroupErrorData();
                 groupErrorData.Groups.Add(group);
-                groups.Add(group.title, groupErrorData);
+                groups.Add(groupName, groupErrorData);
                 return;
             }
 
-            List<DialogueSystemGroup> groupList = groups[group.title].Groups;
+            List<DialogueSystemGroup> groupList = groups[groupName].Groups;
             groupList.Add(group);
-            Color errorColor = groups[group.title].ErrorData.Color;
+            Color errorColor = groups[groupName].ErrorData.Color;
             group.SetErrorStyle(errorColor);
 
             if (groupList.Count == 2)
@@ -410,7 +413,7 @@ namespace DialogueSystem.Windows
         
         public void RemoveGroup(DialogueSystemGroup group)
         {
-            string oldGroupName = group.oldTitle;
+            string oldGroupName = group.oldTitle.ToLower();
 
             List<DialogueSystemGroup> groupList = groups[oldGroupName].Groups;
             groupList.Remove(group);

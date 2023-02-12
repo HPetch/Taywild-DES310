@@ -10,7 +10,8 @@ namespace DialogueSystem.Windows
 
     public class DialogueSystemEditorWindow : EditorWindow
     {
-        private readonly string defaultFileName = "Dialogue File Name";
+        private readonly string defaultFileName = "DialogueFileName";
+        private TextField fileNameTextField;
         private Button saveButton;
 
         [MenuItem("Window/Dialogue Graph")]
@@ -38,7 +39,11 @@ namespace DialogueSystem.Windows
         {
             Toolbar toolBar = new Toolbar();
             
-            TextField fileNameTextField = DialogueSystemElementUtility.CreateTextField(defaultFileName, "File Name:");
+            fileNameTextField = DialogueSystemElementUtility.CreateTextField(defaultFileName, "File Name:", callback =>
+            {
+                fileNameTextField.value = callback.newValue.RemoveWhitespaces().RemoveSpecialCharacters();
+            });
+
             saveButton = DialogueSystemElementUtility.CreateButton("Save");
             
             toolBar.Add(fileNameTextField);
