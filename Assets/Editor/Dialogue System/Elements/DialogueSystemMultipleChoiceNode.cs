@@ -7,12 +7,13 @@ using UnityEngine.UIElements;
 namespace DialogueSystem.Elements
 {
     using Utilities;
+    using Windows;
 
     public class DialogueSystemMultipleChoiceNode : DialogueSystemNode
     {
-        public override void Initialise(Vector2 position)
+        public override void Initialise(DialogueSystemGraphView dialogueSystemGraphView, Vector2 position)
         {
-            base.Initialise(position);
+            base.Initialise(dialogueSystemGraphView, position);
             DialogueType = DialogueTypes.MultipleChoice;
             Choices.Add("New Choice");
         }

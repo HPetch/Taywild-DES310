@@ -6,12 +6,13 @@ using UnityEditor.Experimental.GraphView;
 namespace DialogueSystem.Elements
 {
     using Utilities;
+    using Windows;
 
     public class DialogueSystemSingleChoiceNode : DialogueSystemNode
     {
-        public override void Initialise(Vector2 position)
+        public override void Initialise(DialogueSystemGraphView dialogueSystemGraphView, Vector2 position)
         {
-            base.Initialise(position);
+            base.Initialise(dialogueSystemGraphView, position);
             DialogueType = DialogueTypes.SingleChoice;
             Choices.Add("Next Dialogue");
         }

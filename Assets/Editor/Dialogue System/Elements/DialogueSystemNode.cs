@@ -6,6 +6,7 @@ using UnityEngine;
 namespace DialogueSystem.Elements
 {
     using Utilities;
+    using Windows;
 
     public class DialogueSystemNode : Node
     {
@@ -14,16 +15,23 @@ namespace DialogueSystem.Elements
         public string DialogueName { get; set; }
         public List<string> Choices { get; set; }
         public string Text { get; set; }
-
         public DialogueTypes DialogueType { get; set; }
+        public DialogueSystemGroup Group { get; set; }
 
-        public virtual void Initialise(Vector2 position)
+        private DialogueSystemGraphView graphView;
+        private Color defaultBackgroundColor;
+
+        public virtual void Initialise(DialogueSystemGraphView dialogueSystemGraphView, Vector2 position)
         {
+            graphView = dialogueSystemGraphView;
+
             DialogueName = "DialogueName";
             Choices = new List<string>();
             Text = "Dialogue text.";
 
-            SetPosition(new Rect(position, Vector2.one));            
+            SetPosition(new Rect(position, Vector2.one));
+
+            defaultBackgroundColor = new Color(29f / 255f, 29f / 255f, 30f / 255f);
 
             mainContainer.AddToClassList("ds-node__main-container");
             extensionContainer.AddToClassList("ds-node__extension-container");
@@ -32,7 +40,23 @@ namespace DialogueSystem.Elements
         public virtual void Draw()
         {
             /* TITLE CONTAINER */
-            TextField dialogueNameTextField = DialogueSystemElementUtility.CreateTextField(DialogueName);
+            TextField dialogueNameTextField = DialogueSystemElementUtility.CreateTextField(DialogueName, null, callback =>
+             {
+                 if (Group == null)
+                 {
+                     graphView.RemoveUngroupedNode(this);
+                     DialogueName = callback.newValue;
+                     graphView.AddUngroupedNode(this);
+                     return;
+                 }
+
+                 // Temporarly assign Group as RemoveGroupedNode will set this to null, and it's needed for AddGroupedNode
+                 DialogueSystemGroup currentGroup = Group;
+                 graphView.RemoveGroupedNode(this, Group);
+                 DialogueName = callback.newValue;
+                 graphView.AddGroupedNode(this, currentGroup);
+             });
+            
             dialogueNameTextField.AddClasses(
                 "ds-node__text-field",
                 "ds-node__text-field__hidden",
@@ -61,6 +85,16 @@ namespace DialogueSystem.Elements
             textFoldout.Add(textTextField);
             customDataContainer.Add(textFoldout);
             extensionContainer.Add(customDataContainer);
+        }
+
+        public void SetErrorStyle(Color color)
+        {
+            mainContainer.style.backgroundColor = color;
+        }
+
+        public void ResetStyle()
+        {
+            mainContainer.style.backgroundColor = defaultBackgroundColor;
         }
     }
 }
