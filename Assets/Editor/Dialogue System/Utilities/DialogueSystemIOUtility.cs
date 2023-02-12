@@ -263,7 +263,7 @@ namespace DialogueSystem.Utilities
         #region Creation Methods
         private static void CreateStaticFolders()
         {
-            CreateFolder("Assets/Editor/Dialogue System/Graphs", "Graphs");
+            CreateFolder("Assets/Editor/Dialogue System", "Graphs");
             CreateFolder("Assets", "Dialogue System");
             CreateFolder("Assets/Dialogue System", "Dialogues");
             CreateFolder("Assets/Dialogue System/Dialogues", graphFileName);
@@ -307,11 +307,11 @@ namespace DialogueSystem.Utilities
             FileUtil.DeleteFileOrDirectory($"{path}/");
         }
 
-        private static T CreateAsset<T>(string path, string assetName) where T : ScriptableObject
+        public static T CreateAsset<T>(string path, string assetName) where T : ScriptableObject
         {
             string fullPath = $"{path}/{assetName}.asset";
 
-            T asset = AssetDatabase.LoadAssetAtPath<T>(fullPath);
+            T asset = LoadAsset<T>(path, assetName);
 
             if (asset == null)
             {
