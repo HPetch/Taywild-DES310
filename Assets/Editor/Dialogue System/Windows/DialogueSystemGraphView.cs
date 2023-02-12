@@ -8,6 +8,7 @@ using System.Collections.Generic;
 
 namespace DialogueSystem.Windows
 {
+    using Types;
     using Elements;
     using Utilities;
     using Data.Error;
@@ -88,13 +89,13 @@ namespace DialogueSystem.Windows
             this.AddManipulator(new SelectionDragger());
             this.AddManipulator(new RectangleSelector());
 
-            this.AddManipulator(CreateNodeContextualMenu("Add Node (Single Choice)", DialogueSystemNode.DialogueTypes.SingleChoice));
-            this.AddManipulator(CreateNodeContextualMenu("Add Node (Multiple Choice)", DialogueSystemNode.DialogueTypes.MultipleChoice));
+            this.AddManipulator(CreateNodeContextualMenu("Add Node (Single Choice)", DialogueTypes.SingleChoice));
+            this.AddManipulator(CreateNodeContextualMenu("Add Node (Multiple Choice)", DialogueTypes.MultipleChoice));
 
             this.AddManipulator(CreateGroupContextualMenu());
         }
 
-        private IManipulator CreateNodeContextualMenu(string actionTitle, DialogueSystemNode.DialogueTypes dialogueType)
+        private IManipulator CreateNodeContextualMenu(string actionTitle, DialogueTypes dialogueType)
         {
             ContextualMenuManipulator contextualMenuManipulator = new ContextualMenuManipulator(
                 menuEvent => menuEvent.menu.AppendAction(actionTitle, actionEvent => AddElement(CreateNode(dialogueType, GetLocalMousePosition(actionEvent.eventInfo.localMousePosition))))
@@ -112,7 +113,7 @@ namespace DialogueSystem.Windows
         #endregion
 
         #region Elements Creation
-        public DialogueSystemNode CreateNode(DialogueSystemNode.DialogueTypes dialogueType, Vector2 nodePosition)
+        public DialogueSystemNode CreateNode(DialogueTypes dialogueType, Vector2 nodePosition)
         {
             Type nodeType = Type.GetType($"DialogueSystem.Elements.DialogueSystem{dialogueType}Node");
             DialogueSystemNode node = (DialogueSystemNode)Activator.CreateInstance(nodeType);
@@ -243,7 +244,7 @@ namespace DialogueSystem.Windows
                 dsGroup.title = newTitle.RemoveWhitespaces().RemoveSpecialCharacters();
 
                 RemoveGroup(dsGroup);
-                dsGroup.oldTitle = dsGroup.title;
+                dsGroup.OldTitle = dsGroup.title;
                 AddGroup(dsGroup);
             };
         }
@@ -413,7 +414,7 @@ namespace DialogueSystem.Windows
         
         public void RemoveGroup(DialogueSystemGroup group)
         {
-            string oldGroupName = group.oldTitle.ToLower();
+            string oldGroupName = group.OldTitle.ToLower();
 
             List<DialogueSystemGroup> groupList = groups[oldGroupName].Groups;
             groupList.Remove(group);

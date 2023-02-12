@@ -7,6 +7,7 @@ namespace DialogueSystem.Elements
 {
     using Utilities;
     using Windows;
+    using Types;
 
     public class DialogueSystemSingleChoiceNode : DialogueSystemNode
     {

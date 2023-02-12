@@ -5,6 +5,7 @@ using UnityEngine;
 namespace DialogueSystem.Windows
 {
     using Elements;
+    using Types;
 
     public class DialogueSystemSearchWindow : ScriptableObject, ISearchWindowProvider
     {
@@ -28,12 +29,12 @@ namespace DialogueSystem.Windows
                 new SearchTreeGroupEntry(new GUIContent("Dialogue Nodes"), 1),
                 new SearchTreeEntry(new GUIContent("Single Choice", indentationIcon))
                 {
-                    userData = DialogueSystemNode.DialogueTypes.SingleChoice,
+                    userData = DialogueTypes.SingleChoice,
                     level = 2
                 },
                 new SearchTreeEntry(new GUIContent("Multiple Choice", indentationIcon))
                 {
-                    userData = DialogueSystemNode.DialogueTypes.MultipleChoice,
+                    userData = DialogueTypes.MultipleChoice,
                     level = 2
                 },
                 new SearchTreeGroupEntry(new GUIContent("Dialogue Groups"), 1),
@@ -53,18 +54,18 @@ namespace DialogueSystem.Windows
 
             switch (SearchTreeEntry.userData)
             {
-                case DialogueSystemNode.DialogueTypes.SingleChoice:
+                case DialogueTypes.SingleChoice:
                     {
-                        DialogueSystemSingleChoiceNode singleChoiceNode = (DialogueSystemSingleChoiceNode)graphView.CreateNode(/*"DialogueName", */DialogueSystemNode.DialogueTypes.SingleChoice, localMousePosition);
+                        DialogueSystemSingleChoiceNode singleChoiceNode = (DialogueSystemSingleChoiceNode)graphView.CreateNode(/*"DialogueName", */DialogueTypes.SingleChoice, localMousePosition);
 
                         graphView.AddElement(singleChoiceNode);
 
                         return true;
                     }
 
-                case DialogueSystemNode.DialogueTypes.MultipleChoice:
+                case DialogueTypes.MultipleChoice:
                     {
-                        DialogueSystemMultipleChoiceNode multipleChoiceNode = (DialogueSystemMultipleChoiceNode)graphView.CreateNode(/*"DialogueName", */DialogueSystemNode.DialogueTypes.MultipleChoice, localMousePosition);
+                        DialogueSystemMultipleChoiceNode multipleChoiceNode = (DialogueSystemMultipleChoiceNode)graphView.CreateNode(/*"DialogueName", */DialogueTypes.MultipleChoice, localMousePosition);
 
                         graphView.AddElement(multipleChoiceNode);
 

@@ -2,15 +2,22 @@ using System.Collections.Generic;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine.UIElements;
 using UnityEngine;
+using System;
+
+namespace DialogueSystem.Types
+{
+    public enum DialogueTypes { SingleChoice, MultipleChoice }
+}
 
 namespace DialogueSystem.Elements
 {
     using Utilities;
     using Windows;
-
+    using Types;
+    
     public class DialogueSystemNode : Node
-    {
-        public enum DialogueTypes { SingleChoice, MultipleChoice }
+    {       
+        public string ID { get; set; }
 
         public string DialogueName { get; set; }
         public List<string> Choices { get; set; }
@@ -23,6 +30,7 @@ namespace DialogueSystem.Elements
 
         public virtual void Initialise(DialogueSystemGraphView dialogueSystemGraphView, Vector2 position)
         {
+            ID = Guid.NewGuid().ToString();
             graphView = dialogueSystemGraphView;
 
             DialogueName = "DialogueName";
