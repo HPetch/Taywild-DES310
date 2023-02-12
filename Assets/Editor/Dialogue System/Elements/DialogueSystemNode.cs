@@ -11,6 +11,7 @@ namespace DialogueSystem.Types
 
 namespace DialogueSystem.Elements
 {
+    using Data.Save;
     using Utilities;
     using Windows;
     using Types;
@@ -20,12 +21,12 @@ namespace DialogueSystem.Elements
         public string ID { get; set; }
 
         public string DialogueName { get; set; }
-        public List<string> Choices { get; set; }
+        public List<DialogueSystemChoiceSaveData> Choices { get; set; }
         public string Text { get; set; }
         public DialogueTypes DialogueType { get; set; }
         public DialogueSystemGroup Group { get; set; }
 
-        private DialogueSystemGraphView graphView;
+        protected DialogueSystemGraphView graphView;
         private Color defaultBackgroundColor;
 
         public virtual void Initialise(DialogueSystemGraphView dialogueSystemGraphView, Vector2 position)
@@ -34,7 +35,7 @@ namespace DialogueSystem.Elements
             graphView = dialogueSystemGraphView;
 
             DialogueName = "DialogueName";
-            Choices = new List<string>();
+            Choices = new List<DialogueSystemChoiceSaveData>();
             Text = "Dialogue text.";
 
             SetPosition(new Rect(position, Vector2.one));

@@ -8,10 +8,11 @@ using System.Collections.Generic;
 
 namespace DialogueSystem.Windows
 {
-    using Types;
-    using Elements;
-    using Utilities;
     using Data.Error;
+    using Data.Save;
+    using Utilities;
+    using Elements;
+    using Types;
 
     public class DialogueSystemGraphView : GraphView
     {
@@ -58,6 +59,7 @@ namespace DialogueSystem.Windows
             OnGroupElementsAdded();
             OnGroupElementsRemoved();
             OnGroupRenamed();
+            OnGraphViewChanged();
 
             AddStyles();
         }
@@ -246,6 +248,38 @@ namespace DialogueSystem.Windows
                 RemoveGroup(dsGroup);
                 dsGroup.OldTitle = dsGroup.title;
                 AddGroup(dsGroup);
+            };
+        }
+
+        private void OnGraphViewChanged()
+        {
+            graphViewChanged = (changes) =>
+            {
+                if(changes.edgesToCreate != null)
+                {
+                    foreach(Edge edge in changes.edgesToCreate)
+                    {
+                        DialogueSystemNode nextNode = (DialogueSystemNode)edge.input.node;
+
+                        DialogueSystemChoiceSaveData choiceData = (DialogueSystemChoiceSaveData)edge.output.userData;
+
+                        choiceData.NodeID = nextNode.ID;
+                    }
+                }
+
+                if(changes.elementsToRemove != null)
+                {
+                    foreach(GraphElement element in changes.elementsToRemove)
+                    {
+                        if (element.GetType() != typeof(Edge)) continue;
+
+                        Edge edge = (Edge)element;
+                        DialogueSystemChoiceSaveData choiceData = (DialogueSystemChoiceSaveData)edge.output.userData;
+                        choiceData.NodeID = "";
+                    }
+                }
+
+                return changes;
             };
         }
         #endregion

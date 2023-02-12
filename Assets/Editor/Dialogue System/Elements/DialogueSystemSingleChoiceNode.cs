@@ -1,10 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor.Experimental.GraphView;
 
 namespace DialogueSystem.Elements
 {
+    using Data.Save;
     using Utilities;
     using Windows;
     using Types;
@@ -15,7 +14,10 @@ namespace DialogueSystem.Elements
         {
             base.Initialise(dialogueSystemGraphView, position);
             DialogueType = DialogueTypes.SingleChoice;
-            Choices.Add("Next Dialogue");
+
+            DialogueSystemChoiceSaveData choiceData = new DialogueSystemChoiceSaveData() { Text = "Next Dialogue" };
+
+            Choices.Add(choiceData);
         }
 
         public override void Draw()
@@ -23,11 +25,11 @@ namespace DialogueSystem.Elements
             base.Draw();
 
             /* OUTPUT CONTAINER */ 
-            foreach(string choice in Choices)
+            foreach(DialogueSystemChoiceSaveData choice in Choices)
             {
-                Port choicePort = this.CreatePort(choice);
+                Port choicePort = this.CreatePort(choice.Text);
 
-                choicePort.portName = choice;
+                choicePort.userData = choice;
                 outputContainer.Add(choicePort);
             }
 
