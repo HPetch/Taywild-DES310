@@ -18,6 +18,8 @@ namespace DialogueSystem.Windows
         private DialogueSystemEditorWindow editorWindow;
         private DialogueSystemSearchWindow searchWindow;
 
+        private MiniMap miniMap;
+
         private SerializableDictionary<string, DialogueSystemNodeErrorData> ungroupedNodes;
         private SerializableDictionary<string, DialogueSystemGroupErrorData> groups;
         private SerializableDictionary<Group, SerializableDictionary<string, DialogueSystemNodeErrorData>> groupedNodes;
@@ -52,6 +54,7 @@ namespace DialogueSystem.Windows
 
             AddManipulators();
             AddSearchWindow();
+            AddMiniMap();
             AddGridBackground();
 
             OnElementsDeleted();
@@ -61,6 +64,7 @@ namespace DialogueSystem.Windows
             OnGraphViewChanged();
 
             AddStyles();
+            AddMiniMapStyles();
         }
 
         #region Overrided Methods
@@ -495,6 +499,16 @@ namespace DialogueSystem.Windows
             nodeCreationRequest = context => SearchWindow.Open(new SearchWindowContext(context.screenMousePosition), searchWindow);
         }
 
+        private void AddMiniMap()
+        {
+            miniMap = new MiniMap() { anchored = true };
+            miniMap.SetPosition(new Rect(15, 50, 200, 100));
+            
+
+            Add(miniMap);
+            miniMap.visible = false;
+        }
+
         private void AddGridBackground()
         {
             GridBackground gridBackground = new GridBackground();
@@ -508,6 +522,18 @@ namespace DialogueSystem.Windows
                 "Dialogue System/DialogueSystemGraphViewStyles.uss", 
                 "Dialogue System/DialogueSystemNodeStyles.uss"
                 );
+        }
+
+        private void AddMiniMapStyles()
+        {
+            StyleColor borderColor = new StyleColor(new Color32(51, 51, 51, 255));
+
+            miniMap.style.backgroundColor = new StyleColor(new Color32(29, 29, 30, 255));
+            miniMap.style.borderTopColor = borderColor;
+            miniMap.style.borderRightColor = borderColor;
+            miniMap.style.borderBottomColor = borderColor;
+            miniMap.style.borderLeftColor = borderColor;
+            miniMap.style.color = new StyleColor(new Color32(0, 183, 235, 255));
         }
         #endregion
 
@@ -535,6 +561,11 @@ namespace DialogueSystem.Windows
             ungroupedNodes.Clear();
 
             NameErrorsAmount = 0;
+        }
+
+        public void ToggleMiniMap()
+        {
+            miniMap.visible = !miniMap.visible;
         }
         #endregion
     }
