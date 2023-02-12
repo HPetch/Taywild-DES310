@@ -1,8 +1,9 @@
-using System;
+using UnityEditor.Experimental.GraphView;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEditor;
+
 
 namespace DialogueSystem.Utilities
 {
@@ -258,6 +259,95 @@ namespace DialogueSystem.Utilities
             graphData.OldUngroupedNodeNames = new List<string>(currentUngroupedNodeNames);
         }
         #endregion
+        #endregion
+
+        #region Load Methods
+        public static void Load()
+        {
+            DialogueSystemGraphSaveDataSO graphData = LoadAsset<DialogueSystemGraphSaveDataSO>("Assets/Editor/Dialogue System/Graphs", graphFileName);
+
+            if (graphData == null)
+            {
+                EditorUtility.DisplayDialog(
+                    "Could not find the file!",
+                    "The file at the following path could not be found:\n\n" +
+                    $"\"Assets/Editor/Dialogue System/Graphs/{graphFileName}\".\n\n" +
+                    "Make sure you chose the right file and it's placed at the folder path mentioned above.",
+                    "Thanks!"
+                );
+
+                return;
+            }
+
+            DialogueSystemEditorWindow.UpdateFileName(graphData.FileName);
+
+            LoadGroups(graphData.Groups);
+            LoadNodes(graphData.Nodes);
+            LoadNodesConnections();
+        }
+
+        private static void LoadGroups(List<DialogueSystemGroupSaveData> groups)
+        {
+            foreach (DialogueSystemGroupSaveData groupData in groups)
+            {
+                DialogueSystemGroup group = graphView.CreateGroup(groupData.Name, groupData.Position);
+
+                group.ID = groupData.ID;
+
+                loadedGroups.Add(group.ID, group);
+            }
+        }
+
+        private static void LoadNodes(List<DialogueSystemNodeSaveData> nodes)
+        {
+            foreach (DialogueSystemNodeSaveData nodeData in nodes)
+            {
+                List<DialogueSystemChoiceSaveData> choices = CloneNodeChoices(nodeData.Choices);
+
+                DialogueSystemNode node = graphView.CreateNode(nodeData.Name, nodeData.DialogueType, nodeData.Position, false);
+
+                node.ID = nodeData.ID;
+                node.Choices = choices;
+                node.Text = nodeData.Text;
+
+                node.Draw();
+
+                graphView.AddElement(node);
+
+                loadedNodes.Add(node.ID, node);
+
+                if (string.IsNullOrEmpty(nodeData.GroupID)) { continue; }
+
+                DialogueSystemGroup group = loadedGroups[nodeData.GroupID];
+
+                node.Group = group;
+
+                group.AddElement(node);
+            }
+        }
+
+        private static void LoadNodesConnections()
+        {
+            foreach (KeyValuePair<string, DialogueSystemNode> loadedNode in loadedNodes)
+            {
+                foreach (Port choicePort in loadedNode.Value.outputContainer.Children())
+                {
+                    DialogueSystemChoiceSaveData choiceData = (DialogueSystemChoiceSaveData)choicePort.userData;
+
+                    if (string.IsNullOrEmpty(choiceData.NodeID)) { continue; }
+
+                    DialogueSystemNode nextNode = loadedNodes[choiceData.NodeID];
+
+                    Port nextNodeInputPort = (Port)nextNode.inputContainer.Children().First();
+
+                    Edge edge = choicePort.ConnectTo(nextNodeInputPort);
+
+                    graphView.AddElement(edge);
+
+                    loadedNode.Value.RefreshPorts();
+                }
+            }
+        }
         #endregion
 
         #region Creation Methods

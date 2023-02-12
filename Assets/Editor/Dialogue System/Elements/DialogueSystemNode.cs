@@ -30,12 +30,12 @@ namespace DialogueSystem.Elements
         protected DialogueSystemGraphView graphView;
         private Color defaultBackgroundColor;
 
-        public virtual void Initialise(DialogueSystemGraphView dialogueSystemGraphView, Vector2 position)
+        public virtual void Initialise(string nodeName, DialogueSystemGraphView dialogueSystemGraphView, Vector2 position)
         {
             ID = Guid.NewGuid().ToString();
             graphView = dialogueSystemGraphView;
 
-            DialogueName = "DialogueName";
+            DialogueName = nodeName;
             Choices = new List<DialogueSystemChoiceSaveData>();
             Text = "Dialogue text.";
 

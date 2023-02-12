@@ -10,9 +10,9 @@ namespace DialogueSystem.Elements
 
     public class DialogueSystemSingleChoiceNode : DialogueSystemNode
     {
-        public override void Initialise(DialogueSystemGraphView dialogueSystemGraphView, Vector2 position)
+        public override void Initialise(string nodeName, DialogueSystemGraphView dialogueSystemGraphView, Vector2 position)
         {
-            base.Initialise(dialogueSystemGraphView, position);
+            base.Initialise(nodeName, dialogueSystemGraphView, position);
             DialogueType = DialogueTypes.SingleChoice;
 
             DialogueSystemChoiceSaveData choiceData = new DialogueSystemChoiceSaveData() { Text = "Next Dialogue" };

@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine.UIElements;
@@ -13,9 +11,9 @@ namespace DialogueSystem.Elements
 
     public class DialogueSystemMultipleChoiceNode : DialogueSystemNode
     {
-        public override void Initialise(DialogueSystemGraphView dialogueSystemGraphView, Vector2 position)
+        public override void Initialise(string nodeName, DialogueSystemGraphView dialogueSystemGraphView, Vector2 position)
         {
-            base.Initialise(dialogueSystemGraphView, position);
+            base.Initialise(nodeName, dialogueSystemGraphView, position);
             DialogueType = DialogueTypes.MultipleChoice;
 
             DialogueSystemChoiceSaveData choiceData = new DialogueSystemChoiceSaveData() { Text = "New Choice" };

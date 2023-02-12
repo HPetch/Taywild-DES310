@@ -1,6 +1,5 @@
 using UnityEditor.Experimental.GraphView;
 using UnityEngine.UIElements;
-using UnityEditor;
 using UnityEngine;
 using System;
 using System.Collections.Generic;
@@ -100,7 +99,7 @@ namespace DialogueSystem.Windows
         private IManipulator CreateNodeContextualMenu(string actionTitle, DialogueTypes dialogueType)
         {
             ContextualMenuManipulator contextualMenuManipulator = new ContextualMenuManipulator(
-                menuEvent => menuEvent.menu.AppendAction(actionTitle, actionEvent => AddElement(CreateNode(dialogueType, GetLocalMousePosition(actionEvent.eventInfo.localMousePosition))))
+                menuEvent => menuEvent.menu.AppendAction(actionTitle, actionEvent => AddElement(CreateNode("DialogueName", dialogueType, GetLocalMousePosition(actionEvent.eventInfo.localMousePosition))))
                 );
             return contextualMenuManipulator;
         }
@@ -115,13 +114,14 @@ namespace DialogueSystem.Windows
         #endregion
 
         #region Elements Creation
-        public DialogueSystemNode CreateNode(DialogueTypes dialogueType, Vector2 nodePosition)
+        public DialogueSystemNode CreateNode(string nodeName, DialogueTypes dialogueType, Vector2 position, bool shouldDraw = true)
         {
             Type nodeType = Type.GetType($"DialogueSystem.Elements.DialogueSystem{dialogueType}Node");
             DialogueSystemNode node = (DialogueSystemNode)Activator.CreateInstance(nodeType);
 
-            node.Initialise(this, nodePosition);
-            node.Draw();
+            node.Initialise(nodeName, this, position);
+
+            if (shouldDraw) { node.Draw(); }
 
             AddUngroupedNode(node);
 
