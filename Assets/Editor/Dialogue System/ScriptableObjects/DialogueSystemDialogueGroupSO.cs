@@ -6,7 +6,7 @@ namespace DialogueSystem.ScriptableObjects
     {
         [field: SerializeField] public string GroupName { get; set; }
 
-        public void Initialize(string groupName)
+        public void Initialise(string groupName)
         {
             GroupName = groupName;
         }

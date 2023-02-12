@@ -1,8 +1,9 @@
+using System;
+using System.Linq;
 using System.Collections.Generic;
 using UnityEditor.Experimental.GraphView;
-using UnityEngine.UIElements;
 using UnityEngine;
-using System;
+using UnityEngine.UIElements;
 
 namespace DialogueSystem.Types
 {
@@ -64,6 +65,21 @@ namespace DialogueSystem.Elements
                  TextField target = (TextField)callback.target;
                  target.value = callback.newValue.RemoveWhitespaces().RemoveSpecialCharacters();
 
+                 if(string.IsNullOrEmpty(target.value))
+                 {
+                     if(!string.IsNullOrEmpty(DialogueName))
+                     {
+                         graphView.NameErrorsAmount++;
+                     }
+                 }
+                 else
+                 {
+                     if(string.IsNullOrEmpty(DialogueName))
+                     {
+                         graphView.NameErrorsAmount--;
+                     }
+                 }
+
                  if (Group == null)
                  {
                      graphView.RemoveUngroupedNode(this);
@@ -98,7 +114,7 @@ namespace DialogueSystem.Elements
 
             Foldout textFoldout = DialogueSystemElementUtility.CreateFoldout("Dialogue Text");
 
-            TextField textTextField = DialogueSystemElementUtility.CreateTextArea(Text);
+            TextField textTextField = DialogueSystemElementUtility.CreateTextArea(Text, null, callback => { Text = callback.newValue; });
             textTextField.AddClasses(
                 "ds-node__text-field",
                 "ds-node__quote-text-field"
@@ -137,6 +153,11 @@ namespace DialogueSystem.Elements
 
                 graphView.DeleteElements(port.connections);
             }
+        }
+
+        public bool IsStartingNode()
+        {
+            return !((Port)inputContainer.Children().First()).connected;
         }
 
         public void SetErrorStyle(Color color)

@@ -23,17 +23,17 @@ namespace DialogueSystem.Windows
         private SerializableDictionary<string, DialogueSystemGroupErrorData> groups;
         private SerializableDictionary<Group, SerializableDictionary<string, DialogueSystemNodeErrorData>> groupedNodes;
 
-        private int repeatedNamesAmount = 0;
-        public int RepeatedNamesAmount
+        private int nameErrorsAmount = 0;
+        public int NameErrorsAmount
         {
             get
             {
-                return repeatedNamesAmount;
+                return nameErrorsAmount;
             }
             set
             {
-                repeatedNamesAmount = value;
-                if (repeatedNamesAmount == 0)
+                nameErrorsAmount = value;
+                if (nameErrorsAmount == 0)
                 {
                     editorWindow.EnableSaving();
                 }
@@ -245,6 +245,21 @@ namespace DialogueSystem.Windows
                 DialogueSystemGroup dsGroup = (DialogueSystemGroup)group;
                 dsGroup.title = newTitle.RemoveWhitespaces().RemoveSpecialCharacters();
 
+                if (string.IsNullOrEmpty(dsGroup.title))
+                {
+                    if (!string.IsNullOrEmpty(dsGroup.OldTitle))
+                    {
+                        NameErrorsAmount++;
+                    }
+                }
+                else
+                {
+                    if (string.IsNullOrEmpty(dsGroup.OldTitle))
+                    {
+                        NameErrorsAmount--;
+                    }
+                }
+
                 RemoveGroup(dsGroup);
                 dsGroup.OldTitle = dsGroup.title;
                 AddGroup(dsGroup);
@@ -313,7 +328,7 @@ namespace DialogueSystem.Windows
             // If this is the second node then set the first node to have the error colour, subsequent duplicates won't need to set this as number 2 will already have done it
             if(ungroupedNodesList.Count == 2)
             {
-                RepeatedNamesAmount++;
+                NameErrorsAmount++;
                 ungroupedNodesList[0].SetErrorStyle(errorColor);
             }
         }
@@ -332,7 +347,7 @@ namespace DialogueSystem.Windows
             // Only one Node left with this name, so reset the error style
             if (ungroupedNodesList.Count == 1)
             {
-                RepeatedNamesAmount--;
+                NameErrorsAmount--;
                 ungroupedNodesList[0].ResetStyle();
                 return;
             }
@@ -383,7 +398,7 @@ namespace DialogueSystem.Windows
             // If this is the second node then set the first node to have the error colour, subsequent duplicates won't need to set this as number 2 will already have done it
             if (groupedNodesList.Count == 2)
             {
-                RepeatedNamesAmount++;
+                NameErrorsAmount++;
                 groupedNodesList[0].SetErrorStyle(errorColor);
             }
         }
@@ -405,7 +420,7 @@ namespace DialogueSystem.Windows
             // If there only remains one node of that name in the group reset it's error status
             if (groupedNodesList.Count == 1)
             {
-                RepeatedNamesAmount--;
+                NameErrorsAmount--;
                 groupedNodesList[0].ResetStyle();
                 return;
             }
@@ -441,7 +456,7 @@ namespace DialogueSystem.Windows
 
             if (groupList.Count == 2)
             {
-                RepeatedNamesAmount++;
+                NameErrorsAmount++;
                 groupList[0].SetErrorStyle(errorColor);
             }
         }
@@ -456,7 +471,7 @@ namespace DialogueSystem.Windows
 
             if(groupList.Count == 1)
             {
-                RepeatedNamesAmount--;
+                NameErrorsAmount--;
                 groupList[0].ResetStlye();
                 return;
             }
