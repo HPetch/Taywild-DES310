@@ -57,7 +57,6 @@ public class DialogueController : MonoBehaviour
     [Tooltip("Delay when a semi-colon is used")]
     [Range(0, 0.25f)]
     [SerializeField] private float TextTypeSemiColonDelay = 0.05f;
-
     // Tracks wether the current char is rich text or not (TextTyper)
     private bool richText = false;
 
