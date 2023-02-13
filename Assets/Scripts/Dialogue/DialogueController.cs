@@ -23,7 +23,6 @@ public class DialogueController : MonoBehaviour
     #endregion
 
     #region Private Variables
-
     private Queue<ConversationEvent> conversationEventQueue = new Queue<ConversationEvent>();
     private Queue<Conversation> conversationQueue = new Queue<Conversation>();
 
@@ -39,12 +38,30 @@ public class DialogueController : MonoBehaviour
 
     private string textTypeString = "";
 
+    [field: Tooltip("Delay between each char in the TextType Coroutine")]
+    [field: Range(0,0.25f)]
+    [field: SerializeField] private float TextTypeDelay { get; set; } = 0.01f;
+
+    [Tooltip("Delay when a period is used")]    
+    [field: Range(0,0.25f)]
+    [field: SerializeField] private float TextTypePeriodDelay { get; set; } = 0.05f;
+
+    [Tooltip("Delay when a comma is used")]
+    [field: Range(0, 0.25f)]
+    [field: SerializeField] private float TextTypeCommaDelay { get; set; } = 0.05f;
+
+    [Tooltip("Delay when a colon is used")]
+    [field: Range(0, 0.25f)]
+    [field: SerializeField] private float TextTypeColonDelay { get; set; } = 0.05f;
+
+    [Tooltip("Delay when a semi-colon is used")]
+    [field: Range(0, 0.25f)]
+    [field: SerializeField] private float TextTypeSemiColonDelay { get; set; } = 0.05f;
+
     // Tracks wether the current char is rich text or not (TextTyper)
     private bool richText = false;
 
     private bool linkStarted = false;
-    // Delay between each char in the TextType Coroutine
-    private float textTypeDelay = 0.01f;
     #endregion
 
     #region Functions
@@ -53,6 +70,11 @@ public class DialogueController : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+    }
+
+    private void Start()
+    {
+
     }
     #endregion
 
@@ -184,13 +206,49 @@ public class DialogueController : MonoBehaviour
                 uiTemplate.TextField.text += "</link>";
             }
 
-            if (letter == ' ')
-            {
-                continue;
-            }
-
+            // Update the text;
             uiTemplate.TextField.GetComponent<TextEffect>().UpdateText();
-            yield return new WaitForSeconds(textTypeDelay);
+
+            switch (letter)
+            {
+                // If the char is a space
+                case ' ':
+                    // skip to next letter
+                    continue;
+
+                    // If the char is a period
+                case '.':
+                    // Wait for the duration of TextTypePeriodDelay
+                    Debug.Log(".");
+                    yield return new WaitForSeconds(TextTypePeriodDelay);
+                    continue;
+
+                // If the char is a Comma
+                case ',':
+                    Debug.Log(",");
+                    // Wait for the duration of TextTypeCommaDelay
+                    yield return new WaitForSeconds(TextTypeCommaDelay);
+                    continue;
+
+                // If the char is a Colon
+                case ':':
+                    Debug.Log(":");
+                    // Wait for the duration of TextTypeColonDelay
+                    yield return new WaitForSeconds(TextTypeColonDelay);
+                    continue;
+
+                // If the char is a Semi-Colon
+                case ';':
+                    Debug.Log(";");
+                    // Wait for the duration of TextTypeSemiColonDelay
+                    yield return new WaitForSeconds(TextTypeSemiColonDelay);
+                    continue;
+
+                    // Else for every other character use the default delay
+                default:
+                    yield return new WaitForSeconds(TextTypeDelay);
+                    continue;
+            }
         }
 
         // Sets coroutine to null, to track when it's finished
