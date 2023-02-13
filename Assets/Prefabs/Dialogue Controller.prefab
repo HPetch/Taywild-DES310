@@ -5958,11 +5958,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d66ec05d3956a840804767d759efd80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <TestConversation>k__BackingField: {fileID: 11400000, guid: e003b6f4d1aaad445bcb969e5dff2d7f, type: 2}
   conversationUITemplates:
   - {fileID: 4290630852818405153}
   - {fileID: 1356550985171002361}
   - {fileID: 9079551639262730308}
   - {fileID: 3767528731035836266}
+  TextTypeDelay: 0.01
+  TextTypePeriodDelay: 0.05
+  TextTypeCommaDelay: 0.05
+  TextTypeColonDelay: 0.05
+  TextTypeSemiColonDelay: 0.05
+  shortWait: 0.4
+  longWait: 0.8
 --- !u!1 &6663806749084529904
 GameObject:
   m_ObjectHideFlags: 0
