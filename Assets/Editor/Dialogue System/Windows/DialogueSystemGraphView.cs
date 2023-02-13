@@ -20,11 +20,17 @@ namespace DialogueSystem.Windows
 
         private MiniMap miniMap;
 
-        private SerializableDictionary<string, DialogueSystemNodeErrorData> ungroupedNodes;
+        // Dictionary that tracks all the groups on the graph
         private SerializableDictionary<string, DialogueSystemGroupErrorData> groups;
+        // Dictionary that tracks all the ungrouped Nodes on the graph
+        private SerializableDictionary<string, DialogueSystemNodeErrorData> ungroupedNodes;
+        // Dictionary that tracks all the grouped nodes on the graph, using the group as a key
         private SerializableDictionary<Group, SerializableDictionary<string, DialogueSystemNodeErrorData>> groupedNodes;
 
+        // Tracks how many errors are in the graph
         private int nameErrorsAmount = 0;
+
+        // Accessors to the private nameErrorsAmount
         public int NameErrorsAmount
         {
             get
@@ -45,29 +51,41 @@ namespace DialogueSystem.Windows
             }
         }
 
+        /// <summary>
+        /// Graph View Constructor, builds the graph by adding manipulators, search window, minimap, and grid background.
+        /// </summary>
+        /// <param name="dialogueSystemditorWindow"></param>
         public DialogueSystemGraphView(DialogueSystemEditorWindow dialogueSystemditorWindow)
         {
+            // Initialise varialbes and Dictionaries
             editorWindow = dialogueSystemditorWindow;
             ungroupedNodes = new SerializableDictionary<string, DialogueSystemNodeErrorData>();
             groups = new SerializableDictionary<string, DialogueSystemGroupErrorData>();
             groupedNodes = new SerializableDictionary<Group, SerializableDictionary<string, DialogueSystemNodeErrorData>>();
 
+            // Add Visual Elements to the graph
             AddManipulators();
             AddSearchWindow();
             AddMiniMap();
             AddGridBackground();
 
+            // Register the callbacks
             OnElementsDeleted();
             OnGroupElementsAdded();
             OnGroupElementsRemoved();
             OnGroupRenamed();
             OnGraphViewChanged();
 
+            // Add the styles
             AddStyles();
             AddMiniMapStyles();
         }
 
         #region Overrided Methods
+        /// <summary>
+        /// Overrides the GetCompatiblePorts Method and only returns ports of a different node in a different direction.
+        /// </summary>
+        /// <returns> Returns a List of compatible Ports.</returns>
         public override List<Port> GetCompatiblePorts(Port startPort, NodeAdapter nodeAdapter)
         {
             List<Port> compatiblePorts = new List<Port>();
@@ -86,6 +104,9 @@ namespace DialogueSystem.Windows
         #endregion
 
         #region Manipulators
+        /// <summary>
+        /// Adds the ContentZoomer, ContentDragger, SelectionDragger, and the RectangleSelector manipulators as well as the contextual menu.
+        /// </summary>
         private void AddManipulators()
         {
             SetupZoom(ContentZoomer.DefaultMinScale, ContentZoomer.DefaultMaxScale);
@@ -118,6 +139,14 @@ namespace DialogueSystem.Windows
         #endregion
 
         #region Elements Creation
+        /// <summary>
+        /// Create a Node.
+        /// </summary>
+        /// <param name="nodeName"> The name of the Node.</param>
+        /// <param name="dialogueType"> The type of Node.</param>
+        /// <param name="position"> The position of the Node.</param>
+        /// <param name="shouldDraw"> If the node should be drawn on creation, defaulted to true. false when loading Nodes.</param>
+        /// <returns> Returns a reference to the created Node.</returns>
         public DialogueSystemNode CreateNode(string nodeName, DialogueTypes dialogueType, Vector2 position, bool shouldDraw = true)
         {
             Type nodeType = Type.GetType($"DialogueSystem.Elements.DialogueSystem{dialogueType}Node");
@@ -132,19 +161,26 @@ namespace DialogueSystem.Windows
             return node;
         }
 
+        /// <summary>
+        /// Create a DialogueSystemGroup.
+        /// </summary>
+        /// <param name="title"> The name of the Group.</param>
+        /// <param name="groupPosition"> The posititon of the Group on the Graph.</param>
+        /// <returns> Returns the created Group.</returns>
         public DialogueSystemGroup CreateGroup(string title, Vector2 groupPosition)
         {
             DialogueSystemGroup group = new DialogueSystemGroup(title, groupPosition);
             AddGroup(group);
             AddElement(group);
 
+            // When group is created check each element currently selected.
             foreach(GraphElement selectedElement in selection)
             {
-                if (!(selectedElement is DialogueSystemNode)) continue;
+                // If the selected element is not a Node continue.
+                if (!(selectedElement is DialogueSystemNode)) continue;                
 
-                DialogueSystemNode node = (DialogueSystemNode)selectedElement;
-
-                group.AddElement(node);
+                // Add the Node to the Group that was just created.
+                group.AddElement((DialogueSystemNode)selectedElement);
             }
 
             return group;
@@ -152,54 +188,73 @@ namespace DialogueSystem.Windows
         #endregion
 
         #region Callbacks
+        /// <summary>
+        /// Callback when some element(s) are deleted.
+        /// </summary>
         private void OnElementsDeleted()
         {
             deleteSelection = (operationName, askUser) =>
             {
+                // Lists of elements to delete, cannot be done within the foreach loop.
                 List<Edge> edgesToDelete = new List<Edge>();
                 List<DialogueSystemNode> nodesToDelete = new List<DialogueSystemNode>();
                 List<DialogueSystemGroup> groupsToDelete = new List<DialogueSystemGroup>();
 
+                // For each element.
                 foreach(GraphElement element in selection)
                 {
+                    // If the element is a Node.
                     if(element is DialogueSystemNode node)
                     {
+                        // Add it to the Nodes to delete list.
                         nodesToDelete.Add(node);
                         continue;
                     }
 
-                    if (element.GetType() == typeof(Edge))
+                    // If the element is an Edge.
+                    if (element is Edge edge)
                     {
-                        edgesToDelete.Add((Edge)element);
+                        // Add it to the Edges to delete list.
+                        edgesToDelete.Add(edge);
                         continue;
                     }
 
-                    if (element.GetType() != typeof(DialogueSystemGroup)) { continue; }
-
-                    groupsToDelete.Add((DialogueSystemGroup)element);
+                    // If the element is a Group.
+                    if (element is DialogueSystemGroup group)
+                    {
+                        // Add it to the Groups to delete list.
+                        groupsToDelete.Add(group);
+                        continue;
+                    }
                 }
 
+                // For each Group to delete.
                 foreach (DialogueSystemGroup group in groupsToDelete)
                 {
+                    // Reference to all the nodes in the group.
                     List<DialogueSystemNode> groupNodes = new List<DialogueSystemNode>();
 
-                    foreach(GraphElement groupElement in group.containedElements)
+                    // For each element in the group, add the Nodes to the List of Nodes in the Group.
+                    foreach (GraphElement groupElement in group.containedElements)
                     {
-                        if (!(groupElement is DialogueSystemNode)) continue;
-                        groupNodes.Add((DialogueSystemNode)groupElement);
+                        if (groupElement is DialogueSystemNode node) groupNodes.Add(node);
                     }
 
+                    // Remove all the Nodes from the group, this puts them in the ungroupedNodes list,
+                    // if they are also selected they will be deleted as ungrouped nodes using the nodesToDelete List.
                     group.RemoveElements(groupNodes);
 
                     RemoveGroup(group);
                     RemoveElement(group);
                 }
 
+                // Can just safely delete all the connections here before the Nodes are deleted.
                 DeleteElements(edgesToDelete);
 
+                // For each Node to delete.
                 foreach (DialogueSystemNode node in nodesToDelete)
                 {
-                    // Remove the node from the group, This calls the 'ElementsRemovedFromGroup' callback automatically
+                    // Remove the node from the group, This calls the 'ElementsRemovedFromGroup' callback automatically.
                     if (node.Group != null) node.Group.RemoveElement(node);
 
                     RemoveUngroupedNode(node);
@@ -209,39 +264,51 @@ namespace DialogueSystem.Windows
             };
         }
 
+        /// <summary>
+        /// Callback when Elements are added to a Group.
+        /// </summary>
         private void OnGroupElementsAdded()
         {
             elementsAddedToGroup = (group, elements) =>
             {
-                foreach(GraphElement element in elements)
+                // Foreach Element.
+                foreach (GraphElement element in elements)
                 {
-                    if (!(element is DialogueSystemNode)) { continue; }
-
-                    DialogueSystemGroup nodeGroup = (DialogueSystemGroup)group;
-                    DialogueSystemNode node = (DialogueSystemNode)element;
-                    RemoveUngroupedNode(node);
-                    AddGroupedNode(node, nodeGroup);
+                    // If the Element is a Node.
+                    if (element is DialogueSystemNode node)
+                    {
+                        // Remove the Node from the ungroupedNodes and add it to the groupedNodes.
+                        RemoveUngroupedNode(node);
+                        AddGroupedNode(node, (DialogueSystemGroup)group);
+                    }
                 }
             };
         }
 
+        /// <summary>
+        /// Callback when Elements are removed from a group.
+        /// </summary>
         private void OnGroupElementsRemoved()
         {
             elementsRemovedFromGroup = (group, elements) =>
             {
+                // Foreach Element.
                 foreach (GraphElement element in elements)
                 {
-                    if (!(element is DialogueSystemNode)) { continue; }
-
-                    DialogueSystemGroup nodeGroup = (DialogueSystemGroup)group;
-                    DialogueSystemNode node = (DialogueSystemNode)element;
-
-                    RemoveGroupedNode(node, nodeGroup);
-                    AddUngroupedNode(node);
+                    // If the Element is a Node.
+                    if (element is DialogueSystemNode node)
+                    {
+                        // Remove the Node from the groupedNodes and add it to the ungroupedNodes.
+                        RemoveGroupedNode(node, (DialogueSystemGroup)group);
+                        AddUngroupedNode(node);
+                    }
                 }
             };
         }
 
+        /// <summary>
+        /// Callback when a Group is renamed.
+        /// </summary>
         private void OnGroupRenamed()
         {
             groupTitleChanged = (group, newTitle) =>
@@ -249,35 +316,48 @@ namespace DialogueSystem.Windows
                 DialogueSystemGroup dsGroup = (DialogueSystemGroup)group;
                 dsGroup.title = newTitle.RemoveWhitespaces().RemoveSpecialCharacters();
 
+                // If the name is empty.
                 if (string.IsNullOrEmpty(dsGroup.title))
                 {
+                    // And it wasn't emtpy before (for example it's empty and they've added a space we don't increment the error amount).
                     if (!string.IsNullOrEmpty(dsGroup.OldTitle))
                     {
+                        // Add the error.
                         NameErrorsAmount++;
                     }
                 }
+                // If the name is not empty.
                 else
                 {
+                    // And the previous name was.
                     if (string.IsNullOrEmpty(dsGroup.OldTitle))
                     {
+                        // Then the error has been fixed.
                         NameErrorsAmount--;
                     }
                 }
 
+                // Remove and add the group
                 RemoveGroup(dsGroup);
                 dsGroup.OldTitle = dsGroup.title;
                 AddGroup(dsGroup);
             };
         }
 
+        /// <summary>
+        /// Callback when the graph view has changed
+        /// </summary>
         private void OnGraphViewChanged()
         {
             graphViewChanged = (changes) =>
             {
+                // If there is some Edges created.
                 if(changes.edgesToCreate != null)
                 {
+                    // For each Edge to created.
                     foreach(Edge edge in changes.edgesToCreate)
                     {
+                        // Add the references to both Nodes.
                         DialogueSystemNode nextNode = (DialogueSystemNode)edge.input.node;
 
                         DialogueSystemChoiceSaveData choiceData = (DialogueSystemChoiceSaveData)edge.output.userData;
@@ -286,15 +366,19 @@ namespace DialogueSystem.Windows
                     }
                 }
 
+                // If there is some elements removed.
                 if(changes.elementsToRemove != null)
                 {
-                    foreach(GraphElement element in changes.elementsToRemove)
+                    // For each element to remove.
+                    foreach (GraphElement element in changes.elementsToRemove)
                     {
-                        if (element.GetType() != typeof(Edge)) continue;
-
-                        Edge edge = (Edge)element;
-                        DialogueSystemChoiceSaveData choiceData = (DialogueSystemChoiceSaveData)edge.output.userData;
-                        choiceData.NodeID = "";
+                        // If some of them are Edges.
+                        if (element is Edge edge)
+                        {
+                            // Reset the references on the output node.
+                            DialogueSystemChoiceSaveData choiceData = (DialogueSystemChoiceSaveData)edge.output.userData;
+                            choiceData.NodeID = "";
+                        }
                     }
                 }
 
@@ -304,32 +388,36 @@ namespace DialogueSystem.Windows
         #endregion
 
         #region Repeated Elements
+        /// <summary>
+        /// Adds a Node to the ungroupedNodes List.
+        /// </summary>
+        /// <param name="node"> Node to be added to the ungroupedNodes List.</param>
         public void AddUngroupedNode(DialogueSystemNode node)
         {
-            // Reference the name once here
+            // Make name lower-case so file names are not case sensative.
             string nodeName = node.DialogueName.ToLower();
 
-            // If ungrouped nodes does not contain a node with this name
+            // If ungrouped nodes does not contain a node with this name.
             if(!ungroupedNodes.ContainsKey(nodeName))
             {
-                // Generate a new random colour used to represent duplicates so it can be referenced when a duplicate is made
+                // Generate a new random colour used to represent duplicates so it can be referenced when a duplicate is made.
                 DialogueSystemNodeErrorData nodeErrorData = new DialogueSystemNodeErrorData();                
                 nodeErrorData.Nodes.Add(node);
                 ungroupedNodes.Add(nodeName, nodeErrorData);
                 return;
             }
 
-            // Refernce the Node List once here
+            // Refernce the Node List once here.
             List<DialogueSystemNode> ungroupedNodesList = ungroupedNodes[nodeName].Nodes;
 
-            // Add the node
+            // Add the node.
             ungroupedNodesList.Add(node);
 
-            // Reference that duplicated Node's error colour and apply it
+            // Reference that duplicated Node's error colour and apply it.
             Color errorColor = ungroupedNodes[nodeName].ErrorData.Color;
             node.SetErrorStyle(errorColor);
 
-            // If this is the second node then set the first node to have the error colour, subsequent duplicates won't need to set this as number 2 will already have done it
+            // If this is the second node then set the first node to have the error colour, subsequent duplicates won't need to set this as number 2 will already have done it.
             if(ungroupedNodesList.Count == 2)
             {
                 NameErrorsAmount++;
@@ -337,18 +425,23 @@ namespace DialogueSystem.Windows
             }
         }
 
+        /// <summary>
+        /// Remove a Node from the ungroupedNodes List.
+        /// </summary>
+        /// <param name="node"> Node to be removed from the ungroupedNodes List.</param>
         public void RemoveUngroupedNode(DialogueSystemNode node)
         {
+            // Make name lower-case so file names are not case sensative.
             string nodeName = node.DialogueName.ToLower();
-
             List<DialogueSystemNode> ungroupedNodesList = ungroupedNodes[nodeName].Nodes;
 
-            // Remove the node from the dictionary
+            // Remove the node from the List.
             ungroupedNodesList.Remove(node);
 
+            // Reset the error style, it will be reset if this Node is being added to a Group.
             node.ResetStyle();
 
-            // Only one Node left with this name, so reset the error style
+            // Only one Node left with this name, so reset the error style.
             if (ungroupedNodesList.Count == 1)
             {
                 NameErrorsAmount--;
@@ -356,32 +449,37 @@ namespace DialogueSystem.Windows
                 return;
             }
 
-            // No Nodes left with this name so remove it's key from the dictionary
+            // No Nodes left with this name so remove it's key from the dictionary.
             if (ungroupedNodesList.Count == 0)
             {
                 ungroupedNodes.Remove(nodeName);
             }
         }
 
+        /// <summary>
+        /// Add a Node to the groupedNodes Dictionary.
+        /// </summary>
+        /// <param name="node"> Node to be added to the groupedNodes Dictionary.</param>
+        /// <param name="group"> Group that the Node will be added to.</param>
         public void AddGroupedNode(DialogueSystemNode node, DialogueSystemGroup group)
         {
-            // Reference the name once here
+            // Make name lower-case so file names are not case sensative.
             string nodeName = node.DialogueName.ToLower();
 
-            // Set the Group refernece in the Node
+            // Set the Group refernece in the Node.
             node.Group = group;
 
-            // If the Group dictionary does not contain this group
+            // If the Group dictionary does not contain this group.
             if (!groupedNodes.ContainsKey(group))
             {
-                // It's a new group so add it
+                // It's a new group so add it.
                 groupedNodes.Add(group, new SerializableDictionary<string, DialogueSystemNodeErrorData>());
             }
 
-            // If the group does not contain a node with the same name
+            // If the group does not contain a node with the same name.
             if (!groupedNodes[group].ContainsKey(nodeName))
             {
-                // Generate the error colour for use later
+                // Generate the error colour for use later.
                 DialogueSystemNodeErrorData nodeErrorData = new DialogueSystemNodeErrorData();
                 // Add the node
                 nodeErrorData.Nodes.Add(node);
@@ -389,17 +487,17 @@ namespace DialogueSystem.Windows
                 return;
             }
 
-            // Reference the list once here
+            // Reference the list once here.
             List<DialogueSystemNode> groupedNodesList = groupedNodes[group][nodeName].Nodes;
 
-            // Add the node
+            // Add the node.
             groupedNodesList.Add(node);
-
-            // Reference that duplicated Node's error colour and apply it
+            
+            // Reference that duplicated Node's error colour and apply it.
             Color errorColor = groupedNodes[group][nodeName].ErrorData.Color;
             node.SetErrorStyle(errorColor);
 
-            // If this is the second node then set the first node to have the error colour, subsequent duplicates won't need to set this as number 2 will already have done it
+            // If this is the second node then set the first node to have the error colour, subsequent duplicates won't need to set this as number 2 will already have done it.
             if (groupedNodesList.Count == 2)
             {
                 NameErrorsAmount++;
@@ -407,21 +505,26 @@ namespace DialogueSystem.Windows
             }
         }
 
+        /// <summary>
+        /// Removes Node from the groupedNodes Dictionary.
+        /// </summary>
+        /// <param name="node"> Node to be removed from the Dictionary.</param>
+        /// <param name="group"> Group that the Node will be removed from.</param>
         public void RemoveGroupedNode(DialogueSystemNode node, DialogueSystemGroup group)
         {
-            // Reference these variables once here
+            // Make name lower-case so file names are not case sensative.
             string nodeName = node.DialogueName.ToLower();
             List<DialogueSystemNode> groupedNodesList = groupedNodes[group][nodeName].Nodes;
 
-            // Remove the Group reference from the Node
+            // Remove the Group reference from the Node.
             node.Group = null;
 
-            // Remove Node from Group
+            // Remove Node from Group.
             groupedNodesList.Remove(node);
-            // Reset the error status (it will be check again when the node is added to ungrouped nodes)
+            // Reset the error status (it will be check again when the node is added to ungrouped nodes).
             node.ResetStyle();
 
-            // If there only remains one node of that name in the group reset it's error status
+            // If there only remains one node of that name in the group reset it's error status.
             if (groupedNodesList.Count == 1)
             {
                 NameErrorsAmount--;
@@ -429,12 +532,12 @@ namespace DialogueSystem.Windows
                 return;
             }
 
-            // If there is no remaining Nodes of that name in tha t Group, remove the Key
+            // If there is no remaining Nodes of that name in that Group, remove the Key.
             if(groupedNodesList.Count == 0)
             {
                 groupedNodes[group].Remove(nodeName);
 
-                // If removing that node results in the group being empty, remove the Group entirly
+                // If removing that node results in the group being empty, remove the Group entirly.
                 if (groupedNodes[group].Count == 0)
                 {
                     groupedNodes.Remove(group);
@@ -442,22 +545,37 @@ namespace DialogueSystem.Windows
             }
         }
 
-        public void AddGroup(DialogueSystemGroup group)
+        /// <summary>
+        /// Adds a new group to the Groups Dictionary.
+        /// </summary>
+        /// <param name="group"> Group to be added to the groups List.</param>
+        private void AddGroup(DialogueSystemGroup group)
         {
+            // Make name lower-case so file names are not case sensative.
             string groupName = group.title.ToLower();
+
+            // If the Groups Dictionary does not already contain the name, then it's the first Group of this name.
             if (!groups.ContainsKey(groupName))
             {
+                // Generate the Groups error colour for later.
                 DialogueSystemGroupErrorData groupErrorData = new DialogueSystemGroupErrorData();
+                
+                // Add the group.
                 groupErrorData.Groups.Add(group);
                 groups.Add(groupName, groupErrorData);
                 return;
             }
 
+            // Group name already exists/
+
             List<DialogueSystemGroup> groupList = groups[groupName].Groups;
             groupList.Add(group);
+            
+            // Add the error colour/
             Color errorColor = groups[groupName].ErrorData.Color;
             group.SetErrorStyle(errorColor);
 
+            // If this is the second Group then set the first Group to have the error colour, subsequent duplicates won't need to set this as number 2 will already have done it.
             if (groupList.Count == 2)
             {
                 NameErrorsAmount++;
@@ -465,21 +583,29 @@ namespace DialogueSystem.Windows
             }
         }
         
-        public void RemoveGroup(DialogueSystemGroup group)
+        /// <summary>
+        /// Removes a Group from the groups Dictionary.
+        /// </summary>
+        /// <param name="group"> Group to be removed from the groups Disctionary.</param>
+        private void RemoveGroup(DialogueSystemGroup group)
         {
+            // Make name lower-case so file names are not case sensative.
             string oldGroupName = group.OldTitle.ToLower();
 
             List<DialogueSystemGroup> groupList = groups[oldGroupName].Groups;
+            
             groupList.Remove(group);
             group.ResetStlye();
 
-            if(groupList.Count == 1)
+            // If there only remains one Group of that name in the Group reset it's error status.
+            if (groupList.Count == 1)
             {
                 NameErrorsAmount--;
                 groupList[0].ResetStlye();
                 return;
             }
 
+            // If there is no remaining Groups of that name in that Group, remove the Key from the Dictionary.
             if (groupList.Count == 0)
             {
                 groups.Remove(oldGroupName);
@@ -488,17 +614,25 @@ namespace DialogueSystem.Windows
         #endregion
 
         #region Elements Addition
+        /// <summary>
+        /// Adds the search window to the Graph View.
+        /// </summary>
         private void AddSearchWindow()
         {
+            // If the Search Window has not already been created.
             if (searchWindow == null)
             {
+                // Create it and Initialise it.
                 searchWindow = ScriptableObject.CreateInstance<DialogueSystemSearchWindow>();
-                searchWindow.Initialize(this);
+                searchWindow.Initialise(this);
             }
 
             nodeCreationRequest = context => SearchWindow.Open(new SearchWindowContext(context.screenMousePosition), searchWindow);
         }
 
+        /// <summary>
+        /// Adds the Minimap VisualElement to the Graph View.
+        /// </summary>
         private void AddMiniMap()
         {
             miniMap = new MiniMap() { anchored = true };
@@ -509,6 +643,9 @@ namespace DialogueSystem.Windows
             miniMap.visible = false;
         }
 
+        /// <summary>
+        /// Adds the Grid Background Visual Element to the Graph View.
+        /// </summary>
         private void AddGridBackground()
         {
             GridBackground gridBackground = new GridBackground();
@@ -516,6 +653,9 @@ namespace DialogueSystem.Windows
             Insert(0, gridBackground);
         }
 
+        /// <summary>
+        /// Add the StyleSheet to the Graph View.
+        /// </summary>
         private void AddStyles()
         {
             this.AddStyleSheets(
@@ -524,6 +664,9 @@ namespace DialogueSystem.Windows
                 );
         }
 
+        /// <summary>
+        /// Add the Minimap styles to the Minimap.
+        /// </summary>
         private void AddMiniMapStyles()
         {
             StyleColor borderColor = new StyleColor(new Color32(51, 51, 51, 255));
@@ -538,22 +681,30 @@ namespace DialogueSystem.Windows
         #endregion
 
         #region Utility
+        /// <summary>
+        /// Converts screenSpaceMousePosition into GraphSpacePosiion
+        /// </summary>
+        /// <param name="mousePosition"> Screen Space Mouse Position</param>
+        /// <param name="isSearchWindow"></param>
+        /// <returns> Returns GraphSpace MousePosition.</returns>
         public Vector2 GetLocalMousePosition(Vector2 mousePosition, bool isSearchWindow = false)
         {
-            Vector2 worldMousePosition = mousePosition;
-
             if (isSearchWindow)
             {
-                worldMousePosition = editorWindow.rootVisualElement.ChangeCoordinatesTo(editorWindow.rootVisualElement.parent, mousePosition - editorWindow.position.position);
+                mousePosition = editorWindow.rootVisualElement.ChangeCoordinatesTo(editorWindow.rootVisualElement.parent, mousePosition - editorWindow.position.position);
             }
 
-            Vector2 localMousePosition = contentViewContainer.WorldToLocal(worldMousePosition);
+            Vector2 localMousePosition = contentViewContainer.WorldToLocal(mousePosition);
 
             return localMousePosition;
         }
 
+        /// <summary>
+        /// Clears the Graph.
+        /// </summary>
         public void ClearGraph()
         {
+            // Remove the elements, automatically calls the remove callbacks.
             graphElements.ForEach(graphElement => RemoveElement(graphElement));
 
             groups.Clear();
@@ -563,6 +714,9 @@ namespace DialogueSystem.Windows
             NameErrorsAmount = 0;
         }
 
+        /// <summary>
+        /// Toggle the Minimap On/Off.
+        /// </summary>
         public void ToggleMiniMap()
         {
             miniMap.visible = !miniMap.visible;

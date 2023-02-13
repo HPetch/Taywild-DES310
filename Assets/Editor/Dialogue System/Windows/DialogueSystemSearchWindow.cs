@@ -12,7 +12,7 @@ namespace DialogueSystem.Windows
         private DialogueSystemGraphView graphView;
         private Texture2D indentationIcon;
 
-        public void Initialize(DialogueSystemGraphView dialogueSystemGraphView)
+        public void Initialise(DialogueSystemGraphView dialogueSystemGraphView)
         {
             graphView = dialogueSystemGraphView;
 
