@@ -18,9 +18,19 @@ public class TextEffect : MonoBehaviour
     // Jiggle Settings
     private readonly Vector2 jiggleStrength = new(4f, 2f);
 
+    // TextType Settings
+    private readonly float slowTypeSpeed = 0.1f;
+    private float normalTypeSpeed = 0.01f; // References DialogueController TextTypeDelay on Start
+    private readonly float fastTypeSpeed = 0.001f;
+
     private void Awake()
     {
         textComponent = GetComponent<TextMeshProUGUI>();
+    }
+
+    private void Start()
+    {
+        if (Application.isPlaying) normalTypeSpeed = DialogueController.Instance.TextTypeDelay;
     }
 
     private void Update()
@@ -117,6 +127,40 @@ public class TextEffect : MonoBehaviour
                             newVertices[vertexIndex] += offset;
                         }
                     }
+                    break;
+
+                // Is it a wait tag? (<link="wait_short"></link>)
+                case "wait_short":
+                    // Functionality handled in the Textype of DialogueController
+                    break;
+
+                // Is it a wait tag? (<link="wait_long"></link>)
+                case "wait_long":
+                    // Functionality handled in the Textype of DialogueController
+                    break;
+
+                // Is it a type_speed_slow tag? (<link="type_speed_slow"></link>)
+                case "type_speed_slow":
+                    if (Application.isPlaying) DialogueController.Instance.SetTypeSpeed(slowTypeSpeed);
+                    break;
+
+                // Is it a type_speed_normal tag? (<link="type_speed_normal"></link>)
+                case "type_speed_normal":
+                    if (Application.isPlaying) DialogueController.Instance.SetTypeSpeed(normalTypeSpeed);
+                    break;
+
+                // Is it a type_speed_fast tag? (<link="type_speed_fast"></link>)
+                case "type_speed_fast":
+                    if (Application.isPlaying) DialogueController.Instance.SetTypeSpeed(fastTypeSpeed);
+                    break;
+
+                // Is it a portrait tag? (<link="portrait"></link>)
+                case "portrait":
+                    // Functionality handled in the Textype of DialogueController
+                    break;
+
+                default:
+                    Debug.LogWarning($"TMPro RichText Link ID not found: {link.GetLinkID()}");
                     break;
             }
         }
