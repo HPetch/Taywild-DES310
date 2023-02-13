@@ -23,6 +23,8 @@ public class DialogueController : MonoBehaviour
     #endregion
 
     #region Private Variables
+    [field: SerializeField] Conversation TestConversation { get; set; }
+
     private Queue<ConversationEvent> conversationEventQueue = new Queue<ConversationEvent>();
     private Queue<Conversation> conversationQueue = new Queue<Conversation>();
 
@@ -74,7 +76,7 @@ public class DialogueController : MonoBehaviour
 
     private void Start()
     {
-
+        TriggerConversation(TestConversation);
     }
     #endregion
 
@@ -180,7 +182,7 @@ public class DialogueController : MonoBehaviour
             if (letter == '<')
             {
                 richText = true;
-                if(_sentence.Substring(letterIndex+1,4) == "link")
+                if (_sentence.Substring(letterIndex + 1, 4) == "link")
                 {
                     linkStarted = true;
                 }
@@ -309,5 +311,10 @@ public class DialogueController : MonoBehaviour
     {
 
     }    
+
+    public void SetTypeSpeed(float textTypeDelay)
+    {
+        TextTypeDelay = textTypeDelay;
+    }
     #endregion
 }

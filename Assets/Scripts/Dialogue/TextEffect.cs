@@ -118,6 +118,36 @@ public class TextEffect : MonoBehaviour
                         }
                     }
                     break;
+
+                // Is it a wait tag? (<link="wait_short"></link>)
+                case "wait_short":                    
+                    // Functionality handled in the Textype of DialogueController
+                    break;
+
+                // Is it a wait tag? (<link="wait_long"></link>)
+                case "wait_long":
+                    // Functionality handled in the Textype of DialogueController
+                    break;
+
+                // Is it a type_speed_slow tag? (<link="type_speed_slow"></link>)
+                case "type_speed_slow":
+                    if (Application.isPlaying) DialogueController.Instance.SetTypeSpeed(0.5f);
+                    break;
+
+                // Is it a type_speed_normal tag? (<link="type_speed_normal"></link>)
+                case "type_speed_normal":
+                    if (Application.isPlaying) DialogueController.Instance.SetTypeSpeed(0.01f);
+                    break;
+
+                // Is it a type_speed_fast tag? (<link="type_speed_fast"></link>)
+                case "type_speed_fast":
+                    if (Application.isPlaying) DialogueController.Instance.SetTypeSpeed(0.001f);
+                    break;
+
+                // Is it a portrait tag? (<link="portrait"></link>)
+                case "portrait":
+                    // Functionality handled in the Textype of DialogueController
+                    break;
             }
         }
 
