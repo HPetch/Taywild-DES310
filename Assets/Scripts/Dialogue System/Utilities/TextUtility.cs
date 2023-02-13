@@ -67,6 +67,8 @@ public static class TextUtility
 
     public static string RemoveSpecialCharacters(this string text)
     {
+        if (string.IsNullOrEmpty(text)) return text;
+
         int textLength = text.Length;
 
         char[] textCharacters = text.ToCharArray();
