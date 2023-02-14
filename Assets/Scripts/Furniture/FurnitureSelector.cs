@@ -26,6 +26,7 @@ public class FurnitureSelector : MonoBehaviour
     [SerializeField] private float[] selectorScaleMultiplierArray; //0-empty(normal), 1-pickable(big), 2-pickupPlaceable(big), 3-Bad(small), 4-Offgrid(normal)
     private enum SelectorState {EMPTY, PICKABLE, PICKUP_PLACEABLE, BAD, OFFGRID }
     private SelectorState selectorState = SelectorState.EMPTY;
+    private int selectorLayerMask;
 
     [SerializeField] private AnimationCurve jumpCurve;
     private float scaleJump = 1;
@@ -48,6 +49,7 @@ public class FurnitureSelector : MonoBehaviour
     {
         sprite = GetComponent<Sprite>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        selectorLayerMask = LayerMask.GetMask("Furniture");
     }
     private void Start()
     {
@@ -59,7 +61,7 @@ public class FurnitureSelector : MonoBehaviour
     {
         scaleJumpTimer += Time.deltaTime;
         spinJumpTimer += Time.deltaTime;
-        if (scaleJumpTimer < 0.75f)
+        if (scaleJumpTimer < 0.5f)
         {
             scaleJump = jumpCurve.Evaluate(spinJumpTimer) * scaleJumpMultiplier;
         }
@@ -67,7 +69,7 @@ public class FurnitureSelector : MonoBehaviour
         {
             scaleJump = 1;
         }
-        if (spinJumpTimer < 0.75f)
+        if (spinJumpTimer < 0.5f)
         {
             spinJump = jumpCurve.Evaluate(spinJumpTimer) * spinJumpMultiplier;
         }
@@ -80,19 +82,25 @@ public class FurnitureSelector : MonoBehaviour
 
         selectorTargetLocation = GetMousePositionInWorld(transform.position.z);
         transform.position = Vector3.Lerp(transform.position, selectorTargetLocation, selectorMoveSpeed * Time.deltaTime);
-        transform.localScale = Vector3.Lerp(transform.localScale, Vector3.Scale(targetScaleValue, baseScaleValue * scaleMultiplier * scaleJump), scaleSpeed * mouseDownSlowDown * Time.deltaTime);
+        targetScaleValue = Vector3.Scale(baseScaleValue, baseScaleValue * scaleMultiplier * scaleJump) * mouseDownSlowDown;
+        print(selectorState);
+        transform.localScale = Vector3.Lerp(transform.localScale, targetScaleValue, scaleSpeed * mouseDownSlowDown * Time.deltaTime);
         transform.rotation = Quaternion.Lerp(transform.rotation, transform.rotation * Quaternion.AngleAxis(90, Vector3.forward), selectorSpinSpeed * mouseDownSlowDown * Time.deltaTime * spinJump);
         CheckObjectUnderMouse();
 
         if (Input.GetMouseButtonDown(0))
         {
-            mouseDownSlowDown = 0.5f;
+            mouseDownSlowDown = 0.9f;
         }
         if (Input.GetMouseButtonUp(0))
         {
             scaleJumpTimer = 0.0f;
             spinJumpTimer = 0.0f;
             mouseDownSlowDown = 1f;
+            if (selectorState == SelectorState.PICKABLE)
+            {
+
+            }
         }
     }
 
@@ -101,31 +109,23 @@ public class FurnitureSelector : MonoBehaviour
         return new Vector3(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y, _zValue);
     }
 
-    public void CheckObjectUnderMouse()
+    public Collider2D CheckObjectUnderMouse()
     {
-        /*
-        Find whats under mouse
-        if (WHATS_UNDER_MOUSE() != null)
+        Collider2D hit = Physics2D.OverlapCircle(GetMousePositionInWorld(transform.position.z), 0.1f, selectorLayerMask);
+        if (hit)
         {
-            if (OBJECT_UNDER_MOUSE.isEditable)
-            {
-                selectorState = SelectorState.EMPTY;
-            }
-            else
-            {
-                selectorState = SelectorState.BAD;
-            }
-
+            selectorState = SelectorState.PICKABLE;
         }
         else
         {
-            selectorState = SelectorState.HIDDEN;
+            selectorState = SelectorState.EMPTY;
         }
-        */
+        
         int state = (int)selectorState; // Casts selector state into an int. (Scrapes the int value from it)
         spriteRenderer.sprite = selectorSpritesArray[state];
         selectorSpinSpeed = selectorSpinSpeedArray[state];
         scaleMultiplier = selectorScaleMultiplierArray[state];
+        return hit;
     }
 
 
