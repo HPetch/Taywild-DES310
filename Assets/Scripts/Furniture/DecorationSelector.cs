@@ -1,11 +1,10 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Net;
-using Unity.VisualScripting;
+
 using UnityEngine;
 
-public class FurnitureSelector : MonoBehaviour
+public class DecorationSelector : MonoBehaviour
 {
     #region Public Variables
     #endregion
@@ -99,7 +98,11 @@ public class FurnitureSelector : MonoBehaviour
             mouseDownSlowDown = 1f;
             if (selectorState == SelectorState.PICKABLE)
             {
-
+                if (CheckObjectUnderMouse().gameObject.GetComponent<DecorationController>())
+                {
+                    DecorationController.Instance.DecorationMoveStart(CheckObjectUnderMouse().gameObject);
+                }
+                
             }
         }
     }
