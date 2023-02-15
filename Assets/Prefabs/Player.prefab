@@ -51,10 +51,10 @@ MonoBehaviour:
   platformLayerMask:
     serializedVersion: 2
     m_Bits: 64
-  jumpResetCircleOffset: {x: 0, y: 0}
-  jumpResetCircleRadius: 0.2
-  jumpForce: 20
-  maxJumps: 2
+  groundedJumpForce: 20
+  airJumpForce: 14
+  maxAirJumps: 1
+  coyoteTime: 0.1
   slideForce: 15
   slideDuration: 0.4
   slideCurve:
@@ -99,6 +99,9 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  dashSpeed: 20
+  dashDuration: 0.2
+  dashCoolDown: 1
 --- !u!70 &3013080772066457374
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

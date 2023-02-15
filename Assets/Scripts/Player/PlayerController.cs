@@ -25,16 +25,21 @@ public class PlayerController : MonoBehaviour
     // State booleans
     public bool IsGrounded { get; private set; } = true;
     public bool IsSliding { get; private set; } = false;
+    public bool IsDashing { get; private set; } = false;
     public bool IsLockedInput { get; private set; } = false;
 
     // Component References
     private Rigidbody2D rb;
     private Animator animator;
     private CapsuleCollider2D capsuleCollider;
+    private SpriteRenderer spriteRenderer;
 
     [Header("Movement Settings")]
     [SerializeField] private float moveSpeed = 10f;
+    private Vector2 movementInput = Vector2.zero;
+    private bool isFacingRight = true;
 
+    #region Jump
     [Space(10)]
     [Header("Jump Settings")]
 
@@ -65,7 +70,9 @@ public class PlayerController : MonoBehaviour
     private float timeOfLastGroundedJump = 0f;
     // Tracks if the jump action input has been queued
     private bool jumpQueued = false;
+    #endregion
 
+    #region Slide
     [Space(10)]
     [Header("Slide Settings")]
 
@@ -89,6 +96,28 @@ public class PlayerController : MonoBehaviour
     private float slideCurveSamplePoint = 0f;
     #endregion
 
+    #region Dash
+    [Space(10)]
+    [Header("Dash Settings")]
+    [Tooltip("The speed of the dash")]
+    [Range(0, 20)]
+    [SerializeField] private float dashSpeed = 1f;
+
+    [Tooltip("The duration the IsDashing state is true")]
+    [Range(0, 2)]
+    [SerializeField] private float dashDuration = 0.2f;
+
+    [Tooltip("The cool down time between dashes")]
+    [Range(0, 2)]
+    [SerializeField] private float dashCoolDown = 1f;
+
+    private float timeOfLastDash = 0f;
+    private bool dashQueued = false;
+    private float TimeSinceLastDash { get { return Time.time - timeOfLastDash; } }
+    #endregion
+
+    #endregion
+
     #region Functions
     #region Initialisation
     private void Awake()
@@ -99,8 +128,10 @@ public class PlayerController : MonoBehaviour
 
         // Reference local components
         rb = GetComponent<Rigidbody2D>();
+        capsuleCollider = GetComponent<CapsuleCollider2D>();
+
         animator = GetComponentInChildren<Animator>();
-        capsuleCollider = GetComponentInChildren<CapsuleCollider2D>();
+        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
     }
 
     private void Start()
@@ -113,7 +144,10 @@ public class PlayerController : MonoBehaviour
     #region Updates
     private void Update()
     {
+        movementInput = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+        CheckMovementDirection();
         IsGrounded = CheckIfPlayerIsGrounded();
+
         HandleActionInput();
         UpdateAnimationController();
     }
@@ -121,12 +155,21 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         SlidingBehaviour();
-        if (!IsSliding)
-        {
-            rb.velocity = new Vector2(Input.GetAxis("Horizontal") * moveSpeed, rb.velocity.y);
-        }
+
+        if (CanMove) ApplyMovement();
+
     }
     #endregion
+
+    private void CheckMovementDirection()
+    {
+        if ((isFacingRight && movementInput.x < 0) || (!isFacingRight && movementInput.x > 0)) isFacingRight = !isFacingRight;
+    }
+
+    private void ApplyMovement()
+    {
+        rb.velocity = new Vector2(movementInput.x * moveSpeed, rb.velocity.y);
+    }
 
     #region ActionInputs
     /// <summary>
@@ -134,6 +177,8 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     private void HandleActionInput()
     {
+        if (IsDashing && TimeSinceLastDash > dashDuration) IsDashing = false;
+
         // If the dialogue or transition systems have locked the player's input
         if (IsLockedInput) return;
 
@@ -151,13 +196,11 @@ public class PlayerController : MonoBehaviour
             else slideQueued = true;
         }
 
-        // Flip the scale as opposed to just the sprite renderer for sliding mechanic to function
-        float xInput = Input.GetAxis("Horizontal");
-        transform.localScale = new Vector3(
-            Mathf.Abs(xInput) > 0.2f ? (xInput < 0 ? -1 : 1) : transform.localScale.x,
-            transform.localScale.y,
-            transform.localScale.z
-            );
+        if (Input.GetButtonDown("Dash"))
+        {
+            if (CanDash) Dash();
+            else dashQueued = true;
+        }
     }
 
     /// <summary>
@@ -177,6 +220,12 @@ public class PlayerController : MonoBehaviour
         {
             if (!Input.GetButton("Slide")) slideQueued = false;
             else if (CanSlide) Slide();
+        }
+
+        if (dashQueued)
+        {
+            if (!Input.GetButton("Dash")) dashQueued = false;
+            else if (CanDash) Dash();
         }
     }
     #endregion
@@ -227,17 +276,26 @@ public class PlayerController : MonoBehaviour
     /// <summary>
     /// If the Player is sliding, they will continue to slide as dictated by the sliding curve.
     /// </summary>
-    void SlidingBehaviour()
+    private void SlidingBehaviour()
     {
         if (IsSliding)
         {
             // Takes the facing direction, multiples that by the current point on the curve, and then multiplied by the slide
-            rb.velocity = new Vector2(transform.localScale.x * (slideCurve.Evaluate(slideCurveSamplePoint) * slideForce), rb.velocity.y);
+            rb.velocity = new Vector2(FacingDirection * (slideCurve.Evaluate(slideCurveSamplePoint) * slideForce), rb.velocity.y);
 
             slideCurveSamplePoint += Time.fixedDeltaTime / slideDuration;   // As fixedDeltaTime is usually ~< 0.01, dividing it by our duration offsets it to reach 1 by the end of the slide
             slideTimeElapsed += Time.fixedDeltaTime;
             IsSliding = slideTimeElapsed <= slideDuration;
         }
+    }
+
+    private void Dash()
+    {
+        IsDashing = true;
+        timeOfLastDash = Time.time;
+
+        Debug.Log("Dash");
+        rb.velocity = new Vector2(FacingDirection * dashSpeed, rb.velocity.y);
     }
     #endregion
 
@@ -247,7 +305,8 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     void UpdateAnimationController()
     {
-        animator.SetBool("Running", Mathf.Abs(Input.GetAxis("Horizontal")) > 0.2f);
+        spriteRenderer.flipX = FacingDirection == 1 ? false : true;
+        animator.SetBool("Running", Mathf.Abs(movementInput.x) > 0.2f);
         animator.SetBool("Grounded", IsGrounded);
     }
     #endregion
@@ -317,10 +376,23 @@ public class PlayerController : MonoBehaviour
     /// Returns true if the Player is able to Jump.
     /// </summary>
     private bool CanJump { get { return IsGrounded || remainingAirJumps > 0; } }
+
     /// <summary>
     /// Returns true if the Player is able to Slide.
     /// </summary>
-    private bool CanSlide { get { return IsGrounded && !IsSliding; } }
+    private bool CanSlide { get { return IsGrounded && !IsSliding && !IsDashing && movementInput.x != 0; } }
+
+    /// <summary>
+    /// Returns true if the Player is able to Dash.
+    /// </summary>
+    private bool CanDash { get { return !IsSliding && !IsDashing && (Time.time - timeOfLastDash > dashCoolDown) && movementInput.x != 0; } }
+
+    /// <summary>
+    /// Returns true if the Player is able to Move, Such as if the play is not sliding or dashing.
+    /// </summary>
+    private bool CanMove { get { return !IsSliding && !IsDashing; } }
+
+    private int FacingDirection { get { return isFacingRight? 1 : -1; } }
     #endregion
 
     #region Collision
