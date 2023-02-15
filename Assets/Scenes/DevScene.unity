@@ -670,7 +670,7 @@ RectTransform:
   m_GameObject: {fileID: 266167204}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2111470801}
@@ -6486,6 +6486,10 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 93879805}
     m_Modifications:
+    - target: {fileID: 2435309947640064458, guid: 11afb4ec8f3b03e46b7c3aa0420b077e, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2435309948781843666, guid: 11afb4ec8f3b03e46b7c3aa0420b077e, type: 3}
       propertyPath: m_RootOrder
       value: -1
@@ -6534,6 +6538,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Partition [1,0]
       objectReference: {fileID: 0}
+    - target: {fileID: 4538376548974125398, guid: 11afb4ec8f3b03e46b7c3aa0420b077e, type: 3}
+      propertyPath: m_Creator
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5653331612031085585, guid: 11afb4ec8f3b03e46b7c3aa0420b077e, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 11afb4ec8f3b03e46b7c3aa0420b077e, type: 3}
@@ -6545,6 +6557,18 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 93879805}
     m_Modifications:
+    - target: {fileID: 918477253304243575, guid: da90e817f00dc71498a97c983cee9c13, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 918477254444165228, guid: da90e817f00dc71498a97c983cee9c13, type: 3}
+      propertyPath: <IsCameraFixed>k__BackingField
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 918477254444165228, guid: da90e817f00dc71498a97c983cee9c13, type: 3}
+      propertyPath: <TargetCameraSize>k__BackingField
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 918477254444165230, guid: da90e817f00dc71498a97c983cee9c13, type: 3}
       propertyPath: m_Name
       value: Partition [2,0]
@@ -6650,15 +6674,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4427717274219192288, guid: eab9b9306e75fbc4eb01a3aeab9c27c9, type: 3}
       propertyPath: m_BackGroundColor.b
-      value: 0.7115299
+      value: 0.29803923
       objectReference: {fileID: 0}
     - target: {fileID: 4427717274219192288, guid: eab9b9306e75fbc4eb01a3aeab9c27c9, type: 3}
       propertyPath: m_BackGroundColor.g
-      value: 0.50271446
+      value: 0.34509805
       objectReference: {fileID: 0}
     - target: {fileID: 4427717274219192288, guid: eab9b9306e75fbc4eb01a3aeab9c27c9, type: 3}
       propertyPath: m_BackGroundColor.r
-      value: 0.745283
+      value: 0.42352942
       objectReference: {fileID: 0}
     - target: {fileID: 4427717274219192291, guid: eab9b9306e75fbc4eb01a3aeab9c27c9, type: 3}
       propertyPath: m_Name
@@ -6806,6 +6830,10 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 93879805}
     m_Modifications:
+    - target: {fileID: 255179330, guid: 510a28f6b210bdc44a0ddae0f472f547, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 255179331, guid: 510a28f6b210bdc44a0ddae0f472f547, type: 3}
       propertyPath: m_Creator
       value: 
@@ -6860,6 +6888,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8222341737950464431, guid: 510a28f6b210bdc44a0ddae0f472f547, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8222341739092227255, guid: 510a28f6b210bdc44a0ddae0f472f547, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
