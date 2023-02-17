@@ -33,7 +33,7 @@ Transform:
   m_Children:
   - {fileID: 3013080773383515439}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3013080772066457372
 MonoBehaviour:
@@ -48,13 +48,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 10
+  airMoveAcceleration: 35
+  airDragMultiplier: 0.95
   platformLayerMask:
     serializedVersion: 2
     m_Bits: 64
   groundedJumpForce: 20
   airJumpForce: 14
+  variableJumpHegithMultiplier: 0.5
   maxAirJumps: 1
   coyoteTime: 0.1
+  wallLayerMask:
+    serializedVersion: 2
+    m_Bits: 128
+  wallSlideSpeed: 2
+  wallCheckDistance: 1
+  wallHopForce: 10
+  wallHopDirection: {x: 1, y: 0.5}
+  wallJumpForce: 20
+  wallJumpDirection: {x: 1, y: 2}
+  wallStickTime: 0.3
   slideForce: 15
   slideDuration: 0.4
   slideCurve:
@@ -150,6 +163,7 @@ GameObject:
   - component: {fileID: 3013080773383515439}
   - component: {fileID: 3013080773383515438}
   - component: {fileID: 9197766413397288705}
+  - component: {fileID: 5013383091699472349}
   m_Layer: 0
   m_Name: Visuals
   m_TagString: Untagged
@@ -244,3 +258,33 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &5013383091699472349
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3013080773383515436}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a39e6eb75a650d24e8952b4c0b9f1d8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  groundJumpParticleEffect: {fileID: 0}
+  groundJumpAudioClip: {fileID: 0}
+  airJumpParticleEffect: {fileID: 0}
+  airJumpAudioClip: {fileID: 0}
+  wallJumpParticleEffect: {fileID: 0}
+  wallJumpAudioClip: {fileID: 0}
+  wallHopParticleEffect: {fileID: 0}
+  wallHopAudioClip: {fileID: 0}
+  wallHitParticleEffect: {fileID: 0}
+  wallHitAudioClip: {fileID: 0}
+  wallSlideParticleEffect: {fileID: 0}
+  wallSlideAudioClip: {fileID: 0}
+  landParticleEffect: {fileID: 0}
+  landAudioClip: {fileID: 0}
+  slideParticleEffect: {fileID: 0}
+  slideAudioClip: {fileID: 0}
+  dashParticleEffect: {fileID: 0}
+  dashAudioClip: {fileID: 0}
