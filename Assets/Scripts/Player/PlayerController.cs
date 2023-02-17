@@ -20,6 +20,8 @@ public class PlayerController : MonoBehaviour
     public event Action OnPlayerWallHop;
     public event Action OnPlayerWallJump;
     public event Action OnPlayerWallHit;
+    public event Action OnPlayerWallSlideStart;
+    public event Action OnPlayerWallSlideEnd;
     public event Action OnPlayerLand;
     public event Action OnPlayerSlide;
     public event Action OnPlayerDash;
@@ -49,7 +51,7 @@ public class PlayerController : MonoBehaviour
 
     [Range(0, 80)]
     [Tooltip("How fast the player accelerates in the air")]
-    [SerializeField] private float airMoveAcceleration = 50f;
+    [SerializeField] private float airMoveAcceleration = 2f;
 
     [Range(0, 2)]
     [Tooltip("How fast the player decelerates when in air and no input")]
@@ -479,8 +481,8 @@ public class PlayerController : MonoBehaviour
 
     private void CheckIfWallTouching()
     {
-        bool isTouchingWallThisFrame = Physics2D.Raycast(capsuleCollider.bounds.center, Vector2.right, wallCheckDistance, wallLayerMask) ||
-                                       Physics2D.Raycast(capsuleCollider.bounds.center, Vector2.left, wallCheckDistance, wallLayerMask);
+        bool isTouchingWallThisFrame = Physics2D.Raycast(capsuleCollider.bounds.center, Vector2.right * FacingDirection, wallCheckDistance, wallLayerMask)/* ||
+                                       Physics2D.Raycast(capsuleCollider.bounds.center, Vector2.left, wallCheckDistance, wallLayerMask)*/;
 
         // If player is not on the ground and is touching wall this frame, but not the last frame, then the player has hit a wall
         if (!IsGrounded && isTouchingWallThisFrame && !IsTouchingWall)
@@ -506,7 +508,12 @@ public class PlayerController : MonoBehaviour
     private void CheckIfWallSliding()
     {
         // Player IsWallSliding if they are not grounded, touching a wall, not wall stuck, and they are falling
-        IsWallSliding = !IsGrounded && IsTouchingWall && !IsWallStuck && rb.velocity.y <= 0;
+        bool IsWallSlidingThisFrame = !IsGrounded && IsTouchingWall && !IsWallStuck && rb.velocity.y <= 0;
+
+        if (IsWallSlidingThisFrame && !IsWallSliding) OnPlayerWallSlideStart?.Invoke();
+        else if (!IsWallSlidingThisFrame && IsWallSliding) OnPlayerWallSlideEnd?.Invoke();
+
+        IsWallSliding = IsWallSlidingThisFrame;
     }
 
     private void CheckIfDashing()

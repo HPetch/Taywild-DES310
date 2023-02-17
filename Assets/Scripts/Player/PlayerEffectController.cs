@@ -60,6 +60,8 @@ public class PlayerEffectController : MonoBehaviour
         player.OnPlayerWallHop += PlayerWallHop;
         player.OnPlayerWallJump += PlayerWallJump;
         player.OnPlayerWallHit += PlayerWallHit;
+        player.OnPlayerWallSlideStart+= PlayerWallSlideStart;
+        player.OnPlayerWallSlideEnd += PlayerWallSlideEnd;
         player.OnPlayerLand += PlayerLanded;
         player.OnPlayerSlide += PlayerSlide;
         player.OnPlayerDash += PlayerDash;
@@ -87,7 +89,8 @@ public class PlayerEffectController : MonoBehaviour
 
     private void PlayerGroundJump()
     {
-
+        Instantiate(groundJumpParticleEffect, player.transform.position, Quaternion.identity);
+        CameraController.Instance.PunchOut(0.1f, 20f);
     }
 
     private void PlayerAirJump()
@@ -97,33 +100,46 @@ public class PlayerEffectController : MonoBehaviour
 
     private void PlayerWallHop()
     {
-
+        CameraController.Instance.PunchOut(0.05f, 10f);
     }
 
     private void PlayerWallJump()
     {
+        Transform leafEffect = Instantiate(wallJumpParticleEffect, player.transform.position, Quaternion.identity).transform;
+        leafEffect.localScale = player.IsFacingRight ? leafEffect.localScale : new Vector3(-1, 1, 1);
 
+        CameraController.Instance.PunchOut(0.1f, 20f);
     }
 
     private void PlayerWallHit()
+    {
+        CameraController.Instance.Shake(0.1f, 0.005f);
+        CameraController.Instance.PunchIn(0.3f, 20f, true);
+    }
+
+    private void PlayerWallSlideStart()
+    {
+        CameraController.Instance.PunchIn(0, 5f);
+    }
+
+    private void PlayerWallSlideEnd()
     {
 
     }
 
     private void PlayerLanded()
     {
-
+        CameraController.Instance.Shake(0.2f, 0.02f);
     }
-
 
     private void PlayerSlide()
     {
-
+        CameraController.Instance.PunchIn(0.2f, 10f);
     }
 
 
     private void PlayerDash()
     {
-
+        CameraController.Instance.PunchOut(0.1f, 10f);
     }
 }

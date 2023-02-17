@@ -30,7 +30,14 @@ public class CameraController : MonoBehaviour
     // Zoom Variables
     [SerializeField] private float zoomSpeed = 10f;
     private float defaultSize = 5;
-    private float targetSize = 5;
+    private float targetZoomSize = 5;
+
+    // Punch In
+    public bool IsPunched { get; set; } = false;
+
+    private float punchSpeed = 20f;    
+    private float targetPunchSize = 5f;
+    private bool holdPunch = false;
     #endregion
 
     private void Awake()
@@ -52,8 +59,13 @@ public class CameraController : MonoBehaviour
         playerTransform = PlayerController.Instance.transform;
 
         // Set default varialbe
-        defaultSize = cameraComponent.orthographicSize;
-        targetSize = defaultSize;
+        defaultSize = CameraSize;
+        targetZoomSize = defaultSize;
+    }
+
+    private void Update()
+    {
+        CheckIfPunched();
     }
 
     // Camera functionality in FixedUpdate to ensure up to date player physics
@@ -80,10 +92,14 @@ public class CameraController : MonoBehaviour
         // Clamp
         //transform.position = new Vector3(Mathf.Clamp(transform.position.x, screenLimitX.x, screenLimitX.y), Mathf.Clamp(transform.position.y, screenLimitY.x, screenLimitY.y), transform.position.z);
 
-        // Zoom
-        if (cameraComponent.orthographicSize != targetSize)
+        if(IsPunched)
         {
-            cameraComponent.orthographicSize = Mathf.Lerp(cameraComponent.orthographicSize, targetSize, Time.fixedDeltaTime * zoomSpeed);
+            CameraSize = Mathf.Lerp(CameraSize, targetPunchSize, Time.fixedDeltaTime * punchSpeed);
+        }
+        // Zoom
+        else
+        {
+            CameraSize = Mathf.Lerp(CameraSize, targetZoomSize, Time.fixedDeltaTime * zoomSpeed);
         }
     }
 
@@ -102,7 +118,7 @@ public class CameraController : MonoBehaviour
     /// </summary>
     public void Zoom(float _targetSize = 0)
     {
-        targetSize = _targetSize == 0 ? defaultSize : _targetSize;
+        targetZoomSize = _targetSize == 0 ? defaultSize : _targetSize;
     }
 
     /// <summary>
@@ -141,4 +157,24 @@ public class CameraController : MonoBehaviour
 
         Zoom(partition.TargetCameraSize);
     }
+
+    public void PunchIn(float strength, float speed, bool _holdPunch = false)
+    {
+        IsPunched = true;
+        punchSpeed = speed;
+        holdPunch = _holdPunch;
+        targetPunchSize = targetZoomSize - strength;
+    }
+
+    public void PunchOut(float strength, float speed, bool _holdPunch = false)
+    {
+        PunchIn(-strength, speed, _holdPunch);
+    }
+
+    private void CheckIfPunched()
+    {
+        if (IsPunched && !holdPunch && Mathf.Abs(CameraSize - targetPunchSize) < 0.05f) IsPunched = false;
+    }
+
+    public float CameraSize { get { return cameraComponent.orthographicSize; } set { cameraComponent.orthographicSize = value; } }
 }

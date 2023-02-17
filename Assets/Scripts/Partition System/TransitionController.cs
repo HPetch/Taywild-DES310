@@ -76,7 +76,7 @@ public class TransitionController : MonoBehaviour
         // If the player is not inside any partition then...
         // TO DO: Talk to Harry and decide how to handle this event
         Debug.LogError("Player partiton not found");
-        return null;
+        return CurrentPartition;
     }
 
     /// <summary>
