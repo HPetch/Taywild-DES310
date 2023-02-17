@@ -207,8 +207,8 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         movementInput = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
-        CheckMovementDirection();
 
+        CheckMovementDirection();
         CheckIfPlayerIsGrounded();
         CheckIfWallTouching();
         CheckIfWallStuck();
@@ -230,12 +230,17 @@ public class PlayerController : MonoBehaviour
     {
         if (!IsWallSliding && !IsWallStuck)
         {
-            if ((IsFacingRight && movementInput.x < 0) || (!IsFacingRight && movementInput.x > 0))
+            if (IsFacingRight && movementInput.x < 0)
             {
-                Flip();
+                IsFacingRight = false;
+            }
+            else if (!IsFacingRight && movementInput.x > 0)
+            {
+                IsFacingRight = true;
             }
         }
     }
+
 
     private void ApplyMovement()
     {
@@ -359,7 +364,7 @@ public class PlayerController : MonoBehaviour
         // If the player is not grounded, is wall sliding and has no input do a Wall Hop
         else if (IsTouchingWall && movementInput.x == 0)
         {
-            Flip();
+            IsFacingRight = !IsFacingRight;
             rb.AddForce(new Vector2(FacingDirection * wallHopForce * wallHopDirection.x, wallHopForce * wallHopDirection.y), ForceMode2D.Impulse);
 
             OnPlayerWallHop?.Invoke();
@@ -459,6 +464,10 @@ public class PlayerController : MonoBehaviour
                 {
                     // Reset air jumps
                     remainingAirJumps = maxAirJumps;
+
+                    // If Player was wall sliding previouse frame, and landed this frame. flip the direction
+                    if(IsWallSliding) IsFacingRight = !IsFacingRight;
+
                     OnPlayerLand?.Invoke();
                 }
             }
@@ -520,11 +529,6 @@ public class PlayerController : MonoBehaviour
     {
         // If Player IsDashing & within dash duration they are still dashing, else they are not
         IsDashing = IsDashing && TimeSinceLastDash < dashDuration;
-    }
-
-    private void Flip()
-    {
-        IsFacingRight = !IsFacingRight;
     }
 
     private void WallStick()

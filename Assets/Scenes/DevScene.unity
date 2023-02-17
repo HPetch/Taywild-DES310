@@ -7332,18 +7332,27 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 1105591785}
     m_Modifications:
+    - target: {fileID: 1296793391660731946, guid: 835d58c0911c9814283cfbf718e2bcf0, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: d5a949648a613534f857b5fbc960988f, type: 3}
+    - target: {fileID: 1296793391660731946, guid: 835d58c0911c9814283cfbf718e2bcf0, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1815026876897724871, guid: 835d58c0911c9814283cfbf718e2bcf0, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2674818647371006244, guid: 835d58c0911c9814283cfbf718e2bcf0, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: cb4bc7c1748fbd84eb28fbd8af27bba3, type: 3}
     - target: {fileID: 4623185280129134201, guid: 835d58c0911c9814283cfbf718e2bcf0, type: 3}
       propertyPath: m_text
       value: "First you will go and collect the \u2018Purifying Flower\u2019. A flower
         of calming cerulean crystal blue petals and a scent of fresh rain, grown
-        from only the purest of dreams. The flower contains the properties to cleanse
-        someone of any rot or blight that they might carry should they only touch
-        it. It can only be found by the source of a river, where the water is at
-        its cleanest."
+        from only the purest of dreams. The flower contains the properties..."
       objectReference: {fileID: 0}
     - target: {fileID: 6613144180521518250, guid: 835d58c0911c9814283cfbf718e2bcf0, type: 3}
       propertyPath: m_RootOrder
@@ -7395,7 +7404,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6613144180521518251, guid: 835d58c0911c9814283cfbf718e2bcf0, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []

@@ -74,7 +74,8 @@ public class PlayerEffectController : MonoBehaviour
 
     private void UpdateAnimator()
     {
-        if(!player.IsWallSliding || !player.IsWallStuck) spriteRenderer.flipX = !player.IsFacingRight;
+        spriteRenderer.flipX = !player.IsFacingRight;
+        if (player.IsWallSliding || player.IsWallStuck) spriteRenderer.flipX = player.IsFacingRight;
 
         animator.SetBool("Running", Mathf.Abs(rb.velocity.x) > 0.2f);
         animator.SetBool("Grounded", player.IsGrounded);
