@@ -300,7 +300,7 @@ public class PlayerController : MonoBehaviour
             if (CanJump) Jump();
             else jumpQueued = true;
         } 
-        else if (Input.GetButtonUp("Jump"))
+        else if (!IsGrounded && !IsTouchingWall && Input.GetButtonUp("Jump"))
         {
             rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * variableJumpHegithMultiplier);
         }
@@ -351,7 +351,7 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     private void Jump()
     {
-        UnWallSick();
+        if (IsWallStuck) UnWallSick();
 
         // If player is grounded do a ground jump
         if (IsGrounded)
