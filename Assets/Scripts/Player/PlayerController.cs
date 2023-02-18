@@ -198,8 +198,7 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
-        TransitionController.Instance.OnTransitionStart += LockPlayerInput;
-        TransitionController.Instance.OnTransitionEnd += UnLockPlayerInput;
+
     }
     #endregion
 

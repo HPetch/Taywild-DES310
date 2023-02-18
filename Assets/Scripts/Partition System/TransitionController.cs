@@ -43,7 +43,7 @@ public class TransitionController : MonoBehaviour
     private void Start()
     {
         // Defaults the current partition to whatever partition the play is starting in
-        CurrentPartition = FindPlayerPartiton();
+        TriggerTransition(FindPlayerPartiton());
     }
     #endregion
 
@@ -84,9 +84,6 @@ public class TransitionController : MonoBehaviour
     /// </summary>
     private void TriggerTransition(Partition _targetPartition)
     {
-        // Cannot trigger a transition while already transitioning
-        if (IsTransitioning) return;
-
         IsTransitioning = true;
         CurrentPartition = _targetPartition;
 
@@ -99,7 +96,7 @@ public class TransitionController : MonoBehaviour
     /// </summary>
     private IEnumerator Transition()
     {
-        yield return new WaitForSeconds(0.3f);
+        yield return new WaitForSeconds(1f);
         IsTransitioning = false;
         OnTransitionEnd?.Invoke();
     }
