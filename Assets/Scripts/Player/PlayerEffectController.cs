@@ -101,6 +101,9 @@ public class PlayerEffectController : MonoBehaviour
 
     private void PlayerWallHop()
     {
+        Transform leafEffect = Instantiate(wallHopParticleEffect, player.transform.position, Quaternion.identity).transform;
+        leafEffect.localScale = !player.IsFacingRight ? leafEffect.localScale : new Vector3(-1, 1, 1);
+
         CameraController.Instance.PunchOut(0.05f, 10f);
     }
 
