@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4295011882190004184}
   - component: {fileID: 7116395157151816410}
   - component: {fileID: 232660125031785990}
+  - component: {fileID: 682983748320235176}
   m_Layer: 0
   m_Name: Cloud Air Jump Burst
   m_TagString: Untagged
@@ -4872,3 +4873,15 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &682983748320235176
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7773276287158063648}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a30cea5cac9aa9a4f9d3ce5bb426a22a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

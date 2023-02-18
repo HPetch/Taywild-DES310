@@ -96,7 +96,7 @@ public class PlayerEffectController : MonoBehaviour
 
     private void PlayerAirJump()
     {
-        Instantiate(airJumpParticleEffect, player.transform.position, Quaternion.identity); // Need to fix spawn rotation
+        Instantiate(airJumpParticleEffect, player.transform.position + new Vector3(0, 1, 0), airJumpParticleEffect.transform.rotation);
     }
 
     private void PlayerWallHop()
