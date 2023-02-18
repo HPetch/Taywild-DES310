@@ -294,7 +294,7 @@ public class PlayerController : MonoBehaviour
 
         ResolveQue();
 
-        if (Input.GetButtonDown("Jump"))
+        if (Input.GetButtonDown("Jump") || jumpQueued)
         {
             if (CanJump) Jump();
             else jumpQueued = true;
@@ -304,13 +304,13 @@ public class PlayerController : MonoBehaviour
             rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * variableJumpHegithMultiplier);
         }
 
-        if (Input.GetButtonDown("Slide"))
+        if (Input.GetButtonDown("Slide") || slideQueued)
         {
             if (CanSlide) Slide();
             else slideQueued = true;
         }
 
-        if (Input.GetButtonDown("Dash"))
+        if (Input.GetButtonDown("Dash") || dashQueued)
         {
             if (CanDash) Dash();
             else dashQueued = true;
@@ -323,24 +323,11 @@ public class PlayerController : MonoBehaviour
     void ResolveQue()
     {
         // If you're not holding the button after quing an action, assume you don't wanna do it
+        if (jumpQueued && !Input.GetButton("Jump")) jumpQueued = false;
 
-        if (jumpQueued)
-        {
-            if (!Input.GetButton("Jump")) jumpQueued = false;
-            else if (CanJump) Jump();
-        }
+        if (slideQueued && !Input.GetButton("Slide")) slideQueued = false;
 
-        if (slideQueued)
-        {
-            if (!Input.GetButton("Slide")) slideQueued = false;
-            else if (CanSlide) Slide();
-        }
-
-        if (dashQueued)
-        {
-            if (!Input.GetButton("Dash")) dashQueued = false;
-            else if (CanDash) Dash();
-        }
+        if (dashQueued && !Input.GetButton("Dash")) dashQueued = false;
     }
     #endregion
 
@@ -350,6 +337,7 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     private void Jump()
     {
+        jumpQueued = false;
         if (IsWallStuck) UnWallSick();
 
         // If player is grounded do a ground jump
