@@ -25,7 +25,7 @@ public class PlayerController : MonoBehaviour
     public event Action OnPlayerLand;
     public event Action OnPlayerSlide;
     public event Action OnPlayerDash;
-    public event Action<Vector3> OnPlayerGrapple;
+    public event Action<GrapplePoint> OnPlayerGrapple;
     public event Action OnPlayerGrappleEnd;
     #endregion
 
@@ -48,16 +48,16 @@ public class PlayerController : MonoBehaviour
 
     [Header("Movement Settings")]
 
-    [Range(5, 15)]
     [Tooltip("How fast the player moves on the ground")]
+    [Range(5, 15)]
     [SerializeField] private float moveSpeed = 10f;
 
-    [Range(0, 80)]
     [Tooltip("How fast the player accelerates in the air")]
+    [Range(0, 20)]
     [SerializeField] private float airMoveAcceleration = 2f;
 
-    [Range(0, 2)]
     [Tooltip("How fast the player decelerates when in air and no input")]
+    [Range(0, 2)]
     [SerializeField] private float airDragMultiplier = 0.95f;
 
     private Vector2 movementInput = Vector2.zero;
@@ -182,6 +182,21 @@ public class PlayerController : MonoBehaviour
     #endregion
 
     #region Grapple
+    [Header("Grapple Settings")]
+
+    [Tooltip("The jump force when the player is grappling")]
+    [Range(0, 30)]
+    [SerializeField] private float grapplingJumpForce = 15f;
+
+    [Tooltip("The max speed of the player when grappling")]
+    [Range(0, 30)]
+    [SerializeField] private float grappleMoveSpeed = 15f;
+
+    [Tooltip("How fast the player accelerates when grappling")]
+    [Range(0, 10)]
+    [SerializeField] private float grappleAcceleration = 2f;
+
+    private List<GrapplePoint> grapplePoints = new List<GrapplePoint>();
     private DistanceJoint2D grappleJoint;
     private bool grappleQueued = false;
     #endregion
@@ -223,7 +238,6 @@ public class PlayerController : MonoBehaviour
         CheckIfWallStuck();
         CheckIfWallSliding();
         CheckIfDashing();
-        CheckIfGrappling();
 
         HandleActionInput();
     }
@@ -251,7 +265,6 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-
     private void ApplyMovement()
     {
         Vector2 velocity = rb.velocity;
@@ -260,7 +273,18 @@ public class PlayerController : MonoBehaviour
         {
             velocity = new Vector2(movementInput.x * moveSpeed, velocity.y);
         }
-        // If NotGrounded and Not touching a wall
+        else if (IsGrappling)
+        {
+            // If Movement Input
+            if (movementInput.x != 0)
+            {
+                velocity.x += movementInput.x * grappleAcceleration;
+                    
+                // Clamp the movespeed
+                velocity = Vector2.ClampMagnitude(velocity, grappleMoveSpeed);
+            }
+        }
+        // If NotGrounded and Not touching a wall and not Grappling
         else if (!IsTouchingWall)
         {
             // If Movement Input
@@ -359,14 +383,27 @@ public class PlayerController : MonoBehaviour
         jumpQueued = false;
         if (IsWallStuck) UnWallSick();
 
+        if (IsGrappling)
+        {
+            IsGrappling = false;
+            grappleJoint.enabled = false;
+
+            rb.velocity = new Vector2(rb.velocity.x, grapplingJumpForce);
+
+            OnPlayerGrappleEnd?.Invoke();
+        }
+
         // If player is grounded do a ground jump
-        if (IsGrounded)
+        else if (IsGrounded)
         {
             IsGrounded = false;
+
             rb.velocity = new Vector2(rb.velocity.x, groundedJumpForce);
             timeOfLastGroundedJump = Time.time;
+
             OnPlayerGroundJump?.Invoke();
         }
+
         // If the player is not grounded, is wall sliding and has no input do a Wall Hop
         else if (IsTouchingWall && movementInput.x == 0)
         {
@@ -375,6 +412,7 @@ public class PlayerController : MonoBehaviour
 
             OnPlayerWallHop?.Invoke();
         }
+
         // If the player is not grounded, is touching the wall, and there is input do a Wall Jump
         // IsTouchingWall used instead of IsWallSliding incase the Y velocity is positive
         else if (IsTouchingWall && movementInput.x != 0)
@@ -383,11 +421,13 @@ public class PlayerController : MonoBehaviour
 
             OnPlayerWallJump?.Invoke();
         }
+
         // Else it's an air jump
         else
         {
             remainingAirJumps--;
             rb.velocity = new Vector2(rb.velocity.x, airJumpForce);
+
             OnPlayerAirJump?.Invoke();
         }
 
@@ -430,13 +470,46 @@ public class PlayerController : MonoBehaviour
 
     private void Grapple()
     {
-        Vector2 mousePosition = CameraController.Instance.MouseWolrdPosition;
+        IsGrappling = true;
+        remainingAirJumps = maxAirJumps;
 
-        grappleJoint.connectedAnchor = mousePosition;
+        GrapplePoint grapplePoint = GetClosestGrapplePoint();
+
+        grappleJoint.connectedAnchor = grapplePoint.transform.position;
         grappleJoint.enabled = true;
 
-        IsGrappling = true;
-        OnPlayerGrapple?.Invoke(mousePosition);
+        OnPlayerGrapple?.Invoke(grapplePoint);
+    }
+    #endregion
+
+    #region Grapple Methods
+    public void AddValidGrapplePoint(GrapplePoint grapplePoint)
+    {
+        if (!grapplePoints.Contains(grapplePoint)) grapplePoints.Add(grapplePoint);
+    }
+
+    public void RemoveValidGrapplePoint(GrapplePoint grapplePoint)
+    {
+        grapplePoints.Remove(grapplePoint);
+    }
+
+    public GrapplePoint GetClosestGrapplePoint()
+    {
+        GrapplePoint grapplePoint = grapplePoints[0];
+        float distanceToClosestPoint = Vector2.Distance(GrappleAnchorPosition, grapplePoint.transform.position);
+
+        foreach(GrapplePoint point in grapplePoints)
+        {
+            float distanceToPoint = Vector2.Distance(GrappleAnchorPosition, point.transform.position);
+
+            if (distanceToPoint < distanceToClosestPoint)
+            {
+                grapplePoint = point;
+                distanceToClosestPoint = distanceToPoint;
+            }
+        }
+
+        return grapplePoint;
     }
     #endregion
 
@@ -548,16 +621,6 @@ public class PlayerController : MonoBehaviour
         IsDashing = IsDashing && TimeSinceLastDash < dashDuration;
     }
 
-    private void CheckIfGrappling()
-    {
-        if (IsGrappling && Input.GetButtonUp("Grapple"))
-        {
-            grappleJoint.enabled = false;
-            IsGrappling = false;
-            OnPlayerGrappleEnd?.Invoke();
-        }
-    }
-
     private void WallStick()
     {
         IsWallStuck = true;
@@ -582,30 +645,31 @@ public class PlayerController : MonoBehaviour
     /// <summary>
     /// Returns true if the Player is able to Jump.
     /// </summary>
-    private bool CanJump { get { return IsGrounded || IsWallSliding || remainingAirJumps > 0; } }
+    private bool CanJump { get { return IsGrounded || IsWallSliding || IsGrappling || remainingAirJumps > 0; } }
 
     /// <summary>
     /// Returns true if the Player is able to Slide.
     /// </summary>
-    private bool CanSlide { get { return IsGrounded && !IsSliding && !IsDashing && movementInput.x != 0; } }
+    private bool CanSlide { get { return IsGrounded && !IsSliding && !IsDashing && !IsGrappling && movementInput.x != 0; } }
 
     /// <summary>
     /// Returns true if the Player is able to Dash.
     /// </summary>
-    private bool CanDash { get { return !IsSliding && !IsDashing && (Time.time - timeOfLastDash > dashCoolDown) && movementInput.x != 0; } }
+    private bool CanDash { get { return !IsSliding && !IsDashing && !IsGrappling && (Time.time - timeOfLastDash > dashCoolDown) && movementInput.x != 0; } }
 
     /// <summary>
     /// Returns true if the Player is able to Move, Such as if the play is not sliding or dashing.
     /// </summary>
-    private bool CanGrapple { get { return true; } }
+    private bool CanGrapple { get { return !IsGrappling && grapplePoints.Count > 0; } }
 
 
     private int FacingDirection { get { return IsFacingRight? 1 : -1; } }
-
     private float TimeSinceLastDash { get { return Time.time - timeOfLastDash; } }
     private float TimeSinceLastTrueGround { get { return Time.time - timeOfLastTrueIsGrounded; } }
     private float TimeSinceLastGroundedJump { get { return Time.time - timeOfLastGroundedJump; } }
     private float TimeSinceLastWallHit { get { return Time.time - timeOfLastWallHit; } }
+
+    public Vector2 GrappleAnchorPosition { get { return (Vector2)transform.position + grappleJoint.anchor; } }
     #endregion
 
     #region Collision

@@ -50,7 +50,6 @@ public class PlayerEffectController : MonoBehaviour
     [SerializeField] private GameObject grappleParticleEffect;
     [SerializeField] private AudioClip grappleAudioClip;
     private LineRenderer grappleLineRenderer;
-    private Vector3 grappleOffset;
 
     private void Awake()
     {
@@ -61,8 +60,6 @@ public class PlayerEffectController : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         grappleLineRenderer = GetComponent<LineRenderer>();
         grappleLineRenderer.enabled = false;
-
-        grappleOffset = player.GetComponent<DistanceJoint2D>().anchor;
 
         player.OnPlayerJump += PlayerJump;
         player.OnPlayerGroundJump += PlayerGroundJump;
@@ -89,7 +86,7 @@ public class PlayerEffectController : MonoBehaviour
     {
         if (player.IsGrappling)
         {
-            grappleLineRenderer.SetPosition(0, player.transform.position + grappleOffset);
+            grappleLineRenderer.SetPosition(0, player.GrappleAnchorPosition);
         }
     }
 
@@ -171,10 +168,10 @@ public class PlayerEffectController : MonoBehaviour
         CameraController.Instance.PunchOut(0.1f, 10f);
     }
 
-    private void PlayerGrappleStart(Vector3 grapplePointPosition)
+    private void PlayerGrappleStart(GrapplePoint grapplePoint)
     {        
-        grappleLineRenderer.SetPosition(0, player.transform.position + grappleOffset);
-        grappleLineRenderer.SetPosition(1, grapplePointPosition);
+        grappleLineRenderer.SetPosition(0, player.GrappleAnchorPosition);
+        grappleLineRenderer.SetPosition(1, grapplePoint.transform.position);
 
         grappleLineRenderer.enabled = true;        
     }

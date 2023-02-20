@@ -116,6 +116,9 @@ MonoBehaviour:
   dashSpeed: 20
   dashDuration: 0.2
   dashCoolDown: 1
+  grapplingJumpForce: 15
+  grappleMoveSpeed: 15
+  grappleAcceleration: 2
 --- !u!70 &3013080772066457374
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -167,10 +170,10 @@ DistanceJoint2D:
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 0
-  m_Anchor: {x: 0, y: 2}
+  m_Anchor: {x: 0, y: 1.5}
   m_ConnectedAnchor: {x: 0, y: 0}
   m_AutoConfigureDistance: 1
-  m_Distance: 2
+  m_Distance: 1.5
   m_MaxDistanceOnly: 0
 --- !u!1 &3013080773383515436
 GameObject:
