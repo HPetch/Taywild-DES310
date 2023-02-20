@@ -437,7 +437,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8222341739092227255, guid: 510a28f6b210bdc44a0ddae0f472f547, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
@@ -1602,7 +1602,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 654055611}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 10, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2198,28 +2198,6 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 2087811681}
     m_Modifications:
-    - target: {fileID: 1296793391660731946, guid: 835d58c0911c9814283cfbf718e2bcf0, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: d5a949648a613534f857b5fbc960988f, type: 3}
-    - target: {fileID: 1296793391660731946, guid: 835d58c0911c9814283cfbf718e2bcf0, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1815026876897724871, guid: 835d58c0911c9814283cfbf718e2bcf0, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2674818647371006244, guid: 835d58c0911c9814283cfbf718e2bcf0, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: cb4bc7c1748fbd84eb28fbd8af27bba3, type: 3}
-    - target: {fileID: 4623185280129134201, guid: 835d58c0911c9814283cfbf718e2bcf0, type: 3}
-      propertyPath: m_text
-      value: "First you will go and collect the \u2018Purifying Flower\u2019. A flower
-        of calming cerulean crystal blue petals and a scent of fresh rain, grown
-        from only the purest of dreams. The flower contains the properties..."
-      objectReference: {fileID: 0}
     - target: {fileID: 6613144180521518250, guid: 835d58c0911c9814283cfbf718e2bcf0, type: 3}
       propertyPath: m_RootOrder
       value: -1
@@ -2268,10 +2246,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Dialogue Controller
       objectReference: {fileID: 0}
-    - target: {fileID: 6613144180521518251, guid: 835d58c0911c9814283cfbf718e2bcf0, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 835d58c0911c9814283cfbf718e2bcf0, type: 3}
@@ -2285,18 +2259,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6613144180521518251, guid: 835d58c0911c9814283cfbf718e2bcf0, type: 3}
   m_PrefabInstance: {fileID: 729060864}
   m_PrefabAsset: {fileID: 0}
---- !u!225 &729060868
-CanvasGroup:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 729060866}
-  m_Enabled: 1
-  m_Alpha: 0
-  m_Interactable: 1
-  m_BlocksRaycasts: 1
-  m_IgnoreParentGroups: 0
 --- !u!1001 &780491754
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2352,6 +2314,10 @@ PrefabInstance:
     - target: {fileID: 3013080772066457373, guid: be44547f2466b3a4f94b067179dd162d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6802173597054627619, guid: be44547f2466b3a4f94b067179dd162d, type: 3}
+      propertyPath: m_Distance
+      value: 16.660208
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
@@ -2721,7 +2687,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 871623499}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 10, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3828,7 +3794,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3893d224b327a04a888ecfb1a7479c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <DisplayDebugInfo>k__BackingField: 0
+  <DisplayDebugInfo>k__BackingField: 1
   partitions:
   - {fileID: 95644813}
   - {fileID: 1874154725}
@@ -5327,7 +5293,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1761880894}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 10, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5759,7 +5725,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1807450817}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 10, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6251,7 +6217,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2435309947640064458, guid: 11afb4ec8f3b03e46b7c3aa0420b077e, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2435309948781843666, guid: 11afb4ec8f3b03e46b7c3aa0420b077e, type: 3}
       propertyPath: m_RootOrder
@@ -6803,7 +6769,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 918477253304243575, guid: da90e817f00dc71498a97c983cee9c13, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 918477254444165228, guid: da90e817f00dc71498a97c983cee9c13, type: 3}
       propertyPath: <IsCameraFixed>k__BackingField

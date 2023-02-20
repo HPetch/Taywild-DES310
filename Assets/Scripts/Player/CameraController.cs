@@ -150,5 +150,9 @@ public class CameraController : MonoBehaviour
         if (IsPunched && !holdPunch && Mathf.Abs(CameraSize - targetPunchSize) < 0.05f) IsPunched = false;
     }
 
+    #region Utility
     public float CameraSize { get { return cameraComponent.orthographicSize; } set { cameraComponent.orthographicSize = value; } }
+
+    public Vector2 MouseWolrdPosition { get { return cameraComponent.ScreenToWorldPoint(Input.mousePosition); } }
+    #endregion
 }

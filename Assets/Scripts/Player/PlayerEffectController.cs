@@ -46,6 +46,12 @@ public class PlayerEffectController : MonoBehaviour
     [SerializeField] private GameObject dashParticleEffect;
     [SerializeField] private AudioClip dashAudioClip;
 
+    [Header("Grapple Effects")]
+    [SerializeField] private GameObject grappleParticleEffect;
+    [SerializeField] private AudioClip grappleAudioClip;
+    private LineRenderer grappleLineRenderer;
+    private Vector3 grappleOffset;
+
     private void Awake()
     {
         player = GetComponentInParent<PlayerController>();
@@ -53,6 +59,10 @@ public class PlayerEffectController : MonoBehaviour
         rb = GetComponentInParent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        grappleLineRenderer = GetComponent<LineRenderer>();
+        grappleLineRenderer.enabled = false;
+
+        grappleOffset = player.GetComponent<DistanceJoint2D>().anchor;
 
         player.OnPlayerJump += PlayerJump;
         player.OnPlayerGroundJump += PlayerGroundJump;
@@ -60,16 +70,27 @@ public class PlayerEffectController : MonoBehaviour
         player.OnPlayerWallHop += PlayerWallHop;
         player.OnPlayerWallJump += PlayerWallJump;
         player.OnPlayerWallHit += PlayerWallHit;
-        player.OnPlayerWallSlideStart+= PlayerWallSlideStart;
+        player.OnPlayerWallSlide += PlayerWallSlideStart;
         player.OnPlayerWallSlideEnd += PlayerWallSlideEnd;
         player.OnPlayerLand += PlayerLanded;
         player.OnPlayerSlide += PlayerSlide;
         player.OnPlayerDash += PlayerDash;
+        player.OnPlayerGrapple += PlayerGrappleStart;
+        player.OnPlayerGrappleEnd += PlayerGrappleEnd;
     }
 
     private void Update()
     {
+        UpdateGrapple();
         UpdateAnimator();
+    }
+
+    private void UpdateGrapple()
+    {
+        if (player.IsGrappling)
+        {
+            grappleLineRenderer.SetPosition(0, player.transform.position + grappleOffset);
+        }
     }
 
     private void UpdateAnimator()
@@ -144,6 +165,22 @@ public class PlayerEffectController : MonoBehaviour
 
     private void PlayerDash()
     {
+        Transform dashEffect = Instantiate(dashParticleEffect, player.transform.position + dashParticleEffect.transform.position, dashParticleEffect.transform.rotation).transform;
+        dashEffect.localScale = !player.IsFacingRight ? dashEffect.localScale : new Vector3(-1, 1, 1);
+
         CameraController.Instance.PunchOut(0.1f, 10f);
+    }
+
+    private void PlayerGrappleStart(Vector3 grapplePointPosition)
+    {        
+        grappleLineRenderer.SetPosition(0, player.transform.position + grappleOffset);
+        grappleLineRenderer.SetPosition(1, grapplePointPosition);
+
+        grappleLineRenderer.enabled = true;        
+    }
+
+    private void PlayerGrappleEnd()
+    {
+        grappleLineRenderer.enabled = false;
     }
 }

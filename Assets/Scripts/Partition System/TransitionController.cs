@@ -38,6 +38,8 @@ public class TransitionController : MonoBehaviour
         // If there already exists an Instance of this singleton then destroy this object, else this is the singleton instance
         if (Instance != null) Destroy(gameObject);
         else Instance = this;
+
+        DisplayDebugInfo = false;
     }
 
     private void Start()

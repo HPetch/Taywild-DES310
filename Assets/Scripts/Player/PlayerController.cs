@@ -20,11 +20,13 @@ public class PlayerController : MonoBehaviour
     public event Action OnPlayerWallHop;
     public event Action OnPlayerWallJump;
     public event Action OnPlayerWallHit;
-    public event Action OnPlayerWallSlideStart;
+    public event Action OnPlayerWallSlide;
     public event Action OnPlayerWallSlideEnd;
     public event Action OnPlayerLand;
     public event Action OnPlayerSlide;
     public event Action OnPlayerDash;
+    public event Action<Vector3> OnPlayerGrapple;
+    public event Action OnPlayerGrappleEnd;
     #endregion
 
     #region Variables
@@ -36,6 +38,7 @@ public class PlayerController : MonoBehaviour
     public bool IsWallStuck { get; private set; } = false;
     public bool IsWallSliding { get; private set; } = false;
     public bool IsGliding { get; private set; } = false;
+    public bool IsGrappling { get; set; } = false;
     public bool IsLockedInput { get; private set; } = false;
     public bool IsFacingRight { get; set; } = true;
 
@@ -178,6 +181,11 @@ public class PlayerController : MonoBehaviour
     private bool dashQueued = false;
     #endregion
 
+    #region Grapple
+    private DistanceJoint2D grappleJoint;
+    private bool grappleQueued = false;
+    #endregion
+
     #endregion
 
     #region Functions
@@ -191,6 +199,8 @@ public class PlayerController : MonoBehaviour
         // Reference local components
         rb = GetComponent<Rigidbody2D>();
         capsuleCollider = GetComponent<CapsuleCollider2D>();
+        grappleJoint = GetComponent<DistanceJoint2D>();
+        grappleJoint.enabled = false;
 
         wallHopDirection.Normalize();
         wallJumpDirection.Normalize();
@@ -213,6 +223,7 @@ public class PlayerController : MonoBehaviour
         CheckIfWallStuck();
         CheckIfWallSliding();
         CheckIfDashing();
+        CheckIfGrappling();
 
         HandleActionInput();
     }
@@ -315,6 +326,12 @@ public class PlayerController : MonoBehaviour
             if (CanDash) Dash();
             else dashQueued = true;
         }
+
+        if (Input.GetButtonDown("Grapple") || grappleQueued)
+        {
+            if (CanGrapple) Grapple();
+            else grappleQueued = true;
+        }
     }
 
     /// <summary>
@@ -328,6 +345,8 @@ public class PlayerController : MonoBehaviour
         if (slideQueued && !Input.GetButton("Slide")) slideQueued = false;
 
         if (dashQueued && !Input.GetButton("Dash")) dashQueued = false;
+
+        if (grappleQueued && !Input.GetButton("Grapple")) grappleQueued = false;
     }
     #endregion
 
@@ -407,6 +426,17 @@ public class PlayerController : MonoBehaviour
 
         rb.velocity = new Vector2(FacingDirection * dashSpeed, rb.velocity.y);
         OnPlayerDash?.Invoke();
+    }
+
+    private void Grapple()
+    {
+        Vector2 mousePosition = CameraController.Instance.MouseWolrdPosition;
+
+        grappleJoint.connectedAnchor = mousePosition;
+        grappleJoint.enabled = true;
+
+        IsGrappling = true;
+        OnPlayerGrapple?.Invoke(mousePosition);
     }
     #endregion
 
@@ -506,7 +536,7 @@ public class PlayerController : MonoBehaviour
         // Player IsWallSliding if they are not grounded, touching a wall, not wall stuck, and they are falling
         bool IsWallSlidingThisFrame = !IsGrounded && IsTouchingWall && !IsWallStuck && rb.velocity.y <= 0;
 
-        if (IsWallSlidingThisFrame && !IsWallSliding) OnPlayerWallSlideStart?.Invoke();
+        if (IsWallSlidingThisFrame && !IsWallSliding) OnPlayerWallSlide?.Invoke();
         else if (!IsWallSlidingThisFrame && IsWallSliding) OnPlayerWallSlideEnd?.Invoke();
 
         IsWallSliding = IsWallSlidingThisFrame;
@@ -516,6 +546,16 @@ public class PlayerController : MonoBehaviour
     {
         // If Player IsDashing & within dash duration they are still dashing, else they are not
         IsDashing = IsDashing && TimeSinceLastDash < dashDuration;
+    }
+
+    private void CheckIfGrappling()
+    {
+        if (IsGrappling && Input.GetButtonUp("Grapple"))
+        {
+            grappleJoint.enabled = false;
+            IsGrappling = false;
+            OnPlayerGrappleEnd?.Invoke();
+        }
     }
 
     private void WallStick()
@@ -535,6 +575,11 @@ public class PlayerController : MonoBehaviour
     }
 
     /// <summary>
+    /// Returns true if the Player is able to Move, Such as if the play is not sliding or dashing.
+    /// </summary>
+    private bool CanMove { get { return !IsSliding && !IsDashing; } }
+
+    /// <summary>
     /// Returns true if the Player is able to Jump.
     /// </summary>
     private bool CanJump { get { return IsGrounded || IsWallSliding || remainingAirJumps > 0; } }
@@ -552,7 +597,8 @@ public class PlayerController : MonoBehaviour
     /// <summary>
     /// Returns true if the Player is able to Move, Such as if the play is not sliding or dashing.
     /// </summary>
-    private bool CanMove { get { return !IsSliding && !IsDashing; } }
+    private bool CanGrapple { get { return true; } }
+
 
     private int FacingDirection { get { return IsFacingRight? 1 : -1; } }
 
