@@ -6,58 +6,65 @@ using UnityEngine;
 
 public class DecorationSelector : MonoBehaviour
 {
-    #region Public Variables
-    #endregion
-    #region Protected Variables
-    #endregion
     #region Private Variables
+
+    // Assets and components
     private Sprite sprite;
-    private SpriteRenderer spriteRenderer;
     [SerializeField] private Sprite[] selectorSpritesArray; // 0-empty, 1-pickable, 2-pickupPlaceable, 3-Bad, 4-Offgrid
-    private Vector3 selectorTargetLocation;
-    [SerializeField] float selectorMoveSpeed; // The speed that the selector lerps while following the mouse.
-    private float selectorSpinSpeed; // The current speed that the selector will spin
+    private SpriteRenderer spriteRenderer;
+    
+    private enum SelectorState {EMPTY, PICKABLE, PICKUP_PLACEABLE, BAD, OFFGRID } // All states that the selector can be in
+    private SelectorState selectorState = SelectorState.EMPTY; // The selector's current state. EMPTY is the defult state it will be in
+        
+    private Vector3 selectorTargetLocation; // Holds mouse location
+    [SerializeField] float selectorMoveSpeed; // The speed that the selector follows the mouse.
+    
+    private float selectorSpinSpeed; // The current speed that the selector will spin, from selectorSpinSpeedArray based on selector state
     [SerializeField] private float[] selectorSpinSpeedArray; //0-empty(stop), 1-pickable(slow), 2-pickupPlaceable(normal), 3-Bad(fast), 4-Offgrid(normal)
+    
     [SerializeField] private float scaleSpeed; // The speed that the scale lerps when changing
     [SerializeField] private Vector3 baseScaleValue; // The base scale that the selector has, will be worked out using the scale of the tilemap
     private Vector3 targetScaleValue;
-    private float scaleMultiplier;
+    private float scaleMultiplier; // The target scale that the selector will lerp to, from selectorScaleMultiplierArray based on selector state
     [SerializeField] private float[] selectorScaleMultiplierArray; //0-empty(normal), 1-pickable(big), 2-pickupPlaceable(big), 3-Bad(small), 4-Offgrid(normal)
-    private enum SelectorState {EMPTY, PICKABLE, PICKUP_PLACEABLE, BAD, OFFGRID }
-    private SelectorState selectorState = SelectorState.EMPTY;
-    private int selectorLayerMask;
+    
+    
 
-    [SerializeField] private AnimationCurve jumpCurve;
-    private float scaleJump = 1;
-    private float scaleJumpTimer = 1;
-    [SerializeField] private float scaleJumpMultiplier;
-    private float spinJump = 1;
-    private float spinJumpTimer;
-    [SerializeField] private float spinJumpMultiplier;
+    [SerializeField] private AnimationCurve jumpCurve; // The curve the selector will follow when jumping afer a click, gives an elastic look
+    private float scaleJump = 1.0f; // The ammount that scale is affected when jump
+    private float scaleJumpTimer = 1.0f; // Time since the last click
+    [SerializeField] private float scaleJumpMultiplier; // Multiplies scale jump by this value
+    private float spinJump = 1.0f; // The ammount that spin is affected when jump
+    private float spinJumpTimer = 1.0f;// Time since the last click
+    [SerializeField] private float spinJumpMultiplier; // Multiplies spin jump by this value
+    private float mouseDownSlowDown = 1f; // Multiplies rotation and scales by this, only changed when holding down a click
+    
+    
 
-    private bool isHoldingFurniture;
-    private bool isHoveringOverEditableObject;
-
-    private float mouseDownSlowDown = 1f;
+    
+    [SerializeField] private LayerMask selectorInteractionLayerMask; // Collision layers that selector interacts with
+    private Collider2D mouseDownObjectHit; // Holds the object that was selected on a click
 
     #endregion
 
     #region Functions
+    
     #region Initialisation
     private void Awake()
     {
         sprite = GetComponent<Sprite>();
         spriteRenderer = GetComponent<SpriteRenderer>();
-        selectorLayerMask = LayerMask.GetMask("Furniture");
     }
     private void Start()
     {
     }
     #endregion
-
-    // Update is called once per frame
+    
     private void Update()
     {
+        // Manages the spin jump of the selector when clicking, ensuring it progresses smoothly makes the selector return to normal after
+        #region Selector scale and spin jump management
+
         scaleJumpTimer += Time.deltaTime;
         spinJumpTimer += Time.deltaTime;
         if (scaleJumpTimer < 0.5f)
@@ -77,33 +84,77 @@ public class DecorationSelector : MonoBehaviour
             spinJump = 1;
         }
 
+        #endregion
 
+        // Controls the selector's current position, scale and rotation. Scale and rotation are affected by the selector's state, and spin jump when clicking
+        #region Selector transform control
 
-        selectorTargetLocation = GetMousePositionInWorld(transform.position.z);
-        transform.position = Vector3.Lerp(transform.position, selectorTargetLocation, selectorMoveSpeed * Time.deltaTime);
-        targetScaleValue = Vector3.Scale(baseScaleValue, baseScaleValue * scaleMultiplier * scaleJump) * mouseDownSlowDown;
-        transform.localScale = Vector3.Lerp(transform.localScale, targetScaleValue, scaleSpeed * mouseDownSlowDown * Time.deltaTime);
-        transform.rotation = Quaternion.Lerp(transform.rotation, transform.rotation * Quaternion.AngleAxis(90, Vector3.forward), selectorSpinSpeed * mouseDownSlowDown * Time.deltaTime * spinJump);
-        CheckObjectUnderMouse();
+        selectorTargetLocation = GetMousePositionInWorld(transform.position.z); // Sets target location as mouse position
+        transform.position = Vector3.Lerp(transform.position, selectorTargetLocation, selectorMoveSpeed * Time.deltaTime); // The selector will lerp towards the mouse position
+        targetScaleValue = Vector3.Scale(baseScaleValue, baseScaleValue * scaleMultiplier * scaleJump) * mouseDownSlowDown; // Gets the target scale of the selector, affected by changing state or when spin jumping
+        transform.localScale = Vector3.Lerp(transform.localScale, targetScaleValue, scaleSpeed * mouseDownSlowDown * Time.deltaTime); // Lerps scale of selector towards target scale
+        transform.rotation = Quaternion.Lerp(transform.rotation, transform.rotation * Quaternion.AngleAxis(90, Vector3.forward), selectorSpinSpeed * mouseDownSlowDown * Time.deltaTime * spinJump); // The selector is always rotating, the speed of this rotation is affected by changing state or when spin jumping
+        
+        #endregion
+        
+        // Controls the visual and funcionality of mouse clicks, object iteraction is passed through to Decoration Controller rather than being handled here
+        #region Click control
 
         if (Input.GetMouseButtonDown(0))
         {
-            mouseDownSlowDown = 0.9f;
+            mouseDownSlowDown = 0.9f; // Slows to rotation and reduced the scale of the selector slightly while holding a click
+            if (CheckObjectUnderMouse()) // If an interactable object is below the mouse
+            {
+                mouseDownObjectHit = CheckObjectUnderMouse(); // Stores the object that was under the mouse, doesn't signal an iteraction yet
+            }
         }
         if (Input.GetMouseButtonUp(0))
         {
-            scaleJumpTimer = 0.0f;
-            spinJumpTimer = 0.0f;
-            mouseDownSlowDown = 1f;
-            if (selectorState == SelectorState.PICKABLE)
+            scaleJumpTimer = 0.0f; // Makes selector scale jump with an elastic effect
+            spinJumpTimer = 0.0f; // Makes selector rotation speed jump with an elastic effect
+            mouseDownSlowDown = 1f; // Resets rotation and scale to normal
+            if (CheckObjectUnderMouse() == mouseDownObjectHit) // Checks if the click is released over the same object that it began on
             {
-                if (CheckObjectUnderMouse().gameObject.GetComponent<DecorationObject>())
-                {
-                    DecorationController.Instance.DecorationMoveStart(CheckObjectUnderMouse().gameObject);
-                }
-                
+                DecorationController.Instance.SelectorDecorationObjectInteract(mouseDownObjectHit.gameObject); // Signals Decoration Controller that the object has been interacted with
             }
         }
+
+        #endregion
+        
+
+        // This section of code controls the selector switching between states and visuals depending on what the player is currently doing
+        #region SelectorVisualStateSwitching
+
+        if (DecorationController.Instance.CurrentMoveFake)
+        {
+            if (DecorationController.Instance.CurrentMoveFake.GetComponent<DecorationMovingFake>().CheckIfPlaceable())
+            {
+                selectorState = SelectorState.PICKUP_PLACEABLE;
+            }
+            else
+            {
+                selectorState = SelectorState.BAD;
+            }
+        }
+        else
+        {
+            if (CheckObjectUnderMouse())
+            {
+                selectorState = SelectorState.PICKABLE;
+            }
+            else
+            {
+                selectorState = SelectorState.EMPTY;
+            }
+        }
+        int state = (int)selectorState; // Casts selector state into an int. (Scrapes the int value from it)
+        spriteRenderer.sprite = selectorSpritesArray[state];
+        selectorSpinSpeed = selectorSpinSpeedArray[state];
+        scaleMultiplier = selectorScaleMultiplierArray[state];
+
+        #endregion 
+        
+        
     }
 
     public Vector3 GetMousePositionInWorld(float _zValue)
@@ -113,32 +164,9 @@ public class DecorationSelector : MonoBehaviour
 
     public Collider2D CheckObjectUnderMouse()
     {
-        Collider2D hit = Physics2D.OverlapCircle(GetMousePositionInWorld(transform.position.z), 0.1f, selectorLayerMask);
-        if (hit)
-        {
-            selectorState = SelectorState.PICKABLE;
-        }
-        else
-        {
-            selectorState = SelectorState.EMPTY;
-        }
-        
-        int state = (int)selectorState; // Casts selector state into an int. (Scrapes the int value from it)
-        spriteRenderer.sprite = selectorSpritesArray[state];
-        selectorSpinSpeed = selectorSpinSpeedArray[state];
-        scaleMultiplier = selectorScaleMultiplierArray[state];
-        return hit;
+        return Physics2D.OverlapCircle(GetMousePositionInWorld(transform.position.z), 0.1f, selectorInteractionLayerMask);
     }
-
-
-
-
-    public void DestroySelector()
-    {
-
-        // if holding furnature put it down
-        Destroy(this.gameObject);
-    }
+    
     #endregion
 
 

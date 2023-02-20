@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.ComponentModel;
+using UnityEditorInternal;
 using UnityEngine;
 
 public class DecorationMovingFake : MonoBehaviour
@@ -19,6 +20,13 @@ public class DecorationMovingFake : MonoBehaviour
     [SerializeField] private ContactFilter2D placeableCheckContactFilter;
     [SerializeField] private LayerMask collisionCheckLayerMask;
 
+    [SerializeField] private float rotateSpeed;
+    [SerializeField] private float[] scrollRotateArray;
+    public int scrollRotateIndex = 4; // NEED TO SET THIS TO A GET PRIVATE SET
+
+
+    private bool isMovementComplete;
+
     public void Inititalise()
     {
         
@@ -34,13 +42,15 @@ public class DecorationMovingFake : MonoBehaviour
         transform.rotation = moveTarget.transform.rotation;
         transform.localScale = moveTarget.transform.localScale;
         isBeingMoved = true;
-    }
+
+}
 
     // Update is called once per frame
     void Update()
     {
         
         moveTargetPosition = DecorationController.Instance.DecorationSelector.transform.position;
+        moveTargetRotation = Quaternion.Euler(Vector3.forward * scrollRotateArray[scrollRotateIndex]);
         if (Vector3.Distance(transform.position, moveTargetPosition) > 0.01) //If the object is currently being moved, or hasn't reached their final placement after being placed
         { 
             transform.position = Vector3.Lerp(transform.position, moveTargetPosition, moveSpeed * Time.deltaTime);
@@ -48,11 +58,17 @@ public class DecorationMovingFake : MonoBehaviour
         else
         {
             transform.position = moveTargetPosition; // If the object is close to it's target position, just snap too it rather than moving exponentially slower
-            if (isPlaced)
-            {
-                // Send out signal that furniture should be moved
-            }
         }
+
+        if (transform.rotation != moveTargetRotation)
+        {
+            transform.rotation = Quaternion.Lerp(transform.rotation, moveTargetRotation, rotateSpeed * Time.deltaTime);
+        }
+        else if(transform.position == moveTargetPosition)
+        {
+            isMovementComplete = true;
+        }
+        
         // Lerp current rotation to target rotation. Target rotation will 
         
         if (CheckIfPlaceable())
@@ -63,6 +79,12 @@ public class DecorationMovingFake : MonoBehaviour
         {
             GetComponent<SpriteRenderer>().color = Color.red;
         }
+
+
+        if (isPlaced && isMovementComplete)
+        {
+            DecorationController.Instance.DecorationMoveEndFinish();
+        }
     }
 
     public bool CheckIfPlaceable() // Checks if any decorations are overlaping the held decoration's placement, and if all attach points are valid
@@ -71,15 +93,17 @@ public class DecorationMovingFake : MonoBehaviour
         Vector2 placementColliderPosition = new Vector2(transform.position.x, transform.position.y) + moveTarget.GetComponent<BoxCollider2D>().offset;
         Vector2 placementColliderSize = moveTarget.GetComponent<BoxCollider2D>().size;
     
-        Collider2D[] placementCollisionCheckResults = Physics2D.OverlapBoxAll(placementColliderPosition, placementColliderSize, 0.0f); // ADD ROTATION // Checks if any other decorations or a platform is overlapping the decoration
+        Collider2D[] placementCollisionCheckResults = Physics2D.OverlapBoxAll(placementColliderPosition, placementColliderSize, scrollRotateArray[scrollRotateIndex]); // ADD ROTATION // Checks if any other decorations or a platform is overlapping the decoration
         if (placementCollisionCheckResults.Length == 0 || (placementCollisionCheckResults.Length == 1 && placementCollisionCheckResults[0].gameObject == moveTarget)) // Checks if target location is overlapping other furniture or any platforms, ignoring itself
         {
             int successfulAttachPoints = 0;
             
             foreach (Vector3 _attachPointLocal in moveTarget.GetComponent<DecorationObject>().AttachmentPointsList) // Goes through each attach point
             {
-                
-                Vector2 attachPointGlobal = _attachPointLocal + transform.position;
+
+
+
+                Vector2 attachPointGlobal = RotatePointAroundPivot(_attachPointLocal + transform.position, transform.position, scrollRotateArray[scrollRotateIndex]) ;
                 if (Physics2D.OverlapCircle(attachPointGlobal, moveTarget.GetComponent<DecorationObject>().AttachmentPointRadius, collisionCheckLayerMask))
                 {
                     successfulAttachPoints++;
@@ -91,5 +115,41 @@ public class DecorationMovingFake : MonoBehaviour
             }
         }
         return placeable;
+    }
+
+    public void scrollRotate(bool _isForwards)
+    {
+        if (_isForwards)
+        {
+            if (scrollRotateIndex != scrollRotateArray.Length - 1)
+            {
+                scrollRotateIndex++;
+            }
+            else
+            {
+                scrollRotateIndex = 0;
+            }
+            
+        }
+        else
+        {
+            if (scrollRotateIndex != 0)
+            {
+                scrollRotateIndex--;
+            }
+            else
+            {
+                scrollRotateIndex = scrollRotateArray.Length - 1;
+            }
+        }
+        
+    }
+    public Vector2 RotatePointAroundPivot(Vector3 point, Vector3 pivot, float angle) {
+        return (Quaternion.Euler(Vector3.forward * angle) * (point - pivot)) + pivot;
+    }
+
+    public void placeDecorationFake()
+    {
+        isPlaced = true;
     }
 }

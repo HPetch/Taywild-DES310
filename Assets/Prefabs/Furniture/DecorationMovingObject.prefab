@@ -99,7 +99,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CollisionCheckerArray: []
-  objectType: 0
   moveSpeed: 20
   placeableCheckContactFilter:
     useTriggers: 0
@@ -118,6 +117,17 @@ MonoBehaviour:
   collisionCheckLayerMask:
     serializedVersion: 2
     m_Bits: 65
+  rotateSpeed: 10
+  scrollRotateArray:
+  - -20
+  - -15
+  - -10
+  - -5
+  - 0
+  - 5
+  - 10
+  - 15
+  - 20
 --- !u!1 &7290408396683820921
 GameObject:
   m_ObjectHideFlags: 0

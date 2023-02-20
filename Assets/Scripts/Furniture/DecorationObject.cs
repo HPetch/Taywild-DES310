@@ -10,6 +10,7 @@ public class DecorationObject : MonoBehaviour
     public ObjectType objectType;
     [field: SerializeField] public List<Vector3> AttachmentPointsList{ get; private set; }
     public float AttachmentPointRadius { get; private set; }
+    public int scrollRotateArrayHolder; // NEED TO CHANGE THIS TO A GET PRIVATE SET
 
     private void Start()
     {
