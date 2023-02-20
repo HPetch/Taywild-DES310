@@ -16,7 +16,6 @@ public class Partition : MonoBehaviour
 
     [field: Header("Camera Settings")]
     [field: SerializeField] public float TargetCameraSize { get; private set; } = 10f;
-    [field: SerializeField] public bool IsCameraFixed { get; private set; } = true;
 
     // The world size of the partition
     public Vector2 PartitionSizeInUnits { get { return ChunkSizeInUnits * PartitionSize; } }

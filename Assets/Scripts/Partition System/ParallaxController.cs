@@ -9,6 +9,11 @@ public class ParallaxController : MonoBehaviour
     private Transform playerCameraTransform = null;
     private Vector3 lastCameraPosition = Vector2.one;
 
+    private void Awake()
+    {
+        GetComponent<SpriteRenderer>().enabled = true;
+    }
+
     private void Start()
     {
         playerCameraTransform = CameraController.Instance.transform;

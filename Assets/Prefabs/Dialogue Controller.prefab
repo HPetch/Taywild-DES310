@@ -1718,7 +1718,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 0a33d9a788c867b44a63adeddd5b141a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: cb4bc7c1748fbd84eb28fbd8af27bba3, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -5923,6 +5923,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6613144180521518250}
   - component: {fileID: 2226161084525959038}
+  - component: {fileID: 729060868}
   m_Layer: 0
   m_Name: Dialogue Controller
   m_TagString: Untagged
@@ -5944,7 +5945,7 @@ Transform:
   m_Children:
   - {fileID: 3481324932519818402}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2226161084525959038
 MonoBehaviour:
@@ -5971,6 +5972,18 @@ MonoBehaviour:
   TextTypeSemiColonDelay: 0.05
   shortWait: 0.4
   longWait: 0.8
+--- !u!225 &729060868
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6613144180521518251}
+  m_Enabled: 1
+  m_Alpha: 0
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &6663806749084529904
 GameObject:
   m_ObjectHideFlags: 0
@@ -7521,11 +7534,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: This is <link="rainbow">some sample</link> text for <link="wave">the dialogue
-    system</link>. It <link="jiggle">supports</link> <color=#00C9D7>Rich Text</color>
-    and some <link="wave">custom</link> Images <sprite="Heart" index=0> embeded within
-    the text. <link="rainbow"> Test Rainbow </link>. This box can support four lines
-    of dialogue.
+  m_text: "First you will go and collect the \u2018Purifying Flower\u2019. A flower
+    of calming cerulean crystal blue petals and a scent of fresh rain, grown from
+    only the purest of dreams. The flower contains the properties..."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
