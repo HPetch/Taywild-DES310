@@ -82,7 +82,6 @@ public class DecorationSelector : MonoBehaviour
         selectorTargetLocation = GetMousePositionInWorld(transform.position.z);
         transform.position = Vector3.Lerp(transform.position, selectorTargetLocation, selectorMoveSpeed * Time.deltaTime);
         targetScaleValue = Vector3.Scale(baseScaleValue, baseScaleValue * scaleMultiplier * scaleJump) * mouseDownSlowDown;
-        print(selectorState);
         transform.localScale = Vector3.Lerp(transform.localScale, targetScaleValue, scaleSpeed * mouseDownSlowDown * Time.deltaTime);
         transform.rotation = Quaternion.Lerp(transform.rotation, transform.rotation * Quaternion.AngleAxis(90, Vector3.forward), selectorSpinSpeed * mouseDownSlowDown * Time.deltaTime * spinJump);
         CheckObjectUnderMouse();
@@ -98,7 +97,7 @@ public class DecorationSelector : MonoBehaviour
             mouseDownSlowDown = 1f;
             if (selectorState == SelectorState.PICKABLE)
             {
-                if (CheckObjectUnderMouse().gameObject.GetComponent<DecorationController>())
+                if (CheckObjectUnderMouse().gameObject.GetComponent<DecorationObject>())
                 {
                     DecorationController.Instance.DecorationMoveStart(CheckObjectUnderMouse().gameObject);
                 }

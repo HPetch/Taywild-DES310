@@ -13,7 +13,7 @@ public class DecorationObject : MonoBehaviour
 
     private void Start()
     {
-        
+        AttachmentPointRadius = GetComponentInChildren<CircleCollider2D>().radius;
     }
 
     public void StartPickup()
@@ -32,7 +32,7 @@ public class DecorationObject : MonoBehaviour
             
             if (_attachmentPoint.gameObject.tag == "Decoration Attach Point")
             {
-                AttachmentPointsList.Add(_attachmentPoint.position);
+                AttachmentPointsList.Add(_attachmentPoint.localPosition);
                 AttachmentPointRadius = _attachmentPoint.GetComponent<CircleCollider2D>().radius;
             }
         }
