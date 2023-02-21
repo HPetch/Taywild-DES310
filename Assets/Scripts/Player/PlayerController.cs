@@ -46,6 +46,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rb;
     private CapsuleCollider2D capsuleCollider;
 
+    #region Movement
     [Header("Movement Settings")]
 
     [Tooltip("How fast the player moves on the ground")]
@@ -57,10 +58,11 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float airMoveAcceleration = 2f;
 
     [Tooltip("How fast the player decelerates when in air and no input")]
-    [Range(0, 2)]
+    [Range(0, 1)]
     [SerializeField] private float airDragMultiplier = 0.95f;
 
     private Vector2 movementInput = Vector2.zero;
+    #endregion
 
     #region Jump
     [Space(10)]
@@ -150,6 +152,10 @@ public class PlayerController : MonoBehaviour
     [Range(0, 2)]
     [SerializeField] private float slideDuration = 0.4f;
 
+    [Tooltip("The cooldown between slides")]
+    [Range(0, 2)]
+    [SerializeField] private float slideCooldown = 1f;
+
     [Space(5)]
     [Tooltip("Dictates the behaviour of the slide over it's duration")]
     [SerializeField] private AnimationCurve slideCurve;
@@ -160,6 +166,7 @@ public class PlayerController : MonoBehaviour
     private float slideTimeElapsed = 0f;
     // Used to sample the slide curve
     private float slideCurveSamplePoint = 0f;
+    private float timeOfLastSlide = 0f;
     #endregion
 
     #region Dash
@@ -177,6 +184,9 @@ public class PlayerController : MonoBehaviour
     [Range(0, 2)]
     [SerializeField] private float dashCoolDown = 1f;
 
+    private readonly int maxDashes = 1;
+    private int remainingDashes = 1;
+    private float dashHeight = 0f;
     private float timeOfLastDash = 0f;
     private bool dashQueued = false;
     #endregion
@@ -199,8 +209,12 @@ public class PlayerController : MonoBehaviour
     private List<GrapplePoint> grapplePoints = new List<GrapplePoint>();
     private DistanceJoint2D grappleJoint;
     private bool grappleQueued = false;
+    private GrapplePoint grapplePoint;
     #endregion
 
+    #region Utility
+    private Vector2 lastKnownGroundPosition;
+    #endregion
     #endregion
 
     #region Functions
@@ -219,6 +233,8 @@ public class PlayerController : MonoBehaviour
 
         wallHopDirection.Normalize();
         wallJumpDirection.Normalize();
+
+        ResetActions();
     }
 
     private void Start()
@@ -245,25 +261,11 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         if (IsSliding) SlidingBehaviour();
+        if (IsDashing) DashingBehaviour();
 
         if (CanMove) ApplyMovement();
     }
     #endregion
-
-    private void CheckMovementDirection()
-    {
-        if (!IsWallSliding && !IsWallStuck)
-        {
-            if (IsFacingRight && movementInput.x < 0)
-            {
-                IsFacingRight = false;
-            }
-            else if (!IsFacingRight && movementInput.x > 0)
-            {
-                IsFacingRight = true;
-            }
-        }
-    }
 
     private void ApplyMovement()
     {
@@ -275,14 +277,21 @@ public class PlayerController : MonoBehaviour
         }
         else if (IsGrappling)
         {
+            // If the graple point is not valid then clamp the velocity
+            if (!grapplePoint.IsGrappleValid && velocity.y > 0f)
+            {
+                velocity *= new Vector2(0.8f, 0.8f);
+            }
+
             // If Movement Input
-            if (movementInput.x != 0)
+            else if (movementInput.x != 0)
             {
                 velocity.x += movementInput.x * grappleAcceleration;
-                    
+
                 // Clamp the movespeed
                 velocity = Vector2.ClampMagnitude(velocity, grappleMoveSpeed);
             }
+
         }
         // If NotGrounded and Not touching a wall and not Grappling
         else if (!IsTouchingWall)
@@ -318,13 +327,120 @@ public class PlayerController : MonoBehaviour
         rb.velocity = velocity;
     }
 
+    #region State Checks
+    private void CheckMovementDirection()
+    {
+        if (!IsWallSliding && !IsWallStuck)
+        {
+            if (IsFacingRight && movementInput.x < 0)
+            {
+                IsFacingRight = false;
+            }
+            else if (!IsFacingRight && movementInput.x > 0)
+            {
+                IsFacingRight = true;
+            }
+        }
+    }
+
+    /// <summary>
+    /// Uses a BoxCast on the platform layer to determine if the player is grounded, takes into consideration coyote time.
+    /// </summary>
+    /// <returns> Returns true if the player is either grounded or coyote grounded.</returns>
+    private void CheckIfPlayerIsGrounded()
+    {
+        bool isGroundedThisFrame = Physics2D.BoxCast(capsuleCollider.bounds.center, new Vector3(capsuleCollider.bounds.size.x * 0.75f, capsuleCollider.bounds.size.y, capsuleCollider.bounds.size.z), 0f, Vector2.down, 0.001f, platformLayerMask);
+        DrawDebugInfo();
+
+        // If the player is grounded this frame
+        if (isGroundedThisFrame)
+        {
+            // And coyote time has passed since the last ground jump
+            if (TimeSinceLastGroundedJump > coyoteTime)
+            {
+                // This is a true grounded
+                timeOfLastTrueIsGrounded = Time.time;
+                lastKnownGroundPosition = transform.position;
+
+                // If the player was not grounded on the previous frame but is grounded this frame, then they have landed
+                if (!IsGrounded)
+                {
+                    // Reset air jumps
+                    ResetActions();
+
+                    // If Player was wall sliding previouse frame, and landed this frame. flip the direction
+                    if (IsWallSliding) IsFacingRight = !IsFacingRight;
+
+                    OnPlayerLand?.Invoke();
+                }
+            }
+            // If the player is grounded this frame but coyote time has not passed since the last grounded jump
+            // The player should not be grounded this frame
+            // This prevents grounded being true the frame after a grounded jump
+            else
+            {
+                isGroundedThisFrame = false;
+            }
+        }
+        // If the player is not grounded this frame but is within coyote time and they didn't ground Jump, then they are grounded
+        else if (TimeSinceLastTrueGround < coyoteTime && TimeSinceLastGroundedJump > coyoteTime)
+        {
+            isGroundedThisFrame = true;
+        }
+
+        IsGrounded = isGroundedThisFrame;
+    }
+
+    private void CheckIfWallTouching()
+    {
+        bool isTouchingWallThisFrame = Physics2D.Raycast(capsuleCollider.bounds.center, Vector2.right * FacingDirection, wallCheckDistance, wallLayerMask);
+
+        // If player is not on the ground and is touching wall this frame, but not the last frame, then the player has hit a wall
+        if (!IsGrounded && isTouchingWallThisFrame && !IsTouchingWall)
+        {
+            timeOfLastWallHit = Time.time;
+            WallStick();
+
+            OnPlayerWallHit?.Invoke();
+        }
+
+        IsTouchingWall = isTouchingWallThisFrame;
+    }
+
+    private void CheckIfWallStuck()
+    {
+        // If IsWallStuck & wallStickTime is exceeded, then Unstick
+        if (IsWallStuck && TimeSinceLastWallHit > wallStickTime)
+        {
+            UnWallSick();
+        }
+    }
+
+    private void CheckIfWallSliding()
+    {
+        // Player IsWallSliding if they are not grounded, touching a wall, not wall stuck, and they are falling
+        bool IsWallSlidingThisFrame = !IsGrounded && IsTouchingWall && !IsWallStuck && rb.velocity.y <= 0;
+
+        if (IsWallSlidingThisFrame && !IsWallSliding) OnPlayerWallSlide?.Invoke();
+        else if (!IsWallSlidingThisFrame && IsWallSliding) OnPlayerWallSlideEnd?.Invoke();
+
+        IsWallSliding = IsWallSlidingThisFrame;
+    }
+
+    private void CheckIfDashing()
+    {
+        // If Player IsDashing & within dash duration they are still dashing, else they are not
+        IsDashing = IsDashing && TimeSinceLastDash < dashDuration;
+    }
+    #endregion
+
     #region ActionInputs
     /// <summary>
     /// Executes the action inputs if they are available and the player input is not locked.
     /// </summary>
     private void HandleActionInput()
     {
-        // If the dialogue or transition systems have locked the player's input
+        // If the dialogue system has locked the player's input
         if (IsLockedInput) return;
 
         ResolveQue();
@@ -386,12 +502,13 @@ public class PlayerController : MonoBehaviour
         if (IsGrappling)
         {
             IsGrappling = false;
+            grapplePoint = null;
             grappleJoint.enabled = false;
 
             rb.velocity = new Vector2(rb.velocity.x, grapplingJumpForce);
 
             OnPlayerGrappleEnd?.Invoke();
-        }
+        }        
 
         // If player is grounded do a ground jump
         else if (IsGrounded)
@@ -442,6 +559,7 @@ public class PlayerController : MonoBehaviour
         IsSliding = true;
         slideTimeElapsed = 0;
         slideCurveSamplePoint = 0;
+        timeOfLastSlide = Time.time;
 
         OnPlayerSlide?.Invoke();
     }
@@ -459,10 +577,22 @@ public class PlayerController : MonoBehaviour
         IsSliding = slideTimeElapsed <= slideDuration;
     }
 
-    private void Dash()
+    private void DashingBehaviour()
     {
+        if (transform.position.y < dashHeight)
+        {
+            transform.position = new Vector2(transform.position.x, dashHeight);
+            rb.velocity = new Vector2(rb.velocity.x, 0f);
+        }
+    }
+
+    private void Dash()
+    {       
         IsDashing = true;
         timeOfLastDash = Time.time;
+
+        remainingDashes--;
+        dashHeight = transform.position.y;
 
         rb.velocity = new Vector2(FacingDirection * dashSpeed, rb.velocity.y);
         OnPlayerDash?.Invoke();
@@ -471,9 +601,16 @@ public class PlayerController : MonoBehaviour
     private void Grapple()
     {
         IsGrappling = true;
-        remainingAirJumps = maxAirJumps;
+        ResetActions();
 
-        GrapplePoint grapplePoint = GetClosestGrapplePoint();
+        grapplePoint = GetClosestGrapplePoint();
+        
+        // Player is too close to the grapple
+        if (Vector2.Distance(GrappleAnchorPosition, grapplePoint.transform.position) < grapplePoint.GrappleDistance.x)
+        {
+            Vector2 direction = (GrappleAnchorPosition - (Vector2)grapplePoint.transform.position).normalized;
+            transform.position = (Vector2)grapplePoint.transform.position + direction * grapplePoint.GrappleDistance.x * 2;
+        }
 
         grappleJoint.connectedAnchor = grapplePoint.transform.position;
         grappleJoint.enabled = true;
@@ -513,7 +650,36 @@ public class PlayerController : MonoBehaviour
     }
     #endregion
 
+    #region WallStick
+    private void WallStick()
+    {
+        IsWallStuck = true;
+        rb.constraints = RigidbodyConstraints2D.FreezeRotation | RigidbodyConstraints2D.FreezePositionY;
+
+        // Reset air jumps
+        remainingAirJumps = maxAirJumps;
+    }
+
+    private void UnWallSick()
+    {
+        IsWallStuck = false;
+        rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+        rb.velocity = new Vector2(0, -.1f);
+    }
+    #endregion
+
     #region Utilities
+    private void ResetActions()
+    {
+        remainingAirJumps = maxAirJumps;
+        remainingDashes = maxDashes;
+    }
+
+    public void ResetPlayerToLastKnownPosition()
+    {
+        transform.position = lastKnownGroundPosition;
+    }
+
     /// <summary>
     /// Locks the Players movement and action inputs.
     /// </summary>
@@ -529,113 +695,7 @@ public class PlayerController : MonoBehaviour
     private void UnLockPlayerInput()
     {
         IsLockedInput = false;
-    }
-
-    /// <summary>
-    /// Uses a BoxCast on the platform layer to determine if the player is grounded, takes into consideration coyote time.
-    /// </summary>
-    /// <returns> Returns true if the player is either grounded or coyote grounded.</returns>
-    private void CheckIfPlayerIsGrounded()
-    {
-        bool isGroundedThisFrame = Physics2D.BoxCast(capsuleCollider.bounds.center, new Vector3(capsuleCollider.bounds.size.x * 0.75f, capsuleCollider.bounds.size.y, capsuleCollider.bounds.size.z), 0f, Vector2.down, 0.001f, platformLayerMask);
-        DrawDebugInfo();
-
-        // If the player is grounded this frame
-        if (isGroundedThisFrame)
-        {
-            // And coyote time has passed since the last ground jump
-            if (TimeSinceLastGroundedJump > coyoteTime)
-            {
-                // This is a true grounded
-                timeOfLastTrueIsGrounded = Time.time;
-
-                // If the player was not grounded on the previous frame but is grounded this frame, then they have landed
-                if (!IsGrounded)
-                {
-                    // Reset air jumps
-                    remainingAirJumps = maxAirJumps;
-
-                    // If Player was wall sliding previouse frame, and landed this frame. flip the direction
-                    if(IsWallSliding) IsFacingRight = !IsFacingRight;
-
-                    OnPlayerLand?.Invoke();
-                }
-            }
-            // If the player is grounded this frame but coyote time has not passed since the last grounded jump
-            // The player should not be grounded this frame
-            // This prevents grounded being true the frame after a grounded jump
-            else
-            {
-                isGroundedThisFrame = false;
-            }
-        }
-        // If the player is not grounded this frame but is within coyote time and they didn't ground Jump, then they are grounded
-        else if (TimeSinceLastTrueGround < coyoteTime && TimeSinceLastGroundedJump > coyoteTime)
-        {
-            isGroundedThisFrame = true;
-        }
-
-        IsGrounded = isGroundedThisFrame;
-    }
-
-    private void CheckIfWallTouching()
-    {
-        bool isTouchingWallThisFrame = Physics2D.Raycast(capsuleCollider.bounds.center, Vector2.right * FacingDirection, wallCheckDistance, wallLayerMask)/* ||
-                                       Physics2D.Raycast(capsuleCollider.bounds.center, Vector2.left, wallCheckDistance, wallLayerMask)*/;
-
-        // If player is not on the ground and is touching wall this frame, but not the last frame, then the player has hit a wall
-        if (!IsGrounded && isTouchingWallThisFrame && !IsTouchingWall)
-        {
-            timeOfLastWallHit = Time.time;
-            WallStick();
-
-            OnPlayerWallHit?.Invoke();
-        }
-
-        IsTouchingWall = isTouchingWallThisFrame;
-    }
-
-    private void CheckIfWallStuck()
-    {
-        // If IsWallStuck & wallStickTime is exceeded, then Unstick
-        if (IsWallStuck && TimeSinceLastWallHit > wallStickTime)
-        {
-            UnWallSick();
-        }
-    }
-
-    private void CheckIfWallSliding()
-    {
-        // Player IsWallSliding if they are not grounded, touching a wall, not wall stuck, and they are falling
-        bool IsWallSlidingThisFrame = !IsGrounded && IsTouchingWall && !IsWallStuck && rb.velocity.y <= 0;
-
-        if (IsWallSlidingThisFrame && !IsWallSliding) OnPlayerWallSlide?.Invoke();
-        else if (!IsWallSlidingThisFrame && IsWallSliding) OnPlayerWallSlideEnd?.Invoke();
-
-        IsWallSliding = IsWallSlidingThisFrame;
-    }
-
-    private void CheckIfDashing()
-    {
-        // If Player IsDashing & within dash duration they are still dashing, else they are not
-        IsDashing = IsDashing && TimeSinceLastDash < dashDuration;
-    }
-
-    private void WallStick()
-    {
-        IsWallStuck = true;
-        rb.constraints = RigidbodyConstraints2D.FreezeRotation | RigidbodyConstraints2D.FreezePositionY;
-        
-        // Reset air jumps
-        remainingAirJumps = maxAirJumps;
-    }
-
-    private void UnWallSick()
-    {
-        IsWallStuck = false;
-        rb.constraints = RigidbodyConstraints2D.FreezeRotation;
-        rb.velocity = new Vector2(0, -.1f);
-    }
+    }    
 
     /// <summary>
     /// Returns true if the Player is able to Move, Such as if the play is not sliding or dashing.
@@ -645,17 +705,17 @@ public class PlayerController : MonoBehaviour
     /// <summary>
     /// Returns true if the Player is able to Jump.
     /// </summary>
-    private bool CanJump { get { return IsGrounded || IsWallSliding || IsGrappling || remainingAirJumps > 0; } }
+    private bool CanJump { get { return IsGrounded || IsGrappling || remainingAirJumps > 0 || IsTouchingWall; } }
 
     /// <summary>
     /// Returns true if the Player is able to Slide.
     /// </summary>
-    private bool CanSlide { get { return IsGrounded && !IsSliding && !IsDashing && !IsGrappling && movementInput.x != 0; } }
+    private bool CanSlide { get { return IsGrounded && !IsSliding && !IsDashing && !IsGrappling && movementInput.x != 0 && TimeSinceLastSlide > slideCooldown; } }
 
     /// <summary>
     /// Returns true if the Player is able to Dash.
     /// </summary>
-    private bool CanDash { get { return !IsSliding && !IsDashing && !IsGrappling && (Time.time - timeOfLastDash > dashCoolDown) && movementInput.x != 0; } }
+    private bool CanDash { get { return !IsSliding && !IsDashing && !IsGrappling && movementInput.x != 0 && remainingDashes > 0 && TimeSinceLastDash > dashCoolDown; } }
 
     /// <summary>
     /// Returns true if the Player is able to Move, Such as if the play is not sliding or dashing.
@@ -665,6 +725,7 @@ public class PlayerController : MonoBehaviour
 
     private int FacingDirection { get { return IsFacingRight? 1 : -1; } }
     private float TimeSinceLastDash { get { return Time.time - timeOfLastDash; } }
+    private float TimeSinceLastSlide { get { return Time.time - timeOfLastSlide; } }
     private float TimeSinceLastTrueGround { get { return Time.time - timeOfLastTrueIsGrounded; } }
     private float TimeSinceLastGroundedJump { get { return Time.time - timeOfLastGroundedJump; } }
     private float TimeSinceLastWallHit { get { return Time.time - timeOfLastWallHit; } }
