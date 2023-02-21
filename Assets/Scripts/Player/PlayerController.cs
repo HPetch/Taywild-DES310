@@ -263,7 +263,7 @@ public class PlayerController : MonoBehaviour
         if (IsSliding) SlidingBehaviour();
         if (IsDashing) DashingBehaviour();
 
-        if (CanMove) ApplyMovement();
+        if (CanMove) ApplyMovement();      
     }
     #endregion
 

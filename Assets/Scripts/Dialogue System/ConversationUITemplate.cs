@@ -1,4 +1,5 @@
 using TMPro;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,6 +8,7 @@ public class ConversationUITemplate : MonoBehaviour
     [System.Serializable]
     public struct BranchButton
     {
+        public CanvasGroup canvasGroup;
         public TextMeshProUGUI buttonText;
         public Image buttonBckground;
     };
@@ -31,31 +33,36 @@ public class ConversationUITemplate : MonoBehaviour
 
     [field: Header("Buttons")]
     [field: SerializeField] public BranchButton[] BranchButtons { get; private set; } = new BranchButton[4];
+
+    private CanvasGroup canvasGroup;
     #endregion
 
     #region Functions
     #region Initialisation
     private void Awake()
     {
-        
+        canvasGroup = GetComponent<CanvasGroup>();
     }
     #endregion
 
-    public virtual void SetConversationEvent(ConversationEvent conversationEvent)
+    #region
+    private IEnumerator TransitionIn()
     {
-
+        yield return null;
     }
 
-    public virtual void TransitionIn()
+    private IEnumerator TransitionOut()
     {
-
+        yield return null;
     }
 
-    public virtual void TransitionOut()
+    private IEnumerator ChangeCharacter()
     {
-
+        yield return null;
     }
+    #endregion
 
+    #region Utility
     private void Reset()
     {
         Transform character = transform.Find("Character");
@@ -75,8 +82,10 @@ public class ConversationUITemplate : MonoBehaviour
         for (int button = 0; button < 4; button++)
         {
             BranchButtons[button].buttonBckground = branchButtons.Find("Button " + (button + 1)).GetComponent<Image>();
+            BranchButtons[button].canvasGroup = BranchButtons[button].buttonBckground.GetComponent<CanvasGroup>();
             BranchButtons[button].buttonText = BranchButtons[button].buttonBckground.transform.Find("Button " + (button + 1) + " Text").GetComponent<TextMeshProUGUI>();
         }
     }
+    #endregion
     #endregion
 }

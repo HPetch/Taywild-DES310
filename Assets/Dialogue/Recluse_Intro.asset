@@ -1,0 +1,331 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7cbc4b41b77721d4595252707209aee3, type: 3}
+  m_Name: Recluse_Intro
+  m_EditorClassIdentifier: 
+  <ConversationStartDelay>k__BackingField: 0
+  <ConversationEndDelay>k__BackingField: 0.2
+  <ConversationEvents>k__BackingField:
+  - <EventType>k__BackingField: 1
+    <UITemplate>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: c11bdf3877896b84dac6bdb375297575, type: 2}
+    <Text>k__BackingField: The quaint greenhouse door is locked tightly shut.
+    <Quest>k__BackingField: {fileID: 0}
+    <Cutscene>k__BackingField: {fileID: 0}
+    <BranchType>k__BackingField: 0
+    <BranchEvents>k__BackingField:
+    - <ButtonText>k__BackingField: Politely Knock
+      <Conversation>k__BackingField: []
+    - <ButtonText>k__BackingField: Open Door
+      <Conversation>k__BackingField: []
+    <BranchConversations>k__BackingField: []
+  - <EventType>k__BackingField: 3
+    <UITemplate>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: c11bdf3877896b84dac6bdb375297575, type: 2}
+    <Text>k__BackingField: The quaint greenhouse door is locked tightly shut.
+    <Quest>k__BackingField: {fileID: 0}
+    <Cutscene>k__BackingField: {fileID: 0}
+    <BranchType>k__BackingField: 0
+    <BranchEvents>k__BackingField:
+    - <ButtonText>k__BackingField: Politely Knock
+      <Conversation>k__BackingField: []
+    - <ButtonText>k__BackingField: Open Door
+      <Conversation>k__BackingField: []
+    <BranchConversations>k__BackingField: []
+  - <EventType>k__BackingField: 1
+    <UITemplate>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 4d46490a566f8dd4db8b9da467c58c40, type: 2}
+    <Text>k__BackingField: You will go away. The infected are not allowed within
+      the greenhouse.
+    <Quest>k__BackingField: {fileID: 0}
+    <Cutscene>k__BackingField: {fileID: 0}
+    <BranchType>k__BackingField: 0
+    <BranchEvents>k__BackingField:
+    - <ButtonText>k__BackingField: Excuse me?
+      <Conversation>k__BackingField:
+      - <EventType>k__BackingField: 0
+        <UITemplate>k__BackingField: 0
+        <Character>k__BackingField: {fileID: 11400000, guid: 4d46490a566f8dd4db8b9da467c58c40, type: 2}
+        <Text>k__BackingField: Everyone is infected. Except me. I am safe from that
+          here.
+        <Quest>k__BackingField: {fileID: 0}
+        <Cutscene>k__BackingField: {fileID: 0}
+        <BranchConversations>k__BackingField: []
+    - <ButtonText>k__BackingField: Diseased?!
+      <Conversation>k__BackingField:
+      - <EventType>k__BackingField: 0
+        <UITemplate>k__BackingField: 0
+        <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
+        <Text>k__BackingField: Did you just call me diseased?!
+        <Quest>k__BackingField: {fileID: 0}
+        <Cutscene>k__BackingField: {fileID: 0}
+        <BranchConversations>k__BackingField: []
+      - <EventType>k__BackingField: 0
+        <UITemplate>k__BackingField: 0
+        <Character>k__BackingField: {fileID: 11400000, guid: 4d46490a566f8dd4db8b9da467c58c40, type: 2}
+        <Text>k__BackingField: Everyone is infected. Except me. I am safe from that
+          here.
+        <Quest>k__BackingField: {fileID: 0}
+        <Cutscene>k__BackingField: {fileID: 0}
+        <BranchConversations>k__BackingField: []
+    - <ButtonText>k__BackingField: Sorry
+      <Conversation>k__BackingField:
+      - <EventType>k__BackingField: 0
+        <UITemplate>k__BackingField: 0
+        <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
+        <Text>k__BackingField: "Oh okay, I\u2019m sorry. *turn to leave*"
+        <Quest>k__BackingField: {fileID: 0}
+        <Cutscene>k__BackingField: {fileID: 0}
+        <BranchConversations>k__BackingField: []
+    <BranchConversations>k__BackingField: []
+  - <EventType>k__BackingField: 1
+    <UITemplate>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 4d46490a566f8dd4db8b9da467c58c40, type: 2}
+    <Text>k__BackingField: BUT I guess if you are not a danger to my plants it can
+      be OK. You are not as loud and pestering as the other one.
+    <Quest>k__BackingField: {fileID: 0}
+    <Cutscene>k__BackingField: {fileID: 0}
+    <BranchType>k__BackingField: 0
+    <BranchEvents>k__BackingField:
+    - <ButtonText>k__BackingField: I would never hurt a plant!
+      <Conversation>k__BackingField: []
+    - <ButtonText>k__BackingField: Can I come in then?
+      <Conversation>k__BackingField: []
+    - <ButtonText>k__BackingField: "\u2026the other one?"
+      <Conversation>k__BackingField:
+      - <EventType>k__BackingField: 0
+        <UITemplate>k__BackingField: 0
+        <Character>k__BackingField: {fileID: 11400000, guid: 4d46490a566f8dd4db8b9da467c58c40, type: 2}
+        <Text>k__BackingField: "Hmm yes the \u2018other one\u2019. Like a walking
+          construction site of noise."
+        <Quest>k__BackingField: {fileID: 0}
+        <Cutscene>k__BackingField: {fileID: 0}
+        <BranchConversations>k__BackingField: []
+      - <EventType>k__BackingField: 0
+        <UITemplate>k__BackingField: 0
+        <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
+        <Text>k__BackingField: "Hmm yes the \u2018other one\u2019. Like a walking
+          construction site of noise."
+        <Quest>k__BackingField: {fileID: 0}
+        <Cutscene>k__BackingField: {fileID: 0}
+        <BranchConversations>k__BackingField: []
+    <BranchConversations>k__BackingField: []
+  - <EventType>k__BackingField: 0
+    <UITemplate>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 4d46490a566f8dd4db8b9da467c58c40, type: 2}
+    <Text>k__BackingField: Hmm,<link="wait_long"></link> HOWEVER!
+    <Quest>k__BackingField: {fileID: 0}
+    <Cutscene>k__BackingField: {fileID: 0}
+    <BranchType>k__BackingField: 0
+    <BranchEvents>k__BackingField:
+    - <ButtonText>k__BackingField: I would never hurt a plant!
+      <Conversation>k__BackingField: []
+    - <ButtonText>k__BackingField: Can I come in then?
+      <Conversation>k__BackingField: []
+    - <ButtonText>k__BackingField: "\u2026the other one?"
+      <Conversation>k__BackingField:
+      - <EventType>k__BackingField: 0
+        <UITemplate>k__BackingField: 0
+        <Character>k__BackingField: {fileID: 11400000, guid: 4d46490a566f8dd4db8b9da467c58c40, type: 2}
+        <Text>k__BackingField: "Hmm yes the \u2018other one\u2019. Like a walking
+          construction site of noise."
+        <Quest>k__BackingField: {fileID: 0}
+        <Cutscene>k__BackingField: {fileID: 0}
+        <BranchConversations>k__BackingField: []
+      - <EventType>k__BackingField: 0
+        <UITemplate>k__BackingField: 0
+        <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
+        <Text>k__BackingField: "Hmm yes the \u2018other one\u2019. Like a walking
+          construction site of noise."
+        <Quest>k__BackingField: {fileID: 0}
+        <Cutscene>k__BackingField: {fileID: 0}
+        <BranchConversations>k__BackingField: []
+    <BranchConversations>k__BackingField: []
+  - <EventType>k__BackingField: 0
+    <UITemplate>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 4d46490a566f8dd4db8b9da467c58c40, type: 2}
+    <Text>k__BackingField: "First you will go and collect the \u2018Purifying Flower\u2019.
+      A flower of calming cerulean crystal blue petals and a scent of fresh rain,
+      grown from only the purest of dreams."
+    <Quest>k__BackingField: {fileID: 0}
+    <Cutscene>k__BackingField: {fileID: 0}
+    <BranchType>k__BackingField: 0
+    <BranchEvents>k__BackingField:
+    - <ButtonText>k__BackingField: I would never hurt a plant!
+      <Conversation>k__BackingField: []
+    - <ButtonText>k__BackingField: Can I come in then?
+      <Conversation>k__BackingField: []
+    - <ButtonText>k__BackingField: "\u2026the other one?"
+      <Conversation>k__BackingField:
+      - <EventType>k__BackingField: 0
+        <UITemplate>k__BackingField: 0
+        <Character>k__BackingField: {fileID: 11400000, guid: 4d46490a566f8dd4db8b9da467c58c40, type: 2}
+        <Text>k__BackingField: "Hmm yes the \u2018other one\u2019. Like a walking
+          construction site of noise."
+        <Quest>k__BackingField: {fileID: 0}
+        <Cutscene>k__BackingField: {fileID: 0}
+        <BranchConversations>k__BackingField: []
+      - <EventType>k__BackingField: 0
+        <UITemplate>k__BackingField: 0
+        <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
+        <Text>k__BackingField: "Hmm yes the \u2018other one\u2019. Like a walking
+          construction site of noise."
+        <Quest>k__BackingField: {fileID: 0}
+        <Cutscene>k__BackingField: {fileID: 0}
+        <BranchConversations>k__BackingField: []
+    <BranchConversations>k__BackingField: []
+  - <EventType>k__BackingField: 1
+    <UITemplate>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 4d46490a566f8dd4db8b9da467c58c40, type: 2}
+    <Text>k__BackingField: The flower contains the properties to cleanse someone
+      of any rot or blight that they might carry should they only touch it. It can
+      only be found by the source of a river, where the water is at its cleanest.
+    <Quest>k__BackingField: {fileID: 0}
+    <Cutscene>k__BackingField: {fileID: 0}
+    <BranchType>k__BackingField: 0
+    <BranchEvents>k__BackingField:
+    - <ButtonText>k__BackingField: Okay!
+      <Conversation>k__BackingField:
+      - <EventType>k__BackingField: 0
+        <UITemplate>k__BackingField: 0
+        <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
+        <Text>k__BackingField: If that's what it takes.
+        <Quest>k__BackingField: {fileID: 0}
+        <Cutscene>k__BackingField: {fileID: 0}
+        <BranchConversations>k__BackingField: []
+    - <ButtonText>k__BackingField: That's a lot
+      <Conversation>k__BackingField:
+      - <EventType>k__BackingField: 0
+        <UITemplate>k__BackingField: 0
+        <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
+        <Text>k__BackingField: Sounds like you know a lot about it.
+        <Quest>k__BackingField: {fileID: 0}
+        <Cutscene>k__BackingField: {fileID: 0}
+        <BranchConversations>k__BackingField: []
+    - <ButtonText>k__BackingField: ...
+      <Conversation>k__BackingField:
+      - <EventType>k__BackingField: 0
+        <UITemplate>k__BackingField: 0
+        <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
+        <Text>k__BackingField: "*<i>Feel awkward and don\u2019t say anything*</i>"
+        <Quest>k__BackingField: {fileID: 0}
+        <Cutscene>k__BackingField: {fileID: 0}
+        <BranchConversations>k__BackingField: []
+    <BranchConversations>k__BackingField: []
+  - <EventType>k__BackingField: 0
+    <UITemplate>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 4d46490a566f8dd4db8b9da467c58c40, type: 2}
+    <Text>k__BackingField: Hmm,<link="wait_short"></link> okay you will leave now.
+    <Quest>k__BackingField: {fileID: 0}
+    <Cutscene>k__BackingField: {fileID: 0}
+    <BranchType>k__BackingField: 0
+    <BranchEvents>k__BackingField:
+    - <ButtonText>k__BackingField: Okay!
+      <Conversation>k__BackingField:
+      - <EventType>k__BackingField: 0
+        <UITemplate>k__BackingField: 0
+        <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
+        <Text>k__BackingField: If that's what it takes.
+        <Quest>k__BackingField: {fileID: 0}
+        <Cutscene>k__BackingField: {fileID: 0}
+        <BranchConversations>k__BackingField: []
+    - <ButtonText>k__BackingField: That's a lot
+      <Conversation>k__BackingField:
+      - <EventType>k__BackingField: 0
+        <UITemplate>k__BackingField: 0
+        <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
+        <Text>k__BackingField: Sounds like you know a lot about it.
+        <Quest>k__BackingField: {fileID: 0}
+        <Cutscene>k__BackingField: {fileID: 0}
+        <BranchConversations>k__BackingField: []
+    - <ButtonText>k__BackingField: ...
+      <Conversation>k__BackingField:
+      - <EventType>k__BackingField: 0
+        <UITemplate>k__BackingField: 0
+        <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
+        <Text>k__BackingField: "*<i>Feel awkward and don\u2019t say anything*</i>"
+        <Quest>k__BackingField: {fileID: 0}
+        <Cutscene>k__BackingField: {fileID: 0}
+        <BranchConversations>k__BackingField: []
+    <BranchConversations>k__BackingField: []
+  - <EventType>k__BackingField: 3
+    <UITemplate>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 4d46490a566f8dd4db8b9da467c58c40, type: 2}
+    <Text>k__BackingField: Hmm,<link="wait_short"></link> okay you will leave now.
+    <Quest>k__BackingField: {fileID: 0}
+    <Cutscene>k__BackingField: {fileID: 0}
+    <BranchType>k__BackingField: 0
+    <BranchEvents>k__BackingField:
+    - <ButtonText>k__BackingField: Okay!
+      <Conversation>k__BackingField:
+      - <EventType>k__BackingField: 0
+        <UITemplate>k__BackingField: 0
+        <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
+        <Text>k__BackingField: If that's what it takes.
+        <Quest>k__BackingField: {fileID: 0}
+        <Cutscene>k__BackingField: {fileID: 0}
+        <BranchConversations>k__BackingField: []
+    - <ButtonText>k__BackingField: That's a lot
+      <Conversation>k__BackingField:
+      - <EventType>k__BackingField: 0
+        <UITemplate>k__BackingField: 0
+        <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
+        <Text>k__BackingField: Sounds like you know a lot about it.
+        <Quest>k__BackingField: {fileID: 0}
+        <Cutscene>k__BackingField: {fileID: 0}
+        <BranchConversations>k__BackingField: []
+    - <ButtonText>k__BackingField: ...
+      <Conversation>k__BackingField:
+      - <EventType>k__BackingField: 0
+        <UITemplate>k__BackingField: 0
+        <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
+        <Text>k__BackingField: "*<i>Feel awkward and don\u2019t say anything*</i>"
+        <Quest>k__BackingField: {fileID: 0}
+        <Cutscene>k__BackingField: {fileID: 0}
+        <BranchConversations>k__BackingField: []
+    <BranchConversations>k__BackingField: []
+  - <EventType>k__BackingField: 2
+    <UITemplate>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 4d46490a566f8dd4db8b9da467c58c40, type: 2}
+    <Text>k__BackingField: Hmm,<link="wait_short"></link> okay you will leave now.
+    <Quest>k__BackingField: {fileID: 0}
+    <Cutscene>k__BackingField: {fileID: 0}
+    <BranchType>k__BackingField: 0
+    <BranchEvents>k__BackingField:
+    - <ButtonText>k__BackingField: Okay!
+      <Conversation>k__BackingField:
+      - <EventType>k__BackingField: 0
+        <UITemplate>k__BackingField: 0
+        <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
+        <Text>k__BackingField: If that's what it takes.
+        <Quest>k__BackingField: {fileID: 0}
+        <Cutscene>k__BackingField: {fileID: 0}
+        <BranchConversations>k__BackingField: []
+    - <ButtonText>k__BackingField: That's a lot
+      <Conversation>k__BackingField:
+      - <EventType>k__BackingField: 0
+        <UITemplate>k__BackingField: 0
+        <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
+        <Text>k__BackingField: Sounds like you know a lot about it.
+        <Quest>k__BackingField: {fileID: 0}
+        <Cutscene>k__BackingField: {fileID: 0}
+        <BranchConversations>k__BackingField: []
+    - <ButtonText>k__BackingField: ...
+      <Conversation>k__BackingField:
+      - <EventType>k__BackingField: 0
+        <UITemplate>k__BackingField: 0
+        <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
+        <Text>k__BackingField: "*<i>Feel awkward and don\u2019t say anything*</i>"
+        <Quest>k__BackingField: {fileID: 0}
+        <Cutscene>k__BackingField: {fileID: 0}
+        <BranchConversations>k__BackingField: []
+    <BranchConversations>k__BackingField: []

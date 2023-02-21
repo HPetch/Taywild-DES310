@@ -2,9 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InteractableCharacters : MonoBehaviour
+public class InteractableCharacter : MonoBehaviour
 {
-    [SerializeField] GameObject canvas;
+    [SerializeField] private GameObject canvas;
+    [SerializeField] private Conversation conversation;
 
     private bool isPlayerWithinInteractionDistance = false;
 
@@ -17,9 +18,9 @@ public class InteractableCharacters : MonoBehaviour
 
     private void Update()
     {
-        if (isPlayerWithinInteractionDistance && Input.GetButtonDown("Interact"))
+        if (isPlayerWithinInteractionDistance && Input.GetButtonDown("Interact") && DialogueController.Instance.IsConversing)
         {
-
+            DialogueController.Instance.TriggerConversation(conversation);
         }
     }
 
