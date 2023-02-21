@@ -463,8 +463,6 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetButtonDown("Dash") || dashQueued)
         {
-            Debug.Log("TimeSinceLastDash: " + TimeSinceLastDash);
-
             if (CanDash) Dash();
             else dashQueued = true;
         }
@@ -510,7 +508,7 @@ public class PlayerController : MonoBehaviour
             rb.velocity = new Vector2(rb.velocity.x, grapplingJumpForce);
 
             OnPlayerGrappleEnd?.Invoke();
-        }
+        }        
 
         // If player is grounded do a ground jump
         else if (IsGrounded)
@@ -581,13 +579,18 @@ public class PlayerController : MonoBehaviour
 
     private void DashingBehaviour()
     {
-        if (transform.position.y < dashHeight) transform.position = new Vector2(transform.position.x, dashHeight);
+        if (transform.position.y < dashHeight)
+        {
+            transform.position = new Vector2(transform.position.x, dashHeight);
+            rb.velocity = new Vector2(rb.velocity.x, 0f);
+        }
     }
 
     private void Dash()
     {       
         IsDashing = true;
         timeOfLastDash = Time.time;
+
         remainingDashes--;
         dashHeight = transform.position.y;
 
@@ -702,17 +705,17 @@ public class PlayerController : MonoBehaviour
     /// <summary>
     /// Returns true if the Player is able to Jump.
     /// </summary>
-    private bool CanJump { get { return IsGrounded || IsWallSliding || IsGrappling || remainingAirJumps > 0;  } }
+    private bool CanJump { get { return IsGrounded || IsGrappling || remainingAirJumps > 0 || IsTouchingWall; } }
 
     /// <summary>
     /// Returns true if the Player is able to Slide.
     /// </summary>
-    private bool CanSlide { get { return IsGrounded && !IsSliding && !IsDashing && !IsGrappling && movementInput.x != 0 && TimeSinceLastSlide < slideCooldown; } }
+    private bool CanSlide { get { return IsGrounded && !IsSliding && !IsDashing && !IsGrappling && movementInput.x != 0 && TimeSinceLastSlide > slideCooldown; } }
 
     /// <summary>
     /// Returns true if the Player is able to Dash.
     /// </summary>
-    private bool CanDash { get { return !IsSliding && !IsDashing && !IsGrappling && movementInput.x != 0 && remainingDashes > 0 && TimeSinceLastDash < dashCoolDown; } }
+    private bool CanDash { get { return !IsSliding && !IsDashing && !IsGrappling && movementInput.x != 0 && remainingDashes > 0 && TimeSinceLastDash > dashCoolDown; } }
 
     /// <summary>
     /// Returns true if the Player is able to Move, Such as if the play is not sliding or dashing.

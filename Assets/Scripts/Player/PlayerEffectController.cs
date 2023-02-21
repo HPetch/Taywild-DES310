@@ -141,7 +141,7 @@ public class PlayerEffectController : MonoBehaviour
 
     private void PlayerWallSlideStart()
     {
-        CameraController.Instance.PunchIn(0, 5f);
+        CameraController.Instance.PunchIn(0.1f, 5f);
     }
 
     private void PlayerWallSlideEnd()
