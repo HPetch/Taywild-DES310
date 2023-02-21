@@ -46,6 +46,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rb;
     private CapsuleCollider2D capsuleCollider;
 
+    #region Movement
     [Header("Movement Settings")]
 
     [Tooltip("How fast the player moves on the ground")]
@@ -57,10 +58,11 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float airMoveAcceleration = 2f;
 
     [Tooltip("How fast the player decelerates when in air and no input")]
-    [Range(0, 2)]
+    [Range(0, 1)]
     [SerializeField] private float airDragMultiplier = 0.95f;
 
     private Vector2 movementInput = Vector2.zero;
+    #endregion
 
     #region Jump
     [Space(10)]
@@ -207,8 +209,12 @@ public class PlayerController : MonoBehaviour
     private List<GrapplePoint> grapplePoints = new List<GrapplePoint>();
     private DistanceJoint2D grappleJoint;
     private bool grappleQueued = false;
+    private GrapplePoint grapplePoint;
     #endregion
 
+    #region Utility
+    private Vector2 lastKnownGroundPosition;
+    #endregion
     #endregion
 
     #region Functions
@@ -271,14 +277,21 @@ public class PlayerController : MonoBehaviour
         }
         else if (IsGrappling)
         {
+            // If the graple point is not valid then clamp the velocity
+            if (!grapplePoint.IsGrappleValid && velocity.y > 0f)
+            {
+                velocity *= new Vector2(0.8f, 0.8f);
+            }
+
             // If Movement Input
-            if (movementInput.x != 0)
+            else if (movementInput.x != 0)
             {
                 velocity.x += movementInput.x * grappleAcceleration;
-                    
+
                 // Clamp the movespeed
                 velocity = Vector2.ClampMagnitude(velocity, grappleMoveSpeed);
             }
+
         }
         // If NotGrounded and Not touching a wall and not Grappling
         else if (!IsTouchingWall)
@@ -347,6 +360,7 @@ public class PlayerController : MonoBehaviour
             {
                 // This is a true grounded
                 timeOfLastTrueIsGrounded = Time.time;
+                lastKnownGroundPosition = transform.position;
 
                 // If the player was not grounded on the previous frame but is grounded this frame, then they have landed
                 if (!IsGrounded)
@@ -426,7 +440,7 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     private void HandleActionInput()
     {
-        // If the dialogue or transition systems have locked the player's input
+        // If the dialogue system has locked the player's input
         if (IsLockedInput) return;
 
         ResolveQue();
@@ -490,6 +504,7 @@ public class PlayerController : MonoBehaviour
         if (IsGrappling)
         {
             IsGrappling = false;
+            grapplePoint = null;
             grappleJoint.enabled = false;
 
             rb.velocity = new Vector2(rb.velocity.x, grapplingJumpForce);
@@ -585,7 +600,14 @@ public class PlayerController : MonoBehaviour
         IsGrappling = true;
         ResetActions();
 
-        GrapplePoint grapplePoint = GetClosestGrapplePoint();
+        grapplePoint = GetClosestGrapplePoint();
+        
+        // Player is too close to the grapple
+        if (Vector2.Distance(GrappleAnchorPosition, grapplePoint.transform.position) < grapplePoint.GrappleDistance.x)
+        {
+            Vector2 direction = (GrappleAnchorPosition - (Vector2)grapplePoint.transform.position).normalized;
+            transform.position = (Vector2)grapplePoint.transform.position + direction * grapplePoint.GrappleDistance.x * 2;
+        }
 
         grappleJoint.connectedAnchor = grapplePoint.transform.position;
         grappleJoint.enabled = true;
@@ -648,6 +670,11 @@ public class PlayerController : MonoBehaviour
     {
         remainingAirJumps = maxAirJumps;
         remainingDashes = maxDashes;
+    }
+
+    public void ResetPlayerToLastKnownPosition()
+    {
+        transform.position = lastKnownGroundPosition;
     }
 
     /// <summary>
