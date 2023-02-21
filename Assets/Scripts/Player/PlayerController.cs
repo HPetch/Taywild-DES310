@@ -239,8 +239,7 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
-        DialogueController.Instance.OnConversationStart += LockPlayerInput;
-        DialogueController.Instance.OnConversationEnd += UnLockPlayerInput;
+
     }
     #endregion
 
@@ -264,7 +263,7 @@ public class PlayerController : MonoBehaviour
         if (IsSliding) SlidingBehaviour();
         if (IsDashing) DashingBehaviour();
 
-        if (CanMove) ApplyMovement();      
+        if (CanMove) ApplyMovement();
     }
     #endregion
 
@@ -684,27 +683,24 @@ public class PlayerController : MonoBehaviour
     /// <summary>
     /// Locks the Players movement and action inputs.
     /// </summary>
-    /// <param name="conversation">Parameter not used, is required to subsribe to the event</param>
-    private void LockPlayerInput(Conversation conversation= null)
+    /// <param name="partition">Parameter not used, is required to subsribe to the event</param>
+    private void LockPlayerInput(Partition partition = null)
     {
         IsLockedInput = true;
-        rb.constraints = RigidbodyConstraints2D.FreezeAll;
     }
 
     /// <summary>
     /// Un-Locks the players movement and actions inputs.
     /// </summary>
-    /// <param name="conversation">Parameter not used, is required to subsribe to the event</param>
-    private void UnLockPlayerInput(Conversation conversation = null)
+    private void UnLockPlayerInput()
     {
         IsLockedInput = false;
-        rb.constraints = RigidbodyConstraints2D.FreezeRotation;
-    }
+    }    
 
     /// <summary>
     /// Returns true if the Player is able to Move, Such as if the play is not sliding or dashing.
     /// </summary>
-    private bool CanMove { get { return !IsSliding && !IsDashing && !IsLockedInput; } }
+    private bool CanMove { get { return !IsSliding && !IsDashing; } }
 
     /// <summary>
     /// Returns true if the Player is able to Jump.
@@ -719,7 +715,7 @@ public class PlayerController : MonoBehaviour
     /// <summary>
     /// Returns true if the Player is able to Dash.
     /// </summary>
-    private bool CanDash { get { return !IsSliding && !IsDashing && !IsGrappling && remainingDashes > 0 && TimeSinceLastDash > dashCoolDown; } }
+    private bool CanDash { get { return !IsSliding && !IsDashing && !IsGrappling && movementInput.x != 0 && remainingDashes > 0 && TimeSinceLastDash > dashCoolDown; } }
 
     /// <summary>
     /// Returns true if the Player is able to Move, Such as if the play is not sliding or dashing.

@@ -1,5 +1,4 @@
 using TMPro;
-using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,7 +7,6 @@ public class ConversationUITemplate : MonoBehaviour
     [System.Serializable]
     public struct BranchButton
     {
-        public CanvasGroup canvasGroup;
         public TextMeshProUGUI buttonText;
         public Image buttonBckground;
     };
@@ -33,41 +31,31 @@ public class ConversationUITemplate : MonoBehaviour
 
     [field: Header("Buttons")]
     [field: SerializeField] public BranchButton[] BranchButtons { get; private set; } = new BranchButton[4];
-
-    public CanvasGroup canvasGroup;
     #endregion
 
     #region Functions
     #region Initialisation
     private void Awake()
     {
-        canvasGroup = GetComponent<CanvasGroup>();
+        
     }
     #endregion
 
-    #region Transitions
-    private IEnumerator TransitionLayoutIn()
+    public virtual void SetConversationEvent(ConversationEvent conversationEvent)
     {
-        yield return null;
+
     }
 
-    private IEnumerator TransitionLayoutOut()
+    public virtual void TransitionIn()
     {
-        yield return null;
+
     }
 
-    private IEnumerator TransitionCharacterIn()
+    public virtual void TransitionOut()
     {
-        yield return null;
+
     }
 
-    private IEnumerator TransitionCharacterOut()
-    {
-        yield return null;
-    }
-    #endregion
-
-    #region Utility
     private void Reset()
     {
         Transform character = transform.Find("Character");
@@ -87,10 +75,8 @@ public class ConversationUITemplate : MonoBehaviour
         for (int button = 0; button < 4; button++)
         {
             BranchButtons[button].buttonBckground = branchButtons.Find("Button " + (button + 1)).GetComponent<Image>();
-            BranchButtons[button].canvasGroup = BranchButtons[button].buttonBckground.GetComponent<CanvasGroup>();
             BranchButtons[button].buttonText = BranchButtons[button].buttonBckground.transform.Find("Button " + (button + 1) + " Text").GetComponent<TextMeshProUGUI>();
         }
     }
-    #endregion
     #endregion
 }
