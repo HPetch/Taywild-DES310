@@ -239,7 +239,8 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
-
+        DialogueController.Instance.OnConversationStart += LockPlayerInput;
+        DialogueController.Instance.OnConversationEnd += UnLockPlayerInput;
     }
     #endregion
 
@@ -683,24 +684,27 @@ public class PlayerController : MonoBehaviour
     /// <summary>
     /// Locks the Players movement and action inputs.
     /// </summary>
-    /// <param name="partition">Parameter not used, is required to subsribe to the event</param>
-    private void LockPlayerInput(Partition partition = null)
+    /// <param name="conversation">Parameter not used, is required to subsribe to the event</param>
+    private void LockPlayerInput(Conversation conversation= null)
     {
         IsLockedInput = true;
+        rb.constraints = RigidbodyConstraints2D.FreezeAll;
     }
 
     /// <summary>
     /// Un-Locks the players movement and actions inputs.
     /// </summary>
-    private void UnLockPlayerInput()
+    /// <param name="conversation">Parameter not used, is required to subsribe to the event</param>
+    private void UnLockPlayerInput(Conversation conversation = null)
     {
         IsLockedInput = false;
-    }    
+        rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+    }
 
     /// <summary>
     /// Returns true if the Player is able to Move, Such as if the play is not sliding or dashing.
     /// </summary>
-    private bool CanMove { get { return !IsSliding && !IsDashing; } }
+    private bool CanMove { get { return !IsSliding && !IsDashing && !IsLockedInput; } }
 
     /// <summary>
     /// Returns true if the Player is able to Jump.
