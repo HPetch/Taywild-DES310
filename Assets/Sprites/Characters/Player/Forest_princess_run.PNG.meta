@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 266109c851b4ec8438f37a22932f987c
+guid: aec212d70d5ffcc46ad5fe418723d495
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -107,7 +107,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: princess_sprite_run_0
+      name: Forest_princess_run_0
       rect:
         serializedVersion: 2
         x: 0
@@ -115,41 +115,41 @@ TextureImporter:
         width: 500
         height: 500
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7a3f5196993523240ae82b20e53d6eb2
-      internalID: -2039028276
+      spriteID: b2ae2253804142c4a85156e5393e3739
+      internalID: -1463121490
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: princess_sprite_run_1
+      name: Forest_princess_run_1
       rect:
         serializedVersion: 2
-        x: 498
+        x: 500
         y: 0
         width: 500
         height: 500
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e8001a7fefc0c084a8d08690fd454b75
-      internalID: -397959451
+      spriteID: d443b42db04737649b17e5b40c2b175c
+      internalID: 1327858727
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: princess_sprite_run_2
+      name: Forest_princess_run_2
       rect:
         serializedVersion: 2
         x: 1000
@@ -157,20 +157,20 @@ TextureImporter:
         width: 500
         height: 500
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 13250126f591c5f40acdfcc25e75ab94
-      internalID: -1205843401
+      spriteID: 547976b8a5dad7c4d85d714be68f8be1
+      internalID: 2105581316
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: princess_sprite_run_3
+      name: Forest_princess_run_3
       rect:
         serializedVersion: 2
         x: 1500
@@ -178,20 +178,20 @@ TextureImporter:
         width: 500
         height: 500
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9bc7d6eeb1d135940ac19bd6f0344296
-      internalID: -742484095
+      spriteID: 466240091a728874a93f610d2d4d93b5
+      internalID: -860229763
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: princess_sprite_run_4
+      name: Forest_princess_run_4
       rect:
         serializedVersion: 2
         x: 2000
@@ -199,20 +199,20 @@ TextureImporter:
         width: 500
         height: 500
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8cc03a152fe6b5649b45a7d627e525e1
-      internalID: 745821533
+      spriteID: 77ed651453f48724ba9ded070b3f9365
+      internalID: 1183954329
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: princess_sprite_run_5
+      name: Forest_princess_run_5
       rect:
         serializedVersion: 2
         x: 2500
@@ -220,35 +220,14 @@ TextureImporter:
         width: 500
         height: 500
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 69ba88fb64da0124aa55dd1a97c3a41c
-      internalID: -163599277
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: princess_sprite_run_6
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 0
-        width: 3000
-        height: 500
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: bdbaa4ff290a3854ab5566fed16a9af6
-      internalID: 1957160170
+      spriteID: 6007e82574884fc41bbdc0056b31f0da
+      internalID: -1702062654
       vertices: []
       indices: 
       edges: []
@@ -264,13 +243,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      princess_sprite_run_0: -2039028276
-      princess_sprite_run_1: -397959451
-      princess_sprite_run_6: 1957160170
-      princess_sprite_run_4: 745821533
-      princess_sprite_run_3: -742484095
-      princess_sprite_run_5: -163599277
-      princess_sprite_run_2: -1205843401
+      Forest_princess_run_2: 2105581316
+      Forest_princess_run_5: -1702062654
+      Forest_princess_run_3: -860229763
+      Forest_princess_run_0: -1463121490
+      Forest_princess_run_4: 1183954329
+      Forest_princess_run_1: 1327858727
   spritePackingTag: 
   pSDRemoveMatte: 0
   userData: 
