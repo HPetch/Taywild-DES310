@@ -18,8 +18,9 @@ public class InteractableCharacter : MonoBehaviour
 
     private void Update()
     {
-        if (isPlayerWithinInteractionDistance && Input.GetButtonDown("Interact") && DialogueController.Instance.IsConversing)
+        if (isPlayerWithinInteractionDistance && Input.GetButtonDown("Interact") && !DialogueController.Instance.IsConversing)
         {
+            Debug.Log("Conversation Start");
             DialogueController.Instance.TriggerConversation(conversation);
         }
     }

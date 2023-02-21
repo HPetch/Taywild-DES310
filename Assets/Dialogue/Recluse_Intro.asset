@@ -28,19 +28,6 @@ MonoBehaviour:
     - <ButtonText>k__BackingField: Open Door
       <Conversation>k__BackingField: []
     <BranchConversations>k__BackingField: []
-  - <EventType>k__BackingField: 3
-    <UITemplate>k__BackingField: 0
-    <Character>k__BackingField: {fileID: 11400000, guid: c11bdf3877896b84dac6bdb375297575, type: 2}
-    <Text>k__BackingField: The quaint greenhouse door is locked tightly shut.
-    <Quest>k__BackingField: {fileID: 0}
-    <Cutscene>k__BackingField: {fileID: 0}
-    <BranchType>k__BackingField: 0
-    <BranchEvents>k__BackingField:
-    - <ButtonText>k__BackingField: Politely Knock
-      <Conversation>k__BackingField: []
-    - <ButtonText>k__BackingField: Open Door
-      <Conversation>k__BackingField: []
-    <BranchConversations>k__BackingField: []
   - <EventType>k__BackingField: 1
     <UITemplate>k__BackingField: 0
     <Character>k__BackingField: {fileID: 11400000, guid: 4d46490a566f8dd4db8b9da467c58c40, type: 2}
@@ -222,78 +209,6 @@ MonoBehaviour:
         <BranchConversations>k__BackingField: []
     <BranchConversations>k__BackingField: []
   - <EventType>k__BackingField: 0
-    <UITemplate>k__BackingField: 0
-    <Character>k__BackingField: {fileID: 11400000, guid: 4d46490a566f8dd4db8b9da467c58c40, type: 2}
-    <Text>k__BackingField: Hmm,<link="wait_short"></link> okay you will leave now.
-    <Quest>k__BackingField: {fileID: 0}
-    <Cutscene>k__BackingField: {fileID: 0}
-    <BranchType>k__BackingField: 0
-    <BranchEvents>k__BackingField:
-    - <ButtonText>k__BackingField: Okay!
-      <Conversation>k__BackingField:
-      - <EventType>k__BackingField: 0
-        <UITemplate>k__BackingField: 0
-        <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
-        <Text>k__BackingField: If that's what it takes.
-        <Quest>k__BackingField: {fileID: 0}
-        <Cutscene>k__BackingField: {fileID: 0}
-        <BranchConversations>k__BackingField: []
-    - <ButtonText>k__BackingField: That's a lot
-      <Conversation>k__BackingField:
-      - <EventType>k__BackingField: 0
-        <UITemplate>k__BackingField: 0
-        <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
-        <Text>k__BackingField: Sounds like you know a lot about it.
-        <Quest>k__BackingField: {fileID: 0}
-        <Cutscene>k__BackingField: {fileID: 0}
-        <BranchConversations>k__BackingField: []
-    - <ButtonText>k__BackingField: ...
-      <Conversation>k__BackingField:
-      - <EventType>k__BackingField: 0
-        <UITemplate>k__BackingField: 0
-        <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
-        <Text>k__BackingField: "*<i>Feel awkward and don\u2019t say anything*</i>"
-        <Quest>k__BackingField: {fileID: 0}
-        <Cutscene>k__BackingField: {fileID: 0}
-        <BranchConversations>k__BackingField: []
-    <BranchConversations>k__BackingField: []
-  - <EventType>k__BackingField: 3
-    <UITemplate>k__BackingField: 0
-    <Character>k__BackingField: {fileID: 11400000, guid: 4d46490a566f8dd4db8b9da467c58c40, type: 2}
-    <Text>k__BackingField: Hmm,<link="wait_short"></link> okay you will leave now.
-    <Quest>k__BackingField: {fileID: 0}
-    <Cutscene>k__BackingField: {fileID: 0}
-    <BranchType>k__BackingField: 0
-    <BranchEvents>k__BackingField:
-    - <ButtonText>k__BackingField: Okay!
-      <Conversation>k__BackingField:
-      - <EventType>k__BackingField: 0
-        <UITemplate>k__BackingField: 0
-        <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
-        <Text>k__BackingField: If that's what it takes.
-        <Quest>k__BackingField: {fileID: 0}
-        <Cutscene>k__BackingField: {fileID: 0}
-        <BranchConversations>k__BackingField: []
-    - <ButtonText>k__BackingField: That's a lot
-      <Conversation>k__BackingField:
-      - <EventType>k__BackingField: 0
-        <UITemplate>k__BackingField: 0
-        <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
-        <Text>k__BackingField: Sounds like you know a lot about it.
-        <Quest>k__BackingField: {fileID: 0}
-        <Cutscene>k__BackingField: {fileID: 0}
-        <BranchConversations>k__BackingField: []
-    - <ButtonText>k__BackingField: ...
-      <Conversation>k__BackingField:
-      - <EventType>k__BackingField: 0
-        <UITemplate>k__BackingField: 0
-        <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
-        <Text>k__BackingField: "*<i>Feel awkward and don\u2019t say anything*</i>"
-        <Quest>k__BackingField: {fileID: 0}
-        <Cutscene>k__BackingField: {fileID: 0}
-        <BranchConversations>k__BackingField: []
-    <BranchConversations>k__BackingField: []
-  - <EventType>k__BackingField: 2
     <UITemplate>k__BackingField: 0
     <Character>k__BackingField: {fileID: 11400000, guid: 4d46490a566f8dd4db8b9da467c58c40, type: 2}
     <Text>k__BackingField: Hmm,<link="wait_short"></link> okay you will leave now.

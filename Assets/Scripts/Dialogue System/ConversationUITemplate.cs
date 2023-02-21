@@ -34,7 +34,7 @@ public class ConversationUITemplate : MonoBehaviour
     [field: Header("Buttons")]
     [field: SerializeField] public BranchButton[] BranchButtons { get; private set; } = new BranchButton[4];
 
-    private CanvasGroup canvasGroup;
+    public CanvasGroup canvasGroup;
     #endregion
 
     #region Functions
@@ -45,18 +45,23 @@ public class ConversationUITemplate : MonoBehaviour
     }
     #endregion
 
-    #region
-    private IEnumerator TransitionIn()
+    #region Transitions
+    private IEnumerator TransitionLayoutIn()
     {
         yield return null;
     }
 
-    private IEnumerator TransitionOut()
+    private IEnumerator TransitionLayoutOut()
     {
         yield return null;
     }
 
-    private IEnumerator ChangeCharacter()
+    private IEnumerator TransitionCharacterIn()
+    {
+        yield return null;
+    }
+
+    private IEnumerator TransitionCharacterOut()
     {
         yield return null;
     }

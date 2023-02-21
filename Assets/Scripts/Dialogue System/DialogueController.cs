@@ -21,9 +21,8 @@ public class DialogueController : MonoBehaviour
     #region Variables
     public bool IsConversing { get; private set; } = false;
 
-    [field: SerializeField] private Conversation TestConversation { get; set; }
-
     private Queue<ConversationEvent> conversationEventQueue = new Queue<ConversationEvent>();
+    private Queue<ShallowBranchConversationEvent> branchConversationEventQueue = new Queue<ShallowBranchConversationEvent>();
     private Queue<Conversation> conversationQueue = new Queue<Conversation>();
 
     [SerializeField] private  ConversationUITemplate[] conversationUITemplates;
@@ -31,6 +30,7 @@ public class DialogueController : MonoBehaviour
 
     private Conversation currentConversation = null;
     private ConversationEvent conversationEvent = null;
+    private ShallowBranchConversationEvent branchConversationEvent = null;
 
     // Cortoutines need to be referenced so they can be stopped prematurly in case of a skip
     private Coroutine textType = null;
@@ -81,11 +81,6 @@ public class DialogueController : MonoBehaviour
     {
         Instance = this;
     }
-
-    private void Start()
-    {
-        TriggerConversation(TestConversation);
-    }
     #endregion
 
     /// <summary>
@@ -121,7 +116,6 @@ public class DialogueController : MonoBehaviour
     private IEnumerator StartConversation()
     {
         IsConversing = true;
-
         yield return new WaitForSeconds(currentConversation.ConversationStartDelay);
 
         // Limit player inputs while a dialogue sequence is playing
@@ -130,14 +124,15 @@ public class DialogueController : MonoBehaviour
         foreach (ConversationEvent convoEvent in currentConversation.ConversationEvents) conversationEventQueue.Enqueue(convoEvent);
         OnConversationStart?.Invoke(currentConversation);
 
-        changeCharacter = StartCoroutine(ChangeCharacter(false));
+        conversationEvent = conversationEventQueue.Dequeue();
+        changeCharacter = StartCoroutine(ChangeCharacter());
     }
 
     // Displays the next conversation event
-    private void DisplayNext()
+    private void DisplayNext(int _buttonIndex = 0)
     {
-        // If the character changing animation is not complete, return and wait (when switched to tween this will skip the transition)
-        if (changeCharacter != null) { return; }
+        // If the character changing animation is not complete, return and wait
+        if (changeCharacter != null) return;
 
         // If the text type is not complete, stop that coroutine and display they final result
         if (textType != null)
@@ -145,6 +140,7 @@ public class DialogueController : MonoBehaviour
             StopCoroutine(textType);
             textType = null;
             uiTemplate.TextField.text = conversationEvent.Text;
+            ShowBranchButtons();
             return;
         }
 
@@ -155,17 +151,68 @@ public class DialogueController : MonoBehaviour
             return;
         }
 
-        // else, if the next conversation event is a different character than the current one, change the character
-        if (conversationEvent.Character != conversationEventQueue.Peek().Character || 
-            conversationEvent.UITemplate != conversationEventQueue.Peek().UITemplate)
+        // If the conversation event is a Branch
+        if (conversationEvent.EventType == ConversationEventBase.ConversationEventTypes.BRANCH && _buttonIndex != 0)
         {
-            changeCharacter = StartCoroutine(ChangeCharacter(true));
+            branchConversationEventQueue.Clear();
+            foreach (ShallowBranchConversationEvent conversationEvent in conversationEvent.BranchEvents[_buttonIndex].Conversation) branchConversationEventQueue.Enqueue(conversationEvent);
+            branchConversationEvent = branchConversationEventQueue.Dequeue();
+
+            // If the next conversation event is a different character than the current one, change the character
+            if (conversationEvent.Character != branchConversationEvent.Character)
+            {
+                changeCharacter = StartCoroutine(ChangeCharacter());
+                return;
+            }
+
+            textType = StartCoroutine(TypeSentance(branchConversationEvent.Text));
+            return;
+        }
+
+        if (branchConversationEvent != null)
+        {
+            if (branchConversationEventQueue.Count > 0)
+            {
+                // If the next conversation event is a different character than the current one, change the character
+                if (branchConversationEvent.Character != branchConversationEventQueue.Peek().Character)
+                {
+                    branchConversationEvent = branchConversationEventQueue.Dequeue();
+                    changeCharacter = StartCoroutine(ChangeCharacter());
+                    return;
+                }
+
+                branchConversationEvent = branchConversationEventQueue.Dequeue();
+                textType = StartCoroutine(TypeSentance(branchConversationEvent.Text));
+                return;
+            }
+            else
+            {
+                // If the next conversation event is a different character than the current one, change the character
+                if (branchConversationEvent.Character != conversationEventQueue.Peek().Character)
+                {
+                    conversationEvent = conversationEventQueue.Dequeue();
+                    changeCharacter = StartCoroutine(ChangeCharacter());
+                    branchConversationEvent = null;
+                    return;
+                }
+
+                // else, remove the current event from the queue, and start typing the next one
+                conversationEvent = conversationEventQueue.Dequeue();
+                textType = StartCoroutine(TypeSentance(conversationEvent.Text));
+                return;
+            }
+        }
+
+        // If the next conversation event is a different character than the current one, change the character
+        if (conversationEvent.Character != conversationEventQueue.Peek().Character)
+        {
+            branchConversationEvent = branchConversationEventQueue.Dequeue();
+            changeCharacter = StartCoroutine(ChangeCharacter());
             return;
         }
 
         // else, remove the current event from the queue, and start typing the next one
         conversationEvent = conversationEventQueue.Dequeue();
-
         textType = StartCoroutine(TypeSentance(conversationEvent.Text));
     }
 
@@ -174,6 +221,8 @@ public class DialogueController : MonoBehaviour
     /// </summary>
     private IEnumerator TypeSentance(string sentence)
     {
+        HideBranchButtons();
+
         // Set text field to blank      
         textTypeString = "";
         uiTemplate.TextField.GetComponent<TextEffect>().ClearText();
@@ -274,31 +323,51 @@ public class DialogueController : MonoBehaviour
             }
         }
 
+        ShowBranchButtons();
+
         // Sets coroutine to null, to track when it's finished
         textType = null;
     }
 
-    private IEnumerator ChangeCharacter(bool isOpen)
+    private IEnumerator ChangeCharacter()
     {
-        /*if (_isOpen)
-        {
-            //animator.SetTrigger("Closed");
-            yield return new WaitForSeconds(0.33f);
-        }*/
-
-        conversationEvent = conversationEventQueue.Peek();
         uiTemplate = conversationUITemplates[(int)conversationEvent.UITemplate];
+        uiTemplate.canvasGroup.alpha = 1;
+        HideBranchButtons();
 
         uiTemplate.TextField.GetComponent<TextEffect>().ClearText();
         uiTemplate.CharacterName.SetText(conversationEvent.Character.CharacterName);
         uiTemplate.CharacterName.color = conversationEvent.Character.Colour;
         uiTemplate.CharacterPortrait.sprite = conversationEvent.Character.Portraits[0];
 
-        //animator.SetTrigger("Open");
-        yield return new WaitForSeconds(0.05f);
+        yield return new WaitForSeconds(0.1f);
 
         changeCharacter = null;
-        DisplayNext();
+        textType = StartCoroutine(TypeSentance(branchConversationEvent.Text));
+    }
+
+    private void ShowBranchButtons()
+    {
+        for (int button = 0; button < uiTemplate.BranchButtons.Length; button++)
+        {
+            if (button <= conversationEvent.BranchEvents.Length)
+            {
+                uiTemplate.BranchButtons[button].canvasGroup.alpha = 1;
+                uiTemplate.BranchButtons[button].buttonText.SetText(conversationEvent.BranchEvents[button].ButtonText);
+            }
+            else
+            {
+                uiTemplate.BranchButtons[button].canvasGroup.alpha = 0;
+            }
+        }
+    }
+
+    private void HideBranchButtons()
+    {
+        for (int button = 0; button < uiTemplate.BranchButtons.Length; button++)
+        {
+            uiTemplate.BranchButtons[button].canvasGroup.alpha = 0;
+        }
     }
 
     /// <summary>
@@ -318,6 +387,7 @@ public class DialogueController : MonoBehaviour
 
         textType = null;
         changeCharacter = null;
+        uiTemplate.canvasGroup.alpha = 0;
 
         OnConversationEnd?.Invoke(currentConversation);
         currentConversation = null;
@@ -328,9 +398,9 @@ public class DialogueController : MonoBehaviour
         }
     }
 
-    public void BranchButton(int buttonID)
+    public void BranchButton(int _buttonID)
     {
-
+        DisplayNext(_buttonID);
     }
 
     public void SetTypeSpeed(float textTypeDelay)

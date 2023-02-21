@@ -299,14 +299,19 @@ MonoBehaviour:
   <TextField>k__BackingField: {fileID: 4112065073376677458}
   textFieldBackground: {fileID: 7517467233177652861}
   <BranchButtons>k__BackingField:
-  - buttonText: {fileID: 4689776875216793959}
+  - canvasGroup: {fileID: 0}
+    buttonText: {fileID: 4689776875216793959}
     buttonBckground: {fileID: 8176277926735889933}
-  - buttonText: {fileID: 4409460693912427690}
+  - canvasGroup: {fileID: 0}
+    buttonText: {fileID: 4409460693912427690}
     buttonBckground: {fileID: 4840800295271370098}
-  - buttonText: {fileID: 6905533877544319544}
+  - canvasGroup: {fileID: 0}
+    buttonText: {fileID: 6905533877544319544}
     buttonBckground: {fileID: 4539674510626132768}
-  - buttonText: {fileID: 4029531560986549771}
+  - canvasGroup: {fileID: 0}
+    buttonText: {fileID: 4029531560986549771}
     buttonBckground: {fileID: 6011179553965049819}
+  canvasGroup: {fileID: 0}
 --- !u!1 &489782212887234342
 GameObject:
   m_ObjectHideFlags: 0
@@ -952,14 +957,19 @@ MonoBehaviour:
   <TextField>k__BackingField: {fileID: 0}
   textFieldBackground: {fileID: 0}
   <BranchButtons>k__BackingField:
-  - buttonText: {fileID: 0}
+  - canvasGroup: {fileID: 0}
+    buttonText: {fileID: 0}
     buttonBckground: {fileID: 0}
-  - buttonText: {fileID: 0}
+  - canvasGroup: {fileID: 0}
+    buttonText: {fileID: 0}
     buttonBckground: {fileID: 0}
-  - buttonText: {fileID: 0}
+  - canvasGroup: {fileID: 0}
+    buttonText: {fileID: 0}
     buttonBckground: {fileID: 0}
-  - buttonText: {fileID: 0}
+  - canvasGroup: {fileID: 0}
+    buttonText: {fileID: 0}
     buttonBckground: {fileID: 0}
+  canvasGroup: {fileID: 0}
 --- !u!1 &1178109393320162530
 GameObject:
   m_ObjectHideFlags: 0
@@ -1968,14 +1978,19 @@ MonoBehaviour:
   <TextField>k__BackingField: {fileID: 4006952076500638644}
   textFieldBackground: {fileID: 3985706796301978714}
   <BranchButtons>k__BackingField:
-  - buttonText: {fileID: 2831461379725033247}
+  - canvasGroup: {fileID: 0}
+    buttonText: {fileID: 2831461379725033247}
     buttonBckground: {fileID: 6738113012725187456}
-  - buttonText: {fileID: 1655079825196896731}
+  - canvasGroup: {fileID: 0}
+    buttonText: {fileID: 1655079825196896731}
     buttonBckground: {fileID: 2405768714330195941}
-  - buttonText: {fileID: 8434560395132044111}
+  - canvasGroup: {fileID: 0}
+    buttonText: {fileID: 8434560395132044111}
     buttonBckground: {fileID: 7321757762109024321}
-  - buttonText: {fileID: 3872602429038343979}
+  - canvasGroup: {fileID: 0}
+    buttonText: {fileID: 3872602429038343979}
     buttonBckground: {fileID: 9160192935061239307}
+  canvasGroup: {fileID: 0}
 --- !u!1 &2608707398604670992
 GameObject:
   m_ObjectHideFlags: 0
@@ -3184,14 +3199,19 @@ MonoBehaviour:
   <TextField>k__BackingField: {fileID: 4623185280129134201}
   textFieldBackground: {fileID: 1296793391660731946}
   <BranchButtons>k__BackingField:
-  - buttonText: {fileID: 7431569663271594828}
+  - canvasGroup: {fileID: 3464916745969304264}
+    buttonText: {fileID: 7431569663271594828}
     buttonBckground: {fileID: 5924967149566322133}
-  - buttonText: {fileID: 8484249099448375333}
+  - canvasGroup: {fileID: 7030120888296984382}
+    buttonText: {fileID: 8484249099448375333}
     buttonBckground: {fileID: 5325979249510048111}
-  - buttonText: {fileID: 7649039120376583640}
+  - canvasGroup: {fileID: 8948290403433619513}
+    buttonText: {fileID: 7649039120376583640}
     buttonBckground: {fileID: 440264631640308172}
-  - buttonText: {fileID: 6673277379073744726}
+  - canvasGroup: {fileID: 6507318169246175277}
+    buttonText: {fileID: 6673277379073744726}
     buttonBckground: {fileID: 5506174218612962328}
+  canvasGroup: {fileID: 0}
 --- !u!225 &2617632863024086239
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -3200,7 +3220,7 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3507783201112679384}
   m_Enabled: 1
-  m_Alpha: 1
+  m_Alpha: 0
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
@@ -3753,6 +3773,7 @@ GameObject:
   - component: {fileID: 2069930560418982257}
   - component: {fileID: 5325979249510048111}
   - component: {fileID: 1313196583843753538}
+  - component: {fileID: 7030120888296984382}
   m_Layer: 0
   m_Name: Button 2
   m_TagString: Untagged
@@ -3862,7 +3883,31 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5325979249510048111}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2226161084525959038}
+        m_TargetAssemblyTypeName: DialogueController, Assembly-CSharp
+        m_MethodName: BranchButton
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!225 &7030120888296984382
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4369034689940673931}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &4461835043769203559
 GameObject:
   m_ObjectHideFlags: 0
@@ -4164,6 +4209,7 @@ GameObject:
   - component: {fileID: 5191383690687325811}
   - component: {fileID: 440264631640308172}
   - component: {fileID: 248138846324371924}
+  - component: {fileID: 8948290403433619513}
   m_Layer: 0
   m_Name: Button 3
   m_TagString: Untagged
@@ -4273,7 +4319,31 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 440264631640308172}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2226161084525959038}
+        m_TargetAssemblyTypeName: DialogueController, Assembly-CSharp
+        m_MethodName: BranchButton
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 3
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!225 &8948290403433619513
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4485167037428735875}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &4639062223923841453
 GameObject:
   m_ObjectHideFlags: 0
@@ -4530,6 +4600,7 @@ GameObject:
   - component: {fileID: 8874995795282724383}
   - component: {fileID: 5506174218612962328}
   - component: {fileID: 5357091871111616646}
+  - component: {fileID: 6507318169246175277}
   m_Layer: 0
   m_Name: Button 4
   m_TagString: Untagged
@@ -4639,7 +4710,31 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5506174218612962328}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2226161084525959038}
+        m_TargetAssemblyTypeName: DialogueController, Assembly-CSharp
+        m_MethodName: BranchButton
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 4
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!225 &6507318169246175277
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4930797490624428237}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &5400428802872235276
 GameObject:
   m_ObjectHideFlags: 0
@@ -4652,6 +4747,7 @@ GameObject:
   - component: {fileID: 4655166147950645592}
   - component: {fileID: 5924967149566322133}
   - component: {fileID: 2021220367928138943}
+  - component: {fileID: 3464916745969304264}
   m_Layer: 0
   m_Name: Button 1
   m_TagString: Untagged
@@ -4761,7 +4857,31 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5924967149566322133}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2226161084525959038}
+        m_TargetAssemblyTypeName: DialogueController, Assembly-CSharp
+        m_MethodName: BranchButton
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!225 &3464916745969304264
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5400428802872235276}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &5468612294472470325
 GameObject:
   m_ObjectHideFlags: 0
@@ -5814,7 +5934,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d66ec05d3956a840804767d759efd80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <TestConversation>k__BackingField: {fileID: 11400000, guid: e003b6f4d1aaad445bcb969e5dff2d7f, type: 2}
   conversationUITemplates:
   - {fileID: 4290630852818405153}
   - {fileID: 1356550985171002361}
