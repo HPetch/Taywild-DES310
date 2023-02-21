@@ -719,7 +719,7 @@ public class PlayerController : MonoBehaviour
     /// <summary>
     /// Returns true if the Player is able to Dash.
     /// </summary>
-    private bool CanDash { get { return !IsSliding && !IsDashing && !IsGrappling && movementInput.x != 0 && remainingDashes > 0 && TimeSinceLastDash > dashCoolDown; } }
+    private bool CanDash { get { return !IsSliding && !IsDashing && !IsGrappling && remainingDashes > 0 && TimeSinceLastDash > dashCoolDown; } }
 
     /// <summary>
     /// Returns true if the Player is able to Move, Such as if the play is not sliding or dashing.
