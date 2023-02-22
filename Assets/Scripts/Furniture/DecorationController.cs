@@ -75,14 +75,18 @@ public class DecorationController : MonoBehaviour
         {
             DecorationMoveStart(_selectedObject);
         }
+        else if (_selectedObject.GetComponent<DecorationButton>())
+        {
+            DecorationButtonPress(_selectedObject);
+        }
     }
     
     public void DecorationMoveStart(GameObject _decorationObject)
     {
         CurrentMoveTarget = _decorationObject;
-        CurrentMoveTarget.GetComponent<SpriteRenderer>().color = new Color(1,1,1,0.25f);
+        CurrentMoveTarget.GetComponent<DecorationObject>().StartPickup();
         CurrentMoveFake = Instantiate(decorationMovingFakePrefab);
-        CurrentMoveFake.GetComponent<DecorationMovingFake>().scrollRotateIndex = CurrentMoveTarget.GetComponent<DecorationObject>().scrollRotateArrayHolder;
+        CurrentMoveFake.GetComponent<DecorationMovingFake>().scrollRotateIndex = CurrentMoveTarget.GetComponent<DecorationObject>().scrollRotateIndexHolder;
         OnPickupDecoration?.Invoke();
     }
 
@@ -94,10 +98,10 @@ public class DecorationController : MonoBehaviour
     {
         CurrentMoveTarget.transform.position = CurrentMoveFake.transform.position;
         CurrentMoveTarget.transform.rotation = CurrentMoveFake.transform.rotation;
-        CurrentMoveTarget.GetComponent<DecorationObject>().scrollRotateArrayHolder = CurrentMoveFake.GetComponent<DecorationMovingFake>().scrollRotateIndex;
+        CurrentMoveTarget.GetComponent<DecorationObject>().SetScrollRotateIndexHolder(CurrentMoveFake.GetComponent<DecorationMovingFake>().scrollRotateIndex);
         Destroy(CurrentMoveFake);
         CurrentMoveFake = null;
-        CurrentMoveTarget.GetComponent<SpriteRenderer>().color = new Color(1,1,1,1);
+        CurrentMoveTarget.GetComponent<DecorationObject>().EndPickup();
         CurrentMoveTarget = null;
         OnPlaceDecoration?.Invoke();
     }
@@ -108,11 +112,19 @@ public class DecorationController : MonoBehaviour
         {
             Destroy(CurrentMoveFake);
             CurrentMoveFake = null;
-            CurrentMoveTarget.GetComponent<SpriteRenderer>().color = new Color(1,1,1,1);
+            CurrentMoveTarget.GetComponent<DecorationObject>().EndPickup();
             CurrentMoveTarget = null;
             OnPlaceCancelDecoration?.Invoke();
         }
         
+    }
+
+    public void DecorationButtonPress(GameObject _button)
+    {
+        DecorationObject _decorationObject = _button.GetComponentInParent<DecorationObject>();
+        if (_button == _decorationObject.PickupButton) Debug.Log(_decorationObject.gameObject + "Has been picked up into the inventory"); // Pickup object and refund materials to inventory
+        if (_button == _decorationObject.EditButtonLeft) Debug.Log(_decorationObject.gameObject + "Has gone to previous style");
+        if (_button == _decorationObject.EditButtonRight) Debug.Log(_decorationObject.gameObject + "Has gone to next style");
     }
 
     // Event: Enter edit mode

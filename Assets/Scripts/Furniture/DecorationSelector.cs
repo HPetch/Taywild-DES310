@@ -138,9 +138,12 @@ public class DecorationSelector : MonoBehaviour
         }
         else
         {
-            if (CheckObjectUnderMouse())
+            Collider2D _objectUnderMouse = CheckObjectUnderMouse();
+            if (_objectUnderMouse)
             {
                 selectorState = SelectorState.PICKABLE;
+                if (_objectUnderMouse.GetComponent<DecorationObject>()) { _objectUnderMouse.GetComponent<DecorationObject>().StartHover(); }
+                else if (_objectUnderMouse.GetComponent<DecorationButton>()) { _objectUnderMouse.GetComponentInParent<DecorationObject>().StartHover(); }
             }
             else
             {
