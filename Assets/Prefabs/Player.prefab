@@ -49,7 +49,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 10
-  airMoveAcceleration: 2
+  airMoveAcceleration: 0.8
   airDragMultiplier: 0.95
   platformLayerMask:
     serializedVersion: 2
@@ -62,13 +62,14 @@ MonoBehaviour:
   wallLayerMask:
     serializedVersion: 2
     m_Bits: 128
-  wallSlideSpeed: 2
-  wallCheckDistance: 1
-  wallHopForce: 10
+  wallSlideSpeed: 0
+  wallCheckDistance: 0.55
+  wallHopForce: 5
   wallHopDirection: {x: 1, y: 0.5}
-  wallJumpForce: 20
+  wallJumpForce: 30
   wallJumpDirection: {x: 1, y: 2}
-  wallStickTime: 0.3
+  wallStickTime: 0.8
+  airMovementDisabledDelayAfterWallJump: 0.5
   slideForce: 15
   slideDuration: 0.4
   slideCooldown: 1

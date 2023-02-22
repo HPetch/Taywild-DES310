@@ -2928,8 +2928,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 608698670}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -13.5, y: 5.25, z: 0}
-  m_LocalScale: {x: 1, y: 7, z: 1}
+  m_LocalPosition: {x: -13.5, y: 4.51, z: 0}
+  m_LocalScale: {x: 1, y: 8.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2435309948134775513}
@@ -3289,8 +3289,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 643413037}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.75, y: -9, z: 0}
-  m_LocalScale: {x: 1, y: 3.5, z: 1}
+  m_LocalPosition: {x: 2.75, y: -7, z: 0}
+  m_LocalScale: {x: 1, y: 7, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2435309948134775513}
@@ -4458,6 +4458,10 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1452592433847960203, guid: 2728492b9cd517b4d9c49944734e6858, type: 3}
+      propertyPath: m_DynamicOccludee
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5820280335498856220, guid: 2728492b9cd517b4d9c49944734e6858, type: 3}
       propertyPath: m_Name
       value: Test House
@@ -4504,6 +4508,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5820280335498856223, guid: 2728492b9cd517b4d9c49944734e6858, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7497870349460531255, guid: 2728492b9cd517b4d9c49944734e6858, type: 3}
+      propertyPath: m_DynamicOccludee
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8521974785674957338, guid: 2728492b9cd517b4d9c49944734e6858, type: 3}
+      propertyPath: m_DynamicOccludee
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

@@ -54,8 +54,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float moveSpeed = 10f;
 
     [Tooltip("How fast the player accelerates in the air")]
-    [Range(0, 20)]
-    [SerializeField] private float airMoveAcceleration = 2f;
+    [Range(0, 2)]
+    [SerializeField] private float airMoveAcceleration = 0.8f;
 
     [Tooltip("How fast the player decelerates when in air and no input")]
     [Range(0, 1)]
@@ -126,17 +126,22 @@ public class PlayerController : MonoBehaviour
 
     [Space(5)]
     [Tooltip("The jump force when the Player jumps from the wall")]
-    [Range(0, 30)]
+    [Range(0, 60)]
     [SerializeField] private float wallJumpForce = 20f;
 
     [Tooltip("The direction of the wall jump, Normalized during Initialisation")]
     [SerializeField] private Vector2 wallJumpDirection = new Vector2(1, 2);
 
     [Tooltip("The delay in seconds between the Player hitting the wall and beggining a wall slide")]
-    [Range(0, 1)]
-    [SerializeField] private float wallStickTime = 0.3f;
+    [Range(0, 5)]
+    [SerializeField] private float wallStickTime = 1.5f;
+
+    [Tooltip("The delay between wall jumping and being able to move in the air")]
+    [Range(0, 2)]
+    [SerializeField] private float airMovementDisabledDelayAfterWallJump = 0.5f;
 
     private float timeOfLastWallHit = 0f;
+    private float timeOfLastWallJump = 0f;
 
     #endregion
 
@@ -298,7 +303,7 @@ public class PlayerController : MonoBehaviour
         else if (!IsTouchingWall)
         {
             // If Movement Input
-            if (movementInput.x != 0)
+            if (movementInput.x != 0 && TimeSinceLastWallJump > airMovementDisabledDelayAfterWallJump)
             {
                 // Add the air acceleration force
                 velocity.x += movementInput.x * airMoveAcceleration;
@@ -394,7 +399,8 @@ public class PlayerController : MonoBehaviour
 
     private void CheckIfWallTouching()
     {
-        bool isTouchingWallThisFrame = Physics2D.Raycast(capsuleCollider.bounds.center, Vector2.right * FacingDirection, wallCheckDistance, wallLayerMask);
+        bool isTouchingWallThisFrame = Physics2D.Raycast(capsuleCollider.bounds.center, Vector2.right * FacingDirection, wallCheckDistance, wallLayerMask) ||
+                                        Physics2D.Raycast(capsuleCollider.bounds.center, Vector2.right * -FacingDirection, wallCheckDistance, wallLayerMask);
 
         // If player is not on the ground and is touching wall this frame, but not the last frame, then the player has hit a wall
         if (!IsGrounded && isTouchingWallThisFrame && !IsTouchingWall)
@@ -411,16 +417,23 @@ public class PlayerController : MonoBehaviour
     private void CheckIfWallStuck()
     {
         // If IsWallStuck & wallStickTime is exceeded, then Unstick
-        if (IsWallStuck && TimeSinceLastWallHit > wallStickTime)
+        if (IsWallStuck)
         {
-            UnWallSick();
+            if (TimeSinceLastWallHit > wallStickTime)
+            {
+                UnWallSick();
+
+                if (!IsPlayerMoveingIntoWall) WallHop();
+            }
+
+            if (IsPlayerMoveingAwayFromWall) WallHop();
         }
     }
 
     private void CheckIfWallSliding()
     {
         // Player IsWallSliding if they are not grounded, touching a wall, not wall stuck, and they are falling
-        bool IsWallSlidingThisFrame = !IsGrounded && IsTouchingWall && !IsWallStuck && rb.velocity.y <= 0;
+        bool IsWallSlidingThisFrame = !IsGrounded && IsTouchingWall && !IsWallStuck && rb.velocity.y <= 0 && IsPlayerMoveingIntoWall;
 
         if (IsWallSlidingThisFrame && !IsWallSliding) OnPlayerWallSlide?.Invoke();
         else if (!IsWallSlidingThisFrame && IsWallSliding) OnPlayerWallSlideEnd?.Invoke();
@@ -521,22 +534,14 @@ public class PlayerController : MonoBehaviour
 
             OnPlayerGroundJump?.Invoke();
         }
-
-        // If the player is not grounded, is wall sliding and has no input do a Wall Hop
-        else if (IsTouchingWall && movementInput.x == 0)
+        else if (IsTouchingWall)
         {
-            IsFacingRight = !IsFacingRight;
-            rb.AddForce(new Vector2(FacingDirection * wallHopForce * wallHopDirection.x, wallHopForce * wallHopDirection.y), ForceMode2D.Impulse);
+            
+            IsFacingRight = !IsFacingRight;            
 
-            OnPlayerWallHop?.Invoke();
-        }
-
-        // If the player is not grounded, is touching the wall, and there is input do a Wall Jump
-        // IsTouchingWall used instead of IsWallSliding incase the Y velocity is positive
-        else if (IsTouchingWall && movementInput.x != 0)
-        {
-            rb.AddForce(new Vector2(-FacingDirection * wallJumpForce * wallJumpDirection.x, wallJumpForce * wallJumpDirection.y), ForceMode2D.Impulse);
-
+            rb.AddForce(new Vector2(FacingDirection * wallJumpForce * wallJumpDirection.x, wallJumpForce * wallJumpDirection.y), ForceMode2D.Impulse);
+            timeOfLastWallJump = Time.time;
+            
             OnPlayerWallJump?.Invoke();
         }
 
@@ -550,6 +555,16 @@ public class PlayerController : MonoBehaviour
         }
 
         OnPlayerJump?.Invoke();
+    }
+
+    private void WallHop()
+    {
+        if (IsWallStuck) UnWallSick();
+
+        IsFacingRight = !IsFacingRight;
+        rb.AddForce(new Vector2(FacingDirection * wallHopForce * wallHopDirection.x, wallHopForce * wallHopDirection.y), ForceMode2D.Impulse);
+
+        OnPlayerWallHop?.Invoke();
     }
 
     /// <summary>
@@ -709,7 +724,9 @@ public class PlayerController : MonoBehaviour
     /// <summary>
     /// Returns true if the Player is able to Jump.
     /// </summary>
-    private bool CanJump { get { return IsGrounded || IsGrappling || remainingAirJumps > 0 || IsTouchingWall; } }
+    private bool CanJump { get { return IsGrounded || IsGrappling || IsTouchingWall || CanAirJump; } }
+
+    private bool CanAirJump { get { return !IsGrounded && !IsGrappling && !IsTouchingWall && remainingAirJumps > 0; } }
 
     /// <summary>
     /// Returns true if the Player is able to Slide.
@@ -719,7 +736,7 @@ public class PlayerController : MonoBehaviour
     /// <summary>
     /// Returns true if the Player is able to Dash.
     /// </summary>
-    private bool CanDash { get { return !IsSliding && !IsDashing && !IsGrappling && remainingDashes > 0 && TimeSinceLastDash > dashCoolDown; } }
+    private bool CanDash { get { return !IsSliding && !IsDashing && !IsGrappling && !IsWallStuck && remainingDashes > 0 && TimeSinceLastDash > dashCoolDown; } }
 
     /// <summary>
     /// Returns true if the Player is able to Move, Such as if the play is not sliding or dashing.
@@ -733,7 +750,11 @@ public class PlayerController : MonoBehaviour
     private float TimeSinceLastTrueGround { get { return Time.time - timeOfLastTrueIsGrounded; } }
     private float TimeSinceLastGroundedJump { get { return Time.time - timeOfLastGroundedJump; } }
     private float TimeSinceLastWallHit { get { return Time.time - timeOfLastWallHit; } }
+    private float TimeSinceLastWallJump { get { return Time.time - timeOfLastWallJump; } }
 
+
+    private bool IsPlayerMoveingIntoWall { get { return IsTouchingWall && (IsFacingRight && movementInput.x > 0) || (!IsFacingRight && movementInput.x < 0); } }
+    private bool IsPlayerMoveingAwayFromWall { get { return IsTouchingWall && (IsFacingRight && movementInput.x < 0) || (!IsFacingRight && movementInput.x > 0); } }
     public Vector2 GrappleAnchorPosition { get { return (Vector2)transform.position + grappleJoint.anchor; } }
     #endregion
 
@@ -753,6 +774,9 @@ public class PlayerController : MonoBehaviour
 #if UNITY_EDITOR
         Color rayColour = IsGrounded ? Color.green : Color.red;
         Debug.DrawRay(capsuleCollider.bounds.center - new Vector3(capsuleCollider.bounds.extents.x, capsuleCollider.bounds.extents.y + 0.1f), Vector2.right * (capsuleCollider.bounds.extents.x * 2), rayColour);
+
+        rayColour = IsTouchingWall ? Color.green : Color.red;
+        Debug.DrawRay(capsuleCollider.bounds.center, wallCheckDistance * FacingDirection * Vector2.right, rayColour);
 #endif
     }
     #endregion
