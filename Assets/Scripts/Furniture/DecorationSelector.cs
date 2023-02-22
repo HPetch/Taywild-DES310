@@ -165,6 +165,7 @@ public class DecorationSelector : MonoBehaviour
     public Collider2D CheckObjectUnderMouse()
     {
         return Physics2D.OverlapCircle(GetMousePositionInWorld(transform.position.z), 0.1f, selectorInteractionLayerMask);
+        
     }
     
     #endregion

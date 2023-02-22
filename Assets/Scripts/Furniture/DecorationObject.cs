@@ -12,14 +12,20 @@ public class DecorationObject : MonoBehaviour
     public float AttachmentPointRadius { get; private set; }
     public int scrollRotateArrayHolder; // NEED TO CHANGE THIS TO A GET PRIVATE SET
 
+    [SerializeField] private GameObject removeUi;
+    [SerializeField] private GameObject editUi;
+
     private void Start()
     {
         AttachmentPointRadius = GetComponentInChildren<CircleCollider2D>().radius;
+        removeUi.transform.position = GetComponent<SpriteRenderer>().bounds.max;
+        editUi.transform.position = new Vector2(transform.position.x, GetComponent<SpriteRenderer>().bounds.min.y);
     }
 
     public void StartPickup()
     {
         GetComponent<SpriteRenderer>().color = Color.gray;
+        
     }
     public void EndPickup()
     {

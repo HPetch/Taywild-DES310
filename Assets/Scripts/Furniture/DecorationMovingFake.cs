@@ -27,23 +27,23 @@ public class DecorationMovingFake : MonoBehaviour
 
     private bool isMovementComplete;
 
-    public void Inititalise()
+    private void Awake()
     {
+        moveTarget = DecorationController.Instance.CurrentMoveTarget;
+        GetComponent<SpriteRenderer>().sprite = moveTarget.GetComponent<SpriteRenderer>().sprite;
         
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        
-        moveTarget = DecorationController.Instance.CurrentMoveTarget;
-        GetComponent<SpriteRenderer>().sprite = moveTarget.GetComponent<SpriteRenderer>().sprite;
         transform.position = moveTarget.transform.position;
         transform.rotation = moveTarget.transform.rotation;
         transform.localScale = moveTarget.transform.localScale;
         isBeingMoved = true;
 
-}
+
+    }
 
     // Update is called once per frame
     void Update()

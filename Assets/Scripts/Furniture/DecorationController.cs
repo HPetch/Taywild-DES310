@@ -1,9 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class DecorationController : MonoBehaviour
 {
+
+    public event Action OnEnterEditMode;
+    public event Action OnExitEditMode;
+    public event Action OnPickupDecoration;
+    public event Action OnPlaceDecoration;
+    public event Action OnPlaceCancelDecoration;
+
     public static DecorationController Instance { get; private set; }
     [SerializeField] private GameObject decorationSelectorPrefab;
     [SerializeField] private GameObject decorationMovingFakePrefab;
@@ -72,9 +80,10 @@ public class DecorationController : MonoBehaviour
     public void DecorationMoveStart(GameObject _decorationObject)
     {
         CurrentMoveTarget = _decorationObject;
-        CurrentMoveFake = Instantiate(decorationMovingFakePrefab);
         CurrentMoveTarget.GetComponent<SpriteRenderer>().color = new Color(1,1,1,0.25f);
+        CurrentMoveFake = Instantiate(decorationMovingFakePrefab);
         CurrentMoveFake.GetComponent<DecorationMovingFake>().scrollRotateIndex = CurrentMoveTarget.GetComponent<DecorationObject>().scrollRotateArrayHolder;
+        OnPickupDecoration?.Invoke();
     }
 
     private void DecorationMoveEndStart()
@@ -90,6 +99,7 @@ public class DecorationController : MonoBehaviour
         CurrentMoveFake = null;
         CurrentMoveTarget.GetComponent<SpriteRenderer>().color = new Color(1,1,1,1);
         CurrentMoveTarget = null;
+        OnPlaceDecoration?.Invoke();
     }
 
     private void DecorationMoveCancel()
@@ -100,6 +110,7 @@ public class DecorationController : MonoBehaviour
             CurrentMoveFake = null;
             CurrentMoveTarget.GetComponent<SpriteRenderer>().color = new Color(1,1,1,1);
             CurrentMoveTarget = null;
+            OnPlaceCancelDecoration?.Invoke();
         }
         
     }
@@ -114,11 +125,13 @@ public class DecorationController : MonoBehaviour
             DecorationMoveCancel();
             isEditMode = false;
             Destroy(DecorationSelector);
+            OnEnterEditMode?.Invoke();
         }
         else
         {
             DecorationSelector = Instantiate(decorationSelectorPrefab);
             isEditMode = true;
+            OnExitEditMode?.Invoke();
         }
     }
 }
