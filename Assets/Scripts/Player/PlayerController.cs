@@ -167,10 +167,21 @@ public class PlayerController : MonoBehaviour
     #region Gliding
     [Header("Gliding Settings")]
 
-    [Tooltip("")]
-    [Range(0, 10)]
-    [SerializeField] private float fallSpeedBeforeGliding = 1f;
+    [Tooltip("How fast the player has to fall to trigger gliding")]
+    [Range(0, 20)]
+    [SerializeField] private float fallSpeedThatTriggersGliding = 10f;
 
+    [Tooltip("How fast the player falls when gliding")]
+    [Range(0, 20)]
+    [SerializeField] private float glideFallSpeed = 4f;
+
+    [Tooltip("How fast the player accelerates while gliding")]
+    [Range(0, 2)]
+    [SerializeField] private float glideAirMoveAcceleration = 0.8f;
+
+    [Tooltip("How fast the player decelerates when gliding and no input")]
+    [Range(0, 1)]
+    [SerializeField] private float glideAirDragMultiplier = 0.95f;
     #endregion
 
     #region Utility
@@ -221,12 +232,12 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         if (IsDashing) DashingBehaviour();
-        if (IsGliding) GlidingBehaviour();
 
-        if (CanMove) ApplyMovement();      
+        if (CanMove) ApplyMovement();
     }
     #endregion
 
+    #region Movement
     private void ApplyMovement()
     {
         Vector2 velocity = rb.velocity;
@@ -234,17 +245,16 @@ public class PlayerController : MonoBehaviour
         if (IsGrounded)
         {
             velocity = new Vector2(movementInput.x * moveSpeed, velocity.y);
-        }        
+        }
         // If NotGrounded and Not touching a wall
         else if (!IsTouchingWall)
         {
-            IsGliding = velocity.y < -fallSpeedBeforeGliding;
+            if (!IsGliding && velocity.y < -fallSpeedThatTriggersGliding) StartGliding();
 
-            velocity = IsGliding? GlidingMovement(velocity) : AirMovement(velocity);       
+            velocity = IsGliding ? GlidingMovement(velocity) : AirMovement(velocity);
         }
-
         // If wallSliding and the Player is falling faster than the wall slide speed, then set the Y velocity to wall slide speed
-        if (IsWallSliding && velocity.y < -wallSlideSpeed)
+        else if (IsWallSliding && velocity.y < -wallSlideSpeed)
         {
             velocity.y = -wallSlideSpeed;
         }
@@ -280,8 +290,31 @@ public class PlayerController : MonoBehaviour
 
     private Vector2 GlidingMovement(Vector2 _velocity)
     {
+        _velocity.y = _velocity.y < -glideFallSpeed ? -glideFallSpeed : _velocity.y;
+
+        // If Movement Input
+        if (movementInput.x != 0 && TimeSinceLastWallJump > airMovementDisabledDelayAfterWallJump)
+        {
+            // Add the air acceleration force
+            _velocity.x += movementInput.x * glideAirMoveAcceleration;
+
+            // If we exceed the player move speed
+            if (MathF.Abs(_velocity.x) > moveSpeed)
+            {
+                // Clamp the movespeed
+                _velocity.x = moveSpeed * movementInput.x;
+            }
+        }
+        // If no Movement Input
+        else
+        {
+            // Slow the player down by the air drag
+            _velocity.x *= glideAirDragMultiplier;
+        }
+
         return _velocity;
     }
+    #endregion
 
     #region State Checks
     private void CheckMovementDirection()
@@ -327,6 +360,7 @@ public class PlayerController : MonoBehaviour
                     // If Player was wall sliding previouse frame, and landed this frame. flip the direction
                     if (IsWallSliding) IsFacingRight = !IsFacingRight;
 
+                    if (IsGliding) StopGliding();
                     OnPlayerLand?.Invoke();
                 }
             }
@@ -355,6 +389,8 @@ public class PlayerController : MonoBehaviour
         // If player is not on the ground and is touching wall this frame, but not the last frame, then the player has hit a wall
         if (!IsGrounded && isTouchingWallThisFrame && !IsTouchingWall)
         {
+            if (IsGliding) StopGliding();
+
             timeOfLastWallHit = Time.time;
             WallStick();
 
@@ -396,11 +432,6 @@ public class PlayerController : MonoBehaviour
         // If Player IsDashing & within dash duration they are still dashing, else they are not
         IsDashing = IsDashing && TimeSinceLastDash < dashDuration;
     }
-
-    private void CheckIfGliding()
-    {
-        //IsGliding = IsGliding && !IsGrounded && !IsDashing && !IsTouchingWall && 
-    }
     #endregion
 
     #region ActionInputs
@@ -418,7 +449,7 @@ public class PlayerController : MonoBehaviour
         {
             if (CanJump) Jump();
             else jumpQueued = true;
-        } 
+        }
         else if (!IsGrounded && !IsTouchingWall && Input.GetButtonUp("Jump"))
         {
             rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * variableJumpHegithMultiplier);
@@ -429,6 +460,13 @@ public class PlayerController : MonoBehaviour
             if (CanDash) Dash();
             else dashQueued = true;
         }
+
+        if (Input.GetButton("Drop"))
+        {
+            if (IsGliding) StopGliding();
+            if (IsWallStuck) UnWallSick();
+        }
+
     }
 
     /// <summary>
@@ -450,7 +488,8 @@ public class PlayerController : MonoBehaviour
     private void Jump()
     {
         jumpQueued = false;
-        if (IsWallStuck) UnWallSick();       
+        if (IsWallStuck) UnWallSick();
+        if (IsGliding) StopGliding();
 
         // If player is grounded do a ground jump
         if (IsGrounded)
@@ -464,12 +503,11 @@ public class PlayerController : MonoBehaviour
         }
         else if (IsTouchingWall)
         {
-            
-            IsFacingRight = !IsFacingRight;            
+            IsFacingRight = !IsFacingRight;
 
             rb.AddForce(new Vector2(FacingDirection * wallJumpForce * wallJumpDirection.x, wallJumpForce * wallJumpDirection.y), ForceMode2D.Impulse);
             timeOfLastWallJump = Time.time;
-            
+
             OnPlayerWallJump?.Invoke();
         }
 
@@ -504,23 +542,39 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void GlidingBehaviour()
-    {
-
-    }
-
     private void Dash()
-    {       
+    {
+        if (IsGliding) StopGliding();
+
         IsDashing = true;
         timeOfLastDash = Time.time;
 
-        remainingDashes--;
+        // If its an air dash
+        if (!IsGrounded) remainingDashes--;
+
         dashHeight = transform.position.y;
 
         rb.velocity = new Vector2(FacingDirection * dashSpeed, rb.velocity.y);
         OnPlayerDash?.Invoke();
-    }    
-    #endregion    
+    }
+    #endregion
+
+    #region Gliding
+    private void StartGliding()
+    {
+        // If holding the drop key then do not start gliding
+        if (Input.GetButton("Drop")) return;
+
+        IsGliding = true;
+        OnPlayerGlide?.Invoke();
+    }
+
+    private void StopGliding()
+    {
+        IsGliding = false;
+        OnPlayerGlideEnd?.Invoke();
+    }
+    #endregion
 
     #region WallStick
     private void WallStick()
@@ -556,7 +610,7 @@ public class PlayerController : MonoBehaviour
     /// Locks the Players movement and action inputs.
     /// </summary>
     /// <param name="conversation">Parameter not used, is required to subsribe to the event</param>
-    private void LockPlayerInput(Conversation conversation= null)
+    private void LockPlayerInput(Conversation conversation = null)
     {
         IsLockedInput = true;
         rb.constraints = RigidbodyConstraints2D.FreezeAll;
@@ -590,9 +644,9 @@ public class PlayerController : MonoBehaviour
     /// <summary>
     /// Returns true if the Player is able to Dash.
     /// </summary>
-    private bool CanDash { get { return !IsDashing && !IsWallStuck && remainingDashes > 0 && TimeSinceLastDash > dashCoolDown; } }
+    private bool CanDash { get { return !IsDashing && !IsWallStuck && (remainingDashes > 0 || IsGrounded) && TimeSinceLastDash > dashCoolDown; } }
 
-    private int FacingDirection { get { return IsFacingRight? 1 : -1; } }
+    private int FacingDirection { get { return IsFacingRight ? 1 : -1; } }
     private float TimeSinceLastDash { get { return Time.time - timeOfLastDash; } }
     private float TimeSinceLastTrueGround { get { return Time.time - timeOfLastTrueIsGrounded; } }
     private float TimeSinceLastGroundedJump { get { return Time.time - timeOfLastGroundedJump; } }

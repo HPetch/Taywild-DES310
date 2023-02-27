@@ -45,7 +45,6 @@ public class PlayerEffectController : MonoBehaviour
     private void Awake()
     {
         player = GetComponentInParent<PlayerController>();
-
         rb = GetComponentInParent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -70,6 +69,7 @@ public class PlayerEffectController : MonoBehaviour
     private void UpdateAnimator()
     {
         spriteRenderer.flipX = !player.IsFacingRight;
+
         if (player.IsWallSliding || player.IsWallStuck) spriteRenderer.flipX = player.IsFacingRight;
 
         animator.SetBool("Running", Mathf.Abs(rb.velocity.x) > 0.2f);
