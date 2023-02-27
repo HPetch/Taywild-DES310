@@ -26,6 +26,7 @@ public class DialogueController : MonoBehaviour
     private Queue<Conversation> conversationQueue = new Queue<Conversation>();
 
     [SerializeField] private ConversationUITemplate[] conversationUITemplates;
+
     private ConversationUITemplate uiTemplate;
 
     private Conversation currentConversation = null;
@@ -259,7 +260,7 @@ public class DialogueController : MonoBehaviour
 
             // Update the text.
             uiTemplate.TextField.GetComponent<TextEffect>().UpdateText();
-
+            
             // If there is a TextTypeWaitTime set, then wait.
             if (textTypeWaitTime > 0f)
             {
@@ -317,11 +318,13 @@ public class DialogueController : MonoBehaviour
         uiTemplate = conversationUITemplates[(int)conversationEvent.UITemplate];
         HideBranchButtons();
         uiTemplate.TextField.GetComponent<TextEffect>().ClearText();
+        
         if (branchConversationEvent != null)
         {
             uiTemplate.CharacterName.SetText(branchConversationEvent.Character.CharacterName);
             uiTemplate.CharacterName.color = branchConversationEvent.Character.Colour;
             uiTemplate.CharacterPortrait.sprite = branchConversationEvent.Character.Portraits[0];
+            
             yield return new WaitForSeconds(0.1f);
             changeCharacter = null;
             textType = StartCoroutine(TypeSentance(branchConversationEvent.Text));
@@ -332,6 +335,7 @@ public class DialogueController : MonoBehaviour
             uiTemplate.CharacterName.color = conversationEvent.Character.Colour;
             uiTemplate.CharacterPortrait.sprite = conversationEvent.Character.Portraits[0];
             yield return new WaitForSeconds(0.1f);
+            
             changeCharacter = null;
             textType = StartCoroutine(TypeSentance(conversationEvent.Text));
         }

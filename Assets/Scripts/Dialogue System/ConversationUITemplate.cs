@@ -13,7 +13,7 @@ public class ConversationUITemplate : MonoBehaviour
         public Image buttonBckground;
     };
 
-    public enum ConversationUITemplates { BOTTOM_LEFT, BOTTOM_MIDDLE_LONG, BOTTOM_MIDDLE_SHORT, TOP_LEFT };
+    public enum ConversationUITemplates {  BOTTOM_LEFT, BOTTOM_MIDDLE_LONG, BOTTOM_MIDDLE_SHORT, TOP_LEFT};
 
     #region Variables
     [field: Header("Template Type")]
