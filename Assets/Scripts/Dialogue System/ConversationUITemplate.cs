@@ -1,4 +1,5 @@
 using TMPro;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,11 +8,12 @@ public class ConversationUITemplate : MonoBehaviour
     [System.Serializable]
     public struct BranchButton
     {
+        public CanvasGroup canvasGroup;
         public TextMeshProUGUI buttonText;
         public Image buttonBckground;
     };
 
-    public enum ConversationUITemplates {  BOTTOM_LEFT, BOTTOM_MIDDLE_LONG, BOTTOM_MIDDLE_SHORT, TOP_LEFT};
+    public enum ConversationUITemplates { BOTTOM_LEFT, BOTTOM_MIDDLE_LONG, BOTTOM_MIDDLE_SHORT, TOP_LEFT };
 
     #region Variables
     [field: Header("Template Type")]
@@ -31,31 +33,41 @@ public class ConversationUITemplate : MonoBehaviour
 
     [field: Header("Buttons")]
     [field: SerializeField] public BranchButton[] BranchButtons { get; private set; } = new BranchButton[4];
+
+    public CanvasGroup canvasGroup;
     #endregion
 
     #region Functions
     #region Initialisation
     private void Awake()
     {
-        
+        canvasGroup = GetComponent<CanvasGroup>();
     }
     #endregion
 
-    public virtual void SetConversationEvent(ConversationEvent conversationEvent)
+    #region Transitions
+    private IEnumerator TransitionLayoutIn()
     {
-
+        yield return null;
     }
 
-    public virtual void TransitionIn()
+    private IEnumerator TransitionLayoutOut()
     {
-
+        yield return null;
     }
 
-    public virtual void TransitionOut()
+    private IEnumerator TransitionCharacterIn()
     {
-
+        yield return null;
     }
 
+    private IEnumerator TransitionCharacterOut()
+    {
+        yield return null;
+    }
+    #endregion
+
+    #region Utility
     private void Reset()
     {
         Transform character = transform.Find("Character");
@@ -75,8 +87,10 @@ public class ConversationUITemplate : MonoBehaviour
         for (int button = 0; button < 4; button++)
         {
             BranchButtons[button].buttonBckground = branchButtons.Find("Button " + (button + 1)).GetComponent<Image>();
+            BranchButtons[button].canvasGroup = BranchButtons[button].buttonBckground.GetComponent<CanvasGroup>();
             BranchButtons[button].buttonText = BranchButtons[button].buttonBckground.transform.Find("Button " + (button + 1) + " Text").GetComponent<TextMeshProUGUI>();
         }
     }
+    #endregion
     #endregion
 }
