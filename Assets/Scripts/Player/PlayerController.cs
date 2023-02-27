@@ -24,22 +24,18 @@ public class PlayerController : MonoBehaviour
     public event Action OnPlayerWallSlideEnd;
     public event Action OnPlayerLand;
     public event Action OnPlayerGlide;
-    public event Action OnPlayerSlide;
+    public event Action OnPlayerGlideEnd;
     public event Action OnPlayerDash;
-    public event Action<GrapplePoint> OnPlayerGrapple;
-    public event Action OnPlayerGrappleEnd;
     #endregion
 
     #region Variables
     // State booleans
     public bool IsGrounded { get; private set; } = true;
-    public bool IsSliding { get; private set; } = false;
     public bool IsDashing { get; private set; } = false;
     public bool IsTouchingWall { get; private set; } = false;
     public bool IsWallStuck { get; private set; } = false;
     public bool IsWallSliding { get; private set; } = false;
     public bool IsGliding { get; private set; } = false;
-    public bool IsGrappling { get; set; } = false;
     public bool IsLockedInput { get; private set; } = false;
     public bool IsFacingRight { get; set; } = true;
 
@@ -144,36 +140,7 @@ public class PlayerController : MonoBehaviour
     private float timeOfLastWallHit = 0f;
     private float timeOfLastWallJump = 0f;
 
-    #endregion
-
-    #region Slide
-    [Space(10)]
-    [Header("Slide Settings")]
-
-    [Tooltip("The initial strength of the slide")]
-    [Range(0, 25)]
-    [SerializeField] private float slideForce = 15f;
-
-    [Tooltip("The duration of the slide")]
-    [Range(0, 2)]
-    [SerializeField] private float slideDuration = 0.4f;
-
-    [Tooltip("The cooldown between slides")]
-    [Range(0, 2)]
-    [SerializeField] private float slideCooldown = 1f;
-
-    [Space(5)]
-    [Tooltip("Dictates the behaviour of the slide over it's duration")]
-    [SerializeField] private AnimationCurve slideCurve;
-
-    // Tracks if the slide action input has been queued
-    private bool slideQueued = false;
-    // Tracks how long the slide has lasted
-    private float slideTimeElapsed = 0f;
-    // Used to sample the slide curve
-    private float slideCurveSamplePoint = 0f;
-    private float timeOfLastSlide = 0f;
-    #endregion
+    #endregion   
 
     #region Dash
     [Space(10)]
@@ -195,28 +162,7 @@ public class PlayerController : MonoBehaviour
     private float dashHeight = 0f;
     private float timeOfLastDash = 0f;
     private bool dashQueued = false;
-    #endregion
-
-    #region Grapple
-    [Header("Grapple Settings")]
-
-    [Tooltip("The jump force when the player is grappling")]
-    [Range(0, 30)]
-    [SerializeField] private float grapplingJumpForce = 15f;
-
-    [Tooltip("The max speed of the player when grappling")]
-    [Range(0, 30)]
-    [SerializeField] private float grappleMoveSpeed = 15f;
-
-    [Tooltip("How fast the player accelerates when grappling")]
-    [Range(0, 10)]
-    [SerializeField] private float grappleAcceleration = 2f;
-
-    private List<GrapplePoint> grapplePoints = new List<GrapplePoint>();
-    private DistanceJoint2D grappleJoint;
-    private bool grappleQueued = false;
-    private GrapplePoint grapplePoint;
-    #endregion
+    #endregion 
 
     #region Gliding
     [Header("Gliding Settings")]
@@ -243,8 +189,6 @@ public class PlayerController : MonoBehaviour
         // Reference local components
         rb = GetComponent<Rigidbody2D>();
         capsuleCollider = GetComponent<CapsuleCollider2D>();
-        grappleJoint = GetComponent<DistanceJoint2D>();
-        grappleJoint.enabled = false;
 
         wallHopDirection.Normalize();
         wallJumpDirection.Normalize();
@@ -276,7 +220,6 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (IsSliding) SlidingBehaviour();
         if (IsDashing) DashingBehaviour();
         if (IsGliding) GlidingBehaviour();
 
@@ -291,26 +234,8 @@ public class PlayerController : MonoBehaviour
         if (IsGrounded)
         {
             velocity = new Vector2(movementInput.x * moveSpeed, velocity.y);
-        }
-        else if (IsGrappling)
-        {
-            // If the graple point is not valid then clamp the velocity
-            if (!grapplePoint.IsGrappleValid && velocity.y > 0f)
-            {
-                velocity *= new Vector2(0.8f, 0.8f);
-            }
-
-            // If Movement Input
-            else if (movementInput.x != 0)
-            {
-                velocity.x += movementInput.x * grappleAcceleration;
-
-                // Clamp the movespeed
-                velocity = Vector2.ClampMagnitude(velocity, grappleMoveSpeed);
-            }
-
-        }
-        // If NotGrounded and Not touching a wall and not Grappling
+        }        
+        // If NotGrounded and Not touching a wall
         else if (!IsTouchingWall)
         {
             IsGliding = velocity.y < -fallSpeedBeforeGliding;
@@ -499,22 +424,10 @@ public class PlayerController : MonoBehaviour
             rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * variableJumpHegithMultiplier);
         }
 
-        if (Input.GetButtonDown("Slide") || slideQueued)
-        {
-            if (CanSlide) Slide();
-            else slideQueued = true;
-        }
-
         if (Input.GetButtonDown("Dash") || dashQueued)
         {
             if (CanDash) Dash();
             else dashQueued = true;
-        }
-
-        if (Input.GetButtonDown("Grapple") || grappleQueued)
-        {
-            if (CanGrapple) Grapple();
-            else grappleQueued = true;
         }
     }
 
@@ -526,11 +439,7 @@ public class PlayerController : MonoBehaviour
         // If you're not holding the button after quing an action, assume you don't wanna do it
         if (jumpQueued && !Input.GetButton("Jump")) jumpQueued = false;
 
-        if (slideQueued && !Input.GetButton("Slide")) slideQueued = false;
-
         if (dashQueued && !Input.GetButton("Dash")) dashQueued = false;
-
-        if (grappleQueued && !Input.GetButton("Grapple")) grappleQueued = false;
     }
     #endregion
 
@@ -541,21 +450,10 @@ public class PlayerController : MonoBehaviour
     private void Jump()
     {
         jumpQueued = false;
-        if (IsWallStuck) UnWallSick();
-
-        if (IsGrappling)
-        {
-            IsGrappling = false;
-            grapplePoint = null;
-            grappleJoint.enabled = false;
-
-            rb.velocity = new Vector2(rb.velocity.x, grapplingJumpForce);
-
-            OnPlayerGrappleEnd?.Invoke();
-        }        
+        if (IsWallStuck) UnWallSick();       
 
         // If player is grounded do a ground jump
-        else if (IsGrounded)
+        if (IsGrounded)
         {
             IsGrounded = false;
 
@@ -597,32 +495,6 @@ public class PlayerController : MonoBehaviour
         OnPlayerWallHop?.Invoke();
     }
 
-    /// <summary>
-    /// Makes the Player slide.
-    /// </summary>
-    private void Slide()
-    {
-        IsSliding = true;
-        slideTimeElapsed = 0;
-        slideCurveSamplePoint = 0;
-        timeOfLastSlide = Time.time;
-
-        OnPlayerSlide?.Invoke();
-    }
-
-    /// <summary>
-    /// If the Player is sliding, they will continue to slide as dictated by the sliding curve.
-    /// </summary>
-    private void SlidingBehaviour()
-    {
-        // Takes the facing direction, multiples that by the current point on the curve, and then multiplied by the slide
-        rb.velocity = new Vector2(FacingDirection * (slideCurve.Evaluate(slideCurveSamplePoint) * slideForce), rb.velocity.y);
-
-        slideCurveSamplePoint += Time.fixedDeltaTime / slideDuration;   // As fixedDeltaTime is usually ~< 0.01, dividing it by our duration offsets it to reach 1 by the end of the slide
-        slideTimeElapsed += Time.fixedDeltaTime;
-        IsSliding = slideTimeElapsed <= slideDuration;
-    }
-
     private void DashingBehaviour()
     {
         if (transform.position.y < dashHeight)
@@ -647,59 +519,8 @@ public class PlayerController : MonoBehaviour
 
         rb.velocity = new Vector2(FacingDirection * dashSpeed, rb.velocity.y);
         OnPlayerDash?.Invoke();
-    }
-
-    private void Grapple()
-    {
-        IsGrappling = true;
-        ResetActions();
-
-        grapplePoint = GetClosestGrapplePoint();
-        
-        // Player is too close to the grapple
-        if (Vector2.Distance(GrappleAnchorPosition, grapplePoint.transform.position) < grapplePoint.GrappleDistance.x)
-        {
-            Vector2 direction = (GrappleAnchorPosition - (Vector2)grapplePoint.transform.position).normalized;
-            transform.position = (Vector2)grapplePoint.transform.position + direction * grapplePoint.GrappleDistance.x * 2;
-        }
-
-        grappleJoint.connectedAnchor = grapplePoint.transform.position;
-        grappleJoint.enabled = true;
-
-        OnPlayerGrapple?.Invoke(grapplePoint);
-    }
-    #endregion
-
-    #region Grapple Methods
-    public void AddValidGrapplePoint(GrapplePoint grapplePoint)
-    {
-        if (!grapplePoints.Contains(grapplePoint)) grapplePoints.Add(grapplePoint);
-    }
-
-    public void RemoveValidGrapplePoint(GrapplePoint grapplePoint)
-    {
-        grapplePoints.Remove(grapplePoint);
-    }
-
-    public GrapplePoint GetClosestGrapplePoint()
-    {
-        GrapplePoint grapplePoint = grapplePoints[0];
-        float distanceToClosestPoint = Vector2.Distance(GrappleAnchorPosition, grapplePoint.transform.position);
-
-        foreach(GrapplePoint point in grapplePoints)
-        {
-            float distanceToPoint = Vector2.Distance(GrappleAnchorPosition, point.transform.position);
-
-            if (distanceToPoint < distanceToClosestPoint)
-            {
-                grapplePoint = point;
-                distanceToClosestPoint = distanceToPoint;
-            }
-        }
-
-        return grapplePoint;
-    }
-    #endregion
+    }    
+    #endregion    
 
     #region WallStick
     private void WallStick()
@@ -754,43 +575,32 @@ public class PlayerController : MonoBehaviour
     /// <summary>
     /// Returns true if the Player is able to Move, Such as if the play is not sliding or dashing.
     /// </summary>
-    private bool CanMove { get { return !IsSliding && !IsDashing && !IsLockedInput; } }
+    private bool CanMove { get { return !IsDashing && !IsLockedInput; } }
 
     /// <summary>
     /// Returns true if the Player is able to Jump.
     /// </summary>
-    private bool CanJump { get { return IsGrounded || IsGrappling || IsTouchingWall || CanAirJump; } }
-
-    private bool CanAirJump { get { return !IsGrounded && !IsGrappling && !IsTouchingWall && remainingAirJumps > 0; } }
+    private bool CanJump { get { return IsGrounded || IsTouchingWall || CanAirJump; } }
 
     /// <summary>
-    /// Returns true if the Player is able to Slide.
+    /// Returns true if the Player is able to air Jump
     /// </summary>
-    private bool CanSlide { get { return IsGrounded && !IsSliding && !IsDashing && !IsGrappling && movementInput.x != 0 && TimeSinceLastSlide > slideCooldown; } }
+    private bool CanAirJump { get { return !IsGrounded && !IsTouchingWall && remainingAirJumps > 0; } }
 
     /// <summary>
     /// Returns true if the Player is able to Dash.
     /// </summary>
-    private bool CanDash { get { return !IsSliding && !IsDashing && !IsGrappling && !IsWallStuck && remainingDashes > 0 && TimeSinceLastDash > dashCoolDown; } }
-
-    /// <summary>
-    /// Returns true if the Player is able to Move, Such as if the play is not sliding or dashing.
-    /// </summary>
-    private bool CanGrapple { get { return !IsGrappling && grapplePoints.Count > 0; } }
-
+    private bool CanDash { get { return !IsDashing && !IsWallStuck && remainingDashes > 0 && TimeSinceLastDash > dashCoolDown; } }
 
     private int FacingDirection { get { return IsFacingRight? 1 : -1; } }
     private float TimeSinceLastDash { get { return Time.time - timeOfLastDash; } }
-    private float TimeSinceLastSlide { get { return Time.time - timeOfLastSlide; } }
     private float TimeSinceLastTrueGround { get { return Time.time - timeOfLastTrueIsGrounded; } }
     private float TimeSinceLastGroundedJump { get { return Time.time - timeOfLastGroundedJump; } }
     private float TimeSinceLastWallHit { get { return Time.time - timeOfLastWallHit; } }
     private float TimeSinceLastWallJump { get { return Time.time - timeOfLastWallJump; } }
 
-
     private bool IsPlayerMoveingIntoWall { get { return IsTouchingWall && (IsFacingRight && movementInput.x > 0) || (!IsFacingRight && movementInput.x < 0); } }
     private bool IsPlayerMoveingAwayFromWall { get { return IsTouchingWall && (IsFacingRight && movementInput.x < 0) || (!IsFacingRight && movementInput.x > 0); } }
-    public Vector2 GrappleAnchorPosition { get { return (Vector2)transform.position + grappleJoint.anchor; } }
     #endregion
 
     #region Collision
