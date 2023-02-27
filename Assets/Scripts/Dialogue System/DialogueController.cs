@@ -25,8 +25,7 @@ public class DialogueController : MonoBehaviour
     private Queue<ShallowBranchConversationEvent> branchConversationEventQueue = new Queue<ShallowBranchConversationEvent>();
     private Queue<Conversation> conversationQueue = new Queue<Conversation>();
 
-    [SerializeField] private ConversationUITemplate[] conversationUITemplates;
-
+    [SerializeField] private  ConversationUITemplate[] conversationUITemplates;
     private ConversationUITemplate uiTemplate;
 
     private Conversation currentConversation = null;
@@ -40,11 +39,11 @@ public class DialogueController : MonoBehaviour
     private string textTypeString = "";
 
     [Tooltip("Delay between each char in the TextType Coroutine")]
-    [Range(0, 0.25f)]
+    [Range(0,0.25f)]
     [SerializeField] public float TextTypeDelay = 0.01f;
 
-    [Tooltip("Delay when a period is used")]
-    [Range(0, 0.25f)]
+    [Tooltip("Delay when a period is used")]    
+    [Range(0,0.25f)]
     [SerializeField] private float TextTypePeriodDelay = 0.05f;
 
     [Tooltip("Delay when a comma is used")]
@@ -53,7 +52,7 @@ public class DialogueController : MonoBehaviour
 
     [Tooltip("Delay when a colon is used")]
     [Range(0, 0.25f)]
-    [SerializeField] private float TextTypeColonDelay = 0.05f;
+    [SerializeField] private float TextTypeColonDelay  = 0.05f;
 
     [Tooltip("Delay when a semi-colon is used")]
     [Range(0, 0.25f)]
@@ -161,19 +160,19 @@ public class DialogueController : MonoBehaviour
             {
                 if (_buttonIndex >= 0)
                 {
-                    if (conversationEvent.BranchEvents[_buttonIndex].Conversation.Length == 0)
+                    if(conversationEvent.BranchEvents[_buttonIndex].Conversation.Length == 0)
                     {
                         conversationEvent = conversationEventQueue.Dequeue();
                         ChangeCharacter(conversationEvent);
                         return;
-                    }
+                    }                  
 
                     branchConversationEventQueue.Clear();
                     foreach (ShallowBranchConversationEvent conversationEvent in conversationEvent.BranchEvents[_buttonIndex].Conversation)
                     {
                         branchConversationEventQueue.Enqueue(conversationEvent);
-                    }
-
+                    }                    
+                    
                     branchConversationEvent = branchConversationEventQueue.Dequeue();
 
                     ChangeCharacter(branchConversationEvent);
@@ -253,7 +252,7 @@ public class DialogueController : MonoBehaviour
 
             uiTemplate.TextField.SetText(textTypeString);
 
-            if (linkStarted && !richText)
+            if(linkStarted && !richText)
             {
                 uiTemplate.TextField.text += "</link>";
             }
@@ -276,7 +275,7 @@ public class DialogueController : MonoBehaviour
                     // skip to next letter
                     continue;
 
-                // If the char is a period
+                    // If the char is a period
                 case '.':
                     // Wait for the duration of TextTypePeriodDelay
                     yield return new WaitForSeconds(TextTypePeriodDelay);
@@ -300,7 +299,7 @@ public class DialogueController : MonoBehaviour
                     yield return new WaitForSeconds(TextTypeSemiColonDelay);
                     continue;
 
-                // Else for every other character use the default delay
+                    // Else for every other character use the default delay
                 default:
                     yield return new WaitForSeconds(currentTextTypeDelay);
                     continue;
@@ -317,15 +316,17 @@ public class DialogueController : MonoBehaviour
     {
         uiTemplate = conversationUITemplates[(int)conversationEvent.UITemplate];
         HideBranchButtons();
+
         uiTemplate.TextField.GetComponent<TextEffect>().ClearText();
-        
+
         if (branchConversationEvent != null)
         {
             uiTemplate.CharacterName.SetText(branchConversationEvent.Character.CharacterName);
             uiTemplate.CharacterName.color = branchConversationEvent.Character.Colour;
             uiTemplate.CharacterPortrait.sprite = branchConversationEvent.Character.Portraits[0];
-            
+
             yield return new WaitForSeconds(0.1f);
+
             changeCharacter = null;
             textType = StartCoroutine(TypeSentance(branchConversationEvent.Text));
         }
@@ -335,7 +336,7 @@ public class DialogueController : MonoBehaviour
             uiTemplate.CharacterName.color = conversationEvent.Character.Colour;
             uiTemplate.CharacterPortrait.sprite = conversationEvent.Character.Portraits[0];
             yield return new WaitForSeconds(0.1f);
-            
+
             changeCharacter = null;
             textType = StartCoroutine(TypeSentance(conversationEvent.Text));
         }

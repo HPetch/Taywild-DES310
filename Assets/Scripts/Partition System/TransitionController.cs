@@ -54,7 +54,7 @@ public class TransitionController : MonoBehaviour
     private void Update()
     {
         // If the player is not inside the current partition
-        if (!CurrentPartition.PartitionRect.Contains(player.transform.position))
+        if(!CurrentPartition.PartitionRect.Contains(player.transform.position))
         {
             // Find the partition that the player is in
             TriggerTransition(FindPlayerPartiton());
@@ -67,7 +67,7 @@ public class TransitionController : MonoBehaviour
     private Partition FindPlayerPartiton()
     {
         // Foreach partition
-        foreach (Partition partition in partitions)
+        foreach(Partition partition in partitions)
         {
             // If the player is within the partition rect
             if (partition.PartitionRect.Contains(player.transform.position))
