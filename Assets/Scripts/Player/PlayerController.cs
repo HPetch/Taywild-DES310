@@ -23,6 +23,7 @@ public class PlayerController : MonoBehaviour
     public event Action OnPlayerWallSlide;
     public event Action OnPlayerWallSlideEnd;
     public event Action OnPlayerLand;
+    public event Action OnPlayerGlide;
     public event Action OnPlayerSlide;
     public event Action OnPlayerDash;
     public event Action<GrapplePoint> OnPlayerGrapple;
@@ -217,6 +218,15 @@ public class PlayerController : MonoBehaviour
     private GrapplePoint grapplePoint;
     #endregion
 
+    #region Gliding
+    [Header("Gliding Settings")]
+
+    [Tooltip("")]
+    [Range(0, 10)]
+    [SerializeField] private float fallSpeedBeforeGliding = 1f;
+
+    #endregion
+
     #region Utility
     private Vector2 lastKnownGroundPosition;
     #endregion
@@ -268,6 +278,7 @@ public class PlayerController : MonoBehaviour
     {
         if (IsSliding) SlidingBehaviour();
         if (IsDashing) DashingBehaviour();
+        if (IsGliding) GlidingBehaviour();
 
         if (CanMove) ApplyMovement();      
     }
@@ -302,25 +313,9 @@ public class PlayerController : MonoBehaviour
         // If NotGrounded and Not touching a wall and not Grappling
         else if (!IsTouchingWall)
         {
-            // If Movement Input
-            if (movementInput.x != 0 && TimeSinceLastWallJump > airMovementDisabledDelayAfterWallJump)
-            {
-                // Add the air acceleration force
-                velocity.x += movementInput.x * airMoveAcceleration;
+            IsGliding = velocity.y < -fallSpeedBeforeGliding;
 
-                // If we exceed the player move speed
-                if (MathF.Abs(velocity.x) > moveSpeed)
-                {
-                    // Clamp the movespeed
-                    velocity.x = moveSpeed * movementInput.x;
-                }
-            }
-            // If no Movement Input
-            else
-            {
-                // Slow the player down by the air drag
-                velocity.x *= airDragMultiplier;
-            }
+            velocity = IsGliding? GlidingMovement(velocity) : AirMovement(velocity);       
         }
 
         // If wallSliding and the Player is falling faster than the wall slide speed, then set the Y velocity to wall slide speed
@@ -331,6 +326,36 @@ public class PlayerController : MonoBehaviour
 
         // Finally set the velocity
         rb.velocity = velocity;
+    }
+
+    private Vector2 AirMovement(Vector2 _velocity)
+    {
+        // If Movement Input
+        if (movementInput.x != 0 && TimeSinceLastWallJump > airMovementDisabledDelayAfterWallJump)
+        {
+            // Add the air acceleration force
+            _velocity.x += movementInput.x * airMoveAcceleration;
+
+            // If we exceed the player move speed
+            if (MathF.Abs(_velocity.x) > moveSpeed)
+            {
+                // Clamp the movespeed
+                _velocity.x = moveSpeed * movementInput.x;
+            }
+        }
+        // If no Movement Input
+        else
+        {
+            // Slow the player down by the air drag
+            _velocity.x *= airDragMultiplier;
+        }
+
+        return _velocity;
+    }
+
+    private Vector2 GlidingMovement(Vector2 _velocity)
+    {
+        return _velocity;
     }
 
     #region State Checks
@@ -445,6 +470,11 @@ public class PlayerController : MonoBehaviour
     {
         // If Player IsDashing & within dash duration they are still dashing, else they are not
         IsDashing = IsDashing && TimeSinceLastDash < dashDuration;
+    }
+
+    private void CheckIfGliding()
+    {
+        //IsGliding = IsGliding && !IsGrounded && !IsDashing && !IsTouchingWall && 
     }
     #endregion
 
@@ -600,6 +630,11 @@ public class PlayerController : MonoBehaviour
             transform.position = new Vector2(transform.position.x, dashHeight);
             rb.velocity = new Vector2(rb.velocity.x, 0f);
         }
+    }
+
+    private void GlidingBehaviour()
+    {
+
     }
 
     private void Dash()

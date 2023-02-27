@@ -98,6 +98,7 @@ public class PlayerEffectController : MonoBehaviour
         animator.SetBool("Running", Mathf.Abs(rb.velocity.x) > 0.2f);
         animator.SetBool("Grounded", player.IsGrounded);
         animator.SetBool("Sliding", player.IsSliding);
+        animator.SetBool("Gliding", player.IsGliding);
         animator.SetFloat("Y_Velocity", rb.velocity.y);
     }
 
