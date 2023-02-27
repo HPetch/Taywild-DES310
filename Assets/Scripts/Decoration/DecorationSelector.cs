@@ -105,7 +105,8 @@ public class DecorationSelector : MonoBehaviour
             mouseDownSlowDown = 0.9f; // Slows to rotation and reduced the scale of the selector slightly while holding a click
             if (CheckObjectUnderMouse()) // If an interactable object is below the mouse
             {
-                mouseDownObjectHit = CheckObjectUnderMouse(); // Stores the object that was under the mouse, doesn't signal an iteraction yet
+                mouseDownObjectHit = CheckObjectUnderMouse(); // Stores the object that was under the mouse
+                DecorationController.Instance.SelectorDecorationObjectInteract(mouseDownObjectHit.gameObject, true);
             }
         }
         if (Input.GetMouseButtonUp(0))
@@ -115,7 +116,7 @@ public class DecorationSelector : MonoBehaviour
             mouseDownSlowDown = 1f; // Resets rotation and scale to normal
             if (CheckObjectUnderMouse() == mouseDownObjectHit) // Checks if the click is released over the same object that it began on
             {
-                DecorationController.Instance.SelectorDecorationObjectInteract(mouseDownObjectHit.gameObject); // Signals Decoration Controller that the object has been interacted with
+                DecorationController.Instance.SelectorDecorationObjectInteract(mouseDownObjectHit.gameObject, false); // Signals Decoration Controller that the object has been interacted with
             }
         }
 

@@ -51,9 +51,9 @@ public class FurnitureObject : DecorationObject
     [ContextMenu("Initialize attachment points")]
     private void InitializeAttachmentPoints()
     {
+        
         foreach (Transform _attachmentPoint in transform)
         {
-
             if (_attachmentPoint.gameObject.tag == "Decoration Attach Point")
             {
                 AttachmentPointsList.Add(_attachmentPoint.localPosition);
@@ -65,10 +65,14 @@ public class FurnitureObject : DecorationObject
     [ContextMenu("Initialize buttons")]
     private void InitializeButtons()
     {
-        if (!PickupButton) Instantiate(pickupButtonPrefab);
+        if (!PickupButton) PickupButton = Instantiate(pickupButtonPrefab, transform);
         if (!EditButtonHolder)
         {
-            Instantiate(editButtonHolderPrefab);
+            Instantiate(editButtonHolderPrefab, transform);
+            foreach(DecorationButton _button in GetComponentsInChildren<DecorationButton>())
+            {
+                if (_button.buttonType == DecorationButton.ButtonType.STYLE_HOLDER) EditButtonHolder = _button.gameObject;
+            }
             EditButtonLeft = EditButtonHolder.transform.GetChild(0).gameObject;
             EditButtonRight = EditButtonHolder.transform.GetChild(1).gameObject;
             EditButtonHolder.transform.position = new Vector2(transform.position.x, GetComponent<BoxCollider2D>().bounds.min.y);

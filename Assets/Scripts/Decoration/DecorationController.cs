@@ -72,16 +72,29 @@ public class DecorationController : MonoBehaviour
     }
 
 
-    public void SelectorDecorationObjectInteract(GameObject _selectedObject)
+    public void SelectorDecorationObjectInteract(GameObject _selectedObject, bool _isMouseClickDown)
     {
-        if (_selectedObject.GetComponent<FurnitureObject>() && _selectedObject != CurrentMoveTarget )
+        if (_isMouseClickDown)
         {
-            DecorationMoveStart(_selectedObject);
+            if (_selectedObject.GetComponent<FurnitureObject>() && _selectedObject != CurrentMoveTarget)
+            {
+                DecorationMoveStart(_selectedObject);
+            }
+            else if (_selectedObject.GetComponent<TrashObject>())
+            {
+                _selectedObject.GetComponent<TrashObject>().StartPull();
+            }
         }
-        else if (_selectedObject.GetComponent<DecorationButton>())
+        else
         {
-            DecorationButtonPress(_selectedObject);
+            if (_selectedObject.GetComponent<DecorationButton>())
+            {
+                DecorationButtonPress(_selectedObject);
+            }
         }
+       
+        
+        
     }
     
     public void DecorationMoveStart(GameObject _decorationObject)

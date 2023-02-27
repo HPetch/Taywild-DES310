@@ -12,10 +12,10 @@ public class DecorationObject : MonoBehaviour
     [SerializeField] protected GameObject pickupButtonPrefab;
     [SerializeField] protected GameObject editButtonHolderPrefab;
 
-    [field: SerializeField] public GameObject PickupButton { get; protected set; }
-    [field: SerializeField] public GameObject EditButtonHolder { get; protected set; }
-    [field: SerializeField] public GameObject EditButtonLeft { get; protected set; }
-    [field: SerializeField] public GameObject EditButtonRight { get; protected set; }
+    public GameObject PickupButton { get; protected set; }
+    public GameObject EditButtonHolder { get; protected set; }
+    public GameObject EditButtonLeft { get; protected set; }
+    public GameObject EditButtonRight { get; protected set; }
 
     protected bool isMoving;
     private bool isHovered;
