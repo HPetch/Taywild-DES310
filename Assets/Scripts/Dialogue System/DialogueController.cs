@@ -360,16 +360,13 @@ public class DialogueController : MonoBehaviour
     {
         if (conversationEvent.EventType != ConversationEventBase.ConversationEventTypes.BRANCH || branchConversationEvent != null) return;
 
-        for (int button = 0; button < uiTemplate.BranchButtons.Length; button++)
+        for (int button = 0; button < conversationEvent.BranchEvents.Length; button++)
         {
             if (button < conversationEvent.BranchEvents.Length)
             {
                 uiTemplate.BranchButtons[button].canvasGroup.alpha = 1;
+                uiTemplate.BranchButtons[button].canvasGroup.interactable = true;
                 uiTemplate.BranchButtons[button].buttonText.SetText(conversationEvent.BranchEvents[button].ButtonText);
-            }
-            else
-            {
-                uiTemplate.BranchButtons[button].canvasGroup.alpha = 0;
             }
         }
     }
@@ -378,6 +375,7 @@ public class DialogueController : MonoBehaviour
     {
         for (int button = 0; button < uiTemplate.BranchButtons.Length; button++)
         {
+            uiTemplate.BranchButtons[button].canvasGroup.interactable = false;
             uiTemplate.BranchButtons[button].canvasGroup.alpha = 0;
         }
     }
