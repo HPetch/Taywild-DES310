@@ -30,7 +30,7 @@ public class TextEffect : MonoBehaviour
 
     private void Start()
     {
-        if (Application.isPlaying) normalTypeSpeed = DialogueController.Instance.TextTypeDelay;
+        //if (Application.isPlaying) normalTypeSpeed = DialogueController.Instance.TextTypeDelay;
     }
 
     private void Update()

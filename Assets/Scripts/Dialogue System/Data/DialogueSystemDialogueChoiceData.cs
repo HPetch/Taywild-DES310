@@ -1,6 +1,11 @@
 using System;
 using UnityEngine;
 
+namespace DialogueSystem.Types
+{
+    public enum DialogueTypes { SingleChoice, MultipleChoice }
+}
+
 namespace DialogueSystem.Data
 {
     using ScriptableObjects;
