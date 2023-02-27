@@ -6,30 +6,27 @@ using UnityEngine;
 
 public class DecorationObject : MonoBehaviour
 {
-    public enum ObjectType {DECORATION_OBJECT, ENVIROMENT_OBJECT, TRASH_OBJECT} //Decoration object - Move Edit Delete, Enviroment - Edit, Trash - Delete
-    public ObjectType objectType;
-    [field: SerializeField] public List<Vector3> AttachmentPointsList{ get; private set; }
-    public float AttachmentPointRadius { get; private set; }
-    [field: SerializeField] public int scrollRotateIndexHolder { get; private set; }
 
-    [SerializeField] private GameObject pickupButtonPrefab;
-    [SerializeField] private GameObject editButtonHolderPrefab;
+    // SHOULD CHANGE TO INHERITANCE. Environment object should be base. Decoration object
 
-    [field: SerializeField] public GameObject PickupButton { get; private set; }
-    [field: SerializeField] public GameObject EditButtonHolder { get; private set; }
-    [field: SerializeField] public GameObject EditButtonLeft { get; private set; }
-    [field: SerializeField] public GameObject EditButtonRight { get; private set; }
+    [SerializeField] protected GameObject pickupButtonPrefab;
+    [SerializeField] protected GameObject editButtonHolderPrefab;
 
-    private bool isMoving;
+    [field: SerializeField] public GameObject PickupButton { get; protected set; }
+    [field: SerializeField] public GameObject EditButtonHolder { get; protected set; }
+    [field: SerializeField] public GameObject EditButtonLeft { get; protected set; }
+    [field: SerializeField] public GameObject EditButtonRight { get; protected set; }
+
+    protected bool isMoving;
     private bool isHovered;
     private float timeOfLastHover = 0f;
 
 
     private void Start()
     {
-        AttachmentPointRadius = GetComponentInChildren<CircleCollider2D>().radius;
+        
         EndHover();
-        if(PickupButton) PickupButton.transform.position = GetComponent<BoxCollider2D>().bounds.max;
+        
         if(EditButtonHolder) EditButtonHolder.transform.position = new Vector2(transform.position.x, GetComponent<BoxCollider2D>().bounds.min.y);
     }
 
@@ -59,23 +56,13 @@ public class DecorationObject : MonoBehaviour
         isHovered = false;
     }
 
-    public void StartPickup()
-    {
-        isMoving = true;
-        GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0.25f);
-    }
-    public void EndPickup()
-    {
-        isMoving = false;
-        GetComponent<SpriteRenderer>().color = Color.white;
-    }
+    
 
 
     private void HideButton(GameObject _button)
     {
         if (_button.GetComponent<DecorationButton>())
         {
-
             _button.GetComponent<SpriteRenderer>().color = Color.clear;
             _button.GetComponent<BoxCollider2D>().enabled = false;
         }
@@ -90,19 +77,11 @@ public class DecorationObject : MonoBehaviour
         }
     }
 
-    public void SetScrollRotateIndexHolder(int _index) { scrollRotateIndexHolder = _index; }
+    
 
     private void Reset()
     {
-        foreach (Transform _attachmentPoint in transform)
-        {
-            
-            if (_attachmentPoint.gameObject.tag == "Decoration Attach Point")
-            {
-                AttachmentPointsList.Add(_attachmentPoint.localPosition);
-                AttachmentPointRadius = _attachmentPoint.GetComponent<CircleCollider2D>().radius;
-            }
-        }
+        /*
         switch (objectType)
         {
             case ObjectType.DECORATION_OBJECT:
@@ -121,9 +100,8 @@ public class DecorationObject : MonoBehaviour
                 if (!PickupButton) Instantiate(pickupButtonPrefab);
                 if (EditButtonHolder) Destroy(editButtonHolderPrefab);
                 break;
-        }
+        }*/
 
-        PickupButton.transform.position = GetComponent<BoxCollider2D>().bounds.max;
-        EditButtonHolder.transform.position = new Vector2 (transform.position.x, GetComponent<BoxCollider2D>().bounds.min.y);
+        
     }
 }

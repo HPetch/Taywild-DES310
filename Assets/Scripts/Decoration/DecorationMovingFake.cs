@@ -98,17 +98,17 @@ public class DecorationMovingFake : MonoBehaviour
         {
             int successfulAttachPoints = 0;
             
-            foreach (Vector3 _attachPointLocal in moveTarget.GetComponent<DecorationObject>().AttachmentPointsList) // Goes through each attach point
+            foreach (Vector3 _attachPointLocal in moveTarget.GetComponent<FurnitureObject>().AttachmentPointsList) // Goes through each attach point
             {
 
 
 
                 Vector2 attachPointGlobal = RotatePointAroundPivot(_attachPointLocal + transform.position, transform.position, scrollRotateArray[scrollRotateIndex]) ;
-                if (Physics2D.OverlapCircle(attachPointGlobal, moveTarget.GetComponent<DecorationObject>().AttachmentPointRadius, collisionCheckLayerMask))
+                if (Physics2D.OverlapCircle(attachPointGlobal, moveTarget.GetComponent<FurnitureObject>().AttachmentPointRadius, collisionCheckLayerMask))
                 {
                     successfulAttachPoints++;
                 }
-                if (successfulAttachPoints == moveTarget.GetComponent<DecorationObject>().AttachmentPointsList.Count) // Checks if all attach points are valid
+                if (successfulAttachPoints == moveTarget.GetComponent<FurnitureObject>().AttachmentPointsList.Count) // Checks if all attach points are valid
                 {
                     placeable = true;
                 }

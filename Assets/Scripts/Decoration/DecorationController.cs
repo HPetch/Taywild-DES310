@@ -19,6 +19,9 @@ public class DecorationController : MonoBehaviour
     public GameObject CurrentMoveFake { get; private set; }
     [field: SerializeField] public GameObject DecorationSelector { get; private set; }
     public bool isEditMode { get; private set; }
+
+    [field: SerializeField] public GameObject[] PlaceableDecorationObjectPrefabs { get; private set; }
+
     // Start is called before the first frame update
     private void Awake()
     {
@@ -71,7 +74,7 @@ public class DecorationController : MonoBehaviour
 
     public void SelectorDecorationObjectInteract(GameObject _selectedObject)
     {
-        if (_selectedObject.GetComponent<DecorationObject>() && _selectedObject != CurrentMoveTarget )
+        if (_selectedObject.GetComponent<FurnitureObject>() && _selectedObject != CurrentMoveTarget )
         {
             DecorationMoveStart(_selectedObject);
         }
@@ -84,9 +87,9 @@ public class DecorationController : MonoBehaviour
     public void DecorationMoveStart(GameObject _decorationObject)
     {
         CurrentMoveTarget = _decorationObject;
-        CurrentMoveTarget.GetComponent<DecorationObject>().StartPickup();
+        CurrentMoveTarget.GetComponent<FurnitureObject>().StartPickup();
         CurrentMoveFake = Instantiate(decorationMovingFakePrefab);
-        CurrentMoveFake.GetComponent<DecorationMovingFake>().scrollRotateIndex = CurrentMoveTarget.GetComponent<DecorationObject>().scrollRotateIndexHolder;
+        CurrentMoveFake.GetComponent<DecorationMovingFake>().scrollRotateIndex = CurrentMoveTarget.GetComponent<FurnitureObject>().scrollRotateIndexHolder;
         OnPickupDecoration?.Invoke();
     }
 
@@ -98,10 +101,10 @@ public class DecorationController : MonoBehaviour
     {
         CurrentMoveTarget.transform.position = CurrentMoveFake.transform.position;
         CurrentMoveTarget.transform.rotation = CurrentMoveFake.transform.rotation;
-        CurrentMoveTarget.GetComponent<DecorationObject>().SetScrollRotateIndexHolder(CurrentMoveFake.GetComponent<DecorationMovingFake>().scrollRotateIndex);
+        CurrentMoveTarget.GetComponent<FurnitureObject>().SetScrollRotateIndexHolder(CurrentMoveFake.GetComponent<DecorationMovingFake>().scrollRotateIndex);
         Destroy(CurrentMoveFake);
         CurrentMoveFake = null;
-        CurrentMoveTarget.GetComponent<DecorationObject>().EndPickup();
+        CurrentMoveTarget.GetComponent<FurnitureObject>().EndPickup();
         CurrentMoveTarget = null;
         OnPlaceDecoration?.Invoke();
     }
@@ -112,7 +115,7 @@ public class DecorationController : MonoBehaviour
         {
             Destroy(CurrentMoveFake);
             CurrentMoveFake = null;
-            CurrentMoveTarget.GetComponent<DecorationObject>().EndPickup();
+            CurrentMoveTarget.GetComponent<FurnitureObject>().EndPickup();
             CurrentMoveTarget = null;
             OnPlaceCancelDecoration?.Invoke();
         }
