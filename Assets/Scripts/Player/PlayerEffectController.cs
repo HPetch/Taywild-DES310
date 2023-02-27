@@ -38,28 +38,16 @@ public class PlayerEffectController : MonoBehaviour
     [SerializeField] private GameObject landParticleEffect;
     [SerializeField] private AudioClip landAudioClip;
 
-    [Header("Slide Effects")]
-    [SerializeField] private GameObject slideParticleEffect;
-    [SerializeField] private AudioClip slideAudioClip;
-
     [Header("Dash Effects")]
     [SerializeField] private GameObject dashParticleEffect;
     [SerializeField] private AudioClip dashAudioClip;
 
-    [Header("Grapple Effects")]
-    [SerializeField] private GameObject grappleParticleEffect;
-    [SerializeField] private AudioClip grappleAudioClip;
-    private LineRenderer grappleLineRenderer;
-
     private void Awake()
     {
         player = GetComponentInParent<PlayerController>();
-
         rb = GetComponentInParent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
-        grappleLineRenderer = GetComponent<LineRenderer>();
-        grappleLineRenderer.enabled = false;
 
         player.OnPlayerJump += PlayerJump;
         player.OnPlayerGroundJump += PlayerGroundJump;
@@ -70,34 +58,23 @@ public class PlayerEffectController : MonoBehaviour
         player.OnPlayerWallSlide += PlayerWallSlideStart;
         player.OnPlayerWallSlideEnd += PlayerWallSlideEnd;
         player.OnPlayerLand += PlayerLanded;
-        player.OnPlayerSlide += PlayerSlide;
         player.OnPlayerDash += PlayerDash;
-        player.OnPlayerGrapple += PlayerGrappleStart;
-        player.OnPlayerGrappleEnd += PlayerGrappleEnd;
     }
 
     private void Update()
     {
-        UpdateGrapple();
         UpdateAnimator();
-    }
-
-    private void UpdateGrapple()
-    {
-        if (player.IsGrappling)
-        {
-            grappleLineRenderer.SetPosition(0, player.GrappleAnchorPosition);
-        }
     }
 
     private void UpdateAnimator()
     {
         spriteRenderer.flipX = !player.IsFacingRight;
+
         if (player.IsWallSliding || player.IsWallStuck) spriteRenderer.flipX = player.IsFacingRight;
 
         animator.SetBool("Running", Mathf.Abs(rb.velocity.x) > 0.2f);
         animator.SetBool("Grounded", player.IsGrounded);
-        animator.SetBool("Sliding", player.IsSliding);
+        animator.SetBool("Gliding", player.IsGliding);
         animator.SetFloat("Y_Velocity", rb.velocity.y);
     }
 
@@ -165,18 +142,5 @@ public class PlayerEffectController : MonoBehaviour
         dashEffect.localScale = !player.IsFacingRight ? dashEffect.localScale : new Vector3(-1, 1, 1);
 
         CameraController.Instance.PunchOut(0.1f, 10f);
-    }
-
-    private void PlayerGrappleStart(GrapplePoint grapplePoint)
-    {        
-        grappleLineRenderer.SetPosition(0, player.GrappleAnchorPosition);
-        grappleLineRenderer.SetPosition(1, grapplePoint.transform.position);
-
-        grappleLineRenderer.enabled = true;        
-    }
-
-    private void PlayerGrappleEnd()
-    {
-        grappleLineRenderer.enabled = false;
     }
 }
