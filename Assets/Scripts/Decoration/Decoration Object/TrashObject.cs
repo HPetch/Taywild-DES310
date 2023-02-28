@@ -5,10 +5,24 @@ using UnityEngine;
 
 public class TrashObject : MonoBehaviour
 {
-    public event Action<TrashObject> OnStartPullTrash;
-    public event Action<string, Vector2> OnEndPullTrash; // String will be replaced with a list that contains the recourses the trash contains for inventory controller. Vector 2 will contain the direction it was broken in. For a particle system to throw plant bits in that direction.
+    // Vector 2 will contain the direction it was broken in. For a particle system to throw plant bits in that direction.
 
     //[SerializeField] private List<InventoryController.Instance.CraftResource, int>;
+    /// <summary>
+    /// Item name - Item to be dropped upon destroying the trash
+    /// Vector2 - Min,Max. The minimum and maximum amount that can be dropped of the item. Leaving the max as 0 will make the min number the only outcome.
+    /// </summary>
+    [SerializeField] private SerializableDictionary<InventoryController.ItemNames, Vector2Int> trashBreakItems;
+    ///
+    /// Will sort out what resources the trash object has
+    /// Will have a common resource which is always dropped with variance in it's amount
+    /// Will have a rare resource which drops in low amounts, smaller trash might not have a rare resource
+    /// i.e. A blight bramble would have common resource of plant fibre (3-6 drops) and a rare resource of thorn (1-2) drops
+    /// A small fallen branch: Common - Wood(2-4, Rare - Leaf(1-3)
+    /// A large fallen branch: Common - Wood(6-8), Rare - Leaf(0-2)
+    /// Horned moss: Common - Plant fibre(1-3)
+    ///
+
 
     private Vector2 startPosition;
     private Vector2 targetPosition;
@@ -30,10 +44,6 @@ public class TrashObject : MonoBehaviour
 
     [SerializeField] private int health;
 
-    ///
-    /// Need to get inventory system and have the trash know what resources it contains, possibly slightly randomised.
-    /// The inventory controller would listen for the OnEndPullTrash event and collect the resources from it.
-    /// 
 
 
 
@@ -41,15 +51,7 @@ public class TrashObject : MonoBehaviour
     void Start()
     {
         startPosition = transform.position;
-        ///
-        /// Will sort out what resources the trash object has here
-        /// Will have a common resource which is always dropped with variance in it's amount
-        /// Will have a rare resource which drops in low amounts, smaller trash might not have a rare resource
-        /// i.e. A blight bramble would have common resource of plant fibre (3-6 drops) and a rare resource of thorn (1-2) drops
-        /// A small fallen branch: Common - Wood(2-4, Rare - Leaf(1-3)
-        /// A large fallen branch: Common - Wood(6-8), Rare - Leaf(0-2)
-        /// Horned moss: Common - Plant fibre(1-3)
-        ///
+        
     }
 
     // Update is called once per frame
@@ -88,14 +90,12 @@ public class TrashObject : MonoBehaviour
     public void StartPull()
     {
         mouseStartPosition = Input.mousePosition;
-        OnStartPullTrash?.Invoke(this);
         isBeingPulled = true;
     }
 
-    public void EndPull(Vector2 _direction) 
-    { 
-        isBeingPulled = false;
-        OnEndPullTrash?.Invoke("List will go here instead :)", _direction);
+    public void EndPull(Vector2 _directionOfBrake) 
+    {
+        DecorationController.Instance.TrashBroken(trashBreakItems, transform.position, _directionOfBrake);
         Destroy(this.gameObject);
     }
     

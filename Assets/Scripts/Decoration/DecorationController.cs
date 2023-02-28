@@ -11,6 +11,7 @@ public class DecorationController : MonoBehaviour
     public event Action OnPickupDecoration;
     public event Action OnPlaceDecoration;
     public event Action OnPlaceCancelDecoration;
+    public event Action<Vector2, Vector2> OnTrashBroken;
 
     public static DecorationController Instance { get; private set; }
     [SerializeField] private GameObject decorationSelectorPrefab;
@@ -133,6 +134,18 @@ public class DecorationController : MonoBehaviour
             OnPlaceCancelDecoration?.Invoke();
         }
         
+    }
+
+    public void TrashBroken(SerializableDictionary<InventoryController.ItemNames, Vector2Int> _itemsReceived, Vector2 _locationOfBrake, Vector2 _directionOfBrake)
+    {
+        foreach (KeyValuePair<InventoryController.ItemNames, Vector2Int> _item in _itemsReceived) // Go through each item that the trash dropped
+        {
+            int _itemAmount = 0;
+            if (_item.Value.y > 0 && _item.Value.y > _item.Value.x) _itemAmount = UnityEngine.Random.Range(_item.Value.x, _item.Value.y); // Randomise the amount dropped using the min and max
+            else _itemAmount = _item.Value.x; // If the max is 0 or lower than the min then just use the min instead
+            InventoryController.Instance.AddItem(_item.Key, _itemAmount); // Add the item and it's amount to the inventory
+        }
+        OnTrashBroken?.Invoke(_locationOfBrake, _directionOfBrake);
     }
 
     public void DecorationButtonPress(GameObject _button)
