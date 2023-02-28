@@ -1,6 +1,4 @@
-#if UNITY_EDITOR
 // Partition Debugger
-// Code will not be compiled into exe
 // If display debug information is enabled on the TransitionController then
 // PartitionDebugger will render a sprite representing the partition with a unique colour
 
@@ -9,6 +7,14 @@ using UnityEngine;
 [ExecuteInEditMode]
 public class PartitionDebuger : MonoBehaviour
 {
+    #if !UNITY_EDITOR
+    private void Awake()
+    {
+        GetComponent<SpriteRenderer>().enabled = false;
+    }
+    #endif
+
+    #if UNITY_EDITOR
     // While in the editor change the size of the partitionSizeIndicator to the size of the partition
     private void Update()
     {
@@ -35,5 +41,5 @@ public class PartitionDebuger : MonoBehaviour
             GetComponent<SpriteRenderer>().enabled = false;
         }
     }
+    #endif
 }
-#endif

@@ -1,8 +1,6 @@
 // Partition
 // Game world consists of many partitions, each partition has some settings to dictate how the camera navigates the partition
 
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Partition : MonoBehaviour
@@ -15,8 +13,8 @@ public class Partition : MonoBehaviour
     [field: SerializeField] public Vector2Int PartitionSize { get; private set; } = Vector2Int.one;
 
     [field: Header("Camera Settings")]
+    [field: Range(5, 16)]
     [field: SerializeField] public float TargetCameraSize { get; private set; } = 10f;
-    [field: SerializeField] public bool IsCameraFixed { get; private set; } = true;
 
     // The world size of the partition
     public Vector2 PartitionSizeInUnits { get { return ChunkSizeInUnits * PartitionSize; } }
