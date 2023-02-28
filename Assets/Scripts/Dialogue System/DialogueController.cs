@@ -14,14 +14,14 @@ public class DialogueController : MonoBehaviour
     public static DialogueController Instance { get; private set; }
 
     #region Events
-    public event Action<Conversation> OnConversationStart;
-    public event Action<Conversation> OnConversationEnd;
+    public event Action/*<Conversation>*/ OnConversationStart;
+    public event Action/*<Conversation>*/ OnConversationEnd;
     #endregion
 
     #region Variables
     public bool IsConversing { get; private set; } = false;
 
-    private Queue<ConversationEvent> conversationEventQueue = new Queue<ConversationEvent>();
+    /*private Queue<ConversationEvent> conversationEventQueue = new Queue<ConversationEvent>();
     private Queue<ShallowBranchConversationEvent> branchConversationEventQueue = new Queue<ShallowBranchConversationEvent>();
     private Queue<Conversation> conversationQueue = new Queue<Conversation>();
 
@@ -72,7 +72,7 @@ public class DialogueController : MonoBehaviour
     [SerializeField] private float shortWait = 0.2f;
     [Tooltip("Wait time when <link='wait_long'> is used")]
     [Range(0, 1f)]
-    [SerializeField] private float longWait = 0.5f;
+    [SerializeField] private float longWait = 0.5f;*/
     #endregion
 
     #region Functions
@@ -87,18 +87,18 @@ public class DialogueController : MonoBehaviour
     /// <summary>
     /// Each frame if a dialogue is in progress check for player input
     /// </summary>
-    private void Update()
+    /*private void Update()
     {
         if (GameStateController.Instance.GameState != GameStateController.GameStates.DIALOGUE) return;
 
         // If the player inputed continue the conversation
         if (Input.GetMouseButtonDown(0)) DisplayNext();
-    }
+    }*/
 
     /// <summary>
     /// Starts a new conversation
     /// </summary>
-    public void TriggerConversation(Conversation conversation)
+    /*public void TriggerConversation(Conversation conversation)
     {
         // If there is already a conversation ongoing add the triggered conversation to the queue and return
         if (IsConversing)
@@ -112,9 +112,9 @@ public class DialogueController : MonoBehaviour
         conversationEventQueue.Clear();
 
         StartCoroutine(StartConversation());
-    }
+    }*/
 
-    private IEnumerator StartConversation()
+    /*private IEnumerator StartConversation()
     {
         IsConversing = true;
         yield return new WaitForSeconds(currentConversation.ConversationStartDelay);
@@ -129,10 +129,10 @@ public class DialogueController : MonoBehaviour
         conversationUITemplates[(int)conversationEvent.UITemplate].canvasGroup.alpha = 1;
         ChangeCharacter(conversationEvent);
         //changeCharacter = StartCoroutine(ChangeCharacter());
-    }
+    }*/
 
     // Displays the next conversation event
-    private void DisplayNext(int _buttonIndex = -1)
+    /*private void DisplayNext(int _buttonIndex = -1)
     {
         // If the character changing animation is not complete, return and wait
         if (changeCharacter != null) return;
@@ -201,12 +201,12 @@ public class DialogueController : MonoBehaviour
 
         conversationEvent = conversationEventQueue.Dequeue();
         ChangeCharacter(conversationEvent);
-    }
+    }*/
 
     /// <summary>
     /// Text-Type coroutine
     /// </summary>
-    private IEnumerator TypeSentance(string sentence)
+    /*private IEnumerator TypeSentance(string sentence)
     {
         // Set text field to blank      
         textTypeString = "";
@@ -311,7 +311,7 @@ public class DialogueController : MonoBehaviour
 
         // Sets coroutine to null, to track when it's finished
         textType = null;
-    }
+    }*/
 
     /*private IEnumerator ChangeCharacter()
     {
@@ -341,7 +341,7 @@ public class DialogueController : MonoBehaviour
         }
     }*/
 
-    private void ChangeCharacter(ConversationEventBase _conversationEvent)
+    /*private void ChangeCharacter(ConversationEventBase _conversationEvent)
     {
         uiTemplate = conversationUITemplates[(int)_conversationEvent.UITemplate];
         HideBranchButtons();
@@ -354,9 +354,9 @@ public class DialogueController : MonoBehaviour
 
         changeCharacter = null;
         textType = StartCoroutine(TypeSentance(_conversationEvent.Text));
-    }
+    }*/
 
-    private void ShowBranchButtons()
+    /*private void ShowBranchButtons()
     {
         if (conversationEvent.EventType != ConversationEventBase.ConversationEventTypes.BRANCH || branchConversationEvent != null) return;
 
@@ -378,12 +378,12 @@ public class DialogueController : MonoBehaviour
             uiTemplate.BranchButtons[button].canvasGroup.interactable = false;
             uiTemplate.BranchButtons[button].canvasGroup.alpha = 0;
         }
-    }
+    }*/
 
     /// <summary>
     /// Ends the current conversation after the end conversation delay
     /// </summary>
-    private IEnumerator EndConversation()
+    /*private IEnumerator EndConversation()
     {
         yield return new WaitForSeconds(currentConversation.ConversationEndDelay);
 
@@ -402,16 +402,16 @@ public class DialogueController : MonoBehaviour
         {
             TriggerConversation(conversationQueue.Dequeue());
         }
-    }
+    }*/
 
     public void BranchButton(int _buttonID)
     {
-        DisplayNext(_buttonID - 1);
+        //DisplayNext(_buttonID - 1);
     }
 
     public void SetTypeSpeed(float textTypeDelay)
     {
-        currentTextTypeDelay = textTypeDelay;
+        //currentTextTypeDelay = textTypeDelay;
     }
     #endregion
 }

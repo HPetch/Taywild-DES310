@@ -279,7 +279,7 @@ namespace DialogueSystem.Utilities
                 return;
             }
 
-            DialogueSystemEditorWindow.UpdateFileName(graphData.FileName);
+            DialogueSystemEditorWindow.UpdateFileName(graphFileName);
 
             LoadGroups(graphData.Groups);
             LoadNodes(graphData.Nodes);

@@ -5,7 +5,7 @@ using UnityEngine;
 public class InteractableCharacter : MonoBehaviour
 {
     [SerializeField] private GameObject canvas;
-    [SerializeField] private Conversation conversation;
+    //[SerializeField] private Conversation conversation;
 
     private bool isPlayerWithinInteractionDistance = false;
 
@@ -20,7 +20,7 @@ public class InteractableCharacter : MonoBehaviour
     {
         if (isPlayerWithinInteractionDistance && Input.GetButtonDown("Interact") && !DialogueController.Instance.IsConversing)
         {
-            DialogueController.Instance.TriggerConversation(conversation);
+            //DialogueController.Instance.TriggerConversation(conversation);
         }
     }
 

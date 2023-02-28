@@ -115,8 +115,8 @@ namespace DialogueSystem.Windows
             this.AddManipulator(new SelectionDragger());
             this.AddManipulator(new RectangleSelector());
 
-            this.AddManipulator(CreateNodeContextualMenu("Add Node (Single Choice)", DialogueTypes.SingleChoice));
-            this.AddManipulator(CreateNodeContextualMenu("Add Node (Multiple Choice)", DialogueTypes.MultipleChoice));
+            this.AddManipulator(CreateNodeContextualMenu("Add Dialogue Node (Single Choice)", DialogueTypes.SingleChoice));
+            this.AddManipulator(CreateNodeContextualMenu("Add Dialogue Node (Multiple Choice)", DialogueTypes.MultipleChoice));
 
             this.AddManipulator(CreateGroupContextualMenu());
         }
