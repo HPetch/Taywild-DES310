@@ -25,7 +25,7 @@
 	background-color: var(--ds-colors-window-dark-grey-1);
 	border-color: var(--ds-colors-window-dark-grey-6);
 	border-radius: var(--ds-metrics-window-pixels-4);
-	max-width: var(--ds-metrics-window-pixels-240);
+	max-width: var(--ds-metrics-window-pixels-360);
 	min-width: var(--ds-metrics-window-pixels-160);
 	padding: var(--ds-metrics-window-pixels-8);
 	white-space: normal;
@@ -45,7 +45,7 @@
 
 .ds-node__filename-text-field > .unity-text-field__input
 {
-	max-width: var(--ds-metrics-window-pixels-1000);
+	max-width: var(--ds-metrics-window-pixels-360);
 	margin: var(--ds-metrics-window-pixels-4);
 	padding: var(--ds-metrics-window-pixels-4);
 }
@@ -54,7 +54,7 @@
 {
 	font-size: var(--ds-metrics-window-pixels-11);
 	height: var(--ds-metrics-window-pixels-35);
-	max-width: var(--ds-metrics-window-pixels-1000);
+	max-width: var(--ds-metrics-window-pixels-200);
 	min-width: var(--ds-metrics-window-pixels-0);
 }
 
@@ -72,7 +72,7 @@
 	border-left-color: var(--ds-colors-window-dark-grey-6);
 	border-left-width: var(--ds-metrics-window-pixels-4);
 	padding: var(--ds-metrics-window-pixels-16);
-	max-width: var(--ds-metrics-window-pixels-600);
+	/*max-width: var(--ds-metrics-window-pixels-360);*/
 }
 
 .ds-node__quote-text-field > .unity-text-field__input:hover

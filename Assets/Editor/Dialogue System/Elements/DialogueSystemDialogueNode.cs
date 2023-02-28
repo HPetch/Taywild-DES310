@@ -13,7 +13,7 @@ namespace DialogueSystem.Elements
             base.Initialise(nodeName, dialogueSystemGraphView, position);
 
             NodeType = Types.NodeTypes.Dialogue;
-            Text = "Dialogue text.";
+            DialogueText = "Dialogue text.";
 
             mainContainer.AddToClassList("ds-node__main-container");
             extensionContainer.AddToClassList("ds-node__extension-container");
@@ -29,7 +29,8 @@ namespace DialogueSystem.Elements
 
             Foldout textFoldout = DialogueSystemElementUtility.CreateFoldout("Dialogue Text");
 
-            TextField textTextField = DialogueSystemElementUtility.CreateTextArea(Text, null, callback => { Text = callback.newValue; });
+            TextField textTextField = DialogueSystemElementUtility.CreateTextArea(DialogueText, null, callback => { DialogueText = callback.newValue; });
+            
             textTextField.AddClasses(
                 "ds-node__text-field",
                 "ds-node__quote-text-field"

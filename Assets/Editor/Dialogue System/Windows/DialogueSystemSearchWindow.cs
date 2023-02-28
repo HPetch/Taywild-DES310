@@ -80,7 +80,10 @@ namespace DialogueSystem.Windows
 
                 case DialogueSystemEdgeNode:
                     {
-                        graphView.CreateEdgeNode(localMousePosition);
+                        DialogueSystemEdgeNode edgeNode = (DialogueSystemEdgeNode)graphView.CreateEdgeNode(localMousePosition);
+
+                        graphView.AddElement(edgeNode);
+
                         return true;
                     }
 

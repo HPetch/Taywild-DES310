@@ -33,7 +33,7 @@ namespace DialogueSystem.Data.Save
             Position = _node.GetPosition().position;
 
             DialogueType = _node.DialogueType;
-            Text = _node.Text;
+            Text = _node.DialogueText;
         }
     }
 }

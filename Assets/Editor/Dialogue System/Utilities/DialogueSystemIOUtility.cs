@@ -169,7 +169,7 @@ namespace DialogueSystem.Utilities
             dialogue.Initialise(
                 node.NodeName,
                 node.NodeType,
-                node.Text,
+                node.DialogueText,
                 ConvertNodeChoicesToDialogueChoices(node.Choices),
                 node.DialogueType,
                 node.IsStartingNode()
@@ -300,7 +300,7 @@ namespace DialogueSystem.Utilities
                 node.NodeType = nodeData.NodeType;
 
                 node.Choices = choices;
-                node.Text = nodeData.Text;
+                node.DialogueText = nodeData.Text;
 
                 node.Draw();
 

@@ -412,6 +412,16 @@ namespace DialogueSystem.Windows
                     }
                 }
 
+                if (changes.movedElements != null)
+                {
+                    // For each element moved.
+                    foreach (GraphElement element in changes.movedElements)
+                    {
+                        element.SetPosition(SnapPositionToGrid(element.GetPosition()));
+                        element.MarkDirtyRepaint();
+                    }
+                }
+
                 return changes;
             };
         }
@@ -727,6 +737,12 @@ namespace DialogueSystem.Windows
             Vector2 localMousePosition = contentViewContainer.WorldToLocal(mousePosition);
 
             return localMousePosition;
+        }
+
+        private Rect SnapPositionToGrid(Rect rect)
+        {
+            rect.position = new Vector2(Mathf.RoundToInt(rect.position.x / 25f), Mathf.RoundToInt(rect.position.y / 25f)) * 25;
+            return rect;
         }
 
         /// <summary>

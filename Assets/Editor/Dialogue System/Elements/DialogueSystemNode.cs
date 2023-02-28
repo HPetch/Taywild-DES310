@@ -22,7 +22,7 @@ namespace DialogueSystem.Elements
 
         public List<DialogueSystemChoiceSaveData> Choices { get; set; }
 
-        public string Text { get; set; }
+        public string DialogueText { get; set; }
         public DialogueTypes DialogueType { get; set; }
 
         protected DialogueSystemGraphView graphView;

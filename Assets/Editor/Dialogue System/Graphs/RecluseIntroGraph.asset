@@ -24,7 +24,7 @@ MonoBehaviour:
       <NodeID>k__BackingField: 30691964-ed9c-4378-95ca-9c01394258d2
     - <Text>k__BackingField: Open Door
       <NodeID>k__BackingField: 30691964-ed9c-4378-95ca-9c01394258d2
-    <Position>k__BackingField: {x: -100, y: 303}
+    <Position>k__BackingField: {x: -150, y: 250}
     <DialogueType>k__BackingField: 1
     <Text>k__BackingField: The quaint greenhouse door is locked tightly shut.
   - <ID>k__BackingField: 30691964-ed9c-4378-95ca-9c01394258d2
@@ -36,9 +36,19 @@ MonoBehaviour:
       <NodeID>k__BackingField: 7707c213-3519-4cbe-85b9-2ffc0b451eeb
     - <Text>k__BackingField: Unverified?
       <NodeID>k__BackingField: 382ad999-0dbb-4182-b78d-e27ff328f6c0
-    <Position>k__BackingField: {x: 570, y: 303}
+    <Position>k__BackingField: {x: 275, y: 250}
     <DialogueType>k__BackingField: 1
     <Text>k__BackingField: No visitors! Access will not be granted to the unverified.
+  - <ID>k__BackingField: 7707c213-3519-4cbe-85b9-2ffc0b451eeb
+    <NodeType>k__BackingField: 0
+    <Name>k__BackingField: Player01b
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Dialogue
+      <NodeID>k__BackingField: a1022f4d-1ae8-4c36-a878-05d1dbf848e8
+    <Position>k__BackingField: {x: 700, y: 250}
+    <DialogueType>k__BackingField: 0
+    <Text>k__BackingField: "Oh I\u2019m sorry, I was just curious."
   - <ID>k__BackingField: 382ad999-0dbb-4182-b78d-e27ff328f6c0
     <NodeType>k__BackingField: 0
     <Name>k__BackingField: Player01a
@@ -46,7 +56,7 @@ MonoBehaviour:
     <Choices>k__BackingField:
     - <Text>k__BackingField: Next Dialogue
       <NodeID>k__BackingField: 1e1ec5f2-0eb5-49de-974c-e5e606253062
-    <Position>k__BackingField: {x: 1251, y: 437}
+    <Position>k__BackingField: {x: 700, y: 450}
     <DialogueType>k__BackingField: 0
     <Text>k__BackingField: "What do you mean by unverif\u2026"
   - <ID>k__BackingField: 1e1ec5f2-0eb5-49de-974c-e5e606253062
@@ -56,19 +66,9 @@ MonoBehaviour:
     <Choices>k__BackingField:
     - <Text>k__BackingField: Next Dialogue
       <NodeID>k__BackingField: 3546f550-7cd3-4e75-9670-35cfa85d114b
-    <Position>k__BackingField: {x: 1916, y: 437}
+    <Position>k__BackingField: {x: 1125, y: 450}
     <DialogueType>k__BackingField: 0
     <Text>k__BackingField: Stop!
-  - <ID>k__BackingField: 7707c213-3519-4cbe-85b9-2ffc0b451eeb
-    <NodeType>k__BackingField: 0
-    <Name>k__BackingField: Player01b
-    <GroupID>k__BackingField: 
-    <Choices>k__BackingField:
-    - <Text>k__BackingField: Next Dialogue
-      <NodeID>k__BackingField: a1022f4d-1ae8-4c36-a878-05d1dbf848e8
-    <Position>k__BackingField: {x: 1251, y: 208}
-    <DialogueType>k__BackingField: 0
-    <Text>k__BackingField: "Oh I\u2019m sorry, I was just curious."
   - <ID>k__BackingField: 3546f550-7cd3-4e75-9670-35cfa85d114b
     <NodeType>k__BackingField: 0
     <Name>k__BackingField: Player02
@@ -76,9 +76,30 @@ MonoBehaviour:
     <Choices>k__BackingField:
     - <Text>k__BackingField: Next Dialogue
       <NodeID>k__BackingField: d9dbde0f-5b65-4d29-9fb6-e2f6f73b5761
-    <Position>k__BackingField: {x: 2224, y: 437}
+    <Position>k__BackingField: {x: 1400, y: 450}
     <DialogueType>k__BackingField: 0
     <Text>k__BackingField: '!!!'
+  - <ID>k__BackingField: d9dbde0f-5b65-4d29-9fb6-e2f6f73b5761
+    <NodeType>k__BackingField: 0
+    <Name>k__BackingField: Recluse03
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Dialogue
+      <NodeID>k__BackingField: 29d0844c-6eee-4999-a5ca-9046763b011c
+    <Position>k__BackingField: {x: 1675, y: 450}
+    <DialogueType>k__BackingField: 0
+    <Text>k__BackingField: "Your voice is new. Perhaps you do not carry the rot\u2026the
+      figure\u2019s voice trails off in thought."
+  - <ID>k__BackingField: a1022f4d-1ae8-4c36-a878-05d1dbf848e8
+    <NodeType>k__BackingField: 1
+    <Name>k__BackingField: EdgeNode8862d5ba-c96b-4a3f-b64e-068a3d325f6c
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: 
+      <NodeID>k__BackingField: d9dbde0f-5b65-4d29-9fb6-e2f6f73b5761
+    <Position>k__BackingField: {x: 1575, y: 250}
+    <DialogueType>k__BackingField: 0
+    <Text>k__BackingField: 
   - <ID>k__BackingField: 29d0844c-6eee-4999-a5ca-9046763b011c
     <NodeType>k__BackingField: 0
     <Name>k__BackingField: Player03
@@ -86,7 +107,7 @@ MonoBehaviour:
     <Choices>k__BackingField:
     - <Text>k__BackingField: Next Dialogue
       <NodeID>k__BackingField: f319dfd5-87fd-4ba2-900b-888ef432e5fa
-    <Position>k__BackingField: {x: 3197, y: 437}
+    <Position>k__BackingField: {x: 2100, y: 450}
     <DialogueType>k__BackingField: 0
     <Text>k__BackingField: "\u2026"
   - <ID>k__BackingField: f319dfd5-87fd-4ba2-900b-888ef432e5fa
@@ -96,7 +117,7 @@ MonoBehaviour:
     <Choices>k__BackingField:
     - <Text>k__BackingField: Next Dialogue
       <NodeID>k__BackingField: 03c96a73-6224-47cc-86ee-6328cde44dc1
-    <Position>k__BackingField: {x: 3477, y: 437}
+    <Position>k__BackingField: {x: 2375, y: 450}
     <DialogueType>k__BackingField: 0
     <Text>k__BackingField: "\u2026yes. Perhaps there is a way for your rot status
       to be verified."
@@ -113,7 +134,7 @@ MonoBehaviour:
       <NodeID>k__BackingField: 59f478d9-2a1a-4513-aac3-bb76ecf3bc11
     - <Text>k__BackingField: Name.
       <NodeID>k__BackingField: 08a52223-7ece-4fa5-a742-5cb8c8d9a61e
-    <Position>k__BackingField: {x: 4148, y: 413}
+    <Position>k__BackingField: {x: 2800, y: 250}
     <DialogueType>k__BackingField: 1
     <Text>k__BackingField: Follow the river, find the clear crystal flower and bring
       it to me. Then access may be granted.
@@ -124,19 +145,9 @@ MonoBehaviour:
     <Choices>k__BackingField:
     - <Text>k__BackingField: Next Dialogue
       <NodeID>k__BackingField: 14c392a8-a673-489c-a5b7-a429620285d4
-    <Position>k__BackingField: {x: 4915, y: 174}
+    <Position>k__BackingField: {x: 3225, y: 250}
     <DialogueType>k__BackingField: 0
     <Text>k__BackingField: If that's what it takes, then sure!
-  - <ID>k__BackingField: 54149091-01dc-4cd8-a90e-ff88a4dc3ed4
-    <NodeType>k__BackingField: 0
-    <Name>k__BackingField: Player04b
-    <GroupID>k__BackingField: 
-    <Choices>k__BackingField:
-    - <Text>k__BackingField: Next Dialogue
-      <NodeID>k__BackingField: c6977fa2-55c4-4929-853b-c43690d69093
-    <Position>k__BackingField: {x: 4915, y: 376}
-    <DialogueType>k__BackingField: 0
-    <Text>k__BackingField: May be granted access?
   - <ID>k__BackingField: 59f478d9-2a1a-4513-aac3-bb76ecf3bc11
     <NodeType>k__BackingField: 0
     <Name>k__BackingField: Player04c
@@ -144,7 +155,7 @@ MonoBehaviour:
     <Choices>k__BackingField:
     - <Text>k__BackingField: Next Dialogue
       <NodeID>k__BackingField: def0c10a-0a4b-4d6a-b6dc-91bb0ca03342
-    <Position>k__BackingField: {x: 4915, y: 577}
+    <Position>k__BackingField: {x: 3225, y: 700}
     <DialogueType>k__BackingField: 0
     <Text>k__BackingField: "What is \u2018rot\u2019?"
   - <ID>k__BackingField: def0c10a-0a4b-4d6a-b6dc-91bb0ca03342
@@ -154,7 +165,7 @@ MonoBehaviour:
     <Choices>k__BackingField:
     - <Text>k__BackingField: Next Dialogue
       <NodeID>k__BackingField: 125c4930-59b0-4e0f-ab82-ded76574bc12
-    <Position>k__BackingField: {x: 5204, y: 577}
+    <Position>k__BackingField: {x: 3500, y: 700}
     <DialogueType>k__BackingField: 0
     <Text>k__BackingField: "Rot is\u2026 \u2026sorry. It's hard to explain. Questions
       can be answered inside."
@@ -165,9 +176,19 @@ MonoBehaviour:
     <Choices>k__BackingField:
     - <Text>k__BackingField: Next Dialogue
       <NodeID>k__BackingField: 587eacd2-881f-4051-9656-7530a9a3a3c6
-    <Position>k__BackingField: {x: 4915, y: 780}
+    <Position>k__BackingField: {x: 3225, y: 925}
     <DialogueType>k__BackingField: 0
     <Text>k__BackingField: Dialogue text.
+  - <ID>k__BackingField: 54149091-01dc-4cd8-a90e-ff88a4dc3ed4
+    <NodeType>k__BackingField: 0
+    <Name>k__BackingField: Player04b
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Dialogue
+      <NodeID>k__BackingField: c6977fa2-55c4-4929-853b-c43690d69093
+    <Position>k__BackingField: {x: 3225, y: 475}
+    <DialogueType>k__BackingField: 0
+    <Text>k__BackingField: May be granted access?
   - <ID>k__BackingField: c6977fa2-55c4-4929-853b-c43690d69093
     <NodeType>k__BackingField: 0
     <Name>k__BackingField: Recluse06a
@@ -175,38 +196,18 @@ MonoBehaviour:
     <Choices>k__BackingField:
     - <Text>k__BackingField: Next Dialogue
       <NodeID>k__BackingField: f1b60d96-e224-4fdc-83ef-0a3d21b059b3
-    <Position>k__BackingField: {x: 5571, y: 376}
+    <Position>k__BackingField: {x: 3650, y: 475}
     <DialogueType>k__BackingField: 0
     <Text>k__BackingField: "There is a process with the flower. I am sure you will
       be fine\u2026probably."
-  - <ID>k__BackingField: 587eacd2-881f-4051-9656-7530a9a3a3c6
-    <NodeType>k__BackingField: 1
-    <Name>k__BackingField: EdgeNodef85eb443-c3cf-49e3-bd42-a991d19065db
-    <GroupID>k__BackingField: 
-    <Choices>k__BackingField:
-    - <Text>k__BackingField: 
-      <NodeID>k__BackingField: 125c4930-59b0-4e0f-ab82-ded76574bc12
-    <Position>k__BackingField: {x: 6051, y: 780}
-    <DialogueType>k__BackingField: 0
-    <Text>k__BackingField: 
-  - <ID>k__BackingField: 125c4930-59b0-4e0f-ab82-ded76574bc12
-    <NodeType>k__BackingField: 1
-    <Name>k__BackingField: EdgeNode0e73c68a-9e9c-4d81-9311-92d128f973e4
-    <GroupID>k__BackingField: 
-    <Choices>k__BackingField:
-    - <Text>k__BackingField: 
-      <NodeID>k__BackingField: f1b60d96-e224-4fdc-83ef-0a3d21b059b3
-    <Position>k__BackingField: {x: 6140, y: 577}
-    <DialogueType>k__BackingField: 0
-    <Text>k__BackingField: 
   - <ID>k__BackingField: f1b60d96-e224-4fdc-83ef-0a3d21b059b3
     <NodeType>k__BackingField: 1
-    <Name>k__BackingField: EdgeNoded1c9eb20-ea07-496b-9c9f-1d283d1bc0f4
+    <Name>k__BackingField: EdgeNodec928c3ff-5043-4113-a744-083d00a50e5a
     <GroupID>k__BackingField: 
     <Choices>k__BackingField:
     - <Text>k__BackingField: 
       <NodeID>k__BackingField: 14c392a8-a673-489c-a5b7-a429620285d4
-    <Position>k__BackingField: {x: 6235, y: 376}
+    <Position>k__BackingField: {x: 4075, y: 475}
     <DialogueType>k__BackingField: 0
     <Text>k__BackingField: 
   - <ID>k__BackingField: 14c392a8-a673-489c-a5b7-a429620285d4
@@ -218,7 +219,7 @@ MonoBehaviour:
       <NodeID>k__BackingField: a5c43a66-ab8c-4a25-8439-27f39103fc40
     - <Text>k__BackingField: Say nothing.
       <NodeID>k__BackingField: c355bc5f-12c8-4321-ae65-a5841364dbb1
-    <Position>k__BackingField: {x: 6333, y: 148}
+    <Position>k__BackingField: {x: 4175, y: 225}
     <DialogueType>k__BackingField: 1
     <Text>k__BackingField: My name is Recluse. I know this is an odd request, but
       I have to take precautions for my plants. It is necessary.
@@ -229,28 +230,28 @@ MonoBehaviour:
     <Choices>k__BackingField:
     - <Text>k__BackingField: Next Dialogue
       <NodeID>k__BackingField: b565adde-53da-4865-8266-e4e63d378ca8
-    <Position>k__BackingField: {x: 6999, y: 148}
+    <Position>k__BackingField: {x: 4600, y: 225}
     <DialogueType>k__BackingField: 0
     <Text>k__BackingField: "It\u2019s ok! I don\u2019t mind, the flower can\u2019t
       be too hard to find right?"
   - <ID>k__BackingField: c355bc5f-12c8-4321-ae65-a5841364dbb1
     <NodeType>k__BackingField: 1
-    <Name>k__BackingField: EdgeNode20d7cf23-0674-4a5e-be90-54872a4b285a
+    <Name>k__BackingField: EdgeNode61af5b57-0325-49f8-8c76-52f2df7c0150
     <GroupID>k__BackingField: 
     <Choices>k__BackingField:
     - <Text>k__BackingField: 
       <NodeID>k__BackingField: d2549731-6623-47cd-ab9b-210c8f8b22ae
-    <Position>k__BackingField: {x: 6999, y: 338}
+    <Position>k__BackingField: {x: 4600, y: 425}
     <DialogueType>k__BackingField: 0
     <Text>k__BackingField: 
   - <ID>k__BackingField: d2549731-6623-47cd-ab9b-210c8f8b22ae
     <NodeType>k__BackingField: 1
-    <Name>k__BackingField: EdgeNode96655038-1827-4b68-afe3-48a64000e8b9
+    <Name>k__BackingField: EdgeNode6592f272-bda7-406f-845b-5ce79f3a8653
     <GroupID>k__BackingField: 
     <Choices>k__BackingField:
     - <Text>k__BackingField: 
       <NodeID>k__BackingField: b565adde-53da-4865-8266-e4e63d378ca8
-    <Position>k__BackingField: {x: 7568, y: 338}
+    <Position>k__BackingField: {x: 4925, y: 425}
     <DialogueType>k__BackingField: 0
     <Text>k__BackingField: 
   - <ID>k__BackingField: b565adde-53da-4865-8266-e4e63d378ca8
@@ -260,57 +261,56 @@ MonoBehaviour:
     <Choices>k__BackingField:
     - <Text>k__BackingField: Next Dialogue
       <NodeID>k__BackingField: 
-    <Position>k__BackingField: {x: 7666, y: 148}
+    <Position>k__BackingField: {x: 5025, y: 225}
     <DialogueType>k__BackingField: 0
     <Text>k__BackingField: "Follow the river and you will find the flower. It's high
       up so\u2026\n\u2026please be careful."
-  - <ID>k__BackingField: a1022f4d-1ae8-4c36-a878-05d1dbf848e8
+  - <ID>k__BackingField: 125c4930-59b0-4e0f-ab82-ded76574bc12
     <NodeType>k__BackingField: 1
-    <Name>k__BackingField: EdgeNode9f4e08c0-7446-499a-9996-5f123b82f8b4
+    <Name>k__BackingField: EdgeNodebf07797e-75cf-4095-8de9-8124752ea9c3
     <GroupID>k__BackingField: 
     <Choices>k__BackingField:
     - <Text>k__BackingField: 
-      <NodeID>k__BackingField: d9dbde0f-5b65-4d29-9fb6-e2f6f73b5761
-    <Position>k__BackingField: {x: 2407, y: 208}
+      <NodeID>k__BackingField: f1b60d96-e224-4fdc-83ef-0a3d21b059b3
+    <Position>k__BackingField: {x: 3975, y: 700}
     <DialogueType>k__BackingField: 0
     <Text>k__BackingField: 
-  - <ID>k__BackingField: d9dbde0f-5b65-4d29-9fb6-e2f6f73b5761
-    <NodeType>k__BackingField: 0
-    <Name>k__BackingField: Recluse03
+  - <ID>k__BackingField: 587eacd2-881f-4051-9656-7530a9a3a3c6
+    <NodeType>k__BackingField: 1
+    <Name>k__BackingField: EdgeNode1ba9201a-d05c-4086-8e97-a78ea1eac541
     <GroupID>k__BackingField: 
     <Choices>k__BackingField:
-    - <Text>k__BackingField: Next Dialogue
-      <NodeID>k__BackingField: 29d0844c-6eee-4999-a5ca-9046763b011c
-    <Position>k__BackingField: {x: 2506, y: 437}
+    - <Text>k__BackingField: 
+      <NodeID>k__BackingField: 125c4930-59b0-4e0f-ab82-ded76574bc12
+    <Position>k__BackingField: {x: 3875, y: 925}
     <DialogueType>k__BackingField: 0
-    <Text>k__BackingField: "Your voice is new. Perhaps you do not carry the rot\u2026the
-      figure\u2019s voice trails off in thought."
+    <Text>k__BackingField: 
   <OldGroupNames>k__BackingField: []
   <OldUngroupedNodeNames>k__BackingField:
   - RecluseIntoStart
   - Recluse01
+  - Player01b
   - Player01a
   - Recluse02
-  - Player01b
   - Player02
+  - Recluse03
+  - EdgeNode8862d5ba-c96b-4a3f-b64e-068a3d325f6c
   - Player03
   - Recluse04
   - Recluse05
   - Player04a
-  - Player04b
   - Player04c
   - Recluse06b
   - Player04d
+  - Player04b
   - Recluse06a
-  - EdgeNodef85eb443-c3cf-49e3-bd42-a991d19065db
-  - EdgeNode0e73c68a-9e9c-4d81-9311-92d128f973e4
-  - EdgeNoded1c9eb20-ea07-496b-9c9f-1d283d1bc0f4
+  - EdgeNodec928c3ff-5043-4113-a744-083d00a50e5a
   - Recluse07
   - Player05
-  - EdgeNode20d7cf23-0674-4a5e-be90-54872a4b285a
-  - EdgeNode96655038-1827-4b68-afe3-48a64000e8b9
+  - EdgeNode61af5b57-0325-49f8-8c76-52f2df7c0150
+  - EdgeNode6592f272-bda7-406f-845b-5ce79f3a8653
   - Recluse08
-  - EdgeNode9f4e08c0-7446-499a-9996-5f123b82f8b4
-  - Recluse03
+  - EdgeNodebf07797e-75cf-4095-8de9-8124752ea9c3
+  - EdgeNode1ba9201a-d05c-4086-8e97-a78ea1eac541
   <OldGroupedNodeNames>k__BackingField:
     list: []
