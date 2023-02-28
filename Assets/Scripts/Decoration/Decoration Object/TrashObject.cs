@@ -26,7 +26,9 @@ public class TrashObject : MonoBehaviour
 
     private Vector2 startPosition;
     private Vector2 targetPosition;
-    
+
+    [SerializeField] private GameObject sprite;
+    [SerializeField] private GameObject blockingCollider;
 
     private Vector2 mouseStartPosition;
     private Vector2 mouseCurrentPosition;
@@ -36,13 +38,20 @@ public class TrashObject : MonoBehaviour
     private bool isBeingPulled;
     [SerializeField] private float pullMaxDistance;
     private float pullCurrentDistance;
+    private Vector2 pullDirection;
 
     [SerializeField, Range(1,10)] private float visualPullMovementAllowed = 10;
 
     private float vibrationIntensity;
     [SerializeField, Range(0,1)] float vibrationMax;
 
-    [SerializeField] private int health;
+    [SerializeField, Range(1,6)] private int healthMax;
+    private int health;
+    [SerializeField, Range(0,60)] private int respawnCooldown; // How many minutes until respawn after pulling. If 0 then cannot respawn
+    private bool isActive = true;
+    private float respawnTime;
+
+    [SerializeField, Range(1, 50)] private int dragMoveSpeed;
 
 
 
@@ -50,8 +59,8 @@ public class TrashObject : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        startPosition = transform.position;
-        
+        startPosition = transform.position; // Sets the trash's initial location. This is used as an anchor.
+        Respawn(); // Ensures variables are set up
     }
 
     // Update is called once per frame
@@ -61,30 +70,32 @@ public class TrashObject : MonoBehaviour
         {
             mouseCurrentPosition = Input.mousePosition;
             pullCurrentDistance = Vector2.Distance(mouseStartPosition, mouseCurrentPosition);
+            pullDirection = (mouseCurrentPosition - mouseStartPosition).normalized;
             if (pullCurrentDistance > pullMaxDistance)
             {
                 health--;
-                if (health == 0) EndPull((mouseCurrentPosition-mouseStartPosition).normalized); ; //Destroys the trash object, adds resources to inventory, and gives direction for the particle system
-                
+                if (health == 0) EndPull(pullDirection); ; //Destroys the trash object, adds resources to inventory, and gives direction for the particle system
+
             }
             else
             {
                 // Closer mouse is to reaching pullMaxDistance vibrate the sprite
                 vibrationIntensity = pullCurrentDistance / pullMaxDistance;
-                float _vibrationAmount = (vibrationMax/10) * vibrationIntensity;
+                float _vibrationAmount = (vibrationMax / 10) * vibrationIntensity;
                 Vector2 _vibrationOffset = new Vector2(UnityEngine.Random.Range(-_vibrationAmount, _vibrationAmount), UnityEngine.Random.Range(-_vibrationAmount, _vibrationAmount));
-                
+
                 mouseWorldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
                 targetPosition = startPosition + ((mouseCurrentPosition - mouseStartPosition) / (visualPullMovementAllowed * 100));
 
                 targetPosition = targetPosition += _vibrationOffset;
-                
-                transform.position = Vector2.Lerp(transform.position, targetPosition, 2);
+                sprite.transform.position = Vector2.Lerp(sprite.transform.position, targetPosition, dragMoveSpeed * Time.deltaTime);
+
             }
         }
-        else transform.position = startPosition;
-            
+        else if (Time.time > respawnTime && !isActive) Respawn();
+        else sprite.transform.position = Vector2.Lerp(sprite.transform.position, targetPosition, dragMoveSpeed * Time.deltaTime);
+
     }
 
     public void StartPull()
@@ -93,10 +104,38 @@ public class TrashObject : MonoBehaviour
         isBeingPulled = true;
     }
 
+    public void CancelPull()
+    {
+        targetPosition = startPosition;
+        isBeingPulled = false;
+    }
+
     public void EndPull(Vector2 _directionOfBrake) 
     {
         DecorationController.Instance.TrashBroken(trashBreakItems, transform.position, _directionOfBrake);
-        Destroy(this.gameObject);
+        //Destroy(this.gameObject);
+        respawnTime = Time.time + (respawnCooldown*60);
+        ToggleObject(false);
+        isBeingPulled = false;
+        targetPosition = startPosition;
+    }
+    
+    private void Respawn()
+    {
+        sprite.transform.position = startPosition;
+        targetPosition = startPosition;
+        mouseStartPosition = Vector2.zero;
+        health = healthMax;
+        ToggleObject(true);
+    }
+
+    private void ToggleObject(bool _toggle)
+    {
+        isActive = _toggle;
+        if (_toggle) sprite.GetComponent<SpriteRenderer>().color = Color.white;
+        else sprite.GetComponent<SpriteRenderer>().color = Color.clear;
+        GetComponent<BoxCollider2D>().enabled = _toggle;
+        if (blockingCollider) blockingCollider.GetComponent<BoxCollider2D>().enabled = _toggle;
     }
     
 }

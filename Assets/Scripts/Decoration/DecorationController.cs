@@ -146,6 +146,8 @@ public class DecorationController : MonoBehaviour
             InventoryController.Instance.AddItem(_item.Key, _itemAmount); // Add the item and it's amount to the inventory
         }
         OnTrashBroken?.Invoke(_locationOfBrake, _directionOfBrake);
+
+        Debug.Log(InventoryController.Instance.ItemQuantity(InventoryController.ItemNames.FLOWER));
     }
 
     public void DecorationButtonPress(GameObject _button)
