@@ -8,7 +8,7 @@ namespace DialogueSystem.Elements
     using Windows;
     using Types;
 
-    public class DialogueSystemSingleChoiceNode : DialogueSystemNode
+    public class DialogueSystemSingleChoiceDialogueNode : DialogueSystemDialogueNode
     {
         public override void Initialise(string nodeName, DialogueSystemGraphView dialogueSystemGraphView, Vector2 position)
         {

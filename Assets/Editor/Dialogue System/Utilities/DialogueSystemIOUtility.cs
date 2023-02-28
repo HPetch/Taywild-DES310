@@ -135,8 +135,8 @@ namespace DialogueSystem.Utilities
                 SaveNodeToGraph(node, graphData);
                 SaveNodeToScriptableObject(node, dialogueContainer);
 
-                if (node.Group != null) groupedNodeName.AddItem(node.Group.title, node.DialogueName);
-                else ungroupedNodeNames.Add(node.DialogueName);
+                if (node.Group != null) groupedNodeName.AddItem(node.Group.title, node.NodeName);
+                else ungroupedNodeNames.Add(node.NodeName);
             }
 
             UpdateDialogueChoicesConnections();
@@ -146,18 +146,7 @@ namespace DialogueSystem.Utilities
 
         private static void SaveNodeToGraph(DialogueSystemNode node, DialogueSystemGraphSaveDataSO graphData)
         {
-            List<DialogueSystemChoiceSaveData> choices = CloneNodeChoices(node.Choices);
-
-            DialogueSystemNodeSaveData nodeData = new DialogueSystemNodeSaveData()
-            {
-                ID = node.ID,
-                Name = node.DialogueName,
-                Choices = choices,
-                Text = node.Text,
-                GroupID = node.Group?.ID,
-                DialogueType = node.DialogueType,
-                Position = node.GetPosition().position
-            };
+            DialogueSystemNodeSaveData nodeData = new DialogueSystemNodeSaveData(node);
 
             graphData.Nodes.Add(nodeData);
         }
@@ -168,17 +157,17 @@ namespace DialogueSystem.Utilities
 
             if (node.Group != null)
             {
-                dialogue = CreateAsset<DialogueSystemDialogueSO>($"{containerFolderPath}/Groups/{node.Group.title}/Dialogues", node.DialogueName);
+                dialogue = CreateAsset<DialogueSystemDialogueSO>($"{containerFolderPath}/Groups/{node.Group.title}/Dialogues", node.NodeName);
                 dialogueContainer.DialogueGroups.AddItem(createdDialogueGroups[node.Group.ID], dialogue);
             }
             else
             {
-                dialogue = CreateAsset<DialogueSystemDialogueSO>($"{containerFolderPath}/Global/Dialogues", node.DialogueName);
+                dialogue = CreateAsset<DialogueSystemDialogueSO>($"{containerFolderPath}/Global/Dialogues", node.NodeName);
                 dialogueContainer.UngroupedDialogues.Add(dialogue);
             }
 
             dialogue.Initialise(
-                node.DialogueName,
+                node.NodeName,
                 node.Text,
                 ConvertNodeChoicesToDialogueChoices(node.Choices),
                 node.DialogueType,
@@ -431,7 +420,7 @@ namespace DialogueSystem.Utilities
             AssetDatabase.DeleteAsset($"{path}/{assetName}.asset");
         }
 
-        private static List<DialogueSystemChoiceSaveData> CloneNodeChoices(List<DialogueSystemChoiceSaveData> nodeChoices)
+        public static List<DialogueSystemChoiceSaveData> CloneNodeChoices(List<DialogueSystemChoiceSaveData> nodeChoices)
         {
             List<DialogueSystemChoiceSaveData> choices = new List<DialogueSystemChoiceSaveData>();
 

@@ -149,7 +149,7 @@ namespace DialogueSystem.Windows
         /// <returns> Returns a reference to the created Node.</returns>
         public DialogueSystemNode CreateNode(string nodeName, DialogueTypes dialogueType, Vector2 position, bool shouldDraw = true)
         {
-            Type nodeType = Type.GetType($"DialogueSystem.Elements.DialogueSystem{dialogueType}Node");
+            Type nodeType = Type.GetType($"DialogueSystem.Elements.DialogueSystem{dialogueType}DialogueNode");
             DialogueSystemNode node = (DialogueSystemNode)Activator.CreateInstance(nodeType);
 
             node.Initialise(nodeName, this, position);
@@ -395,7 +395,7 @@ namespace DialogueSystem.Windows
         public void AddUngroupedNode(DialogueSystemNode node)
         {
             // Make name lower-case so file names are not case sensative.
-            string nodeName = node.DialogueName.ToLower();
+            string nodeName = node.NodeName.ToLower();
 
             // If ungrouped nodes does not contain a node with this name.
             if(!ungroupedNodes.ContainsKey(nodeName))
@@ -432,7 +432,7 @@ namespace DialogueSystem.Windows
         public void RemoveUngroupedNode(DialogueSystemNode node)
         {
             // Make name lower-case so file names are not case sensative.
-            string nodeName = node.DialogueName.ToLower();
+            string nodeName = node.NodeName.ToLower();
             List<DialogueSystemNode> ungroupedNodesList = ungroupedNodes[nodeName].Nodes;
 
             // Remove the node from the List.
@@ -464,7 +464,7 @@ namespace DialogueSystem.Windows
         public void AddGroupedNode(DialogueSystemNode node, DialogueSystemGroup group)
         {
             // Make name lower-case so file names are not case sensative.
-            string nodeName = node.DialogueName.ToLower();
+            string nodeName = node.NodeName.ToLower();
 
             // Set the Group refernece in the Node.
             node.Group = group;
@@ -513,7 +513,7 @@ namespace DialogueSystem.Windows
         public void RemoveGroupedNode(DialogueSystemNode node, DialogueSystemGroup group)
         {
             // Make name lower-case so file names are not case sensative.
-            string nodeName = node.DialogueName.ToLower();
+            string nodeName = node.NodeName.ToLower();
             List<DialogueSystemNode> groupedNodesList = groupedNodes[group][nodeName].Nodes;
 
             // Remove the Group reference from the Node.

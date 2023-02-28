@@ -3,6 +3,7 @@ using UnityEngine;
 
 namespace DialogueSystem.Types
 {
+    public enum NodeTypes { Dialogue, MultipleChoice }
     public enum DialogueTypes { SingleChoice, MultipleChoice }
 }
 
