@@ -42,7 +42,7 @@ namespace DialogueSystem.ScriptableObjects
                     continue;
                 }
 
-                groupedDialogueNames.Add(groupedDialogue.DialogueName);
+                groupedDialogueNames.Add(groupedDialogue.NodeName);
             }
 
             return groupedDialogueNames;
@@ -59,7 +59,7 @@ namespace DialogueSystem.ScriptableObjects
                     continue;
                 }
 
-                ungroupedDialogueNames.Add(ungroupedDialogue.DialogueName);
+                ungroupedDialogueNames.Add(ungroupedDialogue.NodeName);
             }
 
             return ungroupedDialogueNames;

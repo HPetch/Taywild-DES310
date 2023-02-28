@@ -115,16 +115,25 @@ namespace DialogueSystem.Windows
             this.AddManipulator(new SelectionDragger());
             this.AddManipulator(new RectangleSelector());
 
-            this.AddManipulator(CreateNodeContextualMenu("Add Dialogue Node (Single Choice)", DialogueTypes.SingleChoice));
-            this.AddManipulator(CreateNodeContextualMenu("Add Dialogue Node (Multiple Choice)", DialogueTypes.MultipleChoice));
+            this.AddManipulator(CreateDialogueNodeContextualMenu("Add Dialogue Node (Single Choice)", DialogueTypes.SingleChoice));
+            this.AddManipulator(CreateDialogueNodeContextualMenu("Add Dialogue Node (Multiple Choice)", DialogueTypes.MultipleChoice));
+            this.AddManipulator(CreateEdgeNodeContextualMenu("Add Edge Node"));
 
             this.AddManipulator(CreateGroupContextualMenu());
         }
 
-        private IManipulator CreateNodeContextualMenu(string actionTitle, DialogueTypes dialogueType)
+        private IManipulator CreateDialogueNodeContextualMenu(string actionTitle, DialogueTypes dialogueType)
         {
             ContextualMenuManipulator contextualMenuManipulator = new ContextualMenuManipulator(
-                menuEvent => menuEvent.menu.AppendAction(actionTitle, actionEvent => AddElement(CreateNode("DialogueName", dialogueType, GetLocalMousePosition(actionEvent.eventInfo.localMousePosition))))
+                menuEvent => menuEvent.menu.AppendAction(actionTitle, actionEvent => AddElement(CreateDialogueNode("NodeName", dialogueType, GetLocalMousePosition(actionEvent.eventInfo.localMousePosition))))
+                );
+            return contextualMenuManipulator;
+        }
+
+        private IManipulator CreateEdgeNodeContextualMenu(string actionTitle)
+        {
+            ContextualMenuManipulator contextualMenuManipulator = new ContextualMenuManipulator(
+                menuEvent => menuEvent.menu.AppendAction(actionTitle, actionEvent => AddElement(CreateEdgeNode(GetLocalMousePosition(actionEvent.eventInfo.localMousePosition))))
                 );
             return contextualMenuManipulator;
         }
@@ -140,18 +149,39 @@ namespace DialogueSystem.Windows
 
         #region Elements Creation
         /// <summary>
-        /// Create a Node.
+        /// Create a Dialogue Node.
         /// </summary>
         /// <param name="nodeName"> The name of the Node.</param>
         /// <param name="dialogueType"> The type of Node.</param>
         /// <param name="position"> The position of the Node.</param>
         /// <param name="shouldDraw"> If the node should be drawn on creation, defaulted to true. false when loading Nodes.</param>
         /// <returns> Returns a reference to the created Node.</returns>
-        public DialogueSystemNode CreateNode(string nodeName, DialogueTypes dialogueType, Vector2 position, bool shouldDraw = true)
+        public DialogueSystemNode CreateDialogueNode(string nodeName, DialogueTypes dialogueType, Vector2 position, bool shouldDraw = true)
         {
             Type nodeType = Type.GetType($"DialogueSystem.Elements.DialogueSystem{dialogueType}DialogueNode");
             DialogueSystemNode node = (DialogueSystemNode)Activator.CreateInstance(nodeType);
 
+            return CreateNode(node, nodeName, position, shouldDraw);
+        }
+
+        public DialogueSystemNode CreateEdgeNode(Vector2 position, bool shouldDraw = true)
+        {
+            DialogueSystemEdgeNode node = new DialogueSystemEdgeNode();
+            return CreateNode(node, "", position, shouldDraw);
+        }
+
+        public DialogueSystemNode CreateNode(DialogueSystemNodeSaveData nodeData)
+        {
+            return nodeData.NodeType switch
+            {
+                NodeTypes.Dialogue => CreateDialogueNode(nodeData.Name, nodeData.DialogueType, nodeData.Position, false),
+                NodeTypes.Edge => CreateEdgeNode(nodeData.Position, false),
+                _ => null,
+            };
+        }
+
+        private DialogueSystemNode CreateNode(DialogueSystemNode node, string nodeName, Vector2 position, bool shouldDraw = true)
+        {
             node.Initialise(nodeName, this, position);
 
             if (shouldDraw) { node.Draw(); }

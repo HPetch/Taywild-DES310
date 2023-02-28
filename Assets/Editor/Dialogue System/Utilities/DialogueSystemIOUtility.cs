@@ -51,7 +51,7 @@ namespace DialogueSystem.Utilities
             CreateStaticFolders();
             GetElementsFromGraphView();
 
-            DialogueSystemGraphSaveDataSO graphData = CreateAsset<DialogueSystemGraphSaveDataSO>("Assets/Editor/Dialogue System/Graphs", $"{graphFileName}Graph");
+            DialogueSystemGraphSaveDataSO graphData = CreateAsset<DialogueSystemGraphSaveDataSO>("Assets/Editor/Dialogue System/Graphs", $"{graphFileName}");
             graphData.Initialise(graphFileName);
 
             DialogueSystemDialogueContainerSO dialogueContainer = CreateAsset<DialogueSystemDialogueContainerSO>(containerFolderPath, graphFileName);
@@ -168,6 +168,7 @@ namespace DialogueSystem.Utilities
 
             dialogue.Initialise(
                 node.NodeName,
+                node.NodeType,
                 node.Text,
                 ConvertNodeChoicesToDialogueChoices(node.Choices),
                 node.DialogueType,
@@ -293,9 +294,11 @@ namespace DialogueSystem.Utilities
             {
                 List<DialogueSystemChoiceSaveData> choices = CloneNodeChoices(nodeData.Choices);
 
-                DialogueSystemNode node = graphView.CreateNode(nodeData.Name, nodeData.DialogueType, nodeData.Position, false);
+                DialogueSystemNode node = graphView.CreateNode(nodeData);
 
                 node.ID = nodeData.ID;
+                node.NodeType = nodeData.NodeType;
+
                 node.Choices = choices;
                 node.Text = nodeData.Text;
 

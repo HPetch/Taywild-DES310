@@ -89,11 +89,13 @@ namespace DialogueSystem.Windows
 
         private void Load()
         {
-            bool toClear = EditorUtility.DisplayDialog(
+            bool toLoad = EditorUtility.DisplayDialog(
                 "Are you sure?",
                 "You will lose any unsaved data.\nDo you wish to continue?",
                 "Load"
                 );
+
+            if (!toLoad) return;
 
             string filePath = EditorUtility.OpenFilePanel("Dialogue Graphs", "Assets/Editor/Dialogue System/Graphs", "asset");
 

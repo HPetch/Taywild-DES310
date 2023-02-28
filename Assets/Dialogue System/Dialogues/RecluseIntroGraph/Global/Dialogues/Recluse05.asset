@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56aed56cf2bdb3940a003c0a146eee35, type: 3}
+  m_Name: Recluse05
+  m_EditorClassIdentifier: 
+  <NodeType>k__BackingField: 0
+  <NodeName>k__BackingField: Recluse05
+  <Text>k__BackingField: Follow the river, find the clear crystal flower and bring
+    it to me. Then access may be granted.
+  <Choices>k__BackingField:
+  - <Text>k__BackingField: Accept task
+    <NextDialogue>k__BackingField: {fileID: 11400000, guid: 894d08bcf708fbd40a1222a9739591ce, type: 2}
+  - <Text>k__BackingField: May?
+    <NextDialogue>k__BackingField: {fileID: 11400000, guid: 9ec3067d2d8b2834bb06b485c79e2f39, type: 2}
+  - <Text>k__BackingField: Ask a question
+    <NextDialogue>k__BackingField: {fileID: 11400000, guid: 3636ba033c225a5459e134e7e07e26f4, type: 2}
+  - <Text>k__BackingField: Name.
+    <NextDialogue>k__BackingField: {fileID: 11400000, guid: 5f7bf7f01f5be574abe586240b200933, type: 2}
+  <DialogueType>k__BackingField: 1
+  <IsStartingDialogue>k__BackingField: 0

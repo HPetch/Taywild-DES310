@@ -156,7 +156,7 @@ namespace DialogueSystem.Inspectors
 
             bool isOldDialogueNull = oldDialogue == null;
 
-            string oldDialogueName = isOldDialogueNull ? "" : oldDialogue.DialogueName;
+            string oldDialogueName = isOldDialogueNull ? "" : oldDialogue.NodeName;
 
             UpdateIndexOnNamesListUpdate(dialogueNames, selectedDialogueIndexProperty, oldSelectedDialogueIndex, oldDialogueName, isOldDialogueNull);
 

@@ -37,7 +37,13 @@ namespace DialogueSystem.Windows
                     userData = DialogueTypes.MultipleChoice,
                     level = 2
                 },
-                new SearchTreeGroupEntry(new GUIContent("Dialogue Groups"), 1),
+                new SearchTreeGroupEntry(new GUIContent("Utility"), 1),
+                new SearchTreeEntry(new GUIContent("Edge Node", indentationIcon))
+                {
+                    userData = new DialogueSystemEdgeNode(),
+                    level = 2
+                },
+                new SearchTreeGroupEntry(new GUIContent("Groups"), 1),
                 new SearchTreeEntry(new GUIContent("Single Group", indentationIcon))
                 {
                     userData = new Group(),
@@ -56,7 +62,7 @@ namespace DialogueSystem.Windows
             {
                 case DialogueTypes.SingleChoice:
                     {
-                        DialogueSystemSingleChoiceDialogueNode singleChoiceNode = (DialogueSystemSingleChoiceDialogueNode)graphView.CreateNode("DialogueName", DialogueTypes.SingleChoice, localMousePosition);
+                        DialogueSystemSingleChoiceDialogueNode singleChoiceNode = (DialogueSystemSingleChoiceDialogueNode)graphView.CreateDialogueNode("DialogueName", DialogueTypes.SingleChoice, localMousePosition);
 
                         graphView.AddElement(singleChoiceNode);
 
@@ -65,14 +71,20 @@ namespace DialogueSystem.Windows
 
                 case DialogueTypes.MultipleChoice:
                     {
-                        DialogueSystemMultipleChoiceDialogueNode multipleChoiceNode = (DialogueSystemMultipleChoiceDialogueNode)graphView.CreateNode("DialogueName", DialogueTypes.MultipleChoice, localMousePosition);
+                        DialogueSystemMultipleChoiceDialogueNode multipleChoiceNode = (DialogueSystemMultipleChoiceDialogueNode)graphView.CreateDialogueNode("DialogueName", DialogueTypes.MultipleChoice, localMousePosition);
 
                         graphView.AddElement(multipleChoiceNode);
 
                         return true;
                     }
 
-                case DialogueSystemGroup _:
+                case DialogueSystemEdgeNode:
+                    {
+                        graphView.CreateEdgeNode(localMousePosition);
+                        return true;
+                    }
+
+                case DialogueSystemGroup:
                     {
                         graphView.CreateGroup("DialogueGroup", localMousePosition);
                         return true;

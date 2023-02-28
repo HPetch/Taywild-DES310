@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56aed56cf2bdb3940a003c0a146eee35, type: 3}
+  m_Name: Recluse07
+  m_EditorClassIdentifier: 
+  <NodeType>k__BackingField: 0
+  <NodeName>k__BackingField: Recluse07
+  <Text>k__BackingField: My name is Recluse. I know this is an odd request, but I
+    have to take precautions for my plants. It is necessary.
+  <Choices>k__BackingField:
+  - <Text>k__BackingField: Be understanding.
+    <NextDialogue>k__BackingField: {fileID: 11400000, guid: e6229dd28c400194d89ae6e97938c6bb, type: 2}
+  - <Text>k__BackingField: Say nothing.
+    <NextDialogue>k__BackingField: {fileID: 11400000, guid: 7472c760eb0b5ca45adb96d053d1a13d, type: 2}
+  <DialogueType>k__BackingField: 1
+  <IsStartingDialogue>k__BackingField: 0
