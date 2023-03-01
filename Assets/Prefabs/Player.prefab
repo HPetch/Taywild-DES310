@@ -33,7 +33,7 @@ Transform:
   m_Children:
   - {fileID: 3013080773383515439}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3013080772066457372
 MonoBehaviour:
@@ -47,33 +47,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 405f250237db3e241900bef941c14207, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 10
+  moveSpeed: 9
   airMoveAcceleration: 0.8
   airDragMultiplier: 0.95
   platformLayerMask:
     serializedVersion: 2
     m_Bits: 64
-  groundedJumpForce: 20
-  airJumpForce: 14
-  variableJumpHegithMultiplier: 0.5
+  groundedJumpForce: 24
+  airJumpForce: 18
+  variableJumpHegithMultiplier: 0.8
   maxAirJumps: 1
-  coyoteTime: 0.1
+  coyoteTime: 0.15
   wallLayerMask:
     serializedVersion: 2
     m_Bits: 128
   wallSlideSpeed: 0
   wallCheckDistance: 0.55
-  wallHopForce: 5
+  wallHopForce: 7
   wallHopDirection: {x: 1, y: 0.5}
-  wallJumpForce: 30
-  wallJumpDirection: {x: 1, y: 2}
-  wallStickTime: 0.8
+  wallJumpForce: 32
+  wallJumpDirection: {x: 1, y: 1.5}
+  wallStickTime: 4
   airMovementDisabledDelayAfterWallJump: 0.5
-  dashSpeed: 20
-  dashDuration: 0.2
+  dashSpeed: 21
+  dashDuration: 0.25
   dashCoolDown: 1
-  fallSpeedThatTriggersGliding: 10
-  glideFallSpeed: 6
+  fallSpeedThatTriggersGliding: 20
+  glideFallSpeed: 4.25
   glideAirMoveAcceleration: 0.8
   glideAirDragMultiplier: 0.95
 --- !u!70 &3013080772066457374
