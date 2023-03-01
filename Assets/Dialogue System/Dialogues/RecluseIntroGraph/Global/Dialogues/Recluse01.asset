@@ -12,13 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56aed56cf2bdb3940a003c0a146eee35, type: 3}
   m_Name: Recluse01
   m_EditorClassIdentifier: 
-  <NodeType>k__BackingField: 0
   <NodeName>k__BackingField: Recluse01
-  <Text>k__BackingField: No visitors! Access will not be granted to the unverified.
+  <NodeType>k__BackingField: 0
   <Choices>k__BackingField:
   - <Text>k__BackingField: Sorry.
     <NextDialogue>k__BackingField: {fileID: 11400000, guid: 409cee495db37e0468db399b34426cca, type: 2}
   - <Text>k__BackingField: Unverified?
     <NextDialogue>k__BackingField: {fileID: 11400000, guid: 8153779299fee6b4bae739724fba2d66, type: 2}
+  <Character>k__BackingField: {fileID: 11400000, guid: 4d46490a566f8dd4db8b9da467c58c40, type: 2}
   <DialogueType>k__BackingField: 1
+  <Text>k__BackingField: No visitors! Access will not be granted to the unverified.
   <IsStartingDialogue>k__BackingField: 0

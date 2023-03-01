@@ -22,12 +22,13 @@ namespace DialogueSystem.Elements
 
         public List<DialogueSystemChoiceSaveData> Choices { get; set; }
 
-        public string DialogueText { get; set; }
         public DialogueTypes DialogueType { get; set; }
+        public DialogueCharacter Character { get; set; }
+        public string DialogueText { get; set; }
 
         protected DialogueSystemGraphView graphView;
-        protected Color defaultBackgroundColor;
-
+        protected Color defaultBorderColor;
+        protected float defaultBorderWidth;
 
         public virtual void Initialise(string nodeName, DialogueSystemGraphView dialogueSystemGraphView, Vector2 position)
         {
@@ -39,7 +40,8 @@ namespace DialogueSystem.Elements
 
             SetPosition(new Rect(position, Vector2.one));
 
-            defaultBackgroundColor = new Color(29f / 255f, 29f / 255f, 30f / 255f);
+            defaultBorderColor = titleContainer.style.borderTopColor.value;
+            defaultBorderWidth = titleContainer.style.borderTopWidth.value;
         }
 
         public virtual void Draw()
@@ -139,14 +141,16 @@ namespace DialogueSystem.Elements
             return !((Port)inputContainer.Children().First()).connected;
         }
 
-        public void SetErrorStyle(Color color)
+        public void SetErrorStyle(Color errorColor)
         {
-            mainContainer.style.backgroundColor = color;
+            titleContainer.style.borderTopColor = errorColor;
+            titleContainer.style.borderTopWidth = 5f;
         }
 
-        public void ResetStyle()
+        public void ResetErrorStyle()
         {
-            mainContainer.style.backgroundColor = defaultBackgroundColor;
+            titleContainer.style.borderTopColor = defaultBorderColor;
+            titleContainer.style.borderTopWidth = defaultBorderWidth;
         }
         #endregion
     }

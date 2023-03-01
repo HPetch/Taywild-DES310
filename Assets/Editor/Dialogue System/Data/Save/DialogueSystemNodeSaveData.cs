@@ -11,14 +11,15 @@ namespace DialogueSystem.Data.Save
     public class DialogueSystemNodeSaveData
     {
         [field: SerializeField] public string ID { get; set; }
+        [field: SerializeField] public string Name { get; set; }
         [field: SerializeField] public NodeTypes NodeType { get; set; }
 
-        [field: SerializeField] public string Name { get; set; }
         [field: SerializeField] public string GroupID { get; set; }
         [field: SerializeField] public List<DialogueSystemChoiceSaveData> Choices { get; set; }
         [field: SerializeField] public Vector2 Position { get; set; }
 
         [field: SerializeField] public DialogueTypes DialogueType { get; set; }
+        [field: SerializeField] public DialogueCharacter Character { get; set; }
         [field: SerializeField] public string Text { get; set; }
 
 
@@ -33,6 +34,7 @@ namespace DialogueSystem.Data.Save
             Position = _node.GetPosition().position;
 
             DialogueType = _node.DialogueType;
+            Character = _node.Character;
             Text = _node.DialogueText;
         }
     }

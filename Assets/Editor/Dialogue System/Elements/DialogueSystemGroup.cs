@@ -20,20 +20,20 @@ namespace DialogueSystem.Elements
 
             SetPosition(new Rect(position, Vector2.one));
 
-            defaultBorderColor = contentContainer.style.borderBottomColor.value;
-            defaultBorderWidth = contentContainer.style.borderBottomWidth.value;
+            defaultBorderColor = contentContainer.style.borderTopColor.value;
+            defaultBorderWidth = contentContainer.style.borderTopWidth.value;
         }
 
         public void SetErrorStyle(Color errorColor)
         {
-            contentContainer.style.borderBottomColor = errorColor;
-            contentContainer.style.borderBottomWidth = 2f;
+            contentContainer.style.borderTopColor = errorColor;
+            contentContainer.style.borderTopWidth = 2f;
         }
 
         public void ResetStlye()
         {
-            contentContainer.style.borderBottomColor = defaultBorderColor;
-            contentContainer.style.borderBottomWidth = defaultBorderWidth;
+            contentContainer.style.borderTopColor = defaultBorderColor;
+            contentContainer.style.borderTopWidth = defaultBorderWidth;
         }
     }
 }

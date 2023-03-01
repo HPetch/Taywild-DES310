@@ -12,13 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56aed56cf2bdb3940a003c0a146eee35, type: 3}
   m_Name: RecluseIntoStart
   m_EditorClassIdentifier: 
-  <NodeType>k__BackingField: 0
   <NodeName>k__BackingField: RecluseIntoStart
-  <Text>k__BackingField: The quaint greenhouse door is locked tightly shut.
+  <NodeType>k__BackingField: 0
   <Choices>k__BackingField:
   - <Text>k__BackingField: Politely Knock
     <NextDialogue>k__BackingField: {fileID: 11400000, guid: 141ff594a2ba76f45862a69518c7aad5, type: 2}
   - <Text>k__BackingField: Open Door
     <NextDialogue>k__BackingField: {fileID: 11400000, guid: 141ff594a2ba76f45862a69518c7aad5, type: 2}
+  <Character>k__BackingField: {fileID: 11400000, guid: c11bdf3877896b84dac6bdb375297575, type: 2}
   <DialogueType>k__BackingField: 1
+  <Text>k__BackingField: The quaint greenhouse door is locked tightly shut.
   <IsStartingDialogue>k__BackingField: 1

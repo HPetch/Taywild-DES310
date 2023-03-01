@@ -13,7 +13,7 @@ namespace DialogueSystem
 
         /* Filters */
         [SerializeField] private bool groupedDialogues;
-        [SerializeField] private bool startingDialoguesOnly = true;
+        [SerializeField] private bool startingDialoguesOnly;
 
         /* Indexes */
         [SerializeField] private int selectedDialogueGroupIndex;

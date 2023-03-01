@@ -12,10 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56aed56cf2bdb3940a003c0a146eee35, type: 3}
   m_Name: Recluse05
   m_EditorClassIdentifier: 
-  <NodeType>k__BackingField: 0
   <NodeName>k__BackingField: Recluse05
-  <Text>k__BackingField: Follow the river, find the clear crystal flower and bring
-    it to me. Then access may be granted.
+  <NodeType>k__BackingField: 0
   <Choices>k__BackingField:
   - <Text>k__BackingField: Accept task
     <NextDialogue>k__BackingField: {fileID: 11400000, guid: 894d08bcf708fbd40a1222a9739591ce, type: 2}
@@ -25,5 +23,8 @@ MonoBehaviour:
     <NextDialogue>k__BackingField: {fileID: 11400000, guid: 3636ba033c225a5459e134e7e07e26f4, type: 2}
   - <Text>k__BackingField: Name.
     <NextDialogue>k__BackingField: {fileID: 11400000, guid: 5f7bf7f01f5be574abe586240b200933, type: 2}
+  <Character>k__BackingField: {fileID: 11400000, guid: 4d46490a566f8dd4db8b9da467c58c40, type: 2}
   <DialogueType>k__BackingField: 1
+  <Text>k__BackingField: Follow the river, find the clear crystal flower and bring
+    it to me. Then access may be granted.
   <IsStartingDialogue>k__BackingField: 0

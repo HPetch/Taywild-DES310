@@ -166,14 +166,7 @@ namespace DialogueSystem.Utilities
                 dialogueContainer.UngroupedDialogues.Add(dialogue);
             }
 
-            dialogue.Initialise(
-                node.NodeName,
-                node.NodeType,
-                node.DialogueText,
-                ConvertNodeChoicesToDialogueChoices(node.Choices),
-                node.DialogueType,
-                node.IsStartingNode()
-                );
+            dialogue.Initialise(node.NodeName, node.NodeType, ConvertNodeChoicesToDialogueChoices(node.Choices), node.Character, node.DialogueType, node.DialogueText, node.IsStartingNode());
 
             createdDialogues.Add(node.ID, dialogue);
             SaveAsset(dialogue);
@@ -297,10 +290,10 @@ namespace DialogueSystem.Utilities
                 DialogueSystemNode node = graphView.CreateNode(nodeData);
 
                 node.ID = nodeData.ID;
-                node.NodeType = nodeData.NodeType;
 
                 node.Choices = choices;
                 node.DialogueText = nodeData.Text;
+                node.Character = nodeData.Character;
 
                 node.Draw();
 

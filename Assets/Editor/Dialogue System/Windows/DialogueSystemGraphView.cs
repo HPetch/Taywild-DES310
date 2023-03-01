@@ -479,13 +479,13 @@ namespace DialogueSystem.Windows
             ungroupedNodesList.Remove(node);
 
             // Reset the error style, it will be reset if this Node is being added to a Group.
-            node.ResetStyle();
+            node.ResetErrorStyle();
 
             // Only one Node left with this name, so reset the error style.
             if (ungroupedNodesList.Count == 1)
             {
                 NameErrorsAmount--;
-                ungroupedNodesList[0].ResetStyle();
+                ungroupedNodesList[0].ResetErrorStyle();
                 return;
             }
 
@@ -562,13 +562,13 @@ namespace DialogueSystem.Windows
             // Remove Node from Group.
             groupedNodesList.Remove(node);
             // Reset the error status (it will be check again when the node is added to ungrouped nodes).
-            node.ResetStyle();
+            node.ResetErrorStyle();
 
             // If there only remains one node of that name in the group reset it's error status.
             if (groupedNodesList.Count == 1)
             {
                 NameErrorsAmount--;
-                groupedNodesList[0].ResetStyle();
+                groupedNodesList[0].ResetErrorStyle();
                 return;
             }
 

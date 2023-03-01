@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56aed56cf2bdb3940a003c0a146eee35, type: 3}
   m_Name: Player02
   m_EditorClassIdentifier: 
-  <NodeType>k__BackingField: 0
   <NodeName>k__BackingField: Player02
-  <Text>k__BackingField: '!!!'
+  <NodeType>k__BackingField: 0
   <Choices>k__BackingField:
   - <Text>k__BackingField: Next Dialogue
     <NextDialogue>k__BackingField: {fileID: 11400000, guid: d77c4303059310840a93a2fadeac5967, type: 2}
+  <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
   <DialogueType>k__BackingField: 0
+  <Text>k__BackingField: '!!!'
   <IsStartingDialogue>k__BackingField: 0
