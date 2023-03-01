@@ -19,31 +19,38 @@ public class TrashObject : MonoBehaviour
     private Vector2 startPosition; // Position that the sprite will use as an anchor
     private Vector2 targetPosition; // Position that the sprite is trying to reach
 
-    private GameObject sprite; // Reference to child that contains the trash's sprite. Moved instead of the trash instead.
+    private GameObject spriteArm; // Reference to child that has a child which is the sprite. This is moved, but not vibrated.
+    private GameObject sprite; // Reference to child that contains the trash's sprite. This is vibrated.
     [SerializeField] private GameObject blockingCollider; // Reference to child that contains collider that blocks player. Only TrashBlockObject has this.
 
     private Vector2 mouseStartPosition; // When begining a drag this holds the mouse original position
     private Vector2 mouseCurrentPosition;
 
     private bool isBeingPulled; // Is the player currently pulling this trash
-    [SerializeField, Range(1,10)] private float pullMaxDistance; // Maximum distance the mouse can be before
-    private float pullCurrentDistance;
+    [SerializeField, Range(0.1f,0.5f)] private float pullBreakDistance; // Maximum distance the mouse can be before
     private Vector2 pullDirection;
 
-    [SerializeField, Range(1,10)] private float visualPullMovementAllowed;
+    [SerializeField, Range(0.5f,5)] private float pullMoveResistance;
+    private float pullBreakTime;
+    private bool isTryingToBreak;
 
     private float vibrationIntensity;
-    [SerializeField, Range(0,1)] float vibrationMax;
+    [SerializeField, Range(0,0.2f)] float vibrationMax;
+    [SerializeField, Range(0.1f, 10)] float vibrationSpeed;
 
     [SerializeField, Range(1,6)] private int healthMax;
     private int health;
-    [SerializeField, Range(0,60)] private int respawnCooldown; // How many minutes until respawn after pulling. If 0 then cannot respawn
+
+    // How many minutes until respawn after pulling. If 0 then cannot respawn
+    [SerializeField, Range(0,60)] private int respawnCooldown;
     private bool isActive = true;
     private float respawnTime;
+    [SerializeField] LayerMask respawnBlockLayerMask;
 
-    [SerializeField, Range(1, 50)] private int dragMoveSpeed;
+    [SerializeField, Range(1, 10)] private int dragMoveSpeed;
 
-    [SerializeField] private SerializableDictionary<int, Sprite> damageDisplayedSprites; // When health == int change trash's sprite to the one in the dictionary.
+    // When health == int change trash's sprite to the one in the dictionary.
+    [SerializeField] private SerializableDictionary<int, Sprite> damageDisplayedSprites;
 
 
 
@@ -51,12 +58,16 @@ public class TrashObject : MonoBehaviour
     private void Awake()
     {
         sprite = GetComponentInChildren<SpriteRenderer>().gameObject;
+        spriteArm = sprite.transform.parent.gameObject;
     }
 
     void Start()
     {
-        startPosition = transform.position; // Sets the trash's initial location. This is used as an anchor.
-        Respawn(); // Ensures variables are set up
+        // Sets the trash's initial location. This is used as an anchor for sprite arm.
+        startPosition = transform.position;
+
+        // Ensures variables are set up
+        Respawn(); 
     }
 
     // Update is called once per frame
@@ -65,66 +76,123 @@ public class TrashObject : MonoBehaviour
         if (isBeingPulled)
         {
             mouseCurrentPosition = CameraController.Instance.MouseWorldPosition;
-            pullCurrentDistance = Vector2.Distance(mouseStartPosition, mouseCurrentPosition);
+            
             pullDirection = (mouseCurrentPosition - mouseStartPosition).normalized;
-            if (pullCurrentDistance > pullMaxDistance)
+            
+            
+
+            targetPosition = startPosition + ((mouseCurrentPosition - mouseStartPosition) / (pullMoveResistance * 10)); // The position that the sprite arm will be trying to move to
+
+            // Slows movement of sprite arm as it gets closer to breaking to look like it's resisting
+            float dragMoveSpeedSlowdown = Mathf.Clamp(Mathf.Abs(PullCurrentDistance()-pullBreakDistance)/pullBreakDistance,0.01f,1.0f);
+
+            // If the trash is trying to break stops movement to prevent weird movement
+            if (!isTryingToBreak) 
             {
-                health--;
-                if (health == 0) EndPull(pullDirection); //Destroys the trash object, adds resources to inventory, and gives direction for the particle system
-                else if (damageDisplayedSprites.ContainsKey(health)) sprite.GetComponent<SpriteRenderer>().sprite = damageDisplayedSprites[health];
-                CancelPull();
+                spriteArm.transform.position = Vector2.Lerp(spriteArm.transform.position, targetPosition, dragMoveSpeed * dragMoveSpeedSlowdown * Time.deltaTime);
 
+                // Closer the sprite is to breaking vibrate with extra intensity
+                vibrationIntensity = (PullCurrentDistance() / pullBreakDistance) * vibrationMax; 
             }
-            else
+
+            Vector2 _vibrationOffset = new Vector2(UnityEngine.Random.Range(-vibrationIntensity, vibrationIntensity), UnityEngine.Random.Range(-vibrationIntensity, vibrationIntensity));
+            
+            // Vibrates sprite independent of sprite arm to prevent funky math
+            sprite.transform.localPosition = Vector2.Lerp(sprite.transform.localPosition, _vibrationOffset, vibrationSpeed * Time.deltaTime);
+
+            // If sprite arm is past break distance then start trying to break the trash
+            if (PullCurrentDistance() > pullBreakDistance)
             {
-                // Closer mouse is to reaching pullMaxDistance vibrate the sprite
-                vibrationIntensity = pullCurrentDistance / pullMaxDistance;
-                float _vibrationAmount = (vibrationMax / 10) * vibrationIntensity;
-                Vector2 _vibrationOffset = new Vector2(UnityEngine.Random.Range(-_vibrationAmount, _vibrationAmount), UnityEngine.Random.Range(-_vibrationAmount, _vibrationAmount));
-
-                targetPosition = startPosition + ((mouseCurrentPosition - mouseStartPosition) / (visualPullMovementAllowed * 100));
-
-                targetPosition = targetPosition += _vibrationOffset;
-                sprite.transform.position = Vector2.Lerp(sprite.transform.position, targetPosition, dragMoveSpeed * Time.deltaTime);
-
+                // Checks if a break attmempt has started yet
+                if (pullBreakTime < Time.time && !isTryingToBreak)
+                {
+                    pullBreakTime = Time.time + 0.5f;
+                    isTryingToBreak = true;
+                }
+                else if (pullBreakTime < Time.time && isTryingToBreak)
+                {
+                    health--;
+                    if (health == 0) EndPull(pullDirection); //Destroys the trash object, adds resources to inventory, and gives direction for the particle system
+                    else if (damageDisplayedSprites.ContainsKey(health)) sprite.GetComponent<SpriteRenderer>().sprite = damageDisplayedSprites[health];
+                    CancelPull();
+                }
             }
+            // If player have moved their mouse within the break distance then cancel the break attempt
+            if (Vector2.Distance(startPosition, targetPosition) < pullBreakDistance) isTryingToBreak = false;
         }
-        else if (Time.time > respawnTime && !isActive) Respawn();
-        else sprite.transform.position = Vector2.Lerp(sprite.transform.position, targetPosition, dragMoveSpeed * Time.deltaTime);
+        // If the is able to respawn then wait until the correct time then respawn
+        else if (Time.time > respawnTime && !isActive && respawnCooldown != 0) Respawn();
+        
 
     }
 
+    // Called by decoration controller when the decoration selector interacts with the trash
     public void StartPull()
     {
         mouseStartPosition = CameraController.Instance.MouseWorldPosition;
+        spriteArm.transform.position = startPosition;
+        sprite.transform.localPosition = Vector2.zero;
+        targetPosition = startPosition;
         isBeingPulled = true;
+        isTryingToBreak = false;
     }
 
+    // Called by decoration controller when the player releases the mouse button. Also called when removing health from trash that doesn't break.
     public void CancelPull()
     {
-        targetPosition = startPosition;
         isBeingPulled = false;
+        spriteArm.transform.position = startPosition;
+        sprite.transform.localPosition = Vector2.zero;
+        targetPosition = startPosition;
+        isTryingToBreak = false;
     }
 
+    // Called when trash has been broken
     public void EndPull(Vector2 _directionOfBrake) 
     {
-        DecorationController.Instance.TrashBroken(trashBreakItems, transform.position, _directionOfBrake);
-        //Destroy(this.gameObject);
+        // Tells the inventory contoller what items were dropped by the trash. Also gives trash's position and direction for particle system.
+        DecorationController.Instance.TrashBroken(trashBreakItems, spriteArm.transform.position, _directionOfBrake);
         respawnTime = Time.time + (respawnCooldown*60);
         ToggleObject(false);
         isBeingPulled = false;
+        isTryingToBreak = false;
         targetPosition = startPosition;
     }
     
+    // Called when respawn timer reaches the correct time and the trash is able to respawn.
     private void Respawn()
     {
-        sprite.transform.position = startPosition;
-        targetPosition = startPosition;
-        mouseStartPosition = Vector2.zero;
-        health = healthMax;
-        ToggleObject(true);
+        bool _canRespawn = true;
+
+        //Checks if the player or any furniture is not blocking it's respawn
+        Vector2 _hitPosition = GetComponent<BoxCollider2D>().transform.position;
+        Vector2 _hitSize = GetComponent<BoxCollider2D>().size;
+        float _hitRotation = GetComponent<BoxCollider2D>().transform.rotation.eulerAngles.z;
+        if (Physics2D.OverlapBox(_hitPosition, _hitSize, _hitRotation, respawnBlockLayerMask)) _canRespawn = false;
+
+        // Checks that if the trash has a blocking collider then the player or any furniture is not blocking it's respawn
+        if (blockingCollider)
+        {
+            Vector2 _blockPosition = blockingCollider.GetComponent<BoxCollider2D>().transform.position;
+            Vector2 _blockSize = blockingCollider.GetComponent<BoxCollider2D>().size;
+            float _blockRotation = blockingCollider.GetComponent<BoxCollider2D>().transform.rotation.eulerAngles.z;
+            if (Physics2D.OverlapBox(_blockPosition, _blockSize, _blockRotation, respawnBlockLayerMask)) _canRespawn = false;
+        }
+        if (_canRespawn)
+        {
+            spriteArm.transform.position = startPosition;
+            sprite.transform.localPosition = Vector2.zero;
+            targetPosition = startPosition;
+            mouseStartPosition = Vector2.zero;
+            health = healthMax;
+            ToggleObject(true);
+        }
+        // If the trash can't respawn then reset it's respawn timer
+        else respawnTime = Time.time + (respawnCooldown * 60);
+
     }
 
+    // Called when the trash is pulled or respawned. Makes it appear as if it has been destroyed/respawned.
     private void ToggleObject(bool _toggle)
     {
         isActive = _toggle;
@@ -134,4 +202,12 @@ public class TrashObject : MonoBehaviour
         if (blockingCollider) blockingCollider.GetComponent<BoxCollider2D>().enabled = _toggle;
     }
     
+
+
+
+
+    private float PullCurrentDistance()
+    {
+        return Vector2.Distance(startPosition, spriteArm.transform.position);
+    }
 }
