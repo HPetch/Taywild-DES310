@@ -29,16 +29,18 @@ namespace DialogueSystem.Elements
 
             Foldout textFoldout = DialogueSystemElementUtility.CreateFoldout("Dialogue Text");
 
-            TextField textTextField = DialogueSystemElementUtility.CreateTextArea(DialogueText, null, callback => { DialogueText = callback.newValue; });
-            
-            textTextField.AddClasses(
+            TextField dialoguetextTextField = DialogueSystemElementUtility.CreateTextArea(DialogueText, null, callback => { DialogueText = callback.newValue; });
+
+            dialoguetextTextField.AddClasses(
                 "ds-node__text-field",
                 "ds-node__quote-text-field"
             );
 
-            textFoldout.Add(textTextField);
+            textFoldout.Add(dialoguetextTextField);
             customDataContainer.Add(textFoldout);
             extensionContainer.Add(customDataContainer);
+
+            RefreshExpandedState();
         }
     }
 }
