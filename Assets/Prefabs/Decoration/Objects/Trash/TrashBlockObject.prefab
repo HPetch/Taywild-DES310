@@ -68,7 +68,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1898239290578691872, guid: d7b3bcca8b6e4ef43ae5e82229b87311, type: 3}
       propertyPath: healthMax
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1898239290578691872, guid: d7b3bcca8b6e4ef43ae5e82229b87311, type: 3}
       propertyPath: dragMoveSpeed
@@ -76,7 +76,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1898239290578691872, guid: d7b3bcca8b6e4ef43ae5e82229b87311, type: 3}
       propertyPath: respawnCooldown
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1898239290578691872, guid: d7b3bcca8b6e4ef43ae5e82229b87311, type: 3}
       propertyPath: blockingCollider
@@ -87,6 +87,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1898239290578691872, guid: d7b3bcca8b6e4ef43ae5e82229b87311, type: 3}
+      propertyPath: damageDisplayedSprites.list.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1898239290578691872, guid: d7b3bcca8b6e4ef43ae5e82229b87311, type: 3}
       propertyPath: trashBreakItems.list.Array.data[0].Value.x
       value: 2
       objectReference: {fileID: 0}
@@ -94,6 +98,22 @@ PrefabInstance:
       propertyPath: trashBreakItems.list.Array.data[0].Value.y
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 1898239290578691872, guid: d7b3bcca8b6e4ef43ae5e82229b87311, type: 3}
+      propertyPath: damageDisplayedSprites.list.Array.data[0].Key
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1898239290578691872, guid: d7b3bcca8b6e4ef43ae5e82229b87311, type: 3}
+      propertyPath: damageDisplayedSprites.list.Array.data[1].Key
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1898239290578691872, guid: d7b3bcca8b6e4ef43ae5e82229b87311, type: 3}
+      propertyPath: damageDisplayedSprites.list.Array.data[0].Value
+      value: 
+      objectReference: {fileID: 21300000, guid: de8f2326eaf1bf44a85873280deba62f, type: 3}
+    - target: {fileID: 1898239290578691872, guid: d7b3bcca8b6e4ef43ae5e82229b87311, type: 3}
+      propertyPath: damageDisplayedSprites.list.Array.data[1].Value
+      value: 
+      objectReference: {fileID: 21300000, guid: 5a274784fb5aae545ab704e01abca4f3, type: 3}
     - target: {fileID: 1898239290578691873, guid: d7b3bcca8b6e4ef43ae5e82229b87311, type: 3}
       propertyPath: m_Name
       value: TrashBlockObject

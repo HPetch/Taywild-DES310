@@ -1,46 +1,36 @@
-using System.Collections;
-using System.Collections.Generic;
+/// Trash object
+/// Can be interacted with using the decoration system, but does not inherit from Decoration Object
+/// Trash Objects are pulled at using the decoration selector, once pull far enough they take damage or are destroyed
+/// 2 variants, Trash Object low health no collision, Trash Block Object high health collides with player
+/// Once destroyed the items the trash contained is added to the Inventory Controller
+
 using System;
 using UnityEngine;
 
 public class TrashObject : MonoBehaviour
 {
-    // Vector 2 will contain the direction it was broken in. For a particle system to throw plant bits in that direction.
-
-    //[SerializeField] private List<InventoryController.Instance.CraftResource, int>;
-    /// <summary>
-    /// Item name - Item to be dropped upon destroying the trash
-    /// Vector2 - Min,Max. The minimum and maximum amount that can be dropped of the item. Leaving the max as 0 will make the min number the only outcome.
-    /// </summary>
+    
+    // Dictionary that contains the items that the trash will add to inventory after being destroyed
+    // Item name - Item to be dropped upon destroying the trash
+    // Vector2 - Min,Max. The minimum and maximum amount that can be dropped of the item. Leaving the max as 0 will make the min number the only outcome.
     [SerializeField] private SerializableDictionary<InventoryController.ItemNames, Vector2Int> trashBreakItems;
-    ///
-    /// Will sort out what resources the trash object has
-    /// Will have a common resource which is always dropped with variance in it's amount
-    /// Will have a rare resource which drops in low amounts, smaller trash might not have a rare resource
-    /// i.e. A blight bramble would have common resource of plant fibre (3-6 drops) and a rare resource of thorn (1-2) drops
-    /// A small fallen branch: Common - Wood(2-4, Rare - Leaf(1-3)
-    /// A large fallen branch: Common - Wood(6-8), Rare - Leaf(0-2)
-    /// Horned moss: Common - Plant fibre(1-3)
-    ///
+    
 
+    private Vector2 startPosition; // Position that the sprite will use as an anchor
+    private Vector2 targetPosition; // Position that the sprite is trying to reach
 
-    private Vector2 startPosition;
-    private Vector2 targetPosition;
+    private GameObject sprite; // Reference to child that contains the trash's sprite. Moved instead of the trash instead.
+    [SerializeField] private GameObject blockingCollider; // Reference to child that contains collider that blocks player. Only TrashBlockObject has this.
 
-    [SerializeField] private GameObject sprite;
-    [SerializeField] private GameObject blockingCollider;
-
-    private Vector2 mouseStartPosition;
+    private Vector2 mouseStartPosition; // When begining a drag this holds the mouse original position
     private Vector2 mouseCurrentPosition;
-    private Vector2 mouseWorldPosition;
-    private Vector2 mouseVisualOffset;
 
-    private bool isBeingPulled;
-    [SerializeField] private float pullMaxDistance;
+    private bool isBeingPulled; // Is the player currently pulling this trash
+    [SerializeField, Range(1,10)] private float pullMaxDistance; // Maximum distance the mouse can be before
     private float pullCurrentDistance;
     private Vector2 pullDirection;
 
-    [SerializeField, Range(1,10)] private float visualPullMovementAllowed = 10;
+    [SerializeField, Range(1,10)] private float visualPullMovementAllowed;
 
     private float vibrationIntensity;
     [SerializeField, Range(0,1)] float vibrationMax;
@@ -53,10 +43,16 @@ public class TrashObject : MonoBehaviour
 
     [SerializeField, Range(1, 50)] private int dragMoveSpeed;
 
+    [SerializeField] private SerializableDictionary<int, Sprite> damageDisplayedSprites; // When health == int change trash's sprite to the one in the dictionary.
 
 
 
-    // Start is called before the first frame update
+
+    private void Awake()
+    {
+        sprite = GetComponentInChildren<SpriteRenderer>().gameObject;
+    }
+
     void Start()
     {
         startPosition = transform.position; // Sets the trash's initial location. This is used as an anchor.
@@ -68,13 +64,15 @@ public class TrashObject : MonoBehaviour
     {
         if (isBeingPulled)
         {
-            mouseCurrentPosition = Input.mousePosition;
+            mouseCurrentPosition = CameraController.Instance.MouseWorldPosition;
             pullCurrentDistance = Vector2.Distance(mouseStartPosition, mouseCurrentPosition);
             pullDirection = (mouseCurrentPosition - mouseStartPosition).normalized;
             if (pullCurrentDistance > pullMaxDistance)
             {
                 health--;
-                if (health == 0) EndPull(pullDirection); ; //Destroys the trash object, adds resources to inventory, and gives direction for the particle system
+                if (health == 0) EndPull(pullDirection); //Destroys the trash object, adds resources to inventory, and gives direction for the particle system
+                else if (damageDisplayedSprites.ContainsKey(health)) sprite.GetComponent<SpriteRenderer>().sprite = damageDisplayedSprites[health];
+                CancelPull();
 
             }
             else
@@ -83,8 +81,6 @@ public class TrashObject : MonoBehaviour
                 vibrationIntensity = pullCurrentDistance / pullMaxDistance;
                 float _vibrationAmount = (vibrationMax / 10) * vibrationIntensity;
                 Vector2 _vibrationOffset = new Vector2(UnityEngine.Random.Range(-_vibrationAmount, _vibrationAmount), UnityEngine.Random.Range(-_vibrationAmount, _vibrationAmount));
-
-                mouseWorldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
                 targetPosition = startPosition + ((mouseCurrentPosition - mouseStartPosition) / (visualPullMovementAllowed * 100));
 
@@ -100,7 +96,7 @@ public class TrashObject : MonoBehaviour
 
     public void StartPull()
     {
-        mouseStartPosition = Input.mousePosition;
+        mouseStartPosition = CameraController.Instance.MouseWorldPosition;
         isBeingPulled = true;
     }
 
