@@ -989,7 +989,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 2100000, guid: 68d46e0124e73634d9c869c4f84d8cb7, type: 2}
   m_Color: {r: 0.3018868, g: 0.3018868, b: 0.3018868, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
@@ -1238,7 +1238,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speechBubble: {fileID: 4825555415090531881}
   dialogueText: {fileID: 849841006422499660}
-  transitionSpeed: 10
+  <TransitionTime>k__BackingField: 0.2
   widthRange: {x: 100, y: 600}
   heightRange: {x: 60, y: 300}
   padding: {x: 50, y: 10}
