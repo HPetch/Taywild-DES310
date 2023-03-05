@@ -9,11 +9,14 @@ public class CharacterCanvas : MonoBehaviour
     [Header("Dialogue Settings")]
     [SerializeField] private RectTransform speechBubble;
     [SerializeField] private TextMeshProUGUI dialogueText;
-    private CanvasGroup dialogueCanvasGroup;
+    [SerializeField] private CanvasGroup dialogueCanvasGroup;
     private TextEffect textEffect;    
 
     [field: Range(0, 1)]
-    [field: SerializeField] public float TransitionTime { get; private set; } = 0.2f;
+    [field: SerializeField] public float AlphaTransitionTime { get; private set; } = 0.2f;
+
+    [field: Range(0, 1)]
+    [field: SerializeField] public float SizeTransitionTime { get; private set; } = 0.4f;
 
     [MinMaxSlider(10,1000)]
     [SerializeField] private Vector2Int widthRange = new Vector2Int(100,600);
@@ -27,11 +30,9 @@ public class CharacterCanvas : MonoBehaviour
     #region Initialisation
     protected void InitialiseCharacterCanvas()
     {
-        dialogueCanvasGroup = speechBubble.GetComponent<CanvasGroup>();
-        dialogueCanvasGroup.alpha = 0;
-
         textEffect = dialogueText.GetComponent<TextEffect>();
 
+        dialogueCanvasGroup.alpha = 0;
         speechBubble.sizeDelta = Vector2.zero;
     }
 
@@ -43,17 +44,22 @@ public class CharacterCanvas : MonoBehaviour
 
     public void Show(string _text)
     {
+        LeanTween.cancel(dialogueCanvasGroup.gameObject);
+        LeanTween.alphaCanvas(dialogueCanvasGroup, 1, AlphaTransitionTime);
+
         LeanTween.cancel(speechBubble);
-        LeanTween.alphaCanvas(dialogueCanvasGroup, 1, TransitionTime);
-        LeanTween.size(speechBubble, GetTargetSize(_text), TransitionTime);
+        LeanTween.size(speechBubble, GetTargetSize(_text), SizeTransitionTime);
     }
 
     public void Hide()
     {
         ClearText();
+
+        LeanTween.cancel(dialogueCanvasGroup.gameObject);
+        LeanTween.alphaCanvas(dialogueCanvasGroup, 0, AlphaTransitionTime);
+
         LeanTween.cancel(speechBubble);
-        LeanTween.alphaCanvas(dialogueCanvasGroup, 0, TransitionTime);
-        LeanTween.size(speechBubble, new Vector2(speechBubble.sizeDelta.x, 0f), TransitionTime);
+        LeanTween.size(speechBubble, new Vector2(speechBubble.sizeDelta.x, 0f), SizeTransitionTime);
     }
 
     public void SetText(string _text)

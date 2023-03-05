@@ -55,6 +55,7 @@ public class DialogueController : MonoBehaviour
     private bool richText = false;
 
     private bool linkStarted = false;
+    private bool canDisplayNext = false;
 
     private float textTypeWaitTime = 0;
     private float currentTextTypeDelay = 0.01f;
@@ -84,6 +85,8 @@ public class DialogueController : MonoBehaviour
     private void Update()
     {
         if (GameStateController.Instance.GameState != GameStateController.GameStates.DIALOGUE) return;
+
+        if (!canDisplayNext) return;
 
         // If the player inputed continue the conversation
         if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return) || Input.GetMouseButtonDown(0) || Input.GetButtonDown("Interact")) DisplayNext();
@@ -116,6 +119,8 @@ public class DialogueController : MonoBehaviour
 
     private void ComputeNode(DialogueSystemDialogueSO _node)
     {
+        canDisplayNext = false;
+
         if (_node == null)
         {
             EndConversation();
@@ -208,7 +213,8 @@ public class DialogueController : MonoBehaviour
         // Reset TextType Delay to the default delay (incase it was changed in a link)
         currentTextTypeDelay = TextTypeDelay;
 
-        yield return new WaitForSeconds(currentDialogueCanvas.TransitionTime);
+        yield return new WaitForSeconds(currentDialogueCanvas.SizeTransitionTime);
+        canDisplayNext = true;
 
         // For each character
         for (int letterIndex = 0; letterIndex < _sentence.Length; letterIndex++)
@@ -320,6 +326,7 @@ public class DialogueController : MonoBehaviour
     {
         IsConversing = false;
         textType = null;
+        dialogueNode = null;
 
         OnConversationEnd?.Invoke();
     }
