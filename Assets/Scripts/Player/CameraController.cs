@@ -3,8 +3,6 @@
 // Locked camera will lerp to the center of the current partition
 // Unlocked camera will follow the player position
 
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CameraController : MonoBehaviour
@@ -19,6 +17,8 @@ public class CameraController : MonoBehaviour
     // Tracking Variables
     [SerializeField] private float cameraSpeed = 2;
     [SerializeField] private Vector2 playerOffset = new Vector3(0, 1);
+    [SerializeField] private Vector2 dialogueOffset = new Vector3(0, 3);
+    private Vector2 offset;
 
     // Shaking Variables
     private bool isShaking = false;
@@ -29,15 +29,18 @@ public class CameraController : MonoBehaviour
     [SerializeField] private float zoomSpeed = 10f;
     private float defaultSize = 5;
     private float targetZoomSize = 5;
+    private float partitionTargetZoomSize = 5;
 
     // Punch In
     public bool IsPunched { get; set; } = false;
 
-    private float punchSpeed = 20f;    
+    private float punchSpeed = 20f;
     private float targetPunchSize = 5f;
     private bool holdPunch = false;
     #endregion
 
+    #region Methods
+    #region Initialisation
     private void Awake()
     {
         // If there already exists an Instance of this singleton then destroy this object, else this is the singleton instance
@@ -52,6 +55,8 @@ public class CameraController : MonoBehaviour
     {
         // Subsribe the 'PartitionTransition' to the OnTransitionStart Event
         TransitionController.Instance.OnTransitionStart += PartitionTransition;
+        DialogueController.Instance.OnConversationStart += OnConversationStarted;
+        DialogueController.Instance.OnConversationEnd += OnConversationEnded;
 
         // Reference the player once on start as oppsed to each frame
         playerTransform = PlayerController.Instance.transform;
@@ -59,7 +64,9 @@ public class CameraController : MonoBehaviour
         // Set default varialbe
         defaultSize = CameraSize;
         targetZoomSize = defaultSize;
+        offset = playerOffset;
     }
+    #endregion
 
     private void Update()
     {
@@ -75,7 +82,7 @@ public class CameraController : MonoBehaviour
         else CameraSize = Mathf.Lerp(CameraSize, targetZoomSize, Time.fixedDeltaTime * zoomSpeed);
 
         // Get target position
-        Vector2 targetPosition = (Vector2)playerTransform.position + playerOffset;
+        Vector2 targetPosition = (Vector2)playerTransform.position + offset;
         targetPosition = ClampCameraToPartition(targetPosition);
 
         // Move towards the target position
@@ -95,19 +102,7 @@ public class CameraController : MonoBehaviour
         }
     }
 
-    private Vector2 ClampCameraToPartition(Vector2 position)
-    {
-        Rect partitionRect = TransitionController.Instance.CurrentPartition.PartitionRect;
-        Vector2 partitionPosition = TransitionController.Instance.CurrentPartition.transform.position;
 
-        // Limit
-        float height = CameraSize * 2.0f;
-        float width = height * Screen.width / Screen.height;
-        float limitX = (partitionRect.width - width) * 0.5f;
-        float limitY = (partitionRect.height - height) * 0.5f;
-
-        return new Vector2(Mathf.Clamp(position.x, partitionPosition.x - limitX, partitionPosition.x + limitX), Mathf.Clamp(position.y, partitionPosition.y - limitY, partitionPosition.y + limitY));
-    }
 
     /// <summary>
     /// Shakes the camera by magnitude for a duration, greater variable size takes precedence
@@ -124,12 +119,30 @@ public class CameraController : MonoBehaviour
     /// </summary>
     public void Zoom(float _targetSize = 0)
     {
-        targetZoomSize = _targetSize == 0 ? defaultSize : _targetSize;
+        targetZoomSize = _targetSize;
+    }
+
+    public void ZoomToDefault()
+    {
+        Zoom(defaultSize);
     }
 
     private void PartitionTransition(Partition partition)
     {
-        Zoom(partition.TargetCameraSize);
+        partitionTargetZoomSize = partition.TargetCameraSize;
+        Zoom(partitionTargetZoomSize);
+    }
+
+    private void OnConversationStarted()
+    {
+        offset = dialogueOffset;
+        Zoom(4);
+    }
+
+    private void OnConversationEnded()
+    {
+        offset = playerOffset;
+        Zoom(partitionTargetZoomSize);
     }
 
     public void PunchIn(float strength, float speed, bool _holdPunch = false)
@@ -154,5 +167,20 @@ public class CameraController : MonoBehaviour
     public float CameraSize { get { return cameraComponent.orthographicSize; } set { cameraComponent.orthographicSize = value; } }
 
     public Vector2 MouseWolrdPosition { get { return cameraComponent.ScreenToWorldPoint(Input.mousePosition); } }
+
+    private Vector2 ClampCameraToPartition(Vector2 position)
+    {
+        Rect partitionRect = TransitionController.Instance.CurrentPartition.PartitionRect;
+        Vector2 partitionPosition = TransitionController.Instance.CurrentPartition.transform.position;
+
+        // Limit
+        float height = CameraSize * 2.0f;
+        float width = height * Screen.width / Screen.height;
+        float limitX = (partitionRect.width - width) * 0.5f;
+        float limitY = (partitionRect.height - height) * 0.5f;
+
+        return new Vector2(Mathf.Clamp(position.x, partitionPosition.x - limitX, partitionPosition.x + limitX), Mathf.Clamp(position.y, partitionPosition.y - limitY, partitionPosition.y + limitY));
+    }
+    #endregion
     #endregion
 }

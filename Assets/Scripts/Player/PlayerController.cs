@@ -610,7 +610,7 @@ public class PlayerController : MonoBehaviour
     /// Locks the Players movement and action inputs.
     /// </summary>
     /// <param name="conversation">Parameter not used, is required to subsribe to the event</param>
-    private void LockPlayerInput(Conversation conversation = null)
+    private void LockPlayerInput(/*Conversation conversation = null*/)
     {
         IsLockedInput = true;
         rb.constraints = RigidbodyConstraints2D.FreezeAll;
@@ -620,7 +620,7 @@ public class PlayerController : MonoBehaviour
     /// Un-Locks the players movement and actions inputs.
     /// </summary>
     /// <param name="conversation">Parameter not used, is required to subsribe to the event</param>
-    private void UnLockPlayerInput(Conversation conversation = null)
+    private void UnLockPlayerInput(/*Conversation conversation = null*/)
     {
         IsLockedInput = false;
         rb.constraints = RigidbodyConstraints2D.FreezeRotation;

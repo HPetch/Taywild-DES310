@@ -40,7 +40,7 @@ namespace DialogueSystem.Windows
         private void AddToolBar()
         {
             Toolbar toolBar = new Toolbar();
-            
+
             fileNameTextField = DialogueSystemElementUtility.CreateTextField(defaultFileName, "File Name:", callback =>
             {
                 fileNameTextField.value = callback.newValue.RemoveWhitespaces().RemoveSpecialCharacters();
@@ -48,10 +48,10 @@ namespace DialogueSystem.Windows
 
             saveButton = DialogueSystemElementUtility.CreateButton("Save", () => Save());
             Button loadButton = DialogueSystemElementUtility.CreateButton("Load", () => Load());
-            Button clearButton = DialogueSystemElementUtility.CreateButton("Clear", () => Clear());
-            Button resetButton = DialogueSystemElementUtility.CreateButton("Reset", () => ResetGraph());
+            Button clearButton = DialogueSystemElementUtility.CreateButton("Clear", () => DisplayClearGraphPopup());
+            Button resetButton = DialogueSystemElementUtility.CreateButton("Reset", () => DisplayResetGraphPopup());
             miniMapButton = DialogueSystemElementUtility.CreateButton("Minimap", () => ToggleMiniMap());
-            
+
             toolBar.Add(fileNameTextField);
             toolBar.Add(saveButton);
             toolBar.Add(loadButton);
@@ -72,7 +72,7 @@ namespace DialogueSystem.Windows
         #region Toolbar Actions
         private void Save()
         {
-            if(string.IsNullOrEmpty(fileNameTextField.value))
+            if (string.IsNullOrEmpty(fileNameTextField.value))
             {
                 EditorUtility.DisplayDialog(
                     "Invalide file name.",
@@ -89,6 +89,14 @@ namespace DialogueSystem.Windows
 
         private void Load()
         {
+            bool toLoad = EditorUtility.DisplayDialog(
+                "Are you sure?",
+                "You will lose any unsaved data.\nDo you wish to continue?",
+                "Load"
+                );
+
+            if (!toLoad) return;
+
             string filePath = EditorUtility.OpenFilePanel("Dialogue Graphs", "Assets/Editor/Dialogue System/Graphs", "asset");
 
             if (string.IsNullOrEmpty(filePath)) return;
@@ -97,12 +105,33 @@ namespace DialogueSystem.Windows
 
             DialogueSystemIOUtility.Initialise(graphView, Path.GetFileNameWithoutExtension(filePath));
             DialogueSystemIOUtility.Load();
+        }
 
+        private void DisplayClearGraphPopup()
+        {
+            bool toClear = EditorUtility.DisplayDialog(
+                "Are you sure?",
+                "This will clear the enitre graph, but retain the file name.\nDo you wish to continue?",
+                "Clear"
+                );
+
+            if (toClear) Clear();
         }
 
         private void Clear()
         {
             graphView.ClearGraph();
+        }
+
+        private void DisplayResetGraphPopup()
+        {
+            bool toReset = EditorUtility.DisplayDialog(
+                "Are you sure?",
+                "This will clear the enitre graph, including the file name.\nDo you wish to continue?",
+                "Reset"
+                );
+
+            if (toReset) ResetGraph();
         }
 
         private void ResetGraph()

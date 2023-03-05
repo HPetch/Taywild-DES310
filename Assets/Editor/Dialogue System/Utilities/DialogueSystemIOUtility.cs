@@ -51,7 +51,7 @@ namespace DialogueSystem.Utilities
             CreateStaticFolders();
             GetElementsFromGraphView();
 
-            DialogueSystemGraphSaveDataSO graphData = CreateAsset<DialogueSystemGraphSaveDataSO>("Assets/Editor/Dialogue System/Graphs", $"{graphFileName}Graph");
+            DialogueSystemGraphSaveDataSO graphData = CreateAsset<DialogueSystemGraphSaveDataSO>("Assets/Editor/Dialogue System/Graphs", $"{graphFileName}");
             graphData.Initialise(graphFileName);
 
             DialogueSystemDialogueContainerSO dialogueContainer = CreateAsset<DialogueSystemDialogueContainerSO>(containerFolderPath, graphFileName);
@@ -135,8 +135,8 @@ namespace DialogueSystem.Utilities
                 SaveNodeToGraph(node, graphData);
                 SaveNodeToScriptableObject(node, dialogueContainer);
 
-                if (node.Group != null) groupedNodeName.AddItem(node.Group.title, node.DialogueName);
-                else ungroupedNodeNames.Add(node.DialogueName);
+                if (node.Group != null) groupedNodeName.AddItem(node.Group.title, node.NodeName);
+                else ungroupedNodeNames.Add(node.NodeName);
             }
 
             UpdateDialogueChoicesConnections();
@@ -146,18 +146,7 @@ namespace DialogueSystem.Utilities
 
         private static void SaveNodeToGraph(DialogueSystemNode node, DialogueSystemGraphSaveDataSO graphData)
         {
-            List<DialogueSystemChoiceSaveData> choices = CloneNodeChoices(node.Choices);
-
-            DialogueSystemNodeSaveData nodeData = new DialogueSystemNodeSaveData()
-            {
-                ID = node.ID,
-                Name = node.DialogueName,
-                Choices = choices,
-                Text = node.Text,
-                GroupID = node.Group?.ID,
-                DialogueType = node.DialogueType,
-                Position = node.GetPosition().position
-            };
+            DialogueSystemNodeSaveData nodeData = new DialogueSystemNodeSaveData(node);
 
             graphData.Nodes.Add(nodeData);
         }
@@ -168,22 +157,16 @@ namespace DialogueSystem.Utilities
 
             if (node.Group != null)
             {
-                dialogue = CreateAsset<DialogueSystemDialogueSO>($"{containerFolderPath}/Groups/{node.Group.title}/Dialogues", node.DialogueName);
+                dialogue = CreateAsset<DialogueSystemDialogueSO>($"{containerFolderPath}/Groups/{node.Group.title}/Dialogues", node.NodeName);
                 dialogueContainer.DialogueGroups.AddItem(createdDialogueGroups[node.Group.ID], dialogue);
             }
             else
             {
-                dialogue = CreateAsset<DialogueSystemDialogueSO>($"{containerFolderPath}/Global/Dialogues", node.DialogueName);
+                dialogue = CreateAsset<DialogueSystemDialogueSO>($"{containerFolderPath}/Global/Dialogues", node.NodeName);
                 dialogueContainer.UngroupedDialogues.Add(dialogue);
             }
 
-            dialogue.Initialise(
-                node.DialogueName,
-                node.Text,
-                ConvertNodeChoicesToDialogueChoices(node.Choices),
-                node.DialogueType,
-                node.IsStartingNode()
-                );
+            dialogue.Initialise(node.NodeName, node.NodeType, ConvertNodeChoicesToDialogueChoices(node.Choices), node.Character, node.DialogueType, node.DialogueText, node.IsStartingNode());
 
             createdDialogues.Add(node.ID, dialogue);
             SaveAsset(dialogue);
@@ -279,7 +262,7 @@ namespace DialogueSystem.Utilities
                 return;
             }
 
-            DialogueSystemEditorWindow.UpdateFileName(graphData.FileName);
+            DialogueSystemEditorWindow.UpdateFileName(graphFileName);
 
             LoadGroups(graphData.Groups);
             LoadNodes(graphData.Nodes);
@@ -304,11 +287,13 @@ namespace DialogueSystem.Utilities
             {
                 List<DialogueSystemChoiceSaveData> choices = CloneNodeChoices(nodeData.Choices);
 
-                DialogueSystemNode node = graphView.CreateNode(nodeData.Name, nodeData.DialogueType, nodeData.Position, false);
+                DialogueSystemNode node = graphView.CreateNode(nodeData);
 
                 node.ID = nodeData.ID;
+
                 node.Choices = choices;
-                node.Text = nodeData.Text;
+                node.DialogueText = nodeData.Text;
+                node.Character = nodeData.Character;
 
                 node.Draw();
 
@@ -431,7 +416,7 @@ namespace DialogueSystem.Utilities
             AssetDatabase.DeleteAsset($"{path}/{assetName}.asset");
         }
 
-        private static List<DialogueSystemChoiceSaveData> CloneNodeChoices(List<DialogueSystemChoiceSaveData> nodeChoices)
+        public static List<DialogueSystemChoiceSaveData> CloneNodeChoices(List<DialogueSystemChoiceSaveData> nodeChoices)
         {
             List<DialogueSystemChoiceSaveData> choices = new List<DialogueSystemChoiceSaveData>();
 
