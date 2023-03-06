@@ -10,10 +10,7 @@ using UnityEngine;
 public class PickupObject : MonoBehaviour
 {
 
-    // Dictionary that contains the items that the pickup will add to inventory after being destroyed
-    // Item name - Item to be dropped upon destroying the pickup
-    // Vector2 - Min,Max. The minimum and maximum amount that can be dropped of the item. Leaving the max as 0 will make the min number the only outcome.
-    [SerializeField] private SerializableDictionary<InventoryController.ItemNames, Vector2Int> pickupBreakItems;
+   
     
 
     private Vector2 startPosition; // Position that the sprite will use as an anchor
@@ -29,16 +26,17 @@ public class PickupObject : MonoBehaviour
     private Vector2 mouseCurrentPosition;
 
     private bool isBeingPulled; // Is the player currently pulling this pickup
-    [SerializeField, Range(0.1f,0.5f)] private float pullBreakDistance; // Maximum distance the pickup can move before being destroyed
+    [SerializeField, Range(0.1f,0.3f)] private float pullBreakDistance; // Maximum distance the pickup can move before being destroyed
     private Vector2 pullDirection;
 
-    [SerializeField, Range(0.5f,5)] private float pullMoveResistance;
+    private float pullMoveResistance;
     private float pullBreakTime;
     private bool isTryingToBreak;
+    private bool isMaxTravel;
 
     private float vibrationIntensity;
     [SerializeField, Range(0,0.2f)] float vibrationMax;
-    [SerializeField, Range(0.1f, 10)] float vibrationSpeed;
+    [SerializeField, Range(5, 10)] int vibrationSpeed;
 
     [SerializeField, Range(1,6)] private int healthMax;
     private int health;
@@ -49,11 +47,17 @@ public class PickupObject : MonoBehaviour
     private float respawnTime;
     [SerializeField] LayerMask respawnBlockLayerMask;
 
-    [SerializeField, Range(1, 10)] private int dragMoveSpeed;
+    [SerializeField, Range(1, 6)] private int dragMoveSpeed;
 
     // When health == int change pickup's sprite to the one in the dictionary.
     // Sprite 0 is the sprite which will be moved, Sprite 1 is the base which stays still. The final pull might not have a base
     [SerializeField] private SerializableDictionary<int, Sprite[]> damageDisplayedSprites;
+
+    // An array of dictionaries that contains the items that the pickup will add to inventory taking damage.
+    // Place in array - Order which the items are added after taking damage.
+    // Item name - Item to be dropped upon destroying the pickup
+    // Vector2 - Min,Max. The minimum and maximum amount that can be dropped of the item. Leaving the max as 0 will make the min number the only outcome.
+    [SerializeField] private SerializableDictionary<InventoryController.ItemNames, Vector2Int>[] pickupBreakItems;
 
 
 
@@ -81,54 +85,78 @@ public class PickupObject : MonoBehaviour
             mouseCurrentPosition = CameraController.Instance.MouseWorldPosition;
             
             pullDirection = (mouseCurrentPosition - mouseStartPosition).normalized;
-            
-            
 
-            targetPosition = startPosition + ((mouseCurrentPosition - mouseStartPosition) / (pullMoveResistance * 10)); // The position that the sprite arm will be trying to move to
+
+            // The position that the sprite arm will be trying to move to
+            targetPosition = startPosition + ((mouseCurrentPosition - mouseStartPosition) / pullMoveResistance);
 
             // Slows movement of sprite arm as it gets closer to breaking to look like it's resisting
             float dragMoveSpeedSlowdown = Mathf.Clamp(Mathf.Abs(PullCurrentDistance()-pullBreakDistance)/pullBreakDistance,0.01f,1.0f);
 
             // If the pickup is trying to break stops movement to prevent weird movement
-            if (!isTryingToBreak) 
+            if (!isMaxTravel) 
             {
-                spriteArmRef.transform.position = Vector2.Lerp(spriteArmRef.transform.position, targetPosition, dragMoveSpeed * dragMoveSpeedSlowdown * Time.deltaTime);
+                if (Vector2.Distance(spriteArmRef.transform.position, startPosition) < Vector2.Distance(targetPosition, startPosition))
+                {
+                    spriteArmRef.transform.position = Vector2.Lerp(spriteArmRef.transform.position, targetPosition, dragMoveSpeed * dragMoveSpeedSlowdown * Time.deltaTime);
+                }
+                else spriteArmRef.transform.position = Vector2.Lerp(spriteArmRef.transform.position, targetPosition, dragMoveSpeed * Time.deltaTime);
+
 
                 // Closer the sprite is to breaking vibrate with extra intensity
-                vibrationIntensity = (PullCurrentDistance() / pullBreakDistance) * vibrationMax; 
+
+                vibrationIntensity = (PullCurrentDistance() / pullBreakDistance) * vibrationMax;
+                
             }
 
+            // Uses the vibration intensity to create a random vector 2 that the sprite will use to vibrate.
             Vector2 _vibrationOffset = new Vector2(UnityEngine.Random.Range(-vibrationIntensity, vibrationIntensity), UnityEngine.Random.Range(-vibrationIntensity, vibrationIntensity));
-            
+
+            Quaternion _rotateVibration = new Quaternion();
+            if (isTryingToBreak) _rotateVibration = Quaternion.Euler(Vector3.forward * (UnityEngine.Random.Range(-vibrationIntensity, vibrationIntensity) * 100));
+
+            // If the object is breaking then intensify the vibration. This could be changed to vibrate rotation instead.
+            //if (isTryingToBreak) _vibrationOffset *= 3;
+
             // Vibrates sprite independent of sprite arm to prevent funky math
             spriteRef.transform.localPosition = Vector2.Lerp(spriteRef.transform.localPosition, _vibrationOffset, vibrationSpeed * Time.deltaTime);
+            spriteRef.transform.localRotation = Quaternion.Lerp(spriteRef.transform.localRotation, _rotateVibration, vibrationSpeed * Time.deltaTime);
 
             // If sprite arm is past break distance then start trying to break the pickup
-            if (PullCurrentDistance() > pullBreakDistance)
+            if (PullCurrentDistance() > pullBreakDistance * 0.95)
             {
+                if (PullCurrentDistance() > pullBreakDistance) isMaxTravel = true;
+
                 // Checks if a break attmempt has started yet
                 if (pullBreakTime < Time.time && !isTryingToBreak)
                 {
-                    pullBreakTime = Time.time + 0.5f;
+                    // Times how long until the object breaks, time until break scales with health remaining
+                    pullBreakTime = Time.time + (0.5f * health);
                     isTryingToBreak = true;
                 }
+                // A successful break attempt
                 else if (pullBreakTime < Time.time && isTryingToBreak)
                 {
-                    print(health);
                     health--;
-                    if (health == 0) EndPull(pullDirection); //Destroys the pickup object, adds resources to inventory, and gives direction for the particle system
+                    // If on 0 health destroys the pickup object, adds resources to inventory, and gives direction for the particle system
+                    if (health == 0) EndPull(); 
                     else if (damageDisplayedSprites.ContainsKey(health))
                     {
                         spriteRef.GetComponent<SpriteRenderer>().sprite = damageDisplayedSprites[health][0];
                         GetComponent<SpriteRenderer>().sprite = damageDisplayedSprites[health][1];
                     }
                         
-                    CancelPull();
+                    DamagePull();
                 }
             }
             // If player have moved their mouse within the break distance then cancel the break attempt
-            if (Vector2.Distance(startPosition, targetPosition) < pullBreakDistance) isTryingToBreak = false;
+            if (Vector2.Distance(startPosition, targetPosition) < pullBreakDistance * 0.9)
+            {
+                isMaxTravel = false;
+                isTryingToBreak = false;
+            }
         }
+        else if (!isBeingPulled && isActive) spriteArmRef.transform.position = Vector2.Lerp(spriteArmRef.transform.position, targetPosition, dragMoveSpeed * Time.deltaTime);
         // If the is able to respawn then wait until the correct time then respawn
         else if (Time.time > respawnTime && !isActive && respawnCooldown != 0) Respawn();
         
@@ -139,9 +167,11 @@ public class PickupObject : MonoBehaviour
     public void StartPull()
     {
         mouseStartPosition = CameraController.Instance.MouseWorldPosition;
-        spriteArmRef.transform.position = startPosition;
+        //spriteArmRef.transform.position = startPosition;
         spriteRef.transform.localPosition = Vector2.zero;
+        spriteRef.transform.localRotation = new Quaternion();
         targetPosition = startPosition;
+        pullMoveResistance = Mathf.Clamp(health, 1, 3) * 10; // As the player breaks the object it gets easier to break
         isBeingPulled = true;
         isTryingToBreak = false;
     }
@@ -150,17 +180,29 @@ public class PickupObject : MonoBehaviour
     public void CancelPull()
     {
         isBeingPulled = false;
+        spriteRef.transform.localPosition = Vector2.zero;
+        spriteRef.transform.localRotation = new Quaternion();
+        targetPosition = startPosition;
+        isTryingToBreak = false;
+    }
+
+    public void DamagePull()
+    {
+        // Tells the inventory contoller what items were dropped by the pickup.
+        DecorationController.Instance.PickupDamaged(pickupBreakItems [healthMax - (health + 1)]);
+        isBeingPulled = false;
         spriteArmRef.transform.position = startPosition;
         spriteRef.transform.localPosition = Vector2.zero;
+        spriteRef.transform.localRotation = new Quaternion();
         targetPosition = startPosition;
         isTryingToBreak = false;
     }
 
     // Called when pickup has been broken
-    public void EndPull(Vector2 _directionOfBrake) 
+    public void EndPull() 
     {
-        // Tells the inventory contoller what items were dropped by the pickup. Also gives pickup's position and direction for particle system.
-        DecorationController.Instance.PickupBroken(pickupBreakItems, spriteArmRef.transform.position, _directionOfBrake);
+        // Tells the inventory contoller what items were dropped by the pickup.
+        DecorationController.Instance.PickupBroken(pickupBreakItems[healthMax - (health + 1)]);
         respawnTime = Time.time + (respawnCooldown*60);
         ToggleObject(false);
         isBeingPulled = false;
@@ -191,9 +233,11 @@ public class PickupObject : MonoBehaviour
         {
             spriteArmRef.transform.position = startPosition;
             spriteRef.transform.localPosition = Vector2.zero;
+            spriteRef.transform.localRotation = new Quaternion();
             targetPosition = startPosition;
             mouseStartPosition = Vector2.zero;
             health = healthMax;
+            
 
             GetComponent<SpriteRenderer>().sprite = spriteBase;
             spriteRef.GetComponent<SpriteRenderer>().sprite = sprite;
@@ -211,6 +255,8 @@ public class PickupObject : MonoBehaviour
         isActive = _toggle;
         if (_toggle) spriteRef.GetComponent<SpriteRenderer>().color = Color.white;
         else spriteRef.GetComponent<SpriteRenderer>().color = Color.clear;
+        if (_toggle) GetComponent<SpriteRenderer>().color = Color.white;
+        else GetComponent<SpriteRenderer>().color = Color.clear;
         GetComponent<BoxCollider2D>().enabled = _toggle;
         if (blockingCollider) blockingCollider.GetComponent<BoxCollider2D>().enabled = _toggle;
     }
@@ -224,7 +270,7 @@ public class PickupObject : MonoBehaviour
         return Vector2.Distance(startPosition, spriteArmRef.transform.position);
     }
 
-
+    #region Context Menu Functions
     [ContextMenu ("Set Sprite")]
     private void ResetSprite()
     {
@@ -234,19 +280,22 @@ public class PickupObject : MonoBehaviour
         GetComponent<SpriteRenderer>().sprite = spriteBase;
         spriteRef.GetComponent<SpriteRenderer>().sprite = sprite;
     }
-/* SETUP AUTOMATION FOR THIS
+
     [ContextMenu ("Initialize damage arrays")] 
     private void ResetDamageArrays()
     {
+        damageDisplayedSprites = new SerializableDictionary<int, Sprite[]>();
+        pickupBreakItems = new SerializableDictionary<InventoryController.ItemNames, Vector2Int>[healthMax];
         if (healthMax > 1)
         {
-            damageDisplayedSprites = new SerializableDictionary<int, Sprite[]>();
             for (int i = 1; 0 < healthMax - i; i++)
             {
-
+                damageDisplayedSprites.Add(healthMax - i, new Sprite[2]);
             }
-            
         }
+        
+
     }
-*/
+    #endregion
+
 }

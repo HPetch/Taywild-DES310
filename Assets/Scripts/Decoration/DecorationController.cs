@@ -11,7 +11,8 @@ public class DecorationController : MonoBehaviour
     public event Action OnPickupDecoration;
     public event Action OnPlaceDecoration;
     public event Action OnPlaceCancelDecoration;
-    public event Action<Vector2, Vector2> OnPickupBroken;
+    public event Action OnPickupDamaged;
+    public event Action OnPickupBroken;
 
     public static DecorationController Instance { get; private set; }
     [SerializeField] private GameObject decorationSelectorPrefab;
@@ -138,7 +139,19 @@ public class DecorationController : MonoBehaviour
         
     }
 
-    public void PickupBroken(SerializableDictionary<InventoryController.ItemNames, Vector2Int> _itemsReceived, Vector2 _locationOfBrake, Vector2 _directionOfBrake)
+    public void PickupDamaged(SerializableDictionary<InventoryController.ItemNames, Vector2Int> _itemsReceived)
+    {
+        PickupAddItems(_itemsReceived);
+        OnPickupDamaged?.Invoke();
+    }
+
+    public void PickupBroken(SerializableDictionary<InventoryController.ItemNames, Vector2Int> _itemsReceived)
+    {
+        PickupAddItems(_itemsReceived);
+        OnPickupBroken?.Invoke();
+    }
+
+    private void PickupAddItems(SerializableDictionary<InventoryController.ItemNames, Vector2Int> _itemsReceived)
     {
         foreach (KeyValuePair<InventoryController.ItemNames, Vector2Int> _item in _itemsReceived) // Go through each item that the pickup dropped
         {
@@ -147,9 +160,6 @@ public class DecorationController : MonoBehaviour
             else _itemAmount = _item.Value.x; // If the max is 0 or lower than the min then just use the min instead
             InventoryController.Instance.AddItem(_item.Key, _itemAmount); // Add the item and it's amount to the inventory
         }
-        OnPickupBroken?.Invoke(_locationOfBrake, _directionOfBrake);
-
-        Debug.Log(InventoryController.Instance.ItemQuantity(InventoryController.ItemNames.FLOWER));
     }
 
     public void DecorationButtonPress(GameObject _button)

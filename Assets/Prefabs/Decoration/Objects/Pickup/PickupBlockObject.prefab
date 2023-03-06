@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 617941221146280850}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.3999996, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -56,7 +56,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.4, y: 4.06}
+  m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
 --- !u!1001 &2437161511397853277
 PrefabInstance:
@@ -72,23 +72,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1898239290578691872, guid: d7b3bcca8b6e4ef43ae5e82229b87311, type: 3}
       propertyPath: dragMoveSpeed
-      value: 10
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1898239290578691872, guid: d7b3bcca8b6e4ef43ae5e82229b87311, type: 3}
+      propertyPath: vibrationSpeed
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1898239290578691872, guid: d7b3bcca8b6e4ef43ae5e82229b87311, type: 3}
       propertyPath: respawnCooldown
-      value: 1
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 1898239290578691872, guid: d7b3bcca8b6e4ef43ae5e82229b87311, type: 3}
       propertyPath: blockingCollider
       value: 
       objectReference: {fileID: 617941221146280850}
     - target: {fileID: 1898239290578691872, guid: d7b3bcca8b6e4ef43ae5e82229b87311, type: 3}
+      propertyPath: pullBreakDistance
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 1898239290578691872, guid: d7b3bcca8b6e4ef43ae5e82229b87311, type: 3}
       propertyPath: visualPullMovementAllowed
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1898239290578691872, guid: d7b3bcca8b6e4ef43ae5e82229b87311, type: 3}
       propertyPath: damageDisplayedSprites.list.Array.size
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1898239290578691872, guid: d7b3bcca8b6e4ef43ae5e82229b87311, type: 3}
       propertyPath: trashBreakItems.list.Array.data[0].Value.x
@@ -116,7 +124,7 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: 5a274784fb5aae545ab704e01abca4f3, type: 3}
     - target: {fileID: 1898239290578691873, guid: d7b3bcca8b6e4ef43ae5e82229b87311, type: 3}
       propertyPath: m_Name
-      value: TrashBlockObject
+      value: PickupBlockObject
       objectReference: {fileID: 0}
     - target: {fileID: 1898239290578691885, guid: d7b3bcca8b6e4ef43ae5e82229b87311, type: 3}
       propertyPath: m_RootOrder
