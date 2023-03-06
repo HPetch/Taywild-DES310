@@ -5400,7 +5400,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4288957265429294973, guid: 156c009500725a64483aa777e59eeba1, type: 3}
       propertyPath: pullMoveResistance
-      value: 2.5
+      value: 1.02
       objectReference: {fileID: 0}
     - target: {fileID: 4288957265429294973, guid: 156c009500725a64483aa777e59eeba1, type: 3}
       propertyPath: visualPullMovementAllowed
@@ -5409,6 +5409,14 @@ PrefabInstance:
     - target: {fileID: 4288957265429294973, guid: 156c009500725a64483aa777e59eeba1, type: 3}
       propertyPath: respawnBlockLayerMask.m_Bits
       value: 257
+      objectReference: {fileID: 0}
+    - target: {fileID: 4857343202834697529, guid: 156c009500725a64483aa777e59eeba1, type: 3}
+      propertyPath: m_SortingLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4857343202834697529, guid: 156c009500725a64483aa777e59eeba1, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 1469082583
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
@@ -7134,6 +7142,14 @@ PrefabInstance:
     - target: {fileID: 1898239290578691885, guid: d7b3bcca8b6e4ef43ae5e82229b87311, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7114058567413482852, guid: d7b3bcca8b6e4ef43ae5e82229b87311, type: 3}
+      propertyPath: m_SortingLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7114058567413482852, guid: d7b3bcca8b6e4ef43ae5e82229b87311, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 1469082583
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []

@@ -65,7 +65,7 @@ public class TrashObject : MonoBehaviour
     {
         // Sets the trash's initial location. This is used as an anchor for sprite arm.
         startPosition = transform.position;
-
+        ToggleObject(false);
         // Ensures variables are set up
         Respawn(); 
     }
@@ -111,6 +111,7 @@ public class TrashObject : MonoBehaviour
                 }
                 else if (pullBreakTime < Time.time && isTryingToBreak)
                 {
+                    print(health);
                     health--;
                     if (health == 0) EndPull(pullDirection); //Destroys the trash object, adds resources to inventory, and gives direction for the particle system
                     else if (damageDisplayedSprites.ContainsKey(health)) sprite.GetComponent<SpriteRenderer>().sprite = damageDisplayedSprites[health];
