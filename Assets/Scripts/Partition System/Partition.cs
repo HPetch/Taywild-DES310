@@ -11,14 +11,45 @@ public class Partition : MonoBehaviour
     [field: Header("Partition")]
     // Partition size in chunks
     [field: SerializeField] public Vector2Int PartitionSize { get; private set; } = Vector2Int.one;
+    
+    [SerializeField] private AirCurrent[] airCurrents;
 
     [field: Header("Camera Settings")]
     [field: Range(5, 16)]
     [field: SerializeField] public float TargetCameraSize { get; private set; } = 10f;
 
+    private PlayerController player;
+
+    private void Start()
+    {
+        player = PlayerController.Instance;
+    }
+
+    private void Update()
+    {
+        foreach(AirCurrent airCurrent in airCurrents)
+        {
+            if (airCurrent.AirCurrentRect.Contains(player.transform.position))
+            {
+                player.AddAirCurrent(airCurrent);
+            }
+            else
+            {
+                player.RemoveAirCurrent(airCurrent);
+            }
+        }
+    }
+
+    #region Utility
     // The world size of the partition
     public Vector2 PartitionSizeInUnits { get { return ChunkSizeInUnits * PartitionSize; } }
 
     // A Rect representing the partition in world space, used to check if the player is within the partition
     public Rect PartitionRect { get { return new Rect((Vector2)transform.position - (PartitionSizeInUnits * 0.5f), PartitionSizeInUnits); } }
+
+    private void Reset()
+    {
+        airCurrents = GetComponentsInChildren<AirCurrent>();
+    }
+    #endregion
 }
