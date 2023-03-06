@@ -44,7 +44,7 @@ public class DecorationSelector : MonoBehaviour
     
     [SerializeField] private LayerMask selectorInteractionLayerMask; // Collision layers that selector interacts with
     private Collider2D mouseDownObjectHit; // Holds the object that was selected on a click
-    private TrashObject mouseDownHeldTrash;
+    private PickupObject mouseDownHeldPickup;
 
     #endregion
 
@@ -108,8 +108,8 @@ public class DecorationSelector : MonoBehaviour
             {
                 mouseDownObjectHit = CheckObjectUnderMouse(); // Stores the object that was under the mouse
                 DecorationController.Instance.SelectorDecorationObjectInteract(mouseDownObjectHit.gameObject, true);
-                if (CheckObjectUnderMouse().GetComponent<TrashObject>()) mouseDownHeldTrash = CheckObjectUnderMouse().GetComponent<TrashObject>();
-                else mouseDownHeldTrash = null;
+                if (CheckObjectUnderMouse().GetComponent<PickupObject>()) mouseDownHeldPickup = CheckObjectUnderMouse().GetComponent<PickupObject>();
+                else mouseDownHeldPickup = null;
             }
         }
         if (Input.GetMouseButtonUp(0))
@@ -118,8 +118,8 @@ public class DecorationSelector : MonoBehaviour
             spinJumpTimer = 0.0f; // Makes selector rotation speed jump with an elastic effect
             mouseDownSlowDown = 1f; // Resets rotation and scale to normal
 
-            if (mouseDownHeldTrash) mouseDownHeldTrash.CancelPull();
-            mouseDownHeldTrash = null;
+            if (mouseDownHeldPickup) mouseDownHeldPickup.CancelPull();
+            mouseDownHeldPickup = null;
 
             if (CheckObjectUnderMouse() == mouseDownObjectHit) // Checks if the click is released over the same object that it began on
             {
@@ -144,7 +144,7 @@ public class DecorationSelector : MonoBehaviour
                 selectorState = SelectorState.BAD;
             }
         }
-        else if (mouseDownHeldTrash != null) selectorState = SelectorState.OFFGRID;
+        else if (mouseDownHeldPickup != null) selectorState = SelectorState.OFFGRID;
         else
         {
             Collider2D _objectUnderMouse = CheckObjectUnderMouse();

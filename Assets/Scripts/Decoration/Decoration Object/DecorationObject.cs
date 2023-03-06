@@ -12,7 +12,7 @@ public class DecorationObject : MonoBehaviour
     [SerializeField] protected GameObject pickupButtonPrefab;
     [SerializeField] protected GameObject editButtonHolderPrefab;
 
-    public GameObject PickupButton { get; protected set; }
+    public GameObject RemoveButton { get; protected set; }
     public GameObject EditButtonHolder { get; protected set; }
     public GameObject EditButtonLeft { get; protected set; }
     public GameObject EditButtonRight { get; protected set; }
@@ -39,7 +39,7 @@ public class DecorationObject : MonoBehaviour
     {
         if (!isMoving)
         {
-            if (PickupButton) ShowButton(PickupButton);
+            if (RemoveButton) ShowButton(RemoveButton);
             if (EditButtonLeft) ShowButton(EditButtonLeft);
             if (EditButtonRight) ShowButton(EditButtonRight);
             timeOfLastHover = Time.time;
@@ -50,7 +50,7 @@ public class DecorationObject : MonoBehaviour
 
     public void EndHover()
     {
-        if (PickupButton) HideButton(PickupButton);
+        if (RemoveButton) HideButton(RemoveButton);
         if (EditButtonLeft) HideButton(EditButtonLeft);
         if (EditButtonLeft) HideButton(EditButtonRight);
         isHovered = false;
@@ -81,26 +81,7 @@ public class DecorationObject : MonoBehaviour
 
     private void Reset()
     {
-        /*
-        switch (objectType)
-        {
-            case ObjectType.DECORATION_OBJECT:
-                if (!PickupButton) Instantiate(pickupButtonPrefab);
-                if (!EditButtonHolder) Instantiate(editButtonHolderPrefab);
-                EditButtonLeft = EditButtonHolder.transform.GetChild(0).gameObject;
-                EditButtonRight = EditButtonHolder.transform.GetChild(1).gameObject;
-                break;
-            case ObjectType.ENVIROMENT_OBJECT:
-                if (PickupButton) Destroy(pickupButtonPrefab);
-                if (!EditButtonHolder) Instantiate(editButtonHolderPrefab);
-                EditButtonLeft = EditButtonHolder.transform.GetChild(0).gameObject;
-                EditButtonRight = EditButtonHolder.transform.GetChild(1).gameObject;
-                break;
-            case ObjectType.TRASH_OBJECT:
-                if (!PickupButton) Instantiate(pickupButtonPrefab);
-                if (EditButtonHolder) Destroy(editButtonHolderPrefab);
-                break;
-        }*/
+        
 
         
     }

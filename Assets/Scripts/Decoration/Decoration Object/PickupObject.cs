@@ -1,33 +1,35 @@
-/// Trash object
+/// Pickup object
 /// Can be interacted with using the decoration system, but does not inherit from Decoration Object
-/// Trash Objects are pulled at using the decoration selector, once pull far enough they take damage or are destroyed
-/// 2 variants, Trash Object low health no collision, Trash Block Object high health collides with player
-/// Once destroyed the items the trash contained is added to the Inventory Controller
+/// pickup objects are pulled at using the decoration selector, once pull far enough they take damage or are destroyed
+/// 2 variants, Pickup Object low health no collision, Pickup Block Object high health collides with player
+/// Once destroyed the items the pickup object contained is added to the Inventory Controller
 
 using System;
 using UnityEngine;
 
-public class TrashObject : MonoBehaviour
+public class PickupObject : MonoBehaviour
 {
-    
-    // Dictionary that contains the items that the trash will add to inventory after being destroyed
-    // Item name - Item to be dropped upon destroying the trash
+
+    // Dictionary that contains the items that the pickup will add to inventory after being destroyed
+    // Item name - Item to be dropped upon destroying the pickup
     // Vector2 - Min,Max. The minimum and maximum amount that can be dropped of the item. Leaving the max as 0 will make the min number the only outcome.
-    [SerializeField] private SerializableDictionary<InventoryController.ItemNames, Vector2Int> trashBreakItems;
+    [SerializeField] private SerializableDictionary<InventoryController.ItemNames, Vector2Int> pickupBreakItems;
     
 
     private Vector2 startPosition; // Position that the sprite will use as an anchor
     private Vector2 targetPosition; // Position that the sprite is trying to reach
 
-    private GameObject spriteArm; // Reference to child that has a child which is the sprite. This is moved, but not vibrated.
-    private GameObject sprite; // Reference to child that contains the trash's sprite. This is vibrated.
-    [SerializeField] private GameObject blockingCollider; // Reference to child that contains collider that blocks player. Only TrashBlockObject has this.
+    private GameObject spriteArmRef; // Reference to child that has a child which is the sprite. This is moved, but not vibrated.
+    private GameObject spriteRef; // Reference to child that contains the pickup's sprite. This is vibrated.
+    [SerializeField] private Sprite sprite;
+    [SerializeField] private Sprite spriteBase;
+    [SerializeField] private GameObject blockingCollider; // Reference to child that contains collider that blocks player. Only PickupBlockObject has this.
 
     private Vector2 mouseStartPosition; // When begining a drag this holds the mouse original position
     private Vector2 mouseCurrentPosition;
 
-    private bool isBeingPulled; // Is the player currently pulling this trash
-    [SerializeField, Range(0.1f,0.5f)] private float pullBreakDistance; // Maximum distance the mouse can be before
+    private bool isBeingPulled; // Is the player currently pulling this pickup
+    [SerializeField, Range(0.1f,0.5f)] private float pullBreakDistance; // Maximum distance the pickup can move before being destroyed
     private Vector2 pullDirection;
 
     [SerializeField, Range(0.5f,5)] private float pullMoveResistance;
@@ -49,21 +51,22 @@ public class TrashObject : MonoBehaviour
 
     [SerializeField, Range(1, 10)] private int dragMoveSpeed;
 
-    // When health == int change trash's sprite to the one in the dictionary.
-    [SerializeField] private SerializableDictionary<int, Sprite> damageDisplayedSprites;
+    // When health == int change pickup's sprite to the one in the dictionary.
+    // Sprite 0 is the sprite which will be moved, Sprite 1 is the base which stays still. The final pull might not have a base
+    [SerializeField] private SerializableDictionary<int, Sprite[]> damageDisplayedSprites;
 
 
 
 
     private void Awake()
     {
-        sprite = GetComponentInChildren<SpriteRenderer>().gameObject;
-        spriteArm = sprite.transform.parent.gameObject;
+        spriteArmRef = transform.GetChild(0).gameObject;
+        spriteRef = spriteArmRef.transform.GetChild(0).gameObject;
     }
 
     void Start()
     {
-        // Sets the trash's initial location. This is used as an anchor for sprite arm.
+        // Sets the pickup's initial location. This is used as an anchor for sprite arm.
         startPosition = transform.position;
         ToggleObject(false);
         // Ensures variables are set up
@@ -86,10 +89,10 @@ public class TrashObject : MonoBehaviour
             // Slows movement of sprite arm as it gets closer to breaking to look like it's resisting
             float dragMoveSpeedSlowdown = Mathf.Clamp(Mathf.Abs(PullCurrentDistance()-pullBreakDistance)/pullBreakDistance,0.01f,1.0f);
 
-            // If the trash is trying to break stops movement to prevent weird movement
+            // If the pickup is trying to break stops movement to prevent weird movement
             if (!isTryingToBreak) 
             {
-                spriteArm.transform.position = Vector2.Lerp(spriteArm.transform.position, targetPosition, dragMoveSpeed * dragMoveSpeedSlowdown * Time.deltaTime);
+                spriteArmRef.transform.position = Vector2.Lerp(spriteArmRef.transform.position, targetPosition, dragMoveSpeed * dragMoveSpeedSlowdown * Time.deltaTime);
 
                 // Closer the sprite is to breaking vibrate with extra intensity
                 vibrationIntensity = (PullCurrentDistance() / pullBreakDistance) * vibrationMax; 
@@ -98,9 +101,9 @@ public class TrashObject : MonoBehaviour
             Vector2 _vibrationOffset = new Vector2(UnityEngine.Random.Range(-vibrationIntensity, vibrationIntensity), UnityEngine.Random.Range(-vibrationIntensity, vibrationIntensity));
             
             // Vibrates sprite independent of sprite arm to prevent funky math
-            sprite.transform.localPosition = Vector2.Lerp(sprite.transform.localPosition, _vibrationOffset, vibrationSpeed * Time.deltaTime);
+            spriteRef.transform.localPosition = Vector2.Lerp(spriteRef.transform.localPosition, _vibrationOffset, vibrationSpeed * Time.deltaTime);
 
-            // If sprite arm is past break distance then start trying to break the trash
+            // If sprite arm is past break distance then start trying to break the pickup
             if (PullCurrentDistance() > pullBreakDistance)
             {
                 // Checks if a break attmempt has started yet
@@ -113,8 +116,13 @@ public class TrashObject : MonoBehaviour
                 {
                     print(health);
                     health--;
-                    if (health == 0) EndPull(pullDirection); //Destroys the trash object, adds resources to inventory, and gives direction for the particle system
-                    else if (damageDisplayedSprites.ContainsKey(health)) sprite.GetComponent<SpriteRenderer>().sprite = damageDisplayedSprites[health];
+                    if (health == 0) EndPull(pullDirection); //Destroys the pickup object, adds resources to inventory, and gives direction for the particle system
+                    else if (damageDisplayedSprites.ContainsKey(health))
+                    {
+                        spriteRef.GetComponent<SpriteRenderer>().sprite = damageDisplayedSprites[health][0];
+                        GetComponent<SpriteRenderer>().sprite = damageDisplayedSprites[health][1];
+                    }
+                        
                     CancelPull();
                 }
             }
@@ -127,40 +135,40 @@ public class TrashObject : MonoBehaviour
 
     }
 
-    // Called by decoration controller when the decoration selector interacts with the trash
+    // Called by decoration controller when the decoration selector interacts with the pickup
     public void StartPull()
     {
         mouseStartPosition = CameraController.Instance.MouseWorldPosition;
-        spriteArm.transform.position = startPosition;
-        sprite.transform.localPosition = Vector2.zero;
+        spriteArmRef.transform.position = startPosition;
+        spriteRef.transform.localPosition = Vector2.zero;
         targetPosition = startPosition;
         isBeingPulled = true;
         isTryingToBreak = false;
     }
 
-    // Called by decoration controller when the player releases the mouse button. Also called when removing health from trash that doesn't break.
+    // Called by decoration controller when the player releases the mouse button. Also called when removing health from pickup that doesn't break.
     public void CancelPull()
     {
         isBeingPulled = false;
-        spriteArm.transform.position = startPosition;
-        sprite.transform.localPosition = Vector2.zero;
+        spriteArmRef.transform.position = startPosition;
+        spriteRef.transform.localPosition = Vector2.zero;
         targetPosition = startPosition;
         isTryingToBreak = false;
     }
 
-    // Called when trash has been broken
+    // Called when pickup has been broken
     public void EndPull(Vector2 _directionOfBrake) 
     {
-        // Tells the inventory contoller what items were dropped by the trash. Also gives trash's position and direction for particle system.
-        DecorationController.Instance.TrashBroken(trashBreakItems, spriteArm.transform.position, _directionOfBrake);
+        // Tells the inventory contoller what items were dropped by the pickup. Also gives pickup's position and direction for particle system.
+        DecorationController.Instance.PickupBroken(pickupBreakItems, spriteArmRef.transform.position, _directionOfBrake);
         respawnTime = Time.time + (respawnCooldown*60);
         ToggleObject(false);
         isBeingPulled = false;
         isTryingToBreak = false;
         targetPosition = startPosition;
     }
-    
-    // Called when respawn timer reaches the correct time and the trash is able to respawn.
+
+    // Called when respawn timer reaches the correct time and the pickup is able to respawn.
     private void Respawn()
     {
         bool _canRespawn = true;
@@ -171,7 +179,7 @@ public class TrashObject : MonoBehaviour
         float _hitRotation = GetComponent<BoxCollider2D>().transform.rotation.eulerAngles.z;
         if (Physics2D.OverlapBox(_hitPosition, _hitSize, _hitRotation, respawnBlockLayerMask)) _canRespawn = false;
 
-        // Checks that if the trash has a blocking collider then the player or any furniture is not blocking it's respawn
+        // Checks that if the pickup has a blocking collider then the player or any furniture is not blocking it's respawn
         if (blockingCollider)
         {
             Vector2 _blockPosition = blockingCollider.GetComponent<BoxCollider2D>().transform.position;
@@ -181,24 +189,28 @@ public class TrashObject : MonoBehaviour
         }
         if (_canRespawn)
         {
-            spriteArm.transform.position = startPosition;
-            sprite.transform.localPosition = Vector2.zero;
+            spriteArmRef.transform.position = startPosition;
+            spriteRef.transform.localPosition = Vector2.zero;
             targetPosition = startPosition;
             mouseStartPosition = Vector2.zero;
             health = healthMax;
+
+            GetComponent<SpriteRenderer>().sprite = spriteBase;
+            spriteRef.GetComponent<SpriteRenderer>().sprite = sprite;
+
             ToggleObject(true);
         }
-        // If the trash can't respawn then reset it's respawn timer
+        // If the pickup can't respawn then reset it's respawn timer
         else respawnTime = Time.time + (respawnCooldown * 60);
 
     }
 
-    // Called when the trash is pulled or respawned. Makes it appear as if it has been destroyed/respawned.
+    // Called when the pickup is pulled or respawned. Makes it appear as if it has been destroyed/respawned.
     private void ToggleObject(bool _toggle)
     {
         isActive = _toggle;
-        if (_toggle) sprite.GetComponent<SpriteRenderer>().color = Color.white;
-        else sprite.GetComponent<SpriteRenderer>().color = Color.clear;
+        if (_toggle) spriteRef.GetComponent<SpriteRenderer>().color = Color.white;
+        else spriteRef.GetComponent<SpriteRenderer>().color = Color.clear;
         GetComponent<BoxCollider2D>().enabled = _toggle;
         if (blockingCollider) blockingCollider.GetComponent<BoxCollider2D>().enabled = _toggle;
     }
@@ -209,6 +221,32 @@ public class TrashObject : MonoBehaviour
 
     private float PullCurrentDistance()
     {
-        return Vector2.Distance(startPosition, spriteArm.transform.position);
+        return Vector2.Distance(startPosition, spriteArmRef.transform.position);
     }
+
+
+    [ContextMenu ("Set Sprite")]
+    private void ResetSprite()
+    {
+        print("Sprite reset");
+        spriteArmRef = transform.GetChild(0).gameObject;
+        spriteRef = spriteArmRef.transform.GetChild(0).gameObject;
+        GetComponent<SpriteRenderer>().sprite = spriteBase;
+        spriteRef.GetComponent<SpriteRenderer>().sprite = sprite;
+    }
+/* SETUP AUTOMATION FOR THIS
+    [ContextMenu ("Initialize damage arrays")] 
+    private void ResetDamageArrays()
+    {
+        if (healthMax > 1)
+        {
+            damageDisplayedSprites = new SerializableDictionary<int, Sprite[]>();
+            for (int i = 1; 0 < healthMax - i; i++)
+            {
+
+            }
+            
+        }
+    }
+*/
 }

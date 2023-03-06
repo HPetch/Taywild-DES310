@@ -22,7 +22,7 @@ public class FurnitureObject : DecorationObject
     void Start()
     {
         AttachmentPointRadius = GetComponentInChildren<CircleCollider2D>().radius;
-        if (PickupButton) PickupButton.transform.position = GetComponent<BoxCollider2D>().bounds.max;
+        if (RemoveButton) RemoveButton.transform.position = GetComponent<BoxCollider2D>().bounds.max;
     }
 
     // Update is called once per frame
@@ -65,7 +65,7 @@ public class FurnitureObject : DecorationObject
     [ContextMenu("Initialize buttons")]
     private void InitializeButtons()
     {
-        if (!PickupButton) PickupButton = Instantiate(pickupButtonPrefab, transform);
+        if (!RemoveButton) RemoveButton = Instantiate(pickupButtonPrefab, transform);
         if (!EditButtonHolder)
         {
             Instantiate(editButtonHolderPrefab, transform);
@@ -77,7 +77,7 @@ public class FurnitureObject : DecorationObject
             EditButtonRight = EditButtonHolder.transform.GetChild(1).gameObject;
             EditButtonHolder.transform.position = new Vector2(transform.position.x, GetComponent<BoxCollider2D>().bounds.min.y);
         }
-        PickupButton.transform.position = GetComponent<BoxCollider2D>().bounds.max;
+        RemoveButton.transform.position = GetComponent<BoxCollider2D>().bounds.max;
         
     }
 

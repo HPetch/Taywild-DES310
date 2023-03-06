@@ -10,8 +10,6 @@ public class DecorationMovingFake : MonoBehaviour
 {
     private GameObject moveTarget;
     [SerializeField] private GameObject[] CollisionCheckerArray;
-    public enum ObjectType { DECORATION_OBJECT, ENVIROMENT_OBJECT, TRASH_OBJECT } //Decoration object - Move Edit Delete, Enviroment - Edit, Trash - Delete
-    public ObjectType objectType { get; private set; }
     public bool isBeingMoved { get; private set; }
     private bool isPlaced;
     private Vector3 moveTargetPosition;
@@ -22,7 +20,7 @@ public class DecorationMovingFake : MonoBehaviour
 
     [SerializeField] private float rotateSpeed;
     [SerializeField] private float[] scrollRotateArray;
-    public int scrollRotateIndex = 4; // NEED TO SET THIS TO A GET PRIVATE SET
+    public int scrollRotateIndex = 4;
 
 
     private bool isMovementComplete;

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnvironmentObject : DecorationObject
+public class StyleObject : DecorationObject
 {
     // Start is called before the first frame update
     void Start()
@@ -21,7 +21,7 @@ public class EnvironmentObject : DecorationObject
     [ContextMenu("Initialize buttons")]
     private void InitializeButtons()
     {
-        if (!PickupButton) Instantiate(pickupButtonPrefab);
+        if (!RemoveButton) Instantiate(pickupButtonPrefab);
         if (!EditButtonHolder)
         {
             Instantiate(editButtonHolderPrefab);
@@ -29,7 +29,7 @@ public class EnvironmentObject : DecorationObject
             EditButtonRight = EditButtonHolder.transform.GetChild(1).gameObject;
             EditButtonHolder.transform.position = new Vector2(transform.position.x, GetComponent<BoxCollider2D>().bounds.min.y);
         }
-        PickupButton.transform.position = GetComponent<BoxCollider2D>().bounds.max;
+        RemoveButton.transform.position = GetComponent<BoxCollider2D>().bounds.max;
 
     }
 }
