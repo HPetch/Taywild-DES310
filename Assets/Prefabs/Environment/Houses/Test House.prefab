@@ -392,6 +392,7 @@ GameObject:
   - component: {fileID: 401664628612227811}
   - component: {fileID: 7568459912397085756}
   - component: {fileID: 5604734337878729999}
+  - component: {fileID: 5734694172428237091}
   m_Layer: 0
   m_Name: Tail
   m_TagString: Untagged
@@ -457,6 +458,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!225 &5734694172428237091
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3105293432195083254}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
 --- !u!1 &3632988797100954086
 GameObject:
   m_ObjectHideFlags: 0
@@ -469,6 +482,7 @@ GameObject:
   - component: {fileID: 8718393396260206658}
   - component: {fileID: 849841006422499660}
   - component: {fileID: 7775014883246628855}
+  - component: {fileID: 301501624246555758}
   m_Layer: 0
   m_Name: Dialogue Text
   m_TagString: Untagged
@@ -555,7 +569,7 @@ MonoBehaviour:
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 0
-  m_fontSizeMin: 18
+  m_fontSizeMin: 0
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_HorizontalAlignment: 2
@@ -605,6 +619,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e757198efea021b47a4cc0a8425f49c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!225 &301501624246555758
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3632988797100954086}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
 --- !u!1 &4720902282910801541
 GameObject:
   m_ObjectHideFlags: 0
@@ -1261,11 +1287,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speechBubble: {fileID: 4825555415090531881}
   dialogueText: {fileID: 849841006422499660}
-  dialogueCanvasGroup: {fileID: 5645770025318451610}
-  <TransitionTime>k__BackingField: 0.2
+  tailCanvasGroup: {fileID: 5734694172428237091}
+  <OpenCloseTransitionTime>k__BackingField: 0.4
+  <ResizeTransitionTime>k__BackingField: 0.2
   widthRange: {x: 100, y: 600}
   heightRange: {x: 60, y: 300}
-  padding: {x: 50, y: 10}
+  speechBubbleStartingYPosition: -100
   interactCanvasGroup: {fileID: 1305924781922502920}
 --- !u!114 &2081344935170768687
 MonoBehaviour:

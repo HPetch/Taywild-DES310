@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7927194920088015654}
   - component: {fileID: 6029976490947537882}
   - component: {fileID: 7852343109862631278}
+  - component: {fileID: 6663463933340599083}
   m_Layer: 0
   m_Name: Tail
   m_TagString: Untagged
@@ -36,7 +37,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 56, y: 88}
+  m_SizeDelta: {x: 40, y: 60}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!222 &6029976490947537882
 CanvasRenderer:
@@ -76,6 +77,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!225 &6663463933340599083
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 430506279536696103}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
 --- !u!1 &1052138039943487010
 GameObject:
   m_ObjectHideFlags: 0
@@ -191,7 +204,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 4}
+  m_AnchoredPosition: {x: 0, y: 4.25}
   m_SizeDelta: {x: 600, y: 350}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &3082762509378448929
@@ -208,11 +221,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speechBubble: {fileID: 5854093756987958473}
   dialogueText: {fileID: 4016594488954070623}
-  dialogueCanvasGroup: {fileID: 2843603535974537009}
-  <TransitionTime>k__BackingField: 0.2
+  tailCanvasGroup: {fileID: 6663463933340599083}
+  <OpenCloseTransitionTime>k__BackingField: 0.4
+  <ResizeTransitionTime>k__BackingField: 0.2
   widthRange: {x: 100, y: 600}
   heightRange: {x: 60, y: 300}
-  padding: {x: 50, y: 10}
+  speechBubbleStartingYPosition: -100
 --- !u!223 &1522937797228528061
 Canvas:
   m_ObjectHideFlags: 0
@@ -309,7 +323,7 @@ Transform:
   - {fileID: 3013080773383515439}
   - {fileID: 2454015774647340651}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3013080772066457372
 MonoBehaviour:
@@ -398,9 +412,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3013080773383515439}
+  - component: {fileID: 5013383091699472349}
   - component: {fileID: 3013080773383515438}
   - component: {fileID: 9197766413397288705}
-  - component: {fileID: 5013383091699472349}
   m_Layer: 0
   m_Name: Visuals
   m_TagString: Untagged
@@ -424,6 +438,34 @@ Transform:
   m_Father: {fileID: 3013080772066457373}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5013383091699472349
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3013080773383515436}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a39e6eb75a650d24e8952b4c0b9f1d8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  groundJumpParticleEffect: {fileID: 4315215894901229033, guid: d1a71fb781d5a1841a1c43c017f790f4, type: 3}
+  groundJumpAudioClip: {fileID: 0}
+  airJumpParticleEffect: {fileID: 7773276287158063648, guid: d163ae4f140ccf64e9f38a9c8995e2ef, type: 3}
+  airJumpAudioClip: {fileID: 0}
+  wallJumpParticleEffect: {fileID: 307163571363470539, guid: e403b529305d6b9438579d5759a9acea, type: 3}
+  wallJumpAudioClip: {fileID: 0}
+  wallHopParticleEffect: {fileID: 307163571363470539, guid: e403b529305d6b9438579d5759a9acea, type: 3}
+  wallHopAudioClip: {fileID: 0}
+  wallHitParticleEffect: {fileID: 0}
+  wallHitAudioClip: {fileID: 0}
+  wallSlideParticleEffect: {fileID: 0}
+  wallSlideAudioClip: {fileID: 0}
+  landParticleEffect: {fileID: 0}
+  landAudioClip: {fileID: 0}
+  dashParticleEffect: {fileID: 6595378934676211507, guid: cc36037e37b246f469086dedfbc16f96, type: 3}
+  dashAudioClip: {fileID: 0}
 --- !u!212 &3013080773383515438
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -496,34 +538,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &5013383091699472349
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3013080773383515436}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a39e6eb75a650d24e8952b4c0b9f1d8c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  groundJumpParticleEffect: {fileID: 4315215894901229033, guid: d1a71fb781d5a1841a1c43c017f790f4, type: 3}
-  groundJumpAudioClip: {fileID: 0}
-  airJumpParticleEffect: {fileID: 7773276287158063648, guid: d163ae4f140ccf64e9f38a9c8995e2ef, type: 3}
-  airJumpAudioClip: {fileID: 0}
-  wallJumpParticleEffect: {fileID: 307163571363470539, guid: e403b529305d6b9438579d5759a9acea, type: 3}
-  wallJumpAudioClip: {fileID: 0}
-  wallHopParticleEffect: {fileID: 307163571363470539, guid: e403b529305d6b9438579d5759a9acea, type: 3}
-  wallHopAudioClip: {fileID: 0}
-  wallHitParticleEffect: {fileID: 0}
-  wallHitAudioClip: {fileID: 0}
-  wallSlideParticleEffect: {fileID: 0}
-  wallSlideAudioClip: {fileID: 0}
-  landParticleEffect: {fileID: 0}
-  landAudioClip: {fileID: 0}
-  dashParticleEffect: {fileID: 6595378934676211507, guid: cc36037e37b246f469086dedfbc16f96, type: 3}
-  dashAudioClip: {fileID: 0}
 --- !u!1 &3855612987575727015
 GameObject:
   m_ObjectHideFlags: 0
@@ -573,6 +587,7 @@ GameObject:
   - component: {fileID: 7616297445011805655}
   - component: {fileID: 4016594488954070623}
   - component: {fileID: 6649905754127911060}
+  - component: {fileID: 6278652755722245499}
   m_Layer: 0
   m_Name: Dialogue Text
   m_TagString: Untagged
@@ -628,7 +643,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: ...
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -659,7 +674,7 @@ MonoBehaviour:
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 0
-  m_fontSizeMin: 18
+  m_fontSizeMin: 0
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_HorizontalAlignment: 2
@@ -709,6 +724,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e757198efea021b47a4cc0a8425f49c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!225 &6278652755722245499
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5795892897393551501}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
 --- !u!1 &6451706080171726449
 GameObject:
   m_ObjectHideFlags: 0

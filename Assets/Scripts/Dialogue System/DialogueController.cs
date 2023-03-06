@@ -213,7 +213,7 @@ public class DialogueController : MonoBehaviour
         // Reset TextType Delay to the default delay (incase it was changed in a link)
         currentTextTypeDelay = TextTypeDelay;
 
-        yield return new WaitForSeconds(currentDialogueCanvas.SizeTransitionTime);
+        yield return new WaitForSeconds(currentDialogueCanvas.ResizeTransitionTime);
         canDisplayNext = true;
 
         // For each character
