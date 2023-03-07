@@ -141,6 +141,7 @@ public class DialogueController : MonoBehaviour
                 }
                 else
                 {
+                    character.SetCharacterName(dialogueNode.Character.CharacterName);
                     character.Show(dialogueNode.Text);
                     PlayerDialogueController.Instance.Hide();
 
@@ -213,7 +214,7 @@ public class DialogueController : MonoBehaviour
         // Reset TextType Delay to the default delay (incase it was changed in a link)
         currentTextTypeDelay = TextTypeDelay;
 
-        yield return new WaitForSeconds(currentDialogueCanvas.ResizeTransitionTime);
+        yield return new WaitForSeconds(currentDialogueCanvas.ResizeTransitionTime());
         canDisplayNext = true;
 
         // For each character

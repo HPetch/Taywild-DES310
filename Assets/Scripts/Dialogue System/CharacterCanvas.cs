@@ -10,32 +10,37 @@ public class CharacterCanvas : MonoBehaviour
     public CharacterCanvasStates CharacterCanvasState { get; private set; } = CharacterCanvasStates.CLOSED;
 
 
-    [Header("Dialogue Settings")]
+    [Header("Dialogue References")]
     [SerializeField] private RectTransform dialogueContainer;
     [SerializeField] private RectTransform speechBubble;
     [SerializeField] private RectTransform tail;
     [SerializeField] private TextMeshProUGUI dialogueText;
 
-
-    [field: Range(0, 10)]
-    [field: SerializeField] public float OpenCloseTransitionTime { get; private set; } = 0.4f;
-
-    [field: Range(0, 10)]
-    [field: SerializeField] public float ResizeTransitionTime { get; private set; } = 0.2f;
-
-    [MinMaxSlider(10,1000)]
-    [SerializeField] private Vector2Int widthRange = new Vector2Int(100,600);
+    [Space(10)]
+    [Header("Speech Box Constraints")]
+    [MinMaxSlider(10, 1000)]
+    [SerializeField] private Vector2Int widthRange = new Vector2Int(100, 600);
 
     [MinMaxSlider(10, 500)]
-    [SerializeField] private Vector2Int heightRange = new Vector2Int(60,300);
+    [SerializeField] private Vector2Int heightRange = new Vector2Int(60, 300);
 
-    private float speechBubbleStartingYPosition = -100;
+    [Space(10)]
+    [Header("Dialogue Transition Settings")]
+    [Range(0, 1)]
+    [SerializeField] private float tailTransitionTime = 0.1f;
+
+    [Range(0, 1)]
+    [SerializeField] private float speechBubbleOpenCloseTransitionTime = 0.3f;
+
+    [Range(0, 1)]
+    [SerializeField] private float speechBubbleResizeTransitionTime = 0.2f;
+
+
     private Vector2 tailSize;
     private Vector2 tailSizeClosed;
     private Vector2 speechBubbleSizeClosed;
 
     private Vector2Int padding = new Vector2Int(50, 30);
-    private CanvasGroup tailCanvasGroup;
     private TextEffect textEffect;
 
     #region Methods
@@ -43,16 +48,13 @@ public class CharacterCanvas : MonoBehaviour
     protected void InitialiseCharacterCanvas()
     {
         textEffect = dialogueText.GetComponent<TextEffect>();
-        tailCanvasGroup = tail.GetComponent<CanvasGroup>();
 
         tailSize = tail.sizeDelta;
         tailSizeClosed = new Vector2(0, tailSize.y);
         speechBubbleSizeClosed = new Vector2(tailSize.x, 0);
 
-        //tailCanvasGroup.alpha = 0;
         tail.sizeDelta = tailSizeClosed;
         speechBubble.sizeDelta = speechBubbleSizeClosed;
-        //speechBubble.anchoredPosition = new Vector2(0, speechBubbleStartingYPosition);
         
         ClearText();
     }
@@ -63,9 +65,14 @@ public class CharacterCanvas : MonoBehaviour
     }
     #endregion
 
-    private void Update()
+    public virtual float OpenCloseTransitionTime()
     {
-        
+        return tailTransitionTime + speechBubbleOpenCloseTransitionTime;
+    }
+
+    public virtual float ResizeTransitionTime()
+    {
+        return speechBubbleResizeTransitionTime;
     }
 
     public void Show(string _text)
@@ -85,7 +92,7 @@ public class CharacterCanvas : MonoBehaviour
         if (CharacterCanvasState == CharacterCanvasStates.OPEN) CloseTransition();
     }
 
-    private void OpenTransition(string _text)
+    protected virtual void OpenTransition(string _text)
     {
         CharacterCanvasState = CharacterCanvasStates.OPEN;
 
@@ -95,16 +102,15 @@ public class CharacterCanvas : MonoBehaviour
         ClearText();
         dialogueText.enableAutoSizing = false;
 
-        LeanTween.size(tail, tailSize, 0.1f);
+        LeanTween.size(tail, tailSize, tailTransitionTime);
 
-        LeanTween.delayedCall(0.1f, callback =>
+        LeanTween.delayedCall(tailTransitionTime, callback =>
         {
-            LeanTween.size(speechBubble, GetTargetSize(_text), 0.3f);
-            //LeanTween.moveY(speechBubble, 0, OpenCloseTransitionTime);
+            LeanTween.size(speechBubble, GetTargetSize(_text), speechBubbleOpenCloseTransitionTime);
         });
     }
 
-    private void CloseTransition()
+    protected virtual void CloseTransition()
     {
         CharacterCanvasState = CharacterCanvasStates.CLOSED;
 
@@ -112,13 +118,11 @@ public class CharacterCanvas : MonoBehaviour
         LeanTween.cancel(tail);
 
         dialogueText.enableAutoSizing = true;
-        LeanTween.size(speechBubble, speechBubbleSizeClosed, 0.3f);
-        LeanTween.delayedCall(0.3f, callback =>
+        LeanTween.size(speechBubble, speechBubbleSizeClosed, speechBubbleOpenCloseTransitionTime);
+        LeanTween.delayedCall(speechBubbleOpenCloseTransitionTime, callback =>
         {
-            LeanTween.size(tail, tailSizeClosed, 0.1f);
+            LeanTween.size(tail, tailSizeClosed, tailTransitionTime);
         });
-
-        //LeanTween.moveY(speechBubble, speechBubbleStartingYPosition, OpenCloseTransitionTime);
     }
 
     private void ResizieTransition(string _text)
@@ -126,8 +130,7 @@ public class CharacterCanvas : MonoBehaviour
         LeanTween.cancel(speechBubble);
         LeanTween.cancel(tail);
 
-        LeanTween.size(speechBubble, GetTargetSize(_text), ResizeTransitionTime);
-        //LeanTween.moveY(speechBubble, 0, OpenCloseTransitionTime);
+        LeanTween.size(speechBubble, GetTargetSize(_text), speechBubbleResizeTransitionTime);
     }
 
     public void SetText(string _text)
