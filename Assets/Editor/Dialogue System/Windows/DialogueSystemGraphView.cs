@@ -433,13 +433,13 @@ namespace DialogueSystem.Windows
             if(_event.keyCode == KeyCode.Q)
             {
                 Debug.Log("Key Down: Q");
-                CreateDialogueNode("NodeName", DialogueTypes.SingleChoice, MouseToGraphView());
+                //CreateDialogueNode("NodeName", DialogueTypes.SingleChoice, MouseToGraphView());
             }
 
             if (_event.keyCode == KeyCode.E)
             {
                 Debug.Log("Key Down: E");
-                CreateDialogueNode("NodeName", DialogueTypes.MultipleChoice, MouseToGraphView());
+                //CreateDialogueNode("NodeName", DialogueTypes.MultipleChoice, MouseToGraphView());
             }
         }
         #endregion
