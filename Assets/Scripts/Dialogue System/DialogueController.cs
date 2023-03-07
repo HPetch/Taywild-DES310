@@ -21,9 +21,9 @@ public class DialogueController : MonoBehaviour
 
     #region Variables
     public bool IsConversing { get; private set; } = false;
+    public InteractableCharacter Character { get; private set; } = null;
 
     private DialogueSystemDialogueSO dialogueNode = null;
-    private InteractableCharacter character = null;
     private CharacterCanvas currentDialogueCanvas = null;
 
     // Coroutines need to be referenced so they can be stopped prematurly in case of a skip
@@ -104,7 +104,7 @@ public class DialogueController : MonoBehaviour
         if (IsConversing) return;
 
         IsConversing = true;        
-        character = _character;
+        Character = _character;
 
         OnConversationStart?.Invoke();
 
@@ -135,10 +135,10 @@ public class DialogueController : MonoBehaviour
 
                 if (IsPlayerTalking && !PlayerDialogueController.Instance.IsOpen)
                 {
-                    if (character.IsOpen)
+                    if (Character.IsOpen)
                     {
-                        character.CloseTransition();
-                        yield return new WaitForSeconds(character.ResizeTransitionTime());
+                        Character.CloseTransition();
+                        yield return new WaitForSeconds(Character.ResizeTransitionTime());
                     }
 
                     PlayerDialogueController.Instance.OpenTransition(dialogueNode.Text);
@@ -146,7 +146,7 @@ public class DialogueController : MonoBehaviour
                     currentDialogueCanvas = PlayerDialogueController.Instance;
                     resize = false;
                 }
-                else if (!IsPlayerTalking && !character.IsOpen)
+                else if (!IsPlayerTalking && !Character.IsOpen)
                 {
                     if (PlayerDialogueController.Instance.IsOpen)
                     {
@@ -154,10 +154,10 @@ public class DialogueController : MonoBehaviour
                         yield return new WaitForSeconds(PlayerDialogueController.Instance.ResizeTransitionTime());
                     }
 
-                    character.SetCharacter(dialogueNode.Character);
-                    character.OpenTransition(dialogueNode.Text);
+                    Character.SetCharacter(dialogueNode.Character);
+                    Character.OpenTransition(dialogueNode.Text);
 
-                    currentDialogueCanvas = character;
+                    currentDialogueCanvas = Character;
                     resize = false;
                 }
 

@@ -135,8 +135,10 @@ public class CameraController : MonoBehaviour
 
     private void OnConversationStarted()
     {
+        Vector2 midPoint = Vector2.Lerp(playerTransform.position, DialogueController.Instance.Character.transform.position, 0.5f);
+        dialogueOffset.x = midPoint.x - playerTransform.position.x;
         offset = dialogueOffset;
-        Zoom(4);
+        Zoom(5);
     }
 
     private void OnConversationEnded()
