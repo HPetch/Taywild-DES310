@@ -10,6 +10,9 @@ using UnityEngine;
 public class PickupObject : MonoBehaviour
 {
     #region Variables
+    [SerializeField, Range(1, 6)] private int healthMax; // How many pulls until the object breaks.
+    private int health; // Current health, the higher this is the more difficult objects are to damage.
+
     private Vector2 startPosition; // Position that the sprite will use as an anchor
     private Vector2 targetPosition; // Position that the sprite is trying to reach
 
@@ -26,6 +29,8 @@ public class PickupObject : MonoBehaviour
     [SerializeField, Range(0.1f,0.3f)] private float pullBreakDistance; // Maximum distance the pickup can move before being destroyed. Actually starts breaking at 0.95 of this.
     private Vector2 pullDirection;
 
+    [SerializeField, Range(1, 6)] private int dragMoveSpeed; // How fast the object lerps towards the target position. Use lower values for heavier objects.
+
     private float pullMoveResistance; // Scales how much resistance the object is to moveing with health, higher health harder to move.
     private float pullBreakTime; // How long the object must be at breaking distance before taking damage, scales with health.
     private bool isTryingToBreak; // If the object is currently trying to break. Waits to achive pullBreakTime before breaking.
@@ -34,17 +39,13 @@ public class PickupObject : MonoBehaviour
     private float vibrationIntensity; // Scales between 0 and 1 depending on how close the object is to break distance.
     [SerializeField, Range(0,0.2f)] float vibrationMax; // The maximum movement allowed when vibrating.
     [SerializeField, Range(5, 10)] int vibrationSpeed; // How fast the sprite lerps when vibrating, lower values give a heavier look.
-
-    [SerializeField, Range(1,6)] private int healthMax; // How many pulls until the object breaks.
-    private int health; // Current health, the higher this is the more difficult objects are to damage.
-
     
     [SerializeField, Range(0,60)] private int respawnCooldown; // How many minutes until respawn after pulling. If 0 then cannot respawn
     private bool isActive; // Whether the object is able to be interacted with.
     private float respawnTime; // Stores the time that the respawn timer will trigger.
     [SerializeField] LayerMask respawnBlockLayerMask; // Which collision layer can block respawns, normaly player and furniture.
 
-    [SerializeField, Range(1, 6)] private int dragMoveSpeed; // How fast the object lerps towards the target position. Use lower values for heavier objects.
+    
 
     // When health == int change pickup's sprite to the one in the dictionary.
     // Sprite 0 is the sprite which will be moved, Sprite 1 is the base which stays still. If the final pull has a base then it will stay
@@ -187,14 +188,16 @@ public class PickupObject : MonoBehaviour
     // Called when pickup has been broken
     public void EndPull() 
     {
+        DamageSetSprites();
         // Set respawn time to a number of minues equal to respawn cooldown.
         respawnTime = Time.time + (respawnCooldown * 60);
 
         DamageAddItems(true);
-        DamageSetSprites();
+        
         ToggleObject(false);
         SetPullBreakState(false, false);
         targetPosition = startPosition;
+        DamageSetSprites();
     }
     #endregion
 
@@ -244,7 +247,7 @@ public class PickupObject : MonoBehaviour
         else
         {
             spriteRef.GetComponent<SpriteRenderer>().color = Color.clear;
-            if (healthMax > 1) GetComponent<SpriteRenderer>().sprite = damageDisplayedSprites[healthMax - 1][1];
+            if (healthMax > 1 && damageDisplayedSprites.ContainsKey(1)) GetComponent<SpriteRenderer>().sprite = damageDisplayedSprites[1][1];
         } 
             
         GetComponent<BoxCollider2D>().enabled = _toggle;

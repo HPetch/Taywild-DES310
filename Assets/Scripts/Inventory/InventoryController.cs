@@ -53,14 +53,16 @@ public class InventoryController : MonoBehaviour
     public void AddItem(ItemNames _item, int _quantity)
     {
         if (_quantity == 0) Debug.LogWarning("A quantity of 0 was added");
-
+        
         // Just in case a - quantity has been inputed
         _quantity = Mathf.Abs(_quantity);
+
+        
 
         // If the item is already in the dictionary, then increment the quantity
         if (InventoryContainsItem(_item)) inventory[_item] += _quantity;
         // Else add the item to the dictionary
-        else  inventory.Add(_item, _quantity);
+        else if (_quantity != 0) inventory.Add(_item, _quantity);
 
         OnItemAdded?.Invoke(_item, inventory[_item]);
         OnItemQuantityChanged?.Invoke(_item, inventory[_item]);
@@ -102,6 +104,21 @@ public class InventoryController : MonoBehaviour
     #region Utility functions
     private bool InventoryContainsItem(ItemNames _item) { return inventory.ContainsKey(_item); }
     private bool InventoryDoesNotContainItem(ItemNames _item) { return !inventory.ContainsKey(_item); }
+
+
     #endregion
+
+    #region Context Menu Functions
+
+    [ContextMenu("Print inventory")]
+    private void PrintInventory()
+    {
+        foreach(KeyValuePair<ItemNames, int> _item in inventory)
+        {
+            Debug.Log("Item: " + _item.Key + " - " + _item.Value);
+        }
+    }
+    #endregion
+
     #endregion
 }
