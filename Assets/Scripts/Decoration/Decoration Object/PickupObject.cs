@@ -9,10 +9,7 @@ using UnityEngine;
 
 public class PickupObject : MonoBehaviour
 {
-
-   
-    
-
+    #region Variables
     private Vector2 startPosition; // Position that the sprite will use as an anchor
     private Vector2 targetPosition; // Position that the sprite is trying to reach
 
@@ -26,31 +23,31 @@ public class PickupObject : MonoBehaviour
     private Vector2 mouseCurrentPosition;
 
     private bool isBeingPulled; // Is the player currently pulling this pickup
-    [SerializeField, Range(0.1f,0.3f)] private float pullBreakDistance; // Maximum distance the pickup can move before being destroyed
+    [SerializeField, Range(0.1f,0.3f)] private float pullBreakDistance; // Maximum distance the pickup can move before being destroyed. Actually starts breaking at 0.95 of this.
     private Vector2 pullDirection;
 
-    private float pullMoveResistance;
-    private float pullBreakTime;
-    private bool isTryingToBreak;
-    private bool isMaxTravel;
+    private float pullMoveResistance; // Scales how much resistance the object is to moveing with health, higher health harder to move.
+    private float pullBreakTime; // How long the object must be at breaking distance before taking damage, scales with health.
+    private bool isTryingToBreak; // If the object is currently trying to break. Waits to achive pullBreakTime before breaking.
+    private bool isMaxTravel; // If the object has reached maxium movement. Prevents funky movement past boundries.
 
-    private float vibrationIntensity;
-    [SerializeField, Range(0,0.2f)] float vibrationMax;
-    [SerializeField, Range(5, 10)] int vibrationSpeed;
+    private float vibrationIntensity; // Scales between 0 and 1 depending on how close the object is to break distance.
+    [SerializeField, Range(0,0.2f)] float vibrationMax; // The maximum movement allowed when vibrating.
+    [SerializeField, Range(5, 10)] int vibrationSpeed; // How fast the sprite lerps when vibrating, lower values give a heavier look.
 
-    [SerializeField, Range(1,6)] private int healthMax;
-    private int health;
+    [SerializeField, Range(1,6)] private int healthMax; // How many pulls until the object breaks.
+    private int health; // Current health, the higher this is the more difficult objects are to damage.
 
-    // How many minutes until respawn after pulling. If 0 then cannot respawn
-    [SerializeField, Range(0,60)] private int respawnCooldown;
-    private bool isActive = true;
-    private float respawnTime;
-    [SerializeField] LayerMask respawnBlockLayerMask;
+    
+    [SerializeField, Range(0,60)] private int respawnCooldown; // How many minutes until respawn after pulling. If 0 then cannot respawn
+    private bool isActive; // Whether the object is able to be interacted with.
+    private float respawnTime; // Stores the time that the respawn timer will trigger.
+    [SerializeField] LayerMask respawnBlockLayerMask; // Which collision layer can block respawns, normaly player and furniture.
 
-    [SerializeField, Range(1, 6)] private int dragMoveSpeed;
+    [SerializeField, Range(1, 6)] private int dragMoveSpeed; // How fast the object lerps towards the target position. Use lower values for heavier objects.
 
     // When health == int change pickup's sprite to the one in the dictionary.
-    // Sprite 0 is the sprite which will be moved, Sprite 1 is the base which stays still. The final pull might not have a base
+    // Sprite 0 is the sprite which will be moved, Sprite 1 is the base which stays still. If the final pull has a base then it will stay
     [SerializeField] private SerializableDictionary<int, Sprite[]> damageDisplayedSprites;
 
     // An array of dictionaries that contains the items that the pickup will add to inventory taking damage.
@@ -58,10 +55,13 @@ public class PickupObject : MonoBehaviour
     // Item name - Item to be dropped upon destroying the pickup
     // Vector2 - Min,Max. The minimum and maximum amount that can be dropped of the item. Leaving the max as 0 will make the min number the only outcome.
     [SerializeField] private SerializableDictionary<InventoryController.ItemNames, Vector2Int>[] pickupBreakItems;
+    #endregion
 
 
 
+    #region Functions
 
+    #region Initialization
     private void Awake()
     {
         spriteArmRef = transform.GetChild(0).gameObject;
@@ -76,7 +76,9 @@ public class PickupObject : MonoBehaviour
         // Ensures variables are set up
         Respawn(); 
     }
+    #endregion
 
+    #region Update - Movement, damage, respawn
     // Update is called once per frame
     void Update()
     {
@@ -115,9 +117,6 @@ public class PickupObject : MonoBehaviour
             Quaternion _rotateVibration = new Quaternion();
             if (isTryingToBreak) _rotateVibration = Quaternion.Euler(Vector3.forward * (UnityEngine.Random.Range(-vibrationIntensity, vibrationIntensity) * 100));
 
-            // If the object is breaking then intensify the vibration. This could be changed to vibrate rotation instead.
-            //if (isTryingToBreak) _vibrationOffset *= 3;
-
             // Vibrates sprite independent of sprite arm to prevent funky math
             spriteRef.transform.localPosition = Vector2.Lerp(spriteRef.transform.localPosition, _vibrationOffset, vibrationSpeed * Time.deltaTime);
             spriteRef.transform.localRotation = Quaternion.Lerp(spriteRef.transform.localRotation, _rotateVibration, vibrationSpeed * Time.deltaTime);
@@ -140,13 +139,7 @@ public class PickupObject : MonoBehaviour
                     health--;
                     // If on 0 health destroys the pickup object, adds resources to inventory, and gives direction for the particle system
                     if (health == 0) EndPull(); 
-                    else if (damageDisplayedSprites.ContainsKey(health))
-                    {
-                        spriteRef.GetComponent<SpriteRenderer>().sprite = damageDisplayedSprites[health][0];
-                        GetComponent<SpriteRenderer>().sprite = damageDisplayedSprites[health][1];
-                    }
-                        
-                    DamagePull();
+                    else DamagePull();
                 }
             }
             // If player have moved their mouse within the break distance then cancel the break attempt
@@ -159,57 +152,53 @@ public class PickupObject : MonoBehaviour
         else if (!isBeingPulled && isActive) spriteArmRef.transform.position = Vector2.Lerp(spriteArmRef.transform.position, targetPosition, dragMoveSpeed * Time.deltaTime);
         // If the is able to respawn then wait until the correct time then respawn
         else if (Time.time > respawnTime && !isActive && respawnCooldown != 0) Respawn();
-        
-
     }
+    #endregion
 
+    #region Pull functions
     // Called by decoration controller when the decoration selector interacts with the pickup
     public void StartPull()
     {
         mouseStartPosition = CameraController.Instance.MouseWorldPosition;
-        //spriteArmRef.transform.position = startPosition;
-        spriteRef.transform.localPosition = Vector2.zero;
-        spriteRef.transform.localRotation = new Quaternion();
-        targetPosition = startPosition;
-        pullMoveResistance = Mathf.Clamp(health, 1, 3) * 10; // As the player breaks the object it gets easier to break
-        isBeingPulled = true;
-        isTryingToBreak = false;
+        ResetSpriteVibration();
+        pullMoveResistance = Mathf.Clamp(health, 1, 3) * 10; // As the player breaks the object it gets easier to damage
+        SetPullBreakState(true, false);
     }
 
     // Called by decoration controller when the player releases the mouse button. Also called when removing health from pickup that doesn't break.
     public void CancelPull()
     {
         isBeingPulled = false;
-        spriteRef.transform.localPosition = Vector2.zero;
-        spriteRef.transform.localRotation = new Quaternion();
-        targetPosition = startPosition;
+        ResetSpriteVibration();
         isTryingToBreak = false;
     }
 
     public void DamagePull()
     {
-        // Tells the inventory contoller what items were dropped by the pickup.
-        DecorationController.Instance.PickupDamaged(pickupBreakItems [healthMax - (health + 1)]);
-        isBeingPulled = false;
+        DamageAddItems(false);
+        DamageSetSprites();
         spriteArmRef.transform.position = startPosition;
-        spriteRef.transform.localPosition = Vector2.zero;
-        spriteRef.transform.localRotation = new Quaternion();
-        targetPosition = startPosition;
-        isTryingToBreak = false;
+        SetPullBreakState(false, false);
+        ResetSpriteVibration();
+
+        
     }
 
     // Called when pickup has been broken
     public void EndPull() 
     {
-        // Tells the inventory contoller what items were dropped by the pickup.
-        DecorationController.Instance.PickupBroken(pickupBreakItems[healthMax - (health + 1)]);
-        respawnTime = Time.time + (respawnCooldown*60);
+        // Set respawn time to a number of minues equal to respawn cooldown.
+        respawnTime = Time.time + (respawnCooldown * 60);
+
+        DamageAddItems(true);
+        DamageSetSprites();
         ToggleObject(false);
-        isBeingPulled = false;
-        isTryingToBreak = false;
+        SetPullBreakState(false, false);
         targetPosition = startPosition;
     }
+    #endregion
 
+    #region Respawn and toggle
     // Called when respawn timer reaches the correct time and the pickup is able to respawn.
     private void Respawn()
     {
@@ -232,9 +221,7 @@ public class PickupObject : MonoBehaviour
         if (_canRespawn)
         {
             spriteArmRef.transform.position = startPosition;
-            spriteRef.transform.localPosition = Vector2.zero;
-            spriteRef.transform.localRotation = new Quaternion();
-            targetPosition = startPosition;
+            ResetSpriteVibration();
             mouseStartPosition = Vector2.zero;
             health = healthMax;
             
@@ -254,38 +241,77 @@ public class PickupObject : MonoBehaviour
     {
         isActive = _toggle;
         if (_toggle) spriteRef.GetComponent<SpriteRenderer>().color = Color.white;
-        else spriteRef.GetComponent<SpriteRenderer>().color = Color.clear;
-        if (_toggle) GetComponent<SpriteRenderer>().color = Color.white;
-        else GetComponent<SpriteRenderer>().color = Color.clear;
+        else
+        {
+            spriteRef.GetComponent<SpriteRenderer>().color = Color.clear;
+            if (healthMax > 1) GetComponent<SpriteRenderer>().sprite = damageDisplayedSprites[healthMax - 1][1];
+        } 
+            
         GetComponent<BoxCollider2D>().enabled = _toggle;
         if (blockingCollider) blockingCollider.GetComponent<BoxCollider2D>().enabled = _toggle;
     }
-    
+    #endregion
 
 
-
-
+    #region Utility Functions
+    // Returns distance of sprite from start location
     private float PullCurrentDistance()
     {
         return Vector2.Distance(startPosition, spriteArmRef.transform.position);
     }
 
-    #region Context Menu Functions
-    [ContextMenu ("Set Sprite")]
-    private void ResetSprite()
+    // Tells the inventory contoller what items were dropped by the pickup. Informs the controller if the pickup was damaged or broken.
+    private void DamageAddItems(bool _broken) 
+    { 
+        if (_broken) DecorationController.Instance.PickupBroken(pickupBreakItems[healthMax - (health + 1)]);
+        else DecorationController.Instance.PickupDamaged(pickupBreakItems[healthMax - (health + 1)]);
+    }
+
+    private void DamageSetSprites()
     {
-        print("Sprite reset");
+        // Change sprites depending on health remaining
+        if (damageDisplayedSprites.ContainsKey(health))
+        {
+            spriteRef.GetComponent<SpriteRenderer>().sprite = damageDisplayedSprites[health][0];
+            GetComponent<SpriteRenderer>().sprite = damageDisplayedSprites[health][1];
+        }
+    }
+
+    private void SetPullBreakState(bool _pull, bool _break)
+    {
+        isBeingPulled = _pull;
+        isTryingToBreak = _break;
+    }
+
+    private void ResetSpriteVibration()
+    {
+        spriteRef.transform.localPosition = Vector2.zero;
+        spriteRef.transform.localRotation = new Quaternion();
+        targetPosition = startPosition;
+    }
+    #endregion
+
+    #region Context Menu Functions
+
+    // Sets up sprites of the pickup object using the serialized sprite variables 
+    [ContextMenu ("Set Sprite")]
+    private void SetupSprite()
+    {
         spriteArmRef = transform.GetChild(0).gameObject;
         spriteRef = spriteArmRef.transform.GetChild(0).gameObject;
         GetComponent<SpriteRenderer>().sprite = spriteBase;
         spriteRef.GetComponent<SpriteRenderer>().sprite = sprite;
     }
 
+    // Setup sprite and item drop dictionaries using health max for the values
     [ContextMenu ("Initialize damage arrays")] 
-    private void ResetDamageArrays()
+    private void SetupDamageArrays()
     {
-        damageDisplayedSprites = new SerializableDictionary<int, Sprite[]>();
+        // Add a number of item dictionaries equal to health max. Allows for unique drops for each damage level, but doesn't have to.
         pickupBreakItems = new SerializableDictionary<InventoryController.ItemNames, Vector2Int>[healthMax];
+
+        // Add a number of dictonary elements equal to health -1.
+        damageDisplayedSprites = new SerializableDictionary<int, Sprite[]>();
         if (healthMax > 1)
         {
             for (int i = 1; 0 < healthMax - i; i++)
@@ -296,6 +322,8 @@ public class PickupObject : MonoBehaviour
         
 
     }
+    #endregion
+
     #endregion
 
 }
