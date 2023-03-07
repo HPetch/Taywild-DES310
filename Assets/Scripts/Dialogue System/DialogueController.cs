@@ -89,7 +89,7 @@ public class DialogueController : MonoBehaviour
         if (!canDisplayNext) return;
 
         // If the player inputed continue the conversation
-        if ((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return) || Input.GetMouseButtonDown(0) || Input.GetButtonDown("Interact")) && dialogueNode.DialogueType != DialogueTypes.MultipleChoice) DisplayNext();        
+        if ((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return) || Input.GetMouseButtonDown(0) || Input.GetButtonDown("Interact")) && dialogueNode != null && dialogueNode.DialogueType != DialogueTypes.MultipleChoice) DisplayNext();
         else if ((Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Keypad1)) && dialogueNode.DialogueType == DialogueTypes.MultipleChoice) DisplayNext(1);
         else if ((Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown(KeyCode.Keypad2)) && dialogueNode.DialogueType == DialogueTypes.MultipleChoice) DisplayNext(2);
         else if ((Input.GetKeyDown(KeyCode.Alpha3) || Input.GetKeyDown(KeyCode.Keypad3)) && dialogueNode.DialogueType == DialogueTypes.MultipleChoice) DisplayNext(3);
@@ -128,7 +128,7 @@ public class DialogueController : MonoBehaviour
 
         switch (_node.NodeType)
         {
-            case DialogueSystem.Types.NodeTypes.Dialogue:
+            case NodeTypes.Dialogue:
                 dialogueNode = _node;
                 bool resize = true;
 
@@ -163,7 +163,7 @@ public class DialogueController : MonoBehaviour
                 textType = StartCoroutine(TypeSentence(dialogueNode.Text, resize));
                 break;
 
-            case DialogueSystem.Types.NodeTypes.Edge:
+            case NodeTypes.Edge:
                 if (_node.Choices.Count == 0) EndConversation();
                 else StartCoroutine(ComputeNode(_node.Choices[0].NextDialogue));
                 break;
