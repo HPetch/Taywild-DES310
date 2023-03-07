@@ -54,8 +54,6 @@ public class InteractableCharacter : CharacterCanvas
 
     protected override void OpenTransition(string _text)
     {
-        Debug.Log("Open");
-
         LeanTween.cancel(characterNameCanvasGroup.gameObject);
 
         base.OpenTransition(_text);
@@ -68,8 +66,6 @@ public class InteractableCharacter : CharacterCanvas
 
     protected override void CloseTransition()
     {
-        Debug.Log("Close");
-
         LeanTween.cancel(characterNameCanvasGroup.gameObject);
 
         LeanTween.alphaCanvas(characterNameCanvasGroup, 0, characterNameTransitionTime);
