@@ -62,7 +62,7 @@ namespace DialogueSystem.Windows
             {
                 case DialogueTypes.SingleChoice:
                     {
-                        DialogueSystemSingleChoiceDialogueNode singleChoiceNode = (DialogueSystemSingleChoiceDialogueNode)graphView.CreateDialogueNode("DialogueName", DialogueTypes.SingleChoice, localMousePosition);
+                        DialogueSystemSingleChoiceDialogueNode singleChoiceNode = (DialogueSystemSingleChoiceDialogueNode)graphView.CreateDialogueNode("NodeName", DialogueTypes.SingleChoice, localMousePosition);
 
                         graphView.AddElement(singleChoiceNode);
 
@@ -71,7 +71,7 @@ namespace DialogueSystem.Windows
 
                 case DialogueTypes.MultipleChoice:
                     {
-                        DialogueSystemMultipleChoiceDialogueNode multipleChoiceNode = (DialogueSystemMultipleChoiceDialogueNode)graphView.CreateDialogueNode("DialogueName", DialogueTypes.MultipleChoice, localMousePosition);
+                        DialogueSystemMultipleChoiceDialogueNode multipleChoiceNode = (DialogueSystemMultipleChoiceDialogueNode)graphView.CreateDialogueNode("NodeName", DialogueTypes.MultipleChoice, localMousePosition);
 
                         graphView.AddElement(multipleChoiceNode);
 
