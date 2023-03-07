@@ -166,7 +166,7 @@ public class CameraController : MonoBehaviour
     #region Utility
     public float CameraSize { get { return cameraComponent.orthographicSize; } set { cameraComponent.orthographicSize = value; } }
 
-    public Vector2 MouseWolrdPosition { get { return cameraComponent.ScreenToWorldPoint(Input.mousePosition); } }
+    public Vector2 MouseWorldPosition { get { return cameraComponent.ScreenToWorldPoint(Input.mousePosition); } }
 
     private Vector2 ClampCameraToPartition(Vector2 position)
     {

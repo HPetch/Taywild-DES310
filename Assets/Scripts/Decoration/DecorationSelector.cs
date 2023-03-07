@@ -44,6 +44,7 @@ public class DecorationSelector : MonoBehaviour
     
     [SerializeField] private LayerMask selectorInteractionLayerMask; // Collision layers that selector interacts with
     private Collider2D mouseDownObjectHit; // Holds the object that was selected on a click
+    private PickupObject mouseDownHeldPickup;
 
     #endregion
 
@@ -89,7 +90,7 @@ public class DecorationSelector : MonoBehaviour
         // Controls the selector's current position, scale and rotation. Scale and rotation are affected by the selector's state, and spin jump when clicking
         #region Selector transform control
 
-        selectorTargetLocation = GetMousePositionInWorld(transform.position.z); // Sets target location as mouse position
+        selectorTargetLocation = CameraController.Instance.MouseWorldPosition; // Sets target location as mouse position
         transform.position = Vector3.Lerp(transform.position, selectorTargetLocation, selectorMoveSpeed * Time.deltaTime); // The selector will lerp towards the mouse position
         targetScaleValue = Vector3.Scale(baseScaleValue, baseScaleValue * scaleMultiplier * scaleJump) * mouseDownSlowDown; // Gets the target scale of the selector, affected by changing state or when spin jumping
         transform.localScale = Vector3.Lerp(transform.localScale, targetScaleValue, scaleSpeed * mouseDownSlowDown * Time.deltaTime); // Lerps scale of selector towards target scale
@@ -107,6 +108,8 @@ public class DecorationSelector : MonoBehaviour
             {
                 mouseDownObjectHit = CheckObjectUnderMouse(); // Stores the object that was under the mouse
                 DecorationController.Instance.SelectorDecorationObjectInteract(mouseDownObjectHit.gameObject, true);
+                if (CheckObjectUnderMouse().GetComponent<PickupObject>()) mouseDownHeldPickup = CheckObjectUnderMouse().GetComponent<PickupObject>();
+                else mouseDownHeldPickup = null;
             }
         }
         if (Input.GetMouseButtonUp(0))
@@ -114,6 +117,10 @@ public class DecorationSelector : MonoBehaviour
             scaleJumpTimer = 0.0f; // Makes selector scale jump with an elastic effect
             spinJumpTimer = 0.0f; // Makes selector rotation speed jump with an elastic effect
             mouseDownSlowDown = 1f; // Resets rotation and scale to normal
+
+            if (mouseDownHeldPickup) mouseDownHeldPickup.CancelPull();
+            mouseDownHeldPickup = null;
+
             if (CheckObjectUnderMouse() == mouseDownObjectHit) // Checks if the click is released over the same object that it began on
             {
                 DecorationController.Instance.SelectorDecorationObjectInteract(mouseDownObjectHit.gameObject, false); // Signals Decoration Controller that the object has been interacted with
@@ -121,7 +128,7 @@ public class DecorationSelector : MonoBehaviour
         }
 
         #endregion
-        
+
 
         // This section of code controls the selector switching between states and visuals depending on what the player is currently doing
         #region SelectorVisualStateSwitching
@@ -137,6 +144,7 @@ public class DecorationSelector : MonoBehaviour
                 selectorState = SelectorState.BAD;
             }
         }
+        else if (mouseDownHeldPickup != null) selectorState = SelectorState.OFFGRID;
         else
         {
             Collider2D _objectUnderMouse = CheckObjectUnderMouse();
@@ -161,14 +169,11 @@ public class DecorationSelector : MonoBehaviour
         
     }
 
-    public Vector3 GetMousePositionInWorld(float _zValue)
-    {
-        return new Vector3(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y, _zValue);
-    }
+    
 
     public Collider2D CheckObjectUnderMouse()
     {
-        return Physics2D.OverlapCircle(GetMousePositionInWorld(transform.position.z), 0.1f, selectorInteractionLayerMask);
+        return Physics2D.OverlapCircle(CameraController.Instance.MouseWorldPosition, 0.1f, selectorInteractionLayerMask);
         
     }
     
