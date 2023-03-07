@@ -60,14 +60,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 2100000, guid: 68d46e0124e73634d9c869c4f84d8cb7, type: 2}
-  m_Color: {r: 0.3019608, g: 0.3019608, b: 0.3019608, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 46b8fac4b1c3d1e418afdd2546e44075, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 395ba5bc1d24d63489019d02bb2a5542, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -149,14 +149,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 2100000, guid: 68d46e0124e73634d9c869c4f84d8cb7, type: 2}
-  m_Color: {r: 0.3018868, g: 0.3018868, b: 0.3018868, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 1d66c4855a3eff040b95145327690bb3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c5f3eda53b5725549bb393f4d89642a1, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -219,14 +219,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfd59c516f0054a48808e07263a9ce9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueContainer: {fileID: 0}
+  dialogueContainer: {fileID: 5372470245539438691}
   speechBubble: {fileID: 5854093756987958473}
   tail: {fileID: 7927194920088015654}
   dialogueText: {fileID: 4016594488954070623}
-  <OpenCloseTransitionTime>k__BackingField: 0.4
-  <ResizeTransitionTime>k__BackingField: 0.2
-  widthRange: {x: 100, y: 600}
+  widthRange: {x: 80, y: 600}
   heightRange: {x: 60, y: 344}
+  speachBubbleFloatFrequency: 1
+  speachBubbleFloatAmplitude: 2
+  tailTransitionTime: 0.1
+  speechBubbleOpenCloseTransitionTime: 0.3
+  speechBubbleResizeTransitionTime: 0.2
 --- !u!223 &1522937797228528061
 Canvas:
   m_ObjectHideFlags: 0
@@ -652,8 +655,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -677,7 +680,7 @@ MonoBehaviour:
   m_fontSizeMin: 0
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 2
+  m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0

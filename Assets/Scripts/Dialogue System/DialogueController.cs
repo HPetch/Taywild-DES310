@@ -114,51 +114,63 @@ public class DialogueController : MonoBehaviour
     private IEnumerator StartConversationDelay(DialogueSystemDialogueSO _startingNode)
     {
         yield return new WaitForSeconds(1.0f);
-        ComputeNode(_startingNode);
+        StartCoroutine(ComputeNode(_startingNode));
     }
 
-    private void ComputeNode(DialogueSystemDialogueSO _node)
+    private IEnumerator ComputeNode(DialogueSystemDialogueSO _node)
     {
-        canDisplayNext = false;
-
         if (_node == null)
         {
             EndConversation();
-            return;
+            yield break;
         }
+
+        canDisplayNext = false;
 
         switch (_node.NodeType)
         {
             case DialogueSystem.Types.NodeTypes.Dialogue:
                 dialogueNode = _node;
+                bool resize = true;
 
-                if (IsPlayerTalking)
+                if (IsPlayerTalking && !PlayerDialogueController.Instance.IsOpen)
                 {
-                    character.Hide();
-                    PlayerDialogueController.Instance.Show(dialogueNode.Text);
+                    if (character.IsOpen)
+                    {
+                        character.CloseTransition();
+                        yield return new WaitForSeconds(character.ResizeTransitionTime());
+                    }
+
+                    PlayerDialogueController.Instance.OpenTransition(dialogueNode.Text);
 
                     currentDialogueCanvas = PlayerDialogueController.Instance;
+                    resize = false;
                 }
-                else
+                else if (!IsPlayerTalking && !character.IsOpen)
                 {
-                    character.SetCharacterName(dialogueNode.Character.CharacterName);
-                    character.Show(dialogueNode.Text);
-                    PlayerDialogueController.Instance.Hide();
+                    if (PlayerDialogueController.Instance.IsOpen)
+                    {
+                        PlayerDialogueController.Instance.CloseTransition();
+                        yield return new WaitForSeconds(PlayerDialogueController.Instance.ResizeTransitionTime());
+                    }
+
+                    character.SetCharacter(dialogueNode.Character);
+                    character.OpenTransition(dialogueNode.Text);
 
                     currentDialogueCanvas = character;
+                    resize = false;
                 }
 
-                textType = StartCoroutine(TypeSentence(dialogueNode.Text));
-                return;
+                textType = StartCoroutine(TypeSentence(dialogueNode.Text, resize));
+                break;
 
             case DialogueSystem.Types.NodeTypes.Edge:
                 if (_node.Choices.Count == 0) EndConversation();
-                else ComputeNode(_node.Choices[0].NextDialogue);
-                return;
-
-            default:
-                return;
+                else StartCoroutine(ComputeNode(_node.Choices[0].NextDialogue));
+                break;
         }
+
+        yield return null;
     }
 
     // Displays the next conversation event
@@ -192,20 +204,20 @@ public class DialogueController : MonoBehaviour
                 HideBranchButtons();
 
                 // Compute the next node
-                ComputeNode(dialogueNode.Choices[_buttonIndex].NextDialogue);
+                StartCoroutine(ComputeNode(dialogueNode.Choices[_buttonIndex].NextDialogue));
             }
 
             // Else the player has pressed anykey, but as it's a branch they have to select an option
             return;
         }
 
-        ComputeNode(dialogueNode.Choices[0].NextDialogue);
+        StartCoroutine(ComputeNode(dialogueNode.Choices[0].NextDialogue));
     }
 
     /// <summary>
     /// Text-Type coroutine
     /// </summary>
-    private IEnumerator TypeSentence(string _sentence)
+    private IEnumerator TypeSentence(string _sentence, bool _resize)
     {
         // Set text field to blank      
         textTypeString = "";
@@ -214,7 +226,9 @@ public class DialogueController : MonoBehaviour
         // Reset TextType Delay to the default delay (incase it was changed in a link)
         currentTextTypeDelay = TextTypeDelay;
 
-        yield return new WaitForSeconds(currentDialogueCanvas.ResizeTransitionTime());
+        float transitionTime = _resize ? currentDialogueCanvas.ResizeTransitionTime() : currentDialogueCanvas.OpenCloseTransitionTime();
+
+        yield return new WaitForSeconds(transitionTime);
         canDisplayNext = true;
 
         // For each character

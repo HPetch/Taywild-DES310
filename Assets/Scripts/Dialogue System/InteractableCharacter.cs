@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 using DialogueSystem;
 using DialogueSystem.ScriptableObjects;
 
@@ -42,9 +43,18 @@ public class InteractableCharacter : CharacterCanvas
         }
     }
 
-    public void SetCharacterName(string _name)
+    public void SetCharacter(DialogueCharacter _character)
     {
-        characterNameText.SetText(_name);
+        if (string.IsNullOrEmpty(_character.CharacterName))
+        {
+            characterNameCanvasGroup.gameObject.SetActive(false);
+        }
+        else
+        {
+            characterNameCanvasGroup.gameObject.SetActive(true);
+            characterNameText.SetText(_character.CharacterName);
+            characterNameCanvasGroup.GetComponent<Image>().color = _character.Colour;
+        }
     }
 
     public override float OpenCloseTransitionTime()
@@ -52,9 +62,9 @@ public class InteractableCharacter : CharacterCanvas
         return base.OpenCloseTransitionTime() + characterNameTransitionTime;
     }
 
-    protected override void OpenTransition(string _text)
+    public override void OpenTransition(string _text)
     {
-        LeanTween.cancel(characterNameCanvasGroup.gameObject);
+        //LeanTween.cancel(characterNameCanvasGroup.gameObject);
 
         base.OpenTransition(_text);
 
@@ -64,17 +74,16 @@ public class InteractableCharacter : CharacterCanvas
         });
     }
 
-    protected override void CloseTransition()
+    public override void CloseTransition()
     {
-        LeanTween.cancel(characterNameCanvasGroup.gameObject);
+        //LeanTween.cancel(characterNameCanvasGroup.gameObject);
 
         LeanTween.alphaCanvas(characterNameCanvasGroup, 0, characterNameTransitionTime);
+
         LeanTween.delayedCall(characterNameTransitionTime, callback =>
         {
             base.CloseTransition();
         });
-
-        LeanTween.alphaCanvas(characterNameCanvasGroup, 1, characterNameTransitionTime);
     }
 
     #region Collision

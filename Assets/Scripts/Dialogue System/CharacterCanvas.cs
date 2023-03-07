@@ -6,9 +6,7 @@ using MinMaxSlider;
 
 public class CharacterCanvas : MonoBehaviour
 {
-    public enum CharacterCanvasStates { CLOSED, OPEN }
-    public CharacterCanvasStates CharacterCanvasState { get; private set; } = CharacterCanvasStates.CLOSED;
-
+    public bool IsOpen { get; private set; } = false;
 
     [Header("Dialogue References")]
     [SerializeField] private RectTransform dialogueContainer;
@@ -18,11 +16,21 @@ public class CharacterCanvas : MonoBehaviour
 
     [Space(10)]
     [Header("Speech Box Constraints")]
+
     [MinMaxSlider(10, 1000)]
     [SerializeField] private Vector2Int widthRange = new Vector2Int(100, 600);
 
     [MinMaxSlider(10, 500)]
     [SerializeField] private Vector2Int heightRange = new Vector2Int(60, 300);
+
+    [Space(10)]
+    [Header("Speech Box Constraints")]
+
+    [Range(0, 2)]
+    [SerializeField] private float speachBubbleFloatFrequency = 1;
+
+    [Range(0, 5)]
+    [SerializeField] private float speachBubbleFloatAmplitude = 0.5f;
 
     [Space(10)]
     [Header("Dialogue Transition Settings")]
@@ -55,15 +63,22 @@ public class CharacterCanvas : MonoBehaviour
 
         tail.sizeDelta = tailSizeClosed;
         speechBubble.sizeDelta = speechBubbleSizeClosed;
-        
+
         ClearText();
     }
 
     private void Start()
     {
-        DialogueController.Instance.OnConversationEnd += Hide;
+        DialogueController.Instance.OnConversationEnd += CloseTransition;
     }
     #endregion
+
+    private void FixedUpdate()
+    {
+        Vector2 containerPosition = dialogueContainer.anchoredPosition;
+        containerPosition.y = Mathf.Sin(Time.fixedTime * Mathf.PI * speachBubbleFloatFrequency) * speachBubbleFloatAmplitude;
+        dialogueContainer.anchoredPosition = containerPosition;
+    }
 
     public virtual float OpenCloseTransitionTime()
     {
@@ -75,26 +90,11 @@ public class CharacterCanvas : MonoBehaviour
         return speechBubbleResizeTransitionTime;
     }
 
-    public void Show(string _text)
+    public virtual void OpenTransition(string _text)
     {
-        if (CharacterCanvasState == CharacterCanvasStates.CLOSED)
-        {
-            OpenTransition(_text);
-        }
-        else
-        {
-            ResizieTransition(_text);
-        }
-    }
+        if (IsOpen) ResizieTransition(_text);
 
-    public void Hide()
-    {
-        if (CharacterCanvasState == CharacterCanvasStates.OPEN) CloseTransition();
-    }
-
-    protected virtual void OpenTransition(string _text)
-    {
-        CharacterCanvasState = CharacterCanvasStates.OPEN;
+        IsOpen = true;
 
         LeanTween.cancel(speechBubble);
         LeanTween.cancel(tail);
@@ -110,9 +110,11 @@ public class CharacterCanvas : MonoBehaviour
         });
     }
 
-    protected virtual void CloseTransition()
+    public virtual void CloseTransition()
     {
-        CharacterCanvasState = CharacterCanvasStates.CLOSED;
+        if (!IsOpen) return;
+
+        IsOpen = false;
 
         LeanTween.cancel(speechBubble);
         LeanTween.cancel(tail);
@@ -125,7 +127,7 @@ public class CharacterCanvas : MonoBehaviour
         });
     }
 
-    private void ResizieTransition(string _text)
+    public void ResizieTransition(string _text)
     {
         LeanTween.cancel(speechBubble);
         LeanTween.cancel(tail);
