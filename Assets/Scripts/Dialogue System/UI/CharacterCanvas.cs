@@ -15,16 +15,13 @@ public class CharacterCanvas : MonoBehaviour
     [SerializeField] private TextMeshProUGUI dialogueText;
 
     [Space(10)]
-    [Header("Speech Box Constraints")]
+    [Header("Speech Box Settings")]
 
     [MinMaxSlider(10, 1000)]
     [SerializeField] private Vector2Int widthRange = new Vector2Int(100, 600);
 
     [MinMaxSlider(10, 500)]
     [SerializeField] private Vector2Int heightRange = new Vector2Int(60, 300);
-
-    [Space(10)]
-    [Header("Speech Box Constraints")]
 
     [Range(0, 2)]
     [SerializeField] private float speachBubbleFloatFrequency = 1;
@@ -96,9 +93,7 @@ public class CharacterCanvas : MonoBehaviour
 
         IsOpen = true;
 
-        LeanTween.cancel(speechBubble);
-        LeanTween.cancel(tail);
-
+        CancelLeanTween();
         ClearText();
         dialogueText.enableAutoSizing = false;
 
@@ -115,9 +110,7 @@ public class CharacterCanvas : MonoBehaviour
         if (!IsOpen) return;
 
         IsOpen = false;
-
-        LeanTween.cancel(speechBubble);
-        LeanTween.cancel(tail);
+        CancelLeanTween();
 
         dialogueText.enableAutoSizing = true;
         LeanTween.size(speechBubble, speechBubbleSizeClosed, speechBubbleOpenCloseTransitionTime);
@@ -129,8 +122,7 @@ public class CharacterCanvas : MonoBehaviour
 
     public void ResizieTransition(string _text)
     {
-        LeanTween.cancel(speechBubble);
-        LeanTween.cancel(tail);
+        CancelLeanTween();
 
         LeanTween.size(speechBubble, GetTargetSize(_text), speechBubbleResizeTransitionTime);
     }
@@ -168,5 +160,13 @@ public class CharacterCanvas : MonoBehaviour
 
         return targetSize;
     }
+
+    #region Utility
+    protected virtual void CancelLeanTween()
+    {
+        LeanTween.cancel(speechBubble);
+        LeanTween.cancel(tail);
+    }
+    #endregion
     #endregion
 }

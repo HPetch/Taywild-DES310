@@ -7,8 +7,8 @@
 using System;
 using UnityEngine;
 using System.Collections;
-using System.Collections.Generic;
 using DialogueSystem.ScriptableObjects;
+using DialogueSystem.Types;
 
 public class DialogueController : MonoBehaviour
 {
@@ -89,11 +89,10 @@ public class DialogueController : MonoBehaviour
         if (!canDisplayNext) return;
 
         // If the player inputed continue the conversation
-        if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return) || Input.GetMouseButtonDown(0) || Input.GetButtonDown("Interact")) DisplayNext();
-        
-        if (Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Keypad1)) DisplayNext(0);
-        if (Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown(KeyCode.Keypad2)) DisplayNext(1);
-        if (Input.GetKeyDown(KeyCode.Alpha3) || Input.GetKeyDown(KeyCode.Keypad3)) DisplayNext(2);
+        if ((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return) || Input.GetMouseButtonDown(0) || Input.GetButtonDown("Interact")) && dialogueNode.DialogueType != DialogueTypes.MultipleChoice) DisplayNext();        
+        else if ((Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Keypad1)) && dialogueNode.DialogueType == DialogueTypes.MultipleChoice) DisplayNext(1);
+        else if ((Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown(KeyCode.Keypad2)) && dialogueNode.DialogueType == DialogueTypes.MultipleChoice) DisplayNext(2);
+        else if ((Input.GetKeyDown(KeyCode.Alpha3) || Input.GetKeyDown(KeyCode.Keypad3)) && dialogueNode.DialogueType == DialogueTypes.MultipleChoice) DisplayNext(3);
     }
 
     /// <summary>
@@ -174,7 +173,7 @@ public class DialogueController : MonoBehaviour
     }
 
     // Displays the next conversation event
-    private void DisplayNext(int _buttonIndex = -1)
+    private void DisplayNext(int _buttonIndex = 0)
     {
         // If the text type is not complete, stop that coroutine and display they final result
         if (textType != null)
@@ -184,7 +183,7 @@ public class DialogueController : MonoBehaviour
             
             currentDialogueCanvas.SetText(dialogueNode.Text);
 
-            if(dialogueNode.Choices.Count > 1) ShowBranchButtons();
+            if(dialogueNode.Choices.Count > 1) PlayerDialogueController.Instance.ShowThoughtBubbles(dialogueNode);
             return;
         }
 
@@ -199,12 +198,17 @@ public class DialogueController : MonoBehaviour
         if (dialogueNode.Choices.Count > 1)
         {
             // If a player option was selected
-            if (_buttonIndex >= 0 && _buttonIndex < dialogueNode.Choices.Count)
+            if (_buttonIndex > 0)
             {
-                HideBranchButtons();
+                // If option 3 was selected and there's only 2 options, assume they meant option 2 (as the second option is in the 3rd option spot)
+                _buttonIndex = dialogueNode.Choices.Count == 2 && _buttonIndex == 3 ? 2 : _buttonIndex;
+                // If option 2 was selected and there's only 1 option, assume they meant option 1 (as the only option is in the 2nd option spot)
+                _buttonIndex = dialogueNode.Choices.Count == 1 && _buttonIndex == 2 || _buttonIndex == 1 ? 1 : _buttonIndex;
+
+                PlayerDialogueController.Instance.HideThoughtBubbles(_buttonIndex - 1);
 
                 // Compute the next node
-                StartCoroutine(ComputeNode(dialogueNode.Choices[_buttonIndex].NextDialogue));
+                StartCoroutine(ComputeNode(dialogueNode.Choices[_buttonIndex - 1].NextDialogue));
             }
 
             // Else the player has pressed anykey, but as it's a branch they have to select an option
@@ -318,20 +322,10 @@ public class DialogueController : MonoBehaviour
             }
         }
 
-        if(dialogueNode.Choices.Count > 1) ShowBranchButtons();
+        if(dialogueNode.Choices.Count > 1) PlayerDialogueController.Instance.ShowThoughtBubbles(dialogueNode);
 
         // Sets coroutine to null, to track when it's finished
         textType = null;
-    }
-
-    private void ShowBranchButtons()
-    {
-
-    }
-
-    private void HideBranchButtons()
-    {
-
     }
 
     /// <summary>
@@ -348,7 +342,7 @@ public class DialogueController : MonoBehaviour
 
     public void BranchButton(int _buttonID)
     {
-        DisplayNext(_buttonID - 1);
+        DisplayNext(_buttonID);
     }
 
     public void SetTypeSpeed(float textTypeDelay)

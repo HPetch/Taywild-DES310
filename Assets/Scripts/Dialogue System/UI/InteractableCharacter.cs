@@ -63,9 +63,7 @@ public class InteractableCharacter : CharacterCanvas
     }
 
     public override void OpenTransition(string _text)
-    {
-        //LeanTween.cancel(characterNameCanvasGroup.gameObject);
-
+    {      
         base.OpenTransition(_text);
 
         LeanTween.delayedCall(base.OpenCloseTransitionTime(), callback =>
@@ -76,8 +74,6 @@ public class InteractableCharacter : CharacterCanvas
 
     public override void CloseTransition()
     {
-        //LeanTween.cancel(characterNameCanvasGroup.gameObject);
-
         LeanTween.alphaCanvas(characterNameCanvasGroup, 0, characterNameTransitionTime);
 
         LeanTween.delayedCall(characterNameTransitionTime, callback =>
@@ -104,5 +100,13 @@ public class InteractableCharacter : CharacterCanvas
             isPlayerWithinInteractionDistance = false;
         }
     }
+
+    #region Utility
+    protected override void CancelLeanTween()
+    {
+        base.CancelLeanTween();
+        LeanTween.cancel(characterNameCanvasGroup.gameObject);
+    }
+    #endregion
     #endregion
 }
