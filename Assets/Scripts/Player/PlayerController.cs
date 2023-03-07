@@ -182,6 +182,8 @@ public class PlayerController : MonoBehaviour
     [Tooltip("How fast the player decelerates when gliding and no input")]
     [Range(0, 1)]
     [SerializeField] private float glideAirDragMultiplier = 0.95f;
+
+    private List<AirCurrent> airCurrents = new List<AirCurrent>();
     #endregion
 
     #region Utility
@@ -249,7 +251,7 @@ public class PlayerController : MonoBehaviour
         // If NotGrounded and Not touching a wall
         else if (!IsTouchingWall)
         {
-            if (!IsGliding && velocity.y < -fallSpeedThatTriggersGliding) StartGliding();
+            if (velocity.y < -fallSpeedThatTriggersGliding) StartGliding();
 
             velocity = IsGliding ? GlidingMovement(velocity) : AirMovement(velocity);
         }
@@ -291,6 +293,27 @@ public class PlayerController : MonoBehaviour
     private Vector2 GlidingMovement(Vector2 _velocity)
     {
         _velocity.y = _velocity.y < -glideFallSpeed ? -glideFallSpeed : _velocity.y;
+
+        foreach (AirCurrent airCurrent in airCurrents)
+        {
+            switch (airCurrent.AirCurrentDirectionType)
+            {
+                case AirCurrent.AirCurrentDirectionTypes.UP:
+                    _velocity.y = _velocity.y < airCurrent.AirCurrentSpeed ? airCurrent.AirCurrentSpeed : _velocity.y;
+                    break;
+
+                case AirCurrent.AirCurrentDirectionTypes.LEFT:
+                    if (movementInput.x > 0) _velocity.x = _velocity.x > airCurrent.AirCurrentFightSpeed ? airCurrent.AirCurrentFightSpeed : _velocity.x;
+                    else _velocity.x = _velocity.x > -airCurrent.AirCurrentSpeed ? -airCurrent.AirCurrentSpeed : _velocity.x;
+
+                    break;
+
+                case AirCurrent.AirCurrentDirectionTypes.RIGHT:
+                    if (movementInput.x < 0) _velocity.x = _velocity.x < -airCurrent.AirCurrentFightSpeed ? -airCurrent.AirCurrentFightSpeed : _velocity.x;
+                    else _velocity.x = _velocity.x < airCurrent.AirCurrentSpeed ? airCurrent.AirCurrentSpeed : _velocity.x;
+                    break;
+            }
+        }
 
         // If Movement Input
         if (movementInput.x != 0 && TimeSinceLastWallJump > airMovementDisabledDelayAfterWallJump)
@@ -563,7 +586,7 @@ public class PlayerController : MonoBehaviour
     private void StartGliding()
     {
         // If holding the drop key then do not start gliding
-        if (Input.GetButton("Drop")) return;
+        if (Input.GetButton("Drop") || IsGliding) return;
 
         IsGliding = true;
         OnPlayerGlide?.Invoke();
@@ -610,7 +633,7 @@ public class PlayerController : MonoBehaviour
     /// Locks the Players movement and action inputs.
     /// </summary>
     /// <param name="conversation">Parameter not used, is required to subsribe to the event</param>
-    private void LockPlayerInput(Conversation conversation = null)
+    private void LockPlayerInput(/*Conversation conversation = null*/)
     {
         IsLockedInput = true;
         rb.constraints = RigidbodyConstraints2D.FreezeAll;
@@ -620,7 +643,7 @@ public class PlayerController : MonoBehaviour
     /// Un-Locks the players movement and actions inputs.
     /// </summary>
     /// <param name="conversation">Parameter not used, is required to subsribe to the event</param>
-    private void UnLockPlayerInput(Conversation conversation = null)
+    private void UnLockPlayerInput(/*Conversation conversation = null*/)
     {
         IsLockedInput = false;
         rb.constraints = RigidbodyConstraints2D.FreezeRotation;
@@ -655,13 +678,23 @@ public class PlayerController : MonoBehaviour
 
     private bool IsPlayerMoveingIntoWall { get { return IsTouchingWall && (IsFacingRight && movementInput.x > 0) || (!IsFacingRight && movementInput.x < 0); } }
     private bool IsPlayerMoveingAwayFromWall { get { return IsTouchingWall && (IsFacingRight && movementInput.x < 0) || (!IsFacingRight && movementInput.x > 0); } }
+
+    public void AddAirCurrent(AirCurrent _airCurrent)
+    {
+        if (!airCurrents.Contains(_airCurrent))
+        {
+            airCurrents.Add(_airCurrent);
+            StartGliding();
+        }
+    }
+
+    public void RemoveAirCurrent(AirCurrent _airCurrent)
+    {
+        if (airCurrents.Contains(_airCurrent)) airCurrents.Remove(_airCurrent);       
+    }
     #endregion
 
     #region Collision
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-
-    }
     #endregion
 
     #region Debug

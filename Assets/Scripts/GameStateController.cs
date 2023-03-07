@@ -11,7 +11,15 @@ public class GameStateController : MonoBehaviour
 
     private void Awake()
     {
-        Instance = this;
+        // If there already exists an Instance of this singleton then destroy this object, else this is the singleton instance
+        if (Instance != null) Destroy(gameObject);
+        else Instance = this;
+    }
+
+    private void Start()
+    {
+        DialogueController.Instance.OnConversationStart += DialoguePause;
+        DialogueController.Instance.OnConversationEnd += DialogueUnPause;
     }
 
     private void Update()

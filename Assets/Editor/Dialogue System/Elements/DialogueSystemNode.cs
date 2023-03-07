@@ -5,125 +5,106 @@ using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-namespace DialogueSystem.Types
-{
-    public enum DialogueTypes { SingleChoice, MultipleChoice }
-}
-
 namespace DialogueSystem.Elements
 {
     using Data.Save;
     using Utilities;
     using Windows;
     using Types;
-    
+
     public class DialogueSystemNode : Node
-    {       
+    {
         public string ID { get; set; }
 
-        public string DialogueName { get; set; }
-        public List<DialogueSystemChoiceSaveData> Choices { get; set; }
-        public string Text { get; set; }
-        public DialogueTypes DialogueType { get; set; }
+        public string NodeName { get; set; }
+        public NodeTypes NodeType { get; set; }
         public DialogueSystemGroup Group { get; set; }
 
+        public List<DialogueSystemChoiceSaveData> Choices { get; set; }
+
+        public DialogueTypes DialogueType { get; set; }
+        public DialogueCharacter Character { get; set; }
+        public string DialogueText { get; set; }
+
         protected DialogueSystemGraphView graphView;
-        private Color defaultBackgroundColor;
+        protected Color defaultBorderColor;
+        protected float defaultBorderWidth;
 
         public virtual void Initialise(string nodeName, DialogueSystemGraphView dialogueSystemGraphView, Vector2 position)
         {
             ID = Guid.NewGuid().ToString();
             graphView = dialogueSystemGraphView;
 
-            DialogueName = nodeName;
+            NodeName = nodeName;
             Choices = new List<DialogueSystemChoiceSaveData>();
-            Text = "Dialogue text.";
 
             SetPosition(new Rect(position, Vector2.one));
 
-            defaultBackgroundColor = new Color(29f / 255f, 29f / 255f, 30f / 255f);
-
-            mainContainer.AddToClassList("ds-node__main-container");
-            extensionContainer.AddToClassList("ds-node__extension-container");
+            defaultBorderColor = titleContainer.style.borderTopColor.value;
+            defaultBorderWidth = titleContainer.style.borderTopWidth.value;
         }
-
-        #region Overrided Methods
-        public override void BuildContextualMenu(ContextualMenuPopulateEvent evt)
-        {
-            evt.menu.AppendAction("Disconnect Input Ports", actionEvent => DisconnectInputPorts());
-            evt.menu.AppendAction("Disconnect Output Ports", actionEvent => DisconnectOutputPorts());
-
-            base.BuildContextualMenu(evt);
-        }
-        #endregion
 
         public virtual void Draw()
         {
             /* TITLE CONTAINER */
-            TextField dialogueNameTextField = DialogueSystemElementUtility.CreateTextField(DialogueName, null, callback =>
-             {
-                 TextField target = (TextField)callback.target;
-                 target.value = callback.newValue.RemoveWhitespaces().RemoveSpecialCharacters();
+            TextField nodeNameTextField = DialogueSystemElementUtility.CreateTextField(NodeName, null, callback =>
+            {
+                TextField target = (TextField)callback.target;
+                target.value = callback.newValue.RemoveWhitespaces().RemoveSpecialCharacters();
 
-                 if(string.IsNullOrEmpty(target.value))
-                 {
-                     if(!string.IsNullOrEmpty(DialogueName))
-                     {
-                         graphView.NameErrorsAmount++;
-                     }
-                 }
-                 else
-                 {
-                     if(string.IsNullOrEmpty(DialogueName))
-                     {
-                         graphView.NameErrorsAmount--;
-                     }
-                 }
+                if (string.IsNullOrEmpty(target.value))
+                {
+                    if (!string.IsNullOrEmpty(NodeName))
+                    {
+                        graphView.NameErrorsAmount++;
+                    }
+                }
+                else
+                {
+                    if (string.IsNullOrEmpty(NodeName))
+                    {
+                        graphView.NameErrorsAmount--;
+                    }
+                }
 
-                 if (Group == null)
-                 {
-                     graphView.RemoveUngroupedNode(this);
-                     DialogueName = target.value;
-                     graphView.AddUngroupedNode(this);
-                     return;
-                 }
+                if (Group == null)
+                {
+                    graphView.RemoveUngroupedNode(this);
+                    NodeName = target.value;
+                    graphView.AddUngroupedNode(this);
+                    return;
+                }
 
-                 // Temporarly assign Group as RemoveGroupedNode will set this to null, and it's needed for AddGroupedNode
-                 DialogueSystemGroup currentGroup = Group;
-                 graphView.RemoveGroupedNode(this, Group);
-                 DialogueName = target.value;
-                 graphView.AddGroupedNode(this, currentGroup);
-             });
-            
-            dialogueNameTextField.AddClasses(
+                // Temporarly assign Group as RemoveGroupedNode will set this to null, and it's needed for AddGroupedNode
+                DialogueSystemGroup currentGroup = Group;
+                graphView.RemoveGroupedNode(this, Group);
+                NodeName = target.value;
+                graphView.AddGroupedNode(this, currentGroup);
+            });
+
+            nodeNameTextField.AddClasses(
                 "ds-node__text-field",
                 "ds-node__text-field__hidden",
                 "ds-node__filename-text-field"
             );
 
-            titleContainer.Insert(0, dialogueNameTextField);
+            titleContainer.Insert(0, nodeNameTextField);
 
             /* INPUT CONTAINER */
             Port inputPort = this.CreatePort("Dialogue Connection", Orientation.Horizontal, Direction.Input, Port.Capacity.Multi);
             inputPort.portName = "Dialogue Connection";
-            inputContainer.Add(inputPort);
-
-            /* EXTENSION CONTAINER */
-            VisualElement customDataContainer = new VisualElement();
-            customDataContainer.AddToClassList("ds-node__custom-data-container");
-
-            Foldout textFoldout = DialogueSystemElementUtility.CreateFoldout("Dialogue Text");
-
-            TextField textTextField = DialogueSystemElementUtility.CreateTextArea(Text, null, callback => { Text = callback.newValue; });
-            textTextField.AddClasses(
-                "ds-node__text-field",
-                "ds-node__quote-text-field"
-            );
-
-            textFoldout.Add(textTextField);
-            customDataContainer.Add(textFoldout);
-            extensionContainer.Add(customDataContainer);
+            inputContainer.Add(inputPort);            
         }
+
+        #region Overrided Methods
+        public override void BuildContextualMenu(ContextualMenuPopulateEvent menuEvent)
+        {
+            menuEvent.menu.AppendAction("Disconnect Input Ports", actionEvent => DisconnectInputPorts());
+            menuEvent.menu.AppendAction("Disconnect Output Ports", actionEvent => DisconnectOutputPorts());
+
+            base.BuildContextualMenu(menuEvent);
+        }
+        #endregion
 
         #region Utility
         public void DisconnetAllPorts()
@@ -144,7 +125,7 @@ namespace DialogueSystem.Elements
 
         private void DisconnectPorts(VisualElement container)
         {
-            foreach(Port port in container.Children())
+            foreach (Port port in container.Children())
             {
                 if (!port.connected)
                 {
@@ -160,14 +141,16 @@ namespace DialogueSystem.Elements
             return !((Port)inputContainer.Children().First()).connected;
         }
 
-        public void SetErrorStyle(Color color)
+        public void SetErrorStyle(Color errorColor)
         {
-            mainContainer.style.backgroundColor = color;
+            titleContainer.style.borderTopColor = errorColor;
+            titleContainer.style.borderTopWidth = 5f;
         }
 
-        public void ResetStyle()
+        public void ResetErrorStyle()
         {
-            mainContainer.style.backgroundColor = defaultBackgroundColor;
+            titleContainer.style.borderTopColor = defaultBorderColor;
+            titleContainer.style.borderTopWidth = defaultBorderWidth;
         }
         #endregion
     }
