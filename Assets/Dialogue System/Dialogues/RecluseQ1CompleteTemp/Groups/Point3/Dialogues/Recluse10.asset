@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56aed56cf2bdb3940a003c0a146eee35, type: 3}
+  m_Name: Recluse10
+  m_EditorClassIdentifier: 
+  <NodeName>k__BackingField: Recluse10
+  <NodeType>k__BackingField: 0
+  <Choices>k__BackingField:
+  - <Text>k__BackingField: Found it?
+    <NextDialogue>k__BackingField: {fileID: 11400000, guid: c0704ef9abfe84c4b84b563399d29d5c, type: 2}
+  - <Text>k__BackingField: Other books?
+    <NextDialogue>k__BackingField: {fileID: 11400000, guid: ef1cada70a8c3c44fbb0605ce2fc6954, type: 2}
+  - <Text>k__BackingField: Something else.
+    <NextDialogue>k__BackingField: {fileID: 11400000, guid: 9bdd601a1708c054096b880f13169497, type: 2}
+  <Character>k__BackingField: {fileID: 11400000, guid: 4d46490a566f8dd4db8b9da467c58c40, type: 2}
+  <DialogueType>k__BackingField: 1
+  <Text>k__BackingField: Did you have another question about the Dream Plant Almanac?
+  <IsStartingDialogue>k__BackingField: 0

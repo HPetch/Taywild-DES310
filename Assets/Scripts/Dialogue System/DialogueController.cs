@@ -9,6 +9,7 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using DialogueSystem.ScriptableObjects;
+using DialogueSystem.Types;
 
 public class DialogueController : MonoBehaviour
 {
@@ -171,7 +172,7 @@ public class DialogueController : MonoBehaviour
             
             currentDialogueCanvas.SetText(dialogueNode.Text);
 
-            if(dialogueNode.Choices.Count > 1) ShowBranchButtons();
+            if(dialogueNode.DialogueType == DialogueTypes.MultipleChoice) ShowBranchButtons();
             return;
         }
 
@@ -183,7 +184,7 @@ public class DialogueController : MonoBehaviour
         }
 
         // If the node is a Branch
-        if (dialogueNode.Choices.Count > 1)
+        if (dialogueNode.DialogueType == DialogueTypes.MultipleChoice)
         {
             // If a player option was selected
             if (_buttonIndex >= 0 && _buttonIndex < dialogueNode.Choices.Count)
@@ -303,7 +304,7 @@ public class DialogueController : MonoBehaviour
             }
         }
 
-        if(dialogueNode.Choices.Count > 1) ShowBranchButtons();
+        if(dialogueNode.DialogueType == DialogueTypes.MultipleChoice) ShowBranchButtons();
 
         // Sets coroutine to null, to track when it's finished
         textType = null;
