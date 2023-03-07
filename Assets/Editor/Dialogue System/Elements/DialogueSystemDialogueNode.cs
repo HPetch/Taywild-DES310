@@ -65,7 +65,14 @@ namespace DialogueSystem.Elements
 
         public void SetCharacterStyle(DialogueCharacter character)
         {
-            if (character) mainContainer.style.backgroundColor = character.Colour;
+            if (character)
+            {
+                mainContainer.style.backgroundColor = character.Colour;
+                if (NodeName == "NodeName")
+                {
+                    RenameNode(character.CharacterName);
+                }
+            }
             else ResetCharacterStyle();
         }
 

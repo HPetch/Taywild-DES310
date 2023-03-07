@@ -30,6 +30,8 @@ namespace DialogueSystem.Elements
         protected Color defaultBorderColor;
         protected float defaultBorderWidth;
 
+        private TextField nodeNameTextField;
+
         public virtual void Initialise(string nodeName, DialogueSystemGraphView dialogueSystemGraphView, Vector2 position)
         {
             ID = Guid.NewGuid().ToString();
@@ -47,7 +49,7 @@ namespace DialogueSystem.Elements
         public virtual void Draw()
         {
             /* TITLE CONTAINER */
-            TextField nodeNameTextField = DialogueSystemElementUtility.CreateTextField(NodeName, null, callback =>
+            nodeNameTextField = DialogueSystemElementUtility.CreateTextField(NodeName, null, callback =>
             {
                 TextField target = (TextField)callback.target;
                 target.value = callback.newValue.RemoveWhitespaces().RemoveSpecialCharacters();
@@ -94,6 +96,11 @@ namespace DialogueSystem.Elements
             Port inputPort = this.CreatePort("Dialogue Connection", Orientation.Horizontal, Direction.Input, Port.Capacity.Multi);
             inputPort.portName = "Dialogue Connection";
             inputContainer.Add(inputPort);            
+        }
+
+        protected void RenameNode(string _nodeName)
+        {
+            nodeNameTextField.value = _nodeName;
         }
 
         #region Overrided Methods

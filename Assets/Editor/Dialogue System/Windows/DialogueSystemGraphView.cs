@@ -76,6 +76,8 @@ namespace DialogueSystem.Windows
             OnGroupRenamed();
             OnGraphViewChanged();
 
+            RegisterCallback<KeyDownEvent>(OnKeyDown);
+
             // Add the styles
             AddStyles();
             AddMiniMapStyles();
@@ -113,7 +115,7 @@ namespace DialogueSystem.Windows
 
             this.AddManipulator(new ContentDragger());
             this.AddManipulator(new SelectionDragger());
-            this.AddManipulator(new RectangleSelector());
+            this.AddManipulator(new RectangleSelector());                  
 
             this.AddManipulator(CreateDialogueNodeContextualMenu("Add Dialogue Node (Single Choice)", DialogueTypes.SingleChoice));
             this.AddManipulator(CreateDialogueNodeContextualMenu("Add Dialogue Node (Multiple Choice)", DialogueTypes.MultipleChoice));
@@ -424,6 +426,21 @@ namespace DialogueSystem.Windows
 
                 return changes;
             };
+        }
+
+        private void OnKeyDown(KeyDownEvent _event)
+        {
+            if(_event.keyCode == KeyCode.Q)
+            {
+                Debug.Log("Key Down: Q");
+                //CreateDialogueNode("NodeName", DialogueTypes.SingleChoice, MouseToGraphView());
+            }
+
+            if (_event.keyCode == KeyCode.E)
+            {
+                Debug.Log("Key Down: E");
+                //CreateDialogueNode("NodeName", DialogueTypes.MultipleChoice, MouseToGraphView());
+            }
         }
         #endregion
 
@@ -737,6 +754,15 @@ namespace DialogueSystem.Windows
             Vector2 localMousePosition = contentViewContainer.WorldToLocal(mousePosition);
 
             return localMousePosition;
+        }
+
+        public Vector2 MouseToGraphView()
+        {
+            Vector2 position = Input.mousePosition;
+
+            position.x = (position.x - contentViewContainer.worldBound.x) / scale;
+            position.y = (position.y - contentViewContainer.worldBound.y) / scale;
+            return position;
         }
 
         private Rect SnapPositionToGrid(Rect rect)
