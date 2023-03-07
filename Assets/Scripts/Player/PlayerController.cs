@@ -292,9 +292,9 @@ public class PlayerController : MonoBehaviour
 
     private Vector2 GlidingMovement(Vector2 _velocity)
     {
-        _velocity.y = _velocity.y < -glideFallSpeed ? -glideFallSpeed : _velocity.y;       
+        _velocity.y = _velocity.y < -glideFallSpeed ? -glideFallSpeed : _velocity.y;
 
-        foreach(AirCurrent airCurrent in airCurrents)
+        foreach (AirCurrent airCurrent in airCurrents)
         {
             switch (airCurrent.AirCurrentDirectionType)
             {
@@ -303,11 +303,14 @@ public class PlayerController : MonoBehaviour
                     break;
 
                 case AirCurrent.AirCurrentDirectionTypes.LEFT:
-                    _velocity.x = _velocity.x > airCurrent.AirCurrentSpeed ? -airCurrent.AirCurrentSpeed : _velocity.x;
+                    if (movementInput.x > 0) _velocity.x = _velocity.x > airCurrent.AirCurrentFightSpeed ? airCurrent.AirCurrentFightSpeed : _velocity.x;
+                    else _velocity.x = _velocity.x > -airCurrent.AirCurrentSpeed ? -airCurrent.AirCurrentSpeed : _velocity.x;
+
                     break;
 
                 case AirCurrent.AirCurrentDirectionTypes.RIGHT:
-                    _velocity.x = _velocity.x < airCurrent.AirCurrentSpeed ? airCurrent.AirCurrentSpeed : _velocity.x;
+                    if (movementInput.x < 0) _velocity.x = _velocity.x < -airCurrent.AirCurrentFightSpeed ? -airCurrent.AirCurrentFightSpeed : _velocity.x;
+                    else _velocity.x = _velocity.x < airCurrent.AirCurrentSpeed ? airCurrent.AirCurrentSpeed : _velocity.x;
                     break;
             }
         }
