@@ -11,6 +11,8 @@ public class DecorationController : MonoBehaviour
     public event Action OnPickupDecoration;
     public event Action OnPlaceDecoration;
     public event Action OnPlaceCancelDecoration;
+    public event Action OnPickupDamaged;
+    public event Action OnPickupBroken;
 
     public static DecorationController Instance { get; private set; }
     [SerializeField] private GameObject decorationSelectorPrefab;
@@ -21,6 +23,8 @@ public class DecorationController : MonoBehaviour
     public bool isEditMode { get; private set; }
 
     [field: SerializeField] public GameObject[] PlaceableDecorationObjectPrefabs { get; private set; }
+
+    [SerializeField] private GameObject PP;
 
     // Start is called before the first frame update
     private void Awake()
@@ -80,9 +84,9 @@ public class DecorationController : MonoBehaviour
             {
                 DecorationMoveStart(_selectedObject);
             }
-            else if (_selectedObject.GetComponent<TrashObject>())
+            else if (_selectedObject.GetComponent<PickupObject>())
             {
-                _selectedObject.GetComponent<TrashObject>().StartPull();
+                _selectedObject.GetComponent<PickupObject>().StartPull();
             }
         }
         else
@@ -135,10 +139,33 @@ public class DecorationController : MonoBehaviour
         
     }
 
+    public void PickupDamaged(SerializableDictionary<InventoryController.ItemNames, Vector2Int> _itemsReceived)
+    {
+        PickupAddItems(_itemsReceived);
+        OnPickupDamaged?.Invoke();
+    }
+
+    public void PickupBroken(SerializableDictionary<InventoryController.ItemNames, Vector2Int> _itemsReceived)
+    {
+        PickupAddItems(_itemsReceived);
+        OnPickupBroken?.Invoke();
+    }
+
+    private void PickupAddItems(SerializableDictionary<InventoryController.ItemNames, Vector2Int> _itemsReceived)
+    {
+        foreach (KeyValuePair<InventoryController.ItemNames, Vector2Int> _item in _itemsReceived) // Go through each item that the pickup dropped
+        {
+            int _itemAmount = 0;
+            if (_item.Value.y > 0 && _item.Value.y > _item.Value.x) _itemAmount = UnityEngine.Random.Range(_item.Value.x, _item.Value.y); // Randomise the amount dropped using the min and max
+            else _itemAmount = _item.Value.x; // If the max is 0 or lower than the min then just use the min instead
+            InventoryController.Instance.AddItem(_item.Key, _itemAmount); // Add the item and it's amount to the inventory
+        }
+    }
+
     public void DecorationButtonPress(GameObject _button)
     {
         DecorationObject _decorationObject = _button.GetComponentInParent<DecorationObject>();
-        if (_button == _decorationObject.PickupButton) Debug.Log(_decorationObject.gameObject + "Has been picked up into the inventory"); // Pickup object and refund materials to inventory
+        if (_button == _decorationObject.RemoveButton) Debug.Log(_decorationObject.gameObject + "Has been picked up into the inventory"); // Pickup object and refund materials to inventory
         if (_button == _decorationObject.EditButtonLeft) Debug.Log(_decorationObject.gameObject + "Has gone to previous style");
         if (_button == _decorationObject.EditButtonRight) Debug.Log(_decorationObject.gameObject + "Has gone to next style");
     }
@@ -154,12 +181,14 @@ public class DecorationController : MonoBehaviour
             isEditMode = false;
             Destroy(DecorationSelector);
             OnEnterEditMode?.Invoke();
+            PP.SetActive(false);
         }
         else
         {
             DecorationSelector = Instantiate(decorationSelectorPrefab);
             isEditMode = true;
             OnExitEditMode?.Invoke();
+            PP.SetActive(true);
         }
     }
 }

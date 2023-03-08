@@ -7,7 +7,6 @@
 using System;
 using UnityEngine;
 using System.Collections;
-using System.Collections.Generic;
 using DialogueSystem.ScriptableObjects;
 using DialogueSystem.Types;
 
@@ -22,9 +21,9 @@ public class DialogueController : MonoBehaviour
 
     #region Variables
     public bool IsConversing { get; private set; } = false;
+    public InteractableCharacter Character { get; private set; } = null;
 
     private DialogueSystemDialogueSO dialogueNode = null;
-    private InteractableCharacter character = null;
     private CharacterCanvas currentDialogueCanvas = null;
 
     // Coroutines need to be referenced so they can be stopped prematurly in case of a skip
@@ -90,11 +89,10 @@ public class DialogueController : MonoBehaviour
         if (!canDisplayNext) return;
 
         // If the player inputed continue the conversation
-        if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return) || Input.GetMouseButtonDown(0) || Input.GetButtonDown("Interact")) DisplayNext();
-        
-        if (Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Keypad1)) DisplayNext(0);
-        if (Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown(KeyCode.Keypad2)) DisplayNext(1);
-        if (Input.GetKeyDown(KeyCode.Alpha3) || Input.GetKeyDown(KeyCode.Keypad3)) DisplayNext(2);
+        if ((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return) || Input.GetMouseButtonDown(0) || Input.GetButtonDown("Interact")) && dialogueNode != null && dialogueNode.DialogueType != DialogueTypes.MultipleChoice) DisplayNext();
+        else if ((Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Keypad1)) && dialogueNode.DialogueType == DialogueTypes.MultipleChoice) DisplayNext(1);
+        else if ((Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown(KeyCode.Keypad2)) && dialogueNode.DialogueType == DialogueTypes.MultipleChoice) DisplayNext(2);
+        else if ((Input.GetKeyDown(KeyCode.Alpha3) || Input.GetKeyDown(KeyCode.Keypad3)) && dialogueNode.DialogueType == DialogueTypes.MultipleChoice) DisplayNext(3);
     }
 
     /// <summary>
@@ -105,7 +103,7 @@ public class DialogueController : MonoBehaviour
         if (IsConversing) return;
 
         IsConversing = true;        
-        character = _character;
+        Character = _character;
 
         OnConversationStart?.Invoke();
 
@@ -115,53 +113,67 @@ public class DialogueController : MonoBehaviour
     private IEnumerator StartConversationDelay(DialogueSystemDialogueSO _startingNode)
     {
         yield return new WaitForSeconds(1.0f);
-        ComputeNode(_startingNode);
+        StartCoroutine(ComputeNode(_startingNode));
     }
 
-    private void ComputeNode(DialogueSystemDialogueSO _node)
+    private IEnumerator ComputeNode(DialogueSystemDialogueSO _node)
     {
-        canDisplayNext = false;
-
         if (_node == null)
         {
             EndConversation();
-            return;
+            yield break;
         }
+
+        canDisplayNext = false;
 
         switch (_node.NodeType)
         {
-            case DialogueSystem.Types.NodeTypes.Dialogue:
+            case NodeTypes.Dialogue:
                 dialogueNode = _node;
+                bool resize = true;
 
-                if (IsPlayerTalking)
+                if (IsPlayerTalking && !PlayerDialogueController.Instance.IsOpen)
                 {
-                    character.Hide();
-                    PlayerDialogueController.Instance.Show(dialogueNode.Text);
+                    if (Character.IsOpen)
+                    {
+                        Character.CloseTransition();
+                        yield return new WaitForSeconds(Character.ResizeTransitionTime());
+                    }
+
+                    PlayerDialogueController.Instance.OpenTransition(dialogueNode.Text);
 
                     currentDialogueCanvas = PlayerDialogueController.Instance;
+                    resize = false;
                 }
-                else
+                else if (!IsPlayerTalking && !Character.IsOpen)
                 {
-                    character.Show(dialogueNode.Text);
-                    PlayerDialogueController.Instance.Hide();
+                    if (PlayerDialogueController.Instance.IsOpen)
+                    {
+                        PlayerDialogueController.Instance.CloseTransition();
+                        yield return new WaitForSeconds(PlayerDialogueController.Instance.ResizeTransitionTime());
+                    }
 
-                    currentDialogueCanvas = character;
+                    Character.SetCharacter(dialogueNode.Character);
+                    Character.OpenTransition(dialogueNode.Text);
+
+                    currentDialogueCanvas = Character;
+                    resize = false;
                 }
 
-                textType = StartCoroutine(TypeSentence(dialogueNode.Text));
-                return;
-
-            case DialogueSystem.Types.NodeTypes.Audio:
+                textType = StartCoroutine(TypeSentence(dialogueNode.Text, resize));
+                break;
+                
+            case NodeTypes.Audio:
                 if (_node.Choices.Count == 0) EndConversation();
                 else ComputeNode(_node.Choices[0].NextDialogue);
                 return;
 
-            case DialogueSystem.Types.NodeTypes.Edge:
+            case NodeTypes.Edge:
                 if (_node.Choices.Count == 0) EndConversation();
                 else ComputeNode(_node.Choices[0].NextDialogue);
                 return;
 
-            case DialogueSystem.Types.NodeTypes.Delay:
+            case NodeTypes.Delay:
                 if (_node.Choices.Count == 0) EndConversation();
                 else ComputeNode(_node.Choices[0].NextDialogue);
                 return;
@@ -169,10 +181,12 @@ public class DialogueController : MonoBehaviour
             default:
                 return;
         }
+
+        yield return null;
     }
 
     // Displays the next conversation event
-    private void DisplayNext(int _buttonIndex = -1)
+    private void DisplayNext(int _buttonIndex = 0)
     {
         // If the text type is not complete, stop that coroutine and display they final result
         if (textType != null)
@@ -182,7 +196,8 @@ public class DialogueController : MonoBehaviour
             
             currentDialogueCanvas.SetText(dialogueNode.Text);
 
-            if(dialogueNode.DialogueType == DialogueTypes.MultipleChoice) ShowBranchButtons();
+            if(dialogueNode.DialogueType == DialogueTypes.MultipleChoice) PlayerDialogueController.Instance.ShowThoughtBubbles(dialogueNode);
+
             return;
         }
 
@@ -197,25 +212,30 @@ public class DialogueController : MonoBehaviour
         if (dialogueNode.DialogueType == DialogueTypes.MultipleChoice)
         {
             // If a player option was selected
-            if (_buttonIndex >= 0 && _buttonIndex < dialogueNode.Choices.Count)
+            if (_buttonIndex > 0)
             {
-                HideBranchButtons();
+                // If option 3 was selected and there's only 2 options, assume they meant option 2 (as the second option is in the 3rd option spot)
+                _buttonIndex = dialogueNode.Choices.Count == 2 && _buttonIndex == 3 ? 2 : _buttonIndex;
+                // If option 2 was selected and there's only 1 option, assume they meant option 1 (as the only option is in the 2nd option spot)
+                _buttonIndex = dialogueNode.Choices.Count == 1 && _buttonIndex == 2 || _buttonIndex == 1 ? 1 : _buttonIndex;
+
+                PlayerDialogueController.Instance.HideThoughtBubbles(_buttonIndex - 1);
 
                 // Compute the next node
-                ComputeNode(dialogueNode.Choices[_buttonIndex].NextDialogue);
+                StartCoroutine(ComputeNode(dialogueNode.Choices[_buttonIndex - 1].NextDialogue));
             }
 
             // Else the player has pressed anykey, but as it's a branch they have to select an option
             return;
         }
 
-        ComputeNode(dialogueNode.Choices[0].NextDialogue);
+        StartCoroutine(ComputeNode(dialogueNode.Choices[0].NextDialogue));
     }
 
     /// <summary>
     /// Text-Type coroutine
     /// </summary>
-    private IEnumerator TypeSentence(string _sentence)
+    private IEnumerator TypeSentence(string _sentence, bool _resize)
     {
         // Set text field to blank      
         textTypeString = "";
@@ -224,7 +244,9 @@ public class DialogueController : MonoBehaviour
         // Reset TextType Delay to the default delay (incase it was changed in a link)
         currentTextTypeDelay = TextTypeDelay;
 
-        yield return new WaitForSeconds(currentDialogueCanvas.SizeTransitionTime);
+        float transitionTime = _resize ? currentDialogueCanvas.ResizeTransitionTime() : currentDialogueCanvas.OpenCloseTransitionTime();
+
+        yield return new WaitForSeconds(transitionTime);
         canDisplayNext = true;
 
         // For each character
@@ -313,21 +335,11 @@ public class DialogueController : MonoBehaviour
                     continue;
             }
         }
-
-        if(dialogueNode.DialogueType == DialogueTypes.MultipleChoice) ShowBranchButtons();
+        
+        if(dialogueNode.DialogueType == DialogueTypes.MultipleChoice) PlayerDialogueController.Instance.ShowThoughtBubbles(dialogueNode);
 
         // Sets coroutine to null, to track when it's finished
         textType = null;
-    }
-
-    private void ShowBranchButtons()
-    {
-
-    }
-
-    private void HideBranchButtons()
-    {
-
     }
 
     /// <summary>
@@ -344,7 +356,7 @@ public class DialogueController : MonoBehaviour
 
     public void BranchButton(int _buttonID)
     {
-        DisplayNext(_buttonID - 1);
+        DisplayNext(_buttonID);
     }
 
     public void SetTypeSpeed(float textTypeDelay)

@@ -126,14 +126,9 @@ public class PlayerEffectController : MonoBehaviour
 
     }
 
-    private void PlayerLanded()
+    private void PlayerLanded(GameObject _platform)
     {
         CameraController.Instance.Shake(0.2f, 0.02f);
-    }
-
-    private void PlayerSlide()
-    {
-        CameraController.Instance.PunchIn(0.2f, 5f);
     }
 
     private void PlayerDash()

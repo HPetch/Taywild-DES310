@@ -135,8 +135,10 @@ public class CameraController : MonoBehaviour
 
     private void OnConversationStarted()
     {
+        Vector2 midPoint = Vector2.Lerp(playerTransform.position, DialogueController.Instance.Character.transform.position, 0.5f);
+        dialogueOffset.x = midPoint.x - playerTransform.position.x;
         offset = dialogueOffset;
-        Zoom(4);
+        Zoom(5);
     }
 
     private void OnConversationEnded()
@@ -166,7 +168,7 @@ public class CameraController : MonoBehaviour
     #region Utility
     public float CameraSize { get { return cameraComponent.orthographicSize; } set { cameraComponent.orthographicSize = value; } }
 
-    public Vector2 MouseWolrdPosition { get { return cameraComponent.ScreenToWorldPoint(Input.mousePosition); } }
+    public Vector2 MouseWorldPosition { get { return cameraComponent.ScreenToWorldPoint(Input.mousePosition); } }
 
     private Vector2 ClampCameraToPartition(Vector2 position)
     {
