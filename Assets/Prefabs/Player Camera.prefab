@@ -109,7 +109,7 @@ MonoBehaviour:
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 0
+  m_RenderPostProcessing: 1
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0
@@ -133,7 +133,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cameraSpeed: 4
   playerOffset: {x: 0, y: 1}
+  dialogueOffset: {x: 0, y: 3}
   zoomSpeed: 10
-  punchSpeed: 20
-  punchInSrength: 0.2
-  punchOutSrength: 0.1
