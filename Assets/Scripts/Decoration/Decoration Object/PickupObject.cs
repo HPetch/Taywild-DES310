@@ -29,10 +29,11 @@ public class PickupObject : MonoBehaviour
     [SerializeField, Range(0.1f,0.3f)] private float pullBreakDistance; // Maximum distance the pickup can move before being destroyed. Actually starts breaking at 0.95 of this.
     private Vector2 pullDirection;
 
-    [SerializeField, Range(1, 6)] private int dragMoveSpeed; // How fast the object lerps towards the target position. Use lower values for heavier objects.
+    [SerializeField, Range(1, 10)] private int dragMoveSpeed; // How fast the object lerps towards the target position. Use lower values for heavier objects.
 
     private float pullMoveResistance; // Scales how much resistance the object is to moveing with health, higher health harder to move.
-    private float pullBreakTime; // How long the object must be at breaking distance before taking damage, scales with health.
+    private float pullBreakTime; // How long the object must be at breaking distance before taking damage, scales with pull break time multiplier
+    [SerializeField, Range(0, 0.5f)] private float pullBreakTimeMultiplier; // How long it takes to break multiplied by health
     private bool isTryingToBreak; // If the object is currently trying to break. Waits to achive pullBreakTime before breaking.
     private bool isMaxTravel; // If the object has reached maxium movement. Prevents funky movement past boundries.
 
@@ -131,7 +132,7 @@ public class PickupObject : MonoBehaviour
                 if (pullBreakTime < Time.time && !isTryingToBreak)
                 {
                     // Times how long until the object breaks, time until break scales with health remaining
-                    pullBreakTime = Time.time + (0.5f * health);
+                    pullBreakTime = Time.time + (pullBreakTimeMultiplier * health);
                     isTryingToBreak = true;
                 }
                 // A successful break attempt
