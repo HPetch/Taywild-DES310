@@ -37,7 +37,7 @@ public class InteractableCharacter : CharacterCanvas
 
     private void Update()
     {
-        if (isPlayerWithinInteractionDistance && Input.GetButtonDown("Interact") && !DialogueController.Instance.IsConversing)
+        if (isPlayerWithinInteractionDistance && Input.GetButtonDown("Interact") && !DialogueController.Instance.IsConversing && !DecorationController.Instance.isEditMode)
         {
             DialogueController.Instance.TriggerConversation(StartingNode, this);
             interactCanvasGroup.alpha = 0;

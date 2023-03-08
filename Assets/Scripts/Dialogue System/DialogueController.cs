@@ -263,16 +263,16 @@ public class DialogueController : MonoBehaviour
             if (letter == '<')
             {
                 richText = true;
-                if (_sentence.Substring(letterIndex + 1, 4) == "link")
+                if ((letterIndex + 5 <= _sentence.Length) && _sentence.Substring(letterIndex + 1, 4) == "link")
                 {
                     linkStarted = true;
 
                     // If the Short Wait Link is used in Rich text, Set the Wait time to short.
-                    if (_sentence.Substring(letterIndex + 7, 10) == "wait_short") textTypeWaitTime = shortWait;
+                    if ((letterIndex + 17 <= _sentence.Length) && _sentence.Substring(letterIndex + 7, 10) == "wait_short") textTypeWaitTime = shortWait;
                     // If the long Wait Link is used in Rich text, Set the Wait time to long.
-                    if (_sentence.Substring(letterIndex + 7, 9) == "wait_long") textTypeWaitTime = longWait;
+                    if ((letterIndex + 16 <= _sentence.Length) && _sentence.Substring(letterIndex + 7, 9) == "wait_long") textTypeWaitTime = longWait;
                 }
-                else if (_sentence.Substring(letterIndex + 1, 5) == "/link")
+                else if ((letterIndex + 6 <= _sentence.Length) && _sentence.Substring(letterIndex + 1, 5) == "/link")
                 {
                     linkStarted = false;
                 }
