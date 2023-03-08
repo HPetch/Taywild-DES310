@@ -185,7 +185,7 @@ public class DecorationController : MonoBehaviour
             PP.SetActive(false);
             
         }
-        else if(PlayerController.Instance.IsGrounded)
+        else if(PlayerController.Instance.IsGrounded && !DialogueController.Instance.IsConversing)
         {
             DecorationSelector = Instantiate(decorationSelectorPrefab);
             CameraController.Instance.SetTarget(DecorationSelector.transform);
