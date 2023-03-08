@@ -29,6 +29,7 @@ public class AirCurrent : MonoBehaviour
 
     private void Update()
     {
+        /*
 #if UNITY_EDITOR
         if (!Application.isPlaying)
         {
@@ -65,6 +66,7 @@ public class AirCurrent : MonoBehaviour
             return;
         }
 #endif    
+        */
 
         if (airCurrentRect.Contains(PlayerController.Instance.transform.position))
         {
