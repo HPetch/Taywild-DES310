@@ -16,13 +16,13 @@ MonoBehaviour:
   <Groups>k__BackingField:
   - <ID>k__BackingField: 7357f2c1-ba8f-4a68-827e-2a1c544aeb69
     <Name>k__BackingField: Point2
-    <Position>k__BackingField: {x: 13500, y: 66}
+    <Position>k__BackingField: {x: 13500, y: 65.999985}
   - <ID>k__BackingField: 43dddd9d-1970-41d2-ad4c-6fa5dbb39bdc
     <Name>k__BackingField: Point1
     <Position>k__BackingField: {x: 12450, y: 66}
   - <ID>k__BackingField: 28dda59c-a5f2-44fd-a95b-b2bee2ff909e
     <Name>k__BackingField: Point3
-    <Position>k__BackingField: {x: 14575, y: 66}
+    <Position>k__BackingField: {x: 14574.999, y: 65.99997}
   <Nodes>k__BackingField:
   - <ID>k__BackingField: 261a2059-6a84-4cfd-aca8-5e6cef366f35
     <Name>k__BackingField: Player1
@@ -136,7 +136,7 @@ MonoBehaviour:
     <SoundEffect>k__BackingField: {fileID: 0}
     <Delay>k__BackingField: 0
   - <ID>k__BackingField: 1d8433c2-46f1-4992-8007-9029ae2622d3
-    <Name>k__BackingField: EdgeNode7d54b547-c56b-4927-b1ae-6026389de4a1
+    <Name>k__BackingField: EdgeNode60574b44-0cf6-42e9-bb05-8c2bf4d97519
     <NodeType>k__BackingField: 1
     <GroupID>k__BackingField: 
     <Choices>k__BackingField:
@@ -241,8 +241,6 @@ MonoBehaviour:
       <NodeID>k__BackingField: 907181a4-3cad-41a2-9061-621a0ae1a975
     - <Text>k__BackingField: The crystal flower...
       <NodeID>k__BackingField: 44efe00d-45cb-4efd-9d41-4eaf04c3e94c
-    - <Text>k__BackingField: Leave
-      <NodeID>k__BackingField: 5b0395c6-874c-4d47-bf5e-92e468604be1
     <Position>k__BackingField: {x: 12475, y: 125}
     <DialogueType>k__BackingField: 1
     <Character>k__BackingField: {fileID: 11400000, guid: 4d46490a566f8dd4db8b9da467c58c40, type: 2}
@@ -250,7 +248,7 @@ MonoBehaviour:
     <SoundEffect>k__BackingField: {fileID: 0}
     <Delay>k__BackingField: 0
   - <ID>k__BackingField: b455f75e-0c0a-446d-96ca-0fbaa05ca77b
-    <Name>k__BackingField: EdgeNodebae1e515-c19b-419d-9969-a8643fc721b7
+    <Name>k__BackingField: EdgeNode58be5ec6-1be6-459d-b147-af73eca4e742
     <NodeType>k__BackingField: 1
     <GroupID>k__BackingField: 
     <Choices>k__BackingField:
@@ -269,8 +267,6 @@ MonoBehaviour:
     <Choices>k__BackingField:
     - <Text>k__BackingField: Dream books?
       <NodeID>k__BackingField: 42d2960c-f2d3-42c2-9028-a8c205598ba9
-    - <Text>k__BackingField: Books?
-      <NodeID>k__BackingField: 280b8cf4-2c4a-449b-b37d-54583b55f7dc
     - <Text>k__BackingField: Collecting books?
       <NodeID>k__BackingField: 731e2939-66c7-4420-9c98-944128b21669
     - <Text>k__BackingField: Ask another question.
@@ -336,7 +332,7 @@ MonoBehaviour:
     <SoundEffect>k__BackingField: {fileID: 0}
     <Delay>k__BackingField: 0
   - <ID>k__BackingField: 108ba55c-e07e-44d3-b0ff-914e478c5626
-    <Name>k__BackingField: EdgeNoded58c68e3-ff95-424e-95e0-a81efe148f2f
+    <Name>k__BackingField: EdgeNodef83c1753-3b8f-41c3-bbdd-e60e9a2102b0
     <NodeType>k__BackingField: 1
     <GroupID>k__BackingField: 
     <Choices>k__BackingField:
@@ -349,26 +345,13 @@ MonoBehaviour:
     <SoundEffect>k__BackingField: {fileID: 0}
     <Delay>k__BackingField: 0
   - <ID>k__BackingField: 1171155e-4520-4ea3-8ec8-1b637ad7b710
-    <Name>k__BackingField: EdgeNodeb1f34702-7e13-4644-a0d6-b4da7027730c
+    <Name>k__BackingField: EdgeNode4e081f0d-e277-41a0-b3f5-4183c399712d
     <NodeType>k__BackingField: 1
     <GroupID>k__BackingField: 
     <Choices>k__BackingField:
     - <Text>k__BackingField: 
       <NodeID>k__BackingField: e8e80270-9762-4294-aca6-5312dcc5d151
     <Position>k__BackingField: {x: 14525, y: 700}
-    <DialogueType>k__BackingField: 0
-    <Character>k__BackingField: {fileID: 0}
-    <Text>k__BackingField: 
-    <SoundEffect>k__BackingField: {fileID: 0}
-    <Delay>k__BackingField: 0
-  - <ID>k__BackingField: 45bfbe77-046c-4d67-85ec-0eb59e431483
-    <Name>k__BackingField: EdgeNodead4ce3d7-ecab-4dfd-b7bc-9c1dca973c24
-    <NodeType>k__BackingField: 1
-    <GroupID>k__BackingField: 
-    <Choices>k__BackingField:
-    - <Text>k__BackingField: 
-      <NodeID>k__BackingField: 1b6f2a98-e3d5-48a5-b664-af657daee6ed
-    <Position>k__BackingField: {x: 15500, y: 1350}
     <DialogueType>k__BackingField: 0
     <Character>k__BackingField: {fileID: 0}
     <Text>k__BackingField: 
@@ -446,7 +429,7 @@ MonoBehaviour:
     <SoundEffect>k__BackingField: {fileID: 0}
     <Delay>k__BackingField: 0
   - <ID>k__BackingField: 1b6f2a98-e3d5-48a5-b664-af657daee6ed
-    <Name>k__BackingField: EdgeNodeb0d74bb4-7390-4e4b-92b7-100fa453c313
+    <Name>k__BackingField: EdgeNode95474f9b-eb60-4491-811e-d8a256ccb720
     <NodeType>k__BackingField: 1
     <GroupID>k__BackingField: 
     <Choices>k__BackingField:
@@ -459,7 +442,7 @@ MonoBehaviour:
     <SoundEffect>k__BackingField: {fileID: 0}
     <Delay>k__BackingField: 0
   - <ID>k__BackingField: e0bb6316-8dfe-465a-8d0d-ff8976de0ccc
-    <Name>k__BackingField: EdgeNode7ffa15e4-b5ea-4c6b-a96c-5f76e1f4e4e4
+    <Name>k__BackingField: EdgeNode762291db-1b92-4b45-b0a9-b217b778c955
     <NodeType>k__BackingField: 1
     <GroupID>k__BackingField: 
     <Choices>k__BackingField:
@@ -472,7 +455,7 @@ MonoBehaviour:
     <SoundEffect>k__BackingField: {fileID: 0}
     <Delay>k__BackingField: 0
   - <ID>k__BackingField: 081f90bd-6d8c-402c-88d6-bfd2d918b73b
-    <Name>k__BackingField: EdgeNodeb104dc9c-1789-4d8a-a115-da74deab34e1
+    <Name>k__BackingField: EdgeNode870df7f1-8751-4f67-a244-0480059bfa9f
     <NodeType>k__BackingField: 1
     <GroupID>k__BackingField: 
     <Choices>k__BackingField:
@@ -485,7 +468,7 @@ MonoBehaviour:
     <SoundEffect>k__BackingField: {fileID: 0}
     <Delay>k__BackingField: 0
   - <ID>k__BackingField: b5e8dc8f-4116-4f61-9500-0dc2a8cb1bcd
-    <Name>k__BackingField: EdgeNodec24decec-ecf2-4c5c-8db3-ba700712d57f
+    <Name>k__BackingField: EdgeNode35d726f8-7617-463e-bf00-9c36c8ca8f1e
     <NodeType>k__BackingField: 1
     <GroupID>k__BackingField: 
     <Choices>k__BackingField:
@@ -497,50 +480,8 @@ MonoBehaviour:
     <Text>k__BackingField: 
     <SoundEffect>k__BackingField: {fileID: 0}
     <Delay>k__BackingField: 0
-  - <ID>k__BackingField: 4f2699fb-4452-40c0-bf49-8ccf45aeb343
-    <Name>k__BackingField: Recluse14
-    <NodeType>k__BackingField: 0
-    <GroupID>k__BackingField: 
-    <Choices>k__BackingField:
-    - <Text>k__BackingField: Next Dialogue
-      <NodeID>k__BackingField: 45bfbe77-046c-4d67-85ec-0eb59e431483
-    <Position>k__BackingField: {x: 15075, y: 1175}
-    <DialogueType>k__BackingField: 0
-    <Character>k__BackingField: {fileID: 11400000, guid: 4d46490a566f8dd4db8b9da467c58c40, type: 2}
-    <Text>k__BackingField: The Design of Everyday Things. I like to think about why
-      things are made the way they are.
-    <SoundEffect>k__BackingField: {fileID: 0}
-    <Delay>k__BackingField: 0
-  - <ID>k__BackingField: 6c715325-b66e-4319-a591-ad6e0f0dd808
-    <Name>k__BackingField: Recluse12
-    <NodeType>k__BackingField: 0
-    <GroupID>k__BackingField: 
-    <Choices>k__BackingField:
-    - <Text>k__BackingField: Fiction
-      <NodeID>k__BackingField: 73974241-5336-4b06-ad5a-cea4c50acd2c
-    - <Text>k__BackingField: Non-fiction
-      <NodeID>k__BackingField: 4f2699fb-4452-40c0-bf49-8ccf45aeb343
-    <Position>k__BackingField: {x: 14675, y: 950}
-    <DialogueType>k__BackingField: 1
-    <Character>k__BackingField: {fileID: 11400000, guid: 4d46490a566f8dd4db8b9da467c58c40, type: 2}
-    <Text>k__BackingField: Fiction or non-fiction?
-    <SoundEffect>k__BackingField: {fileID: 0}
-    <Delay>k__BackingField: 0
-  - <ID>k__BackingField: 280b8cf4-2c4a-449b-b37d-54583b55f7dc
-    <Name>k__BackingField: Player13
-    <NodeType>k__BackingField: 0
-    <GroupID>k__BackingField: 
-    <Choices>k__BackingField:
-    - <Text>k__BackingField: Next Dialogue
-      <NodeID>k__BackingField: 6c715325-b66e-4319-a591-ad6e0f0dd808
-    <Position>k__BackingField: {x: 14075, y: 950}
-    <DialogueType>k__BackingField: 0
-    <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
-    <Text>k__BackingField: Do you have any book recommendations?
-    <SoundEffect>k__BackingField: {fileID: 0}
-    <Delay>k__BackingField: 0
   - <ID>k__BackingField: b1535177-65f7-4693-8b8b-0efddf49b1bf
-    <Name>k__BackingField: EdgeNode872a285d-666c-4c69-9929-272eb86bb590
+    <Name>k__BackingField: EdgeNodedc89419d-5fdf-48ea-aa04-fdd17c2a4ed0
     <NodeType>k__BackingField: 1
     <GroupID>k__BackingField: 
     <Choices>k__BackingField:
@@ -621,7 +562,7 @@ MonoBehaviour:
     <SoundEffect>k__BackingField: {fileID: 0}
     <Delay>k__BackingField: 0
   - <ID>k__BackingField: 01cd7cc6-d497-4d73-9d88-8d396d197d66
-    <Name>k__BackingField: EdgeNode173b22c4-5f5f-4130-819a-3d0ad3bdc7a5
+    <Name>k__BackingField: EdgeNodefee1635c-c55b-43bd-bfe9-3e7b1f0b7971
     <NodeType>k__BackingField: 1
     <GroupID>k__BackingField: 
     <Choices>k__BackingField:
@@ -634,7 +575,7 @@ MonoBehaviour:
     <SoundEffect>k__BackingField: {fileID: 0}
     <Delay>k__BackingField: 0
   - <ID>k__BackingField: 60a8b928-11d2-4da9-a28d-7beab5151c07
-    <Name>k__BackingField: EdgeNode8daa58dc-5b90-47bb-8b07-80d6dc6ff27e
+    <Name>k__BackingField: EdgeNodedfbae696-ca42-4089-8185-0d47f983fc29
     <NodeType>k__BackingField: 1
     <GroupID>k__BackingField: 
     <Choices>k__BackingField:
@@ -885,7 +826,7 @@ MonoBehaviour:
     <SoundEffect>k__BackingField: {fileID: 0}
     <Delay>k__BackingField: 0
   - <ID>k__BackingField: e0e03364-dfb2-49ff-aac1-627d40480967
-    <Name>k__BackingField: EdgeNodec1531a9d-c593-49b4-8622-d09dfbe7b0e0
+    <Name>k__BackingField: EdgeNodedbb4be84-869e-4722-8304-d7653a90b355
     <NodeType>k__BackingField: 1
     <GroupID>k__BackingField: 
     <Choices>k__BackingField:
@@ -898,7 +839,7 @@ MonoBehaviour:
     <SoundEffect>k__BackingField: {fileID: 0}
     <Delay>k__BackingField: 0
   - <ID>k__BackingField: 4dc94986-63a0-4e5d-8037-9e7f3951c705
-    <Name>k__BackingField: EdgeNodea737c00d-d8bc-42be-a096-1515c1edabb6
+    <Name>k__BackingField: EdgeNode31963a20-1e47-453b-a35f-6d3cced7e3dc
     <NodeType>k__BackingField: 1
     <GroupID>k__BackingField: 
     <Choices>k__BackingField:
@@ -911,7 +852,7 @@ MonoBehaviour:
     <SoundEffect>k__BackingField: {fileID: 0}
     <Delay>k__BackingField: 0
   - <ID>k__BackingField: 5a437c53-7809-435d-9f01-3bf908159170
-    <Name>k__BackingField: EdgeNodea71ace76-a83e-4c0b-9c28-e360703e37d9
+    <Name>k__BackingField: EdgeNodeabf04217-c5b9-440e-b47f-86e26ce423f9
     <NodeType>k__BackingField: 1
     <GroupID>k__BackingField: 
     <Choices>k__BackingField:
@@ -1021,7 +962,7 @@ MonoBehaviour:
     <SoundEffect>k__BackingField: {fileID: 0}
     <Delay>k__BackingField: 0
   - <ID>k__BackingField: 45b9b4c6-aadb-43db-b960-f8b57c21c458
-    <Name>k__BackingField: EdgeNode7b3a8fc4-26bf-4292-acaa-4d5dc03b338a
+    <Name>k__BackingField: EdgeNode776be523-38b7-4ecf-9cc2-c6e71e4afd74
     <NodeType>k__BackingField: 1
     <GroupID>k__BackingField: 
     <Choices>k__BackingField:
@@ -1034,7 +975,7 @@ MonoBehaviour:
     <SoundEffect>k__BackingField: {fileID: 0}
     <Delay>k__BackingField: 0
   - <ID>k__BackingField: f3399cd8-62b3-4133-8120-36a747c29539
-    <Name>k__BackingField: EdgeNode57d91eae-1001-4fb0-84a1-4ac533a29cd8
+    <Name>k__BackingField: EdgeNode342b9d6e-9c6b-47a3-965f-022eedfd6591
     <NodeType>k__BackingField: 1
     <GroupID>k__BackingField: 
     <Choices>k__BackingField:
@@ -1102,7 +1043,7 @@ MonoBehaviour:
     <SoundEffect>k__BackingField: {fileID: 0}
     <Delay>k__BackingField: 0
   - <ID>k__BackingField: 337857b0-fd64-449d-92e4-d7c8578bc8eb
-    <Name>k__BackingField: EdgeNode0730e01c-5b98-4ae4-8ff9-4c9fea61bfca
+    <Name>k__BackingField: EdgeNodef94eadf1-0214-44f6-b68c-d7845f3f7308
     <NodeType>k__BackingField: 1
     <GroupID>k__BackingField: 
     <Choices>k__BackingField:
@@ -1143,7 +1084,7 @@ MonoBehaviour:
     <SoundEffect>k__BackingField: {fileID: 0}
     <Delay>k__BackingField: 0
   - <ID>k__BackingField: ecca1433-535a-4bf1-9b91-2ecc171384c2
-    <Name>k__BackingField: EdgeNode0ac60dda-81cb-4bcf-af40-5cef57d69a66
+    <Name>k__BackingField: EdgeNodebc463f0e-2c2f-4064-b4fc-bac19a52a585
     <NodeType>k__BackingField: 1
     <GroupID>k__BackingField: 
     <Choices>k__BackingField:
@@ -1156,7 +1097,7 @@ MonoBehaviour:
     <SoundEffect>k__BackingField: {fileID: 0}
     <Delay>k__BackingField: 0
   - <ID>k__BackingField: df550335-2504-4db4-b73c-1f7d42445634
-    <Name>k__BackingField: EdgeNode44b5f1b1-eaff-4c30-bc3a-f03c6a8eeed6
+    <Name>k__BackingField: EdgeNode6b7f7d57-4557-4822-a112-0f8001360400
     <NodeType>k__BackingField: 1
     <GroupID>k__BackingField: 
     <Choices>k__BackingField:
@@ -1169,7 +1110,7 @@ MonoBehaviour:
     <SoundEffect>k__BackingField: {fileID: 0}
     <Delay>k__BackingField: 0
   - <ID>k__BackingField: 45d91495-881e-4c44-b82b-c28a4655b1c6
-    <Name>k__BackingField: EdgeNodecfd3581b-e5c3-48a5-87cc-2d432e40aad6
+    <Name>k__BackingField: EdgeNode7833d44a-5f8c-464d-a58a-de41de4e52dc
     <NodeType>k__BackingField: 1
     <GroupID>k__BackingField: 
     <Choices>k__BackingField:
@@ -1179,20 +1120,6 @@ MonoBehaviour:
     <DialogueType>k__BackingField: 0
     <Character>k__BackingField: {fileID: 0}
     <Text>k__BackingField: 
-    <SoundEffect>k__BackingField: {fileID: 0}
-    <Delay>k__BackingField: 0
-  - <ID>k__BackingField: 5b0395c6-874c-4d47-bf5e-92e468604be1
-    <Name>k__BackingField: Recluse
-    <NodeType>k__BackingField: 0
-    <GroupID>k__BackingField: 
-    <Choices>k__BackingField:
-    - <Text>k__BackingField: Next Dialogue
-      <NodeID>k__BackingField: 
-    <Position>k__BackingField: {x: 13025, y: 500}
-    <DialogueType>k__BackingField: 0
-    <Character>k__BackingField: {fileID: 11400000, guid: 4d46490a566f8dd4db8b9da467c58c40, type: 2}
-    <Text>k__BackingField: Okay. Feel free to look around my greenhouse. Please be
-      careful when touching my plants.
     <SoundEffect>k__BackingField: {fileID: 0}
     <Delay>k__BackingField: 0
   - <ID>k__BackingField: cf8b0ea3-c1f9-4cc0-9ab8-b32d78541d36
@@ -1296,20 +1223,6 @@ MonoBehaviour:
       Not safe.<size=100%>'
     <SoundEffect>k__BackingField: {fileID: 0}
     <Delay>k__BackingField: 0
-  - <ID>k__BackingField: 73974241-5336-4b06-ad5a-cea4c50acd2c
-    <Name>k__BackingField: Recluse13
-    <NodeType>k__BackingField: 0
-    <GroupID>k__BackingField: 
-    <Choices>k__BackingField:
-    - <Text>k__BackingField: Next Dialogue
-      <NodeID>k__BackingField: 45bfbe77-046c-4d67-85ec-0eb59e431483
-    <Position>k__BackingField: {x: 15075, y: 950}
-    <DialogueType>k__BackingField: 0
-    <Character>k__BackingField: {fileID: 11400000, guid: 4d46490a566f8dd4db8b9da467c58c40, type: 2}
-    <Text>k__BackingField: 'The Lord of the Rings. It''s basic but I like the Shire.
-      I would like to live in a hill. '
-    <SoundEffect>k__BackingField: {fileID: 0}
-    <Delay>k__BackingField: 0
   - <ID>k__BackingField: 731e2939-66c7-4420-9c98-944128b21669
     <Name>k__BackingField: Recluse15
     <NodeType>k__BackingField: 0
@@ -1328,7 +1241,7 @@ MonoBehaviour:
     <SoundEffect>k__BackingField: {fileID: 0}
     <Delay>k__BackingField: 0
   - <ID>k__BackingField: 02997467-1bf3-4b6f-9ccb-60e45d3437c6
-    <Name>k__BackingField: EdgeNode2fa90797-3dd4-443a-ae2a-7da09e822df8
+    <Name>k__BackingField: EdgeNode36879c78-6421-4595-95f2-3a7bdc70a812
     <NodeType>k__BackingField: 1
     <GroupID>k__BackingField: 
     <Choices>k__BackingField:
@@ -1416,7 +1329,7 @@ MonoBehaviour:
     <SoundEffect>k__BackingField: {fileID: 0}
     <Delay>k__BackingField: 0
   - <ID>k__BackingField: 2001b505-fe2d-4a26-9e0b-b4c58bdc62f4
-    <Name>k__BackingField: EdgeNode1454a46e-7005-4d9d-bd02-7689ec0e6fcb
+    <Name>k__BackingField: EdgeNodeca39e9ed-d6e8-489f-8174-2f8cc278d38a
     <NodeType>k__BackingField: 1
     <GroupID>k__BackingField: 
     <Choices>k__BackingField:
@@ -1643,12 +1556,10 @@ MonoBehaviour:
     <Choices>k__BackingField:
     - <Text>k__BackingField: Dream books?
       <NodeID>k__BackingField: 42d2960c-f2d3-42c2-9028-a8c205598ba9
-    - <Text>k__BackingField: Books?
-      <NodeID>k__BackingField: 280b8cf4-2c4a-449b-b37d-54583b55f7dc
     - <Text>k__BackingField: Collecting books?
       <NodeID>k__BackingField: 731e2939-66c7-4420-9c98-944128b21669
     - <Text>k__BackingField: Ask another question.
-      <NodeID>k__BackingField: 
+      <NodeID>k__BackingField: b1535177-65f7-4693-8b8b-0efddf49b1bf
     <Position>k__BackingField: {x: 13525, y: 125}
     <DialogueType>k__BackingField: 1
     <Character>k__BackingField: {fileID: 11400000, guid: 4d46490a566f8dd4db8b9da467c58c40, type: 2}
@@ -1745,39 +1656,35 @@ MonoBehaviour:
   - Void4
   - Player6
   - RecluseAlt9
-  - EdgeNode7d54b547-c56b-4927-b1ae-6026389de4a1
+  - EdgeNode60574b44-0cf6-42e9-bb05-8c2bf4d97519
   - Recluse1
   - Void9
   - Recluse2
   - Player7
   - Player8
   - Recluse3
-  - EdgeNodebae1e515-c19b-419d-9969-a8643fc721b7
+  - EdgeNode58be5ec6-1be6-459d-b147-af73eca4e742
   - Player10
   - Player11
   - Recluse8
   - Player12
-  - EdgeNoded58c68e3-ff95-424e-95e0-a81efe148f2f
-  - EdgeNodeb1f34702-7e13-4644-a0d6-b4da7027730c
-  - EdgeNodead4ce3d7-ecab-4dfd-b7bc-9c1dca973c24
+  - EdgeNodef83c1753-3b8f-41c3-bbdd-e60e9a2102b0
+  - EdgeNode4e081f0d-e277-41a0-b3f5-4183c399712d
   - Player14
   - Player15
   - Recluse19
-  - EdgeNodeb0d74bb4-7390-4e4b-92b7-100fa453c313
-  - EdgeNode7ffa15e4-b5ea-4c6b-a96c-5f76e1f4e4e4
-  - EdgeNodeb104dc9c-1789-4d8a-a115-da74deab34e1
-  - EdgeNodec24decec-ecf2-4c5c-8db3-ba700712d57f
-  - Recluse14
-  - Recluse12
-  - Player13
-  - EdgeNode872a285d-666c-4c69-9929-272eb86bb590
+  - EdgeNode95474f9b-eb60-4491-811e-d8a256ccb720
+  - EdgeNode762291db-1b92-4b45-b0a9-b217b778c955
+  - EdgeNode870df7f1-8751-4f67-a244-0480059bfa9f
+  - EdgeNode35d726f8-7617-463e-bf00-9c36c8ca8f1e
+  - EdgeNodedc89419d-5fdf-48ea-aa04-fdd17c2a4ed0
   - Player16
   - Player17
   - Recluse20
   - Player18
   - Recluse21
-  - EdgeNode173b22c4-5f5f-4130-819a-3d0ad3bdc7a5
-  - EdgeNode8daa58dc-5b90-47bb-8b07-80d6dc6ff27e
+  - EdgeNodefee1635c-c55b-43bd-bfe9-3e7b1f0b7971
+  - EdgeNodedfbae696-ca42-4089-8185-0d47f983fc29
   - Player19
   - Recluse24
   - Player20
@@ -1794,9 +1701,9 @@ MonoBehaviour:
   - Player31
   - Recluse26
   - Recluse27
-  - EdgeNodec1531a9d-c593-49b4-8622-d09dfbe7b0e0
-  - EdgeNodea737c00d-d8bc-42be-a096-1515c1edabb6
-  - EdgeNodea71ace76-a83e-4c0b-9c28-e360703e37d9
+  - EdgeNodedbb4be84-869e-4722-8304-d7653a90b355
+  - EdgeNode31963a20-1e47-453b-a35f-6d3cced7e3dc
+  - EdgeNodeabf04217-c5b9-440e-b47f-86e26ce423f9
   - Player32
   - Recluse30
   - Player33
@@ -1804,19 +1711,18 @@ MonoBehaviour:
   - Recluse34
   - Recluse35
   - Player35
-  - EdgeNode7b3a8fc4-26bf-4292-acaa-4d5dc03b338a
-  - EdgeNode57d91eae-1001-4fb0-84a1-4ac533a29cd8
+  - EdgeNode776be523-38b7-4ecf-9cc2-c6e71e4afd74
+  - EdgeNode342b9d6e-9c6b-47a3-965f-022eedfd6591
   - Void10
   - Recluse37
   - Player36
   - Player37
-  - EdgeNode0730e01c-5b98-4ae4-8ff9-4c9fea61bfca
+  - EdgeNodef94eadf1-0214-44f6-b68c-d7845f3f7308
   - Player38
   - Recluse39
-  - EdgeNode0ac60dda-81cb-4bcf-af40-5cef57d69a66
-  - EdgeNode44b5f1b1-eaff-4c30-bc3a-f03c6a8eeed6
-  - EdgeNodecfd3581b-e5c3-48a5-87cc-2d432e40aad6
-  - Recluse
+  - EdgeNodebc463f0e-2c2f-4064-b4fc-bac19a52a585
+  - EdgeNode6b7f7d57-4557-4822-a112-0f8001360400
+  - EdgeNode7833d44a-5f8c-464d-a58a-de41de4e52dc
   - Void1
   - RecluseAlt6
   - Void5
@@ -1824,15 +1730,14 @@ MonoBehaviour:
   - Void8
   - Player9
   - Recluse9
-  - Recluse13
   - Recluse15
-  - EdgeNode2fa90797-3dd4-443a-ae2a-7da09e822df8
+  - EdgeNode36879c78-6421-4595-95f2-3a7bdc70a812
   - Recluse18
   - Recluse28
   - Recluse23
   - Recluse29
   - Recluse40
-  - EdgeNode1454a46e-7005-4d9d-bd02-7689ec0e6fcb
+  - EdgeNodeca39e9ed-d6e8-489f-8174-2f8cc278d38a
   - Recluse31
   - Recluse32
   - Recluse36
