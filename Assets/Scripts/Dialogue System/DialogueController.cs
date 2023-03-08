@@ -165,18 +165,18 @@ public class DialogueController : MonoBehaviour
                 
             case NodeTypes.Audio:
                 if (_node.Choices.Count == 0) EndConversation();
-                else ComputeNode(_node.Choices[0].NextDialogue);
+                else StartCoroutine(ComputeNode(_node.Choices[0].NextDialogue));
                 yield break;
 
             case NodeTypes.Edge:
                 if (_node.Choices.Count == 0) EndConversation();
-                else ComputeNode(_node.Choices[0].NextDialogue);
+                else StartCoroutine(ComputeNode(_node.Choices[0].NextDialogue));
                 yield break;
 
             case NodeTypes.Delay:
                 yield return new WaitForSeconds(_node.Delay);
                 if (_node.Choices.Count == 0) EndConversation();
-                else ComputeNode(_node.Choices[0].NextDialogue);
+                else StartCoroutine(ComputeNode(_node.Choices[0].NextDialogue));
                 yield break;
 
             default:
