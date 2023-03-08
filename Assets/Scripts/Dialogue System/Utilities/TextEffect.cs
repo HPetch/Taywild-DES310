@@ -11,12 +11,12 @@ public class TextEffect : MonoBehaviour
     private readonly float rainbowSpeed = 0.25f;
 
     // Wave Settings
-    private readonly Vector2 waveStrength = new(0.1f, 0.1f);
+    private readonly Vector2 waveStrength = new Vector2(0.1f, 0.1f);
     private readonly float waveHeight = 4f;
     private readonly float waveSpeed = 2f;
 
     // Jiggle Settings
-    private readonly Vector2 jiggleStrength = new(4f, 2f);
+    private readonly Vector2 jiggleStrength = new Vector2(4f, 2f);
 
     // TextType Settings
     private readonly float slowTypeSpeed = 0.1f;
@@ -40,9 +40,6 @@ public class TextEffect : MonoBehaviour
 
     public void UpdateText()
     {
-#if UNITY_EDITOR
-        textComponent = GetComponent<TextMeshProUGUI>();
-#endif
 
         textComponent.ForceMeshUpdate();
 
