@@ -15,18 +15,6 @@ MonoBehaviour:
   <FileName>k__BackingField: 
   <Groups>k__BackingField: []
   <Nodes>k__BackingField:
-  - <ID>k__BackingField: 843987ab-a646-4867-8ce6-4d5ca46209e2
-    <Name>k__BackingField: Player
-    <NodeType>k__BackingField: 0
-    <GroupID>k__BackingField: 
-    <Choices>k__BackingField:
-    - <Text>k__BackingField: Next Dialogue
-      <NodeID>k__BackingField: 
-    <Position>k__BackingField: {x: 1750, y: 225}
-    <DialogueType>k__BackingField: 0
-    <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
-    <Text>k__BackingField: "I have to collect the flower before I\u2019m allowed
-      in\u2026I think he said I need to follow the river?"
   - <ID>k__BackingField: c392c43f-947d-4bf2-9d70-dcbd686fa2ed
     <Name>k__BackingField: Void
     <NodeType>k__BackingField: 0
@@ -38,9 +26,25 @@ MonoBehaviour:
     <DialogueType>k__BackingField: 0
     <Character>k__BackingField: {fileID: 11400000, guid: c11bdf3877896b84dac6bdb375297575, type: 2}
     <Text>k__BackingField: <i>The greenhouse door is still locked.</i>
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+  - <ID>k__BackingField: 843987ab-a646-4867-8ce6-4d5ca46209e2
+    <Name>k__BackingField: Player
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Dialogue
+      <NodeID>k__BackingField: 
+    <Position>k__BackingField: {x: 1750, y: 225}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
+    <Text>k__BackingField: "I have to collect the flower before I\u2019m allowed
+      in\u2026\nI think he said I need to follow the river?"
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
   <OldGroupNames>k__BackingField: []
   <OldUngroupedNodeNames>k__BackingField:
-  - Player
   - Void
+  - Player
   <OldGroupedNodeNames>k__BackingField:
     list: []
