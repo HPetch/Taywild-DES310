@@ -166,10 +166,22 @@ namespace DialogueSystem.Windows
             return CreateNode(node, nodeName, position, shouldDraw);
         }
 
+        public DialogueSystemNode CreateAudioNode(string nodeName, Vector2 position, bool shouldDraw = true)
+        {
+            DialogueSystemAudioNode node = new DialogueSystemAudioNode();
+            return CreateNode(node, nodeName, position, shouldDraw);
+        }
+
         public DialogueSystemNode CreateEdgeNode(Vector2 position, bool shouldDraw = true)
         {
             DialogueSystemEdgeNode node = new DialogueSystemEdgeNode();
             return CreateNode(node, "", position, shouldDraw);
+        }
+
+        public DialogueSystemNode CreateDelayNode(string nodeName, Vector2 position, bool shouldDraw = true)
+        {
+            DialogueSystemDelayNode node = new DialogueSystemDelayNode();
+            return CreateNode(node, nodeName, position, shouldDraw);
         }
 
         public DialogueSystemNode CreateNode(DialogueSystemNodeSaveData nodeData)
@@ -177,7 +189,9 @@ namespace DialogueSystem.Windows
             return nodeData.NodeType switch
             {
                 NodeTypes.Dialogue => CreateDialogueNode(nodeData.Name, nodeData.DialogueType, nodeData.Position, false),
+                NodeTypes.Audio => CreateAudioNode(nodeData.Name, nodeData.Position, false),
                 NodeTypes.Edge => CreateEdgeNode(nodeData.Position, false),
+                NodeTypes.Delay => CreateDelayNode(nodeData.Name, nodeData.Position, false),
                 _ => null,
             };
         }

@@ -26,6 +26,10 @@ namespace DialogueSystem.Elements
         public DialogueCharacter Character { get; set; }
         public string DialogueText { get; set; }
 
+        public AudioClip SoundEffect { get; set; }
+        public float Delay { get; set; }
+
+
         protected DialogueSystemGraphView graphView;
         protected Color defaultBorderColor;
         protected float defaultBorderWidth;
@@ -93,8 +97,8 @@ namespace DialogueSystem.Elements
             titleContainer.Insert(0, nodeNameTextField);
 
             /* INPUT CONTAINER */
-            Port inputPort = this.CreatePort("Dialogue Connection", Orientation.Horizontal, Direction.Input, Port.Capacity.Multi);
-            inputPort.portName = "Dialogue Connection";
+            Port inputPort = this.CreatePort("Input Connection", Orientation.Horizontal, Direction.Input, Port.Capacity.Multi);
+            inputPort.portName = "Input Connection";
             inputContainer.Add(inputPort);            
         }
 

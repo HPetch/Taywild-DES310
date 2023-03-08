@@ -6,6 +6,7 @@ namespace DialogueSystem.Elements
 {
     using Utilities;
     using Windows;
+    using Types;
 
     public class DialogueSystemDialogueNode : DialogueSystemNode
     {
@@ -15,7 +16,7 @@ namespace DialogueSystem.Elements
         {
             base.Initialise(nodeName, dialogueSystemGraphView, position);
 
-            NodeType = Types.NodeTypes.Dialogue;
+            NodeType = NodeTypes.Dialogue;
             DialogueText = "Dialogue text.";
 
             mainContainer.AddToClassList("ds-node__main-container");

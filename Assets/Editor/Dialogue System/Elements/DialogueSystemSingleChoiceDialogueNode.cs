@@ -15,8 +15,7 @@ namespace DialogueSystem.Elements
             base.Initialise(nodeName, dialogueSystemGraphView, position);
             DialogueType = DialogueTypes.SingleChoice;
 
-            DialogueSystemChoiceSaveData choiceData = new DialogueSystemChoiceSaveData() { Text = "Next Dialogue" };
-
+            DialogueSystemChoiceSaveData choiceData = new DialogueSystemChoiceSaveData() { Text = "Next Node" };
             Choices.Add(choiceData);
         }
 
