@@ -20,7 +20,6 @@ public class ParallaxController : MonoBehaviour
 
         Sprite sprite = GetComponent<SpriteRenderer>().sprite;
         textureUnitSizeX = (sprite.texture.width / sprite.pixelsPerUnit) * 2;
-        Debug.Log("Size:" + textureUnitSizeX);
     }
 
     private void LateUpdate()

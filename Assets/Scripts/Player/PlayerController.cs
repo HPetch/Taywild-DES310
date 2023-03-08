@@ -121,6 +121,10 @@ public class PlayerController : MonoBehaviour
     [Tooltip("The direction of the wall hop, Normalized during Initialisation")]
     [SerializeField] private Vector2 wallHopDirection = new Vector2(1, 0.5f);
 
+    [Tooltip("The delay between wall hop input and the wall hop")]
+    [Range(0, 0.5f)]
+    [SerializeField] private float wallHopInputQueueTime = 0.1f;
+
     [Space(5)]
     [Tooltip("The jump force when the Player jumps from the wall")]
     [Range(0, 60)]
@@ -139,6 +143,8 @@ public class PlayerController : MonoBehaviour
 
     private float timeOfLastWallHit = 0f;
     private float timeOfLastWallJump = 0f;
+    private float timeOfWallHopInput = 0;
+    private bool wallHopQueued = false;
 
     #endregion   
 
@@ -407,13 +413,17 @@ public class PlayerController : MonoBehaviour
 
     private void CheckIfWallTouching()
     {
-        bool isTouchingWallThisFrame = Physics2D.Raycast(capsuleCollider.bounds.center, Vector2.right * FacingDirection, wallCheckDistance, wallLayerMask) ||
-                                        Physics2D.Raycast(capsuleCollider.bounds.center, Vector2.right * -FacingDirection, wallCheckDistance, wallLayerMask);
+        bool isFrontTouchingWall = Physics2D.Raycast(capsuleCollider.bounds.center, Vector2.right * FacingDirection, wallCheckDistance, wallLayerMask);
+        bool isBackToughingWall = Physics2D.Raycast(capsuleCollider.bounds.center, Vector2.right * -FacingDirection, wallCheckDistance, wallLayerMask);
+
+        bool isTouchingWallThisFrame = isFrontTouchingWall || isBackToughingWall;
 
         // If player is not on the ground and is touching wall this frame, but not the last frame, then the player has hit a wall
         if (!IsGrounded && isTouchingWallThisFrame && !IsTouchingWall)
         {
             if (IsGliding) StopGliding();
+
+            if (isBackToughingWall) IsFacingRight = !IsFacingRight;
 
             timeOfLastWallHit = Time.time;
             WallStick();
@@ -433,10 +443,18 @@ public class PlayerController : MonoBehaviour
             {
                 UnWallSick();
 
-                if (!IsPlayerMoveingIntoWall) WallHop();
+                if (!IsPlayerMoveingIntoWall && !wallHopQueued)
+                {
+                    wallHopQueued = true;
+                    timeOfWallHopInput = Time.time;
+                }
             }
 
-            if (IsPlayerMoveingAwayFromWall) WallHop();
+            if (IsPlayerMoveingAwayFromWall && !wallHopQueued)
+            {
+                wallHopQueued = true;
+                timeOfWallHopInput = Time.time;
+            }
         }
     }
 
@@ -502,6 +520,19 @@ public class PlayerController : MonoBehaviour
         if (jumpQueued && !Input.GetButton("Jump")) jumpQueued = false;
 
         if (dashQueued && !Input.GetButton("Dash")) dashQueued = false;
+
+        if(wallHopQueued)
+        {
+            if(!IsTouchingWall)
+            {
+                wallHopQueued = false;
+            }
+            else if (TimeSinceWallHopInput > wallHopInputQueueTime)
+            {
+                wallHopQueued = false;
+                WallHop();
+            }
+        }
     }
     #endregion
 
@@ -531,6 +562,7 @@ public class PlayerController : MonoBehaviour
 
             rb.AddForce(new Vector2(FacingDirection * wallJumpForce * wallJumpDirection.x, wallJumpForce * wallJumpDirection.y), ForceMode2D.Impulse);
             timeOfLastWallJump = Time.time;
+            wallHopQueued = false;
 
             OnPlayerWallJump?.Invoke();
         }
@@ -676,6 +708,7 @@ public class PlayerController : MonoBehaviour
     private float TimeSinceLastGroundedJump { get { return Time.time - timeOfLastGroundedJump; } }
     private float TimeSinceLastWallHit { get { return Time.time - timeOfLastWallHit; } }
     private float TimeSinceLastWallJump { get { return Time.time - timeOfLastWallJump; } }
+    private float TimeSinceWallHopInput { get { return Time.time - timeOfWallHopInput; } }
 
     private bool IsPlayerMoveingIntoWall { get { return IsTouchingWall && (IsFacingRight && movementInput.x > 0) || (!IsFacingRight && movementInput.x < 0); } }
     private bool IsPlayerMoveingAwayFromWall { get { return IsTouchingWall && (IsFacingRight && movementInput.x < 0) || (!IsFacingRight && movementInput.x > 0); } }
