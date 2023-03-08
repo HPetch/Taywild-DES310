@@ -92,8 +92,11 @@ public class CameraController : MonoBehaviour
 
         if (DecorationController.Instance.isEditMode)
         {
+            // Only move camera in edit mode while holding control
             if (Input.GetKey(KeyCode.LeftControl))
             {
+                targetPosition = Vector2.Lerp(playerTransform.position, targetPosition, 0.5f);
+                targetPosition = ClampCameraToPartition(targetPosition);
                 newPosition = Vector2.Lerp(transform.position, new Vector2(targetPosition.x, targetPosition.y), Time.fixedDeltaTime * cameraSpeed);
             }
         }
@@ -173,6 +176,8 @@ public class CameraController : MonoBehaviour
         offset = playerOffset;
         Zoom(partitionTargetZoomSize);
     }
+
+    
 
     public void PunchIn(float strength, float speed, bool _holdPunch = false)
     {
