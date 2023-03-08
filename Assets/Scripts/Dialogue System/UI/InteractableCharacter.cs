@@ -19,7 +19,8 @@ public class InteractableCharacter : CharacterCanvas
     [SerializeField] private CanvasGroup interactCanvasGroup;
 
     private CanvasGroup characterNameCanvasGroup;
-    private DialogueSystemDialogueSO startingNode;
+    public DialogueSystemDialogueSO StartingNode;
+
     private bool isPlayerWithinInteractionDistance = false;
 
     #region Initialisation
@@ -30,7 +31,7 @@ public class InteractableCharacter : CharacterCanvas
         
         characterNameCanvasGroup.alpha = 0;
         interactCanvasGroup.alpha = 0;
-        startingNode = GetComponent<DialogueSystemConversation>().dialogue;
+        StartingNode = GetComponent<DialogueSystemConversation>().dialogue;
     }
     #endregion
 
@@ -38,7 +39,7 @@ public class InteractableCharacter : CharacterCanvas
     {
         if (isPlayerWithinInteractionDistance && Input.GetButtonDown("Interact") && !DialogueController.Instance.IsConversing)
         {
-            DialogueController.Instance.TriggerConversation(startingNode, this);
+            DialogueController.Instance.TriggerConversation(StartingNode, this);
             interactCanvasGroup.alpha = 0;
         }
     }

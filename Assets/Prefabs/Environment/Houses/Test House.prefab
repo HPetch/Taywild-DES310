@@ -1380,6 +1380,7 @@ GameObject:
   - component: {fileID: 5820280335498856223}
   - component: {fileID: 3093738983799745121}
   - component: {fileID: 2081344935170768687}
+  - component: {fileID: 7905871664494512135}
   - component: {fileID: 4947053688628705219}
   m_Layer: 0
   m_Name: Test House
@@ -1432,6 +1433,7 @@ MonoBehaviour:
   characterNameText: {fileID: 7805324855422119378}
   characterNameTransitionTime: 0.2
   interactCanvasGroup: {fileID: 1305924781922502920}
+  StartingNode: {fileID: 0}
 --- !u!114 &2081344935170768687
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1451,6 +1453,20 @@ MonoBehaviour:
   startingDialoguesOnly: 1
   selectedDialogueGroupIndex: 0
   selectedDialogueIndex: 0
+--- !u!114 &7905871664494512135
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5820280335498856220}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09d59292113ab5d42973da2ed71eaf3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  recluseQuestIncompleteStartingNode: {fileID: 11400000, guid: b722575744a33d0428a21d7935341244, type: 2}
+  recluseQuestCompleteStartingNode: {fileID: 11400000, guid: b722575744a33d0428a21d7935341244, type: 2}
 --- !u!61 &4947053688628705219
 BoxCollider2D:
   m_ObjectHideFlags: 0
