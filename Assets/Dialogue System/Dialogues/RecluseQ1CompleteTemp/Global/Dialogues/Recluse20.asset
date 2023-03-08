@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56aed56cf2bdb3940a003c0a146eee35, type: 3}
+  m_Name: Recluse20
+  m_EditorClassIdentifier: 
+  <NodeName>k__BackingField: Recluse20
+  <NodeType>k__BackingField: 0
+  <Choices>k__BackingField:
+  - <Text>k__BackingField: Rot?
+    <NextDialogue>k__BackingField: {fileID: 11400000, guid: 8be4dcce4fc7136488767d0cbd7917bc, type: 2}
+  - <Text>k__BackingField: Aren't you lonely?
+    <NextDialogue>k__BackingField: {fileID: 11400000, guid: a9d684971104df442ad097d716b999c4, type: 2}
+  <Character>k__BackingField: {fileID: 11400000, guid: 4d46490a566f8dd4db8b9da467c58c40, type: 2}
+  <DialogueType>k__BackingField: 1
+  <Text>k__BackingField: "I\u2026don\u2019t leave this place. It's too dangerous
+    outside. Too much rot. <size=60%><link=jiggle>Rot\u2026 <size=100%>\r\n"
+  <IsStartingDialogue>k__BackingField: 0
+  <SoundEffect>k__BackingField: {fileID: 0}
+  <Delay>k__BackingField: 0

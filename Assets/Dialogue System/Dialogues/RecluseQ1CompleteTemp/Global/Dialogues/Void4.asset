@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56aed56cf2bdb3940a003c0a146eee35, type: 3}
+  m_Name: Void4
+  m_EditorClassIdentifier: 
+  <NodeName>k__BackingField: Void4
+  <NodeType>k__BackingField: 0
+  <Choices>k__BackingField:
+  - <Text>k__BackingField: Enter.
+    <NextDialogue>k__BackingField: {fileID: 11400000, guid: 0f3cc0559efcb0d459ed3bc47343f0e4, type: 2}
+  - <Text>k__BackingField: Wait.
+    <NextDialogue>k__BackingField: {fileID: 11400000, guid: 4efe0ece98ae4f048878a9787dec0ee0, type: 2}
+  <Character>k__BackingField: {fileID: 11400000, guid: c11bdf3877896b84dac6bdb375297575, type: 2}
+  <DialogueType>k__BackingField: 1
+  <Text>k__BackingField: <i>The sound of the door being unlocked is heard and then
+    a shuffling sound.</i>
+  <IsStartingDialogue>k__BackingField: 0
+  <SoundEffect>k__BackingField: {fileID: 0}
+  <Delay>k__BackingField: 0

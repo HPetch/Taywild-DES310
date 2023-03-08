@@ -162,11 +162,25 @@ public class DialogueController : MonoBehaviour
 
                 textType = StartCoroutine(TypeSentence(dialogueNode.Text, resize));
                 break;
+                
+            case NodeTypes.Audio:
+                if (_node.Choices.Count == 0) EndConversation();
+                else ComputeNode(_node.Choices[0].NextDialogue);
+                yield break;
 
             case NodeTypes.Edge:
                 if (_node.Choices.Count == 0) EndConversation();
-                else StartCoroutine(ComputeNode(_node.Choices[0].NextDialogue));
-                break;
+                else ComputeNode(_node.Choices[0].NextDialogue);
+                yield break;
+
+            case NodeTypes.Delay:
+                yield return new WaitForSeconds(_node.Delay);
+                if (_node.Choices.Count == 0) EndConversation();
+                else ComputeNode(_node.Choices[0].NextDialogue);
+                yield break;
+
+            default:
+                yield break;
         }
 
         yield return null;
@@ -185,7 +199,7 @@ public class DialogueController : MonoBehaviour
 
             if (dialogueNode.DialogueType == DialogueTypes.MultipleChoice) PlayerDialogueController.Instance.ShowThoughtBubbles(dialogueNode);            
             else currentDialogueCanvas.ShowContinueIndicator();
-            
+
             return;
         }
 
@@ -197,7 +211,7 @@ public class DialogueController : MonoBehaviour
         }
 
         // If the node is a Branch
-        if (dialogueNode.Choices.Count > 1)
+        if (dialogueNode.DialogueType == DialogueTypes.MultipleChoice)
         {
             // If a player option was selected
             if (_buttonIndex > 0)

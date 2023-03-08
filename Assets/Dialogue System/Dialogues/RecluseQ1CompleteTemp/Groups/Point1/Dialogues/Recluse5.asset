@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56aed56cf2bdb3940a003c0a146eee35, type: 3}
+  m_Name: Recluse5
+  m_EditorClassIdentifier: 
+  <NodeName>k__BackingField: Recluse5
+  <NodeType>k__BackingField: 0
+  <Choices>k__BackingField:
+  - <Text>k__BackingField: Books?
+    <NextDialogue>k__BackingField: {fileID: 11400000, guid: 5ceb349be10fb2a4f9c307ffb9d27547, type: 2}
+  - <Text>k__BackingField: The outside?
+    <NextDialogue>k__BackingField: {fileID: 11400000, guid: f7ed237180beefe44951be53cf8a8a95, type: 2}
+  - <Text>k__BackingField: The crystal flower...
+    <NextDialogue>k__BackingField: {fileID: 11400000, guid: 333a2b3138aca5944916f93960e3d66e, type: 2}
+  - <Text>k__BackingField: Leave
+    <NextDialogue>k__BackingField: {fileID: 11400000, guid: 0b32cdc35a8ddec48accfb3974bf8635, type: 2}
+  <Character>k__BackingField: {fileID: 11400000, guid: 4d46490a566f8dd4db8b9da467c58c40, type: 2}
+  <DialogueType>k__BackingField: 1
+  <Text>k__BackingField: What would you like to talk about?
+  <IsStartingDialogue>k__BackingField: 0
+  <SoundEffect>k__BackingField: {fileID: 0}
+  <Delay>k__BackingField: 0

@@ -177,17 +177,20 @@ public class DecorationController : MonoBehaviour
     {
         if (isEditMode)
         {
+            CameraController.Instance.ResetTarget();
             DecorationMoveCancel();
             isEditMode = false;
             Destroy(DecorationSelector);
-            OnEnterEditMode?.Invoke();
+            OnExitEditMode?.Invoke();
             PP.SetActive(false);
+            
         }
-        else
+        else if(PlayerController.Instance.IsGrounded)
         {
             DecorationSelector = Instantiate(decorationSelectorPrefab);
+            CameraController.Instance.SetTarget(DecorationSelector.transform);
             isEditMode = true;
-            OnExitEditMode?.Invoke();
+            OnEnterEditMode?.Invoke();
             PP.SetActive(true);
         }
     }

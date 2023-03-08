@@ -26,9 +26,15 @@ namespace DialogueSystem.Elements
         public DialogueCharacter Character { get; set; }
         public string DialogueText { get; set; }
 
+        public AudioClip SoundEffect { get; set; }
+        public float Delay { get; set; }
+
+
         protected DialogueSystemGraphView graphView;
         protected Color defaultBorderColor;
         protected float defaultBorderWidth;
+
+        private TextField nodeNameTextField;
 
         public virtual void Initialise(string nodeName, DialogueSystemGraphView dialogueSystemGraphView, Vector2 position)
         {
@@ -47,7 +53,7 @@ namespace DialogueSystem.Elements
         public virtual void Draw()
         {
             /* TITLE CONTAINER */
-            TextField nodeNameTextField = DialogueSystemElementUtility.CreateTextField(NodeName, null, callback =>
+            nodeNameTextField = DialogueSystemElementUtility.CreateTextField(NodeName, null, callback =>
             {
                 TextField target = (TextField)callback.target;
                 target.value = callback.newValue.RemoveWhitespaces().RemoveSpecialCharacters();
@@ -91,9 +97,14 @@ namespace DialogueSystem.Elements
             titleContainer.Insert(0, nodeNameTextField);
 
             /* INPUT CONTAINER */
-            Port inputPort = this.CreatePort("Dialogue Connection", Orientation.Horizontal, Direction.Input, Port.Capacity.Multi);
-            inputPort.portName = "Dialogue Connection";
+            Port inputPort = this.CreatePort("Input Connection", Orientation.Horizontal, Direction.Input, Port.Capacity.Multi);
+            inputPort.portName = "Input Connection";
             inputContainer.Add(inputPort);            
+        }
+
+        protected void RenameNode(string _nodeName)
+        {
+            nodeNameTextField.value = _nodeName;
         }
 
         #region Overrided Methods

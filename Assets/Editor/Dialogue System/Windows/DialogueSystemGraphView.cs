@@ -76,6 +76,8 @@ namespace DialogueSystem.Windows
             OnGroupRenamed();
             OnGraphViewChanged();
 
+            RegisterCallback<KeyDownEvent>(OnKeyDown);
+
             // Add the styles
             AddStyles();
             AddMiniMapStyles();
@@ -113,7 +115,7 @@ namespace DialogueSystem.Windows
 
             this.AddManipulator(new ContentDragger());
             this.AddManipulator(new SelectionDragger());
-            this.AddManipulator(new RectangleSelector());
+            this.AddManipulator(new RectangleSelector());                  
 
             this.AddManipulator(CreateDialogueNodeContextualMenu("Add Dialogue Node (Single Choice)", DialogueTypes.SingleChoice));
             this.AddManipulator(CreateDialogueNodeContextualMenu("Add Dialogue Node (Multiple Choice)", DialogueTypes.MultipleChoice));
@@ -164,10 +166,22 @@ namespace DialogueSystem.Windows
             return CreateNode(node, nodeName, position, shouldDraw);
         }
 
+        public DialogueSystemNode CreateAudioNode(string nodeName, Vector2 position, bool shouldDraw = true)
+        {
+            DialogueSystemAudioNode node = new DialogueSystemAudioNode();
+            return CreateNode(node, nodeName, position, shouldDraw);
+        }
+
         public DialogueSystemNode CreateEdgeNode(Vector2 position, bool shouldDraw = true)
         {
             DialogueSystemEdgeNode node = new DialogueSystemEdgeNode();
             return CreateNode(node, "", position, shouldDraw);
+        }
+
+        public DialogueSystemNode CreateDelayNode(string nodeName, Vector2 position, bool shouldDraw = true)
+        {
+            DialogueSystemDelayNode node = new DialogueSystemDelayNode();
+            return CreateNode(node, nodeName, position, shouldDraw);
         }
 
         public DialogueSystemNode CreateNode(DialogueSystemNodeSaveData nodeData)
@@ -175,7 +189,9 @@ namespace DialogueSystem.Windows
             return nodeData.NodeType switch
             {
                 NodeTypes.Dialogue => CreateDialogueNode(nodeData.Name, nodeData.DialogueType, nodeData.Position, false),
+                NodeTypes.Audio => CreateAudioNode(nodeData.Name, nodeData.Position, false),
                 NodeTypes.Edge => CreateEdgeNode(nodeData.Position, false),
+                NodeTypes.Delay => CreateDelayNode(nodeData.Name, nodeData.Position, false),
                 _ => null,
             };
         }
@@ -424,6 +440,21 @@ namespace DialogueSystem.Windows
 
                 return changes;
             };
+        }
+
+        private void OnKeyDown(KeyDownEvent _event)
+        {
+            if(_event.keyCode == KeyCode.Q)
+            {
+                Debug.Log("Key Down: Q");
+                //CreateDialogueNode("NodeName", DialogueTypes.SingleChoice, MouseToGraphView());
+            }
+
+            if (_event.keyCode == KeyCode.E)
+            {
+                Debug.Log("Key Down: E");
+                //CreateDialogueNode("NodeName", DialogueTypes.MultipleChoice, MouseToGraphView());
+            }
         }
         #endregion
 
@@ -737,6 +768,15 @@ namespace DialogueSystem.Windows
             Vector2 localMousePosition = contentViewContainer.WorldToLocal(mousePosition);
 
             return localMousePosition;
+        }
+
+        public Vector2 MouseToGraphView()
+        {
+            Vector2 position = Input.mousePosition;
+
+            position.x = (position.x - contentViewContainer.worldBound.x) / scale;
+            position.y = (position.y - contentViewContainer.worldBound.y) / scale;
+            return position;
         }
 
         private Rect SnapPositionToGrid(Rect rect)
