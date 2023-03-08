@@ -1719,6 +1719,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parallaxEffectMultiplier: {x: 0.1, y: 0.1}
+  infiniteScrolling: 1
 --- !u!212 &151478511
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -7905,6 +7906,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parallaxEffectMultiplier: {x: 0.35, y: 0.35}
+  infiniteScrolling: 1
 --- !u!212 &654055614
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -9854,11 +9856,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3013080772066457373, guid: be44547f2466b3a4f94b067179dd162d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 273.1
+      value: -6.4
       objectReference: {fileID: 0}
     - target: {fileID: 3013080772066457373, guid: be44547f2466b3a4f94b067179dd162d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 116.4
+      value: -6.5
       objectReference: {fileID: 0}
     - target: {fileID: 3013080772066457373, guid: be44547f2466b3a4f94b067179dd162d, type: 3}
       propertyPath: m_LocalPosition.z
@@ -11559,6 +11561,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parallaxEffectMultiplier: {x: 0.2, y: 0.2}
+  infiniteScrolling: 1
 --- !u!212 &871623502
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -11984,6 +11987,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parallaxEffectMultiplier: {x: 0.3, y: 0.3}
+  infiniteScrolling: 1
 --- !u!212 &910838278
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -21633,6 +21637,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parallaxEffectMultiplier: {x: 0.2, y: 0.2}
+  infiniteScrolling: 1
 --- !u!212 &1698315521
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -22458,6 +22463,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parallaxEffectMultiplier: {x: 1, y: 1}
+  infiniteScrolling: 1
 --- !u!212 &1761880897
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -23189,6 +23195,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parallaxEffectMultiplier: {x: 0.5, y: 0.5}
+  infiniteScrolling: 1
 --- !u!212 &1807450820
 SpriteRenderer:
   m_ObjectHideFlags: 0
