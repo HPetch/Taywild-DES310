@@ -22,6 +22,9 @@ namespace DialogueSystem.Data.Save
         [field: SerializeField] public DialogueCharacter Character { get; set; }
         [field: SerializeField] public string Text { get; set; }
 
+        [field: SerializeField] public AudioClip SoundEffect { get; set; }
+        [field: SerializeField] public float Delay{ get; set; }
+
 
         public DialogueSystemNodeSaveData(DialogueSystemNode _node)
         {
@@ -36,6 +39,9 @@ namespace DialogueSystem.Data.Save
             DialogueType = _node.DialogueType;
             Character = _node.Character;
             Text = _node.DialogueText;
+
+            SoundEffect = _node.SoundEffect;
+            Delay = _node.Delay;
         }
     }
 }

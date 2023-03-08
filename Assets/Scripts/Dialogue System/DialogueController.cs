@@ -151,7 +151,17 @@ public class DialogueController : MonoBehaviour
                 textType = StartCoroutine(TypeSentence(dialogueNode.Text));
                 return;
 
+            case DialogueSystem.Types.NodeTypes.Audio:
+                if (_node.Choices.Count == 0) EndConversation();
+                else ComputeNode(_node.Choices[0].NextDialogue);
+                return;
+
             case DialogueSystem.Types.NodeTypes.Edge:
+                if (_node.Choices.Count == 0) EndConversation();
+                else ComputeNode(_node.Choices[0].NextDialogue);
+                return;
+
+            case DialogueSystem.Types.NodeTypes.Delay:
                 if (_node.Choices.Count == 0) EndConversation();
                 else ComputeNode(_node.Choices[0].NextDialogue);
                 return;

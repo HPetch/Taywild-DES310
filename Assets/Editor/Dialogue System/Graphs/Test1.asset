@@ -16,18 +16,62 @@ MonoBehaviour:
   <Groups>k__BackingField: []
   <Nodes>k__BackingField:
   - <ID>k__BackingField: d021179c-52d0-416b-bf2c-00cff492cf5f
-    <Name>k__BackingField: DialogueName
+    <Name>k__BackingField: Player
     <NodeType>k__BackingField: 0
     <GroupID>k__BackingField: 
     <Choices>k__BackingField:
     - <Text>k__BackingField: Next Dialogue
+      <NodeID>k__BackingField: 6d66588d-cdf0-4afd-9d32-5e0bf8d934ec
+    <Position>k__BackingField: {x: 250, y: 0}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
+    <Text>k__BackingField: Dialogue text.
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+  - <ID>k__BackingField: 2c52bf27-bdbc-4524-a28f-44590b4ef2cf
+    <Name>k__BackingField: Recluse
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
       <NodeID>k__BackingField: 
-    <Position>k__BackingField: {x: 306, y: 122}
+    <Position>k__BackingField: {x: 1075, y: 0}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 4d46490a566f8dd4db8b9da467c58c40, type: 2}
+    <Text>k__BackingField: Dialogue text.
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+  - <ID>k__BackingField: d91a1475-09a3-456e-b6e3-3a4539ef273b
+    <Name>k__BackingField: DelayNode
+    <NodeType>k__BackingField: 2
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: 2c52bf27-bdbc-4524-a28f-44590b4ef2cf
+    <Position>k__BackingField: {x: 800, y: 0}
     <DialogueType>k__BackingField: 0
     <Character>k__BackingField: {fileID: 0}
-    <Text>k__BackingField: Dialogue text.
+    <Text>k__BackingField: 1
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 1
+  - <ID>k__BackingField: 6d66588d-cdf0-4afd-9d32-5e0bf8d934ec
+    <Name>k__BackingField: AudioNode
+    <NodeType>k__BackingField: 3
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: d91a1475-09a3-456e-b6e3-3a4539ef273b
+    <Position>k__BackingField: {x: 525, y: 0}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 0}
+    <Text>k__BackingField: 
+    <SoundEffect>k__BackingField: {fileID: 8300000, guid: 256b42fdaeec97b44a6038678557228a, type: 3}
+    <Delay>k__BackingField: 0
   <OldGroupNames>k__BackingField: []
   <OldUngroupedNodeNames>k__BackingField:
-  - DialogueName
+  - Player
+  - Recluse
+  - DelayNode
+  - AudioNode
   <OldGroupedNodeNames>k__BackingField:
     list: []

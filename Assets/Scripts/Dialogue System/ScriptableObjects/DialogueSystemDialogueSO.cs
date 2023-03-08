@@ -17,7 +17,10 @@ namespace DialogueSystem.ScriptableObjects
         [field: SerializeField] [field: TextArea()] public string Text { get; set; }
         [field: SerializeField] public bool IsStartingDialogue { get; set; }
 
-        public void Initialise(string _name, NodeTypes _nodeType, List<DialogueSystemDialogueChoiceData> _choices, DialogueCharacter _character, DialogueTypes _dialogueType, string _text, bool _isStartingDialogue)
+        [field: SerializeField] public AudioClip SoundEffect { get; set; }
+        [field: SerializeField] public float Delay { get; set; }
+
+        public void Initialise(string _name, NodeTypes _nodeType, List<DialogueSystemDialogueChoiceData> _choices, DialogueCharacter _character, DialogueTypes _dialogueType, string _text, bool _isStartingDialogue, AudioClip _soundEffect, float _delay)
         {
             NodeName = _name;
             NodeType = _nodeType;
@@ -27,6 +30,9 @@ namespace DialogueSystem.ScriptableObjects
             DialogueType = _dialogueType;
             Text = _text;
             IsStartingDialogue = _isStartingDialogue;
+
+            SoundEffect = _soundEffect;
+            Delay = _delay;
         }
     }
 }

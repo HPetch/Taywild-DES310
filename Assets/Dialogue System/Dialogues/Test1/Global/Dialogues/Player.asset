@@ -10,14 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 56aed56cf2bdb3940a003c0a146eee35, type: 3}
-  m_Name: DialogueName
+  m_Name: Player
   m_EditorClassIdentifier: 
-  <NodeName>k__BackingField: DialogueName
+  <NodeName>k__BackingField: Player
   <NodeType>k__BackingField: 0
   <Choices>k__BackingField:
   - <Text>k__BackingField: Next Dialogue
-    <NextDialogue>k__BackingField: {fileID: 0}
-  <Character>k__BackingField: {fileID: 0}
+    <NextDialogue>k__BackingField: {fileID: 11400000, guid: d6374a3ba9c66f044b7dff57557f1935, type: 2}
+  <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
   <DialogueType>k__BackingField: 0
   <Text>k__BackingField: Dialogue text.
   <IsStartingDialogue>k__BackingField: 1
+  <SoundEffect>k__BackingField: {fileID: 0}
+  <Delay>k__BackingField: 0
