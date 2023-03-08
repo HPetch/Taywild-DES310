@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56aed56cf2bdb3940a003c0a146eee35, type: 3}
+  m_Name: Player20
+  m_EditorClassIdentifier: 
+  <NodeName>k__BackingField: Player20
+  <NodeType>k__BackingField: 0
+  <Choices>k__BackingField:
+  - <Text>k__BackingField: ...interesting.
+    <NextDialogue>k__BackingField: {fileID: 11400000, guid: 46fb32cb742672c41b89c82611e4aa73, type: 2}
+  - <Text>k__BackingField: ...hopeful.
+    <NextDialogue>k__BackingField: {fileID: 11400000, guid: 93e09f80d38a330418f0df240f7fde97, type: 2}
+  - <Text>k__BackingField: ...storied.
+    <NextDialogue>k__BackingField: {fileID: 11400000, guid: 20efb1ee5ce0c9d469ad7432802570ba, type: 2}
+  <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
+  <DialogueType>k__BackingField: 1
+  <Text>k__BackingField: "I\u2019ve started exploring the tree and all of its branches,
+    it's so full of brambles, thorns, and all sorts of strange things, it feels so\u2026 "
+  <IsStartingDialogue>k__BackingField: 0
+  <SoundEffect>k__BackingField: {fileID: 0}
+  <Delay>k__BackingField: 0

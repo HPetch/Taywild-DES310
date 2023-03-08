@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56aed56cf2bdb3940a003c0a146eee35, type: 3}
+  m_Name: Player28
+  m_EditorClassIdentifier: 
+  <NodeName>k__BackingField: Player28
+  <NodeType>k__BackingField: 0
+  <Choices>k__BackingField:
+  - <Text>k__BackingField: ...strange.
+    <NextDialogue>k__BackingField: {fileID: 11400000, guid: d705fb617d7c866488692d3eb552ba17, type: 2}
+  - <Text>k__BackingField: ...wonderful.
+    <NextDialogue>k__BackingField: {fileID: 11400000, guid: 87428ea27d962c548b8d0afeb9262ae7, type: 2}
+  - <Text>k__BackingField: ...kind.
+    <NextDialogue>k__BackingField: {fileID: 11400000, guid: a23cf096e0650da4bbb61bc1c28728ed, type: 2}
+  <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
+  <DialogueType>k__BackingField: 1
+  <Text>k__BackingField: "There are other people out there, I haven't met all of
+    them yet, but they are so\u2026"
+  <IsStartingDialogue>k__BackingField: 0
+  <SoundEffect>k__BackingField: {fileID: 0}
+  <Delay>k__BackingField: 0
