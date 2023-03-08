@@ -22,7 +22,7 @@ public class PlayerController : MonoBehaviour
     public event Action OnPlayerWallHit;
     public event Action OnPlayerWallSlide;
     public event Action OnPlayerWallSlideEnd;
-    public event Action OnPlayerLand;
+    public event Action<GameObject> OnPlayerLand;
     public event Action OnPlayerGlide;
     public event Action OnPlayerGlideEnd;
     public event Action OnPlayerDash;
@@ -361,7 +361,8 @@ public class PlayerController : MonoBehaviour
     /// <returns> Returns true if the player is either grounded or coyote grounded.</returns>
     private void CheckIfPlayerIsGrounded()
     {
-        bool isGroundedThisFrame = Physics2D.BoxCast(capsuleCollider.bounds.center, new Vector3(capsuleCollider.bounds.size.x * 0.75f, capsuleCollider.bounds.size.y, capsuleCollider.bounds.size.z), 0f, Vector2.down, 0.001f, platformLayerMask);
+        RaycastHit2D raycastHit = Physics2D.BoxCast(capsuleCollider.bounds.center, new Vector3(capsuleCollider.bounds.size.x * 0.75f, capsuleCollider.bounds.size.y, capsuleCollider.bounds.size.z), 0f, Vector2.down, 0.001f, platformLayerMask);
+        bool isGroundedThisFrame = raycastHit;
         DrawDebugInfo();
 
         // If the player is grounded this frame
@@ -384,7 +385,7 @@ public class PlayerController : MonoBehaviour
                     if (IsWallSliding) IsFacingRight = !IsFacingRight;
 
                     if (IsGliding) StopGliding();
-                    OnPlayerLand?.Invoke();
+                    OnPlayerLand?.Invoke(raycastHit.collider.gameObject);
                 }
             }
             // If the player is grounded this frame but coyote time has not passed since the last grounded jump
