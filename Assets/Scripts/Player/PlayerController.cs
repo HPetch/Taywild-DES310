@@ -219,6 +219,8 @@ public class PlayerController : MonoBehaviour
     {
         DialogueController.Instance.OnConversationStart += LockPlayerInput;
         DialogueController.Instance.OnConversationEnd += UnLockPlayerInput;
+        DecorationController.Instance.OnEnterEditMode += LockPlayerInput;
+        DecorationController.Instance.OnExitEditMode += UnLockPlayerInput;
     }
     #endregion
 

@@ -19,6 +19,7 @@ public class CameraController : MonoBehaviour
     [SerializeField] private Vector2 playerOffset = new Vector3(0, 1);
     [SerializeField] private Vector2 dialogueOffset = new Vector3(0, 3);
     private Vector2 offset;
+    private Transform targetTransform;
 
     // Shaking Variables
     private bool isShaking = false;
@@ -60,6 +61,8 @@ public class CameraController : MonoBehaviour
 
         // Reference the player once on start as oppsed to each frame
         playerTransform = PlayerController.Instance.transform;
+        // Set inital target transform to player
+        targetTransform = playerTransform;
 
         // Set default varialbe
         defaultSize = CameraSize;
@@ -82,12 +85,29 @@ public class CameraController : MonoBehaviour
         else CameraSize = Mathf.Lerp(CameraSize, targetZoomSize, Time.fixedDeltaTime * zoomSpeed);
 
         // Get target position
-        Vector2 targetPosition = (Vector2)playerTransform.position + offset;
+        Vector2 targetPosition = (Vector2)targetTransform.position + offset;
         targetPosition = ClampCameraToPartition(targetPosition);
 
+        Vector2 newPosition = transform.position;
+
+        if (DecorationController.Instance.isEditMode)
+        {
+            // Only move camera in edit mode while holding control
+            if (Input.GetKey(KeyCode.LeftControl))
+            {
+                targetPosition = Vector2.Lerp(playerTransform.position, targetPosition, 0.5f);
+                targetPosition = ClampCameraToPartition(targetPosition);
+                newPosition = Vector2.Lerp(transform.position, new Vector2(targetPosition.x, targetPosition.y), Time.fixedDeltaTime * cameraSpeed);
+            }
+        }
         // Move towards the target position
-        Vector2 newPosition = Vector2.Lerp(transform.position, new Vector2(targetPosition.x, targetPosition.y), Time.fixedDeltaTime * cameraSpeed);
+        else
+        {
+            newPosition = Vector2.Lerp(transform.position, new Vector2(targetPosition.x, targetPosition.y), Time.fixedDeltaTime * cameraSpeed);
+        }
+
         transform.position = new Vector3(newPosition.x, newPosition.y, transform.position.z);
+
 
         // Shake
         if (isShaking)
@@ -122,6 +142,16 @@ public class CameraController : MonoBehaviour
         targetZoomSize = _targetSize;
     }
 
+    public void SetTarget(Transform _transform) 
+    {
+        targetTransform = _transform;
+    }
+
+    public void ResetTarget()
+    {
+        targetTransform = playerTransform;
+    }
+
     public void ZoomToDefault()
     {
         Zoom(defaultSize);
@@ -146,6 +176,8 @@ public class CameraController : MonoBehaviour
         offset = playerOffset;
         Zoom(partitionTargetZoomSize);
     }
+
+    
 
     public void PunchIn(float strength, float speed, bool _holdPunch = false)
     {

@@ -58,8 +58,11 @@ public class DecorationSelector : MonoBehaviour
     }
     private void Start()
     {
+        selectorTargetLocation = PlayerController.Instance.transform.position;
+        transform.position = PlayerController.Instance.transform.position;
     }
     #endregion
+
     
     private void Update()
     {
@@ -87,16 +90,6 @@ public class DecorationSelector : MonoBehaviour
 
         #endregion
 
-        // Controls the selector's current position, scale and rotation. Scale and rotation are affected by the selector's state, and spin jump when clicking
-        #region Selector transform control
-
-        selectorTargetLocation = CameraController.Instance.MouseWorldPosition; // Sets target location as mouse position
-        transform.position = Vector3.Lerp(transform.position, selectorTargetLocation, selectorMoveSpeed * Time.deltaTime); // The selector will lerp towards the mouse position
-        targetScaleValue = Vector3.Scale(baseScaleValue, baseScaleValue * scaleMultiplier * scaleJump) * mouseDownSlowDown; // Gets the target scale of the selector, affected by changing state or when spin jumping
-        transform.localScale = Vector3.Lerp(transform.localScale, targetScaleValue, scaleSpeed * mouseDownSlowDown * Time.deltaTime); // Lerps scale of selector towards target scale
-        transform.rotation = Quaternion.Lerp(transform.rotation, transform.rotation * Quaternion.AngleAxis(90, Vector3.forward), selectorSpinSpeed * mouseDownSlowDown * Time.deltaTime * spinJump); // The selector is always rotating, the speed of this rotation is affected by changing state or when spin jumping
-        
-        #endregion
         
         // Controls the visual and funcionality of mouse clicks, object iteraction is passed through to Decoration Controller rather than being handled here
         #region Click control
@@ -129,6 +122,8 @@ public class DecorationSelector : MonoBehaviour
 
         #endregion
 
+        
+        
 
         // This section of code controls the selector switching between states and visuals depending on what the player is currently doing
         #region SelectorVisualStateSwitching
@@ -169,7 +164,21 @@ public class DecorationSelector : MonoBehaviour
         
     }
 
-    
+    #region Selector transform control
+    private void FixedUpdate()
+    {
+        // Controls the selector's current position, scale and rotation. Scale and rotation are affected by the selector's state, and spin jump when clicking
+        
+
+        selectorTargetLocation = CameraController.Instance.MouseWorldPosition; // Sets target location as mouse position
+        transform.position = Vector3.Lerp(transform.position, selectorTargetLocation, selectorMoveSpeed * Time.deltaTime); // The selector will lerp towards the mouse position
+        targetScaleValue = Vector3.Scale(baseScaleValue, baseScaleValue * scaleMultiplier * scaleJump) * mouseDownSlowDown; // Gets the target scale of the selector, affected by changing state or when spin jumping
+        transform.localScale = Vector3.Lerp(transform.localScale, targetScaleValue, scaleSpeed * mouseDownSlowDown * Time.deltaTime); // Lerps scale of selector towards target scale
+        transform.rotation = Quaternion.Lerp(transform.rotation, transform.rotation * Quaternion.AngleAxis(90, Vector3.forward), selectorSpinSpeed * mouseDownSlowDown * Time.deltaTime * spinJump); // The selector is always rotating, the speed of this rotation is affected by changing state or when spin jumping
+
+        
+    }
+    #endregion
 
     public Collider2D CheckObjectUnderMouse()
     {
