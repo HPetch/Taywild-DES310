@@ -367,7 +367,14 @@ public class PlayerController : MonoBehaviour
     /// <returns> Returns true if the player is either grounded or coyote grounded.</returns>
     private void CheckIfPlayerIsGrounded()
     {
-        RaycastHit2D raycastHit = Physics2D.BoxCast(capsuleCollider.bounds.center, new Vector3(capsuleCollider.bounds.size.x * 0.75f, capsuleCollider.bounds.size.y, capsuleCollider.bounds.size.z), 0f, Vector2.down, 0.001f, platformLayerMask);
+        Ray2D middleRay = new Ray2D(transform.position, Vector2.down);
+        Ray2D rightRay = new Ray2D(transform.position + new Vector3(capsuleCollider.bounds.extents.x, 0, 0), Vector2.down);
+        Ray2D leftRay = new Ray2D(transform.position - new Vector3(capsuleCollider.bounds.extents.x, 0, 0), Vector2.down);
+
+        RaycastHit2D raycastHit = Physics2D.Raycast(middleRay.origin, middleRay.direction, 0.1f, platformLayerMask);
+        if (!raycastHit) raycastHit = Physics2D.Raycast(rightRay.origin, rightRay.direction, 0.1f, platformLayerMask);
+        if (!raycastHit) raycastHit = Physics2D.Raycast(leftRay.origin, leftRay.direction, 0.1f, platformLayerMask);
+
         bool isGroundedThisFrame = raycastHit;
         DrawDebugInfo();
 
@@ -739,7 +746,14 @@ public class PlayerController : MonoBehaviour
     {
 #if UNITY_EDITOR
         Color rayColour = IsGrounded ? Color.green : Color.red;
-        Debug.DrawRay(capsuleCollider.bounds.center - new Vector3(capsuleCollider.bounds.extents.x, capsuleCollider.bounds.extents.y + 0.1f), Vector2.right * (capsuleCollider.bounds.extents.x * 2), rayColour);
+
+        Ray2D middleRay = new Ray2D(transform.position, Vector2.down);
+        Ray2D rightRay = new Ray2D(transform.position + new Vector3(capsuleCollider.bounds.extents.x, 0, 0), Vector2.down);
+        Ray2D leftRay = new Ray2D(transform.position - new Vector3(capsuleCollider.bounds.extents.x, 0, 0), Vector2.down);
+
+        Debug.DrawRay(middleRay.origin, middleRay.direction * 0.1f, rayColour);
+        Debug.DrawRay(rightRay.origin, rightRay.direction * 0.1f, rayColour);
+        Debug.DrawRay(leftRay.origin, leftRay.direction * 0.1f, rayColour);
 
         rayColour = IsTouchingWall ? Color.green : Color.red;
         Debug.DrawRay(capsuleCollider.bounds.center, wallCheckDistance * FacingDirection * Vector2.right, rayColour);
