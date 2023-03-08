@@ -13,6 +13,7 @@ public class CharacterCanvas : MonoBehaviour
     [SerializeField] private RectTransform speechBubble;
     [SerializeField] private RectTransform tail;
     [SerializeField] private TextMeshProUGUI dialogueText;
+    [SerializeField] private CanvasGroup continueIndicator;
 
     [Space(10)]
     [Header("Speech Box Settings")]
@@ -58,6 +59,7 @@ public class CharacterCanvas : MonoBehaviour
         tailSizeClosed = new Vector2(0, tailSize.y);
         speechBubbleSizeClosed = new Vector2(tailSize.x, 0);
 
+        continueIndicator.alpha = 0;
         tail.sizeDelta = tailSizeClosed;
         speechBubble.sizeDelta = speechBubbleSizeClosed;
 
@@ -112,6 +114,7 @@ public class CharacterCanvas : MonoBehaviour
         IsOpen = false;
         CancelLeanTween();
 
+        continueIndicator.alpha = 0;
         dialogueText.enableAutoSizing = true;
         LeanTween.size(speechBubble, speechBubbleSizeClosed, speechBubbleOpenCloseTransitionTime);
         LeanTween.delayedCall(speechBubbleOpenCloseTransitionTime, callback =>
@@ -124,6 +127,7 @@ public class CharacterCanvas : MonoBehaviour
     {
         CancelLeanTween();
 
+        continueIndicator.alpha = 0;
         LeanTween.size(speechBubble, GetTargetSize(_text), speechBubbleResizeTransitionTime);
     }
 
@@ -139,6 +143,12 @@ public class CharacterCanvas : MonoBehaviour
         textEffect.ClearText();
     }
 
+    public void ShowContinueIndicator()
+    {
+        continueIndicator.alpha = 1;
+    }
+
+    #region Utility
     private Vector2 GetTargetSize(string _text)
     {
         // Save current text and speechBubble size
@@ -161,7 +171,6 @@ public class CharacterCanvas : MonoBehaviour
         return targetSize;
     }
 
-    #region Utility
     protected virtual void CancelLeanTween()
     {
         LeanTween.cancel(speechBubble);

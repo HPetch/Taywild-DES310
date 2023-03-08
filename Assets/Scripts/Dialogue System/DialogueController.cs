@@ -180,10 +180,12 @@ public class DialogueController : MonoBehaviour
         {
             StopCoroutine(textType);
             textType = null;
-            
+
             currentDialogueCanvas.SetText(dialogueNode.Text);
 
-            if(dialogueNode.Choices.Count > 1) PlayerDialogueController.Instance.ShowThoughtBubbles(dialogueNode);
+            if (dialogueNode.DialogueType == DialogueTypes.MultipleChoice) PlayerDialogueController.Instance.ShowThoughtBubbles(dialogueNode);            
+            else currentDialogueCanvas.ShowContinueIndicator();
+            
             return;
         }
 
@@ -322,7 +324,8 @@ public class DialogueController : MonoBehaviour
             }
         }
 
-        if(dialogueNode.Choices.Count > 1) PlayerDialogueController.Instance.ShowThoughtBubbles(dialogueNode);
+        if (dialogueNode.DialogueType == DialogueTypes.MultipleChoice) PlayerDialogueController.Instance.ShowThoughtBubbles(dialogueNode);
+        else currentDialogueCanvas.ShowContinueIndicator();
 
         // Sets coroutine to null, to track when it's finished
         textType = null;
