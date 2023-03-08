@@ -162,11 +162,24 @@ public class DialogueController : MonoBehaviour
 
                 textType = StartCoroutine(TypeSentence(dialogueNode.Text, resize));
                 break;
+                
+            case NodeTypes.Audio:
+                if (_node.Choices.Count == 0) EndConversation();
+                else ComputeNode(_node.Choices[0].NextDialogue);
+                return;
 
             case NodeTypes.Edge:
                 if (_node.Choices.Count == 0) EndConversation();
-                else StartCoroutine(ComputeNode(_node.Choices[0].NextDialogue));
-                break;
+                else ComputeNode(_node.Choices[0].NextDialogue);
+                return;
+
+            case NodeTypes.Delay:
+                if (_node.Choices.Count == 0) EndConversation();
+                else ComputeNode(_node.Choices[0].NextDialogue);
+                return;
+
+            default:
+                return;
         }
 
         yield return null;
@@ -183,7 +196,8 @@ public class DialogueController : MonoBehaviour
             
             currentDialogueCanvas.SetText(dialogueNode.Text);
 
-            if(dialogueNode.Choices.Count > 1) PlayerDialogueController.Instance.ShowThoughtBubbles(dialogueNode);
+            if(dialogueNode.DialogueType == DialogueTypes.MultipleChoice) PlayerDialogueController.Instance.ShowThoughtBubbles(dialogueNode);
+
             return;
         }
 
@@ -195,7 +209,7 @@ public class DialogueController : MonoBehaviour
         }
 
         // If the node is a Branch
-        if (dialogueNode.Choices.Count > 1)
+        if (dialogueNode.DialogueType == DialogueTypes.MultipleChoice)
         {
             // If a player option was selected
             if (_buttonIndex > 0)
@@ -321,8 +335,8 @@ public class DialogueController : MonoBehaviour
                     continue;
             }
         }
-
-        if(dialogueNode.Choices.Count > 1) PlayerDialogueController.Instance.ShowThoughtBubbles(dialogueNode);
+        
+        if(dialogueNode.DialogueType == DialogueTypes.MultipleChoice) PlayerDialogueController.Instance.ShowThoughtBubbles(dialogueNode);
 
         // Sets coroutine to null, to track when it's finished
         textType = null;

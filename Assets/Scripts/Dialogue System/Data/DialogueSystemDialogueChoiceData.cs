@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace DialogueSystem.Types
 {
-    public enum NodeTypes { Dialogue, Edge }
+    public enum NodeTypes { Dialogue, Edge, Delay, Audio }
     public enum DialogueTypes { SingleChoice, MultipleChoice }
 }
 

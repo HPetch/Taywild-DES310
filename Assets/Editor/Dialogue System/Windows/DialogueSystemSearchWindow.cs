@@ -26,23 +26,38 @@ namespace DialogueSystem.Windows
             List<SearchTreeEntry> searchTreeEntries = new List<SearchTreeEntry>()
             {
                 new SearchTreeGroupEntry(new GUIContent("Create Elements")),
+
                 new SearchTreeGroupEntry(new GUIContent("Dialogue Nodes"), 1),
-                new SearchTreeEntry(new GUIContent("Single Choice", indentationIcon))
+                new SearchTreeEntry(new GUIContent("Single Choice Node", indentationIcon))
                 {
                     userData = DialogueTypes.SingleChoice,
                     level = 2
                 },
-                new SearchTreeEntry(new GUIContent("Multiple Choice", indentationIcon))
+                new SearchTreeEntry(new GUIContent("Multiple Choice Node", indentationIcon))
                 {
                     userData = DialogueTypes.MultipleChoice,
                     level = 2
                 },
+
+                new SearchTreeGroupEntry(new GUIContent("Events"), 1),
+                new SearchTreeEntry(new GUIContent("Sound Effect Node", indentationIcon))
+                {
+                    userData = new DialogueSystemAudioNode(),
+                    level = 2
+                },
+
                 new SearchTreeGroupEntry(new GUIContent("Utility"), 1),
                 new SearchTreeEntry(new GUIContent("Edge Node", indentationIcon))
                 {
                     userData = new DialogueSystemEdgeNode(),
                     level = 2
                 },
+                new SearchTreeEntry(new GUIContent("Delay Node", indentationIcon))
+                {
+                    userData = new DialogueSystemDelayNode(),
+                    level = 2
+                },
+
                 new SearchTreeGroupEntry(new GUIContent("Groups"), 1),
                 new SearchTreeEntry(new GUIContent("Single Group", indentationIcon))
                 {
@@ -62,7 +77,7 @@ namespace DialogueSystem.Windows
             {
                 case DialogueTypes.SingleChoice:
                     {
-                        DialogueSystemSingleChoiceDialogueNode singleChoiceNode = (DialogueSystemSingleChoiceDialogueNode)graphView.CreateDialogueNode("DialogueName", DialogueTypes.SingleChoice, localMousePosition);
+                        DialogueSystemSingleChoiceDialogueNode singleChoiceNode = (DialogueSystemSingleChoiceDialogueNode)graphView.CreateDialogueNode("NodeName", DialogueTypes.SingleChoice, localMousePosition);
 
                         graphView.AddElement(singleChoiceNode);
 
@@ -71,9 +86,18 @@ namespace DialogueSystem.Windows
 
                 case DialogueTypes.MultipleChoice:
                     {
-                        DialogueSystemMultipleChoiceDialogueNode multipleChoiceNode = (DialogueSystemMultipleChoiceDialogueNode)graphView.CreateDialogueNode("DialogueName", DialogueTypes.MultipleChoice, localMousePosition);
+                        DialogueSystemMultipleChoiceDialogueNode multipleChoiceNode = (DialogueSystemMultipleChoiceDialogueNode)graphView.CreateDialogueNode("NodeName", DialogueTypes.MultipleChoice, localMousePosition);
 
                         graphView.AddElement(multipleChoiceNode);
+
+                        return true;
+                    }
+
+                case DialogueSystemAudioNode:
+                    {
+                        DialogueSystemAudioNode audioNode = (DialogueSystemAudioNode)graphView.CreateAudioNode("NodeName", localMousePosition);
+
+                        graphView.AddElement(audioNode);
 
                         return true;
                     }
@@ -83,6 +107,15 @@ namespace DialogueSystem.Windows
                         DialogueSystemEdgeNode edgeNode = (DialogueSystemEdgeNode)graphView.CreateEdgeNode(localMousePosition);
 
                         graphView.AddElement(edgeNode);
+
+                        return true;
+                    }
+
+                case DialogueSystemDelayNode:
+                    {
+                        DialogueSystemDelayNode delayNode = (DialogueSystemDelayNode)graphView.CreateDelayNode("NodeName", localMousePosition);
+
+                        graphView.AddElement(delayNode);
 
                         return true;
                     }

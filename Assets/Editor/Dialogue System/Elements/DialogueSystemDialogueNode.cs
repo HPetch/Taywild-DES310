@@ -6,6 +6,7 @@ namespace DialogueSystem.Elements
 {
     using Utilities;
     using Windows;
+    using Types;
 
     public class DialogueSystemDialogueNode : DialogueSystemNode
     {
@@ -15,7 +16,7 @@ namespace DialogueSystem.Elements
         {
             base.Initialise(nodeName, dialogueSystemGraphView, position);
 
-            NodeType = Types.NodeTypes.Dialogue;
+            NodeType = NodeTypes.Dialogue;
             DialogueText = "Dialogue text.";
 
             mainContainer.AddToClassList("ds-node__main-container");
@@ -65,7 +66,14 @@ namespace DialogueSystem.Elements
 
         public void SetCharacterStyle(DialogueCharacter character)
         {
-            if (character) mainContainer.style.backgroundColor = character.Colour;
+            if (character)
+            {
+                mainContainer.style.backgroundColor = character.Colour;
+                if (NodeName == "NodeName")
+                {
+                    RenameNode(character.CharacterName);
+                }
+            }
             else ResetCharacterStyle();
         }
 

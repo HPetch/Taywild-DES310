@@ -1,0 +1,1867 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 403e5cc4e9ab18442bab3ceb18f352e9, type: 3}
+  m_Name: RecluseQ1CompleteTemp
+  m_EditorClassIdentifier: 
+  <FileName>k__BackingField: 
+  <Groups>k__BackingField:
+  - <ID>k__BackingField: 7357f2c1-ba8f-4a68-827e-2a1c544aeb69
+    <Name>k__BackingField: Point2
+    <Position>k__BackingField: {x: 13500, y: 66}
+  - <ID>k__BackingField: 43dddd9d-1970-41d2-ad4c-6fa5dbb39bdc
+    <Name>k__BackingField: Point1
+    <Position>k__BackingField: {x: 12450, y: 66}
+  - <ID>k__BackingField: 28dda59c-a5f2-44fd-a95b-b2bee2ff909e
+    <Name>k__BackingField: Point3
+    <Position>k__BackingField: {x: 14575, y: 66}
+  <Nodes>k__BackingField:
+  - <ID>k__BackingField: 261a2059-6a84-4cfd-aca8-5e6cef366f35
+    <Name>k__BackingField: Player1
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Dialogue
+      <NodeID>k__BackingField: 92e327b3-8e88-4e7f-ac71-5471ddd67681
+    <Position>k__BackingField: {x: 2000, y: 125}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
+    <Text>k__BackingField: "Hello, I'm back. I\u2019ve got the flower!"
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+  - <ID>k__BackingField: 92e327b3-8e88-4e7f-ac71-5471ddd67681
+    <Name>k__BackingField: Void2
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Dialogue
+      <NodeID>k__BackingField: 7ab44de8-e96e-4e64-9fcc-b1771e7b7c62
+    <Position>k__BackingField: {x: 2500, y: 125}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: c11bdf3877896b84dac6bdb375297575, type: 2}
+    <Text>k__BackingField: The sound of a door unlocking and shuffling can be heard,
+      before the silhouette appears against the glass after a few seconds.
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+  - <ID>k__BackingField: 7ab44de8-e96e-4e64-9fcc-b1771e7b7c62
+    <Name>k__BackingField: RecluseAlt1
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Present the flower
+      <NodeID>k__BackingField: f778a5ca-9756-41cb-a0a0-e3d4fdfba9fe
+    <Position>k__BackingField: {x: 3000, y: 125}
+    <DialogueType>k__BackingField: 1
+    <Character>k__BackingField: {fileID: 11400000, guid: 93d65e492f7563241b38bdd17edcf399, type: 2}
+    <Text>k__BackingField: "You came back?<link=wait_long></link>\r\n<size=60%>\u2026no
+      one has come back before.<size=100%>\r\n"
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+  - <ID>k__BackingField: cf61ca38-eee6-43a1-8964-33e14b3f1f85
+    <Name>k__BackingField: Void3
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Dialogue
+      <NodeID>k__BackingField: 5b9b5695-b2c5-44f9-aabc-d0e0ebadd0c4
+    <Position>k__BackingField: {x: 3775, y: 125}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: c11bdf3877896b84dac6bdb375297575, type: 2}
+    <Text>k__BackingField: "<i> The silhouette leans in a little closer\n to peer
+      at the flower.</i>"
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+  - <ID>k__BackingField: 7b0db9ed-4173-416c-8347-722214c3e5dc
+    <Name>k__BackingField: Player3
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Dialogue
+      <NodeID>k__BackingField: 90f9113b-2ca9-4c0e-a452-9c08d7b0cb2b
+    <Position>k__BackingField: {x: 5306, y: 467}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
+    <Text>k__BackingField: "Sorry, can we continue this inside?\nIt\u2019s hard to
+      have a conversation through glass."
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+  - <ID>k__BackingField: be920af3-b4ee-47dd-97d5-c3d6da9dae1e
+    <Name>k__BackingField: Void4
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Enter.
+      <NodeID>k__BackingField: f877c361-e782-4a28-8505-911d36af63a8
+    - <Text>k__BackingField: Wait.
+      <NodeID>k__BackingField: b45e6ae1-26af-4167-92ab-b5307af2bbda
+    <Position>k__BackingField: {x: 6275, y: 125}
+    <DialogueType>k__BackingField: 1
+    <Character>k__BackingField: {fileID: 11400000, guid: c11bdf3877896b84dac6bdb375297575, type: 2}
+    <Text>k__BackingField: <i>The sound of the door being unlocked is heard and then
+      a shuffling sound.</i>
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+  - <ID>k__BackingField: b45dea4a-0e45-448e-b7cc-db2191b32d7a
+    <Name>k__BackingField: Player6
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Dialogue
+      <NodeID>k__BackingField: 7435439d-1714-4e07-8661-00ad33f8dd7a
+    <Position>k__BackingField: {x: 7600, y: 125}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
+    <Text>k__BackingField: '!!!'
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+  - <ID>k__BackingField: 0651299f-0eba-4418-8aa4-68bee3f0dd60
+    <Name>k__BackingField: RecluseAlt9
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Dialogue
+      <NodeID>k__BackingField: 1d8433c2-46f1-4992-8007-9029ae2622d3
+    <Position>k__BackingField: {x: 7275, y: 425}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 93d65e492f7563241b38bdd17edcf399, type: 2}
+    <Text>k__BackingField: Alright you can come in now!
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+  - <ID>k__BackingField: 1d8433c2-46f1-4992-8007-9029ae2622d3
+    <Name>k__BackingField: EdgeNode7d54b547-c56b-4927-b1ae-6026389de4a1
+    <NodeType>k__BackingField: 1
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: 
+      <NodeID>k__BackingField: bda68069-9beb-4a43-9fef-5501f81efc36
+    <Position>k__BackingField: {x: 8775, y: 425}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 0}
+    <Text>k__BackingField: 
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+  - <ID>k__BackingField: abe70736-0a74-426b-b868-5581abdef131
+    <Name>k__BackingField: Recluse1
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Dialogue
+      <NodeID>k__BackingField: 91575d77-2409-4977-a8cb-bdff2a4ac48b
+    <Position>k__BackingField: {x: 9375, y: 125}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 4d46490a566f8dd4db8b9da467c58c40, type: 2}
+    <Text>k__BackingField: 'My name is Lucus, This is my greenhouse. Welcome. '
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+  - <ID>k__BackingField: 91575d77-2409-4977-a8cb-bdff2a4ac48b
+    <Name>k__BackingField: Void9
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Question house.
+      <NodeID>k__BackingField: e036d4be-46e0-4eec-9c34-93ef10645f46
+    - <Text>k__BackingField: Ignore it.
+      <NodeID>k__BackingField: e3397701-23c8-4f4f-b50d-fe0b313f3051
+    <Position>k__BackingField: {x: 9850, y: 125}
+    <DialogueType>k__BackingField: 1
+    <Character>k__BackingField: {fileID: 11400000, guid: c11bdf3877896b84dac6bdb375297575, type: 2}
+    <Text>k__BackingField: Lucus seems to be talking to you from behind a window.
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+  - <ID>k__BackingField: 38094b27-95f5-49c7-ae62-f7a081158800
+    <Name>k__BackingField: Recluse2
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Let it be.
+      <NodeID>k__BackingField: a35fc39e-844e-472a-b102-dd9f3f914f2a
+    - <Text>k__BackingField: Question.
+      <NodeID>k__BackingField: 31a06fb7-2b55-4256-89a4-1065d15f2464
+    <Position>k__BackingField: {x: 10850, y: 125}
+    <DialogueType>k__BackingField: 1
+    <Character>k__BackingField: {fileID: 11400000, guid: 4d46490a566f8dd4db8b9da467c58c40, type: 2}
+    <Text>k__BackingField: "I\u2026it is safer this way. "
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+  - <ID>k__BackingField: e036d4be-46e0-4eec-9c34-93ef10645f46
+    <Name>k__BackingField: Player7
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Dialogue
+      <NodeID>k__BackingField: 38094b27-95f5-49c7-ae62-f7a081158800
+    <Position>k__BackingField: {x: 10350, y: 125}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
+    <Text>k__BackingField: Why are you talking to me through a window?
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+  - <ID>k__BackingField: a35fc39e-844e-472a-b102-dd9f3f914f2a
+    <Name>k__BackingField: Player8
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Dialogue
+      <NodeID>k__BackingField: db40cf7d-df82-4161-8426-4f5d2ff84621
+    <Position>k__BackingField: {x: 11225, y: 125}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
+    <Text>k__BackingField: Alright if it makes you happier!
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+  - <ID>k__BackingField: 462ede0c-ba89-4929-ae54-e0a022993082
+    <Name>k__BackingField: Recluse3
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Dialogue
+      <NodeID>k__BackingField: 151ef5a0-9610-4031-892a-0a760e4710ed
+    <Position>k__BackingField: {x: 11700, y: 375}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 4d46490a566f8dd4db8b9da467c58c40, type: 2}
+    <Text>k__BackingField: "The flower\u2026"
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+  - <ID>k__BackingField: db40cf7d-df82-4161-8426-4f5d2ff84621
+    <Name>k__BackingField: Recluse5
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 43dddd9d-1970-41d2-ad4c-6fa5dbb39bdc
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Books?
+      <NodeID>k__BackingField: 9a6cf74a-5fd1-48ea-816c-9727abfa246d
+    - <Text>k__BackingField: The outside?
+      <NodeID>k__BackingField: 907181a4-3cad-41a2-9061-621a0ae1a975
+    - <Text>k__BackingField: The crystal flower...
+      <NodeID>k__BackingField: 44efe00d-45cb-4efd-9d41-4eaf04c3e94c
+    - <Text>k__BackingField: Leave
+      <NodeID>k__BackingField: 5b0395c6-874c-4d47-bf5e-92e468604be1
+    <Position>k__BackingField: {x: 12475, y: 125}
+    <DialogueType>k__BackingField: 1
+    <Character>k__BackingField: {fileID: 11400000, guid: 4d46490a566f8dd4db8b9da467c58c40, type: 2}
+    <Text>k__BackingField: What would you like to talk about?
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+  - <ID>k__BackingField: b455f75e-0c0a-446d-96ca-0fbaa05ca77b
+    <Name>k__BackingField: EdgeNodebae1e515-c19b-419d-9969-a8643fc721b7
+    <NodeType>k__BackingField: 1
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: 
+      <NodeID>k__BackingField: db40cf7d-df82-4161-8426-4f5d2ff84621
+    <Position>k__BackingField: {x: 12375, y: 950}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 0}
+    <Text>k__BackingField: 
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+  - <ID>k__BackingField: ed640caf-5942-48ce-a1e7-d9407022bea2
+    <Name>k__BackingField: Recluse11
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 7357f2c1-ba8f-4a68-827e-2a1c544aeb69
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Dream books?
+      <NodeID>k__BackingField: 42d2960c-f2d3-42c2-9028-a8c205598ba9
+    - <Text>k__BackingField: Books?
+      <NodeID>k__BackingField: 280b8cf4-2c4a-449b-b37d-54583b55f7dc
+    - <Text>k__BackingField: Collecting books?
+      <NodeID>k__BackingField: 731e2939-66c7-4420-9c98-944128b21669
+    - <Text>k__BackingField: Ask another question.
+      <NodeID>k__BackingField: b1535177-65f7-4693-8b8b-0efddf49b1bf
+    <Position>k__BackingField: {x: 13525, y: 525}
+    <DialogueType>k__BackingField: 1
+    <Character>k__BackingField: {fileID: 11400000, guid: 4d46490a566f8dd4db8b9da467c58c40, type: 2}
+    <Text>k__BackingField: 'What else did you want to know about my books? '
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+  - <ID>k__BackingField: 42d2960c-f2d3-42c2-9028-a8c205598ba9
+    <Name>k__BackingField: Player10
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Dialogue
+      <NodeID>k__BackingField: 67745404-96df-48e9-9166-9d5728bc4ab9
+    <Position>k__BackingField: {x: 14100, y: 125}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
+    <Text>k__BackingField: 'Do you have any more books about the dream world? '
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+  - <ID>k__BackingField: cf8302bf-cd05-435a-b94f-71bd5ac8fd1e
+    <Name>k__BackingField: Player11
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Dialogue
+      <NodeID>k__BackingField: b67f0c26-4fef-4aa1-b196-5687a0cf155b
+    <Position>k__BackingField: {x: 15125, y: 125}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
+    <Text>k__BackingField: You found it?
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+  - <ID>k__BackingField: b67f0c26-4fef-4aa1-b196-5687a0cf155b
+    <Name>k__BackingField: Recluse8
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Dialogue
+      <NodeID>k__BackingField: 108ba55c-e07e-44d3-b0ff-914e478c5626
+    <Position>k__BackingField: {x: 15500, y: 125}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 4d46490a566f8dd4db8b9da467c58c40, type: 2}
+    <Text>k__BackingField: 'Yes it was just left there. I was very suspicious at
+      first, <size=60%>I left it outside for a week, <size=100%>but I deemed it to
+      be safe and I brought it in. '
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+  - <ID>k__BackingField: a3683688-1acf-4852-bbd1-35b21291fea7
+    <Name>k__BackingField: Player12
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Dialogue
+      <NodeID>k__BackingField: d8a06519-7ba9-4e28-bcd5-d57cd4c44aa7
+    <Position>k__BackingField: {x: 15125, y: 400}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
+    <Text>k__BackingField: 'Do you think there are other books like it? '
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+  - <ID>k__BackingField: 108ba55c-e07e-44d3-b0ff-914e478c5626
+    <Name>k__BackingField: EdgeNoded58c68e3-ff95-424e-95e0-a81efe148f2f
+    <NodeType>k__BackingField: 1
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: 
+      <NodeID>k__BackingField: 1171155e-4520-4ea3-8ec8-1b637ad7b710
+    <Position>k__BackingField: {x: 16150, y: 700}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 0}
+    <Text>k__BackingField: 
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+  - <ID>k__BackingField: 1171155e-4520-4ea3-8ec8-1b637ad7b710
+    <Name>k__BackingField: EdgeNodeb1f34702-7e13-4644-a0d6-b4da7027730c
+    <NodeType>k__BackingField: 1
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: 
+      <NodeID>k__BackingField: e8e80270-9762-4294-aca6-5312dcc5d151
+    <Position>k__BackingField: {x: 14525, y: 700}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 0}
+    <Text>k__BackingField: 
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+  - <ID>k__BackingField: 45bfbe77-046c-4d67-85ec-0eb59e431483
+    <Name>k__BackingField: EdgeNodead4ce3d7-ecab-4dfd-b7bc-9c1dca973c24
+    <NodeType>k__BackingField: 1
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: 
+      <NodeID>k__BackingField: 1b6f2a98-e3d5-48a5-b664-af657daee6ed
+    <Position>k__BackingField: {x: 15500, y: 1350}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 0}
+    <Text>k__BackingField: 
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+  - <ID>k__BackingField: b9f9b876-e73b-4f54-8de3-9f570a4cd8a4
+    <Name>k__BackingField: Player14
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Dialogue
+      <NodeID>k__BackingField: fed4663b-a13d-4201-b7cc-8d3496909a6a
+    <Position>k__BackingField: {x: 14575, y: 1450}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
+    <Text>k__BackingField: Did your mother encourage you to read?
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+  - <ID>k__BackingField: 5191cfb1-5bbe-4319-9907-b576799b0ad5
+    <Name>k__BackingField: Player15
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Dialogue
+      <NodeID>k__BackingField: 30881a12-b749-4d55-8575-c433a043a87f
+    <Position>k__BackingField: {x: 14575, y: 1750}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
+    <Text>k__BackingField: 'I think it''s super amazing how much you read! '
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+  - <ID>k__BackingField: 30881a12-b749-4d55-8575-c433a043a87f
+    <Name>k__BackingField: Recluse19
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Dialogue
+      <NodeID>k__BackingField: 02997467-1bf3-4b6f-9ccb-60e45d3437c6
+    <Position>k__BackingField: {x: 15075, y: 1750}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 4d46490a566f8dd4db8b9da467c58c40, type: 2}
+    <Text>k__BackingField: Thank you, I have always taken great joy in my reading.
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+  - <ID>k__BackingField: e8e80270-9762-4294-aca6-5312dcc5d151
+    <Name>k__BackingField: Recluse10
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 28dda59c-a5f2-44fd-a95b-b2bee2ff909e
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Found it?
+      <NodeID>k__BackingField: cf8302bf-cd05-435a-b94f-71bd5ac8fd1e
+    - <Text>k__BackingField: Other books?
+      <NodeID>k__BackingField: a3683688-1acf-4852-bbd1-35b21291fea7
+    - <Text>k__BackingField: Something else.
+      <NodeID>k__BackingField: b5e8dc8f-4116-4f61-9500-0dc2a8cb1bcd
+    <Position>k__BackingField: {x: 14600, y: 400}
+    <DialogueType>k__BackingField: 1
+    <Character>k__BackingField: {fileID: 11400000, guid: 4d46490a566f8dd4db8b9da467c58c40, type: 2}
+    <Text>k__BackingField: Did you have another question about the Dream Plant Almanac?
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+  - <ID>k__BackingField: 67745404-96df-48e9-9166-9d5728bc4ab9
+    <Name>k__BackingField: Recluse7
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 28dda59c-a5f2-44fd-a95b-b2bee2ff909e
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Found it?
+      <NodeID>k__BackingField: cf8302bf-cd05-435a-b94f-71bd5ac8fd1e
+    - <Text>k__BackingField: Other books?
+      <NodeID>k__BackingField: a3683688-1acf-4852-bbd1-35b21291fea7
+    <Position>k__BackingField: {x: 14600, y: 125}
+    <DialogueType>k__BackingField: 1
+    <Character>k__BackingField: {fileID: 11400000, guid: 4d46490a566f8dd4db8b9da467c58c40, type: 2}
+    <Text>k__BackingField: "I\u2019ve only found the Dream Plant Almanac."
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+  - <ID>k__BackingField: 1b6f2a98-e3d5-48a5-b664-af657daee6ed
+    <Name>k__BackingField: EdgeNodeb0d74bb4-7390-4e4b-92b7-100fa453c313
+    <NodeType>k__BackingField: 1
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: 
+      <NodeID>k__BackingField: 081f90bd-6d8c-402c-88d6-bfd2d918b73b
+    <Position>k__BackingField: {x: 13425, y: 1350}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 0}
+    <Text>k__BackingField: 
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+  - <ID>k__BackingField: e0bb6316-8dfe-465a-8d0d-ff8976de0ccc
+    <Name>k__BackingField: EdgeNode7ffa15e4-b5ea-4c6b-a96c-5f76e1f4e4e4
+    <NodeType>k__BackingField: 1
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: 
+      <NodeID>k__BackingField: 1b6f2a98-e3d5-48a5-b664-af657daee6ed
+    <Position>k__BackingField: {x: 13425, y: 1975}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 0}
+    <Text>k__BackingField: 
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+  - <ID>k__BackingField: 081f90bd-6d8c-402c-88d6-bfd2d918b73b
+    <Name>k__BackingField: EdgeNodeb104dc9c-1789-4d8a-a115-da74deab34e1
+    <NodeType>k__BackingField: 1
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: 
+      <NodeID>k__BackingField: ed640caf-5942-48ce-a1e7-d9407022bea2
+    <Position>k__BackingField: {x: 13425, y: 850}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 0}
+    <Text>k__BackingField: 
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+  - <ID>k__BackingField: b5e8dc8f-4116-4f61-9500-0dc2a8cb1bcd
+    <Name>k__BackingField: EdgeNodec24decec-ecf2-4c5c-8db3-ba700712d57f
+    <NodeType>k__BackingField: 1
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: 
+      <NodeID>k__BackingField: 081f90bd-6d8c-402c-88d6-bfd2d918b73b
+    <Position>k__BackingField: {x: 15550, y: 875}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 0}
+    <Text>k__BackingField: 
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+  - <ID>k__BackingField: 4f2699fb-4452-40c0-bf49-8ccf45aeb343
+    <Name>k__BackingField: Recluse14
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Dialogue
+      <NodeID>k__BackingField: 45bfbe77-046c-4d67-85ec-0eb59e431483
+    <Position>k__BackingField: {x: 15075, y: 1175}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 4d46490a566f8dd4db8b9da467c58c40, type: 2}
+    <Text>k__BackingField: The Design of Everyday Things. I like to think about why
+      things are made the way they are.
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+  - <ID>k__BackingField: 6c715325-b66e-4319-a591-ad6e0f0dd808
+    <Name>k__BackingField: Recluse12
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Fiction
+      <NodeID>k__BackingField: 73974241-5336-4b06-ad5a-cea4c50acd2c
+    - <Text>k__BackingField: Non-fiction
+      <NodeID>k__BackingField: 4f2699fb-4452-40c0-bf49-8ccf45aeb343
+    <Position>k__BackingField: {x: 14675, y: 950}
+    <DialogueType>k__BackingField: 1
+    <Character>k__BackingField: {fileID: 11400000, guid: 4d46490a566f8dd4db8b9da467c58c40, type: 2}
+    <Text>k__BackingField: Fiction or non-fiction?
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+  - <ID>k__BackingField: 280b8cf4-2c4a-449b-b37d-54583b55f7dc
+    <Name>k__BackingField: Player13
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Dialogue
+      <NodeID>k__BackingField: 6c715325-b66e-4319-a591-ad6e0f0dd808
+    <Position>k__BackingField: {x: 14075, y: 950}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
+    <Text>k__BackingField: Do you have any book recommendations?
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+  - <ID>k__BackingField: b1535177-65f7-4693-8b8b-0efddf49b1bf
+    <Name>k__BackingField: EdgeNode872a285d-666c-4c69-9929-272eb86bb590
+    <NodeType>k__BackingField: 1
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: 
+      <NodeID>k__BackingField: b455f75e-0c0a-446d-96ca-0fbaa05ca77b
+    <Position>k__BackingField: {x: 13950, y: 950}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 0}
+    <Text>k__BackingField: 
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+  - <ID>k__BackingField: 9a6cf74a-5fd1-48ea-816c-9727abfa246d
+    <Name>k__BackingField: Player16
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Dialogue
+      <NodeID>k__BackingField: 735a48f3-03e0-41f0-a47b-3ee995a3a407
+    <Position>k__BackingField: {x: 13050, y: 125}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
+    <Text>k__BackingField: 'What kind of books do you have? '
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+  - <ID>k__BackingField: 907181a4-3cad-41a2-9061-621a0ae1a975
+    <Name>k__BackingField: Player17
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Dialogue
+      <NodeID>k__BackingField: c376b44d-d69b-4957-ae38-0dfbeced8a04
+    <Position>k__BackingField: {x: 13075, y: 2100}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
+    <Text>k__BackingField: Have you ever left your greenhouse?
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+  - <ID>k__BackingField: c376b44d-d69b-4957-ae38-0dfbeced8a04
+    <Name>k__BackingField: Recluse20
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Rot?
+      <NodeID>k__BackingField: 85466fcc-e5f9-455c-8dbf-8e7b218b1e12
+    - <Text>k__BackingField: Aren't you lonely?
+      <NodeID>k__BackingField: a82e15ad-6601-401f-b94d-8f70c39a1c2f
+    <Position>k__BackingField: {x: 13650, y: 2100}
+    <DialogueType>k__BackingField: 1
+    <Character>k__BackingField: {fileID: 11400000, guid: 4d46490a566f8dd4db8b9da467c58c40, type: 2}
+    <Text>k__BackingField: "I\u2026don\u2019t leave this place. It's too dangerous
+      outside. Too much rot. <size=60%><link=jiggle>Rot\u2026 <size=100%>\r\n"
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+  - <ID>k__BackingField: 85466fcc-e5f9-455c-8dbf-8e7b218b1e12
+    <Name>k__BackingField: Player18
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: 7d0f2f53-214e-430d-9a45-39229ab360e3
+    <Position>k__BackingField: {x: 14200, y: 2100}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
+    <Text>k__BackingField: 'Can you tell me what rot is? '
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+  - <ID>k__BackingField: 7d0f2f53-214e-430d-9a45-39229ab360e3
+    <Name>k__BackingField: Recluse21
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: bbca2406-6d11-44ce-9778-321a6118f19d
+    <Position>k__BackingField: {x: 14600, y: 2100}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 4d46490a566f8dd4db8b9da467c58c40, type: 2}
+    <Text>k__BackingField: 'A disease. Danger. It hurts plants, and me. '
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+  - <ID>k__BackingField: 01cd7cc6-d497-4d73-9d88-8d396d197d66
+    <Name>k__BackingField: EdgeNode173b22c4-5f5f-4130-819a-3d0ad3bdc7a5
+    <NodeType>k__BackingField: 1
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: 
+      <NodeID>k__BackingField: 60a8b928-11d2-4da9-a28d-7beab5151c07
+    <Position>k__BackingField: {x: 15500, y: 2375}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 0}
+    <Text>k__BackingField: 
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+  - <ID>k__BackingField: 60a8b928-11d2-4da9-a28d-7beab5151c07
+    <Name>k__BackingField: EdgeNode8daa58dc-5b90-47bb-8b07-80d6dc6ff27e
+    <NodeType>k__BackingField: 1
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: 
+      <NodeID>k__BackingField: a82e15ad-6601-401f-b94d-8f70c39a1c2f
+    <Position>k__BackingField: {x: 14100, y: 2375}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 0}
+    <Text>k__BackingField: 
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+  - <ID>k__BackingField: a82e15ad-6601-401f-b94d-8f70c39a1c2f
+    <Name>k__BackingField: Player19
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: 7ae55d07-eed0-4201-be4e-56ce370ff2b4
+    <Position>k__BackingField: {x: 14200, y: 2500}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
+    <Text>k__BackingField: "Aren\u2019t you lonely by yourself here?"
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+  - <ID>k__BackingField: c181da5a-6753-434a-84a7-9de285c60465
+    <Name>k__BackingField: Recluse24
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Yes.
+      <NodeID>k__BackingField: 44879cb4-beaa-4d5c-a2b7-54820f422414
+    - <Text>k__BackingField: Whats the question?
+      <NodeID>k__BackingField: 44879cb4-beaa-4d5c-a2b7-54820f422414
+    - <Text>k__BackingField: No.
+      <NodeID>k__BackingField: e5a65f19-02f3-4445-a57b-208698d1ce06
+    <Position>k__BackingField: {x: 15200, y: 2500}
+    <DialogueType>k__BackingField: 1
+    <Character>k__BackingField: {fileID: 11400000, guid: 4d46490a566f8dd4db8b9da467c58c40, type: 2}
+    <Text>k__BackingField: "<size=60%> \u2026can I ask you something? <size=100%>"
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+  - <ID>k__BackingField: 2774ecd6-a35e-40a4-9c60-e2532fc7c7b1
+    <Name>k__BackingField: Player20
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: ...interesting.
+      <NodeID>k__BackingField: 0a30036e-0a84-4d01-9387-f97d7e449b91
+    - <Text>k__BackingField: ...hopeful.
+      <NodeID>k__BackingField: 72936fa2-3474-4aa3-9a16-944f92f8ec32
+    - <Text>k__BackingField: ...storied.
+      <NodeID>k__BackingField: 75265bbe-c299-4971-abb8-33ad26f01b57
+    <Position>k__BackingField: {x: 16175, y: 2500}
+    <DialogueType>k__BackingField: 1
+    <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
+    <Text>k__BackingField: "I\u2019ve started exploring the tree and all of its branches,
+      it's so full of brambles, thorns, and all sorts of strange things, it feels
+      so\u2026 "
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+  - <ID>k__BackingField: 0a30036e-0a84-4d01-9387-f97d7e449b91
+    <Name>k__BackingField: Player21
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: 8ae6ca0f-6af2-4672-9971-6ac56789bb8a
+    <Position>k__BackingField: {x: 16675, y: 2500}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
+    <Text>k__BackingField: "\u2026interesting. There is so much hidden around the
+      tree. I just want to explore every part of it."
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+  - <ID>k__BackingField: 72936fa2-3474-4aa3-9a16-944f92f8ec32
+    <Name>k__BackingField: Player22
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: 8ae6ca0f-6af2-4672-9971-6ac56789bb8a
+    <Position>k__BackingField: {x: 16675, y: 2775}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
+    <Text>k__BackingField: "\u2026hopeful. Underneath the bramble and rot there is
+      a tree ready to grow. I think it can become whatever we want it to be. "
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+  - <ID>k__BackingField: 75265bbe-c299-4971-abb8-33ad26f01b57
+    <Name>k__BackingField: Player23
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: 8ae6ca0f-6af2-4672-9971-6ac56789bb8a
+    <Position>k__BackingField: {x: 16675, y: 3050}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
+    <Text>k__BackingField: "\u2026storied. I think this tree has a long history built
+      upon it. Like everyone who has lived here has left a little bit of themselves
+      behind. "
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+  - <ID>k__BackingField: 23d641af-a07d-4333-b380-ad885d171489
+    <Name>k__BackingField: Player24
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: ...overwhelming.
+      <NodeID>k__BackingField: 4c74bb17-3427-413b-a70a-046fdae89d28
+    - <Text>k__BackingField: ...exciting.
+      <NodeID>k__BackingField: a125f311-c9b1-4235-af3d-f687aa2901c6
+    - <Text>k__BackingField: ...stimulating,
+      <NodeID>k__BackingField: c8f2bec4-e897-45fe-8fef-d343da89f7a6
+    <Position>k__BackingField: {x: 16175, y: 3300}
+    <DialogueType>k__BackingField: 1
+    <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
+    <Text>k__BackingField: "Honestly all of this is new to me, and it feels\u2026"
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+  - <ID>k__BackingField: 4c74bb17-3427-413b-a70a-046fdae89d28
+    <Name>k__BackingField: Player25
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: 8ae6ca0f-6af2-4672-9971-6ac56789bb8a
+    <Position>k__BackingField: {x: 16675, y: 3300}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
+    <Text>k__BackingField: "\u2026overwhelming. I\u2019m just trying to take it all
+      in. There seems to be something new around every corner."
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+  - <ID>k__BackingField: a125f311-c9b1-4235-af3d-f687aa2901c6
+    <Name>k__BackingField: Player26
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: 8ae6ca0f-6af2-4672-9971-6ac56789bb8a
+    <Position>k__BackingField: {x: 16675, y: 3575}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
+    <Text>k__BackingField: "\u2026exciting. There is a lot to discover in the dreamworld.
+      I feel like we can build something here together. "
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+  - <ID>k__BackingField: c8f2bec4-e897-45fe-8fef-d343da89f7a6
+    <Name>k__BackingField: Player27
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: 8ae6ca0f-6af2-4672-9971-6ac56789bb8a
+    <Position>k__BackingField: {x: 16675, y: 3850}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
+    <Text>k__BackingField: "\u2026stimulating. There is something new around every
+      corner to experience and I am absolutely here for it. "
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+  - <ID>k__BackingField: 93aee150-5395-4607-a20f-542862681d9d
+    <Name>k__BackingField: Player28
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: ...strange.
+      <NodeID>k__BackingField: 466c4d96-5300-4bdc-82dc-5df31c5434df
+    - <Text>k__BackingField: ...wonderful.
+      <NodeID>k__BackingField: a8ed3169-36a9-4c9c-917d-a64f227996a2
+    - <Text>k__BackingField: ...kind.
+      <NodeID>k__BackingField: 4c00cae7-85b2-4903-ab61-efb2fd042873
+    <Position>k__BackingField: {x: 16175, y: 4075}
+    <DialogueType>k__BackingField: 1
+    <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
+    <Text>k__BackingField: "There are other people out there, I haven't met all of
+      them yet, but they are so\u2026"
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+  - <ID>k__BackingField: a8ed3169-36a9-4c9c-917d-a64f227996a2
+    <Name>k__BackingField: Player30
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: 8ae6ca0f-6af2-4672-9971-6ac56789bb8a
+    <Position>k__BackingField: {x: 16675, y: 4400}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
+    <Text>k__BackingField: "\u2026wonderful. In their own ways everyone has been
+      really nice. I really love your greenhouse. "
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+  - <ID>k__BackingField: 466c4d96-5300-4bdc-82dc-5df31c5434df
+    <Name>k__BackingField: Player29
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: 
+    <Position>k__BackingField: {x: 16675, y: 4075}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
+    <Text>k__BackingField: "\u2026strange. Everyone seems to have their own little
+      quirk\u2026  \u2026that's not a bad thing though! "
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+  - <ID>k__BackingField: 4c00cae7-85b2-4903-ab61-efb2fd042873
+    <Name>k__BackingField: Player31
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: 8ae6ca0f-6af2-4672-9971-6ac56789bb8a
+    <Position>k__BackingField: {x: 16675, y: 4700}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
+    <Text>k__BackingField: "\u2026kind. Everyone has been really welcoming to me.
+      I really want to give some of that kindness back."
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+  - <ID>k__BackingField: 8ae6ca0f-6af2-4672-9971-6ac56789bb8a
+    <Name>k__BackingField: Recluse26
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: 75b27a75-4564-49a1-bfeb-f7a594173c15
+    <Position>k__BackingField: {x: 17275, y: 2500}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 4d46490a566f8dd4db8b9da467c58c40, type: 2}
+    <Text>k__BackingField: "\u2026"
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+  - <ID>k__BackingField: 75b27a75-4564-49a1-bfeb-f7a594173c15
+    <Name>k__BackingField: Recluse27
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: 4dc94986-63a0-4e5d-8037-9e7f3951c705
+    <Position>k__BackingField: {x: 17600, y: 2500}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 4d46490a566f8dd4db8b9da467c58c40, type: 2}
+    <Text>k__BackingField: "\u2026thank you for sharing. <link=wait_long></link>\nIt
+      makes me happy to hear about the outside."
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+  - <ID>k__BackingField: e0e03364-dfb2-49ff-aac1-627d40480967
+    <Name>k__BackingField: EdgeNodec1531a9d-c593-49b4-8622-d09dfbe7b0e0
+    <NodeType>k__BackingField: 1
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: 
+      <NodeID>k__BackingField: 5a437c53-7809-435d-9f01-3bf908159170
+    <Position>k__BackingField: {x: 16125, y: 4975}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 0}
+    <Text>k__BackingField: 
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+  - <ID>k__BackingField: 4dc94986-63a0-4e5d-8037-9e7f3951c705
+    <Name>k__BackingField: EdgeNodea737c00d-d8bc-42be-a096-1515c1edabb6
+    <NodeType>k__BackingField: 1
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: 
+      <NodeID>k__BackingField: e0e03364-dfb2-49ff-aac1-627d40480967
+    <Position>k__BackingField: {x: 18025, y: 4975}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 0}
+    <Text>k__BackingField: 
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+  - <ID>k__BackingField: 5a437c53-7809-435d-9f01-3bf908159170
+    <Name>k__BackingField: EdgeNodea71ace76-a83e-4c0b-9c28-e360703e37d9
+    <NodeType>k__BackingField: 1
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: 
+      <NodeID>k__BackingField: b455f75e-0c0a-446d-96ca-0fbaa05ca77b
+    <Position>k__BackingField: {x: 12275, y: 4950}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 0}
+    <Text>k__BackingField: 
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+  - <ID>k__BackingField: 44efe00d-45cb-4efd-9d41-4eaf04c3e94c
+    <Name>k__BackingField: Player32
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: ce42c4bb-8743-4b05-beba-7184ee0d4170
+    <Position>k__BackingField: {x: 13000, y: 5125}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
+    <Text>k__BackingField: "The crystal flower\u2026"
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+  - <ID>k__BackingField: 0cf810ee-4ce3-45cd-9624-9c97687c8cb6
+    <Name>k__BackingField: Recluse30
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Question.
+      <NodeID>k__BackingField: 8ebd2ef7-82b2-41d5-bf98-c78fef8422c8
+    - <Text>k__BackingField: Other dream plants?
+      <NodeID>k__BackingField: cdba8449-003a-41bc-b657-f9ac7657afeb
+    <Position>k__BackingField: {x: 13800, y: 5125}
+    <DialogueType>k__BackingField: 1
+    <Character>k__BackingField: {fileID: 11400000, guid: 4d46490a566f8dd4db8b9da467c58c40, type: 2}
+    <Text>k__BackingField: You retrieved a fine flower, I thank you for fetching
+      it for me. It will make a fine addition to my greenhouse.
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+  - <ID>k__BackingField: 8ebd2ef7-82b2-41d5-bf98-c78fef8422c8
+    <Name>k__BackingField: Player33
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: 168fcab7-adf0-45d1-a98f-0f3b26a47b48
+    <Position>k__BackingField: {x: 14350, y: 5125}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
+    <Text>k__BackingField: I thought you said I was getting the Crystal Flower because
+      it stopped me from spreading rot?
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+  - <ID>k__BackingField: 20e9c23c-1289-4d30-b92e-a34e49118d87
+    <Name>k__BackingField: Player34
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: 4708132c-83d2-4afd-9612-9fcdf88ba10e
+    <Position>k__BackingField: {x: 16225, y: 5125}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
+    <Text>k__BackingField: 'It''s alright, it''s going to be fine. I can''t spread
+      rot, remember? '
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+  - <ID>k__BackingField: 4708132c-83d2-4afd-9612-9fcdf88ba10e
+    <Name>k__BackingField: Recluse34
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: db9c0235-10cb-4829-b8a6-4f2cccc85c8c
+    <Position>k__BackingField: {x: 16675, y: 5125}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 4d46490a566f8dd4db8b9da467c58c40, type: 2}
+    <Text>k__BackingField: "<size=60%><link=jiggle> \u2026it's going to all go wrong
+      again, mother was right. I. I. I\u2026\r\n"
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+  - <ID>k__BackingField: db9c0235-10cb-4829-b8a6-4f2cccc85c8c
+    <Name>k__BackingField: Recluse35
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: 6de9afb8-0724-4f40-b12e-0f60ece5e282
+    <Position>k__BackingField: {x: 17150, y: 5125}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 4d46490a566f8dd4db8b9da467c58c40, type: 2}
+    <Text>k__BackingField: <size=60%><link=jiggle>...
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+  - <ID>k__BackingField: aceed898-18f1-4c4b-8e13-d628d80f1f81
+    <Name>k__BackingField: Player35
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: a73bff33-a16d-4da1-8d7a-61c7990a8e14
+    <Position>k__BackingField: {x: 17925, y: 5125}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
+    <Text>k__BackingField: That's okay, thank you for asking me.
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+  - <ID>k__BackingField: 45b9b4c6-aadb-43db-b960-f8b57c21c458
+    <Name>k__BackingField: EdgeNode7b3a8fc4-26bf-4292-acaa-4d5dc03b338a
+    <NodeType>k__BackingField: 1
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: 
+      <NodeID>k__BackingField: f3399cd8-62b3-4133-8120-36a747c29539
+    <Position>k__BackingField: {x: 17925, y: 5400}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 0}
+    <Text>k__BackingField: 
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+  - <ID>k__BackingField: f3399cd8-62b3-4133-8120-36a747c29539
+    <Name>k__BackingField: EdgeNode57d91eae-1001-4fb0-84a1-4ac533a29cd8
+    <NodeType>k__BackingField: 1
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: 
+      <NodeID>k__BackingField: a73bff33-a16d-4da1-8d7a-61c7990a8e14
+    <Position>k__BackingField: {x: 18300, y: 5400}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 0}
+    <Text>k__BackingField: 
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+  - <ID>k__BackingField: a73bff33-a16d-4da1-8d7a-61c7990a8e14
+    <Name>k__BackingField: Void10
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: ccbe06f5-119a-4542-a613-4e81afbaf84e
+    <Position>k__BackingField: {x: 18400, y: 5125}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: c11bdf3877896b84dac6bdb375297575, type: 2}
+    <Text>k__BackingField: YOU LEAVE THE GREENHOUSE, BUT BEFORE YOU CAN WALK AWAY
+      YOU HEAR THROUGH THE GLASS.
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+  - <ID>k__BackingField: ccbe06f5-119a-4542-a613-4e81afbaf84e
+    <Name>k__BackingField: Recluse37
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: 
+    <Position>k__BackingField: {x: 18875, y: 5125}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 4d46490a566f8dd4db8b9da467c58c40, type: 2}
+    <Text>k__BackingField: "\u2026thank you. <link=wait_short></link>Please come
+      back again."
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+  - <ID>k__BackingField: e6b64dcc-05c9-4e4c-917a-03f74df4fae6
+    <Name>k__BackingField: Player36
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: 4708132c-83d2-4afd-9612-9fcdf88ba10e
+    <Position>k__BackingField: {x: 16225, y: 5375}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
+    <Text>k__BackingField: "Um, hey can you tell me about this book here\u2026"
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+  - <ID>k__BackingField: 96be6698-e300-44f1-9cbe-6c9350da1498
+    <Name>k__BackingField: Player37
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: 4cc138d6-882c-4b7f-ba7d-dc64d8d2d176
+    <Position>k__BackingField: {x: 16225, y: 5625}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
+    <Text>k__BackingField: "Sorry I didn\u2019t mean to cause you any distress. I
+      can leave now if you want."
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+  - <ID>k__BackingField: 337857b0-fd64-449d-92e4-d7c8578bc8eb
+    <Name>k__BackingField: EdgeNode0730e01c-5b98-4ae4-8ff9-4c9fea61bfca
+    <NodeType>k__BackingField: 1
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: 
+      <NodeID>k__BackingField: 45b9b4c6-aadb-43db-b960-f8b57c21c458
+    <Position>k__BackingField: {x: 17825, y: 5625}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 0}
+    <Text>k__BackingField: 
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+  - <ID>k__BackingField: cdba8449-003a-41bc-b657-f9ac7657afeb
+    <Name>k__BackingField: Player38
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: fbbfa0c4-5db6-4ab3-9887-ef844b911fa4
+    <Position>k__BackingField: {x: 14350, y: 5500}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
+    <Text>k__BackingField: Are there other dream plants like the crystal flower?
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+  - <ID>k__BackingField: fbbfa0c4-5db6-4ab3-9887-ef844b911fa4
+    <Name>k__BackingField: Recluse39
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: df550335-2504-4db4-b73c-1f7d42445634
+    <Position>k__BackingField: {x: 14825, y: 5500}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 4d46490a566f8dd4db8b9da467c58c40, type: 2}
+    <Text>k__BackingField: According to the Almanac, yes there are many other plants
+      that grow around the Great Dream Tree. If you find any of them, be sure to
+      bring them to me.
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+  - <ID>k__BackingField: ecca1433-535a-4bf1-9b91-2ecc171384c2
+    <Name>k__BackingField: EdgeNode0ac60dda-81cb-4bcf-af40-5cef57d69a66
+    <NodeType>k__BackingField: 1
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: 
+      <NodeID>k__BackingField: 4d2de9b5-ba6b-4606-aa2c-b0aa0ca046db
+    <Position>k__BackingField: {x: 13700, y: 5900}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 0}
+    <Text>k__BackingField: 
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+  - <ID>k__BackingField: df550335-2504-4db4-b73c-1f7d42445634
+    <Name>k__BackingField: EdgeNode44b5f1b1-eaff-4c30-bc3a-f03c6a8eeed6
+    <NodeType>k__BackingField: 1
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: 
+      <NodeID>k__BackingField: ecca1433-535a-4bf1-9b91-2ecc171384c2
+    <Position>k__BackingField: {x: 15275, y: 5900}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 0}
+    <Text>k__BackingField: 
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+  - <ID>k__BackingField: 45d91495-881e-4c44-b82b-c28a4655b1c6
+    <Name>k__BackingField: EdgeNodecfd3581b-e5c3-48a5-87cc-2d432e40aad6
+    <NodeType>k__BackingField: 1
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: 
+      <NodeID>k__BackingField: 5a437c53-7809-435d-9f01-3bf908159170
+    <Position>k__BackingField: {x: 12175, y: 5750}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 0}
+    <Text>k__BackingField: 
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+  - <ID>k__BackingField: 5b0395c6-874c-4d47-bf5e-92e468604be1
+    <Name>k__BackingField: Recluse
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Dialogue
+      <NodeID>k__BackingField: 
+    <Position>k__BackingField: {x: 13025, y: 500}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 4d46490a566f8dd4db8b9da467c58c40, type: 2}
+    <Text>k__BackingField: Okay. Feel free to look around my greenhouse. Please be
+      careful when touching my plants.
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+  - <ID>k__BackingField: cf8b0ea3-c1f9-4cc0-9ab8-b32d78541d36
+    <Name>k__BackingField: Void1
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Knock
+      <NodeID>k__BackingField: 261a2059-6a84-4cfd-aca8-5e6cef366f35
+    <Position>k__BackingField: {x: 1525, y: 125}
+    <DialogueType>k__BackingField: 1
+    <Character>k__BackingField: {fileID: 11400000, guid: c11bdf3877896b84dac6bdb375297575, type: 2}
+    <Text>k__BackingField: "The quaint greenhouse door is \nexactly as you left it.
+      Still locked."
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+  - <ID>k__BackingField: 90f9113b-2ca9-4c0e-a452-9c08d7b0cb2b
+    <Name>k__BackingField: RecluseAlt6
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Dialogue
+      <NodeID>k__BackingField: be920af3-b4ee-47dd-97d5-c3d6da9dae1e
+    <Position>k__BackingField: {x: 5775, y: 475}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 93d65e492f7563241b38bdd17edcf399, type: 2}
+    <Text>k__BackingField: "...oh. <size=60%> Sorry.<link=wait_short></link> \n<size=100%>
+      I'll let you in now. "
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+  - <ID>k__BackingField: f877c361-e782-4a28-8505-911d36af63a8
+    <Name>k__BackingField: Void5
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Dialogue
+      <NodeID>k__BackingField: 8322873f-bd16-4bd7-8ecb-fa078e20b9c8
+    <Position>k__BackingField: {x: 6750, y: 125}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: c11bdf3877896b84dac6bdb375297575, type: 2}
+    <Text>k__BackingField: "<i>You begin to slide the greenhouse door open\u2026</i>"
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+  - <ID>k__BackingField: 4a653385-fc74-419a-84d5-e024fc910f7a
+    <Name>k__BackingField: Void6
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Dialogue
+      <NodeID>k__BackingField: bda68069-9beb-4a43-9fef-5501f81efc36
+    <Position>k__BackingField: {x: 8325, y: 125}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: c11bdf3877896b84dac6bdb375297575, type: 2}
+    <Text>k__BackingField: The sound of a door opening and closing can be heard from
+      inside.
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+  - <ID>k__BackingField: bda68069-9beb-4a43-9fef-5501f81efc36
+    <Name>k__BackingField: Void8
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Dialogue
+      <NodeID>k__BackingField: abe70736-0a74-426b-b868-5581abdef131
+    <Position>k__BackingField: {x: 8875, y: 125}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: c11bdf3877896b84dac6bdb375297575, type: 2}
+    <Text>k__BackingField: 'TEMP TEXT: YOU ENTER THE GREENHOUSE FINDING A BEAUTIFUL
+      INTERIOR FULL OF PLANTS AND VARIOUS BOOKCASES. IN THE CENTRE OF THE LARGE GREENHOUSE,
+      THERE IS A SMALL CONCRETE HOUSE THAT THE RECLUSE IS INSIDE, WAITING AT ONE
+      OF THE WINDOWS TO TALK TO YOU.'
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+  - <ID>k__BackingField: 31a06fb7-2b55-4256-89a4-1065d15f2464
+    <Name>k__BackingField: Player9
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Dialogue
+      <NodeID>k__BackingField: 462ede0c-ba89-4929-ae54-e0a022993082
+    <Position>k__BackingField: {x: 11225, y: 375}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
+    <Text>k__BackingField: "I thought the flower stopped \nme from spreading rot?"
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+  - <ID>k__BackingField: d8a06519-7ba9-4e28-bcd5-d57cd4c44aa7
+    <Name>k__BackingField: Recluse9
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Dialogue
+      <NodeID>k__BackingField: 108ba55c-e07e-44d3-b0ff-914e478c5626
+    <Position>k__BackingField: {x: 15625, y: 400}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 4d46490a566f8dd4db8b9da467c58c40, type: 2}
+    <Text>k__BackingField: 'There are other editions mentioned, but I do not know
+      their location. Even if I did it would be too dangerous to seek them out. <link=wait_short>
+
+      <size=60%>Rot?<link=jiggle>
+      Not safe.<size=100%>'
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+  - <ID>k__BackingField: 73974241-5336-4b06-ad5a-cea4c50acd2c
+    <Name>k__BackingField: Recluse13
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Dialogue
+      <NodeID>k__BackingField: 45bfbe77-046c-4d67-85ec-0eb59e431483
+    <Position>k__BackingField: {x: 15075, y: 950}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 4d46490a566f8dd4db8b9da467c58c40, type: 2}
+    <Text>k__BackingField: 'The Lord of the Rings. It''s basic but I like the Shire.
+      I would like to live in a hill. '
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+  - <ID>k__BackingField: 731e2939-66c7-4420-9c98-944128b21669
+    <Name>k__BackingField: Recluse15
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Mother?
+      <NodeID>k__BackingField: b9f9b876-e73b-4f54-8de3-9f570a4cd8a4
+    - <Text>k__BackingField: Express admiration.
+      <NodeID>k__BackingField: 5191cfb1-5bbe-4319-9907-b576799b0ad5
+    <Position>k__BackingField: {x: 14100, y: 1450}
+    <DialogueType>k__BackingField: 1
+    <Character>k__BackingField: {fileID: 11400000, guid: 4d46490a566f8dd4db8b9da467c58c40, type: 2}
+    <Text>k__BackingField: "I had much free time as a child, so I read. Then my mother
+      ran out of books for me to read, so I bought more. 20 years later here we are.<link=wait_short></link>
+      \n<size=60%>I\u2019m getting so old. <size=100%>"
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+  - <ID>k__BackingField: 02997467-1bf3-4b6f-9ccb-60e45d3437c6
+    <Name>k__BackingField: EdgeNode2fa90797-3dd4-443a-ae2a-7da09e822df8
+    <NodeType>k__BackingField: 1
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: 
+      <NodeID>k__BackingField: e0bb6316-8dfe-465a-8d0d-ff8976de0ccc
+    <Position>k__BackingField: {x: 16350, y: 1975}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 0}
+    <Text>k__BackingField: 
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+  - <ID>k__BackingField: c6bf27d5-966c-440f-a0e6-46ef0cfeb462
+    <Name>k__BackingField: Recluse18
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Dialogue
+      <NodeID>k__BackingField: 02997467-1bf3-4b6f-9ccb-60e45d3437c6
+    <Position>k__BackingField: {x: 15925, y: 1450}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 4d46490a566f8dd4db8b9da467c58c40, type: 2}
+    <Text>k__BackingField: 'Not discouraging. <link=wait_long></link>
+
+      Now
+      please, back on topic to my books.'
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+  - <ID>k__BackingField: e5a65f19-02f3-4445-a57b-208698d1ce06
+    <Name>k__BackingField: Recluse28
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: e0e03364-dfb2-49ff-aac1-627d40480967
+    <Position>k__BackingField: {x: 15700, y: 2900}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 4d46490a566f8dd4db8b9da467c58c40, type: 2}
+    <Text>k__BackingField: "\u2026ah. <link=wait_short></link>That's okay. <link=wait_short></link>Thank
+      you for being honest. "
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+  - <ID>k__BackingField: 7ae55d07-eed0-4201-be4e-56ce370ff2b4
+    <Name>k__BackingField: Recluse23
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: c181da5a-6753-434a-84a7-9de285c60465
+    <Position>k__BackingField: {x: 14675, y: 2500}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 4d46490a566f8dd4db8b9da467c58c40, type: 2}
+    <Text>k__BackingField: "Lonely?<link=wait_short></link> I\u2026 I have my plants
+      and my books. But I am glad that you are here. "
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+  - <ID>k__BackingField: ce42c4bb-8743-4b05-beba-7184ee0d4170
+    <Name>k__BackingField: Recluse29
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: 0cf810ee-4ce3-45cd-9624-9c97687c8cb6
+    <Position>k__BackingField: {x: 13325, y: 5125}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 4d46490a566f8dd4db8b9da467c58c40, type: 2}
+    <Text>k__BackingField: <link=type_speed_fast>Yes! Chrysanthemum Somnium.
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+  - <ID>k__BackingField: 4d2de9b5-ba6b-4606-aa2c-b0aa0ca046db
+    <Name>k__BackingField: Recluse40
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Question.
+      <NodeID>k__BackingField: 8ebd2ef7-82b2-41d5-bf98-c78fef8422c8
+    - <Text>k__BackingField: Other dream plants?
+      <NodeID>k__BackingField: cdba8449-003a-41bc-b657-f9ac7657afeb
+    - <Text>k__BackingField: Something else.
+      <NodeID>k__BackingField: 2001b505-fe2d-4a26-9e0b-b4c58bdc62f4
+    <Position>k__BackingField: {x: 13800, y: 5450}
+    <DialogueType>k__BackingField: 1
+    <Character>k__BackingField: {fileID: 11400000, guid: 4d46490a566f8dd4db8b9da467c58c40, type: 2}
+    <Text>k__BackingField: Was there something else you wanted to ask me about the
+      Crystal Flower?
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+  - <ID>k__BackingField: 2001b505-fe2d-4a26-9e0b-b4c58bdc62f4
+    <Name>k__BackingField: EdgeNode1454a46e-7005-4d9d-bd02-7689ec0e6fcb
+    <NodeType>k__BackingField: 1
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: 
+      <NodeID>k__BackingField: 45d91495-881e-4c44-b82b-c28a4655b1c6
+    <Position>k__BackingField: {x: 14250, y: 5750}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 0}
+    <Text>k__BackingField: 
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+  - <ID>k__BackingField: 168fcab7-adf0-45d1-a98f-0f3b26a47b48
+    <Name>k__BackingField: Recluse31
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: e0662964-b76f-47c1-a4a3-74ad836befc5
+    <Position>k__BackingField: {x: 14825, y: 5125}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 4d46490a566f8dd4db8b9da467c58c40, type: 2}
+    <Text>k__BackingField: "<size=60%>Um, aah, <size=100%>yes that as well. It has,
+      uhh, rot-preventing properties. That by collecting you, you, you\u2026 have
+      fully taken into your system making it\u2026<link=wait_short></link> safe!
+      Yes safe <size=60%>(safe?)  <size=100%> for you to be here and.... <link=wait_short></link>
+      ...uh\u2026<size=60%><link=jiggle>(safe??) <link=wait_long></link>\n</link><size=100%>\u2026oh
+      no.\r\n"
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+  - <ID>k__BackingField: e0662964-b76f-47c1-a4a3-74ad836befc5
+    <Name>k__BackingField: Recluse32
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: 51a300d5-d8d7-484b-9ea2-0abd882d77c7
+    <Position>k__BackingField: {x: 15275, y: 5125}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 4d46490a566f8dd4db8b9da467c58c40, type: 2}
+    <Text>k__BackingField: "<size=60%><link=jiggle>Sorry. The outside is very dangerous.
+      It really really really really scares me. The rot from outside could destroy
+      my garden, you could k\u2026 "
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+  - <ID>k__BackingField: 6de9afb8-0724-4f40-b12e-0f60ece5e282
+    <Name>k__BackingField: Recluse36
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Reassure & leave.
+      <NodeID>k__BackingField: aceed898-18f1-4c4b-8e13-d628d80f1f81
+    - <Text>k__BackingField: Leave silently.
+      <NodeID>k__BackingField: 45b9b4c6-aadb-43db-b960-f8b57c21c458
+    <Position>k__BackingField: {x: 17475, y: 5125}
+    <DialogueType>k__BackingField: 1
+    <Character>k__BackingField: {fileID: 11400000, guid: 4d46490a566f8dd4db8b9da467c58c40, type: 2}
+    <Text>k__BackingField: <link=type_speed_slow></link><size=60%><link=jiggle> Sorry,
+      could you leave again and come back later?<size=100%>
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+  - <ID>k__BackingField: e3397701-23c8-4f4f-b50d-fe0b313f3051
+    <Name>k__BackingField: Player39
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: db40cf7d-df82-4161-8426-4f5d2ff84621
+    <Position>k__BackingField: {x: 10350, y: 450}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
+    <Text>k__BackingField: Nice to meet you, Lucus.
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+  - <ID>k__BackingField: fed4663b-a13d-4201-b7cc-8d3496909a6a
+    <Name>k__BackingField: Recluse16
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Dialogue
+      <NodeID>k__BackingField: ef85a988-efe8-4f01-b6ba-26bd7da8f9b4
+    <Position>k__BackingField: {x: 15075, y: 1450}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 4d46490a566f8dd4db8b9da467c58c40, type: 2}
+    <Text>k__BackingField: "<link=type_speed_slow></link><size=60%>My mother\u2026<size=100%>"
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+  - <ID>k__BackingField: f778a5ca-9756-41cb-a0a0-e3d4fdfba9fe
+    <Name>k__BackingField: Player2
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Dialogue
+      <NodeID>k__BackingField: cf61ca38-eee6-43a1-8964-33e14b3f1f85
+    <Position>k__BackingField: {x: 3450, y: 125}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
+    <Text>k__BackingField: 'Hope this is the right one!
+
+'
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+  - <ID>k__BackingField: 5b9b5695-b2c5-44f9-aabc-d0e0ebadd0c4
+    <Name>k__BackingField: RecluseAlt2
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Dialogue
+      <NodeID>k__BackingField: 1c4f86e0-49db-49c7-9764-fa0a0189aead
+    <Position>k__BackingField: {x: 4300, y: 125}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 93d65e492f7563241b38bdd17edcf399, type: 2}
+    <Text>k__BackingField: It is! <link=wait_short></link>It's just like the book
+      described it!
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+  - <ID>k__BackingField: 1c4f86e0-49db-49c7-9764-fa0a0189aead
+    <Name>k__BackingField: RecluseAlt3
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Listen.
+      <NodeID>k__BackingField: 655ef092-4104-4aab-9585-16fb429accf8
+    - <Text>k__BackingField: Interrupt him.
+      <NodeID>k__BackingField: 7b0db9ed-4173-416c-8347-722214c3e5dc
+    <Position>k__BackingField: {x: 4775, y: 125}
+    <DialogueType>k__BackingField: 1
+    <Character>k__BackingField: {fileID: 11400000, guid: 93d65e492f7563241b38bdd17edcf399, type: 2}
+    <Text>k__BackingField: "<link=type_speed_fast></link>Chrysanthemum Somnium, the
+      Pure Flower. Its petals are said to be the purest crystal in all existence,
+      <link=wave> growing only around the freshest of water! It\u2019s many properties\u2026<link=type_speed_fast></link>"
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+  - <ID>k__BackingField: 7435439d-1714-4e07-8661-00ad33f8dd7a
+    <Name>k__BackingField: RecluseAlt8
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Dialogue
+      <NodeID>k__BackingField: 4a653385-fc74-419a-84d5-e024fc910f7a
+    <Position>k__BackingField: {x: 7875, y: 125}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 93d65e492f7563241b38bdd17edcf399, type: 2}
+    <Text>k__BackingField: <link=type_speed_slow></link><size=60%> ...please.<size=100%>
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+  - <ID>k__BackingField: 655ef092-4104-4aab-9585-16fb429accf8
+    <Name>k__BackingField: RecluseAlt4
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Dialogue
+      <NodeID>k__BackingField: 9c8b3b56-b1e8-49a0-ae97-5a23c9db41db
+    <Position>k__BackingField: {x: 5275, y: 125}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 93d65e492f7563241b38bdd17edcf399, type: 2}
+    <Text>k__BackingField: "<link=type_speed_fast></link><link=wave> growing only
+      around the freshest of water! It\u2019s many\u2026when held by an individual
+      include a relaxed state of being, and a general sense of accomplishment! Ranked
+      no1 in the Dream Plant Almanac for best\u2026<link=type_speed_medium></link>"
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+  - <ID>k__BackingField: 9c8b3b56-b1e8-49a0-ae97-5a23c9db41db
+    <Name>k__BackingField: RecluseAlt5
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Dialogue
+      <NodeID>k__BackingField: be920af3-b4ee-47dd-97d5-c3d6da9dae1e
+    <Position>k__BackingField: {x: 5750, y: 125}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 93d65e492f7563241b38bdd17edcf399, type: 2}
+    <Text>k__BackingField: "<size=60%>\u2026ah sorry. I rambled off again. <link=wait_short></link>\n<size=100%>
+      I\u2019ll let you in now. "
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+  - <ID>k__BackingField: b45e6ae1-26af-4167-92ab-b5307af2bbda
+    <Name>k__BackingField: Void7
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Dialogue
+      <NodeID>k__BackingField: 0651299f-0eba-4418-8aa4-68bee3f0dd60
+    <Position>k__BackingField: {x: 6775, y: 425}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: c11bdf3877896b84dac6bdb375297575, type: 2}
+    <Text>k__BackingField: <i>The sound of a door opening and closing can be heard
+      from inside. </i>
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+  - <ID>k__BackingField: 8322873f-bd16-4bd7-8ecb-fa078e20b9c8
+    <Name>k__BackingField: RecluseAlt7
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Dialogue
+      <NodeID>k__BackingField: b45dea4a-0e45-448e-b7cc-db2191b32d7a
+    <Position>k__BackingField: {x: 7175, y: 125}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 93d65e492f7563241b38bdd17edcf399, type: 2}
+    <Text>k__BackingField: <link=type_speed_fast></link><link=jiggle> WAIT!!!<link=type_speed_medium></link>
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+  - <ID>k__BackingField: 151ef5a0-9610-4031-892a-0a760e4710ed
+    <Name>k__BackingField: Recluse4
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Dialogue
+      <NodeID>k__BackingField: db40cf7d-df82-4161-8426-4f5d2ff84621
+    <Position>k__BackingField: {x: 11975, y: 375}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 4d46490a566f8dd4db8b9da467c58c40, type: 2}
+    <Text>k__BackingField: 'Yes you are safe. <size=60%>Safe?<link=wait_long> </link>
+
+      <size=100%>I
+      just find it more comfortable here.<link=wait_long> </link> <size=60%><link=jiggle>Safe?</link>
+      Ahem. Let''s move on.<size=100%>'
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+  - <ID>k__BackingField: 735a48f3-03e0-41f0-a47b-3ee995a3a407
+    <Name>k__BackingField: Recluse6
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 7357f2c1-ba8f-4a68-827e-2a1c544aeb69
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Dream books?
+      <NodeID>k__BackingField: 42d2960c-f2d3-42c2-9028-a8c205598ba9
+    - <Text>k__BackingField: Books?
+      <NodeID>k__BackingField: 280b8cf4-2c4a-449b-b37d-54583b55f7dc
+    - <Text>k__BackingField: Collecting books?
+      <NodeID>k__BackingField: 731e2939-66c7-4420-9c98-944128b21669
+    - <Text>k__BackingField: Ask another question.
+      <NodeID>k__BackingField: 
+    <Position>k__BackingField: {x: 13525, y: 125}
+    <DialogueType>k__BackingField: 1
+    <Character>k__BackingField: {fileID: 11400000, guid: 4d46490a566f8dd4db8b9da467c58c40, type: 2}
+    <Text>k__BackingField: "My books? I have 17 different categories of books, it
+      would take too long to list all of them. Can you be more specific?<link=wait_long></link>\n<size=60%>Please
+      don\u2019t make me choose.<size=100%>"
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+  - <ID>k__BackingField: ef85a988-efe8-4f01-b6ba-26bd7da8f9b4
+    <Name>k__BackingField: Recluse17
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Dialogue
+      <NodeID>k__BackingField: c6bf27d5-966c-440f-a0e6-46ef0cfeb462
+    <Position>k__BackingField: {x: 15500, y: 1450}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 4d46490a566f8dd4db8b9da467c58c40, type: 2}
+    <Text>k__BackingField: "<link=type_speed_slow></link><size=60%>\u2026my mother
+      was\u2026<size=100%>"
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+  - <ID>k__BackingField: bbca2406-6d11-44ce-9778-321a6118f19d
+    <Name>k__BackingField: Recluse22
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Aren't you lonely?
+      <NodeID>k__BackingField: 01cd7cc6-d497-4d73-9d88-8d396d197d66
+    <Position>k__BackingField: {x: 15075, y: 2100}
+    <DialogueType>k__BackingField: 1
+    <Character>k__BackingField: {fileID: 11400000, guid: 4d46490a566f8dd4db8b9da467c58c40, type: 2}
+    <Text>k__BackingField: It lurks in the bark of the tree, the brambles grow around
+      it. It is not a safe world out there. <size=60%>Safe?<link=jiggle> Not safe.<size=100%>
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+  - <ID>k__BackingField: 44879cb4-beaa-4d5c-a2b7-54820f422414
+    <Name>k__BackingField: Recluse25
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Talk about the tree.
+      <NodeID>k__BackingField: 2774ecd6-a35e-40a4-9c60-e2532fc7c7b1
+    - <Text>k__BackingField: Talk about yourself.
+      <NodeID>k__BackingField: 23d641af-a07d-4333-b380-ad885d171489
+    - <Text>k__BackingField: Talk about others.
+      <NodeID>k__BackingField: 93aee150-5395-4607-a20f-542862681d9d
+    <Position>k__BackingField: {x: 15700, y: 2500}
+    <DialogueType>k__BackingField: 1
+    <Character>k__BackingField: {fileID: 11400000, guid: 4d46490a566f8dd4db8b9da467c58c40, type: 2}
+    <Text>k__BackingField: <size=60%> What does it feel like to be out there?<size=100%>
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+  - <ID>k__BackingField: 51a300d5-d8d7-484b-9ea2-0abd882d77c7
+    <Name>k__BackingField: Recluse33
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Try to calm him.
+      <NodeID>k__BackingField: 20e9c23c-1289-4d30-b92e-a34e49118d87
+    - <Text>k__BackingField: District him.
+      <NodeID>k__BackingField: e6b64dcc-05c9-4e4c-917a-03f74df4fae6
+    - <Text>k__BackingField: Leave.
+      <NodeID>k__BackingField: 96be6698-e300-44f1-9cbe-6c9350da1498
+    <Position>k__BackingField: {x: 15750, y: 5125}
+    <DialogueType>k__BackingField: 1
+    <Character>k__BackingField: {fileID: 11400000, guid: 4d46490a566f8dd4db8b9da467c58c40, type: 2}
+    <Text>k__BackingField: "<size=60%><link=jiggle>\u2026ah nononono\u2026<size=100%>"
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+  - <ID>k__BackingField: 4cc138d6-882c-4b7f-ba7d-dc64d8d2d176
+    <Name>k__BackingField: Recluse38
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: 337857b0-fd64-449d-92e4-d7c8578bc8eb
+    <Position>k__BackingField: {x: 16700, y: 5625}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 4d46490a566f8dd4db8b9da467c58c40, type: 2}
+    <Text>k__BackingField: <size=60%><link=jiggle> ...okay.<size=100%>
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+  <OldGroupNames>k__BackingField:
+  - Point2
+  - Point1
+  - Point3
+  <OldUngroupedNodeNames>k__BackingField:
+  - Player1
+  - Void2
+  - RecluseAlt1
+  - Void3
+  - Player3
+  - Void4
+  - Player6
+  - RecluseAlt9
+  - EdgeNode7d54b547-c56b-4927-b1ae-6026389de4a1
+  - Recluse1
+  - Void9
+  - Recluse2
+  - Player7
+  - Player8
+  - Recluse3
+  - EdgeNodebae1e515-c19b-419d-9969-a8643fc721b7
+  - Player10
+  - Player11
+  - Recluse8
+  - Player12
+  - EdgeNoded58c68e3-ff95-424e-95e0-a81efe148f2f
+  - EdgeNodeb1f34702-7e13-4644-a0d6-b4da7027730c
+  - EdgeNodead4ce3d7-ecab-4dfd-b7bc-9c1dca973c24
+  - Player14
+  - Player15
+  - Recluse19
+  - EdgeNodeb0d74bb4-7390-4e4b-92b7-100fa453c313
+  - EdgeNode7ffa15e4-b5ea-4c6b-a96c-5f76e1f4e4e4
+  - EdgeNodeb104dc9c-1789-4d8a-a115-da74deab34e1
+  - EdgeNodec24decec-ecf2-4c5c-8db3-ba700712d57f
+  - Recluse14
+  - Recluse12
+  - Player13
+  - EdgeNode872a285d-666c-4c69-9929-272eb86bb590
+  - Player16
+  - Player17
+  - Recluse20
+  - Player18
+  - Recluse21
+  - EdgeNode173b22c4-5f5f-4130-819a-3d0ad3bdc7a5
+  - EdgeNode8daa58dc-5b90-47bb-8b07-80d6dc6ff27e
+  - Player19
+  - Recluse24
+  - Player20
+  - Player21
+  - Player22
+  - Player23
+  - Player24
+  - Player25
+  - Player26
+  - Player27
+  - Player28
+  - Player30
+  - Player29
+  - Player31
+  - Recluse26
+  - Recluse27
+  - EdgeNodec1531a9d-c593-49b4-8622-d09dfbe7b0e0
+  - EdgeNodea737c00d-d8bc-42be-a096-1515c1edabb6
+  - EdgeNodea71ace76-a83e-4c0b-9c28-e360703e37d9
+  - Player32
+  - Recluse30
+  - Player33
+  - Player34
+  - Recluse34
+  - Recluse35
+  - Player35
+  - EdgeNode7b3a8fc4-26bf-4292-acaa-4d5dc03b338a
+  - EdgeNode57d91eae-1001-4fb0-84a1-4ac533a29cd8
+  - Void10
+  - Recluse37
+  - Player36
+  - Player37
+  - EdgeNode0730e01c-5b98-4ae4-8ff9-4c9fea61bfca
+  - Player38
+  - Recluse39
+  - EdgeNode0ac60dda-81cb-4bcf-af40-5cef57d69a66
+  - EdgeNode44b5f1b1-eaff-4c30-bc3a-f03c6a8eeed6
+  - EdgeNodecfd3581b-e5c3-48a5-87cc-2d432e40aad6
+  - Recluse
+  - Void1
+  - RecluseAlt6
+  - Void5
+  - Void6
+  - Void8
+  - Player9
+  - Recluse9
+  - Recluse13
+  - Recluse15
+  - EdgeNode2fa90797-3dd4-443a-ae2a-7da09e822df8
+  - Recluse18
+  - Recluse28
+  - Recluse23
+  - Recluse29
+  - Recluse40
+  - EdgeNode1454a46e-7005-4d9d-bd02-7689ec0e6fcb
+  - Recluse31
+  - Recluse32
+  - Recluse36
+  - Player39
+  - Recluse16
+  - Player2
+  - RecluseAlt2
+  - RecluseAlt3
+  - RecluseAlt8
+  - RecluseAlt4
+  - RecluseAlt5
+  - Void7
+  - RecluseAlt7
+  - Recluse4
+  - Recluse17
+  - Recluse22
+  - Recluse25
+  - Recluse33
+  - Recluse38
+  <OldGroupedNodeNames>k__BackingField:
+    list:
+    - Key: Point1
+      Value:
+      - Recluse5
+    - Key: Point2
+      Value:
+      - Recluse11
+      - Recluse6
+    - Key: Point3
+      Value:
+      - Recluse10
+      - Recluse7

@@ -15,11 +15,13 @@ MonoBehaviour:
   <NodeName>k__BackingField: RecluseIntoStart
   <NodeType>k__BackingField: 0
   <Choices>k__BackingField:
-  - <Text>k__BackingField: Politely Knock
-    <NextDialogue>k__BackingField: {fileID: 11400000, guid: 141ff594a2ba76f45862a69518c7aad5, type: 2}
-  - <Text>k__BackingField: Open Door
-    <NextDialogue>k__BackingField: {fileID: 11400000, guid: 141ff594a2ba76f45862a69518c7aad5, type: 2}
+  - <Text>k__BackingField: Knock.
+    <NextDialogue>k__BackingField: {fileID: 11400000, guid: ac1a51e909a49b248849b1b46c1437f5, type: 2}
+  - <Text>k__BackingField: Try the door.
+    <NextDialogue>k__BackingField: {fileID: 11400000, guid: 52f66b718e7532041a402fa2e51cab2d, type: 2}
   <Character>k__BackingField: {fileID: 11400000, guid: c11bdf3877896b84dac6bdb375297575, type: 2}
   <DialogueType>k__BackingField: 1
-  <Text>k__BackingField: The quaint greenhouse door is locked tightly shut.
+  <Text>k__BackingField: <i>The quaint greenhouse door is locked tightly shut.</i>
   <IsStartingDialogue>k__BackingField: 1
+  <SoundEffect>k__BackingField: {fileID: 0}
+  <Delay>k__BackingField: 0
