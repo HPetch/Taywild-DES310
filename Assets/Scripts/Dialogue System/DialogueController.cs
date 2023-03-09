@@ -160,6 +160,8 @@ public class DialogueController : MonoBehaviour
                     resize = false;
                 }
 
+                if (resize) currentDialogueCanvas.ResizieTransition(dialogueNode.Text);
+
                 textType = StartCoroutine(TypeSentence(dialogueNode.Text, resize));
                 break;
                 
