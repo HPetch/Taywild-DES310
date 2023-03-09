@@ -62,13 +62,12 @@ public class CharacterCanvas : MonoBehaviour
         continueIndicator.alpha = 0;
         tail.sizeDelta = tailSizeClosed;
         speechBubble.sizeDelta = speechBubbleSizeClosed;
-
-        ClearText();
     }
 
     private void Start()
     {
         DialogueController.Instance.OnConversationEnd += CloseTransition;
+        ClearText();
     }
     #endregion
 
@@ -131,15 +130,15 @@ public class CharacterCanvas : MonoBehaviour
         LeanTween.size(speechBubble, GetTargetSize(_text), speechBubbleResizeTransitionTime);
     }
 
-    public void SetText(string _text)
+    public void SetText(string _text, bool _updateText  = true)
     {
         dialogueText.text = _text;
-        textEffect.UpdateText();
+        if(_updateText) textEffect.UpdateText();
     }
 
     public void ClearText()
     {
-        SetText("");
+        SetText("", false);
         textEffect.ClearText();
     }
 

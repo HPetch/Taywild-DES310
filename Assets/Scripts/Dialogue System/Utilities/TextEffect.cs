@@ -1,7 +1,6 @@
 using UnityEngine;
 using TMPro;
 
-[ExecuteInEditMode]
 public class TextEffect : MonoBehaviour
 {
     private TextMeshProUGUI textComponent;
@@ -30,7 +29,7 @@ public class TextEffect : MonoBehaviour
 
     private void Start()
     {
-        //if (Application.isPlaying) normalTypeSpeed = DialogueController.Instance.TextTypeDelay;
+        normalTypeSpeed = DialogueController.Instance.TextTypeDelay;
     }
 
     private void Update()
@@ -40,6 +39,7 @@ public class TextEffect : MonoBehaviour
 
     public void UpdateText()
     {
+        textComponent = GetComponent<TextMeshProUGUI>();
 
         textComponent.ForceMeshUpdate();
 
@@ -112,7 +112,7 @@ public class TextEffect : MonoBehaviour
                         Vector3[] newVertices = textComponent.textInfo.meshInfo[materialIndex].vertices;
 
                         // jiggle effect.                        
-                        Vector3 offset = Application.isPlaying ? new Vector2(Random.Range(-1, 1) * Time.deltaTime, Random.Range(-1, 1) * Time.deltaTime) * jiggleStrength * 100f : new Vector2(Random.Range(-2, 2), Random.Range(-1, 1));
+                        Vector3 offset = new Vector2(Random.Range(-1, 1) * Time.deltaTime, Random.Range(-1, 1) * Time.deltaTime) * jiggleStrength * 100f;
 
                         // Loop all vertexes of the current characters
                         for (int vert = 0; vert < 4; vert++)
@@ -138,17 +138,17 @@ public class TextEffect : MonoBehaviour
 
                 // Is it a type_speed_slow tag? (<link="type_speed_slow"></link>)
                 case "type_speed_slow":
-                    if (Application.isPlaying) DialogueController.Instance.SetTypeSpeed(slowTypeSpeed);
+                    DialogueController.Instance.SetTypeSpeed(slowTypeSpeed);
                     break;
 
                 // Is it a type_speed_normal tag? (<link="type_speed_normal"></link>)
                 case "type_speed_normal":
-                    if (Application.isPlaying) DialogueController.Instance.SetTypeSpeed(normalTypeSpeed);
+                    DialogueController.Instance.SetTypeSpeed(normalTypeSpeed);
                     break;
 
                 // Is it a type_speed_fast tag? (<link="type_speed_fast"></link>)
                 case "type_speed_fast":
-                    if (Application.isPlaying) DialogueController.Instance.SetTypeSpeed(fastTypeSpeed);
+                    DialogueController.Instance.SetTypeSpeed(fastTypeSpeed);
                     break;
 
                 // Is it a portrait tag? (<link="portrait"></link>)
