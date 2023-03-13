@@ -13,6 +13,7 @@ public class DecorationController : MonoBehaviour
     public event Action OnPlaceCancelDecoration;
     public event Action OnPickupDamaged;
     public event Action OnPickupBroken;
+    public event Action OnPickupCancel;
 
     public static DecorationController Instance { get; private set; }
     [SerializeField] private GameObject decorationSelectorPrefab;
@@ -149,6 +150,11 @@ public class DecorationController : MonoBehaviour
     {
         PickupAddItems(_itemsReceived);
         OnPickupBroken?.Invoke();
+    }
+
+    public void PickupCancel()
+    {
+        OnPickupCancel?.Invoke();
     }
 
     private void PickupAddItems(SerializableDictionary<InventoryController.ItemNames, Vector2Int> _itemsReceived)

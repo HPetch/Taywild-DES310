@@ -150,6 +150,8 @@ public class PickupObject : MonoBehaviour
                 isMaxTravel = false;
                 isTryingToBreak = false;
             }
+
+            DecorationController.Instance.DecorationSelector.GetComponent<DecorationSelector>().PickupPullingSelectorOffset(mouseStartPosition, PullCurrentDistance(), isTryingToBreak);
         }
         else if (!isBeingPulled && isActive) spriteArmRef.transform.position = Vector2.Lerp(spriteArmRef.transform.position, targetPosition, dragMoveSpeed * Time.deltaTime);
         // If the is able to respawn then wait until the correct time then respawn
@@ -173,6 +175,7 @@ public class PickupObject : MonoBehaviour
         isBeingPulled = false;
         ResetSpriteVibration();
         isTryingToBreak = false;
+        DecorationController.Instance.PickupCancel();
     }
 
     public void DamagePull()
