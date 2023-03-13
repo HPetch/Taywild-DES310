@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4637515756716454861}
   - component: {fileID: 4637515756716454862}
-  - component: {fileID: 4637515756716454860}
   - component: {fileID: 4637515756716454851}
-  m_Layer: 7
+  - component: {fileID: 2645309099754445559}
+  m_Layer: 8
   m_Name: FurnitureObject
   m_TagString: Decoration Movable
   m_Icon: {fileID: 0}
@@ -36,7 +36,7 @@ Transform:
   - {fileID: 8824690167999398040}
   - {fileID: 3398744388567485330}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &4637515756716454862
 SpriteRenderer:
@@ -90,20 +90,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &4637515756716454860
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4637515756716454857}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4bd6bb2e3b0c555479ab8b1a4c11ea86, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pickupButtonPrefab: {fileID: 0}
-  editButtonHolderPrefab: {fileID: 0}
 --- !u!61 &4637515756716454851
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -130,6 +116,24 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.53, y: 2.3}
   m_EdgeRadius: 0
+--- !u!114 &2645309099754445559
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4637515756716454857}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90e91661825ec8e4b9d591b71faf7c7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pickupButtonPrefab: {fileID: 4191827545292012905, guid: 40eaeed981acba94fac085c6e31b4beb, type: 3}
+  editButtonHolderPrefab: {fileID: 8030199614946988850, guid: 9f515c6c384b03f4aabe9c6185e10ed2, type: 3}
+  <CraftingRequirements>k__BackingField:
+    list: []
+  <AttachmentPointsList>k__BackingField: []
+  <scrollRotateIndexHolder>k__BackingField: 0
 --- !u!1 &4637515757402210687
 GameObject:
   m_ObjectHideFlags: 0

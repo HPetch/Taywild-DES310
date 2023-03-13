@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class FurnitureObject : DecorationObject
 {
-
+    [field: SerializeField] public SerializableDictionary<InventoryController.ItemNames, int> CraftingRequirements { get; private set; }
+    
+    
+    
     [field: SerializeField] public List<Vector3> AttachmentPointsList { get; private set; }
     public float AttachmentPointRadius { get; private set; }
     [field: SerializeField] public int scrollRotateIndexHolder { get; private set; }

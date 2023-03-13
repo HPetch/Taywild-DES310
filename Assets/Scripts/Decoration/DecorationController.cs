@@ -23,7 +23,7 @@ public class DecorationController : MonoBehaviour
     [field: SerializeField] public GameObject DecorationSelector { get; private set; }
     public bool isEditMode { get; private set; }
 
-    [field: SerializeField] public GameObject[] PlaceableDecorationObjectPrefabs { get; private set; }
+    [field: SerializeField] public SerializableDictionary<GameObject, bool> PlaceableDecorationObjectPrefabs { get; private set; }
 
     [SerializeField] private GameObject PP;
 
