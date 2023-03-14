@@ -11,6 +11,7 @@ public class DecorationController : MonoBehaviour
     public event Action OnPickupDecoration;
     public event Action OnPlaceDecoration;
     public event Action OnPlaceCancelDecoration;
+    public event Action OnFurnitureDestroyed;
     public event Action OnPickupDamaged;
     public event Action OnPickupBroken;
     public event Action OnPickupCancel;
@@ -140,6 +141,18 @@ public class DecorationController : MonoBehaviour
         
     }
 
+    public void DestroyFurniture(GameObject _furniture)
+    {
+        foreach (KeyValuePair<InventoryController.ItemNames, int> _item in _furniture.GetComponent<FurnitureObject>().CraftingRequirements)
+        {
+            InventoryController.Instance.AddItem(_item.Key, _item.Value);
+        }
+        TreeLevelController.Instance.RemoveFurnitureExp(_furniture.GetComponent<FurnitureObject>().treeExp);
+        Destroy(_furniture);
+        OnFurnitureDestroyed?.Invoke();
+
+    }
+
     public void PickupDamaged(SerializableDictionary<InventoryController.ItemNames, Vector2Int> _itemsReceived)
     {
         PickupAddItems(_itemsReceived);
@@ -170,10 +183,15 @@ public class DecorationController : MonoBehaviour
 
     public void DecorationButtonPress(GameObject _button)
     {
-        DecorationObject _decorationObject = _button.GetComponentInParent<DecorationObject>();
-        if (_button == _decorationObject.RemoveButton) Debug.Log(_decorationObject.gameObject + "Has been picked up into the inventory"); // Pickup object and refund materials to inventory
-        if (_button == _decorationObject.EditButtonLeft) Debug.Log(_decorationObject.gameObject + "Has gone to previous style");
-        if (_button == _decorationObject.EditButtonRight) Debug.Log(_decorationObject.gameObject + "Has gone to next style");
+        if (_button.GetComponentInParent<FurnitureObject>())
+        {
+            FurnitureObject _furnitureObject = _button.transform.parent.GetComponent<FurnitureObject>();
+            if (_button == _furnitureObject.RemoveButton) DestroyFurniture(_furnitureObject.transform.parent.gameObject); // Pickup object and refund materials to inventory
+            if (_button == _furnitureObject.EditButtonLeft) Debug.Log(_furnitureObject.gameObject + "Has gone to previous style");
+            if (_button == _furnitureObject.EditButtonRight) Debug.Log(_furnitureObject.gameObject + "Has gone to next style");
+        }
+        
+        
     }
 
     // Event: Enter edit mode

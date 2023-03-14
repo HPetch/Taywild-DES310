@@ -5,14 +5,15 @@ using UnityEngine;
 public class FurnitureObject : DecorationObject
 {
     [field: SerializeField] public SerializableDictionary<InventoryController.ItemNames, int> CraftingRequirements { get; private set; }
-    
-    
-    
+
+
+
     [field: SerializeField] public List<Vector3> AttachmentPointsList { get; private set; }
     public float AttachmentPointRadius { get; private set; }
     [field: SerializeField] public int scrollRotateIndexHolder { get; private set; }
 
-    
+    bool isFirstTimePlace = true;
+    [field: SerializeField] public int treeExp { get; private set; }
 
 
 
@@ -25,9 +26,12 @@ public class FurnitureObject : DecorationObject
     void Start()
     {
         AttachmentPointRadius = GetComponentInChildren<CircleCollider2D>().radius;
-        if (RemoveButton) RemoveButton.transform.position = GetComponent<BoxCollider2D>().bounds.max;
+        if (EditButtonHolder)
+        {
+            EditButtonLeft = EditButtonHolder.transform.GetChild(0).gameObject;
+            EditButtonRight = EditButtonHolder.transform.GetChild(1).gameObject;
+        }
     }
-
     // Update is called once per frame
     void Update()
     {
@@ -46,8 +50,14 @@ public class FurnitureObject : DecorationObject
     {
         isMoving = false;
         GetComponent<SpriteRenderer>().color = Color.white;
+        if (isFirstTimePlace && treeExp > 0)
+        {
+            TreeLevelController.Instance.AddFurnitureExp(treeExp);
+            isFirstTimePlace = false;
+        }
     }
 
+    
 
     public void SetScrollRotateIndexHolder(int _index) { scrollRotateIndexHolder = _index; }
 
@@ -68,19 +78,14 @@ public class FurnitureObject : DecorationObject
     [ContextMenu("Initialize buttons")]
     private void InitializeButtons()
     {
-        if (!RemoveButton) RemoveButton = Instantiate(pickupButtonPrefab, transform);
-        if (!EditButtonHolder)
+        if (RemoveButton) RemoveButton.transform.position = GetComponent<BoxCollider2D>().bounds.max;
+        if (EditButtonHolder)
         {
-            Instantiate(editButtonHolderPrefab, transform);
-            foreach(DecorationButton _button in GetComponentsInChildren<DecorationButton>())
-            {
-                if (_button.buttonType == DecorationButton.ButtonType.STYLE_HOLDER) EditButtonHolder = _button.gameObject;
-            }
             EditButtonLeft = EditButtonHolder.transform.GetChild(0).gameObject;
             EditButtonRight = EditButtonHolder.transform.GetChild(1).gameObject;
             EditButtonHolder.transform.position = new Vector2(transform.position.x, GetComponent<BoxCollider2D>().bounds.min.y);
         }
-        RemoveButton.transform.position = GetComponent<BoxCollider2D>().bounds.max;
+        
         
     }
 

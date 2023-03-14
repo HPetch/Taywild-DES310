@@ -18,7 +18,7 @@ public class DecorationSelector : MonoBehaviour
         
     private Vector3 selectorTargetLocation; // Holds mouse location
     [SerializeField] float selectorMoveSpeed; // The speed that the selector follows the mouse.
-    private float pickupPullOffset = 1;
+    //private float pickupPullOffset = 1;
     private float pickupDistanceSpinMultiplier;
     private float pickupDistanceScaleMultiplier;
 
@@ -120,7 +120,7 @@ public class DecorationSelector : MonoBehaviour
 
             if (mouseDownHeldPickup) mouseDownHeldPickup.CancelPull();
             mouseDownHeldPickup = null;
-
+            print(mouseDownObjectHit);
             if (CheckObjectUnderMouse() == mouseDownObjectHit) // Checks if the click is released over the same object that it began on
             {
                 DecorationController.Instance.SelectorDecorationObjectInteract(mouseDownObjectHit.gameObject, false); // Signals Decoration Controller that the object has been interacted with
@@ -153,8 +153,12 @@ public class DecorationSelector : MonoBehaviour
             if (_objectUnderMouse)
             {
                 selectorState = SelectorState.PICKABLE;
-                if (_objectUnderMouse.GetComponent<DecorationObject>()) { _objectUnderMouse.GetComponent<DecorationObject>().StartHover(); }
-                else if (_objectUnderMouse.GetComponent<DecorationButton>()) { _objectUnderMouse.GetComponentInParent<DecorationObject>().StartHover(); }
+                if (_objectUnderMouse.GetComponent<FurnitureObject>()) _objectUnderMouse.GetComponent<FurnitureObject>().StartHover(); 
+                else if (_objectUnderMouse.GetComponent<DecorationObject>()) _objectUnderMouse.GetComponent<DecorationObject>().StartHover(); 
+                else if (_objectUnderMouse.GetComponent<DecorationButton>()) 
+                {
+                    if (_objectUnderMouse.GetComponentInParent<FurnitureObject>()) _objectUnderMouse.GetComponentInParent<FurnitureObject>().StartHover(); 
+                }
             }
             else
             {

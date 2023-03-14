@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class TreeLevelController : MonoBehaviour
 {
+    public static TreeLevelController Instance { get; private set; }
+
     #region Events
     public event Action OnExpTotalChanged;
     public event Action OnTreeLevelUp;
@@ -21,6 +23,12 @@ public class TreeLevelController : MonoBehaviour
     #endregion
 
     #region Functions
+
+    private void Awake()
+    {
+        Instance = this;
+    }
+
     public void AddQuestExp(int _Exp)
     {
         QuestExp += _Exp;
@@ -57,12 +65,14 @@ public class TreeLevelController : MonoBehaviour
     {
         TotalExp = QuestExp + HighestFurnitureExp + PickupCleanExp;
         OnExpTotalChanged?.Invoke();
+        Debug.Log("Tree Exp: " + TotalExp);
         if (treeLevelExpRequirements.Length > CurrentTreeLevel)
         {
             if (treeLevelExpRequirements[CurrentTreeLevel] <= TotalExp)
             {
                 CurrentTreeLevel++;
                 OnTreeLevelUp?.Invoke();
+                Debug.Log("Level up!");
             }
         }
     }

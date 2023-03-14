@@ -9,6 +9,18 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2645309099754445559, guid: ba88dae99097da043b24de774bcf5e44, type: 3}
+      propertyPath: treeExp
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2645309099754445559, guid: ba88dae99097da043b24de774bcf5e44, type: 3}
+      propertyPath: <treeExp>k__BackingField
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2645309099754445559, guid: ba88dae99097da043b24de774bcf5e44, type: 3}
+      propertyPath: <EditButtonHolder>k__BackingField
+      value: 
+      objectReference: {fileID: 2536827784295249205}
+    - target: {fileID: 2645309099754445559, guid: ba88dae99097da043b24de774bcf5e44, type: 3}
       propertyPath: <AttachmentPointsList>k__BackingField.Array.size
       value: 2
       objectReference: {fileID: 0}
@@ -26,6 +38,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2645309099754445559, guid: ba88dae99097da043b24de774bcf5e44, type: 3}
       propertyPath: <AttachmentPointsList>k__BackingField.Array.data[1].y
+      value: -1.16
+      objectReference: {fileID: 0}
+    - target: {fileID: 2645309099754445559, guid: ba88dae99097da043b24de774bcf5e44, type: 3}
+      propertyPath: <AttachmentPointsList>k__BackingField.Array.data[2].x
+      value: -0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2645309099754445559, guid: ba88dae99097da043b24de774bcf5e44, type: 3}
+      propertyPath: <AttachmentPointsList>k__BackingField.Array.data[2].y
+      value: -1.16
+      objectReference: {fileID: 0}
+    - target: {fileID: 2645309099754445559, guid: ba88dae99097da043b24de774bcf5e44, type: 3}
+      propertyPath: <AttachmentPointsList>k__BackingField.Array.data[3].x
+      value: -0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2645309099754445559, guid: ba88dae99097da043b24de774bcf5e44, type: 3}
+      propertyPath: <AttachmentPointsList>k__BackingField.Array.data[3].y
       value: -1.16
       objectReference: {fileID: 0}
     - target: {fileID: 2645309099754445559, guid: ba88dae99097da043b24de774bcf5e44, type: 3}
@@ -95,3 +123,8 @@ PrefabInstance:
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: ba88dae99097da043b24de774bcf5e44, type: 3}
+--- !u!1 &2536827784295249205 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 152466634187770368, guid: ba88dae99097da043b24de774bcf5e44, type: 3}
+  m_PrefabInstance: {fileID: 2389499305403547445}
+  m_PrefabAsset: {fileID: 0}

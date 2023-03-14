@@ -57,6 +57,10 @@ public class PickupObject : MonoBehaviour
     // Item name - Item to be dropped upon destroying the pickup
     // Vector2 - Min,Max. The minimum and maximum amount that can be dropped of the item. Leaving the max as 0 will make the min number the only outcome.
     [SerializeField] private SerializableDictionary<InventoryController.ItemNames, Vector2Int>[] pickupBreakItems;
+
+    private bool isFirstBreak = true;
+    [SerializeField, Range(0,20)] private int treeExp;
+
     #endregion
 
 
@@ -202,6 +206,12 @@ public class PickupObject : MonoBehaviour
         SetPullBreakState(false, false);
         targetPosition = startPosition;
         DamageSetSprites();
+        if (isFirstBreak && treeExp > 0)
+        {
+            TreeLevelController.Instance.AddCleanExp(treeExp);
+            isFirstBreak = false;
+        }
+        
     }
     #endregion
 
