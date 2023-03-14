@@ -1172,7 +1172,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5659358417590353276, guid: 37bcdc4ccdf2427429106d07e5b25c35, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 18.5
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 5659358417590353276, guid: 37bcdc4ccdf2427429106d07e5b25c35, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1217,6 +1217,18 @@ PrefabInstance:
     - target: {fileID: 5659358417590353279, guid: 37bcdc4ccdf2427429106d07e5b25c35, type: 3}
       propertyPath: m_Name
       value: Air Current
+      objectReference: {fileID: 0}
+    - target: {fileID: 5659358418822968665, guid: 37bcdc4ccdf2427429106d07e5b25c35, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5659358418822968679, guid: 37bcdc4ccdf2427429106d07e5b25c35, type: 3}
+      propertyPath: ShapeModule.radius.value
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5659358418822968679, guid: 37bcdc4ccdf2427429106d07e5b25c35, type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 2.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
@@ -2290,6 +2302,7 @@ GameObject:
   m_Component:
   - component: {fileID: 438263709}
   - component: {fileID: 438263710}
+  - component: {fileID: 438263711}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: Untagged
@@ -2329,6 +2342,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f948b1eaf128654c8dcc566406f9245, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &438263711
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 438263708}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c441e2f45d436946890f34997744994, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  decorationSelectorPrefab: {fileID: 0}
+  decorationMovingFakePrefab: {fileID: 0}
+  <DecorationSelector>k__BackingField: {fileID: 0}
+  <PlaceableDecorationObjectPrefabs>k__BackingField: []
+  PP: {fileID: 0}
 --- !u!1 &449334037
 GameObject:
   m_ObjectHideFlags: 0
@@ -3761,7 +3791,7 @@ SpriteShapeRenderer:
   m_SortingLayerID: -56501953
   m_SortingLayer: -1
   m_SortingOrder: -1
-  m_Color: {r: 0.5058824, g: 0.5568628, b: 0.5372549, a: 0.7882353}
+  m_Color: {r: 0.5058824, g: 0.54901963, b: 0.5372549, a: 1}
   m_MaskInteraction: 0
   m_ShapeTexture: {fileID: 2800000, guid: b281b91a70a624a0da1c43adc1c30c7b, type: 3}
   m_Sprites:
@@ -4528,7 +4558,7 @@ SpriteShapeRenderer:
   m_SortingLayerID: 1892015123
   m_SortingLayer: 2
   m_SortingOrder: -1
-  m_Color: {r: 0.48627454, g: 0.5411765, b: 0.5254902, a: 1}
+  m_Color: {r: 0.43529415, g: 0.5254902, b: 0.49803925, a: 1}
   m_MaskInteraction: 0
   m_ShapeTexture: {fileID: 2800000, guid: b281b91a70a624a0da1c43adc1c30c7b, type: 3}
   m_Sprites:
@@ -6778,7 +6808,7 @@ SpriteShapeRenderer:
   m_SortingLayerID: 1892015123
   m_SortingLayer: 2
   m_SortingOrder: -1
-  m_Color: {r: 0.48627454, g: 0.5411765, b: 0.5254902, a: 1}
+  m_Color: {r: 0.43529415, g: 0.5254902, b: 0.49803925, a: 1}
   m_MaskInteraction: 0
   m_ShapeTexture: {fileID: 2800000, guid: b281b91a70a624a0da1c43adc1c30c7b, type: 3}
   m_Sprites:
@@ -9304,7 +9334,7 @@ SpriteShapeRenderer:
   m_SortingLayerID: 1892015123
   m_SortingLayer: 2
   m_SortingOrder: -1
-  m_Color: {r: 0.48627454, g: 0.5411765, b: 0.5254902, a: 1}
+  m_Color: {r: 0.43921572, g: 0.52156866, b: 0.49803925, a: 1}
   m_MaskInteraction: 0
   m_ShapeTexture: {fileID: 2800000, guid: b281b91a70a624a0da1c43adc1c30c7b, type: 3}
   m_Sprites:
@@ -10092,7 +10122,7 @@ SpriteShapeRenderer:
   m_SortingLayerID: 1892015123
   m_SortingLayer: 2
   m_SortingOrder: -1
-  m_Color: {r: 0.48627454, g: 0.5411765, b: 0.5254902, a: 1}
+  m_Color: {r: 0.43529415, g: 0.5254902, b: 0.49803925, a: 1}
   m_MaskInteraction: 0
   m_ShapeTexture: {fileID: 2800000, guid: b281b91a70a624a0da1c43adc1c30c7b, type: 3}
   m_Sprites:
@@ -10888,7 +10918,7 @@ SpriteShapeRenderer:
   m_SortingLayerID: 1892015123
   m_SortingLayer: 2
   m_SortingOrder: -1
-  m_Color: {r: 0.48627454, g: 0.5411765, b: 0.5254902, a: 1}
+  m_Color: {r: 0.43529415, g: 0.5254902, b: 0.49803925, a: 1}
   m_MaskInteraction: 0
   m_ShapeTexture: {fileID: 2800000, guid: b281b91a70a624a0da1c43adc1c30c7b, type: 3}
   m_Sprites:
@@ -11496,7 +11526,7 @@ SpriteShapeRenderer:
   m_SortingLayerID: 1892015123
   m_SortingLayer: 2
   m_SortingOrder: -1
-  m_Color: {r: 0.48627454, g: 0.5411765, b: 0.5254902, a: 1}
+  m_Color: {r: 0.43529415, g: 0.5254902, b: 0.49803925, a: 1}
   m_MaskInteraction: 0
   m_ShapeTexture: {fileID: 2800000, guid: b281b91a70a624a0da1c43adc1c30c7b, type: 3}
   m_Sprites:
