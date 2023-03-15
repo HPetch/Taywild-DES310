@@ -19,6 +19,24 @@ public class DecorationCraftMenu : MonoBehaviour
 
     [SerializeField] private Button placeButton;
 
+    //Inventory drawer management
+    [Header("Open and close tab")]
+    [SerializeField] private GameObject drawer;
+    private RectTransform drawerTransform;
+
+    private Vector3 closedPos;
+    private Vector3 openPos;
+
+    [SerializeField] private Button pullTab;
+    private bool inventoryIsOpen = false;
+
+    [SerializeField] private float positionOpened = 50f;
+    [SerializeField] private float duration = 0.5f;
+
+    [SerializeField] private LeanTweenType openEase;
+    [SerializeField] private LeanTweenType closeEase;
+
+
     private void Awake()
     {
         foreach (KeyValuePair<Button, DecorationController.UiFurnitureCategories> _button in categoryButtons)
@@ -40,7 +58,7 @@ public class DecorationCraftMenu : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        foreach(KeyValuePair<GameObject, bool> _furniture in DecorationController.Instance.FurnitureObjectPrefabs)
+        foreach (KeyValuePair<GameObject, bool> _furniture in DecorationController.Instance.FurnitureObjectPrefabs)
         {
             print(_furniture);
             print(_furniture.Key);
@@ -48,13 +66,37 @@ public class DecorationCraftMenu : MonoBehaviour
             if (_furniture.Value) availableFurniture.Add(_furniture.Key);
         }
 
-        
+
         RebuildFurnitureMenu(DecorationController.UiFurnitureCategories.INDOOR);
+
+        //Get drawerTransform
+        drawerTransform = drawer.GetComponent<RectTransform>();
+        closedPos = drawerTransform.anchoredPosition;
+        openPos = drawerTransform.anchoredPosition + new Vector2(0, positionOpened);
+        //Trigger ToggleInventory when the pull up/down tab is pressed
+        pullTab.onClick.AddListener(ToggleInventory);
     }
-    
 
-    
+    //Check current state and either open or close the inventory UI
+    private void ToggleInventory()
+    {
+        //Either open or close the inventory panel
+        if (!inventoryIsOpen) OpenInventory(); else CloseInventory();
+        //Invert the state of this bool so we know what state the inventory screen is currently in
+        inventoryIsOpen = !inventoryIsOpen;
+    }
 
+    private LTDescr OpenInventory()
+    {
+        LeanTween.cancel(gameObject); //Stop current tweens
+        return LeanTween.move(drawerTransform, openPos, duration).setEase(openEase); //Go to open position
+    }
+
+    private LTDescr CloseInventory()
+    {
+        LeanTween.cancel(gameObject); //Stop current tweens if mid-open
+        return LeanTween.move(drawerTransform, closedPos, duration).setEase(closeEase); //Go to close position
+    }
 
     private void RebuildFurnitureMenu(DecorationController.UiFurnitureCategories _category)
     {
