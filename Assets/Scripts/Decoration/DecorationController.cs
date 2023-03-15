@@ -24,12 +24,14 @@ public class DecorationController : MonoBehaviour
     [field: SerializeField] public GameObject DecorationSelector { get; private set; }
     public bool isEditMode { get; private set; }
 
-    [field: SerializeField] public SerializableDictionary<GameObject, bool> PlaceableDecorationObjectPrefabs { get; private set; }
+    [field: SerializeField] public SerializableDictionary<GameObject, bool> FurnitureObjectPrefabs { get; private set; }
 
     [SerializeField] private GameObject PP;
 
-    // Start is called before the first frame update
-    private void Awake()
+    public enum UiFurnitureCategories {INDOOR, OUTDOOR, LIGHTING, IDK, SOMETHINGELSE}
+
+   // Start is called before the first frame update
+   private void Awake()
     {
         Instance = this;
     }
@@ -77,6 +79,28 @@ public class DecorationController : MonoBehaviour
         
     }
 
+
+    public void SpawnFurniture(GameObject _furniturePrefab)
+    {
+        bool _canCraft = true;
+        foreach (KeyValuePair<InventoryController.ItemNames, int> _item in _furniturePrefab.GetComponent<FurnitureObject>().CraftingRequirements)
+        {
+            if (InventoryController.Instance.ItemQuantity(_item.Key) < _item.Value) _canCraft = false;
+        }
+        if (_canCraft)
+        {
+            foreach (KeyValuePair<InventoryController.ItemNames, int> _item in _furniturePrefab.GetComponent<FurnitureObject>().CraftingRequirements)
+            {
+                InventoryController.Instance.RemoveItem(_item.Key, _item.Value);
+            }
+            print("Crafted: " + _furniturePrefab);
+            // Close menu
+            // Spawn furniture grabbed by selector
+            GameObject _newFurniture = Instantiate(_furniturePrefab);
+            DecorationController.Instance.SelectorDecorationObjectInteract(_newFurniture, true);
+        }
+        else print("Failed to craft: " + _furniturePrefab);
+    }
 
     public void SelectorDecorationObjectInteract(GameObject _selectedObject, bool _isMouseClickDown)
     {

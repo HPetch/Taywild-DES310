@@ -15,6 +15,9 @@ public class FurnitureObject : DecorationObject
     bool isFirstTimePlace = true;
     [field: SerializeField] public int treeExp { get; private set; }
 
+    [field: SerializeField] public string UiName { get; private set; }
+    [field: SerializeField] public Sprite UiImage { get; private set; }
+    [field: SerializeField] public DecorationController.UiFurnitureCategories UiFurnitureCategory { get; private set; }
 
 
 
@@ -22,8 +25,9 @@ public class FurnitureObject : DecorationObject
 
 
 
-    // Start is called before the first frame update
-    void Start()
+
+// Start is called before the first frame update
+void Start()
     {
         AttachmentPointRadius = GetComponentInChildren<CircleCollider2D>().radius;
         if (EditButtonHolder)

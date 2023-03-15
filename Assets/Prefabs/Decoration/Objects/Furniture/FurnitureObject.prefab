@@ -129,12 +129,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <RemoveButton>k__BackingField: {fileID: 1617637658807588827}
-  <EditButtonHolder>k__BackingField: {fileID: 0}
+  <EditButtonHolder>k__BackingField: {fileID: 152466634187770368}
   <CraftingRequirements>k__BackingField:
     list: []
-  <AttachmentPointsList>k__BackingField: []
+  <AttachmentPointsList>k__BackingField:
+  - {x: 0.5, y: -1.16, z: 0}
+  - {x: -0.5, y: -1.16, z: 0}
   <scrollRotateIndexHolder>k__BackingField: 4
   <treeExp>k__BackingField: 0
+  <UiName>k__BackingField: NaN
+  <UiImage>k__BackingField: {fileID: 0}
+  <UiFurnitureCategory>k__BackingField: 0
 --- !u!1 &4637515757402210687
 GameObject:
   m_ObjectHideFlags: 0
@@ -375,6 +380,11 @@ PrefabInstance:
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 9f515c6c384b03f4aabe9c6185e10ed2, type: 3}
+--- !u!1 &152466634187770368 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8030199614946988850, guid: 9f515c6c384b03f4aabe9c6185e10ed2, type: 3}
+  m_PrefabInstance: {fileID: 7884865723765905714}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &152466634187770374 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8030199614946988852, guid: 9f515c6c384b03f4aabe9c6185e10ed2, type: 3}
