@@ -82,19 +82,19 @@ public class DecorationCraftMenu : MonoBehaviour
     {
         //Either open or close the inventory panel
         if (!inventoryIsOpen) OpenInventory(); else CloseInventory();
-        //Invert the state of this bool so we know what state the inventory screen is currently in
-        inventoryIsOpen = !inventoryIsOpen;
     }
 
     private LTDescr OpenInventory()
     {
         LeanTween.cancel(gameObject); //Stop current tweens
+        inventoryIsOpen = true; //Mark the inventory as opening
         return LeanTween.move(drawerTransform, openPos, duration).setEase(openEase); //Go to open position
     }
 
     private LTDescr CloseInventory()
     {
         LeanTween.cancel(gameObject); //Stop current tweens if mid-open
+        inventoryIsOpen = false; //Mark the inventory as opening
         return LeanTween.move(drawerTransform, closedPos, duration).setEase(closeEase); //Go to close position
     }
 
@@ -165,7 +165,8 @@ public class DecorationCraftMenu : MonoBehaviour
             if (selectedButton.AssignedFurniture.GetComponent<FurnitureObject>())
             {
                 Debug.Log("Spawn: " + selectedButton.AssignedFurniture.GetComponent<FurnitureObject>().UiName);
-                //Close DecorationCraftMenu. Run function that is normally called when clicking the pull tab.
+                //Close DecorationCraftMenu
+                CloseInventory();
                 //DecorationController.Instance.SpawnFurniture(AssignedFurniture);
             }
         }
