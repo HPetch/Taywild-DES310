@@ -18,7 +18,10 @@ public class DecorationSelector : MonoBehaviour
         
     private Vector3 selectorTargetLocation; // Holds mouse location
     [SerializeField] float selectorMoveSpeed; // The speed that the selector follows the mouse.
-    
+    //private float pickupPullOffset = 1;
+    private float pickupDistanceSpinMultiplier;
+    private float pickupDistanceScaleMultiplier;
+
     private float selectorSpinSpeed; // The current speed that the selector will spin, from selectorSpinSpeedArray based on selector state
     [SerializeField] private float[] selectorSpinSpeedArray; //0-empty(stop), 1-pickable(slow), 2-pickupPlaceable(normal), 3-Bad(fast), 4-Offgrid(normal)
     
@@ -55,6 +58,10 @@ public class DecorationSelector : MonoBehaviour
     {
         sprite = GetComponent<Sprite>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+
+        DecorationController.Instance.OnPickupBroken += ResetSelector;
+        DecorationController.Instance.OnPickupDamaged += ResetSelector;
+        DecorationController.Instance.OnPickupCancel += ResetSelector;
     }
     private void Start()
     {
@@ -113,15 +120,11 @@ public class DecorationSelector : MonoBehaviour
 
             if (mouseDownHeldPickup) mouseDownHeldPickup.CancelPull();
             mouseDownHeldPickup = null;
-
-            if (CheckObjectUnderMouse())
+            print(mouseDownObjectHit);
+            if (CheckObjectUnderMouse() == mouseDownObjectHit) // Checks if the click is released over the same object that it began on
             {
-                if (CheckObjectUnderMouse() == mouseDownObjectHit) // Checks if the click is released over the same object that it began on
-                {
-                    DecorationController.Instance.SelectorDecorationObjectInteract(mouseDownObjectHit.gameObject, false); // Signals Decoration Controller that the object has been interacted with
-                }
+                DecorationController.Instance.SelectorDecorationObjectInteract(mouseDownObjectHit.gameObject, false); // Signals Decoration Controller that the object has been interacted with
             }
-            
         }
 
         #endregion
@@ -150,8 +153,12 @@ public class DecorationSelector : MonoBehaviour
             if (_objectUnderMouse)
             {
                 selectorState = SelectorState.PICKABLE;
-                if (_objectUnderMouse.GetComponent<DecorationObject>()) { _objectUnderMouse.GetComponent<DecorationObject>().StartHover(); }
-                else if (_objectUnderMouse.GetComponent<DecorationButton>()) { _objectUnderMouse.GetComponentInParent<DecorationObject>().StartHover(); }
+                if (_objectUnderMouse.GetComponent<FurnitureObject>()) _objectUnderMouse.GetComponent<FurnitureObject>().StartHover(); 
+                else if (_objectUnderMouse.GetComponent<DecorationObject>()) _objectUnderMouse.GetComponent<DecorationObject>().StartHover(); 
+                else if (_objectUnderMouse.GetComponent<DecorationButton>()) 
+                {
+                    if (_objectUnderMouse.GetComponentInParent<FurnitureObject>()) _objectUnderMouse.GetComponentInParent<FurnitureObject>().StartHover(); 
+                }
             }
             else
             {
@@ -172,22 +179,44 @@ public class DecorationSelector : MonoBehaviour
     private void FixedUpdate()
     {
         // Controls the selector's current position, scale and rotation. Scale and rotation are affected by the selector's state, and spin jump when clicking
-        
 
-        selectorTargetLocation = CameraController.Instance.MouseWorldPosition; // Sets target location as mouse position
+
+        if (selectorState != SelectorState.OFFGRID)
+        {
+            selectorTargetLocation = CameraController.Instance.MouseWorldPosition; // Sets target location as mouse position
+            pickupDistanceScaleMultiplier = 1;
+            pickupDistanceSpinMultiplier = 1;
+        }
         transform.position = Vector3.Lerp(transform.position, selectorTargetLocation, selectorMoveSpeed * Time.deltaTime); // The selector will lerp towards the mouse position
-        targetScaleValue = Vector3.Scale(baseScaleValue, baseScaleValue * scaleMultiplier * scaleJump) * mouseDownSlowDown; // Gets the target scale of the selector, affected by changing state or when spin jumping
+        targetScaleValue = Vector3.Scale(baseScaleValue, baseScaleValue * scaleMultiplier * scaleJump * Math.Clamp(pickupDistanceScaleMultiplier, 1, 3) * mouseDownSlowDown); // Gets the target scale of the selector, affected by changing state or when spin jumping
         transform.localScale = Vector3.Lerp(transform.localScale, targetScaleValue, scaleSpeed * mouseDownSlowDown * Time.deltaTime); // Lerps scale of selector towards target scale
-        transform.rotation = Quaternion.Lerp(transform.rotation, transform.rotation * Quaternion.AngleAxis(90, Vector3.forward), selectorSpinSpeed * mouseDownSlowDown * Time.deltaTime * spinJump); // The selector is always rotating, the speed of this rotation is affected by changing state or when spin jumping
+        transform.rotation = Quaternion.Lerp(transform.rotation, transform.rotation * Quaternion.AngleAxis(90, Vector3.forward), selectorSpinSpeed * mouseDownSlowDown * pickupDistanceSpinMultiplier * Time.deltaTime * spinJump); // The selector is always rotating, the speed of this rotation is affected by changing state or when spin jumping
+    
+        
 
         
     }
+
+    public void PickupPullingSelectorOffset(Vector2 _mouseStart, float _pullDistance , bool _isBreaking)
+    {
+        selectorTargetLocation = Vector2.Lerp(_mouseStart, CameraController.Instance.MouseWorldPosition, _pullDistance * 5);
+        pickupDistanceScaleMultiplier = 1 + (_pullDistance*2);
+        if (_isBreaking) pickupDistanceSpinMultiplier = 1 + (_pullDistance*50);
+        else pickupDistanceSpinMultiplier = 1 + (_pullDistance * 10);
+
+    }
+
     #endregion
 
     public Collider2D CheckObjectUnderMouse()
     {
         return Physics2D.OverlapCircle(CameraController.Instance.MouseWorldPosition, 0.1f, selectorInteractionLayerMask);
         
+    }
+
+    private void ResetSelector()
+    {
+        mouseDownHeldPickup = null;
     }
     
     #endregion

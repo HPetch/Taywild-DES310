@@ -1,7 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.ComponentModel;
 using UnityEngine;
 
 public class DecorationObject : MonoBehaviour
@@ -9,16 +5,13 @@ public class DecorationObject : MonoBehaviour
 
     // SHOULD CHANGE TO INHERITANCE. Environment object should be base. Decoration object
 
-    [SerializeField] protected GameObject pickupButtonPrefab;
-    [SerializeField] protected GameObject editButtonHolderPrefab;
-
-    public GameObject RemoveButton { get; protected set; }
-    public GameObject EditButtonHolder { get; protected set; }
+    [field: SerializeField] public GameObject RemoveButton { get; protected set; }
+    [field: SerializeField] public GameObject EditButtonHolder { get; protected set; }
     public GameObject EditButtonLeft { get; protected set; }
     public GameObject EditButtonRight { get; protected set; }
 
     protected bool isMoving;
-    private bool isHovered;
+    //private bool isHovered;
     private float timeOfLastHover = 0f;
 
 
@@ -37,13 +30,14 @@ public class DecorationObject : MonoBehaviour
 
     public void StartHover()
     {
+        print("HOVER");
         if (!isMoving)
         {
             if (RemoveButton) ShowButton(RemoveButton);
             if (EditButtonLeft) ShowButton(EditButtonLeft);
             if (EditButtonRight) ShowButton(EditButtonRight);
             timeOfLastHover = Time.time;
-            isHovered = true;
+            //isHovered = true;
         }
         else { EndHover(); }
     }
@@ -53,7 +47,7 @@ public class DecorationObject : MonoBehaviour
         if (RemoveButton) HideButton(RemoveButton);
         if (EditButtonLeft) HideButton(EditButtonLeft);
         if (EditButtonLeft) HideButton(EditButtonRight);
-        isHovered = false;
+        //isHovered = false;
     }
 
     

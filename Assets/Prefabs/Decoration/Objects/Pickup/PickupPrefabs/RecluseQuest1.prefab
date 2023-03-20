@@ -13,8 +13,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: bb6b7ec55e1f44c438ec83acdad35ea0, type: 3}
     - target: {fileID: 1898239290578691872, guid: d7b3bcca8b6e4ef43ae5e82229b87311, type: 3}
+      propertyPath: treeExp
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1898239290578691872, guid: d7b3bcca8b6e4ef43ae5e82229b87311, type: 3}
       propertyPath: respawnCooldown
       value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 1898239290578691872, guid: d7b3bcca8b6e4ef43ae5e82229b87311, type: 3}
+      propertyPath: firstTimeBreakTreeExp
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 1898239290578691872, guid: d7b3bcca8b6e4ef43ae5e82229b87311, type: 3}
       propertyPath: pickupBreakItems.Array.size
@@ -30,7 +38,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1898239290578691873, guid: d7b3bcca8b6e4ef43ae5e82229b87311, type: 3}
       propertyPath: m_Name
-      value: PickupObject_RecluseQuest1
+      value: RecluseQuest1
       objectReference: {fileID: 0}
     - target: {fileID: 1898239290578691885, guid: d7b3bcca8b6e4ef43ae5e82229b87311, type: 3}
       propertyPath: m_RootOrder

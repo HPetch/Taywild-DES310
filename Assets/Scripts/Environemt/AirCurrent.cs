@@ -14,12 +14,12 @@ public class AirCurrent : MonoBehaviour
     [field: Range(0, 15)]
     [field: SerializeField] public float AirCurrentFightSpeed { get; private set; } = 3f;
 
-    [SerializeField] private bool displayDebugInfo = true;
+    //[SerializeField] private bool displayDebugInfo = true;
     private Rect airCurrentRect;
 
     private void Awake()
     {
-        displayDebugInfo = false;
+        //displayDebugInfo = false;
 
         transform.GetChild(0).GetComponent<SpriteRenderer>().enabled = false;
 

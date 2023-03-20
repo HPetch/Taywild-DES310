@@ -11,8 +11,10 @@ public class DecorationController : MonoBehaviour
     public event Action OnPickupDecoration;
     public event Action OnPlaceDecoration;
     public event Action OnPlaceCancelDecoration;
+    public event Action OnFurnitureDestroyed;
     public event Action OnPickupDamaged;
     public event Action OnPickupBroken;
+    public event Action OnPickupCancel;
 
     public static DecorationController Instance { get; private set; }
     [SerializeField] private GameObject decorationSelectorPrefab;
@@ -22,12 +24,14 @@ public class DecorationController : MonoBehaviour
     [field: SerializeField] public GameObject DecorationSelector { get; private set; }
     public bool isEditMode { get; private set; }
 
-    [field: SerializeField] public GameObject[] PlaceableDecorationObjectPrefabs { get; private set; }
+    [field: SerializeField] public SerializableDictionary<GameObject, bool> FurnitureObjectPrefabs { get; private set; }
 
     [SerializeField] private GameObject PP;
 
-    // Start is called before the first frame update
-    private void Awake()
+    public enum UiFurnitureCategories {INDOOR, OUTDOOR, LIGHTING, IDK, SOMETHINGELSE}
+
+   // Start is called before the first frame update
+   private void Awake()
     {
         Instance = this;
     }
@@ -75,6 +79,28 @@ public class DecorationController : MonoBehaviour
         
     }
 
+
+    public void SpawnFurniture(GameObject _furniturePrefab)
+    {
+        bool _canCraft = true;
+        foreach (KeyValuePair<InventoryController.ItemNames, int> _item in _furniturePrefab.GetComponent<FurnitureObject>().CraftingRequirements)
+        {
+            if (InventoryController.Instance.ItemQuantity(_item.Key) < _item.Value) _canCraft = false;
+        }
+        if (_canCraft)
+        {
+            foreach (KeyValuePair<InventoryController.ItemNames, int> _item in _furniturePrefab.GetComponent<FurnitureObject>().CraftingRequirements)
+            {
+                InventoryController.Instance.RemoveItem(_item.Key, _item.Value);
+            }
+            print("Crafted: " + _furniturePrefab);
+            // Close menu
+            // Spawn furniture grabbed by selector
+            GameObject _newFurniture = Instantiate(_furniturePrefab);
+            DecorationController.Instance.SelectorDecorationObjectInteract(_newFurniture, true);
+        }
+        else print("Failed to craft: " + _furniturePrefab);
+    }
 
     public void SelectorDecorationObjectInteract(GameObject _selectedObject, bool _isMouseClickDown)
     {
@@ -139,6 +165,18 @@ public class DecorationController : MonoBehaviour
         
     }
 
+    public void DestroyFurniture(GameObject _furniture)
+    {
+        foreach (KeyValuePair<InventoryController.ItemNames, int> _item in _furniture.GetComponent<FurnitureObject>().CraftingRequirements)
+        {
+            InventoryController.Instance.AddItem(_item.Key, _item.Value);
+        }
+        TreeLevelController.Instance.RemoveFurnitureExp(_furniture.GetComponent<FurnitureObject>().treeExp);
+        Destroy(_furniture);
+        OnFurnitureDestroyed?.Invoke();
+
+    }
+
     public void PickupDamaged(SerializableDictionary<InventoryController.ItemNames, Vector2Int> _itemsReceived)
     {
         PickupAddItems(_itemsReceived);
@@ -149,6 +187,11 @@ public class DecorationController : MonoBehaviour
     {
         PickupAddItems(_itemsReceived);
         OnPickupBroken?.Invoke();
+    }
+
+    public void PickupCancel()
+    {
+        OnPickupCancel?.Invoke();
     }
 
     private void PickupAddItems(SerializableDictionary<InventoryController.ItemNames, Vector2Int> _itemsReceived)
@@ -164,10 +207,15 @@ public class DecorationController : MonoBehaviour
 
     public void DecorationButtonPress(GameObject _button)
     {
-        DecorationObject _decorationObject = _button.GetComponentInParent<DecorationObject>();
-        if (_button == _decorationObject.RemoveButton) Debug.Log(_decorationObject.gameObject + "Has been picked up into the inventory"); // Pickup object and refund materials to inventory
-        if (_button == _decorationObject.EditButtonLeft) Debug.Log(_decorationObject.gameObject + "Has gone to previous style");
-        if (_button == _decorationObject.EditButtonRight) Debug.Log(_decorationObject.gameObject + "Has gone to next style");
+        if (_button.GetComponentInParent<FurnitureObject>())
+        {
+            FurnitureObject _furnitureObject = _button.transform.parent.GetComponent<FurnitureObject>();
+            if (_button == _furnitureObject.RemoveButton) DestroyFurniture(_furnitureObject.transform.parent.gameObject); // Pickup object and refund materials to inventory
+            if (_button == _furnitureObject.EditButtonLeft) Debug.Log(_furnitureObject.gameObject + "Has gone to previous style");
+            if (_button == _furnitureObject.EditButtonRight) Debug.Log(_furnitureObject.gameObject + "Has gone to next style");
+        }
+        
+        
     }
 
     // Event: Enter edit mode
