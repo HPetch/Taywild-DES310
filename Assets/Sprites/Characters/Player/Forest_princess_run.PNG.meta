@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: aec212d70d5ffcc46ad5fe418723d495
+guid: 1408b57a4821fba47a898a94c2955afc
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -116,7 +116,43 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
     buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Windows Store Apps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: tvOS
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -131,7 +167,133 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Forest_princess_run_0
+      name: Forest_princess_run_INCOMPLETE_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 500
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6d7d928784181d34cb8b677c9d52e1d7
+      internalID: 627828323
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Forest_princess_run_INCOMPLETE_1
+      rect:
+        serializedVersion: 2
+        x: 500
+        y: 500
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9ccad346437ffa44faec8e861c2aa9aa
+      internalID: -2042812421
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Forest_princess_run_INCOMPLETE_2
+      rect:
+        serializedVersion: 2
+        x: 1000
+        y: 500
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ba3297644160cea4d9b31dc5dadffcc2
+      internalID: -1387199017
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Forest_princess_run_INCOMPLETE_3
+      rect:
+        serializedVersion: 2
+        x: 1500
+        y: 500
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 64380f82a29f8a44199a003cfceb3000
+      internalID: 1642551374
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Forest_princess_run_INCOMPLETE_4
+      rect:
+        serializedVersion: 2
+        x: 2000
+        y: 500
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e503061f1c07c6742b69a94acc034994
+      internalID: -708800743
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Forest_princess_run_INCOMPLETE_5
+      rect:
+        serializedVersion: 2
+        x: 2500
+        y: 500
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6de595fa3ee980049bbd2d2a62007505
+      internalID: 1192813446
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Forest_princess_run_INCOMPLETE_6
       rect:
         serializedVersion: 2
         x: 0
@@ -145,14 +307,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b2ae2253804142c4a85156e5393e3739
-      internalID: -1463121490
+      spriteID: ac738b0eeabad2f4fbb84c9e6f9a8f37
+      internalID: -704794863
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Forest_princess_run_1
+      name: Forest_princess_run_INCOMPLETE_7
       rect:
         serializedVersion: 2
         x: 500
@@ -166,14 +328,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d443b42db04737649b17e5b40c2b175c
-      internalID: 1327858727
+      spriteID: 052edf4bd788931449a3894e7e2590f7
+      internalID: -616270178
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Forest_princess_run_2
+      name: Forest_princess_run_INCOMPLETE_8
       rect:
         serializedVersion: 2
         x: 1000
@@ -187,14 +349,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 547976b8a5dad7c4d85d714be68f8be1
-      internalID: 2105581316
+      spriteID: 9a8c83181c2691240aa43b2b95aab86e
+      internalID: -132998323
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Forest_princess_run_3
+      name: Forest_princess_run_INCOMPLETE_9
       rect:
         serializedVersion: 2
         x: 1500
@@ -208,14 +370,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 466240091a728874a93f610d2d4d93b5
-      internalID: -860229763
+      spriteID: bbee9cb9ee8018e48bd6cf56a8a10769
+      internalID: 1415616939
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Forest_princess_run_4
+      name: Forest_princess_run_INCOMPLETE_10
       rect:
         serializedVersion: 2
         x: 2000
@@ -229,14 +391,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 77ed651453f48724ba9ded070b3f9365
-      internalID: 1183954329
+      spriteID: 7977bc5c201ed4348a2cf57af8be8d50
+      internalID: 2008940566
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Forest_princess_run_5
+      name: Forest_princess_run_INCOMPLETE_11
       rect:
         serializedVersion: 2
         x: 2500
@@ -250,8 +412,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6007e82574884fc41bbdc0056b31f0da
-      internalID: -1702062654
+      spriteID: 2d0e0a8f1b9517944aee41e249dbb610
+      internalID: 1749164075
       vertices: []
       indices: 
       edges: []
@@ -267,12 +429,18 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Forest_princess_run_2: 2105581316
-      Forest_princess_run_5: -1702062654
-      Forest_princess_run_3: -860229763
-      Forest_princess_run_0: -1463121490
-      Forest_princess_run_4: 1183954329
-      Forest_princess_run_1: 1327858727
+      Forest_princess_run_INCOMPLETE_7: -616270178
+      Forest_princess_run_INCOMPLETE_4: -708800743
+      Forest_princess_run_INCOMPLETE_2: -1387199017
+      Forest_princess_run_INCOMPLETE_11: 1749164075
+      Forest_princess_run_INCOMPLETE_6: -704794863
+      Forest_princess_run_INCOMPLETE_5: 1192813446
+      Forest_princess_run_INCOMPLETE_3: 1642551374
+      Forest_princess_run_INCOMPLETE_10: 2008940566
+      Forest_princess_run_INCOMPLETE_8: -132998323
+      Forest_princess_run_INCOMPLETE_9: 1415616939
+      Forest_princess_run_INCOMPLETE_1: -2042812421
+      Forest_princess_run_INCOMPLETE_0: 627828323
   spritePackingTag: 
   pSDRemoveMatte: 0
   userData: 
