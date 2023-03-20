@@ -150,9 +150,9 @@ public class DecorationCraftMenu : MonoBehaviour
 
                 foreach (KeyValuePair<InventoryController.ItemNames, int> _item in _furnitureScript.CraftingRequirements)
                 {
-                    if (_item.Key == InventoryController.ItemNames.FLOWER) _resource1Amount = _item.Value;
-                    else if (_item.Key == InventoryController.ItemNames.TWIG) _resource2Amount = _item.Value;
-                    else if (_item.Key == InventoryController.ItemNames.ROOT) _resource3Amount = _item.Value;
+                    if (_item.Key == InventoryController.ItemNames.LEAF) _resource1Amount = _item.Value;
+                    else if (_item.Key == InventoryController.ItemNames.WOOD) _resource2Amount = _item.Value;
+                    else if (_item.Key == InventoryController.ItemNames.SAP) _resource3Amount = _item.Value;
                 }
                 selectedButton = _button;
                 Debug.Log(_button);
