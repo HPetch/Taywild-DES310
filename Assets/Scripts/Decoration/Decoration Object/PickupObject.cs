@@ -4,7 +4,6 @@
 /// 2 variants, Pickup Object low health no collision, Pickup Block Object high health collides with player
 /// Once destroyed the items the pickup object contained is added to the Inventory Controller
 
-using System;
 using UnityEngine;
 
 public class PickupObject : MonoBehaviour
@@ -34,6 +33,7 @@ public class PickupObject : MonoBehaviour
     private float pullMoveResistance; // Scales how much resistance the object is to moveing with health, higher health harder to move.
     private float pullBreakTime; // How long the object must be at breaking distance before taking damage, scales with pull break time multiplier
     [SerializeField, Range(0, 0.5f)] private float pullBreakTimeMultiplier; // How long it takes to break multiplied by health
+    [SerializeField, Range(0, 6)] private int forceHealthScaling;
     private bool isTryingToBreak; // If the object is currently trying to break. Waits to achive pullBreakTime before breaking.
     private bool isMaxTravel; // If the object has reached maxium movement. Prevents funky movement past boundries.
 
@@ -136,13 +136,15 @@ public class PickupObject : MonoBehaviour
                 if (pullBreakTime < Time.time && !isTryingToBreak)
                 {
                     // Times how long until the object breaks, time until break scales with health remaining
-                    pullBreakTime = Time.time + (pullBreakTimeMultiplier * health);
+                    if (forceHealthScaling == 0) pullBreakTime = Time.time + (pullBreakTimeMultiplier * health);
+                    else pullBreakTime = Time.time + (pullBreakTimeMultiplier * forceHealthScaling);
+                    
                     isTryingToBreak = true;
                 }
                 // A successful break attempt
                 else if (pullBreakTime < Time.time && isTryingToBreak)
                 {
-                    health--;
+                    Mathf.Clamp(health--, 0, 6);
                     // If on 0 health destroys the pickup object, adds resources to inventory, and gives direction for the particle system
                     if (health == 0) EndPull(); 
                     else DamagePull();
@@ -169,7 +171,10 @@ public class PickupObject : MonoBehaviour
     {
         mouseStartPosition = CameraController.Instance.MouseWorldPosition;
         ResetSpriteVibration();
-        pullMoveResistance = Mathf.Clamp(health, 1, 3) * 10; // As the player breaks the object it gets easier to damage
+        if (forceHealthScaling == 0)
+            pullMoveResistance =
+                Mathf.Clamp(health, 1, 3) * 10; // As the player breaks the object it gets easier to damage
+        else pullMoveResistance = forceHealthScaling * 10;
         SetPullBreakState(true, false);
     }
 
@@ -280,7 +285,7 @@ public class PickupObject : MonoBehaviour
     // Tells the inventory contoller what items were dropped by the pickup. Informs the controller if the pickup was damaged or broken.
     private void DamageAddItems(bool _broken) 
     { 
-        if (_broken) DecorationController.Instance.PickupBroken(pickupBreakItems[healthMax - (health + 1)]);
+        if (_broken) DecorationController.Instance.PickupBroken(pickupBreakItems[healthMax - 1]);
         else DecorationController.Instance.PickupDamaged(pickupBreakItems[healthMax - (health + 1)]);
     }
 

@@ -122,7 +122,6 @@ public class DecorationCraftMenu : MonoBehaviour
                     if (!_button.AssignedFurniture)
                     {
                         _button.SetFurniture(_furniture.Key);
-                        Debug.Log("Set Furniture: " + _furniture.Key);
                         break;
                     }
                 }
@@ -166,17 +165,20 @@ public class DecorationCraftMenu : MonoBehaviour
 
     private void PlaceFurniture()
     {
-        Debug.Log("Try Place");
         if (selectedButton && selectedButton != null)
         {
             if (selectedButton.AssignedFurniture.GetComponent<FurnitureObject>())
             {
-                Debug.Log("Spawn: " + selectedButton.AssignedFurniture.GetComponent<FurnitureObject>().UiName);
-                //Close DecorationCraftMenu
-                CloseInventory();
-                //DecorationController.Instance.SpawnFurniture(AssignedFurniture);
+                if (DecorationController.Instance.CanCraftFurniture(selectedButton.AssignedFurniture))
+                {
+                    CloseInventory();
+                    DecorationController.Instance.SpawnFurniture(selectedButton.AssignedFurniture);
+                }
+                else Debug.Log("Not enough to craft");
             }
+            else Debug.Log("No object selected");
         }
+        else Debug.Log("No button selected");
     }
 
 

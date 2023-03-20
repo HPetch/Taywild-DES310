@@ -121,9 +121,12 @@ public class DecorationSelector : MonoBehaviour
             if (mouseDownHeldPickup) mouseDownHeldPickup.CancelPull();
             mouseDownHeldPickup = null;
             print(mouseDownObjectHit);
-            if (CheckObjectUnderMouse() == mouseDownObjectHit) // Checks if the click is released over the same object that it began on
+            if (CheckObjectUnderMouse())
             {
-                DecorationController.Instance.SelectorDecorationObjectInteract(mouseDownObjectHit.gameObject, false); // Signals Decoration Controller that the object has been interacted with
+                if (CheckObjectUnderMouse() == mouseDownObjectHit) // Checks if the click is released over the same object that it began on
+                {
+                    DecorationController.Instance.SelectorDecorationObjectInteract(mouseDownObjectHit.gameObject, false); // Signals Decoration Controller that the object has been interacted with
+                }
             }
         }
 

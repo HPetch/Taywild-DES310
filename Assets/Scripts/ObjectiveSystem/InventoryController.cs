@@ -52,7 +52,7 @@ public class InventoryController : MonoBehaviour
     /// <param name="_quantity"> The quantity you wish to add</param>
     public void AddItem(ItemNames _item, int _quantity)
     {
-        if (_quantity == 0) Debug.LogWarning("A quantity of 0 was added");
+        if (_quantity == 0) Debug.Log("A quantity of 0 was added");
         
         // Just in case a - quantity has been inputed
         _quantity = Mathf.Abs(_quantity);
@@ -63,9 +63,13 @@ public class InventoryController : MonoBehaviour
         if (InventoryContainsItem(_item)) inventory[_item] += _quantity;
         // Else add the item to the dictionary
         else if (_quantity != 0) inventory.Add(_item, _quantity);
-
-        OnItemAdded?.Invoke(_item, inventory[_item]);
-        OnItemQuantityChanged?.Invoke(_item, inventory[_item]);
+        
+        if (_quantity != 0)
+        {
+            OnItemAdded?.Invoke(_item, inventory[_item]);
+            OnItemQuantityChanged?.Invoke(_item, inventory[_item]);
+        }
+        
     }
 
     /// <summary>

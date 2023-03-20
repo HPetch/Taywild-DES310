@@ -79,7 +79,16 @@ public class DecorationController : MonoBehaviour
         
     }
 
-
+    public bool CanCraftFurniture(GameObject _furniturePrefab)
+    {
+        bool _canCraft = true;
+        foreach (KeyValuePair<InventoryController.ItemNames, int> _item in _furniturePrefab.GetComponent<FurnitureObject>().CraftingRequirements)
+        {
+            if (InventoryController.Instance.ItemQuantity(_item.Key) < _item.Value) _canCraft = false;
+        }
+        return _canCraft;
+    }
+    
     public void SpawnFurniture(GameObject _furniturePrefab)
     {
         bool _canCraft = true;
@@ -223,7 +232,7 @@ public class DecorationController : MonoBehaviour
 
     private void ToggleEditMode()
     {
-        if (isEditMode)
+        if (isEditMode && !CurrentMoveFake && CurrentMoveFake == null)
         {
             CameraController.Instance.ResetTarget();
             DecorationMoveCancel();
@@ -233,7 +242,7 @@ public class DecorationController : MonoBehaviour
             PP.SetActive(false);
             
         }
-        else if(PlayerController.Instance.IsGrounded && !DialogueController.Instance.IsConversing)
+        else if(!isEditMode && PlayerController.Instance.IsGrounded && !DialogueController.Instance.IsConversing)
         {
             DecorationSelector = Instantiate(decorationSelectorPrefab);
             CameraController.Instance.SetTarget(DecorationSelector.transform);
