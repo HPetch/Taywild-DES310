@@ -28,6 +28,7 @@ public class DecorationCraftMenu : MonoBehaviour
     private Vector3 openPos;
 
     [SerializeField] private Button pullTab;
+    [SerializeField] private GameObject pullTabArrow;
     private bool inventoryIsOpen = false;
 
     [SerializeField] private float positionOpened = 50f;
@@ -87,14 +88,20 @@ public class DecorationCraftMenu : MonoBehaviour
     private LTDescr OpenInventory()
     {
         LeanTween.cancel(gameObject); //Stop current tweens
+        LeanTween.cancel(pullTabArrow); //Stop arrow if it is mid-tween
+
         inventoryIsOpen = true; //Mark the inventory as opening
+        LeanTween.rotateZ(pullTabArrow,180.5f,duration / 2).setEase(LeanTweenType.easeInOutSine); //Rotate arrow alongside actual move (180.5 guarantees it will always rotate clockwise)
         return LeanTween.move(drawerTransform, openPos, duration).setEase(openEase); //Go to open position
     }
 
     private LTDescr CloseInventory()
     {
         LeanTween.cancel(gameObject); //Stop current tweens if mid-open
+        LeanTween.cancel(pullTabArrow); //Stop arrow if it is mid-tween
+
         inventoryIsOpen = false; //Mark the inventory as opening
+        LeanTween.rotateZ(pullTabArrow, 0f, duration / 2).setEase(LeanTweenType.easeInOutSine); //Rotate arrow alongside actual move
         return LeanTween.move(drawerTransform, closedPos, duration).setEase(closeEase); //Go to close position
     }
 
