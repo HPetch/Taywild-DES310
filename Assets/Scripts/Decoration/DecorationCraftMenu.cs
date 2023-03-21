@@ -61,9 +61,6 @@ public class DecorationCraftMenu : MonoBehaviour
     {
         foreach (KeyValuePair<GameObject, bool> _furniture in DecorationController.Instance.FurnitureObjectPrefabs)
         {
-            print(_furniture);
-            print(_furniture.Key);
-            print(_furniture.Value);
             if (_furniture.Value) availableFurniture.Add(_furniture.Key);
         }
 
@@ -155,7 +152,6 @@ public class DecorationCraftMenu : MonoBehaviour
                     else if (_item.Key == InventoryController.ItemNames.SAP) _resource3Amount = _item.Value;
                 }
                 selectedButton = _button;
-                Debug.Log(_button);
             }
         }
         resource1CostText.text = _resource1Amount.ToString();

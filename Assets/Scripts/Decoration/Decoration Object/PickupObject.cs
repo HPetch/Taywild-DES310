@@ -285,8 +285,8 @@ public class PickupObject : MonoBehaviour
     // Tells the inventory contoller what items were dropped by the pickup. Informs the controller if the pickup was damaged or broken.
     private void DamageAddItems(bool _broken) 
     { 
-        if (_broken) DecorationController.Instance.PickupBroken(pickupBreakItems[healthMax - 1]);
-        else DecorationController.Instance.PickupDamaged(pickupBreakItems[healthMax - (health + 1)]);
+        if (_broken) DecorationController.Instance.PickupBroken(pickupBreakItems[healthMax - 1], spriteArmRef.transform.position);
+        else DecorationController.Instance.PickupDamaged(pickupBreakItems[healthMax - (health + 1)], spriteArmRef.transform.position);
     }
 
     private void DamageSetSprites()

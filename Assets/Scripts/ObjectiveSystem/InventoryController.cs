@@ -14,14 +14,15 @@ public class InventoryController : MonoBehaviour
     public static InventoryController Instance { get; private set; }
 
     #region Events
-    public event Action<ItemNames, int> OnItemAdded; 
-    public event Action<ItemNames, int> OnItemRemoved; 
+    public event Action<ItemNames, int, Vector2> OnItemAdded; 
+    public event Action<ItemNames, int, Vector2> OnItemRemoved; 
     public event Action<ItemNames, int> OnItemQuantityChanged;
     #endregion
 
     #region Variables
     // The dictionary that represents the inventory
     private Dictionary<ItemNames, int> inventory = new Dictionary<ItemNames, int>();
+    [SerializeField] private GameObject itemDebrisPrefab;
     #endregion
 
     #region Functions
@@ -50,7 +51,7 @@ public class InventoryController : MonoBehaviour
     /// </summary>
     /// <param name="_item"> The item you wish to add</param>
     /// <param name="_quantity"> The quantity you wish to add</param>
-    public void AddItem(ItemNames _item, int _quantity)
+    public void AddItem(ItemNames _item, int _quantity, Vector2 _position)
     {
         if (_quantity == 0) Debug.Log("A quantity of 0 was added");
         
@@ -66,8 +67,10 @@ public class InventoryController : MonoBehaviour
         
         if (_quantity != 0)
         {
-            OnItemAdded?.Invoke(_item, inventory[_item]);
+            OnItemAdded?.Invoke(_item, inventory[_item], _position);
             OnItemQuantityChanged?.Invoke(_item, inventory[_item]);
+            
+            SpawnMaterialDebris(_item, _quantity, _position);
         }
         
     }
@@ -77,11 +80,11 @@ public class InventoryController : MonoBehaviour
     /// </summary>
     /// <param name="_item"> The item you wish to remove</param>
     /// <param name="_quantity"> The quantity you wish to remove</param>
-    public void RemoveItem(ItemNames _item, int _quantity)
+    public void RemoveItem(ItemNames _item, int _quantity, Vector2 _location)
     {
         if (_quantity == 0) Debug.LogWarning("A quantity of 0 was removed");
 
-        // Take the abosulte so either a positive or negative will remove the correct amount
+        // Take the absolute so either a positive or negative will remove the correct amount
         _quantity = Mathf.Abs(_quantity);
 
         if (InventoryDoesNotContainItem(_item))
@@ -90,7 +93,7 @@ public class InventoryController : MonoBehaviour
             return;
         }
 
-        // If the invenotry does not contain enough quantity of the item to remove the amount
+        // If the inventory does not contain enough quantity of the item to remove the amount
         if (inventory[_item] - _quantity < 0)
         {
             Debug.LogWarning("Insufficient item quantity. Item: " + _item + "\nItem quantity: " + inventory[_item] + "\nQuantity attempted to remove: " + _quantity);
@@ -99,11 +102,31 @@ public class InventoryController : MonoBehaviour
 
         inventory[_item] -= _quantity;
 
-        OnItemRemoved?.Invoke(_item, inventory[_item]);
+        OnItemRemoved?.Invoke(_item, inventory[_item], _location);
         OnItemQuantityChanged?.Invoke(_item, inventory[_item]);
 
         if (inventory[_item] == 0) inventory.Remove(_item);
     }
+    
+    
+    public void SpawnMaterialDebris(ItemNames _debrisName, int _debrisQuantity, Vector2 _position)
+    {
+        if (_position != Vector2.zero)
+        {
+            _debrisQuantity = Mathf.Abs(_debrisQuantity);
+        
+            for (int i = 0; i < _debrisQuantity; i++)
+            {
+                GameObject _debris = Instantiate(itemDebrisPrefab);
+                _debris.GetComponent<DecorationPickupDebris>().initialize(_debrisName, _position, _debrisQuantity);
+            }
+            
+        }
+        
+    
+    }
+    
+    
 
     #region Utility functions
     private bool InventoryContainsItem(ItemNames _item) { return inventory.ContainsKey(_item); }

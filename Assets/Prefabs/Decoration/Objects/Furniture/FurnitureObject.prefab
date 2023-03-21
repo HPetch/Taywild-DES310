@@ -132,9 +132,6 @@ MonoBehaviour:
   <EditButtonHolder>k__BackingField: {fileID: 152466634187770368}
   <CraftingRequirements>k__BackingField:
     list: []
-  <AttachmentPointsList>k__BackingField:
-  - {x: 0.5, y: -1.16, z: 0}
-  - {x: -0.5, y: -1.16, z: 0}
   <scrollRotateIndexHolder>k__BackingField: 4
   <treeExp>k__BackingField: 0
   <UiName>k__BackingField: NaN
@@ -244,6 +241,14 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 4637515756716454861}
     m_Modifications:
+    - target: {fileID: 4191827545292012900, guid: 40eaeed981acba94fac085c6e31b4beb, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4191827545292012902, guid: 40eaeed981acba94fac085c6e31b4beb, type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4191827545292012903, guid: 40eaeed981acba94fac085c6e31b4beb, type: 3}
       propertyPath: m_RootOrder
       value: 0

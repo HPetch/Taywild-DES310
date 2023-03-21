@@ -11,7 +11,7 @@ public class DecorationObject : MonoBehaviour
     public GameObject EditButtonRight { get; protected set; }
 
     protected bool isMoving;
-    //private bool isHovered;
+    private bool isHovered;
     private float timeOfLastHover = 0f;
 
 
@@ -25,19 +25,19 @@ public class DecorationObject : MonoBehaviour
 
     private void Update()
     {
-        if ( Time.time - timeOfLastHover > 1f || isMoving) EndHover();
+        print(Time.time - timeOfLastHover);
+        if ( isHovered && Time.time - timeOfLastHover > 1f || isMoving) EndHover();
     }
 
     public void StartHover()
     {
-        print("HOVER");
         if (!isMoving)
         {
             if (RemoveButton) ShowButton(RemoveButton);
             if (EditButtonLeft) ShowButton(EditButtonLeft);
             if (EditButtonRight) ShowButton(EditButtonRight);
             timeOfLastHover = Time.time;
-            //isHovered = true;
+            isHovered = true;
         }
         else { EndHover(); }
     }
@@ -47,7 +47,7 @@ public class DecorationObject : MonoBehaviour
         if (RemoveButton) HideButton(RemoveButton);
         if (EditButtonLeft) HideButton(EditButtonLeft);
         if (EditButtonLeft) HideButton(EditButtonRight);
-        //isHovered = false;
+        isHovered = false;
     }
 
     

@@ -49,6 +49,10 @@ public class DecorationSelector : MonoBehaviour
     private Collider2D mouseDownObjectHit; // Holds the object that was selected on a click
     private PickupObject mouseDownHeldPickup;
 
+    private GameObject hoveredFurnitureObject;
+    
+    
+    
     #endregion
 
     #region Functions
@@ -119,8 +123,8 @@ public class DecorationSelector : MonoBehaviour
             mouseDownSlowDown = 1f; // Resets rotation and scale to normal
 
             if (mouseDownHeldPickup) mouseDownHeldPickup.CancelPull();
+            
             mouseDownHeldPickup = null;
-            print(mouseDownObjectHit);
             if (CheckObjectUnderMouse())
             {
                 if (CheckObjectUnderMouse() == mouseDownObjectHit) // Checks if the click is released over the same object that it began on
@@ -156,12 +160,30 @@ public class DecorationSelector : MonoBehaviour
             if (_objectUnderMouse)
             {
                 selectorState = SelectorState.PICKABLE;
-                if (_objectUnderMouse.GetComponent<FurnitureObject>()) _objectUnderMouse.GetComponent<FurnitureObject>().StartHover(); 
-                else if (_objectUnderMouse.GetComponent<DecorationObject>()) _objectUnderMouse.GetComponent<DecorationObject>().StartHover(); 
+                if (_objectUnderMouse.GetComponent<FurnitureObject>() && hoveredFurnitureObject != _objectUnderMouse.gameObject)
+                {
+                    if(hoveredFurnitureObject) hoveredFurnitureObject.GetComponent<FurnitureObject>().EndHover();
+                    hoveredFurnitureObject = _objectUnderMouse.gameObject;
+                    hoveredFurnitureObject.GetComponent<FurnitureObject>().StartHover();
+                } 
+                else if (hoveredFurnitureObject == _objectUnderMouse.gameObject) hoveredFurnitureObject.GetComponent<FurnitureObject>().StartHover();
+                /*else if (_objectUnderMouse.GetComponent<DecorationObject>())
+                {
+                    hoveredFurnitureObject.GetComponent<DecorationObject>().EndHover();
+                    hoveredFurnitureObject = _objectUnderMouse.gameObject;
+                    hoveredFurnitureObject.GetComponent<DecorationObject>().StartHover();
+                } */
                 else if (_objectUnderMouse.GetComponent<DecorationButton>()) 
                 {
-                    if (_objectUnderMouse.GetComponentInParent<FurnitureObject>()) _objectUnderMouse.GetComponentInParent<FurnitureObject>().StartHover(); 
+                    if (_objectUnderMouse.GetComponentInParent<FurnitureObject>() && hoveredFurnitureObject != _objectUnderMouse.gameObject)
+                    {
+                        if(hoveredFurnitureObject != _objectUnderMouse.gameObject) hoveredFurnitureObject.GetComponent<FurnitureObject>().EndHover();
+                        hoveredFurnitureObject = _objectUnderMouse.GetComponentInParent<FurnitureObject>().gameObject;
+                        hoveredFurnitureObject.GetComponent<FurnitureObject>().StartHover();
+                    } 
+                    else if (hoveredFurnitureObject == _objectUnderMouse.gameObject) hoveredFurnitureObject.GetComponent<FurnitureObject>().StartHover();
                 }
+                
             }
             else
             {

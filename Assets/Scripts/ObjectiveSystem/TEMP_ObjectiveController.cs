@@ -44,18 +44,12 @@ public class TEMP_ObjectiveController : MonoBehaviour
         }
     }
 
-    private void OnInventoryItemAdded(InventoryController.ItemNames _item, int _quantity)
+    private void OnInventoryItemAdded(InventoryController.ItemNames _item, int _quantity, Vector2 _position)
     {
-        if (hasTalkedToRecluse)
+        if (hasTalkedToRecluse) 
         {
             interactableCharacter.StartingNode = InventoryController.Instance.ItemQuantity(InventoryController.ItemNames.QUEST_BLUEFLOWER) > 0 ? recluseQuestCompleteStartingNode : recluseQuestIncompleteStartingNode;
         }
     }
     #endregion
-
-
-    private void Update()
-    {
-        print(interactableCharacter.StartingNode);
-    }
 }

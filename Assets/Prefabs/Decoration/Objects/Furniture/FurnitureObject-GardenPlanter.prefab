@@ -22,15 +22,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2645309099754445559, guid: ba88dae99097da043b24de774bcf5e44, type: 3}
       propertyPath: <UiName>k__BackingField
-      value: Garden Bench
+      value: Log Planter
       objectReference: {fileID: 0}
     - target: {fileID: 2645309099754445559, guid: ba88dae99097da043b24de774bcf5e44, type: 3}
       propertyPath: <UiImage>k__BackingField
       value: 
-      objectReference: {fileID: 21300000, guid: 1b52ddd8c4ae89e4da2353e78134004f, type: 3}
+      objectReference: {fileID: 21300000, guid: 0ef196bafeb64d141883e26c0b645935, type: 3}
     - target: {fileID: 2645309099754445559, guid: ba88dae99097da043b24de774bcf5e44, type: 3}
       propertyPath: <treeExp>k__BackingField
-      value: 8
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 2645309099754445559, guid: ba88dae99097da043b24de774bcf5e44, type: 3}
       propertyPath: <UiFurnitureCategory>k__BackingField
@@ -38,7 +38,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2645309099754445559, guid: ba88dae99097da043b24de774bcf5e44, type: 3}
       propertyPath: <CraftingRequirements>k__BackingField.list.Array.size
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2645309099754445559, guid: ba88dae99097da043b24de774bcf5e44, type: 3}
       propertyPath: <CraftingRequirements>k__BackingField.list.Array.data[1].Key
@@ -50,11 +50,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2645309099754445559, guid: ba88dae99097da043b24de774bcf5e44, type: 3}
       propertyPath: <CraftingRequirements>k__BackingField.list.Array.data[0].Value
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2645309099754445559, guid: ba88dae99097da043b24de774bcf5e44, type: 3}
       propertyPath: <CraftingRequirements>k__BackingField.list.Array.data[1].Value
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2645309099754445559, guid: ba88dae99097da043b24de774bcf5e44, type: 3}
       propertyPath: <CraftingRequirements>k__BackingField.list.Array.data[2].Value
@@ -62,11 +62,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4637515756716454851, guid: ba88dae99097da043b24de774bcf5e44, type: 3}
       propertyPath: m_Size.x
-      value: 5.08
+      value: 5.8
       objectReference: {fileID: 0}
     - target: {fileID: 4637515756716454851, guid: ba88dae99097da043b24de774bcf5e44, type: 3}
       propertyPath: m_Size.y
-      value: 2.24
+      value: 1.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4637515756716454851, guid: ba88dae99097da043b24de774bcf5e44, type: 3}
+      propertyPath: m_Offset.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4637515756716454851, guid: ba88dae99097da043b24de774bcf5e44, type: 3}
       propertyPath: m_SpriteTilingProperty.pivot.y
@@ -74,15 +78,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4637515756716454851, guid: ba88dae99097da043b24de774bcf5e44, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
-      value: 6.5
+      value: 6.1
       objectReference: {fileID: 0}
     - target: {fileID: 4637515756716454851, guid: ba88dae99097da043b24de774bcf5e44, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.y
-      value: 3.1
+      value: 1.7
       objectReference: {fileID: 0}
     - target: {fileID: 4637515756716454857, guid: ba88dae99097da043b24de774bcf5e44, type: 3}
       propertyPath: m_Name
-      value: FurnitureObject-GardenBench
+      value: FurnitureObject-GardenPlanter
       objectReference: {fileID: 0}
     - target: {fileID: 4637515756716454861, guid: ba88dae99097da043b24de774bcf5e44, type: 3}
       propertyPath: m_RootOrder
@@ -131,22 +135,22 @@ PrefabInstance:
     - target: {fileID: 4637515756716454862, guid: ba88dae99097da043b24de774bcf5e44, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 1b52ddd8c4ae89e4da2353e78134004f, type: 3}
+      objectReference: {fileID: 21300000, guid: 0ef196bafeb64d141883e26c0b645935, type: 3}
     - target: {fileID: 4637515757402210686, guid: ba88dae99097da043b24de774bcf5e44, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.24
+      value: 2.35
       objectReference: {fileID: 0}
     - target: {fileID: 4637515757402210686, guid: ba88dae99097da043b24de774bcf5e44, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.33
+      value: -0.71
       objectReference: {fileID: 0}
     - target: {fileID: 4637515758312841598, guid: ba88dae99097da043b24de774bcf5e44, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.55
+      value: -2.44
       objectReference: {fileID: 0}
     - target: {fileID: 4637515758312841598, guid: ba88dae99097da043b24de774bcf5e44, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.33
+      value: -0.71
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []

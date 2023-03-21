@@ -8,7 +8,7 @@ public class FurnitureObject : DecorationObject
 
 
 
-    [field: SerializeField] public List<Vector3> AttachmentPointsList { get; private set; }
+    public List<Vector3> AttachmentPointsList { get; private set; } = new List<Vector3>();
     public float AttachmentPointRadius { get; private set; }
     [field: SerializeField] public int scrollRotateIndexHolder { get; private set; }
 
@@ -35,12 +35,10 @@ void Start()
             EditButtonLeft = EditButtonHolder.transform.GetChild(0).gameObject;
             EditButtonRight = EditButtonHolder.transform.GetChild(1).gameObject;
         }
+        InitializeAttachmentPoints();
     }
     // Update is called once per frame
-    void Update()
-    {
-
-    }
+    
 
 
 
@@ -65,13 +63,13 @@ void Start()
 
     public void SetScrollRotateIndexHolder(int _index) { scrollRotateIndexHolder = _index; }
 
-    [ContextMenu("Initialize attachment points")]
+    
     private void InitializeAttachmentPoints()
     {
-        
+        AttachmentPointsList.Clear();
         foreach (Transform _attachmentPoint in transform)
         {
-            if (_attachmentPoint.gameObject.tag == "Decoration Attach Point")
+            if (_attachmentPoint.gameObject.tag == "Decoration Attach Point" && _attachmentPoint.gameObject.activeInHierarchy)
             {
                 AttachmentPointsList.Add(_attachmentPoint.localPosition);
                 AttachmentPointRadius = _attachmentPoint.GetComponent<CircleCollider2D>().radius;
