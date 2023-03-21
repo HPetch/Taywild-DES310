@@ -26,6 +26,7 @@ public class PickupObject : MonoBehaviour
 
     private bool isBeingPulled; // Is the player currently pulling this pickup
     [SerializeField, Range(0.1f,0.3f)] private float pullBreakDistance; // Maximum distance the pickup can move before being destroyed. Actually starts breaking at 0.95 of this.
+    [SerializeField, Range(0.1f, 0.95f)] private float pullBreakMultiplier;
     private Vector2 pullDirection;
 
     [SerializeField, Range(1, 10)] private int dragMoveSpeed; // How fast the object lerps towards the target position. Use lower values for heavier objects.
@@ -128,7 +129,7 @@ public class PickupObject : MonoBehaviour
             spriteRef.transform.localRotation = Quaternion.Lerp(spriteRef.transform.localRotation, _rotateVibration, vibrationSpeed * Time.deltaTime);
 
             // If sprite arm is past break distance then start trying to break the pickup
-            if (PullCurrentDistance() > pullBreakDistance * 0.95)
+            if (PullCurrentDistance() > pullBreakDistance * pullBreakMultiplier)
             {
                 if (PullCurrentDistance() > pullBreakDistance) isMaxTravel = true;
 
@@ -151,7 +152,7 @@ public class PickupObject : MonoBehaviour
                 }
             }
             // If player have moved their mouse within the break distance then cancel the break attempt
-            if (Vector2.Distance(startPosition, targetPosition) < pullBreakDistance * 0.9)
+            if (Vector2.Distance(startPosition, targetPosition) < pullBreakDistance * (pullBreakMultiplier * 0.9))
             {
                 isMaxTravel = false;
                 isTryingToBreak = false;
