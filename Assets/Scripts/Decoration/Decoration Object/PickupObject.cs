@@ -4,7 +4,6 @@
 /// 2 variants, Pickup Object low health no collision, Pickup Block Object high health collides with player
 /// Once destroyed the items the pickup object contained is added to the Inventory Controller
 
-using System;
 using UnityEngine;
 
 public class PickupObject : MonoBehaviour
@@ -27,6 +26,7 @@ public class PickupObject : MonoBehaviour
 
     private bool isBeingPulled; // Is the player currently pulling this pickup
     [SerializeField, Range(0.1f,0.3f)] private float pullBreakDistance; // Maximum distance the pickup can move before being destroyed. Actually starts breaking at 0.95 of this.
+    [SerializeField, Range(0.1f, 0.95f)] private float pullBreakMultiplier;
     private Vector2 pullDirection;
 
     [SerializeField, Range(1, 10)] private int dragMoveSpeed; // How fast the object lerps towards the target position. Use lower values for heavier objects.
@@ -34,6 +34,7 @@ public class PickupObject : MonoBehaviour
     private float pullMoveResistance; // Scales how much resistance the object is to moveing with health, higher health harder to move.
     private float pullBreakTime; // How long the object must be at breaking distance before taking damage, scales with pull break time multiplier
     [SerializeField, Range(0, 0.5f)] private float pullBreakTimeMultiplier; // How long it takes to break multiplied by health
+    [SerializeField, Range(0, 6)] private int forceHealthScaling;
     private bool isTryingToBreak; // If the object is currently trying to break. Waits to achive pullBreakTime before breaking.
     private bool isMaxTravel; // If the object has reached maxium movement. Prevents funky movement past boundries.
 
@@ -57,6 +58,10 @@ public class PickupObject : MonoBehaviour
     // Item name - Item to be dropped upon destroying the pickup
     // Vector2 - Min,Max. The minimum and maximum amount that can be dropped of the item. Leaving the max as 0 will make the min number the only outcome.
     [SerializeField] private SerializableDictionary<InventoryController.ItemNames, Vector2Int>[] pickupBreakItems;
+
+    private bool isFirstBreak = true;
+    [SerializeField, Range(0,20)] private int treeExp;
+
     #endregion
 
 
@@ -124,7 +129,7 @@ public class PickupObject : MonoBehaviour
             spriteRef.transform.localRotation = Quaternion.Lerp(spriteRef.transform.localRotation, _rotateVibration, vibrationSpeed * Time.deltaTime);
 
             // If sprite arm is past break distance then start trying to break the pickup
-            if (PullCurrentDistance() > pullBreakDistance * 0.95)
+            if (PullCurrentDistance() > pullBreakDistance * pullBreakMultiplier)
             {
                 if (PullCurrentDistance() > pullBreakDistance) isMaxTravel = true;
 
@@ -132,24 +137,28 @@ public class PickupObject : MonoBehaviour
                 if (pullBreakTime < Time.time && !isTryingToBreak)
                 {
                     // Times how long until the object breaks, time until break scales with health remaining
-                    pullBreakTime = Time.time + (pullBreakTimeMultiplier * health);
+                    if (forceHealthScaling == 0) pullBreakTime = Time.time + (pullBreakTimeMultiplier * health);
+                    else pullBreakTime = Time.time + (pullBreakTimeMultiplier * forceHealthScaling);
+                    
                     isTryingToBreak = true;
                 }
                 // A successful break attempt
                 else if (pullBreakTime < Time.time && isTryingToBreak)
                 {
-                    health--;
+                    Mathf.Clamp(health--, 0, 6);
                     // If on 0 health destroys the pickup object, adds resources to inventory, and gives direction for the particle system
                     if (health == 0) EndPull(); 
                     else DamagePull();
                 }
             }
             // If player have moved their mouse within the break distance then cancel the break attempt
-            if (Vector2.Distance(startPosition, targetPosition) < pullBreakDistance * 0.9)
+            if (Vector2.Distance(startPosition, targetPosition) < pullBreakDistance * (pullBreakMultiplier * 0.9))
             {
                 isMaxTravel = false;
                 isTryingToBreak = false;
             }
+
+            DecorationController.Instance.DecorationSelector.GetComponent<DecorationSelector>().PickupPullingSelectorOffset(mouseStartPosition, PullCurrentDistance(), isTryingToBreak);
         }
         else if (!isBeingPulled && isActive) spriteArmRef.transform.position = Vector2.Lerp(spriteArmRef.transform.position, targetPosition, dragMoveSpeed * Time.deltaTime);
         // If the is able to respawn then wait until the correct time then respawn
@@ -163,7 +172,10 @@ public class PickupObject : MonoBehaviour
     {
         mouseStartPosition = CameraController.Instance.MouseWorldPosition;
         ResetSpriteVibration();
-        pullMoveResistance = Mathf.Clamp(health, 1, 3) * 10; // As the player breaks the object it gets easier to damage
+        if (forceHealthScaling == 0)
+            pullMoveResistance =
+                Mathf.Clamp(health, 1, 3) * 10; // As the player breaks the object it gets easier to damage
+        else pullMoveResistance = forceHealthScaling * 10;
         SetPullBreakState(true, false);
     }
 
@@ -173,6 +185,7 @@ public class PickupObject : MonoBehaviour
         isBeingPulled = false;
         ResetSpriteVibration();
         isTryingToBreak = false;
+        DecorationController.Instance.PickupCancel();
     }
 
     public void DamagePull()
@@ -199,6 +212,12 @@ public class PickupObject : MonoBehaviour
         SetPullBreakState(false, false);
         targetPosition = startPosition;
         DamageSetSprites();
+        if (isFirstBreak && treeExp > 0)
+        {
+            TreeLevelController.Instance.AddCleanExp(treeExp);
+            isFirstBreak = false;
+        }
+        
     }
     #endregion
 
@@ -267,8 +286,8 @@ public class PickupObject : MonoBehaviour
     // Tells the inventory contoller what items were dropped by the pickup. Informs the controller if the pickup was damaged or broken.
     private void DamageAddItems(bool _broken) 
     { 
-        if (_broken) DecorationController.Instance.PickupBroken(pickupBreakItems[healthMax - (health + 1)]);
-        else DecorationController.Instance.PickupDamaged(pickupBreakItems[healthMax - (health + 1)]);
+        if (_broken) DecorationController.Instance.PickupBroken(pickupBreakItems[healthMax - 1], spriteArmRef.transform.position);
+        else DecorationController.Instance.PickupDamaged(pickupBreakItems[healthMax - (health + 1)], spriteArmRef.transform.position);
     }
 
     private void DamageSetSprites()

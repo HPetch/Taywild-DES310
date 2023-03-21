@@ -101,9 +101,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 29b1df28ec363fc498d119276e92fc2b, type: 3}
     - target: {fileID: 4288957265429294973, guid: 156c009500725a64483aa777e59eeba1, type: 3}
+      propertyPath: treeExp
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4288957265429294973, guid: 156c009500725a64483aa777e59eeba1, type: 3}
       propertyPath: spriteBase
       value: 
       objectReference: {fileID: 21300000, guid: eacf180927f10cf4d8e659219c6d006e, type: 3}
+    - target: {fileID: 4288957265429294973, guid: 156c009500725a64483aa777e59eeba1, type: 3}
+      propertyPath: firstTimeBreakTreeExp
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 4288957265429294973, guid: 156c009500725a64483aa777e59eeba1, type: 3}
       propertyPath: pickupBreakItems.Array.size
       value: 3
@@ -158,35 +166,35 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4288957265429294973, guid: 156c009500725a64483aa777e59eeba1, type: 3}
       propertyPath: pickupBreakItems.Array.data[0].list.Array.data[0].Value.x
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4288957265429294973, guid: 156c009500725a64483aa777e59eeba1, type: 3}
       propertyPath: pickupBreakItems.Array.data[0].list.Array.data[0].Value.y
-      value: 4
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4288957265429294973, guid: 156c009500725a64483aa777e59eeba1, type: 3}
       propertyPath: pickupBreakItems.Array.data[0].list.Array.data[1].Value.x
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4288957265429294973, guid: 156c009500725a64483aa777e59eeba1, type: 3}
       propertyPath: pickupBreakItems.Array.data[0].list.Array.data[1].Value.y
-      value: 4
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4288957265429294973, guid: 156c009500725a64483aa777e59eeba1, type: 3}
       propertyPath: pickupBreakItems.Array.data[1].list.Array.data[0].Value.x
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4288957265429294973, guid: 156c009500725a64483aa777e59eeba1, type: 3}
       propertyPath: pickupBreakItems.Array.data[1].list.Array.data[0].Value.y
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 4288957265429294973, guid: 156c009500725a64483aa777e59eeba1, type: 3}
-      propertyPath: pickupBreakItems.Array.data[1].list.Array.data[1].Value.x
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4288957265429294973, guid: 156c009500725a64483aa777e59eeba1, type: 3}
+      propertyPath: pickupBreakItems.Array.data[1].list.Array.data[1].Value.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4288957265429294973, guid: 156c009500725a64483aa777e59eeba1, type: 3}
       propertyPath: pickupBreakItems.Array.data[1].list.Array.data[1].Value.y
-      value: 4
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4288957265429294973, guid: 156c009500725a64483aa777e59eeba1, type: 3}
       propertyPath: pickupBreakItems.Array.data[2].list.Array.data[0].Value.x

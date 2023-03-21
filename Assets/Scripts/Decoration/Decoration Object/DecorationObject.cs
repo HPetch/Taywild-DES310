@@ -1,7 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.ComponentModel;
 using UnityEngine;
 
 public class DecorationObject : MonoBehaviour
@@ -9,11 +5,8 @@ public class DecorationObject : MonoBehaviour
 
     // SHOULD CHANGE TO INHERITANCE. Environment object should be base. Decoration object
 
-    [SerializeField] protected GameObject pickupButtonPrefab;
-    [SerializeField] protected GameObject editButtonHolderPrefab;
-
-    public GameObject RemoveButton { get; protected set; }
-    public GameObject EditButtonHolder { get; protected set; }
+    [field: SerializeField] public GameObject RemoveButton { get; protected set; }
+    [field: SerializeField] public GameObject EditButtonHolder { get; protected set; }
     public GameObject EditButtonLeft { get; protected set; }
     public GameObject EditButtonRight { get; protected set; }
 
@@ -32,7 +25,8 @@ public class DecorationObject : MonoBehaviour
 
     private void Update()
     {
-        if ( Time.time - timeOfLastHover > 1f || isMoving) EndHover();
+        print(Time.time - timeOfLastHover);
+        if ( isHovered && Time.time - timeOfLastHover > 1f || isMoving) EndHover();
     }
 
     public void StartHover()

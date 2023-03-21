@@ -40,13 +40,16 @@ public class TEMP_ObjectiveController : MonoBehaviour
         if (!hasTalkedToRecluse)
         {
             hasTalkedToRecluse = true;
-            interactableCharacter.StartingNode = InventoryController.Instance.ItemQuantity(InventoryController.ItemNames.FLOWER) > 0 ? recluseQuestCompleteStartingNode : recluseQuestIncompleteStartingNode;
+            interactableCharacter.StartingNode = InventoryController.Instance.ItemQuantity(InventoryController.ItemNames.QUEST_BLUEFLOWER) > 0 ? recluseQuestCompleteStartingNode : recluseQuestIncompleteStartingNode;
         }
     }
 
-    private void OnInventoryItemAdded(InventoryController.ItemNames _item, int _quantity)
+    private void OnInventoryItemAdded(InventoryController.ItemNames _item, int _quantity, Vector2 _position)
     {
-        interactableCharacter.StartingNode = InventoryController.Instance.ItemQuantity(InventoryController.ItemNames.FLOWER) > 0 ? recluseQuestCompleteStartingNode : recluseQuestIncompleteStartingNode;
+        if (hasTalkedToRecluse) 
+        {
+            interactableCharacter.StartingNode = InventoryController.Instance.ItemQuantity(InventoryController.ItemNames.QUEST_BLUEFLOWER) > 0 ? recluseQuestCompleteStartingNode : recluseQuestIncompleteStartingNode;
+        }
     }
     #endregion
 }
