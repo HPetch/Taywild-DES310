@@ -1205,14 +1205,14 @@ MonoBehaviour:
   wallLayerMask:
     serializedVersion: 2
     m_Bits: 128
-  wallSlideSpeed: 0
+  wallSlideSpeed: 0.15
   wallCheckDistance: 0.55
   wallHopForce: 7
   wallHopDirection: {x: 1, y: 0.5}
   wallHopInputQueueTime: 0.15
   wallJumpForce: 32
   wallJumpDirection: {x: 1, y: 1.5}
-  wallStickTime: 4
+  wallStickTime: 2.5
   airMovementDisabledDelayAfterWallJump: 0.5
   dashSpeed: 21
   dashDuration: 0.25
@@ -1252,7 +1252,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 5
+  m_GravityScale: 5.5
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
