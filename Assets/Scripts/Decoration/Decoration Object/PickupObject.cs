@@ -26,7 +26,7 @@ public class PickupObject : MonoBehaviour
 
     private bool isBeingPulled; // Is the player currently pulling this pickup
     [SerializeField, Range(0.1f,0.3f)] private float pullBreakDistance; // Maximum distance the pickup can move before being destroyed. Actually starts breaking at 0.95 of this.
-    [SerializeField, Range(0.1f, 0.95f)] private float pullBreakMultiplier;
+    [SerializeField, Range(0.1f, 0.8f)] private float pullBreakMultiplier;
     private Vector2 pullDirection;
 
     [SerializeField, Range(1, 10)] private int dragMoveSpeed; // How fast the object lerps towards the target position. Use lower values for heavier objects.
