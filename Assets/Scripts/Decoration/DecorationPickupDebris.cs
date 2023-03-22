@@ -11,6 +11,7 @@ public class DecorationPickupDebris : MonoBehaviour
     private Vector2 finalTargetLocation;
     private bool isHang = true;
     [SerializeField] private SerializableDictionary<InventoryController.ItemNames, Sprite> spriteDict;
+    private InventoryController.ItemNames itemType;
 
 
     // Start is called before the first frame update
@@ -19,6 +20,7 @@ public class DecorationPickupDebris : MonoBehaviour
         if (spriteDict.ContainsKey(_item))
         {
             GetComponent<SpriteRenderer>().sprite = spriteDict[_item];
+            itemType = _item;
         }
 
         transform.position = _startLocation;
@@ -46,10 +48,43 @@ public class DecorationPickupDebris : MonoBehaviour
         else if (hangTime < Time.time)
         {
             //// WILL BE REPLACED ONCE CORNER RESOURCE UI IS IN
-            finalTargetLocation = PlayerController.Instance.transform.position;
+            
+            switch (itemType)
+            {
+                case InventoryController.ItemNames.LEAF:
+                    finalTargetLocation = CameraController.Instance.GetComponent<Camera>().ScreenToWorldPoint(TreeLevelController.Instance.UIref.LeafSprite.position);
+                    break;
+                case InventoryController.ItemNames.WOOD:
+                    finalTargetLocation = CameraController.Instance.GetComponent<Camera>().ScreenToWorldPoint(TreeLevelController.Instance.UIref.WoodSprite.position);
+                    break;
+                case InventoryController.ItemNames.SAP:
+                    finalTargetLocation = CameraController.Instance.GetComponent<Camera>().ScreenToWorldPoint(TreeLevelController.Instance.UIref.SapSprite.position);
+                    break;
+                default:
+                    finalTargetLocation = PlayerController.Instance.transform.position;
+                    break;
+            }
+            
             
             transform.position = Vector2.MoveTowards(transform.position, finalTargetLocation, movementSpeed * Time.deltaTime);
-            if (Vector2.Distance(transform.position, finalTargetLocation) < 1f) /* Add numbers to corner */ Destroy(gameObject);
+            if (Vector2.Distance(transform.position, finalTargetLocation) < 1f)
+            {
+                switch (itemType)
+                {
+                    case InventoryController.ItemNames.LEAF:
+                        TreeLevelController.Instance.UIref.UpdateMaterialText(itemType, 1);
+                        break;
+                    case InventoryController.ItemNames.WOOD:
+                        TreeLevelController.Instance.UIref.UpdateMaterialText(itemType, 1);
+                        break;
+                    case InventoryController.ItemNames.SAP:
+                        TreeLevelController.Instance.UIref.UpdateMaterialText(itemType, 1);
+                        break;
+                    default:
+                        break;
+                }
+                Destroy(gameObject);
+            }
         }
     }
 }

@@ -70,6 +70,7 @@ public class DecorationController : MonoBehaviour
                     CurrentMoveFake.GetComponent<DecorationMovingFake>().scrollRotate(Input.GetAxis("Mouse ScrollWheel") > 0f);
                 }
             }
+            
         }
 
         if (Input.GetKeyDown(KeyCode.Tab))
@@ -101,6 +102,7 @@ public class DecorationController : MonoBehaviour
             foreach (KeyValuePair<InventoryController.ItemNames, int> _item in _furniturePrefab.GetComponent<FurnitureObject>().CraftingRequirements)
             {
                 InventoryController.Instance.RemoveItem(_item.Key, _item.Value, Vector2.zero);
+                TreeLevelController.Instance.UIref.UpdateMaterialText(_item.Key, -_item.Value);
             }
             GameObject _newFurniture = Instantiate(_furniturePrefab);
             DecorationController.Instance.SelectorDecorationObjectInteract(_newFurniture, true);
@@ -162,11 +164,20 @@ public class DecorationController : MonoBehaviour
     {
         if (CurrentMoveFake)
         {
-            Destroy(CurrentMoveFake);
-            CurrentMoveFake = null;
-            CurrentMoveTarget.GetComponent<FurnitureObject>().EndPickup();
-            CurrentMoveTarget = null;
-            OnPlaceCancelDecoration?.Invoke();
+            if (!CurrentMoveTarget.GetComponent<FurnitureObject>().isFirstTimePlace)
+            {
+                Destroy(CurrentMoveFake);
+                CurrentMoveFake = null;
+                CurrentMoveTarget.GetComponent<FurnitureObject>().EndPickup();
+                CurrentMoveTarget = null;
+                OnPlaceCancelDecoration?.Invoke();
+            }
+            else
+            {
+                Destroy(CurrentMoveFake);
+                DestroyFurniture(CurrentMoveTarget);
+            }
+            
         }
         
     }

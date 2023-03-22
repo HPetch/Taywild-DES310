@@ -20,6 +20,8 @@ public class TreeLevelController : MonoBehaviour
     public int CurrentTreeLevel { get; private set; }
 
     [SerializeField] private int[] treeLevelExpRequirements;
+
+    public TreeLevelInterface UIref { get; private set; }
     #endregion
 
     #region Functions
@@ -27,6 +29,7 @@ public class TreeLevelController : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+        UIref = GetComponent<TreeLevelInterface>();
     }
 
     public void AddQuestExp(int _Exp)

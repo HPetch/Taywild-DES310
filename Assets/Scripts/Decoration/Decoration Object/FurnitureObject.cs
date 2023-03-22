@@ -12,7 +12,7 @@ public class FurnitureObject : DecorationObject
     public float AttachmentPointRadius { get; private set; }
     [field: SerializeField] public int scrollRotateIndexHolder { get; private set; }
 
-    bool isFirstTimePlace = true;
+    public bool isFirstTimePlace { get; private set; } = true;
     [field: SerializeField] public int treeExp { get; private set; }
 
     [field: SerializeField] public string UiName { get; private set; }
@@ -27,7 +27,7 @@ public class FurnitureObject : DecorationObject
 
 
 // Start is called before the first frame update
-void Start()
+    void Start()
     {
         AttachmentPointRadius = GetComponentInChildren<CircleCollider2D>().radius;
         if (EditButtonHolder)
@@ -38,8 +38,14 @@ void Start()
         InitializeAttachmentPoints();
     }
     // Update is called once per frame
-    
 
+    private void FixedUpdate()
+    {
+        if (isFirstTimePlace)
+        {
+            transform.position = DecorationController.Instance.CurrentMoveFake.transform.position;
+        }
+    }
 
 
 
