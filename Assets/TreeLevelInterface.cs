@@ -10,6 +10,7 @@ public class TreeLevelInterface : MonoBehaviour
     [SerializeField] private TMP_Text[] MaterialTexts; //Text components that update
 
     [Header("Open/close animation")]
+    private bool isOpen = false;
     [SerializeField] private RectTransform interfaceParent; //What element needs moving
     [SerializeField] private float positionOpened = 16f; //X axis in Rect Transform to go to when opening.
     private float positionClosed; //X axis position to go to when closing
@@ -40,19 +41,26 @@ public class TreeLevelInterface : MonoBehaviour
     }
     
     //Slide the interface onto the screen
-    //LTRDescr returns a leantween reference, just in case it is needed
     private void Open()
     {
-        LeanTween.cancel(interfaceParent); //Cancel anything that may be happening
-        LeanTween.moveX(interfaceParent, positionOpened, animationDuration).setEase(OpenAnimation);
-
+        if (!isOpen)
+        {
+            LeanTween.cancel(interfaceParent); //Cancel anything that may be happening
+            LeanTween.moveX(interfaceParent, positionOpened, animationDuration).setEase(OpenAnimation);
+            isOpen = true;
+        }
     }
 
     //Slide the interface off of the screen
     private void Close()
     {
-        LeanTween.cancel(interfaceParent); //Cancel anything that may be happening
-        LeanTween.moveX(interfaceParent, positionClosed, animationDuration).setEase(CloseAnimation);
+        if (isOpen)
+        {
+            LeanTween.cancel(interfaceParent); //Cancel anything that may be happening
+            LeanTween.moveX(interfaceParent, positionClosed, animationDuration).setEase(CloseAnimation);
+            isOpen = false;
+            
+        }
     }
 
     #endregion
