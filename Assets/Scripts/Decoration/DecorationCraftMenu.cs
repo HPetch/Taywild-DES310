@@ -75,15 +75,30 @@ public class DecorationCraftMenu : MonoBehaviour
         pullTab.onClick.AddListener(ToggleInventory);
     }
 
+    private void Update()
+    {
+        if (selectedButton)
+        {
+            if (DecorationController.Instance.CanCraftFurniture(selectedButton.AssignedFurniture)) placeButton.GetComponent<Image>().color = Color.white;
+            else placeButton.GetComponent<Image>().color = Color.black;
+        }
+        else placeButton.GetComponent<Image>().color = Color.black;
+
+    }
+
     //Check current state and either open or close the inventory UI
     private void ToggleInventory()
     {
         //Either open or close the inventory panel
-        if (!inventoryIsOpen) OpenInventory(); else CloseInventory();
+        
+         if (!inventoryIsOpen) OpenInventory(); else CloseInventory();
+        
+        
     }
 
     private LTDescr OpenInventory()
     {
+        
         LeanTween.cancel(gameObject); //Stop current tweens
         LeanTween.cancel(pullTabArrow); //Stop arrow if it is mid-tween
 
@@ -161,7 +176,7 @@ public class DecorationCraftMenu : MonoBehaviour
 
     private void PlaceFurniture()
     {
-        if (selectedButton && selectedButton != null)
+        if (selectedButton && selectedButton != null && (!DecorationController.Instance.CurrentMoveFake || DecorationController.Instance.CurrentMoveFake == null))
         {
             if (selectedButton.AssignedFurniture.GetComponent<FurnitureObject>())
             {

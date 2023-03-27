@@ -17,7 +17,6 @@ public class DecorationObject : MonoBehaviour
 
     private void Start()
     {
-        
         EndHover();
         
         if(EditButtonHolder) EditButtonHolder.transform.position = new Vector2(transform.position.x, GetComponent<BoxCollider2D>().bounds.min.y);
@@ -25,7 +24,6 @@ public class DecorationObject : MonoBehaviour
 
     private void Update()
     {
-        print(Time.time - timeOfLastHover);
         if ( isHovered && Time.time - timeOfLastHover > 1f || isMoving) EndHover();
     }
 
