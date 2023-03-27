@@ -2169,6 +2169,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 993c6c3e01f0a274ea97bab10668891f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemDebrisPrefab: {fileID: 0}
 --- !u!1 &433223071
 GameObject:
   m_ObjectHideFlags: 0
@@ -2303,6 +2304,7 @@ GameObject:
   - component: {fileID: 438263709}
   - component: {fileID: 438263710}
   - component: {fileID: 438263711}
+  - component: {fileID: 438263712}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: Untagged
@@ -2357,8 +2359,21 @@ MonoBehaviour:
   decorationSelectorPrefab: {fileID: 0}
   decorationMovingFakePrefab: {fileID: 0}
   <DecorationSelector>k__BackingField: {fileID: 0}
-  <PlaceableDecorationObjectPrefabs>k__BackingField: []
+  <FurnitureObjectPrefabs>k__BackingField:
+    list: []
   PP: {fileID: 0}
+--- !u!114 &438263712
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 438263708}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47dc1cfbe5284d84e88a6dd79460b195, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &449334037
 GameObject:
   m_ObjectHideFlags: 0
