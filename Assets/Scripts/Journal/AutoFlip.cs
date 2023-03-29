@@ -1,125 +1,88 @@
 ﻿using UnityEngine;
 using System.Collections;
-[RequireComponent(typeof(Book))]
-public class AutoFlip : MonoBehaviour {
-    public FlipMode Mode;
-    public float PageFlipTime = 1;
-    public float TimeBetweenPages = 1;
-    public float DelayBeforeStarting = 0;
-    public bool AutoStartFlip=true;
-    public Book ControledBook;
-    public int AnimationFramesCount = 40;
-    bool isFlipping = false;
-    // Use this for initialization
-    void Start () {
-        if (!ControledBook)
-            ControledBook = GetComponent<Book>();
-        if (AutoStartFlip)
-            StartFlipping();
-        ControledBook.OnFlip.AddListener(new UnityEngine.Events.UnityAction(PageFlipped));
-	}
-    void PageFlipped()
-    {
-        isFlipping = false;
-    }
-	public void StartFlipping()
-    {
-        StartCoroutine(FlipToEnd());
-    }
-    public void FlipRightPage()
-    {
-        if (isFlipping) return;
-        if (ControledBook.currentPage >= ControledBook.TotalPageCount) return;
-        isFlipping = true;
-        float frameTime = PageFlipTime / AnimationFramesCount;
-        float xc = (ControledBook.EndBottomRight.x + ControledBook.EndBottomLeft.x) / 2;
-        float xl = ((ControledBook.EndBottomRight.x - ControledBook.EndBottomLeft.x) / 2) * 0.9f;
-        //float h =  ControledBook.Height * 0.5f;
-        float h = Mathf.Abs(ControledBook.EndBottomRight.y) * 0.9f;
-        float dx = (xl)*2 / AnimationFramesCount;
-        StartCoroutine(FlipRTL(xc, xl, h, frameTime, dx));
-    }
-    public void FlipLeftPage()
-    {
-        if (isFlipping) return;
-        if (ControledBook.currentPage <= 0) return;
-        isFlipping = true;
-        float frameTime = PageFlipTime / AnimationFramesCount;
-        float xc = (ControledBook.EndBottomRight.x + ControledBook.EndBottomLeft.x) / 2;
-        float xl = ((ControledBook.EndBottomRight.x - ControledBook.EndBottomLeft.x) / 2) * 0.9f;
-        //float h =  ControledBook.Height * 0.5f;
-        float h = Mathf.Abs(ControledBook.EndBottomRight.y) * 0.9f;
-        float dx = (xl) * 2 / AnimationFramesCount;
-        StartCoroutine(FlipLTR(xc, xl, h, frameTime, dx));
-    }
-    IEnumerator FlipToEnd()
-    {
-        yield return new WaitForSeconds(DelayBeforeStarting);
-        float frameTime = PageFlipTime / AnimationFramesCount;
-        float xc = (ControledBook.EndBottomRight.x + ControledBook.EndBottomLeft.x) / 2;
-        float xl = ((ControledBook.EndBottomRight.x - ControledBook.EndBottomLeft.x) / 2)*0.9f;
-        //float h =  ControledBook.Height * 0.5f;
-        float h = Mathf.Abs(ControledBook.EndBottomRight.y)*0.9f;
-        //y=-(h/(xl)^2)*(x-xc)^2          
-        //               y         
-        //               |          
-        //               |          
-        //               |          
-        //_______________|_________________x         
-        //              o|o             |
-        //           o   |   o          |
-        //         o     |     o        | h
-        //        o      |      o       |
-        //       o------xc-------o      -
-        //               |<--xl-->
-        //               |
-        //               |
-        float dx = (xl)*2 / AnimationFramesCount;
-        switch (Mode)
-        {
-            case FlipMode.RightToLeft:
-                while (ControledBook.currentPage < ControledBook.TotalPageCount)
-                {
-                    StartCoroutine(FlipRTL(xc, xl, h, frameTime, dx));
-                    yield return new WaitForSeconds(TimeBetweenPages);
-                }
-                break;
-            case FlipMode.LeftToRight:
-                while (ControledBook.currentPage > 0)
-                {
-                    StartCoroutine(FlipLTR(xc, xl, h, frameTime, dx));
-                    yield return new WaitForSeconds(TimeBetweenPages);
-                }
-                break;
-        }
-    }
-    IEnumerator FlipRTL(float xc, float xl, float h, float frameTime, float dx)
-    {
-        float x = xc + xl;
-        float y = (-h / (xl * xl)) * (x - xc) * (x - xc);
+using System;
 
-        ControledBook.DragRightPageToPoint(new Vector3(x, y, 0));
-        for (int i = 0; i < AnimationFramesCount; i++)
-        {
-            y = (-h / (xl * xl)) * (x - xc) * (x - xc);
-            ControledBook.UpdateBookRTLToPoint(new Vector3(x, y, 0));
-            yield return new WaitForSeconds(frameTime);
-            x -= dx;
-        }
-        ControledBook.ReleasePage();
-    }
-    IEnumerator FlipLTR(float xc, float xl, float h, float frameTime, float dx)
+namespace BookCurl
+{
+    [RequireComponent(typeof(BookController))]
+    public class AutoFlip : MonoBehaviour
     {
-        float x = xc - xl;
-        float y = (-h / (xl * xl)) * (x - xc) * (x - xc);
-        ControledBook.DragLeftPageToPoint(new Vector3(x, y, 0));
-        for (int i = 0; i < AnimationFramesCount; i++)
+        public BookController ControledBook;
+        public FlipMode Mode;
+        public float PageFlipTime = 1;
+        public float DelayBeforeStart;
+        public float TimeBetweenPages = 5;
+        public bool AutoStartFlip = true;
+        bool flippingStarted = false;
+        bool isPageFlipping = false;
+        float elapsedTime = 0;
+        float nextPageCountDown = 0;
+        bool isBookInteractable;
+        // Use this for initialization
+        void Start()
         {
-            y = (-h / (xl * xl)) * (x - xc) * (x - xc);
-            ControledBook.UpdateBookLTRToPoint(new Vector3(x, y, 0));
-            yield return new WaitForSeconds(frameTime);
-            x += dx;
+            if (!ControledBook)
+                ControledBook = GetComponent<BookController>();
+
+            if (AutoStartFlip)
+                StartFlipping(ControledBook.EndFlippingPaper + 1);
         }
-        ControledBook.ReleasePage();
+        public void FlipRightPage()
+        {
+            if (isPageFlipping) return;
+            if (ControledBook.CurrentPaper >= ControledBook.papers.Length) return;
+            isPageFlipping = true;
+            PageFlipper.FlipPage(ControledBook, PageFlipTime, FlipMode.RightToLeft, () => { isPageFlipping = false; });
+        }
+        public void FlipLeftPage()
+        {
+            if (isPageFlipping) return;
+            if (ControledBook.CurrentPaper <= 0) return;
+            isPageFlipping = true;
+            PageFlipper.FlipPage(ControledBook, PageFlipTime, FlipMode.LeftToRight, () => { isPageFlipping = false; });
+        }
+        int targetPaper;
+        public void StartFlipping(int target)
+        {
+            isBookInteractable = ControledBook.interactable;
+            ControledBook.interactable = false;
+            flippingStarted = true;
+            elapsedTime = 0;
+            nextPageCountDown = 0;
+            targetPaper = target;
+            if (target > ControledBook.CurrentPaper) Mode = FlipMode.RightToLeft;
+            else if (target < ControledBook.currentPaper) Mode = FlipMode.LeftToRight;
+        }
+        void Update()
+        {
+            if (flippingStarted)
+            {
+                elapsedTime += Time.deltaTime;
+                if (elapsedTime > DelayBeforeStart)
+                {
+                    if (nextPageCountDown < 0)
+                    {
+                        if ((ControledBook.CurrentPaper < targetPaper &&
+                            Mode == FlipMode.RightToLeft) ||
+                            (ControledBook.CurrentPaper > targetPaper &&
+                            Mode == FlipMode.LeftToRight))
+                        {
+                            isPageFlipping = true;
+                            PageFlipper.FlipPage(ControledBook, PageFlipTime, Mode, () => { isPageFlipping = false; });
+                        }
+                        else
+                        {
+                            flippingStarted = false;
+                            ControledBook.interactable = isBookInteractable;
+                            this.enabled = false;
+
+                        }
+
+                        nextPageCountDown = PageFlipTime + TimeBetweenPages + Time.deltaTime;
+                    }
+                    nextPageCountDown -= Time.deltaTime;
+                }
+            }
+        }
     }
 }
