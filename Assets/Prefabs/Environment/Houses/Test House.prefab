@@ -1469,7 +1469,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5820280335498856223}
   - component: {fileID: 3093738983799745121}
-  - component: {fileID: 2081344935170768687}
   - component: {fileID: 7905871664494512135}
   - component: {fileID: 4947053688628705219}
   m_Layer: 0
@@ -1524,26 +1523,7 @@ MonoBehaviour:
   characterNameText: {fileID: 7805324855422119378}
   characterNameTransitionTime: 0.2
   interactCanvasGroup: {fileID: 1305924781922502920}
-  StartingNode: {fileID: 0}
---- !u!114 &2081344935170768687
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5820280335498856220}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3f0d96f76b4701f4b860928ef2445e93, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dialogueContainer: {fileID: 11400000, guid: 7fae7fc735bd6974caf64bf4c49e7a9d, type: 2}
-  dialogueGroup: {fileID: 0}
-  dialogue: {fileID: 11400000, guid: b722575744a33d0428a21d7935341244, type: 2}
-  groupedDialogues: 0
-  startingDialoguesOnly: 1
-  selectedDialogueGroupIndex: 0
-  selectedDialogueIndex: 0
+  dialogueGraph: {fileID: 11400000, guid: 7fae7fc735bd6974caf64bf4c49e7a9d, type: 2}
 --- !u!114 &7905871664494512135
 MonoBehaviour:
   m_ObjectHideFlags: 0

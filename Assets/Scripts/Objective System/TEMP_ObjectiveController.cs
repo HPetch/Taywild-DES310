@@ -40,7 +40,7 @@ public class TEMP_ObjectiveController : MonoBehaviour
         if (!hasTalkedToRecluse)
         {
             hasTalkedToRecluse = true;
-            interactableCharacter.StartingNode = InventoryController.Instance.ItemQuantity(InventoryController.ItemNames.QUEST_BLUEFLOWER) > 0 ? recluseQuestCompleteStartingNode : recluseQuestIncompleteStartingNode;
+            //interactableCharacter.StartingNode = InventoryController.Instance.ItemQuantity(InventoryController.ItemNames.QUEST_BLUEFLOWER) > 0 ? recluseQuestCompleteStartingNode : recluseQuestIncompleteStartingNode;
         }
     }
 
@@ -48,7 +48,7 @@ public class TEMP_ObjectiveController : MonoBehaviour
     {
         if (hasTalkedToRecluse) 
         {
-            interactableCharacter.StartingNode = InventoryController.Instance.ItemQuantity(InventoryController.ItemNames.QUEST_BLUEFLOWER) > 0 ? recluseQuestCompleteStartingNode : recluseQuestIncompleteStartingNode;
+            //interactableCharacter.StartingNode = InventoryController.Instance.ItemQuantity(InventoryController.ItemNames.QUEST_BLUEFLOWER) > 0 ? recluseQuestCompleteStartingNode : recluseQuestIncompleteStartingNode;
         }
     }
     #endregion
