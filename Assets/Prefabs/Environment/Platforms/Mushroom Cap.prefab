@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 2362404074480899592}
   - component: {fileID: 60702050243363674}
   - component: {fileID: 2578423513495669269}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: BouncePad
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -131,7 +131,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2cdef80d005e164da7d5588565d54f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bounceFactor: 30
+  inactiveBounceFactor: 20
+  activeBounceFactor: 20
 --- !u!1971053207 &2362404074480899592
 SpriteShapeRenderer:
   m_ObjectHideFlags: 0

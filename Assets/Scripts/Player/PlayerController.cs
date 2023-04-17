@@ -190,6 +190,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float glideAirDragMultiplier = 0.95f;
 
     private List<AirCurrent> airCurrents = new List<AirCurrent>();
+    private float timeOfLastBouncePad = 0.0f;
     #endregion
 
     #region Utility
@@ -337,8 +338,8 @@ public class PlayerController : MonoBehaviour
             }
         }
         // If no Movement Input
-        else
-        {
+        else if (TimeSinceLastBouncePad > 0.5f)
+        {            
             // Slow the player down by the air drag
             _velocity.x *= glideAirDragMultiplier;
         }
@@ -691,6 +692,12 @@ public class PlayerController : MonoBehaviour
         rb.constraints = RigidbodyConstraints2D.FreezeRotation;
     }
 
+    public void MushroomBounce() 
+    { 
+        timeOfLastBouncePad = Time.time;
+        ResetActions();
+    }
+
     /// <summary>
     /// Returns true if the Player is able to Move, Such as if the play is not sliding or dashing.
     /// </summary>
@@ -718,6 +725,7 @@ public class PlayerController : MonoBehaviour
     private float TimeSinceLastWallHit { get { return Time.time - timeOfLastWallHit; } }
     private float TimeSinceLastWallJump { get { return Time.time - timeOfLastWallJump; } }
     private float TimeSinceWallHopInput { get { return Time.time - timeOfWallHopInput; } }
+    private float TimeSinceLastBouncePad { get { return Time.time - timeOfLastBouncePad; } }
 
     private bool IsPlayerMoveingIntoWall { get { return IsTouchingWall && (IsFacingRight && movementInput.x > 0) || (!IsFacingRight && movementInput.x < 0); } }
     private bool IsPlayerMoveingAwayFromWall { get { return IsTouchingWall && (IsFacingRight && movementInput.x < 0) || (!IsFacingRight && movementInput.x > 0); } }
