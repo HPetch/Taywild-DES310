@@ -3,8 +3,9 @@ using UnityEngine;
 
 namespace DialogueSystem.Types
 {
-    public enum NodeTypes { Dialogue, Edge, Delay, Audio }
+    public enum NodeTypes { Dialogue, Edge, Delay, Audio, Quest, Graph }
     public enum DialogueTypes { SingleChoice, MultipleChoice }
+    public enum Quests { WarsanQuest1, WarsanQuest2, LucanQuest1 }
 }
 
 namespace DialogueSystem.Data

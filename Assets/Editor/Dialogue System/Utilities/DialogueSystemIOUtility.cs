@@ -166,7 +166,7 @@ namespace DialogueSystem.Utilities
                 dialogueContainer.UngroupedDialogues.Add(dialogue);
             }
 
-            dialogue.Initialise(node.NodeName, node.NodeType, ConvertNodeChoicesToDialogueChoices(node.Choices), node.Character, node.DialogueType, node.DialogueText, node.IsStartingNode(), node.SoundEffect, node.Delay);
+            dialogue.Initialise(node.NodeName, node.NodeType, ConvertNodeChoicesToDialogueChoices(node.Choices), node.Character, node.DialogueType, node.DialogueText, node.IsStartingNode(), node.SoundEffect, node.Delay, node.Graph, node.Quest);
 
             createdDialogues.Add(node.ID, dialogue);
             SaveAsset(dialogue);
@@ -297,6 +297,8 @@ namespace DialogueSystem.Utilities
 
                 node.SoundEffect = nodeData.SoundEffect;
                 node.Delay = nodeData.Delay;
+                node.Graph = nodeData.Graph;
+                node.Quest = nodeData.Quest;
 
                 node.Draw();
 
