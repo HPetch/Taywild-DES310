@@ -4885,6 +4885,7 @@ GameObject:
   - component: {fileID: 8690282420741659933}
   - component: {fileID: 8628061786486966094}
   - component: {fileID: 8628061786486966095}
+  - component: {fileID: 122113429176044908}
   m_Layer: 6
   m_Name: Branch Platform Very Large
   m_TagString: Ground
@@ -5003,3 +5004,16 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 7.25, y: 0.5}
   m_EdgeRadius: 0
+--- !u!114 &122113429176044908
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8628061786486966093}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca770cf6b34e2c845ba3cefcb18c31a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  surfaceType: 2

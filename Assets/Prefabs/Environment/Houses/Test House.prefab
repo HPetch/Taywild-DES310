@@ -733,6 +733,7 @@ GameObject:
   - component: {fileID: 8550837289669337991}
   - component: {fileID: 6672243589271006952}
   - component: {fileID: 2450231928191229096}
+  - component: {fileID: 3626644945243304061}
   m_Layer: 6
   m_Name: Bottom Ledge
   m_TagString: Untagged
@@ -954,6 +955,19 @@ PlatformEffector2D:
   m_UseSideFriction: 0
   m_UseSideBounce: 0
   m_SideArc: 1
+--- !u!114 &3626644945243304061
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4720902282910801541}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca770cf6b34e2c845ba3cefcb18c31a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  surfaceType: 3
 --- !u!1 &4739064191287934231
 GameObject:
   m_ObjectHideFlags: 0
@@ -1831,6 +1845,7 @@ GameObject:
   - component: {fileID: 7917990337463185402}
   - component: {fileID: 4652098789215390587}
   - component: {fileID: 3015043477220070765}
+  - component: {fileID: 8964538295881303358}
   m_Layer: 6
   m_Name: Upper Ledge
   m_TagString: Untagged
@@ -2050,6 +2065,19 @@ PlatformEffector2D:
   m_UseSideFriction: 0
   m_UseSideBounce: 0
   m_SideArc: 1
+--- !u!114 &8964538295881303358
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7582251591578612999}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca770cf6b34e2c845ba3cefcb18c31a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  surfaceType: 3
 --- !u!1 &7668562583246875793
 GameObject:
   m_ObjectHideFlags: 0

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5558235421928639107}
   - component: {fileID: 1810397911411002626}
   - component: {fileID: 1810397911411002627}
+  - component: {fileID: -6272887338876758343}
   m_Layer: 6
   m_Name: Branch Platform
   m_TagString: Ground
@@ -130,6 +131,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.5, y: 0.75}
   m_EdgeRadius: 0
+--- !u!114 &-6272887338876758343
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1810397911411002625}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca770cf6b34e2c845ba3cefcb18c31a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  surfaceType: 2
 --- !u!1 &9177306150592631458
 GameObject:
   m_ObjectHideFlags: 0

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8680689469272756249}
   - component: {fileID: 2333372146711758067}
   - component: {fileID: 2333372146711758066}
+  - component: {fileID: 5819730799533987923}
   m_Layer: 6
   m_Name: Floating Platform Large
   m_TagString: Ground
@@ -130,6 +131,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 10, y: 1.5}
   m_EdgeRadius: 0
+--- !u!114 &5819730799533987923
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2333372146711758064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca770cf6b34e2c845ba3cefcb18c31a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  surfaceType: 1
 --- !u!1 &7653019152806057412
 GameObject:
   m_ObjectHideFlags: 0

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8866381538914250921}
   - component: {fileID: 8866381538914250926}
   - component: {fileID: 1522809690391125038}
+  - component: {fileID: -4881861914830316985}
   m_Layer: 6
   m_Name: Branch
   m_TagString: Ground
@@ -47,6 +48,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a8ed7b078ed0de4cadded5e2cbbdc43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isFloaitngPlatform: 0
+  bounceEffectStrength: 0.1
+  bounceEffectDuration: 1
+  shakeEffectStrength: 0.1
+  shakeEffectDuration: 0.2
 --- !u!1971053207 &8866381538914250921
 SpriteShapeRenderer:
   m_ObjectHideFlags: 0
@@ -239,3 +245,16 @@ PolygonCollider2D:
       - {x: -37.88439, y: -0.7484288}
       - {x: -40.389374, y: -0.7243563}
   m_UseDelaunayMesh: 0
+--- !u!114 &-4881861914830316985
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8866381538914250927}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca770cf6b34e2c845ba3cefcb18c31a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  surfaceType: 2
