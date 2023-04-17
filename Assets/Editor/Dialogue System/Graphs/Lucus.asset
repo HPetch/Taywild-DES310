@@ -1,0 +1,202 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 403e5cc4e9ab18442bab3ceb18f352e9, type: 3}
+  m_Name: Lucus
+  m_EditorClassIdentifier: 
+  <FileName>k__BackingField: 
+  <Groups>k__BackingField: []
+  <Nodes>k__BackingField:
+  - <ID>k__BackingField: 24c2f1fb-375e-47f5-a594-7267556f89e0
+    <Name>k__BackingField: LucusQ1FlowerIntro
+    <NodeType>k__BackingField: 5
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField: []
+    <Position>k__BackingField: {x: 650, y: 100}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 0}
+    <Text>k__BackingField: 
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+  - <ID>k__BackingField: 09686ecd-2309-4437-a497-f69202ac418d
+    <Name>k__BackingField: LucusQ1FlowerCompleteA
+    <NodeType>k__BackingField: 5
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField: []
+    <Position>k__BackingField: {x: 650, y: 400}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 0}
+    <Text>k__BackingField: 
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+  - <ID>k__BackingField: db451ea6-da77-4689-bae5-606f181ceb74
+    <Name>k__BackingField: LucusQ1FlowerIncomplete
+    <NodeType>k__BackingField: 5
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField: []
+    <Position>k__BackingField: {x: 650, y: 250}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 0}
+    <Text>k__BackingField: 
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+  - <ID>k__BackingField: 605eaca4-f0ea-4d12-ba72-a64f2d0fb38b
+    <Name>k__BackingField: LucusFlowerQ1a
+    <NodeType>k__BackingField: 4
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Not Accepted
+      <NodeID>k__BackingField: 24c2f1fb-375e-47f5-a594-7267556f89e0
+    - <Text>k__BackingField: In Progress
+      <NodeID>k__BackingField: db451ea6-da77-4689-bae5-606f181ceb74
+    - <Text>k__BackingField: Read for Hand-in
+      <NodeID>k__BackingField: 09686ecd-2309-4437-a497-f69202ac418d
+    - <Text>k__BackingField: Comlpeted
+      <NodeID>k__BackingField: b4d7f1c4-4a92-4486-b36d-9fc8b5d45de4
+    <Position>k__BackingField: {x: -25, y: 100}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 0}
+    <Text>k__BackingField: 
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+  - <ID>k__BackingField: 72a837a2-645d-48e4-9a99-df8e7aedc25a
+    <Name>k__BackingField: LucusBerriesQ2
+    <NodeType>k__BackingField: 4
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Not Accepted
+      <NodeID>k__BackingField: 2878dac1-02b7-490a-af66-936574d0a848
+    - <Text>k__BackingField: In Progress
+      <NodeID>k__BackingField: 006cbb33-6445-4357-b7ca-852467d5ad8b
+    - <Text>k__BackingField: Read for Hand-in
+      <NodeID>k__BackingField: e19ee5d1-0983-458a-ae46-5151f8f14db3
+    - <Text>k__BackingField: Comlpeted
+      <NodeID>k__BackingField: 680b717d-4288-4796-964d-94086a24f317
+    <Position>k__BackingField: {x: 1092, y: 791}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 0}
+    <Text>k__BackingField: 
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 5
+  - <ID>k__BackingField: b4d7f1c4-4a92-4486-b36d-9fc8b5d45de4
+    <Name>k__BackingField: LucusFlowerQ1b
+    <NodeType>k__BackingField: 4
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Not Accepted
+      <NodeID>k__BackingField: a7f8fd81-b222-435e-a142-64eec99a1870
+    - <Text>k__BackingField: In Progress
+      <NodeID>k__BackingField: a7f8fd81-b222-435e-a142-64eec99a1870
+    - <Text>k__BackingField: Read for Hand-in
+      <NodeID>k__BackingField: a7f8fd81-b222-435e-a142-64eec99a1870
+    - <Text>k__BackingField: Comlpeted
+      <NodeID>k__BackingField: 72a837a2-645d-48e4-9a99-df8e7aedc25a
+    <Position>k__BackingField: {x: 650, y: 550}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 0}
+    <Text>k__BackingField: 
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 4
+  - <ID>k__BackingField: a7f8fd81-b222-435e-a142-64eec99a1870
+    <Name>k__BackingField: LucusFlowerQ1bHandin
+    <NodeType>k__BackingField: 5
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField: []
+    <Position>k__BackingField: {x: 1050, y: 550}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 0}
+    <Text>k__BackingField: 
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+  - <ID>k__BackingField: 2878dac1-02b7-490a-af66-936574d0a848
+    <Name>k__BackingField: LucusBerriesQ2Intro
+    <NodeType>k__BackingField: 5
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField: []
+    <Position>k__BackingField: {x: 1475, y: 775}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 0}
+    <Text>k__BackingField: 
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+  - <ID>k__BackingField: 006cbb33-6445-4357-b7ca-852467d5ad8b
+    <Name>k__BackingField: LucusBerriesQ2Incomplete
+    <NodeType>k__BackingField: 5
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField: []
+    <Position>k__BackingField: {x: 1475, y: 925}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 0}
+    <Text>k__BackingField: 
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+  - <ID>k__BackingField: e19ee5d1-0983-458a-ae46-5151f8f14db3
+    <Name>k__BackingField: LucusBerriesQ2Complete
+    <NodeType>k__BackingField: 5
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField: []
+    <Position>k__BackingField: {x: 1475, y: 1100}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 0}
+    <Text>k__BackingField: 
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+  - <ID>k__BackingField: 680b717d-4288-4796-964d-94086a24f317
+    <Name>k__BackingField: Lucus1
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: 
+    <Position>k__BackingField: {x: 1475, y: 1275}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 49268ee1c8a3bee44b0063741027d804, type: 2}
+    <Text>k__BackingField: I hope you are enjoying my greenhouse. If you want to
+      know anything about the plants, just ask!
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+  <OldGroupNames>k__BackingField: []
+  <OldUngroupedNodeNames>k__BackingField:
+  - LucusQ1FlowerIntro
+  - LucusQ1FlowerCompleteA
+  - LucusQ1FlowerIncomplete
+  - LucusFlowerQ1a
+  - LucusBerriesQ2
+  - LucusFlowerQ1b
+  - LucusFlowerQ1bHandin
+  - LucusBerriesQ2Intro
+  - LucusBerriesQ2Incomplete
+  - LucusBerriesQ2Complete
+  - Lucus1
+  <OldGroupedNodeNames>k__BackingField:
+    list: []

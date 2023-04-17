@@ -53,7 +53,7 @@ namespace DialogueSystem.Elements
             VisualElement customDataContainer = new VisualElement();
             customDataContainer.AddToClassList("ds-node__custom-data-container");
 
-            EnumField questEnumField = new EnumField(Quests.LucanQuest1);
+            EnumField questEnumField = new EnumField(Quests.LucasFlowerQ1a);
 
             questEnumField.RegisterValueChangedCallback(callback => {
                 Quest = (Quests)questEnumField.value;
