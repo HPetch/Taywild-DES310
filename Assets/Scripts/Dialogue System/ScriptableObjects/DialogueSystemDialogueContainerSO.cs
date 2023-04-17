@@ -8,6 +8,7 @@ namespace DialogueSystem.ScriptableObjects
         [field: SerializeField] public string FileName { get; set; }
         [field: SerializeField] public SerializableDictionary<DialogueSystemDialogueGroupSO, List<DialogueSystemDialogueSO>> DialogueGroups { get; set; }
         [field: SerializeField] public List<DialogueSystemDialogueSO> UngroupedDialogues { get; set; }
+        [field: SerializeField] public DialogueSystemDialogueSO StartingNode { get; private set; }
 
         public void Initialize(string fileName)
         {
