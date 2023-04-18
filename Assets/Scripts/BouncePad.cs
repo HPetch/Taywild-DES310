@@ -7,6 +7,8 @@ public class BouncePad : MonoBehaviour
     [SerializeField] private float inactiveBounceFactor = 20f;
     [SerializeField] private float activeBounceFactor = 20f;
 
+    [SerializeField] private AudioClip[] bounceSounds;
+
     private void Update()
     {
         Debug.DrawLine(transform.position, transform.position + -transform.up, Color.red);
