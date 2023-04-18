@@ -100,6 +100,7 @@ public class InteractableCharacter : CharacterCanvas
             isPlayerWithinInteractionDistance = false;
         }
     }
+    #endregion
 
     #region Utility
     protected override void CancelLeanTween()
@@ -107,6 +108,5 @@ public class InteractableCharacter : CharacterCanvas
         base.CancelLeanTween();
         LeanTween.cancel(characterNameCanvasGroup.gameObject);
     }
-    #endregion
     #endregion
 }
