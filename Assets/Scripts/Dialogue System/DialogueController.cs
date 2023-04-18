@@ -31,6 +31,10 @@ public class DialogueController : MonoBehaviour
 
     private string textTypeString = "";
 
+    [Header("Audio clips")]
+    [SerializeField] private AudioClip zoomInClip;
+
+    [Header("Delays")]
     [Tooltip("Delay between each char in the TextType Coroutine")]
     [Range(0, 0.25f)]
     [SerializeField] public float TextTypeDelay = 0.01f;
@@ -105,6 +109,8 @@ public class DialogueController : MonoBehaviour
         IsConversing = true;        
         Character = _character;
 
+        ////Audio on dialogue zoom here
+        AudioController.Instance.PlaySound(zoomInClip,true);
         OnConversationStart?.Invoke();
 
         StartCoroutine(StartConversationDelay(_graph.StartingNode));
@@ -311,6 +317,7 @@ public class DialogueController : MonoBehaviour
             {
                 // If the char is a space
                 case ' ':
+
                     // skip to next letter
                     continue;
 
@@ -340,6 +347,13 @@ public class DialogueController : MonoBehaviour
 
                 // Else for every other character use the default delay
                 default:
+
+                    //Play typewriter sound here
+                    if (dialogueNode.Character.Voice.name == "SFX_Talk_Misc")
+                        AudioController.Instance.PlaySound(dialogueNode.Character.Voice, false);
+                    else
+                        AudioController.Instance.PlaySound(dialogueNode.Character.Voice, true);
+
                     yield return new WaitForSeconds(currentTextTypeDelay);
                     continue;
             }
