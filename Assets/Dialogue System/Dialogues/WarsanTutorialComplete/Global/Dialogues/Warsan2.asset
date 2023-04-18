@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56aed56cf2bdb3940a003c0a146eee35, type: 3}
+  m_Name: Warsan2
+  m_EditorClassIdentifier: 
+  <NodeName>k__BackingField: Warsan2
+  <NodeType>k__BackingField: 0
+  <Choices>k__BackingField:
+  - <Text>k__BackingField: Reading nook!
+    <NextDialogue>k__BackingField: {fileID: 11400000, guid: 2511a3d7ab06215469e8d114737b464a, type: 2}
+  - <Text>k__BackingField: Garden!
+    <NextDialogue>k__BackingField: {fileID: 11400000, guid: 473b4e60929f2f949b53534f6ec735d2, type: 2}
+  - <Text>k__BackingField: Tarot Reading!
+    <NextDialogue>k__BackingField: {fileID: 11400000, guid: e69c9bedb3e68aa4cb154ddb5c776259, type: 2}
+  <Character>k__BackingField: {fileID: 11400000, guid: 42a93fd49028fb743aa99b1e50d959f1, type: 2}
+  <DialogueType>k__BackingField: 1
+  <Text>k__BackingField: "This is the perfect spot for a little reading nook... or
+    a cute garden with a bird fountain... ooh or maybe a spot for tarot reading?
+    Urgh, I can\u2019t decide! What do you think?"
+  <IsStartingDialogue>k__BackingField: 0
+  <SoundEffect>k__BackingField: {fileID: 0}
+  <Delay>k__BackingField: 0
+  <Graph>k__BackingField: {fileID: 0}
+  <Quest>k__BackingField: 0

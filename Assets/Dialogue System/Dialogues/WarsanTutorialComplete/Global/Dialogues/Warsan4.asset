@@ -10,16 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 56aed56cf2bdb3940a003c0a146eee35, type: 3}
-  m_Name: WarsanTutorialIntro
+  m_Name: Warsan4
   m_EditorClassIdentifier: 
-  <NodeName>k__BackingField: WarsanTutorialIntro
-  <NodeType>k__BackingField: 5
-  <Choices>k__BackingField: []
-  <Character>k__BackingField: {fileID: 0}
+  <NodeName>k__BackingField: Warsan4
+  <NodeType>k__BackingField: 0
+  <Choices>k__BackingField:
+  - <Text>k__BackingField: Next Node
+    <NextDialogue>k__BackingField: {fileID: 11400000, guid: 4b7dab446cb5f084b82de695dd86b9f8, type: 2}
+  <Character>k__BackingField: {fileID: 11400000, guid: 42a93fd49028fb743aa99b1e50d959f1, type: 2}
   <DialogueType>k__BackingField: 0
-  <Text>k__BackingField: 
+  <Text>k__BackingField: 'No problem, thank you for clearing that spot for me! '
   <IsStartingDialogue>k__BackingField: 0
   <SoundEffect>k__BackingField: {fileID: 0}
   <Delay>k__BackingField: 0
-  <Graph>k__BackingField: {fileID: 11400000, guid: b85f2579566fd934e9d3c3b8a2ce3c37, type: 2}
+  <Graph>k__BackingField: {fileID: 0}
   <Quest>k__BackingField: 0
