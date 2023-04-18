@@ -46,13 +46,6 @@ public class AudioController : MonoBehaviour
         BGARoutine = null;
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Y)) { PlayMusic(BGM.Lucus); PlayAmbience(BGA.Ruins); }
-        if (Input.GetKeyDown(KeyCode.U)) { PlayMusic(BGM.Warsan); PlayAmbience(BGA.Woods); }
-        if (Input.GetKeyDown(KeyCode.I)) { PlayMusic(BGM.Main); PlayAmbience(BGA.Trunk); }
-    }
-
     #region PlaySound
     public void PlaySound(AudioClip sound)
     {
