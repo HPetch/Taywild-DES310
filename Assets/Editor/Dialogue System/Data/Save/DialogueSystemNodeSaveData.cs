@@ -26,7 +26,7 @@ namespace DialogueSystem.Data.Save
         [field: SerializeField] public AudioClip SoundEffect { get; set; }
         [field: SerializeField] public float Delay { get; set; }
         [field: SerializeField] public DialogueSystemDialogueContainerSO Graph { get; set; }
-        [field: SerializeField] public Quests Quest { get; set; }
+        [field: SerializeField] public QuestTypes Quest { get; set; }
 
 
         public DialogueSystemNodeSaveData(DialogueSystemNode _node)

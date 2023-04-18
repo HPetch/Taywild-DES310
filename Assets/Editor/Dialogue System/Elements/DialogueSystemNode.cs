@@ -30,7 +30,7 @@ namespace DialogueSystem.Elements
         public AudioClip SoundEffect { get; set; }
         public float Delay { get; set; }
         public DialogueSystemDialogueContainerSO Graph { get; set; }
-        public Quests Quest { get; set; }
+        public QuestTypes Quest { get; set; }
         
 
         protected DialogueSystemGraphView graphView;
