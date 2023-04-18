@@ -48,7 +48,7 @@ MonoBehaviour:
     - <Text>k__BackingField: Read for Hand-in
       <NodeID>k__BackingField: 2349085b-7a22-40f8-b148-9b0df89d2525
     - <Text>k__BackingField: Comlpeted
-      <NodeID>k__BackingField: 846d80ca-a7e1-4e7e-a15f-dd04ab3b6fb7
+      <NodeID>k__BackingField: db2e1c2a-64db-4f6c-ba1a-92a192c230d9
     <Position>k__BackingField: {x: 475, y: 625}
     <DialogueType>k__BackingField: 0
     <Character>k__BackingField: {fileID: 0}
@@ -57,69 +57,6 @@ MonoBehaviour:
     <Delay>k__BackingField: 0
     <Graph>k__BackingField: {fileID: 0}
     <Quest>k__BackingField: 6
-  - <ID>k__BackingField: 846d80ca-a7e1-4e7e-a15f-dd04ab3b6fb7
-    <Name>k__BackingField: LuWaGreenhouseQ1b
-    <NodeType>k__BackingField: 4
-    <GroupID>k__BackingField: 
-    <Choices>k__BackingField:
-    - <Text>k__BackingField: Not Accepted
-      <NodeID>k__BackingField: 2349085b-7a22-40f8-b148-9b0df89d2525
-    - <Text>k__BackingField: In Progress
-      <NodeID>k__BackingField: 2349085b-7a22-40f8-b148-9b0df89d2525
-    - <Text>k__BackingField: Read for Hand-in
-      <NodeID>k__BackingField: ae68392d-e002-429c-ac50-2a6255923c5b
-    - <Text>k__BackingField: Comlpeted
-      <NodeID>k__BackingField: 2349085b-7a22-40f8-b148-9b0df89d2525
-    <Position>k__BackingField: {x: 750, y: 825}
-    <DialogueType>k__BackingField: 0
-    <Character>k__BackingField: {fileID: 0}
-    <Text>k__BackingField: 
-    <SoundEffect>k__BackingField: {fileID: 0}
-    <Delay>k__BackingField: 0
-    <Graph>k__BackingField: {fileID: 0}
-    <Quest>k__BackingField: 7
-  - <ID>k__BackingField: 2349085b-7a22-40f8-b148-9b0df89d2525
-    <Name>k__BackingField: WarsanBenchQ1
-    <NodeType>k__BackingField: 4
-    <GroupID>k__BackingField: 
-    <Choices>k__BackingField:
-    - <Text>k__BackingField: Not Accepted
-      <NodeID>k__BackingField: 9ae793fd-2350-42a8-bf47-f47f496d1556
-    - <Text>k__BackingField: In Progress
-      <NodeID>k__BackingField: 5fb7c3a3-14b3-4c31-9e9a-830f901800a3
-    - <Text>k__BackingField: Read for Hand-in
-      <NodeID>k__BackingField: 3526b820-524c-454a-bd6a-74424a0ff431
-    - <Text>k__BackingField: Comlpeted
-      <NodeID>k__BackingField: 81277855-4155-424b-b404-53bd30957eba
-    <Position>k__BackingField: {x: 1100, y: 1100}
-    <DialogueType>k__BackingField: 0
-    <Character>k__BackingField: {fileID: 0}
-    <Text>k__BackingField: 
-    <SoundEffect>k__BackingField: {fileID: 0}
-    <Delay>k__BackingField: 0
-    <Graph>k__BackingField: {fileID: 0}
-    <Quest>k__BackingField: 1
-  - <ID>k__BackingField: 81277855-4155-424b-b404-53bd30957eba
-    <Name>k__BackingField: LuWaBakedQ2a
-    <NodeType>k__BackingField: 4
-    <GroupID>k__BackingField: 
-    <Choices>k__BackingField:
-    - <Text>k__BackingField: Not Accepted
-      <NodeID>k__BackingField: cd6438ef-a8f3-4efe-aee5-644291f7073c
-    - <Text>k__BackingField: In Progress
-      <NodeID>k__BackingField: 1bfcf586-a469-44fc-be5b-d26766a82c71
-    - <Text>k__BackingField: Read for Hand-in
-      <NodeID>k__BackingField: 1bfcf586-a469-44fc-be5b-d26766a82c71
-    - <Text>k__BackingField: Comlpeted
-      <NodeID>k__BackingField: 97e9f718-6677-4e13-a533-db322ecb396c
-    <Position>k__BackingField: {x: 1550, y: 1625}
-    <DialogueType>k__BackingField: 0
-    <Character>k__BackingField: {fileID: 0}
-    <Text>k__BackingField: 
-    <SoundEffect>k__BackingField: {fileID: 0}
-    <Delay>k__BackingField: 0
-    <Graph>k__BackingField: {fileID: 0}
-    <Quest>k__BackingField: 8
   - <ID>k__BackingField: 4d6d4a5d-09bd-4221-9422-7b7fbaa69007
     <Name>k__BackingField: WarsanTutorialInprogress
     <NodeType>k__BackingField: 5
@@ -172,12 +109,54 @@ MonoBehaviour:
     <Delay>k__BackingField: 0
     <Graph>k__BackingField: {fileID: 11400000, guid: 7b1f3d05aeaa4724ba50dda912a1eb8f, type: 2}
     <Quest>k__BackingField: 0
+  - <ID>k__BackingField: 2349085b-7a22-40f8-b148-9b0df89d2525
+    <Name>k__BackingField: WarsanBenchQ1
+    <NodeType>k__BackingField: 4
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Not Accepted
+      <NodeID>k__BackingField: 9ae793fd-2350-42a8-bf47-f47f496d1556
+    - <Text>k__BackingField: In Progress
+      <NodeID>k__BackingField: 5fb7c3a3-14b3-4c31-9e9a-830f901800a3
+    - <Text>k__BackingField: Read for Hand-in
+      <NodeID>k__BackingField: 3526b820-524c-454a-bd6a-74424a0ff431
+    - <Text>k__BackingField: Comlpeted
+      <NodeID>k__BackingField: 81277855-4155-424b-b404-53bd30957eba
+    <Position>k__BackingField: {x: 1400, y: 1600}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 0}
+    <Text>k__BackingField: 
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 1
+  - <ID>k__BackingField: 81277855-4155-424b-b404-53bd30957eba
+    <Name>k__BackingField: LuWaBakedQ2a
+    <NodeType>k__BackingField: 4
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Not Accepted
+      <NodeID>k__BackingField: cd6438ef-a8f3-4efe-aee5-644291f7073c
+    - <Text>k__BackingField: In Progress
+      <NodeID>k__BackingField: 1bfcf586-a469-44fc-be5b-d26766a82c71
+    - <Text>k__BackingField: Read for Hand-in
+      <NodeID>k__BackingField: 1bfcf586-a469-44fc-be5b-d26766a82c71
+    - <Text>k__BackingField: Comlpeted
+      <NodeID>k__BackingField: 97e9f718-6677-4e13-a533-db322ecb396c
+    <Position>k__BackingField: {x: 1850, y: 2125}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 0}
+    <Text>k__BackingField: 
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 8
   - <ID>k__BackingField: ae68392d-e002-429c-ac50-2a6255923c5b
     <Name>k__BackingField: LuWaGreenhouseQ1Handin
     <NodeType>k__BackingField: 5
     <GroupID>k__BackingField: 
     <Choices>k__BackingField: []
-    <Position>k__BackingField: {x: 1100, y: 875}
+    <Position>k__BackingField: {x: 1400, y: 1375}
     <DialogueType>k__BackingField: 0
     <Character>k__BackingField: {fileID: 0}
     <Text>k__BackingField: 
@@ -190,7 +169,7 @@ MonoBehaviour:
     <NodeType>k__BackingField: 5
     <GroupID>k__BackingField: 
     <Choices>k__BackingField: []
-    <Position>k__BackingField: {x: 1600, y: 1100}
+    <Position>k__BackingField: {x: 1900, y: 1600}
     <DialogueType>k__BackingField: 0
     <Character>k__BackingField: {fileID: 0}
     <Text>k__BackingField: 
@@ -203,7 +182,7 @@ MonoBehaviour:
     <NodeType>k__BackingField: 5
     <GroupID>k__BackingField: 
     <Choices>k__BackingField: []
-    <Position>k__BackingField: {x: 1600, y: 1225}
+    <Position>k__BackingField: {x: 1900, y: 1725}
     <DialogueType>k__BackingField: 0
     <Character>k__BackingField: {fileID: 0}
     <Text>k__BackingField: 
@@ -216,7 +195,7 @@ MonoBehaviour:
     <NodeType>k__BackingField: 5
     <GroupID>k__BackingField: 
     <Choices>k__BackingField: []
-    <Position>k__BackingField: {x: 1600, y: 1350}
+    <Position>k__BackingField: {x: 1900, y: 1850}
     <DialogueType>k__BackingField: 0
     <Character>k__BackingField: {fileID: 0}
     <Text>k__BackingField: 
@@ -229,7 +208,7 @@ MonoBehaviour:
     <NodeType>k__BackingField: 5
     <GroupID>k__BackingField: 
     <Choices>k__BackingField: []
-    <Position>k__BackingField: {x: 1925, y: 1625}
+    <Position>k__BackingField: {x: 2225, y: 2125}
     <DialogueType>k__BackingField: 0
     <Character>k__BackingField: {fileID: 0}
     <Text>k__BackingField: 
@@ -242,7 +221,7 @@ MonoBehaviour:
     <NodeType>k__BackingField: 5
     <GroupID>k__BackingField: 
     <Choices>k__BackingField: []
-    <Position>k__BackingField: {x: 2225, y: 1925}
+    <Position>k__BackingField: {x: 2525, y: 2425}
     <DialogueType>k__BackingField: 0
     <Character>k__BackingField: {fileID: 0}
     <Text>k__BackingField: 
@@ -263,7 +242,7 @@ MonoBehaviour:
       <NodeID>k__BackingField: daf8939c-0fc3-44e0-aee9-1c122b8bd21b
     - <Text>k__BackingField: Comlpeted
       <NodeID>k__BackingField: d90d2f34-3172-4b9d-b091-1d4792b796cf
-    <Position>k__BackingField: {x: 1850, y: 1950}
+    <Position>k__BackingField: {x: 2150, y: 2450}
     <DialogueType>k__BackingField: 0
     <Character>k__BackingField: {fileID: 0}
     <Text>k__BackingField: 
@@ -284,7 +263,7 @@ MonoBehaviour:
       <NodeID>k__BackingField: 81b1cf1f-a0b7-40b3-82bb-a65c4fb461f5
     - <Text>k__BackingField: Comlpeted
       <NodeID>k__BackingField: 1bfcf586-a469-44fc-be5b-d26766a82c71
-    <Position>k__BackingField: {x: 2125, y: 2200}
+    <Position>k__BackingField: {x: 2425, y: 2700}
     <DialogueType>k__BackingField: 0
     <Character>k__BackingField: {fileID: 0}
     <Text>k__BackingField: 
@@ -299,7 +278,7 @@ MonoBehaviour:
     <Choices>k__BackingField:
     - <Text>k__BackingField: Next Node
       <NodeID>k__BackingField: 
-    <Position>k__BackingField: {x: 3050, y: 2775}
+    <Position>k__BackingField: {x: 3350, y: 3275}
     <DialogueType>k__BackingField: 0
     <Character>k__BackingField: {fileID: 11400000, guid: 42a93fd49028fb743aa99b1e50d959f1, type: 2}
     <Text>k__BackingField: 'Hello dear, are you doing well? '
@@ -320,7 +299,7 @@ MonoBehaviour:
       <NodeID>k__BackingField: c943b5e6-078d-4b6f-9eb1-d3fbcedc306d
     - <Text>k__BackingField: Comlpeted
       <NodeID>k__BackingField: 9c4dc27d-b218-40bf-aaf0-e2cbb5e3417e
-    <Position>k__BackingField: {x: 2700, y: 2275}
+    <Position>k__BackingField: {x: 3000, y: 2775}
     <DialogueType>k__BackingField: 0
     <Character>k__BackingField: {fileID: 0}
     <Text>k__BackingField: 
@@ -333,7 +312,7 @@ MonoBehaviour:
     <NodeType>k__BackingField: 5
     <GroupID>k__BackingField: 
     <Choices>k__BackingField: []
-    <Position>k__BackingField: {x: 2125, y: 2450}
+    <Position>k__BackingField: {x: 2425, y: 2950}
     <DialogueType>k__BackingField: 0
     <Character>k__BackingField: {fileID: 0}
     <Text>k__BackingField: 
@@ -346,7 +325,7 @@ MonoBehaviour:
     <NodeType>k__BackingField: 5
     <GroupID>k__BackingField: 
     <Choices>k__BackingField: []
-    <Position>k__BackingField: {x: 3025, y: 2275}
+    <Position>k__BackingField: {x: 3325, y: 2775}
     <DialogueType>k__BackingField: 0
     <Character>k__BackingField: {fileID: 0}
     <Text>k__BackingField: 
@@ -359,7 +338,7 @@ MonoBehaviour:
     <NodeType>k__BackingField: 5
     <GroupID>k__BackingField: 
     <Choices>k__BackingField: []
-    <Position>k__BackingField: {x: 3025, y: 2400}
+    <Position>k__BackingField: {x: 3325, y: 2900}
     <DialogueType>k__BackingField: 0
     <Character>k__BackingField: {fileID: 0}
     <Text>k__BackingField: 
@@ -372,7 +351,7 @@ MonoBehaviour:
     <NodeType>k__BackingField: 5
     <GroupID>k__BackingField: 
     <Choices>k__BackingField: []
-    <Position>k__BackingField: {x: 3025, y: 2525}
+    <Position>k__BackingField: {x: 3325, y: 3025}
     <DialogueType>k__BackingField: 0
     <Character>k__BackingField: {fileID: 0}
     <Text>k__BackingField: 
@@ -380,17 +359,58 @@ MonoBehaviour:
     <Delay>k__BackingField: 0
     <Graph>k__BackingField: {fileID: 11400000, guid: 0de271d19088d4f49a79a1339a2a7b62, type: 2}
     <Quest>k__BackingField: 0
+  - <ID>k__BackingField: db2e1c2a-64db-4f6c-ba1a-92a192c230d9
+    <Name>k__BackingField: LucusFlowerQ1b
+    <NodeType>k__BackingField: 4
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Not Accepted
+      <NodeID>k__BackingField: 2349085b-7a22-40f8-b148-9b0df89d2525
+    - <Text>k__BackingField: In Progress
+      <NodeID>k__BackingField: 2349085b-7a22-40f8-b148-9b0df89d2525
+    - <Text>k__BackingField: Read for Hand-in
+      <NodeID>k__BackingField: 2349085b-7a22-40f8-b148-9b0df89d2525
+    - <Text>k__BackingField: Comlpeted
+      <NodeID>k__BackingField: 846d80ca-a7e1-4e7e-a15f-dd04ab3b6fb7
+    <Position>k__BackingField: {x: 675, y: 1000}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 0}
+    <Text>k__BackingField: 
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 4
+  - <ID>k__BackingField: 846d80ca-a7e1-4e7e-a15f-dd04ab3b6fb7
+    <Name>k__BackingField: LuWaGreenhouseQ1b
+    <NodeType>k__BackingField: 4
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Not Accepted
+      <NodeID>k__BackingField: 2349085b-7a22-40f8-b148-9b0df89d2525
+    - <Text>k__BackingField: In Progress
+      <NodeID>k__BackingField: 2349085b-7a22-40f8-b148-9b0df89d2525
+    - <Text>k__BackingField: Read for Hand-in
+      <NodeID>k__BackingField: ae68392d-e002-429c-ac50-2a6255923c5b
+    - <Text>k__BackingField: Comlpeted
+      <NodeID>k__BackingField: 2349085b-7a22-40f8-b148-9b0df89d2525
+    <Position>k__BackingField: {x: 925, y: 1525}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 0}
+    <Text>k__BackingField: 
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 7
   <OldGroupNames>k__BackingField: []
   <OldUngroupedNodeNames>k__BackingField:
   - WarsanTutorial
   - LuWaGreenhouseQ1a
-  - LuWaGreenhouseQ1b
-  - WarsanBenchQ1
-  - LuWaBakedQ2a
   - WarsanTutorialInprogress
   - WarsanTutorialHandin
   - WarsanTutorialIntro
   - LuWaGreenhouseIntro
+  - WarsanBenchQ1
+  - LuWaBakedQ2a
   - LuWaGreenhouseQ1Handin
   - WarsanBenchQ1Intro
   - WarsanBenchQ1Inprogress
@@ -405,5 +425,7 @@ MonoBehaviour:
   - WarsanLogPlanterQ2Intro
   - WarsanLogPlanterQ2Inprogress
   - WarsanLogPlanterQ2Handin
+  - LucusFlowerQ1b
+  - LuWaGreenhouseQ1b
   <OldGroupedNodeNames>k__BackingField:
     list: []
