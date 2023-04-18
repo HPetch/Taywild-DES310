@@ -12,6 +12,8 @@ public class DecorationController : MonoBehaviour
     public event Action<FurnitureObject> OnPlaceDecoration;
     public event Action OnPlaceCancelDecoration;
     public event Action OnFurnitureDestroyed;
+    public event Action OnPickupStart; // SET THIS UP
+    public event Action OnPickupMoved; //SET THIS UP
     public event Action OnPickupDamaged;
     public event Action OnPickupBroken;
     public event Action OnPickupCancel;
