@@ -14,6 +14,8 @@ public class PlayerDialogueController : CharacterCanvas
     [SerializeField] private ThoughtBubble middleThoughtBubble;
     [SerializeField] private ThoughtBubble rightThoughtBubble;
 
+    [Range(0, 0.5f)]
+    [SerializeField] private float delayBetweenThoughBubbleTransitions = 0.25f;
     #endregion
 
     #region Methods
@@ -42,7 +44,10 @@ public class PlayerDialogueController : CharacterCanvas
 
             case 2:
                 leftThoughtBubble.TransitionIn(_dialogueNode.Choices[0]);
-                rightThoughtBubble.TransitionIn(_dialogueNode.Choices[1]);
+                LeanTween.delayedCall(delayBetweenThoughBubbleTransitions, callback =>
+                {
+                    rightThoughtBubble.TransitionIn(_dialogueNode.Choices[1]);
+                });
                 break;
 
             default:
@@ -51,10 +56,15 @@ public class PlayerDialogueController : CharacterCanvas
 
             case 3:
                 leftThoughtBubble.TransitionIn(_dialogueNode.Choices[0]);
-                middleThoughtBubble.TransitionIn(_dialogueNode.Choices[1]);
-                rightThoughtBubble.TransitionIn(_dialogueNode.Choices[2]);
+                LeanTween.delayedCall(delayBetweenThoughBubbleTransitions, callback =>
+                {
+                    middleThoughtBubble.TransitionIn(_dialogueNode.Choices[1]);
+                    LeanTween.delayedCall(delayBetweenThoughBubbleTransitions, callback =>
+                    {
+                        rightThoughtBubble.TransitionIn(_dialogueNode.Choices[2]);
+                    });
+                });
                 break;
-
         }
     }
 

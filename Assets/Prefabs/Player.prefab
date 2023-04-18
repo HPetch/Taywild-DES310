@@ -470,6 +470,10 @@ MonoBehaviour:
   mediumBubbleRect: {fileID: 5615973520284865466}
   smallBubbleRect: {fileID: 8662838065152039507}
   text: {fileID: 7065663148942775997}
+  thoughtBubbleClip: {fileID: 8300000, guid: 4a15ee8b4aca56249a7701e601bded12, type: 3}
+  smallBubbleTransitionTime: 0.1
+  mediumBubbleTransitionTime: 0.15
+  thoughtBubbleTransitionTime: 0.25
 --- !u!1 &1132790798860596153
 GameObject:
   m_ObjectHideFlags: 0
@@ -533,12 +537,14 @@ MonoBehaviour:
   heightRange: {x: 60, y: 344}
   speachBubbleFloatFrequency: 1
   speachBubbleFloatAmplitude: 2
+  openingClip: {fileID: 8300000, guid: e01f8c9a8d7d43b41baabcf2229e2c54, type: 3}
   tailTransitionTime: 0.1
   speechBubbleOpenCloseTransitionTime: 0.3
   speechBubbleResizeTransitionTime: 0.2
   leftThoughtBubble: {fileID: 1002050210865577923}
   middleThoughtBubble: {fileID: 7149194167577115858}
   rightThoughtBubble: {fileID: 2768340459473335403}
+  delayBetweenThoughBubbleTransitions: 0.1
 --- !u!223 &1522937797228528061
 Canvas:
   m_ObjectHideFlags: 0
@@ -896,6 +902,10 @@ MonoBehaviour:
   mediumBubbleRect: {fileID: 8553258203501175011}
   smallBubbleRect: {fileID: 2651473753399164626}
   text: {fileID: 4905317623049594164}
+  thoughtBubbleClip: {fileID: 8300000, guid: c01e33cb860cac84c89a7ca2da59f6c0, type: 3}
+  smallBubbleTransitionTime: 0.1
+  mediumBubbleTransitionTime: 0.15
+  thoughtBubbleTransitionTime: 0.25
 --- !u!1 &2051049535806871397
 GameObject:
   m_ObjectHideFlags: 0
@@ -1559,6 +1569,10 @@ MonoBehaviour:
   mediumBubbleRect: {fileID: 5058390905432888627}
   smallBubbleRect: {fileID: 789603116753978277}
   text: {fileID: 5744580411726133981}
+  thoughtBubbleClip: {fileID: 8300000, guid: 067ad3ab5faf97b4680515b381a15eff, type: 3}
+  smallBubbleTransitionTime: 0.1
+  mediumBubbleTransitionTime: 0.15
+  thoughtBubbleTransitionTime: 0.25
 --- !u!1 &5697005802138181752
 GameObject:
   m_ObjectHideFlags: 0
