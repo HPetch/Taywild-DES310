@@ -23,7 +23,6 @@ public class BouncePad : MonoBehaviour
             //collision.gameObject.GetComponent<Rigidbody2D>().AddForce(-transform.up * _bounceFactor, ForceMode2D.Impulse);
             //Vector2 _transform = new Vector2(-transform.up.x * 20, -transform.up.y);
             collision.gameObject.GetComponent<Rigidbody2D>().velocity = -transform.up * _bounceFactor;
-
             //Add sound
             AudioClip clip = bounceSounds[Random.Range(0, bounceSounds.Length - 1)];
             AudioController.Instance.PlaySound(clip, false);
