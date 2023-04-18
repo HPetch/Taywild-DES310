@@ -470,6 +470,10 @@ MonoBehaviour:
   mediumBubbleRect: {fileID: 5615973520284865466}
   smallBubbleRect: {fileID: 8662838065152039507}
   text: {fileID: 7065663148942775997}
+  thoughtBubbleClip: {fileID: 8300000, guid: 4a15ee8b4aca56249a7701e601bded12, type: 3}
+  smallBubbleTransitionTime: 0.1
+  mediumBubbleTransitionTime: 0.15
+  thoughtBubbleTransitionTime: 0.25
 --- !u!1 &1132790798860596153
 GameObject:
   m_ObjectHideFlags: 0
@@ -533,12 +537,14 @@ MonoBehaviour:
   heightRange: {x: 60, y: 344}
   speachBubbleFloatFrequency: 1
   speachBubbleFloatAmplitude: 2
+  openingClip: {fileID: 8300000, guid: e01f8c9a8d7d43b41baabcf2229e2c54, type: 3}
   tailTransitionTime: 0.1
   speechBubbleOpenCloseTransitionTime: 0.3
   speechBubbleResizeTransitionTime: 0.2
   leftThoughtBubble: {fileID: 1002050210865577923}
   middleThoughtBubble: {fileID: 7149194167577115858}
   rightThoughtBubble: {fileID: 2768340459473335403}
+  delayBetweenThoughBubbleTransitions: 0.1
 --- !u!223 &1522937797228528061
 Canvas:
   m_ObjectHideFlags: 0
@@ -896,6 +902,10 @@ MonoBehaviour:
   mediumBubbleRect: {fileID: 8553258203501175011}
   smallBubbleRect: {fileID: 2651473753399164626}
   text: {fileID: 4905317623049594164}
+  thoughtBubbleClip: {fileID: 8300000, guid: c01e33cb860cac84c89a7ca2da59f6c0, type: 3}
+  smallBubbleTransitionTime: 0.1
+  mediumBubbleTransitionTime: 0.15
+  thoughtBubbleTransitionTime: 0.25
 --- !u!1 &2051049535806871397
 GameObject:
   m_ObjectHideFlags: 0
@@ -1177,7 +1187,7 @@ Transform:
   - {fileID: 3013080773383515439}
   - {fileID: 2454015774647340651}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3013080772066457372
 MonoBehaviour:
@@ -1306,21 +1316,57 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   groundJumpParticleEffect: {fileID: 4315215894901229033, guid: d1a71fb781d5a1841a1c43c017f790f4, type: 3}
-  groundJumpAudioClip: {fileID: 0}
+  groundJumpAudioClips:
+  - {fileID: 8300000, guid: 840ca71ea34e4f844a35fc40882c56ed, type: 3}
+  - {fileID: 8300000, guid: 4a024ae3da4bcf34886706d8320e9beb, type: 3}
+  - {fileID: 8300000, guid: 91d1ee8a565d3af4e84e517284a907e9, type: 3}
   airJumpParticleEffect: {fileID: 7773276287158063648, guid: d163ae4f140ccf64e9f38a9c8995e2ef, type: 3}
-  airJumpAudioClip: {fileID: 0}
+  airJumpAudioClips:
+  - {fileID: 8300000, guid: fd50ecf75515a404db5d7540981e5dd8, type: 3}
   wallJumpParticleEffect: {fileID: 307163571363470539, guid: e403b529305d6b9438579d5759a9acea, type: 3}
-  wallJumpAudioClip: {fileID: 0}
+  wallJumpAudioClips:
+  - {fileID: 8300000, guid: 840ca71ea34e4f844a35fc40882c56ed, type: 3}
+  - {fileID: 8300000, guid: 4a024ae3da4bcf34886706d8320e9beb, type: 3}
+  - {fileID: 8300000, guid: 91d1ee8a565d3af4e84e517284a907e9, type: 3}
   wallHopParticleEffect: {fileID: 307163571363470539, guid: e403b529305d6b9438579d5759a9acea, type: 3}
-  wallHopAudioClip: {fileID: 0}
+  wallHopAudioClips:
+  - {fileID: 8300000, guid: 840ca71ea34e4f844a35fc40882c56ed, type: 3}
+  - {fileID: 8300000, guid: 4a024ae3da4bcf34886706d8320e9beb, type: 3}
+  - {fileID: 8300000, guid: 91d1ee8a565d3af4e84e517284a907e9, type: 3}
   wallHitParticleEffect: {fileID: 0}
-  wallHitAudioClip: {fileID: 0}
+  wallHitAudioClips: []
   wallSlideParticleEffect: {fileID: 0}
-  wallSlideAudioClip: {fileID: 0}
+  wallSlideAudioClips: []
   landParticleEffect: {fileID: 0}
-  landAudioClip: {fileID: 0}
+  landAudioClips:
+  - {fileID: 8300000, guid: afe4387188dfa4541bc802a592028435, type: 3}
+  - {fileID: 8300000, guid: 80b3785fcbac2a24bb436e4dbb90c683, type: 3}
+  - {fileID: 8300000, guid: 8984aca97defd5742aeb2d1dd0f52b1c, type: 3}
   dashParticleEffect: {fileID: 6595378934676211507, guid: cc36037e37b246f469086dedfbc16f96, type: 3}
-  dashAudioClip: {fileID: 0}
+  dashAudioClips:
+  - {fileID: 8300000, guid: e3e11279cdad0534c8677bfca881a33d, type: 3}
+  runGenericClips:
+  - {fileID: 8300000, guid: afe4387188dfa4541bc802a592028435, type: 3}
+  - {fileID: 8300000, guid: 80b3785fcbac2a24bb436e4dbb90c683, type: 3}
+  - {fileID: 8300000, guid: 8984aca97defd5742aeb2d1dd0f52b1c, type: 3}
+  - {fileID: 8300000, guid: e758db69bad93c94982754bc50e2e5be, type: 3}
+  - {fileID: 8300000, guid: 3e21c868e1b379644a01cd4cb7c9bfd8, type: 3}
+  runSkyClips:
+  - {fileID: 8300000, guid: c4cb67ce6a698a84d88207bbdf2ca15f, type: 3}
+  - {fileID: 8300000, guid: 71f5f75bb3d12b14797978ab053079ac, type: 3}
+  - {fileID: 8300000, guid: 951629bb3effd7147a2f904aab507ae7, type: 3}
+  runBranchClips:
+  - {fileID: 8300000, guid: 330d83a673f51e040af418b25169b12c, type: 3}
+  - {fileID: 8300000, guid: c01fdc8e2e26e6b4d99b19291e9fb0e1, type: 3}
+  - {fileID: 8300000, guid: c627742751381764c96e9623dcc0d44a, type: 3}
+  - {fileID: 8300000, guid: 1f23b2b7f97acd94793a989f648674bd, type: 3}
+  - {fileID: 8300000, guid: 73260badb85abb24e9b4d37e5d8cf06b, type: 3}
+  runRoofClips:
+  - {fileID: 8300000, guid: ab4821628825b6349952b3c56d9cd28f, type: 3}
+  - {fileID: 8300000, guid: 265ee2600c5c7744680d8fed5863dd69, type: 3}
+  - {fileID: 8300000, guid: 6b43a54395b941d42b301e64deb0f454, type: 3}
+  - {fileID: 8300000, guid: 2c8b1bdcc9f16b14d86df737783e255e, type: 3}
+  - {fileID: 8300000, guid: e76ba4e58654d3942a553f1e27a06d87, type: 3}
 --- !u!212 &3013080773383515438
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1523,6 +1569,10 @@ MonoBehaviour:
   mediumBubbleRect: {fileID: 5058390905432888627}
   smallBubbleRect: {fileID: 789603116753978277}
   text: {fileID: 5744580411726133981}
+  thoughtBubbleClip: {fileID: 8300000, guid: 067ad3ab5faf97b4680515b381a15eff, type: 3}
+  smallBubbleTransitionTime: 0.1
+  mediumBubbleTransitionTime: 0.15
+  thoughtBubbleTransitionTime: 0.25
 --- !u!1 &5697005802138181752
 GameObject:
   m_ObjectHideFlags: 0

@@ -30,6 +30,8 @@ public class CharacterCanvas : MonoBehaviour
     [Range(0, 5)]
     [SerializeField] private float speachBubbleFloatAmplitude = 0.5f;
 
+    [SerializeField] private AudioClip openingClip;
+
     [Space(10)]
     [Header("Dialogue Transition Settings")]
     [Range(0, 1)]
@@ -102,6 +104,8 @@ public class CharacterCanvas : MonoBehaviour
 
         LeanTween.delayedCall(tailTransitionTime, callback =>
         {
+            // Play sound when speech bubble opens
+            AudioController.Instance.PlaySound(openingClip,true);
             LeanTween.size(speechBubble, GetTargetSize(_text), speechBubbleOpenCloseTransitionTime);
         });
     }

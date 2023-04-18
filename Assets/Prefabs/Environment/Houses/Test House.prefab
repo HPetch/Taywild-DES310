@@ -733,6 +733,7 @@ GameObject:
   - component: {fileID: 8550837289669337991}
   - component: {fileID: 6672243589271006952}
   - component: {fileID: 2450231928191229096}
+  - component: {fileID: 6363497239674474783}
   m_Layer: 6
   m_Name: Bottom Ledge
   m_TagString: Untagged
@@ -954,6 +955,24 @@ PlatformEffector2D:
   m_UseSideFriction: 0
   m_UseSideBounce: 0
   m_SideArc: 1
+--- !u!114 &6363497239674474783
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4720902282910801541}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a8ed7b078ed0de4cadded5e2cbbdc43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isFloaitngPlatform: 0
+  bounceEffectStrength: 0
+  bounceEffectDuration: 0
+  shakeEffectStrength: 0
+  shakeEffectDuration: 0
+  surfaceType: 3
 --- !u!1 &4739064191287934231
 GameObject:
   m_ObjectHideFlags: 0
@@ -1469,7 +1488,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5820280335498856223}
   - component: {fileID: 3093738983799745121}
-  - component: {fileID: 2081344935170768687}
   - component: {fileID: 7905871664494512135}
   - component: {fileID: 4947053688628705219}
   m_Layer: 0
@@ -1518,32 +1536,14 @@ MonoBehaviour:
   heightRange: {x: 60, y: 300}
   speachBubbleFloatFrequency: 1
   speachBubbleFloatAmplitude: 2
+  openingClip: {fileID: 8300000, guid: e01f8c9a8d7d43b41baabcf2229e2c54, type: 3}
   tailTransitionTime: 0.1
   speechBubbleOpenCloseTransitionTime: 0.3
   speechBubbleResizeTransitionTime: 0.2
   characterNameText: {fileID: 7805324855422119378}
   characterNameTransitionTime: 0.2
   interactCanvasGroup: {fileID: 1305924781922502920}
-  StartingNode: {fileID: 0}
---- !u!114 &2081344935170768687
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5820280335498856220}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3f0d96f76b4701f4b860928ef2445e93, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dialogueContainer: {fileID: 11400000, guid: 7fae7fc735bd6974caf64bf4c49e7a9d, type: 2}
-  dialogueGroup: {fileID: 0}
-  dialogue: {fileID: 11400000, guid: b722575744a33d0428a21d7935341244, type: 2}
-  groupedDialogues: 0
-  startingDialoguesOnly: 1
-  selectedDialogueGroupIndex: 0
-  selectedDialogueIndex: 0
+  dialogueGraph: {fileID: 11400000, guid: 7fae7fc735bd6974caf64bf4c49e7a9d, type: 2}
 --- !u!114 &7905871664494512135
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1831,6 +1831,7 @@ GameObject:
   - component: {fileID: 7917990337463185402}
   - component: {fileID: 4652098789215390587}
   - component: {fileID: 3015043477220070765}
+  - component: {fileID: 5357691266268668686}
   m_Layer: 6
   m_Name: Upper Ledge
   m_TagString: Untagged
@@ -2050,6 +2051,24 @@ PlatformEffector2D:
   m_UseSideFriction: 0
   m_UseSideBounce: 0
   m_SideArc: 1
+--- !u!114 &5357691266268668686
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7582251591578612999}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a8ed7b078ed0de4cadded5e2cbbdc43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isFloaitngPlatform: 0
+  bounceEffectStrength: 0
+  bounceEffectDuration: 0
+  shakeEffectStrength: 0
+  shakeEffectDuration: 0
+  surfaceType: 3
 --- !u!1 &7668562583246875793
 GameObject:
   m_ObjectHideFlags: 0

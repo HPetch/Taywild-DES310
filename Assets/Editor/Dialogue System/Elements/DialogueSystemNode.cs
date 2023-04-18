@@ -11,6 +11,7 @@ namespace DialogueSystem.Elements
     using Utilities;
     using Windows;
     using Types;
+    using ScriptableObjects;
 
     public class DialogueSystemNode : Node
     {
@@ -28,7 +29,9 @@ namespace DialogueSystem.Elements
 
         public AudioClip SoundEffect { get; set; }
         public float Delay { get; set; }
-
+        public DialogueSystemDialogueContainerSO Graph { get; set; }
+        public Quests Quest { get; set; }
+        
 
         protected DialogueSystemGraphView graphView;
         protected Color defaultBorderColor;

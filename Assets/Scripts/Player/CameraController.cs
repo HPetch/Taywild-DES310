@@ -152,9 +152,9 @@ public class CameraController : MonoBehaviour
         targetTransform = playerTransform;
     }
 
-    public void ZoomToDefault()
+    public void ZoomToPartitionSize()
     {
-        Zoom(defaultSize);
+        Zoom(partitionTargetZoomSize);
     }
 
     private void PartitionTransition(Partition partition)
@@ -175,9 +175,7 @@ public class CameraController : MonoBehaviour
     {
         offset = playerOffset;
         Zoom(partitionTargetZoomSize);
-    }
-
-    
+    }    
 
     public void PunchIn(float strength, float speed, bool _holdPunch = false)
     {

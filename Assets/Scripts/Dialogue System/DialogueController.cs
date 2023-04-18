@@ -31,6 +31,10 @@ public class DialogueController : MonoBehaviour
 
     private string textTypeString = "";
 
+    [Header("Audio clips")]
+    [SerializeField] private AudioClip zoomInClip;
+
+    [Header("Delays")]
     [Tooltip("Delay between each char in the TextType Coroutine")]
     [Range(0, 0.25f)]
     [SerializeField] public float TextTypeDelay = 0.01f;
@@ -89,7 +93,7 @@ public class DialogueController : MonoBehaviour
         if (!canDisplayNext) return;
 
         // If the player inputed continue the conversation
-        if ((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return) || Input.GetMouseButtonDown(0) || Input.GetButtonDown("Interact")) && dialogueNode != null && dialogueNode.DialogueType != DialogueTypes.MultipleChoice) DisplayNext();
+        if ((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return) || Input.GetMouseButtonDown(0) || Input.GetButtonDown("Interact")) && dialogueNode != null) DisplayNext();
         else if ((Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Keypad1)) && dialogueNode.DialogueType == DialogueTypes.MultipleChoice) DisplayNext(1);
         else if ((Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown(KeyCode.Keypad2)) && dialogueNode.DialogueType == DialogueTypes.MultipleChoice) DisplayNext(2);
         else if ((Input.GetKeyDown(KeyCode.Alpha3) || Input.GetKeyDown(KeyCode.Keypad3)) && dialogueNode.DialogueType == DialogueTypes.MultipleChoice) DisplayNext(3);
@@ -98,16 +102,18 @@ public class DialogueController : MonoBehaviour
     /// <summary>
     /// Starts a new conversation
     /// </summary>
-    public void TriggerConversation(DialogueSystemDialogueSO _startingNode, InteractableCharacter _character)
+    public void TriggerConversation(DialogueSystemDialogueContainerSO _graph, InteractableCharacter _character)
     {
         if (IsConversing) return;
 
         IsConversing = true;        
         Character = _character;
 
+        ////Audio on dialogue zoom here
+        AudioController.Instance.PlaySound(zoomInClip,true);
         OnConversationStart?.Invoke();
 
-        StartCoroutine(StartConversationDelay(_startingNode));
+        StartCoroutine(StartConversationDelay(_graph.StartingNode));
     }
 
     private IEnumerator StartConversationDelay(DialogueSystemDialogueSO _startingNode)
@@ -118,7 +124,7 @@ public class DialogueController : MonoBehaviour
 
     private IEnumerator ComputeNode(DialogueSystemDialogueSO _node)
     {
-        if (_node == null)
+        if (_node == null || _node.Choices.Count == 0)
         {
             EndConversation();
             yield break;
@@ -166,19 +172,24 @@ public class DialogueController : MonoBehaviour
                 break;
                 
             case NodeTypes.Audio:
-                if (_node.Choices.Count == 0) EndConversation();
-                else StartCoroutine(ComputeNode(_node.Choices[0].NextDialogue));
+                StartCoroutine(ComputeNode(_node.Choices[0].NextDialogue));
                 yield break;
 
             case NodeTypes.Edge:
-                if (_node.Choices.Count == 0) EndConversation();
-                else StartCoroutine(ComputeNode(_node.Choices[0].NextDialogue));
+                StartCoroutine(ComputeNode(_node.Choices[0].NextDialogue));
                 yield break;
 
             case NodeTypes.Delay:
                 yield return new WaitForSeconds(_node.Delay);
-                if (_node.Choices.Count == 0) EndConversation();
-                else StartCoroutine(ComputeNode(_node.Choices[0].NextDialogue));
+                StartCoroutine(ComputeNode(_node.Choices[0].NextDialogue));
+                yield break;
+
+            case NodeTypes.Quest:
+                StartCoroutine(ComputeNode(_node.Choices[0].NextDialogue));
+                yield break;
+
+            case NodeTypes.Graph:
+                TriggerConversation(_node.Graph, Character);
                 yield break;
 
             default:
@@ -306,6 +317,7 @@ public class DialogueController : MonoBehaviour
             {
                 // If the char is a space
                 case ' ':
+
                     // skip to next letter
                     continue;
 
@@ -335,6 +347,13 @@ public class DialogueController : MonoBehaviour
 
                 // Else for every other character use the default delay
                 default:
+
+                    //Play typewriter sound here
+                    if (dialogueNode.Character.Voice.name == "SFX_Talk_Misc")
+                        AudioController.Instance.PlaySound(dialogueNode.Character.Voice, false);
+                    else
+                        AudioController.Instance.PlaySound(dialogueNode.Character.Voice, true);
+
                     yield return new WaitForSeconds(currentTextTypeDelay);
                     continue;
             }
