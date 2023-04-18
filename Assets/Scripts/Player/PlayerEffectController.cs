@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.U2D;
 
 public class PlayerEffectController : MonoBehaviour
 {
@@ -73,6 +74,8 @@ public class PlayerEffectController : MonoBehaviour
         player.OnPlayerWallSlideEnd += PlayerWallSlideEnd;
         player.OnPlayerLand += PlayerLanded;
         player.OnPlayerDash += PlayerDash;
+        player.OnPlayerGlide += PlayerGlideStart;
+        player.OnPlayerGlideEnd += PlayerGlideEnd;
     }
 
     private void Update()
@@ -103,7 +106,7 @@ public class PlayerEffectController : MonoBehaviour
         CameraController.Instance.PunchOut(0.1f, 10f);
 
         //Play a random audio clip from range.
-        AudioClip clip = groundJumpAudioClips[Random.Range(0, groundJumpAudioClips.Length - 1)];
+        AudioClip clip = groundJumpAudioClips[Random.Range(0, groundJumpAudioClips.Length)];
         AudioController.Instance.PlaySound(clip,0.4f,true);
     }
 
@@ -112,7 +115,7 @@ public class PlayerEffectController : MonoBehaviour
         Instantiate(airJumpParticleEffect, player.transform.position + new Vector3(0, 1, 0), airJumpParticleEffect.transform.rotation);
 
         //Play a random audio clip from range.
-        AudioClip clip = airJumpAudioClips[Random.Range(0, airJumpAudioClips.Length - 1)];
+        AudioClip clip = airJumpAudioClips[Random.Range(0, airJumpAudioClips.Length)];
         AudioController.Instance.PlaySound(clip, false);
     }
 
@@ -132,7 +135,7 @@ public class PlayerEffectController : MonoBehaviour
         CameraController.Instance.PunchOut(0.1f, 10f);
 
         //Play a random audio clip from range.
-        AudioClip clip = wallJumpAudioClips[Random.Range(0, wallJumpAudioClips.Length - 1)];
+        AudioClip clip = wallJumpAudioClips[Random.Range(0, wallJumpAudioClips.Length)];
         AudioController.Instance.PlaySound(clip, false);
     }
 
@@ -140,6 +143,10 @@ public class PlayerEffectController : MonoBehaviour
     {
         CameraController.Instance.Shake(0.1f, 0.005f);
         CameraController.Instance.PunchIn(0.3f, 10f, true);
+
+        //Play a random audio clip from range.
+        AudioClip clip = wallHitAudioClips[Random.Range(0, wallHitAudioClips.Length)];
+        AudioController.Instance.PlaySound(clip, false);
     }
 
     private void PlayerWallSlideStart()
@@ -156,17 +163,16 @@ public class PlayerEffectController : MonoBehaviour
     {
         CameraController.Instance.Shake(0.2f, 0.02f);
 
+        //Do all of this in case we have a 
 
-        //Store current surface below player
-        RaycastHit2D ray;
-        //----Get raycast hit to whatever collider is below it, access SurfaceBroadcaster.cs and store the surface type.----
-
-        
-        /*if (ray.transform.GetComponent<SurfaceBroadcaster>() != null)
+        //If we have a Platform component
+        if (_platform.GetComponent<Platform>() != null)
         {
-          currentSurface = ray.transform.GetComponent<SurfaceBroadcaster>().getSurfaceType();
-        }*/
-
+            currentSurface = _platform.GetComponent<Platform>().getSurfaceType();
+        }
+        //Assume we are on a branch if there is no platform detected (we are probably on a sprite shape)
+        else if (_platform.GetComponent<SpriteShapeRenderer>() != null) currentSurface = SURFACE_TYPE.Branch;
+        else currentSurface = SURFACE_TYPE.Generic; // Otherwise, fall back to generic surface type.
     }
 
     private void PlayerDash()
@@ -175,6 +181,10 @@ public class PlayerEffectController : MonoBehaviour
         dashEffect.localScale = !player.IsFacingRight ? dashEffect.localScale : new Vector3(-1, 1, 1);
 
         CameraController.Instance.PunchOut(0.1f, 10f);
+
+        //Play a randomly selected sound
+        AudioClip clip = dashAudioClips[Random.Range(0, dashAudioClips.Length)];
+        AudioController.Instance.PlaySound(clip, true);
     }
     private void PlayerRun()
     {
@@ -185,25 +195,36 @@ public class PlayerEffectController : MonoBehaviour
         switch (currentSurface)
         {
             case SURFACE_TYPE.Generic:
-                clip = runGenericClips[Random.Range(0, runGenericClips.Length - 1)];
+                clip = runGenericClips[Random.Range(0, runGenericClips.Length)];
                 break;
             case SURFACE_TYPE.Sky:
-                clip = runSkyClips[Random.Range(0, runSkyClips.Length - 1)];
+                clip = runSkyClips[Random.Range(0, runSkyClips.Length)];
                 break;
             case SURFACE_TYPE.Branch:
-                clip = runBranchClips[Random.Range(0, runBranchClips.Length - 1)];
+                clip = runBranchClips[Random.Range(0, runBranchClips.Length)];
                 break;
             case SURFACE_TYPE.Roof:
-                clip = runRoofClips[Random.Range(0, runRoofClips.Length - 1)];
+                clip = runRoofClips[Random.Range(0, runRoofClips.Length)];
                 break;
             default:
                 Debug.LogWarning("This surface has no valid type - playing generic sound instead");
-                clip = runGenericClips[Random.Range(0, runGenericClips.Length - 1)];
+                clip = runGenericClips[Random.Range(0, runGenericClips.Length)];
                 break;
         }
 
         //Play the sound
         AudioController.Instance.PlaySound(clip,true);
+        Debug.Log(clip.name);
+    }
+
+    private void PlayerGlideStart()
+    {
+
+    }
+
+    private void PlayerGlideEnd()
+    {
+
     }
 
 }

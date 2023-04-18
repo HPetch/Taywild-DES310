@@ -9,6 +9,9 @@ public class AudioController : MonoBehaviour
     public static AudioController Instance { get; private set; }
     [SerializeField] private AudioMixer mixer;
     [SerializeField] private AudioSource[] sources; //0 = BGM, 1 = BGA, 2 = SFX
+
+    [SerializeField] private float randomPitchMin = 0.875f; //Lower bounds for random pitch shifting
+    [SerializeField] private float randomPitchMax = 1.175f; //Upper bounds for random pitch shifting
    
 
     public enum BGM
@@ -31,6 +34,14 @@ public class AudioController : MonoBehaviour
 
         PlayBGM(BGM.Main);
     }
+
+    private void Update()
+    {
+        //DEBUG
+        if (Input.GetKeyDown(KeyCode.T)) FadeMixerGroup.StartFade(mixer, "MainVol", 5f, 1f);
+        if (Input.GetKeyDown(KeyCode.Y)) { FadeMixerGroup.StartFade(mixer, "WarsanVol", 5f, 1f); FadeMixerGroup.StartFade(mixer, "MainVol", 5.0f, 0f); }
+    }
+
     #region PlaySound
     public void PlaySound(AudioClip sound)
     {
@@ -41,7 +52,7 @@ public class AudioController : MonoBehaviour
     public void PlaySound(AudioClip sound, bool varyPitch)
     {
         if (varyPitch)
-            sources[2].pitch = Random.Range(0.875f, 1.0f);
+            sources[2].pitch = Random.Range(randomPitchMin, randomPitchMax);
         else sources[2].pitch = 1.0f;
         //Play a oneshot sound effect (switch out clips in the audio source)
         //Assume volume is default (1.0)
@@ -58,7 +69,7 @@ public class AudioController : MonoBehaviour
     public void PlaySound(AudioClip sound, float volume, bool varyPitch)
     {
         if (varyPitch)
-            sources[2].pitch = Random.Range(0.875f, 1.0f);
+            sources[2].pitch = Random.Range(randomPitchMin, randomPitchMax);
         else sources[2].pitch = 1.0f;
         //Play a oneshot sound effect (switch out clips in the audio source)
         sources[2].PlayOneShot(sound, volume);
@@ -68,6 +79,26 @@ public class AudioController : MonoBehaviour
     public void PlayBGM(BGM music)
     {
         //Fade between current BGM
+        switch (music)
+        {
+            case BGM.Main:
+                FadeMixerGroup.StartFade(mixer, "MainVol", 5f, 1.0f);
+                break;
+            case BGM.Generic:
+                FadeMixerGroup.StartFade(mixer, "GenericVol", 5f, 1.0f);
+                break;
+            case BGM.Warsan:
+                FadeMixerGroup.StartFade(mixer, "WarsanVol", 5f, 1.0f);
+                break;
+            case BGM.Lucus:
+                FadeMixerGroup.StartFade(mixer, "LucusVol", 5f, 1.0f);
+                break;
+            default:
+                Debug.LogWarning("Invalid music switch detected!");
+                break;
+        }
+
+
     }
 
     public void PlayAmbience()
