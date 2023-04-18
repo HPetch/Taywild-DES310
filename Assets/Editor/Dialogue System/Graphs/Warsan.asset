@@ -57,32 +57,6 @@ MonoBehaviour:
     <Delay>k__BackingField: 0
     <Graph>k__BackingField: {fileID: 0}
     <Quest>k__BackingField: 6
-  - <ID>k__BackingField: 39da70df-88a8-42a1-8af7-fe88bb255c8d
-    <Name>k__BackingField: LuWaGreenhouseIntro
-    <NodeType>k__BackingField: 5
-    <GroupID>k__BackingField: 
-    <Choices>k__BackingField: []
-    <Position>k__BackingField: {x: 850, y: 625}
-    <DialogueType>k__BackingField: 0
-    <Character>k__BackingField: {fileID: 0}
-    <Text>k__BackingField: 
-    <SoundEffect>k__BackingField: {fileID: 0}
-    <Delay>k__BackingField: 0
-    <Graph>k__BackingField: {fileID: 0}
-    <Quest>k__BackingField: 0
-  - <ID>k__BackingField: ae68392d-e002-429c-ac50-2a6255923c5b
-    <Name>k__BackingField: LuWaGreenhouseQ1Handin
-    <NodeType>k__BackingField: 5
-    <GroupID>k__BackingField: 
-    <Choices>k__BackingField: []
-    <Position>k__BackingField: {x: 1100, y: 875}
-    <DialogueType>k__BackingField: 0
-    <Character>k__BackingField: {fileID: 0}
-    <Text>k__BackingField: 
-    <SoundEffect>k__BackingField: {fileID: 0}
-    <Delay>k__BackingField: 0
-    <Graph>k__BackingField: {fileID: 0}
-    <Quest>k__BackingField: 0
   - <ID>k__BackingField: 846d80ca-a7e1-4e7e-a15f-dd04ab3b6fb7
     <Name>k__BackingField: LuWaGreenhouseQ1b
     <NodeType>k__BackingField: 4
@@ -125,40 +99,6 @@ MonoBehaviour:
     <Delay>k__BackingField: 0
     <Graph>k__BackingField: {fileID: 0}
     <Quest>k__BackingField: 1
-  - <ID>k__BackingField: cd6438ef-a8f3-4efe-aee5-644291f7073c
-    <Name>k__BackingField: LuWaBakedQ2Intro
-    <NodeType>k__BackingField: 5
-    <GroupID>k__BackingField: 
-    <Choices>k__BackingField: []
-    <Position>k__BackingField: {x: 1925, y: 1625}
-    <DialogueType>k__BackingField: 0
-    <Character>k__BackingField: {fileID: 0}
-    <Text>k__BackingField: 
-    <SoundEffect>k__BackingField: {fileID: 0}
-    <Delay>k__BackingField: 0
-    <Graph>k__BackingField: {fileID: 0}
-    <Quest>k__BackingField: 0
-  - <ID>k__BackingField: 97e9f718-6677-4e13-a533-db322ecb396c
-    <Name>k__BackingField: LuWaBakedQ2b
-    <NodeType>k__BackingField: 4
-    <GroupID>k__BackingField: 
-    <Choices>k__BackingField:
-    - <Text>k__BackingField: Not Accepted
-      <NodeID>k__BackingField: 1bfcf586-a469-44fc-be5b-d26766a82c71
-    - <Text>k__BackingField: In Progress
-      <NodeID>k__BackingField: 1bfcf586-a469-44fc-be5b-d26766a82c71
-    - <Text>k__BackingField: Read for Hand-in
-      <NodeID>k__BackingField: daf8939c-0fc3-44e0-aee9-1c122b8bd21b
-    - <Text>k__BackingField: Comlpeted
-      <NodeID>k__BackingField: 1bfcf586-a469-44fc-be5b-d26766a82c71
-    <Position>k__BackingField: {x: 1925, y: 1925}
-    <DialogueType>k__BackingField: 0
-    <Character>k__BackingField: {fileID: 0}
-    <Text>k__BackingField: 
-    <SoundEffect>k__BackingField: {fileID: 0}
-    <Delay>k__BackingField: 0
-    <Graph>k__BackingField: {fileID: 0}
-    <Quest>k__BackingField: 9
   - <ID>k__BackingField: 81277855-4155-424b-b404-53bd30957eba
     <Name>k__BackingField: LuWaBakedQ2a
     <NodeType>k__BackingField: 4
@@ -180,146 +120,6 @@ MonoBehaviour:
     <Delay>k__BackingField: 0
     <Graph>k__BackingField: {fileID: 0}
     <Quest>k__BackingField: 8
-  - <ID>k__BackingField: 1bfcf586-a469-44fc-be5b-d26766a82c71
-    <Name>k__BackingField: WarsanLogPlanterQ2
-    <NodeType>k__BackingField: 4
-    <GroupID>k__BackingField: 
-    <Choices>k__BackingField:
-    - <Text>k__BackingField: Not Accepted
-      <NodeID>k__BackingField: c0d0369e-e38e-49e4-95a5-d23be441df0d
-    - <Text>k__BackingField: In Progress
-      <NodeID>k__BackingField: 41c625e4-ae40-4a35-a310-00cc01233d77
-    - <Text>k__BackingField: Read for Hand-in
-      <NodeID>k__BackingField: c943b5e6-078d-4b6f-9eb1-d3fbcedc306d
-    - <Text>k__BackingField: Comlpeted
-      <NodeID>k__BackingField: 9c4dc27d-b218-40bf-aaf0-e2cbb5e3417e
-    <Position>k__BackingField: {x: 2200, y: 2175}
-    <DialogueType>k__BackingField: 0
-    <Character>k__BackingField: {fileID: 0}
-    <Text>k__BackingField: 
-    <SoundEffect>k__BackingField: {fileID: 0}
-    <Delay>k__BackingField: 0
-    <Graph>k__BackingField: {fileID: 0}
-    <Quest>k__BackingField: 2
-  - <ID>k__BackingField: daf8939c-0fc3-44e0-aee9-1c122b8bd21b
-    <Name>k__BackingField: LuWaBakedQ2Handin
-    <NodeType>k__BackingField: 5
-    <GroupID>k__BackingField: 
-    <Choices>k__BackingField: []
-    <Position>k__BackingField: {x: 2225, y: 1925}
-    <DialogueType>k__BackingField: 0
-    <Character>k__BackingField: {fileID: 0}
-    <Text>k__BackingField: 
-    <SoundEffect>k__BackingField: {fileID: 0}
-    <Delay>k__BackingField: 0
-    <Graph>k__BackingField: {fileID: 0}
-    <Quest>k__BackingField: 0
-  - <ID>k__BackingField: c0d0369e-e38e-49e4-95a5-d23be441df0d
-    <Name>k__BackingField: WarsanLogPlanterQ2Intro
-    <NodeType>k__BackingField: 5
-    <GroupID>k__BackingField: 
-    <Choices>k__BackingField: []
-    <Position>k__BackingField: {x: 2550, y: 2175}
-    <DialogueType>k__BackingField: 0
-    <Character>k__BackingField: {fileID: 0}
-    <Text>k__BackingField: 
-    <SoundEffect>k__BackingField: {fileID: 0}
-    <Delay>k__BackingField: 0
-    <Graph>k__BackingField: {fileID: 0}
-    <Quest>k__BackingField: 0
-  - <ID>k__BackingField: 9ae793fd-2350-42a8-bf47-f47f496d1556
-    <Name>k__BackingField: WarsanBenchQ1Intro
-    <NodeType>k__BackingField: 5
-    <GroupID>k__BackingField: 
-    <Choices>k__BackingField: []
-    <Position>k__BackingField: {x: 1600, y: 1100}
-    <DialogueType>k__BackingField: 0
-    <Character>k__BackingField: {fileID: 0}
-    <Text>k__BackingField: 
-    <SoundEffect>k__BackingField: {fileID: 0}
-    <Delay>k__BackingField: 0
-    <Graph>k__BackingField: {fileID: 0}
-    <Quest>k__BackingField: 0
-  - <ID>k__BackingField: 5fb7c3a3-14b3-4c31-9e9a-830f901800a3
-    <Name>k__BackingField: WarsanBenchQ1Inprogress
-    <NodeType>k__BackingField: 5
-    <GroupID>k__BackingField: 
-    <Choices>k__BackingField: []
-    <Position>k__BackingField: {x: 1600, y: 1225}
-    <DialogueType>k__BackingField: 0
-    <Character>k__BackingField: {fileID: 0}
-    <Text>k__BackingField: 
-    <SoundEffect>k__BackingField: {fileID: 0}
-    <Delay>k__BackingField: 0
-    <Graph>k__BackingField: {fileID: 0}
-    <Quest>k__BackingField: 0
-  - <ID>k__BackingField: 3526b820-524c-454a-bd6a-74424a0ff431
-    <Name>k__BackingField: WarsanBenchQ1Handin
-    <NodeType>k__BackingField: 5
-    <GroupID>k__BackingField: 
-    <Choices>k__BackingField: []
-    <Position>k__BackingField: {x: 1600, y: 1350}
-    <DialogueType>k__BackingField: 0
-    <Character>k__BackingField: {fileID: 0}
-    <Text>k__BackingField: 
-    <SoundEffect>k__BackingField: {fileID: 0}
-    <Delay>k__BackingField: 0
-    <Graph>k__BackingField: {fileID: 0}
-    <Quest>k__BackingField: 0
-  - <ID>k__BackingField: 41c625e4-ae40-4a35-a310-00cc01233d77
-    <Name>k__BackingField: WarsanLogPlanterQ2Inprogress
-    <NodeType>k__BackingField: 5
-    <GroupID>k__BackingField: 
-    <Choices>k__BackingField: []
-    <Position>k__BackingField: {x: 2550, y: 2300}
-    <DialogueType>k__BackingField: 0
-    <Character>k__BackingField: {fileID: 0}
-    <Text>k__BackingField: 
-    <SoundEffect>k__BackingField: {fileID: 0}
-    <Delay>k__BackingField: 0
-    <Graph>k__BackingField: {fileID: 0}
-    <Quest>k__BackingField: 0
-  - <ID>k__BackingField: c943b5e6-078d-4b6f-9eb1-d3fbcedc306d
-    <Name>k__BackingField: WarsanLogPlanterQ2Handin
-    <NodeType>k__BackingField: 5
-    <GroupID>k__BackingField: 
-    <Choices>k__BackingField: []
-    <Position>k__BackingField: {x: 2550, y: 2425}
-    <DialogueType>k__BackingField: 0
-    <Character>k__BackingField: {fileID: 0}
-    <Text>k__BackingField: 
-    <SoundEffect>k__BackingField: {fileID: 0}
-    <Delay>k__BackingField: 0
-    <Graph>k__BackingField: {fileID: 0}
-    <Quest>k__BackingField: 0
-  - <ID>k__BackingField: 9c4dc27d-b218-40bf-aaf0-e2cbb5e3417e
-    <Name>k__BackingField: Warsan1
-    <NodeType>k__BackingField: 0
-    <GroupID>k__BackingField: 
-    <Choices>k__BackingField:
-    - <Text>k__BackingField: Next Node
-      <NodeID>k__BackingField: 
-    <Position>k__BackingField: {x: 2580, y: 2696}
-    <DialogueType>k__BackingField: 0
-    <Character>k__BackingField: {fileID: 11400000, guid: 42a93fd49028fb743aa99b1e50d959f1, type: 2}
-    <Text>k__BackingField: 'Hello dear, are you doing well? '
-    <SoundEffect>k__BackingField: {fileID: 0}
-    <Delay>k__BackingField: 0
-    <Graph>k__BackingField: {fileID: 0}
-    <Quest>k__BackingField: 0
-  - <ID>k__BackingField: 5fba67de-8ce2-4334-9246-43349d3a36c5
-    <Name>k__BackingField: WarsanTutorialIntro
-    <NodeType>k__BackingField: 5
-    <GroupID>k__BackingField: 
-    <Choices>k__BackingField: []
-    <Position>k__BackingField: {x: 525, y: 225}
-    <DialogueType>k__BackingField: 0
-    <Character>k__BackingField: {fileID: 0}
-    <Text>k__BackingField: 
-    <SoundEffect>k__BackingField: {fileID: 0}
-    <Delay>k__BackingField: 0
-    <Graph>k__BackingField: {fileID: 0}
-    <Quest>k__BackingField: 0
   - <ID>k__BackingField: 4d6d4a5d-09bd-4221-9422-7b7fbaa69007
     <Name>k__BackingField: WarsanTutorialInprogress
     <NodeType>k__BackingField: 5
@@ -346,28 +146,264 @@ MonoBehaviour:
     <Delay>k__BackingField: 0
     <Graph>k__BackingField: {fileID: 0}
     <Quest>k__BackingField: 0
+  - <ID>k__BackingField: 5fba67de-8ce2-4334-9246-43349d3a36c5
+    <Name>k__BackingField: WarsanTutorialIntro
+    <NodeType>k__BackingField: 5
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField: []
+    <Position>k__BackingField: {x: 525, y: 225}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 0}
+    <Text>k__BackingField: 
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+  - <ID>k__BackingField: 39da70df-88a8-42a1-8af7-fe88bb255c8d
+    <Name>k__BackingField: LuWaGreenhouseIntro
+    <NodeType>k__BackingField: 5
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField: []
+    <Position>k__BackingField: {x: 850, y: 625}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 0}
+    <Text>k__BackingField: 
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 11400000, guid: 7b1f3d05aeaa4724ba50dda912a1eb8f, type: 2}
+    <Quest>k__BackingField: 0
+  - <ID>k__BackingField: ae68392d-e002-429c-ac50-2a6255923c5b
+    <Name>k__BackingField: LuWaGreenhouseQ1Handin
+    <NodeType>k__BackingField: 5
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField: []
+    <Position>k__BackingField: {x: 1100, y: 875}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 0}
+    <Text>k__BackingField: 
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 11400000, guid: 367b736a0bc25d64ab9b560d5719a578, type: 2}
+    <Quest>k__BackingField: 0
+  - <ID>k__BackingField: 9ae793fd-2350-42a8-bf47-f47f496d1556
+    <Name>k__BackingField: WarsanBenchQ1Intro
+    <NodeType>k__BackingField: 5
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField: []
+    <Position>k__BackingField: {x: 1600, y: 1100}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 0}
+    <Text>k__BackingField: 
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 11400000, guid: 0a8d3ec11e5343440bbffffe13ca7d8d, type: 2}
+    <Quest>k__BackingField: 0
+  - <ID>k__BackingField: 5fb7c3a3-14b3-4c31-9e9a-830f901800a3
+    <Name>k__BackingField: WarsanBenchQ1Inprogress
+    <NodeType>k__BackingField: 5
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField: []
+    <Position>k__BackingField: {x: 1600, y: 1225}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 0}
+    <Text>k__BackingField: 
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 11400000, guid: cf806c7212e43394ea2f45f003a37da0, type: 2}
+    <Quest>k__BackingField: 0
+  - <ID>k__BackingField: 3526b820-524c-454a-bd6a-74424a0ff431
+    <Name>k__BackingField: WarsanBenchQ1Handin
+    <NodeType>k__BackingField: 5
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField: []
+    <Position>k__BackingField: {x: 1600, y: 1350}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 0}
+    <Text>k__BackingField: 
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 11400000, guid: 22ebe542299dd37488431d13f6f2988f, type: 2}
+    <Quest>k__BackingField: 0
+  - <ID>k__BackingField: cd6438ef-a8f3-4efe-aee5-644291f7073c
+    <Name>k__BackingField: LuWaBakedQ2Intro
+    <NodeType>k__BackingField: 5
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField: []
+    <Position>k__BackingField: {x: 1925, y: 1625}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 0}
+    <Text>k__BackingField: 
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 11400000, guid: 4278d7ae1bc113545a1b9f99d462300f, type: 2}
+    <Quest>k__BackingField: 0
+  - <ID>k__BackingField: daf8939c-0fc3-44e0-aee9-1c122b8bd21b
+    <Name>k__BackingField: LuWaBakedQ2Handin
+    <NodeType>k__BackingField: 5
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField: []
+    <Position>k__BackingField: {x: 2225, y: 1925}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 0}
+    <Text>k__BackingField: 
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 11400000, guid: 255ebfbc7b08c6e428d2c930c017a22b, type: 2}
+    <Quest>k__BackingField: 0
+  - <ID>k__BackingField: 97e9f718-6677-4e13-a533-db322ecb396c
+    <Name>k__BackingField: LuWaBakedQ2b
+    <NodeType>k__BackingField: 4
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Not Accepted
+      <NodeID>k__BackingField: 1bfcf586-a469-44fc-be5b-d26766a82c71
+    - <Text>k__BackingField: In Progress
+      <NodeID>k__BackingField: 1bfcf586-a469-44fc-be5b-d26766a82c71
+    - <Text>k__BackingField: Read for Hand-in
+      <NodeID>k__BackingField: daf8939c-0fc3-44e0-aee9-1c122b8bd21b
+    - <Text>k__BackingField: Comlpeted
+      <NodeID>k__BackingField: d90d2f34-3172-4b9d-b091-1d4792b796cf
+    <Position>k__BackingField: {x: 1850, y: 1950}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 0}
+    <Text>k__BackingField: 
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 9
+  - <ID>k__BackingField: d90d2f34-3172-4b9d-b091-1d4792b796cf
+    <Name>k__BackingField: LuWaIngredientsQ3a
+    <NodeType>k__BackingField: 4
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Not Accepted
+      <NodeID>k__BackingField: 1bfcf586-a469-44fc-be5b-d26766a82c71
+    - <Text>k__BackingField: In Progress
+      <NodeID>k__BackingField: 1bfcf586-a469-44fc-be5b-d26766a82c71
+    - <Text>k__BackingField: Read for Hand-in
+      <NodeID>k__BackingField: 81b1cf1f-a0b7-40b3-82bb-a65c4fb461f5
+    - <Text>k__BackingField: Comlpeted
+      <NodeID>k__BackingField: 1bfcf586-a469-44fc-be5b-d26766a82c71
+    <Position>k__BackingField: {x: 2125, y: 2200}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 0}
+    <Text>k__BackingField: 
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 10
+  - <ID>k__BackingField: 9c4dc27d-b218-40bf-aaf0-e2cbb5e3417e
+    <Name>k__BackingField: Warsan1
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: 
+    <Position>k__BackingField: {x: 3050, y: 2775}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 42a93fd49028fb743aa99b1e50d959f1, type: 2}
+    <Text>k__BackingField: 'Hello dear, are you doing well? '
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+  - <ID>k__BackingField: 1bfcf586-a469-44fc-be5b-d26766a82c71
+    <Name>k__BackingField: WarsanLogPlanterQ2
+    <NodeType>k__BackingField: 4
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Not Accepted
+      <NodeID>k__BackingField: c0d0369e-e38e-49e4-95a5-d23be441df0d
+    - <Text>k__BackingField: In Progress
+      <NodeID>k__BackingField: 41c625e4-ae40-4a35-a310-00cc01233d77
+    - <Text>k__BackingField: Read for Hand-in
+      <NodeID>k__BackingField: c943b5e6-078d-4b6f-9eb1-d3fbcedc306d
+    - <Text>k__BackingField: Comlpeted
+      <NodeID>k__BackingField: 9c4dc27d-b218-40bf-aaf0-e2cbb5e3417e
+    <Position>k__BackingField: {x: 2700, y: 2275}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 0}
+    <Text>k__BackingField: 
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 2
+  - <ID>k__BackingField: 81b1cf1f-a0b7-40b3-82bb-a65c4fb461f5
+    <Name>k__BackingField: GraphNode
+    <NodeType>k__BackingField: 5
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField: []
+    <Position>k__BackingField: {x: 2125, y: 2450}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 0}
+    <Text>k__BackingField: 
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 11400000, guid: 192292b47d2dae54c9e559a2be12a40c, type: 2}
+    <Quest>k__BackingField: 0
+  - <ID>k__BackingField: c0d0369e-e38e-49e4-95a5-d23be441df0d
+    <Name>k__BackingField: WarsanLogPlanterQ2Intro
+    <NodeType>k__BackingField: 5
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField: []
+    <Position>k__BackingField: {x: 3025, y: 2275}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 0}
+    <Text>k__BackingField: 
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 11400000, guid: e2491a5215a7a5f41af3905982492935, type: 2}
+    <Quest>k__BackingField: 0
+  - <ID>k__BackingField: 41c625e4-ae40-4a35-a310-00cc01233d77
+    <Name>k__BackingField: WarsanLogPlanterQ2Inprogress
+    <NodeType>k__BackingField: 5
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField: []
+    <Position>k__BackingField: {x: 3025, y: 2400}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 0}
+    <Text>k__BackingField: 
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 11400000, guid: a742264414cfa41458080fab9b72c433, type: 2}
+    <Quest>k__BackingField: 0
+  - <ID>k__BackingField: c943b5e6-078d-4b6f-9eb1-d3fbcedc306d
+    <Name>k__BackingField: WarsanLogPlanterQ2Handin
+    <NodeType>k__BackingField: 5
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField: []
+    <Position>k__BackingField: {x: 3025, y: 2525}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 0}
+    <Text>k__BackingField: 
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 11400000, guid: 0de271d19088d4f49a79a1339a2a7b62, type: 2}
+    <Quest>k__BackingField: 0
   <OldGroupNames>k__BackingField: []
   <OldUngroupedNodeNames>k__BackingField:
   - WarsanTutorial
   - LuWaGreenhouseQ1a
-  - LuWaGreenhouseIntro
-  - LuWaGreenhouseQ1Handin
   - LuWaGreenhouseQ1b
   - WarsanBenchQ1
-  - LuWaBakedQ2Intro
-  - LuWaBakedQ2b
   - LuWaBakedQ2a
-  - WarsanLogPlanterQ2
-  - LuWaBakedQ2Handin
-  - WarsanLogPlanterQ2Intro
+  - WarsanTutorialInprogress
+  - WarsanTutorialHandin
+  - WarsanTutorialIntro
+  - LuWaGreenhouseIntro
+  - LuWaGreenhouseQ1Handin
   - WarsanBenchQ1Intro
   - WarsanBenchQ1Inprogress
   - WarsanBenchQ1Handin
+  - LuWaBakedQ2Intro
+  - LuWaBakedQ2Handin
+  - LuWaBakedQ2b
+  - LuWaIngredientsQ3a
+  - Warsan1
+  - WarsanLogPlanterQ2
+  - GraphNode
+  - WarsanLogPlanterQ2Intro
   - WarsanLogPlanterQ2Inprogress
   - WarsanLogPlanterQ2Handin
-  - Warsan1
-  - WarsanTutorialIntro
-  - WarsanTutorialInprogress
-  - WarsanTutorialHandin
   <OldGroupedNodeNames>k__BackingField:
     list: []
