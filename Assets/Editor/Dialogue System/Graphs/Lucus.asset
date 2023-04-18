@@ -20,7 +20,7 @@ MonoBehaviour:
     <NodeType>k__BackingField: 5
     <GroupID>k__BackingField: 
     <Choices>k__BackingField: []
-    <Position>k__BackingField: {x: 650, y: 100}
+    <Position>k__BackingField: {x: 225, y: -25}
     <DialogueType>k__BackingField: 0
     <Character>k__BackingField: {fileID: 0}
     <Text>k__BackingField: 
@@ -33,7 +33,7 @@ MonoBehaviour:
     <NodeType>k__BackingField: 5
     <GroupID>k__BackingField: 
     <Choices>k__BackingField: []
-    <Position>k__BackingField: {x: 650, y: 400}
+    <Position>k__BackingField: {x: 225, y: 275}
     <DialogueType>k__BackingField: 0
     <Character>k__BackingField: {fileID: 0}
     <Text>k__BackingField: 
@@ -46,7 +46,7 @@ MonoBehaviour:
     <NodeType>k__BackingField: 5
     <GroupID>k__BackingField: 
     <Choices>k__BackingField: []
-    <Position>k__BackingField: {x: 650, y: 250}
+    <Position>k__BackingField: {x: 225, y: 125}
     <DialogueType>k__BackingField: 0
     <Character>k__BackingField: {fileID: 0}
     <Text>k__BackingField: 
@@ -67,7 +67,96 @@ MonoBehaviour:
       <NodeID>k__BackingField: 09686ecd-2309-4437-a497-f69202ac418d
     - <Text>k__BackingField: Comlpeted
       <NodeID>k__BackingField: b4d7f1c4-4a92-4486-b36d-9fc8b5d45de4
-    <Position>k__BackingField: {x: -25, y: 100}
+    <Position>k__BackingField: {x: -450, y: -25}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 0}
+    <Text>k__BackingField: 
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+  - <ID>k__BackingField: b4d7f1c4-4a92-4486-b36d-9fc8b5d45de4
+    <Name>k__BackingField: LucusFlowerQ1b
+    <NodeType>k__BackingField: 4
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Not Accepted
+      <NodeID>k__BackingField: a7f8fd81-b222-435e-a142-64eec99a1870
+    - <Text>k__BackingField: In Progress
+      <NodeID>k__BackingField: a7f8fd81-b222-435e-a142-64eec99a1870
+    - <Text>k__BackingField: Read for Hand-in
+      <NodeID>k__BackingField: a7f8fd81-b222-435e-a142-64eec99a1870
+    - <Text>k__BackingField: Comlpeted
+      <NodeID>k__BackingField: 6a773cb4-df90-4ff6-a39f-318fb8475667
+    <Position>k__BackingField: {x: 225, y: 425}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 0}
+    <Text>k__BackingField: 
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 4
+  - <ID>k__BackingField: acc4b5f0-e3ab-41ff-a82d-14bc60c22ca1
+    <Name>k__BackingField: LuWaBakedQ2aHandIn
+    <NodeType>k__BackingField: 5
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField: []
+    <Position>k__BackingField: {x: 900, y: 750}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 0}
+    <Text>k__BackingField: 
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+  - <ID>k__BackingField: 6a773cb4-df90-4ff6-a39f-318fb8475667
+    <Name>k__BackingField: LuWaBakedQ2a
+    <NodeType>k__BackingField: 4
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Not Accepted
+      <NodeID>k__BackingField: 72a837a2-645d-48e4-9a99-df8e7aedc25a
+    - <Text>k__BackingField: In Progress
+      <NodeID>k__BackingField: 72a837a2-645d-48e4-9a99-df8e7aedc25a
+    - <Text>k__BackingField: Read for Hand-in
+      <NodeID>k__BackingField: acc4b5f0-e3ab-41ff-a82d-14bc60c22ca1
+    - <Text>k__BackingField: Comlpeted
+      <NodeID>k__BackingField: 61d3557d-1ea0-4fbc-b075-1cf434e461c7
+    <Position>k__BackingField: {x: 500, y: 750}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 0}
+    <Text>k__BackingField: 
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 8
+  - <ID>k__BackingField: e44f06ce-9ccb-40dc-a8ad-8d06c4f0b8cd
+    <Name>k__BackingField: LuWaIngredientsQ3a
+    <NodeType>k__BackingField: 4
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Not Accepted
+      <NodeID>k__BackingField: 75e80a0d-ce1c-4f5f-8909-24708c2c0d2b
+    - <Text>k__BackingField: In Progress
+      <NodeID>k__BackingField: 72a837a2-645d-48e4-9a99-df8e7aedc25a
+    - <Text>k__BackingField: Read for Hand-in
+      <NodeID>k__BackingField: 72a837a2-645d-48e4-9a99-df8e7aedc25a
+    - <Text>k__BackingField: Comlpeted
+      <NodeID>k__BackingField: de7aa9eb-76b8-4351-8e5a-f8255f073626
+    <Position>k__BackingField: {x: 1050, y: 1225}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 0}
+    <Text>k__BackingField: 
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 10
+  - <ID>k__BackingField: 75e80a0d-ce1c-4f5f-8909-24708c2c0d2b
+    <Name>k__BackingField: LuWaIngredientsQ3Intro
+    <NodeType>k__BackingField: 5
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField: []
+    <Position>k__BackingField: {x: 1400, y: 1225}
     <DialogueType>k__BackingField: 0
     <Character>k__BackingField: {fileID: 0}
     <Text>k__BackingField: 
@@ -88,7 +177,7 @@ MonoBehaviour:
       <NodeID>k__BackingField: e19ee5d1-0983-458a-ae46-5151f8f14db3
     - <Text>k__BackingField: Comlpeted
       <NodeID>k__BackingField: 680b717d-4288-4796-964d-94086a24f317
-    <Position>k__BackingField: {x: 1092, y: 791}
+    <Position>k__BackingField: {x: 1950, y: 1425}
     <DialogueType>k__BackingField: 0
     <Character>k__BackingField: {fileID: 0}
     <Text>k__BackingField: 
@@ -96,46 +185,12 @@ MonoBehaviour:
     <Delay>k__BackingField: 0
     <Graph>k__BackingField: {fileID: 0}
     <Quest>k__BackingField: 5
-  - <ID>k__BackingField: b4d7f1c4-4a92-4486-b36d-9fc8b5d45de4
-    <Name>k__BackingField: LucusFlowerQ1b
-    <NodeType>k__BackingField: 4
-    <GroupID>k__BackingField: 
-    <Choices>k__BackingField:
-    - <Text>k__BackingField: Not Accepted
-      <NodeID>k__BackingField: a7f8fd81-b222-435e-a142-64eec99a1870
-    - <Text>k__BackingField: In Progress
-      <NodeID>k__BackingField: a7f8fd81-b222-435e-a142-64eec99a1870
-    - <Text>k__BackingField: Read for Hand-in
-      <NodeID>k__BackingField: a7f8fd81-b222-435e-a142-64eec99a1870
-    - <Text>k__BackingField: Comlpeted
-      <NodeID>k__BackingField: 72a837a2-645d-48e4-9a99-df8e7aedc25a
-    <Position>k__BackingField: {x: 650, y: 550}
-    <DialogueType>k__BackingField: 0
-    <Character>k__BackingField: {fileID: 0}
-    <Text>k__BackingField: 
-    <SoundEffect>k__BackingField: {fileID: 0}
-    <Delay>k__BackingField: 0
-    <Graph>k__BackingField: {fileID: 0}
-    <Quest>k__BackingField: 4
-  - <ID>k__BackingField: a7f8fd81-b222-435e-a142-64eec99a1870
-    <Name>k__BackingField: LucusFlowerQ1bHandin
-    <NodeType>k__BackingField: 5
-    <GroupID>k__BackingField: 
-    <Choices>k__BackingField: []
-    <Position>k__BackingField: {x: 1050, y: 550}
-    <DialogueType>k__BackingField: 0
-    <Character>k__BackingField: {fileID: 0}
-    <Text>k__BackingField: 
-    <SoundEffect>k__BackingField: {fileID: 0}
-    <Delay>k__BackingField: 0
-    <Graph>k__BackingField: {fileID: 0}
-    <Quest>k__BackingField: 0
   - <ID>k__BackingField: 2878dac1-02b7-490a-af66-936574d0a848
     <Name>k__BackingField: LucusBerriesQ2Intro
     <NodeType>k__BackingField: 5
     <GroupID>k__BackingField: 
     <Choices>k__BackingField: []
-    <Position>k__BackingField: {x: 1475, y: 775}
+    <Position>k__BackingField: {x: 2325, y: 1400}
     <DialogueType>k__BackingField: 0
     <Character>k__BackingField: {fileID: 0}
     <Text>k__BackingField: 
@@ -148,7 +203,7 @@ MonoBehaviour:
     <NodeType>k__BackingField: 5
     <GroupID>k__BackingField: 
     <Choices>k__BackingField: []
-    <Position>k__BackingField: {x: 1475, y: 925}
+    <Position>k__BackingField: {x: 2325, y: 1550}
     <DialogueType>k__BackingField: 0
     <Character>k__BackingField: {fileID: 0}
     <Text>k__BackingField: 
@@ -161,7 +216,7 @@ MonoBehaviour:
     <NodeType>k__BackingField: 5
     <GroupID>k__BackingField: 
     <Choices>k__BackingField: []
-    <Position>k__BackingField: {x: 1475, y: 1100}
+    <Position>k__BackingField: {x: 2325, y: 1725}
     <DialogueType>k__BackingField: 0
     <Character>k__BackingField: {fileID: 0}
     <Text>k__BackingField: 
@@ -176,11 +231,79 @@ MonoBehaviour:
     <Choices>k__BackingField:
     - <Text>k__BackingField: Next Node
       <NodeID>k__BackingField: 
-    <Position>k__BackingField: {x: 1475, y: 1275}
+    <Position>k__BackingField: {x: 2325, y: 1900}
     <DialogueType>k__BackingField: 0
     <Character>k__BackingField: {fileID: 11400000, guid: 49268ee1c8a3bee44b0063741027d804, type: 2}
     <Text>k__BackingField: I hope you are enjoying my greenhouse. If you want to
       know anything about the plants, just ask!
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+  - <ID>k__BackingField: de7aa9eb-76b8-4351-8e5a-f8255f073626
+    <Name>k__BackingField: LuWaIngredientsQ3b
+    <NodeType>k__BackingField: 4
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Not Accepted
+      <NodeID>k__BackingField: 72a837a2-645d-48e4-9a99-df8e7aedc25a
+    - <Text>k__BackingField: In Progress
+      <NodeID>k__BackingField: 72a837a2-645d-48e4-9a99-df8e7aedc25a
+    - <Text>k__BackingField: Read for Hand-in
+      <NodeID>k__BackingField: 7f21900f-eaa0-453c-b42a-95870d3c3698
+    - <Text>k__BackingField: Comlpeted
+      <NodeID>k__BackingField: 72a837a2-645d-48e4-9a99-df8e7aedc25a
+    <Position>k__BackingField: {x: 1325, y: 1425}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 0}
+    <Text>k__BackingField: 
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 11
+  - <ID>k__BackingField: 7f21900f-eaa0-453c-b42a-95870d3c3698
+    <Name>k__BackingField: LuWaIngredientsQ3Handin
+    <NodeType>k__BackingField: 5
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField: []
+    <Position>k__BackingField: {x: 1600, y: 1650}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 0}
+    <Text>k__BackingField: 
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+  - <ID>k__BackingField: 61d3557d-1ea0-4fbc-b075-1cf434e461c7
+    <Name>k__BackingField: LuWaBakedQ2b
+    <NodeType>k__BackingField: 4
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Not Accepted
+      <NodeID>k__BackingField: 72a837a2-645d-48e4-9a99-df8e7aedc25a
+    - <Text>k__BackingField: In Progress
+      <NodeID>k__BackingField: 72a837a2-645d-48e4-9a99-df8e7aedc25a
+    - <Text>k__BackingField: Read for Hand-in
+      <NodeID>k__BackingField: 72a837a2-645d-48e4-9a99-df8e7aedc25a
+    - <Text>k__BackingField: Comlpeted
+      <NodeID>k__BackingField: e44f06ce-9ccb-40dc-a8ad-8d06c4f0b8cd
+    <Position>k__BackingField: {x: 775, y: 975}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 0}
+    <Text>k__BackingField: 
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 9
+  - <ID>k__BackingField: a7f8fd81-b222-435e-a142-64eec99a1870
+    <Name>k__BackingField: LucusFlowerQ1bHandin
+    <NodeType>k__BackingField: 5
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField: []
+    <Position>k__BackingField: {x: 500, y: 500}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 0}
+    <Text>k__BackingField: 
     <SoundEffect>k__BackingField: {fileID: 0}
     <Delay>k__BackingField: 0
     <Graph>k__BackingField: {fileID: 0}
@@ -191,12 +314,19 @@ MonoBehaviour:
   - LucusQ1FlowerCompleteA
   - LucusQ1FlowerIncomplete
   - LucusFlowerQ1a
-  - LucusBerriesQ2
   - LucusFlowerQ1b
-  - LucusFlowerQ1bHandin
+  - LuWaBakedQ2aHandIn
+  - LuWaBakedQ2a
+  - LuWaIngredientsQ3a
+  - LuWaIngredientsQ3Intro
+  - LucusBerriesQ2
   - LucusBerriesQ2Intro
   - LucusBerriesQ2Incomplete
   - LucusBerriesQ2Complete
   - Lucus1
+  - LuWaIngredientsQ3b
+  - LuWaIngredientsQ3Handin
+  - LuWaBakedQ2b
+  - LucusFlowerQ1bHandin
   <OldGroupedNodeNames>k__BackingField:
     list: []
