@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEditor.Build.Content;
 
 public class TestersInterface : MonoBehaviour
 {
@@ -11,10 +12,22 @@ public class TestersInterface : MonoBehaviour
     [SerializeField] private TMP_Text partitionText;
     [SerializeField] private TMP_Text coordsText;
     [SerializeField] private TMP_Text playerControllerText;
+
+    [SerializeField] private Canvas canvas;
     #endregion
 
     private void Update()
     {
+        //Open close with backspace
+        if (Input.GetKeyDown(KeyCode.Backspace))
+        {
+            if (!canvas.gameObject.activeInHierarchy)
+            {
+                canvas.gameObject.SetActive(true);
+            }
+            else { canvas.gameObject.SetActive(false); }
+        }
+
         //Pass current partition's name into text
         currentPartition = TransitionController.Instance.CurrentPartition;
         partitionText.text = "Zone: " + currentPartition.gameObject.name.ToString();

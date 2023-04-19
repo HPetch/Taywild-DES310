@@ -10,6 +10,7 @@ public class AudioController : MonoBehaviour
     public static AudioController Instance { get; private set; }
     [SerializeField] private AudioMixer mixer;
     [SerializeField] private AudioSource[] sources; //0 = BGM, 1 = BGA, 2 = SFX
+    [SerializeField] private AudioSource specialSource; //For looping SFX ONLY - only ONE CLIP CAN PLAY AT A TIME IN THIS SOURCE
     [SerializeField] private AudioClip[] musics; //0 = Main, 1 = Generic, 2 = Warsan, 3 = Lucus
     [SerializeField] private AudioClip[] ambiences; //0 = Trunk, 1 = Woods, 2 = Ruins
 
@@ -80,6 +81,26 @@ public class AudioController : MonoBehaviour
     }
 
     #endregion
+
+    //Play looping sound, return the audiosource currently playing
+    public AudioSource PlayLoopingSound(AudioClip clip)
+    {
+        //Ignore if multiple calls are being made to this
+        if (!specialSource.isPlaying)
+        {
+            specialSource.clip = clip;
+            specialSource.loop = true;
+            specialSource.Play();
+        }
+        return specialSource;
+    }
+
+    //Stop sound currently looping in an AudioSource
+    public void StopLoopingSound(AudioSource source)
+    {
+        source.Stop();
+    }
+
     public void PlayMusic(BGM music)
     {
         //Stop coroutine if it is playing so we can apply new state
