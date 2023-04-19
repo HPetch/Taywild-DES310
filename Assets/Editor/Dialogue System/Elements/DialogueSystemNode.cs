@@ -31,8 +31,8 @@ namespace DialogueSystem.Elements
         public float Delay { get; set; }
         public DialogueSystemDialogueContainerSO Graph { get; set; }
 
-        public QuestTypes Quest { get; set; }
-        public QuestStates QuestState { get; set; }
+        public QuestTypes Quest { get; set; } = QuestTypes.WarsanTutorial;
+        public QuestStates QuestState { get; set; } = QuestStates.InProgress;
 
 
         protected DialogueSystemGraphView graphView;

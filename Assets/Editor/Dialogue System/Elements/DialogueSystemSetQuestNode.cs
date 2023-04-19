@@ -47,7 +47,7 @@ namespace DialogueSystem.Elements
             VisualElement customDataContainer = new VisualElement();
             customDataContainer.AddToClassList("ds-node__custom-data-container");
 
-            EnumField questEnumField = new EnumField(QuestTypes.LucasFlowerQ1a);
+            EnumField questEnumField = new EnumField(Quest);
 
             questEnumField.RegisterValueChangedCallback(callback =>
             {
@@ -56,7 +56,7 @@ namespace DialogueSystem.Elements
 
             customDataContainer.Add(questEnumField);
 
-            EnumField queststateEnumField = new EnumField(QuestStates.InProgress);
+            EnumField queststateEnumField = new EnumField(QuestState);
 
             queststateEnumField.RegisterValueChangedCallback(callback =>
             {
