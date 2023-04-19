@@ -50,9 +50,14 @@ namespace DialogueSystem.Windows
                     userData = new DialogueSystemGraphNode(),
                     level = 2
                 },
-                new SearchTreeEntry(new GUIContent("Quest Node", indentationIcon))
+                new SearchTreeEntry(new GUIContent("Get Quest Node", indentationIcon))
                 {
-                    userData = new DialogueSystemQuestNode(),
+                    userData = new DialogueSystemGetQuestNode(),
+                    level = 2
+                },
+                new SearchTreeEntry(new GUIContent("Set Quest Node", indentationIcon))
+                {
+                    userData = new DialogueSystemSetQuestNode(),
                     level = 2
                 },
 
@@ -139,9 +144,18 @@ namespace DialogueSystem.Windows
                         return true;
                     }
 
-                case DialogueSystemQuestNode:
+                case DialogueSystemGetQuestNode:
                     {
-                        DialogueSystemQuestNode questNode = (DialogueSystemQuestNode)graphView.CreateQuestNode("QuestNode", localMousePosition);
+                        DialogueSystemGetQuestNode questNode = (DialogueSystemGetQuestNode)graphView.CreateGetQuestNode("GetQuestNode", localMousePosition);
+
+                        graphView.AddElement(questNode);
+
+                        return true;
+                    }
+
+                case DialogueSystemSetQuestNode:
+                    {
+                        DialogueSystemSetQuestNode questNode = (DialogueSystemSetQuestNode)graphView.CreateSetQuestNode("SetQuestNode", localMousePosition);
 
                         graphView.AddElement(questNode);
 

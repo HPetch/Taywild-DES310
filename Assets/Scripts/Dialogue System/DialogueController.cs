@@ -183,8 +183,19 @@ public class DialogueController : MonoBehaviour
                 yield return new WaitForSeconds(_node.Delay);
                 StartCoroutine(ComputeNode(_node.Choices[0].NextDialogue));
                 yield break;
+                
+            case NodeTypes.GetQuest:
+                QuestStates questState = ObjectiveController.Instance.GetQuest(_node.Quest).State;
+                StartCoroutine(ComputeNode(_node.Choices[(int)questState].NextDialogue));
+                yield break;
 
-            case NodeTypes.Quest:
+            case NodeTypes.SetQuest:
+                ObjectiveController.Quest quest = ObjectiveController.Instance.GetQuest(_node.Quest);
+                quest.State = _node.QuestState;
+                if (_node.QuestState == QuestStates.InProgress && quest.questObjectiveCompleteBeforeQuestIssued)
+                {
+                    quest.State = QuestStates.HandIn;
+                }
                 StartCoroutine(ComputeNode(_node.Choices[0].NextDialogue));
                 yield break;
 

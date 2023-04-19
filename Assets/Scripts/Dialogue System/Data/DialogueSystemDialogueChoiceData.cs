@@ -3,9 +3,10 @@ using UnityEngine;
 
 namespace DialogueSystem.Types
 {
-    public enum NodeTypes { Dialogue, Edge, Delay, Audio, Quest, Graph }
+    public enum NodeTypes { Dialogue, Edge, Delay, Audio, GetQuest, SetQuest, Graph }
     public enum DialogueTypes { SingleChoice, MultipleChoice }
-    public enum Quests { WarsanQuest1, WarsanQuest2, LucanQuest1 }
+    public enum QuestTypes { WarsanTutorial, WarsanBenchQ1, WarsanLogPlanterQ2, LucasFlowerQ1a, LucusFlowerQ1b, LucusBerriesQ2, LuWaGreenhouseQ1a, LuWaGreenhouseQ1b, LuWaBakedQ2a, LuWaBakedQ2b, LuWaIngredientsQ3a, LuWaIngredientsQ3b }
+    public enum QuestStates { NotAccepted, InProgress, HandIn, Completed }
 }
 
 namespace DialogueSystem.Data

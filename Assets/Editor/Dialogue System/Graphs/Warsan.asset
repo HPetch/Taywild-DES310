@@ -1,0 +1,659 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 403e5cc4e9ab18442bab3ceb18f352e9, type: 3}
+  m_Name: Warsan
+  m_EditorClassIdentifier: 
+  <FileName>k__BackingField: 
+  <Groups>k__BackingField: []
+  <Nodes>k__BackingField:
+  - <ID>k__BackingField: 48620bdb-c9f1-462c-bc72-9a32ccd418a8
+    <Name>k__BackingField: WarsanTutorial
+    <NodeType>k__BackingField: 4
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Not Accepted
+      <NodeID>k__BackingField: 3305c2f0-64d6-4357-b322-2a93af238a30
+    - <Text>k__BackingField: In Progress
+      <NodeID>k__BackingField: 44d37108-1075-4c43-bfa9-1feea395065b
+    - <Text>k__BackingField: Read for Hand-in
+      <NodeID>k__BackingField: 5e1122ec-dbbf-4c39-8bf8-ce5972dac4ee
+    - <Text>k__BackingField: Comlpeted
+      <NodeID>k__BackingField: 99804017-8fce-464a-b575-0e36160de8b3
+    <Position>k__BackingField: {x: 175, y: 325}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 0}
+    <Text>k__BackingField: 
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 0
+  - <ID>k__BackingField: 99804017-8fce-464a-b575-0e36160de8b3
+    <Name>k__BackingField: LuWaGreenhouseQ1a
+    <NodeType>k__BackingField: 4
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Not Accepted
+      <NodeID>k__BackingField: 3f1102ba-2a2b-48e2-8810-82f5064c8edc
+    - <Text>k__BackingField: In Progress
+      <NodeID>k__BackingField: 2349085b-7a22-40f8-b148-9b0df89d2525
+    - <Text>k__BackingField: Read for Hand-in
+      <NodeID>k__BackingField: 2349085b-7a22-40f8-b148-9b0df89d2525
+    - <Text>k__BackingField: Comlpeted
+      <NodeID>k__BackingField: 846d80ca-a7e1-4e7e-a15f-dd04ab3b6fb7
+    <Position>k__BackingField: {x: 475, y: 625}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 0}
+    <Text>k__BackingField: 
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 6
+    <QuestState>k__BackingField: 0
+  - <ID>k__BackingField: 81277855-4155-424b-b404-53bd30957eba
+    <Name>k__BackingField: LuWaBakedQ2a
+    <NodeType>k__BackingField: 4
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Not Accepted
+      <NodeID>k__BackingField: 89551eed-943c-4548-b9de-f9827f9203d1
+    - <Text>k__BackingField: In Progress
+      <NodeID>k__BackingField: 1bfcf586-a469-44fc-be5b-d26766a82c71
+    - <Text>k__BackingField: Read for Hand-in
+      <NodeID>k__BackingField: 1bfcf586-a469-44fc-be5b-d26766a82c71
+    - <Text>k__BackingField: Comlpeted
+      <NodeID>k__BackingField: 97e9f718-6677-4e13-a533-db322ecb396c
+    <Position>k__BackingField: {x: 1850, y: 2125}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 0}
+    <Text>k__BackingField: 
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 8
+    <QuestState>k__BackingField: 0
+  - <ID>k__BackingField: 97e9f718-6677-4e13-a533-db322ecb396c
+    <Name>k__BackingField: LuWaBakedQ2b
+    <NodeType>k__BackingField: 4
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Not Accepted
+      <NodeID>k__BackingField: 1bfcf586-a469-44fc-be5b-d26766a82c71
+    - <Text>k__BackingField: In Progress
+      <NodeID>k__BackingField: 1bfcf586-a469-44fc-be5b-d26766a82c71
+    - <Text>k__BackingField: Read for Hand-in
+      <NodeID>k__BackingField: 922f513b-ed45-43e9-93d1-c051aeae65d9
+    - <Text>k__BackingField: Comlpeted
+      <NodeID>k__BackingField: d90d2f34-3172-4b9d-b091-1d4792b796cf
+    <Position>k__BackingField: {x: 2150, y: 2450}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 0}
+    <Text>k__BackingField: 
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 9
+    <QuestState>k__BackingField: 0
+  - <ID>k__BackingField: d90d2f34-3172-4b9d-b091-1d4792b796cf
+    <Name>k__BackingField: LuWaIngredientsQ3a
+    <NodeType>k__BackingField: 4
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Not Accepted
+      <NodeID>k__BackingField: 1bfcf586-a469-44fc-be5b-d26766a82c71
+    - <Text>k__BackingField: In Progress
+      <NodeID>k__BackingField: 1bfcf586-a469-44fc-be5b-d26766a82c71
+    - <Text>k__BackingField: Read for Hand-in
+      <NodeID>k__BackingField: a475eabb-6831-43cb-83a6-154853835c4d
+    - <Text>k__BackingField: Comlpeted
+      <NodeID>k__BackingField: 1bfcf586-a469-44fc-be5b-d26766a82c71
+    <Position>k__BackingField: {x: 2425, y: 2700}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 0}
+    <Text>k__BackingField: 
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 10
+    <QuestState>k__BackingField: 0
+  - <ID>k__BackingField: 9c4dc27d-b218-40bf-aaf0-e2cbb5e3417e
+    <Name>k__BackingField: Warsan1
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: 
+    <Position>k__BackingField: {x: 3350, y: 3275}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 42a93fd49028fb743aa99b1e50d959f1, type: 2}
+    <Text>k__BackingField: 'Hello dear, are you doing well? '
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 0
+  - <ID>k__BackingField: 3305c2f0-64d6-4357-b322-2a93af238a30
+    <Name>k__BackingField: SetQuestNode1
+    <NodeType>k__BackingField: 5
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: 0f540afb-2cdc-40a0-87df-be6a45f4995f
+    <Position>k__BackingField: {x: 500, y: 175}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 0}
+    <Text>k__BackingField: 
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: 0f540afb-2cdc-40a0-87df-be6a45f4995f
+    <Name>k__BackingField: GraphNode1
+    <NodeType>k__BackingField: 6
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField: []
+    <Position>k__BackingField: {x: 825, y: 175}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 0}
+    <Text>k__BackingField: 
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 11400000, guid: b85f2579566fd934e9d3c3b8a2ce3c37, type: 2}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: 5e1122ec-dbbf-4c39-8bf8-ce5972dac4ee
+    <Name>k__BackingField: SetQuestNode2
+    <NodeType>k__BackingField: 5
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: 1d3c2cd0-2161-441e-8c4d-0b758d87c907
+    <Position>k__BackingField: {x: 500, y: 475}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 0}
+    <Text>k__BackingField: 
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 3
+  - <ID>k__BackingField: 44d37108-1075-4c43-bfa9-1feea395065b
+    <Name>k__BackingField: GraphNode2
+    <NodeType>k__BackingField: 6
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField: []
+    <Position>k__BackingField: {x: 500, y: 350}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 0}
+    <Text>k__BackingField: 
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 11400000, guid: 6e25a8d8526c675489acabbc2f643484, type: 2}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: 3f1102ba-2a2b-48e2-8810-82f5064c8edc
+    <Name>k__BackingField: SetQuestNode3
+    <NodeType>k__BackingField: 5
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: 193202fa-0edf-4767-99f9-e08ad9cf29ba
+    <Position>k__BackingField: {x: 800, y: 625}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 0}
+    <Text>k__BackingField: 
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 6
+    <QuestState>k__BackingField: 2
+  - <ID>k__BackingField: 1d3c2cd0-2161-441e-8c4d-0b758d87c907
+    <Name>k__BackingField: GraphNode3
+    <NodeType>k__BackingField: 6
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField: []
+    <Position>k__BackingField: {x: 775, y: 475}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 0}
+    <Text>k__BackingField: 
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 11400000, guid: 4bbfe8018baa30b4db7a2c8686e7f8a1, type: 2}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: 193202fa-0edf-4767-99f9-e08ad9cf29ba
+    <Name>k__BackingField: GraphNode4
+    <NodeType>k__BackingField: 6
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField: []
+    <Position>k__BackingField: {x: 1100, y: 625}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 0}
+    <Text>k__BackingField: 
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 11400000, guid: 7b1f3d05aeaa4724ba50dda912a1eb8f, type: 2}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: 2349085b-7a22-40f8-b148-9b0df89d2525
+    <Name>k__BackingField: WarsanBenchQ1
+    <NodeType>k__BackingField: 4
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Not Accepted
+      <NodeID>k__BackingField: 45889bcc-f803-4843-918e-75fcd5922035
+    - <Text>k__BackingField: In Progress
+      <NodeID>k__BackingField: f4d48cbc-df8d-4aff-a7fd-3b1197262a1e
+    - <Text>k__BackingField: Read for Hand-in
+      <NodeID>k__BackingField: 06dcf75d-0f02-4379-b0d3-34a216af6a99
+    - <Text>k__BackingField: Comlpeted
+      <NodeID>k__BackingField: d8e4d1c5-d10d-4522-ac07-9792f39f2285
+    <Position>k__BackingField: {x: 1400, y: 1600}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 0}
+    <Text>k__BackingField: 
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 1
+    <QuestState>k__BackingField: 0
+  - <ID>k__BackingField: 846d80ca-a7e1-4e7e-a15f-dd04ab3b6fb7
+    <Name>k__BackingField: LuWaGreenhouseQ1b
+    <NodeType>k__BackingField: 4
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Not Accepted
+      <NodeID>k__BackingField: 2349085b-7a22-40f8-b148-9b0df89d2525
+    - <Text>k__BackingField: In Progress
+      <NodeID>k__BackingField: 2349085b-7a22-40f8-b148-9b0df89d2525
+    - <Text>k__BackingField: Read for Hand-in
+      <NodeID>k__BackingField: eba1d0c8-ab2e-41dc-adc0-6b92f3ab9837
+    - <Text>k__BackingField: Comlpeted
+      <NodeID>k__BackingField: 2349085b-7a22-40f8-b148-9b0df89d2525
+    <Position>k__BackingField: {x: 650, y: 1125}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 0}
+    <Text>k__BackingField: 
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 7
+    <QuestState>k__BackingField: 0
+  - <ID>k__BackingField: eba1d0c8-ab2e-41dc-adc0-6b92f3ab9837
+    <Name>k__BackingField: SetQuestNode4
+    <NodeType>k__BackingField: 5
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: f8751626-96c9-47ac-8454-5a2b5c638d00
+    <Position>k__BackingField: {x: 1000, y: 1125}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 0}
+    <Text>k__BackingField: 
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 7
+    <QuestState>k__BackingField: 3
+  - <ID>k__BackingField: f8751626-96c9-47ac-8454-5a2b5c638d00
+    <Name>k__BackingField: GraphNode5
+    <NodeType>k__BackingField: 6
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField: []
+    <Position>k__BackingField: {x: 1300, y: 1125}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 0}
+    <Text>k__BackingField: 
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 11400000, guid: 367b736a0bc25d64ab9b560d5719a578, type: 2}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: 45889bcc-f803-4843-918e-75fcd5922035
+    <Name>k__BackingField: SetQuestNode5
+    <NodeType>k__BackingField: 5
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: 858fc8dc-751c-4c49-acee-c441287d91bf
+    <Position>k__BackingField: {x: 1725, y: 1500}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 0}
+    <Text>k__BackingField: 
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 1
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: 858fc8dc-751c-4c49-acee-c441287d91bf
+    <Name>k__BackingField: GraphNode6
+    <NodeType>k__BackingField: 6
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField: []
+    <Position>k__BackingField: {x: 2075, y: 1500}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 0}
+    <Text>k__BackingField: 
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 11400000, guid: 0a8d3ec11e5343440bbffffe13ca7d8d, type: 2}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: f4d48cbc-df8d-4aff-a7fd-3b1197262a1e
+    <Name>k__BackingField: GraphNode7
+    <NodeType>k__BackingField: 6
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField: []
+    <Position>k__BackingField: {x: 2075, y: 1650}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 0}
+    <Text>k__BackingField: 
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 11400000, guid: cf806c7212e43394ea2f45f003a37da0, type: 2}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: 06dcf75d-0f02-4379-b0d3-34a216af6a99
+    <Name>k__BackingField: SetQuestNode6
+    <NodeType>k__BackingField: 5
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: e8d40625-e5a3-43f5-992b-7bf8db184ead
+    <Position>k__BackingField: {x: 1725, y: 1750}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 0}
+    <Text>k__BackingField: 
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 1
+    <QuestState>k__BackingField: 3
+  - <ID>k__BackingField: e8d40625-e5a3-43f5-992b-7bf8db184ead
+    <Name>k__BackingField: GraphNode8
+    <NodeType>k__BackingField: 6
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField: []
+    <Position>k__BackingField: {x: 2075, y: 1825}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 0}
+    <Text>k__BackingField: 
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 11400000, guid: 22ebe542299dd37488431d13f6f2988f, type: 2}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: d8e4d1c5-d10d-4522-ac07-9792f39f2285
+    <Name>k__BackingField: GetQuestNode
+    <NodeType>k__BackingField: 4
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Not Accepted
+      <NodeID>k__BackingField: 1bfcf586-a469-44fc-be5b-d26766a82c71
+    - <Text>k__BackingField: In Progress
+      <NodeID>k__BackingField: 1bfcf586-a469-44fc-be5b-d26766a82c71
+    - <Text>k__BackingField: Read for Hand-in
+      <NodeID>k__BackingField: 1bfcf586-a469-44fc-be5b-d26766a82c71
+    - <Text>k__BackingField: Comlpeted
+      <NodeID>k__BackingField: 81277855-4155-424b-b404-53bd30957eba
+    <Position>k__BackingField: {x: 1575, y: 1950}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 0}
+    <Text>k__BackingField: 
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 7
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: 89551eed-943c-4548-b9de-f9827f9203d1
+    <Name>k__BackingField: SetQuestNode7
+    <NodeType>k__BackingField: 5
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: ed2f004e-68ae-4620-8ec1-547d9bfe074e
+    <Position>k__BackingField: {x: 2225, y: 2075}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 0}
+    <Text>k__BackingField: 
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 8
+    <QuestState>k__BackingField: 2
+  - <ID>k__BackingField: ed2f004e-68ae-4620-8ec1-547d9bfe074e
+    <Name>k__BackingField: GraphNode9
+    <NodeType>k__BackingField: 6
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField: []
+    <Position>k__BackingField: {x: 2525, y: 2075}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 0}
+    <Text>k__BackingField: 
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 11400000, guid: 4278d7ae1bc113545a1b9f99d462300f, type: 2}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: 922f513b-ed45-43e9-93d1-c051aeae65d9
+    <Name>k__BackingField: SetQuestNode8
+    <NodeType>k__BackingField: 5
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: 36d1ffd0-09e2-48f6-9be8-64e5543149ea
+    <Position>k__BackingField: {x: 2450, y: 2450}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 0}
+    <Text>k__BackingField: 
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 9
+    <QuestState>k__BackingField: 3
+  - <ID>k__BackingField: 36d1ffd0-09e2-48f6-9be8-64e5543149ea
+    <Name>k__BackingField: GraphNode10
+    <NodeType>k__BackingField: 6
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField: []
+    <Position>k__BackingField: {x: 2750, y: 2450}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 0}
+    <Text>k__BackingField: 
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 11400000, guid: 255ebfbc7b08c6e428d2c930c017a22b, type: 2}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: a475eabb-6831-43cb-83a6-154853835c4d
+    <Name>k__BackingField: SetQuestNode9
+    <NodeType>k__BackingField: 5
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: 17e17123-5d5b-4b7a-974f-0e46a26975a9
+    <Position>k__BackingField: {x: 2725, y: 2700}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 0}
+    <Text>k__BackingField: 
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 10
+    <QuestState>k__BackingField: 3
+  - <ID>k__BackingField: 1bfcf586-a469-44fc-be5b-d26766a82c71
+    <Name>k__BackingField: WarsanLogPlanterQ2
+    <NodeType>k__BackingField: 4
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Not Accepted
+      <NodeID>k__BackingField: d359b7a8-05fd-49cd-9f8c-7d59506271c5
+    - <Text>k__BackingField: In Progress
+      <NodeID>k__BackingField: 27104bd5-a989-4e6d-a8f0-2b453ae78c70
+    - <Text>k__BackingField: Read for Hand-in
+      <NodeID>k__BackingField: 9299dc2d-2999-42bb-b9df-c2638375e502
+    - <Text>k__BackingField: Comlpeted
+      <NodeID>k__BackingField: 9c4dc27d-b218-40bf-aaf0-e2cbb5e3417e
+    <Position>k__BackingField: {x: 3000, y: 2875}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 0}
+    <Text>k__BackingField: 
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 2
+    <QuestState>k__BackingField: 0
+  - <ID>k__BackingField: 17e17123-5d5b-4b7a-974f-0e46a26975a9
+    <Name>k__BackingField: SetQuestNode10
+    <NodeType>k__BackingField: 5
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: e2452e9e-a4f9-4408-822b-6675dc8c2c64
+    <Position>k__BackingField: {x: 3025, y: 2700}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 0}
+    <Text>k__BackingField: 
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 11
+    <QuestState>k__BackingField: 2
+  - <ID>k__BackingField: e2452e9e-a4f9-4408-822b-6675dc8c2c64
+    <Name>k__BackingField: GraphNode11
+    <NodeType>k__BackingField: 6
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField: []
+    <Position>k__BackingField: {x: 3300, y: 2700}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 0}
+    <Text>k__BackingField: 
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 11400000, guid: 192292b47d2dae54c9e559a2be12a40c, type: 2}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: d359b7a8-05fd-49cd-9f8c-7d59506271c5
+    <Name>k__BackingField: SetQuestNode11
+    <NodeType>k__BackingField: 5
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: f01d2e99-6e92-4717-be2c-467edf8919f1
+    <Position>k__BackingField: {x: 3350, y: 2875}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 0}
+    <Text>k__BackingField: 
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 2
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: f01d2e99-6e92-4717-be2c-467edf8919f1
+    <Name>k__BackingField: GraphNode12
+    <NodeType>k__BackingField: 6
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField: []
+    <Position>k__BackingField: {x: 3650, y: 2875}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 0}
+    <Text>k__BackingField: 
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 11400000, guid: e2491a5215a7a5f41af3905982492935, type: 2}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: 27104bd5-a989-4e6d-a8f0-2b453ae78c70
+    <Name>k__BackingField: GraphNode13
+    <NodeType>k__BackingField: 6
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField: []
+    <Position>k__BackingField: {x: 3650, y: 3025}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 0}
+    <Text>k__BackingField: 
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 11400000, guid: a742264414cfa41458080fab9b72c433, type: 2}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: 9299dc2d-2999-42bb-b9df-c2638375e502
+    <Name>k__BackingField: SetQuestNode12
+    <NodeType>k__BackingField: 5
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: f50fa4a1-fb6c-4b60-b6a7-2c96840d4d31
+    <Position>k__BackingField: {x: 3350, y: 3100}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 0}
+    <Text>k__BackingField: 
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 2
+    <QuestState>k__BackingField: 3
+  - <ID>k__BackingField: f50fa4a1-fb6c-4b60-b6a7-2c96840d4d31
+    <Name>k__BackingField: GraphNode14
+    <NodeType>k__BackingField: 6
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField: []
+    <Position>k__BackingField: {x: 3625, y: 3175}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 0}
+    <Text>k__BackingField: 
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 11400000, guid: 0de271d19088d4f49a79a1339a2a7b62, type: 2}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  <OldGroupNames>k__BackingField: []
+  <OldUngroupedNodeNames>k__BackingField:
+  - WarsanTutorial
+  - LuWaGreenhouseQ1a
+  - LuWaBakedQ2a
+  - LuWaBakedQ2b
+  - LuWaIngredientsQ3a
+  - Warsan1
+  - SetQuestNode1
+  - GraphNode1
+  - SetQuestNode2
+  - GraphNode2
+  - SetQuestNode3
+  - GraphNode3
+  - GraphNode4
+  - WarsanBenchQ1
+  - LuWaGreenhouseQ1b
+  - SetQuestNode4
+  - GraphNode5
+  - SetQuestNode5
+  - GraphNode6
+  - GraphNode7
+  - SetQuestNode6
+  - GraphNode8
+  - GetQuestNode
+  - SetQuestNode7
+  - GraphNode9
+  - SetQuestNode8
+  - GraphNode10
+  - SetQuestNode9
+  - WarsanLogPlanterQ2
+  - SetQuestNode10
+  - GraphNode11
+  - SetQuestNode11
+  - GraphNode12
+  - GraphNode13
+  - SetQuestNode12
+  - GraphNode14
+  <OldGroupedNodeNames>k__BackingField:
+    list: []
