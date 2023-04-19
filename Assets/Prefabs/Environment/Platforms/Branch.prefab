@@ -47,6 +47,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a8ed7b078ed0de4cadded5e2cbbdc43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isFloaitngPlatform: 0
+  bounceEffectStrength: 0.1
+  bounceEffectDuration: 1
+  shakeEffectStrength: 0.1
+  shakeEffectDuration: 0.2
+  surfaceType: 2
 --- !u!1971053207 &8866381538914250921
 SpriteShapeRenderer:
   m_ObjectHideFlags: 0

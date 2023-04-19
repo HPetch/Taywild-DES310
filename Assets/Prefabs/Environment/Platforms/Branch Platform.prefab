@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5558235421928639107}
   - component: {fileID: 1810397911411002626}
   - component: {fileID: 1810397911411002627}
+  - component: {fileID: 372835461725839168}
   m_Layer: 6
   m_Name: Branch Platform
   m_TagString: Ground
@@ -48,10 +49,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isFloaitngPlatform: 0
-  bounceEffectStrength: 0.1
-  bounceEffectDuration: 1
-  shakeEffectStrength: 0.05
-  shakeEffectDuration: 0.2
+  bounceEffectStrength: 0.05
+  bounceEffectDuration: 0.5
+  shakeEffectStrength: 0.02
+  shakeEffectDuration: 0.1
+  surfaceType: 2
 --- !u!212 &1810397911411002626
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -93,7 +95,7 @@ SpriteRenderer:
   m_SortingLayerID: -56501953
   m_SortingLayer: -1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: c4589f0b7b26b9e4db4243120c0a3934, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 118ce3b6fe2be9c42ba533d7469781c2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -115,13 +117,13 @@ BoxCollider2D:
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_UsedByEffector: 0
+  m_UsedByEffector: 1
   m_UsedByComposite: 0
-  m_Offset: {x: -0.55, y: 1.25}
+  m_Offset: {x: -0.61, y: 1.51}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 9.6, y: 3.35}
+    oldSize: {x: 9.75, y: 4}
     newSize: {x: 3.61, y: 0.98}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -130,6 +132,25 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.5, y: 0.75}
   m_EdgeRadius: 0
+--- !u!251 &372835461725839168
+PlatformEffector2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1810397911411002625}
+  m_Enabled: 1
+  m_UseColliderMask: 1
+  m_ColliderMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RotationalOffset: 0
+  m_UseOneWay: 1
+  m_UseOneWayGrouping: 0
+  m_SurfaceArc: 180
+  m_UseSideFriction: 0
+  m_UseSideBounce: 0
+  m_SideArc: 1
 --- !u!1 &9177306150592631458
 GameObject:
   m_ObjectHideFlags: 0
@@ -156,7 +177,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9177306150592631458}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.5, y: 1, z: 0}
+  m_LocalPosition: {x: -0.609, y: 1.494, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

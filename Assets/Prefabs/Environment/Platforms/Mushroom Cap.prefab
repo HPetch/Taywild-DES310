@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 2362404074480899592}
   - component: {fileID: 60702050243363674}
   - component: {fileID: 2578423513495669269}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: BouncePad
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -131,7 +131,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2cdef80d005e164da7d5588565d54f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bounceFactor: 30
+  inactiveBounceFactor: 20
+  activeBounceFactor: 20
+  bounceSounds:
+  - {fileID: 8300000, guid: 75c4e7a581b6c4c4a9eb0ca23dafdbfa, type: 3}
+  - {fileID: 8300000, guid: 312ab70d5eb5e8d40a6386d82c2c19f9, type: 3}
 --- !u!1971053207 &2362404074480899592
 SpriteShapeRenderer:
   m_ObjectHideFlags: 0
@@ -309,5 +313,5 @@ Transform:
   - {fileID: 9018673042673370580}
   - {fileID: 9020607142206619798}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
