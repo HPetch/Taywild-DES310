@@ -33,8 +33,15 @@ public class ParallaxController : MonoBehaviour
             if (Mathf.Abs(playerCameraTransform.position.x - transform.position.x) >= textureUnitSizeX)
             {
                 float offsetPositionX = (playerCameraTransform.position.x - transform.position.x) % textureUnitSizeX;
-                offsetPositionX *= playerCameraTransform.position.x - transform.position.x < 0 ? -1 : 1;
-                transform.position += new Vector3(textureUnitSizeX + offsetPositionX, 0f, 0f);
+
+                if (playerCameraTransform.position.x - transform.position.x < 0)
+                {
+                    transform.position -= new Vector3(textureUnitSizeX + offsetPositionX, 0f, 0f);
+                }
+                else
+                {
+                    transform.position += new Vector3(textureUnitSizeX + offsetPositionX, 0f, 0f);
+                }
             }
         }
     }
