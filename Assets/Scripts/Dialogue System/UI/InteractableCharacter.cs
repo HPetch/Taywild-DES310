@@ -1,9 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using DialogueSystem;
 using DialogueSystem.ScriptableObjects;
 
 public class InteractableCharacter : CharacterCanvas
@@ -22,6 +19,9 @@ public class InteractableCharacter : CharacterCanvas
     public DialogueSystemDialogueContainerSO dialogueGraph;
 
     private bool isPlayerWithinInteractionDistance = false;
+
+    [field: Range(4, 15)]
+    [field: SerializeField] public float ConversationZoomLevel { get; private set; } = 5;
 
     #region Initialisation
     private void Awake()
