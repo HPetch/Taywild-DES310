@@ -113,13 +113,16 @@ public class AudioController : MonoBehaviour
         switch (music)
         {
             case BGM.Main:
-                BGMRoutine = StartCoroutine(SwapLoopingTrack(sources[0], musics[0], 2f, 2f));
+                if (sources[0].clip != musics[0])
+                    BGMRoutine = StartCoroutine(SwapLoopingTrack(sources[0], musics[0], 2f, 2f));
                 break;
             case BGM.Warsan:
-                BGMRoutine = StartCoroutine(SwapLoopingTrack(sources[0], musics[1], 2f, 2f));
+                if (sources[0].clip != musics[1])
+                    BGMRoutine = StartCoroutine(SwapLoopingTrack(sources[0], musics[1], 2f, 2f));
                 break;
             case BGM.Lucus:
-                BGMRoutine = StartCoroutine(SwapLoopingTrack(sources[0], musics[2], 2f, 2f));
+                if (sources[0].clip != musics[2])
+                    BGMRoutine = StartCoroutine(SwapLoopingTrack(sources[0], musics[2], 2f, 2f));
                 break;
             default:
                 break;
@@ -140,13 +143,16 @@ public class AudioController : MonoBehaviour
         switch (ambience)
         {
             case BGA.Trunk:
-                BGARoutine = StartCoroutine(SwapLoopingTrack(sources[1], ambiences[0],1f,1f));
+                if (sources[1].clip != ambiences[0])
+                    BGARoutine = StartCoroutine(SwapLoopingTrack(sources[1], ambiences[0],1f,1f));
                 break;
             case BGA.Woods:
-                BGARoutine = StartCoroutine(SwapLoopingTrack(sources[1], ambiences[1], 1f, 1f));
+                if (sources[1].clip != ambiences[1])
+                    BGARoutine = StartCoroutine(SwapLoopingTrack(sources[1], ambiences[1], 1f, 1f));
                 break;
             case BGA.Ruins:
-                BGARoutine = StartCoroutine(SwapLoopingTrack(sources[1], ambiences[2], 1f, 1f));
+                if (sources[1].clip != ambiences[2])
+                    BGARoutine = StartCoroutine(SwapLoopingTrack(sources[1], ambiences[2], 1f, 1f));
                 break;
             default:
                 break;
@@ -157,6 +163,7 @@ public class AudioController : MonoBehaviour
     //Adapted from https://johnleonardfrench.com/how-to-fade-audio-in-unity-i-tested-every-method-this-ones-the-best/#second_method
     private IEnumerator SwapLoopingTrack(AudioSource track, AudioClip clipToPlay, float fadeOutTime, float fadeInTime)
     {
+
         //Fade out
         float currentTime = 0;
         float currentVol = track.volume;
