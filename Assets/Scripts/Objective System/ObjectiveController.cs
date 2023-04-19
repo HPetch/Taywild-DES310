@@ -23,18 +23,12 @@ public class ObjectiveController : MonoBehaviour
         {
             quests.Add(new Quest((QuestTypes)quest));
         }
-
-        GetQuest(QuestTypes.LucusFlowerQ1b).State = QuestStates.HandIn;
-        GetQuest(QuestTypes.LuWaBakedQ2a).State = QuestStates.HandIn;
-        GetQuest(QuestTypes.LuWaBakedQ2b).State = QuestStates.HandIn;
-        GetQuest(QuestTypes.LuWaIngredientsQ3a).State = QuestStates.HandIn;
-        GetQuest(QuestTypes.LuWaIngredientsQ3b).State = QuestStates.HandIn;
-        GetQuest(QuestTypes.LuWaGreenhouseQ1b).State = QuestStates.HandIn;
     }
 
     private void Start()
     {
         DecorationController.Instance.OnPlaceDecoration += OnFurnitureObjectPlaced;
+        InventoryController.Instance.OnItemAdded += OnItemAddedToInventory;
     }
     #endregion
 
@@ -45,18 +39,93 @@ public class ObjectiveController : MonoBehaviour
 
     public void OnFurnitureObjectPlaced(FurnitureObject _object)
     {
-        if (GetQuest(QuestTypes.WarsanTutorial).State == QuestStates.InProgress && _object.UiName == "Hanging Flower Planter")
-        {
-            GetQuest(QuestTypes.WarsanTutorial).State = QuestStates.HandIn;
-        }
-
         if (_object.UiName == "Hanging Flower Planter")
         {
-            GetQuest(QuestTypes.WarsanBenchQ1).State = QuestStates.HandIn;
-        }
-    }
+            Quest warsanTutorial = GetQuest(QuestTypes.WarsanTutorial);
 
-    
+            if (warsanTutorial.State == QuestStates.NotAccepted)
+            {
+                warsanTutorial.questObjectiveCompleteBeforeQuestIssued = true;
+            }
+            else if (warsanTutorial.State == QuestStates.InProgress)
+            {
+                warsanTutorial.State = QuestStates.HandIn;
+            }
+        }
+
+        if (_object.UiName == "Bench")
+        {
+            Quest warsanBenchQ1 = GetQuest(QuestTypes.WarsanBenchQ1);
+
+            if (warsanBenchQ1.State == QuestStates.NotAccepted)
+            {
+                warsanBenchQ1.questObjectiveCompleteBeforeQuestIssued = true;
+            }
+            else if (warsanBenchQ1.State == QuestStates.InProgress)
+            {
+                warsanBenchQ1.State = QuestStates.HandIn;
+            }
+        }
+
+        if (_object.UiName == "Log Planter")
+        {
+            Quest warsanLogPlanterQ2 = GetQuest(QuestTypes.WarsanLogPlanterQ2);
+
+            if (warsanLogPlanterQ2.State == QuestStates.NotAccepted)
+            {
+                warsanLogPlanterQ2.questObjectiveCompleteBeforeQuestIssued = true;
+            }
+            else if (warsanLogPlanterQ2.State == QuestStates.InProgress)
+            {
+                warsanLogPlanterQ2.State = QuestStates.HandIn;
+            }
+        }
+    }    
+
+    public void OnItemAddedToInventory(InventoryController.ItemNames _item, int _quantityAdded, Vector2 _position)
+    {
+        if (_item == InventoryController.ItemNames.QUEST_BLUEFLOWER)
+        {
+            Quest lucasFlowerQ1a = GetQuest(QuestTypes.LucasFlowerQ1a);
+
+            if (lucasFlowerQ1a.State == QuestStates.NotAccepted)
+            {
+                lucasFlowerQ1a.questObjectiveCompleteBeforeQuestIssued = true;
+            }
+            else if (lucasFlowerQ1a.State == QuestStates.InProgress)
+            {
+                lucasFlowerQ1a.State = QuestStates.HandIn;
+            }
+        }
+
+        //if (_item == InventoryController.ItemNames.BERRY && InventoryController.Instance.ItemQuantity(InventoryController.ItemNames.BOOK) > 0)
+        //{            
+        //    Quest LucusBerriesQ2 = GetQuest(QuestTypes.LucusBerriesQ2);
+
+        //    if (LucusBerriesQ2.State == QuestStates.NotAccepted)
+        //    {
+        //        LucusBerriesQ2.questObjectiveCompleteBeforeQuestIssued = true;
+        //    }
+        //    else if (LucusBerriesQ2.State == QuestStates.InProgress)
+        //    {
+        //        LucusBerriesQ2.State = QuestStates.HandIn;
+        //    }
+        //}
+
+        //if (_item == InventoryController.ItemNames.BOOK && InventoryController.Instance.ItemQuantity(InventoryController.ItemNames.BERRY) > 0)
+        //{
+        //    Quest LucusBerriesQ2 = GetQuest(QuestTypes.LucusBerriesQ2);
+
+        //    if (LucusBerriesQ2.State == QuestStates.NotAccepted)
+        //    {
+        //        LucusBerriesQ2.questObjectiveCompleteBeforeQuestIssued = true;
+        //    }
+        //    else if (LucusBerriesQ2.State == QuestStates.InProgress)
+        //    {
+        //        LucusBerriesQ2.State = QuestStates.HandIn;
+        //    }
+        //}
+    }
     #endregion
 
     [System.Serializable]
@@ -64,6 +133,8 @@ public class ObjectiveController : MonoBehaviour
     {
         [field: SerializeField] public QuestTypes QuestType { get; set; }
         public QuestStates State { get; set; }
+
+        public bool questObjectiveCompleteBeforeQuestIssued = false;
 
         public Quest(QuestTypes _questType)
         {
