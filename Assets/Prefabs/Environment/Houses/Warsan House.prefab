@@ -1035,7 +1035,7 @@ Transform:
   - {fileID: 8353379660609879415}
   - {fileID: 1071770185044100827}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &6163523525443912955
 BoxCollider2D:
@@ -1083,6 +1083,7 @@ MonoBehaviour:
   character: {fileID: 8772289286187233372}
   houseColliders: {fileID: 4356779756805838462}
   zoomLevel: 4
+  cameraFollowPlayer: 0
 --- !u!1 &5063602321048426116
 GameObject:
   m_ObjectHideFlags: 0
@@ -2001,13 +2002,15 @@ MonoBehaviour:
   heightRange: {x: 60, y: 300}
   speachBubbleFloatFrequency: 1
   speachBubbleFloatAmplitude: 0.5
+  openingClip: {fileID: 0}
   tailTransitionTime: 0.1
   speechBubbleOpenCloseTransitionTime: 0.3
   speechBubbleResizeTransitionTime: 0.2
   characterNameText: {fileID: 481736251516447669}
   characterNameTransitionTime: 0.2
   interactCanvasGroup: {fileID: 1307573583840025750}
-  dialogueGraph: {fileID: 11400000, guid: 7fae7fc735bd6974caf64bf4c49e7a9d, type: 2}
+  dialogueGraph: {fileID: 11400000, guid: b3162bb0c063d9445872694578dc1199, type: 2}
+  <ConversationZoomLevel>k__BackingField: 5
 --- !u!61 &5555614964198928577
 BoxCollider2D:
   m_ObjectHideFlags: 0

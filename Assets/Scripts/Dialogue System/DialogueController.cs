@@ -22,6 +22,7 @@ public class DialogueController : MonoBehaviour
     #region Variables
     public bool IsConversing { get; private set; } = false;
     public InteractableCharacter Character { get; private set; } = null;
+    public DialogueSystemDialogueContainerSO CurrentGraph { get; private set; } = null;
 
     private DialogueSystemDialogueSO dialogueNode = null;
     private CharacterCanvas currentDialogueCanvas = null;
@@ -104,10 +105,9 @@ public class DialogueController : MonoBehaviour
     /// </summary>
     public void TriggerConversation(DialogueSystemDialogueContainerSO _graph, InteractableCharacter _character)
     {
-        if (IsConversing) return;
-
         IsConversing = true;        
         Character = _character;
+        CurrentGraph = _graph;
 
         ////Audio on dialogue zoom here
         AudioController.Instance.PlaySound(zoomInClip,true);
@@ -124,7 +124,7 @@ public class DialogueController : MonoBehaviour
 
     private IEnumerator ComputeNode(DialogueSystemDialogueSO _node)
     {
-        if (_node == null || _node.Choices.Count == 0)
+        if (_node == null)
         {
             EndConversation();
             yield break;
