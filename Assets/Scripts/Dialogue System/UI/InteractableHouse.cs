@@ -16,6 +16,7 @@ public class InteractableHouse : MonoBehaviour
 
     [Space(10)]
     [SerializeField] private float zoomLevel;
+    [SerializeField] private bool cameraFollowPlayer;
 
     private bool isNextToDoor = false;
     private bool isInHouse = false;
@@ -45,17 +46,15 @@ public class InteractableHouse : MonoBehaviour
         character.SetActive(true);
         houseColliders.SetActive(true);
 
-        //LeanTween.cancel(houseExterior.gameObject);
-        //LeanTween.alpha(houseExterior.gameObject, 0, 0.15f);
+        LeanTween.cancel(houseExterior.gameObject);
+        LeanTween.alpha(houseExterior.gameObject, 0, 0.15f);
 
-        //LeanTween.cancel(door.gameObject);
-        //LeanTween.alpha(door.gameObject, 0, 0.15f);
-
-        door.color = new Color(1, 1, 1, 0.5f);
-        houseExterior.color = new Color(1, 1, 1, 0);
+        LeanTween.cancel(door.gameObject);
+        LeanTween.alpha(door.gameObject, 0, 0.15f);
 
         CameraController.Instance.Zoom(zoomLevel);
-        CameraController.Instance.SetTarget(door.transform);
+
+        if(!cameraFollowPlayer) CameraController.Instance.SetTarget(door.transform);
 
         isInHouse = true;
     }
