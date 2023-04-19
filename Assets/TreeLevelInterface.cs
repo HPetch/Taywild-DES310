@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class TreeLevelInterface : MonoBehaviour
 {
@@ -11,6 +12,10 @@ public class TreeLevelInterface : MonoBehaviour
     [field: SerializeField] public Transform LeafSprite { get; private set; }
     [field: SerializeField] public Transform WoodSprite { get; private set; }
     [field: SerializeField] public Transform SapSprite { get; private set; }
+
+    [SerializeField] private Image ExpBar;
+
+    [SerializeField] private Image[] LevelImages;
 
     [Header("Open/close animation")]
     private bool isOpen = false;
@@ -34,6 +39,9 @@ public class TreeLevelInterface : MonoBehaviour
         positionClosed = interfaceParent.anchoredPosition.x; //Get closed position based on where we put it at the start.
         DecorationController.Instance.OnEnterEditMode += Open;
         InventoryController.Instance.OnItemQuantityChanged += OpenItem;
+
+        TreeLevelController.Instance.OnExpTotalChanged += UpdateExpBar;
+        TreeLevelController.Instance.OnTreeLevelUp += UpdateLevelImg;
     }
 
     private void Update()
@@ -55,6 +63,21 @@ public class TreeLevelInterface : MonoBehaviour
         }
     }
     
+    private void UpdateExpBar()
+    {
+        int _treeLevel = TreeLevelController.Instance.CurrentTreeLevel;
+        float _treeExp = TreeLevelController.Instance.TotalExp;
+        int[] _treeLevelUpReqExp = TreeLevelController.Instance.treeLevelExpRequirements;
+        if (_treeLevel > 0) ExpBar.fillAmount = (_treeExp - _treeLevelUpReqExp[_treeLevel - 1]) / _treeLevelUpReqExp[_treeLevel];
+        else ExpBar.fillAmount = _treeExp / _treeLevelUpReqExp[_treeLevel];
+    }
+
+    private void UpdateLevelImg()
+    {
+        int _treeLevel = TreeLevelController.Instance.CurrentTreeLevel;
+        LevelImages[_treeLevel].color = Color.white;
+    }
+
     //Slide the interface onto the screen
     private void Open()
     {

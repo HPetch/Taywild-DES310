@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Sprites;
 
 public class BouncePad : MonoBehaviour
 {
@@ -9,9 +10,16 @@ public class BouncePad : MonoBehaviour
 
     [SerializeField] private AudioClip[] bounceSounds;
 
+    [SerializeField] private bool isTreeLevelRequired;
+
     private void Update()
     {
         Debug.DrawLine(transform.position, transform.position + -transform.up, Color.red);
+    }
+
+    private void Start()
+    {
+        if (isTreeLevelRequired) TreeLevelController.Instance.OnTreeLevelUp += treeLevelUpUpdate;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -30,5 +38,10 @@ public class BouncePad : MonoBehaviour
             AudioController.Instance.PlaySound(clip, false);
 
         }
+    }
+
+    private void treeLevelUpUpdate()
+    {
+        if (TreeLevelController.Instance.CurrentTreeLevel == 1) GetComponent<UnityEngine.U2D.SpriteShapeRenderer>().color = new Vector4(0.9f,0.5f,0.5f,1f);
     }
 }
