@@ -22,6 +22,7 @@ public class DialogueController : MonoBehaviour
     #region Variables
     public bool IsConversing { get; private set; } = false;
     public InteractableCharacter Character { get; private set; } = null;
+    public DialogueSystemDialogueContainerSO CurrentGraph { get; private set; } = null;
 
     private DialogueSystemDialogueSO dialogueNode = null;
     private CharacterCanvas currentDialogueCanvas = null;
@@ -104,10 +105,9 @@ public class DialogueController : MonoBehaviour
     /// </summary>
     public void TriggerConversation(DialogueSystemDialogueContainerSO _graph, InteractableCharacter _character)
     {
-        if (IsConversing) return;
-
         IsConversing = true;        
         Character = _character;
+        CurrentGraph = _graph;
 
         ////Audio on dialogue zoom here
         AudioController.Instance.PlaySound(zoomInClip,true);
@@ -124,7 +124,7 @@ public class DialogueController : MonoBehaviour
 
     private IEnumerator ComputeNode(DialogueSystemDialogueSO _node)
     {
-        if (_node == null || _node.Choices.Count == 0)
+        if (_node == null)
         {
             EndConversation();
             yield break;
@@ -183,8 +183,19 @@ public class DialogueController : MonoBehaviour
                 yield return new WaitForSeconds(_node.Delay);
                 StartCoroutine(ComputeNode(_node.Choices[0].NextDialogue));
                 yield break;
+                
+            case NodeTypes.GetQuest:
+                QuestStates questState = ObjectiveController.Instance.GetQuest(_node.Quest).State;
+                StartCoroutine(ComputeNode(_node.Choices[(int)questState].NextDialogue));
+                yield break;
 
-            case NodeTypes.Quest:
+            case NodeTypes.SetQuest:
+                ObjectiveController.Quest quest = ObjectiveController.Instance.GetQuest(_node.Quest);
+                quest.State = _node.QuestState;
+                if (_node.QuestState == QuestStates.InProgress && quest.questObjectiveCompleteBeforeQuestIssued)
+                {
+                    quest.State = QuestStates.HandIn;
+                }
                 StartCoroutine(ComputeNode(_node.Choices[0].NextDialogue));
                 yield break;
 

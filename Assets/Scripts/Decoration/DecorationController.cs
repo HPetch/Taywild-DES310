@@ -30,12 +30,17 @@ public class DecorationController : MonoBehaviour
 
     [SerializeField] private GameObject PP;
 
+    [SerializeField] private AudioClip[] openInterfaceClips;
+    [SerializeField] private AudioClip[] closeInterfaceClips;
+
     public enum UiFurnitureCategories {INDOOR, OUTDOOR, LIGHTING, IDK, SOMETHINGELSE}
 
    // Start is called before the first frame update
    private void Awake()
     {
         Instance = this;
+
+        
     }
     
     void Start()
@@ -252,6 +257,8 @@ public class DecorationController : MonoBehaviour
             Destroy(DecorationSelector);
             OnExitEditMode?.Invoke();
             PP.SetActive(false);
+            AudioClip clip = closeInterfaceClips[UnityEngine.Random.Range(0, closeInterfaceClips.Length)];
+            AudioController.Instance.PlaySound(clip);
             
         }
         else if(!isEditMode && PlayerController.Instance.IsGrounded && !DialogueController.Instance.IsConversing)
@@ -261,6 +268,8 @@ public class DecorationController : MonoBehaviour
             isEditMode = true;
             OnEnterEditMode?.Invoke();
             PP.SetActive(true);
+            AudioClip clip = openInterfaceClips[UnityEngine.Random.Range(0, openInterfaceClips.Length)];
+            AudioController.Instance.PlaySound(clip);
         }
     }
 }

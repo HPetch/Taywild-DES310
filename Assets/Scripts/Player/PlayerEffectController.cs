@@ -214,7 +214,6 @@ public class PlayerEffectController : MonoBehaviour
 
         //Play the sound
         AudioController.Instance.PlaySound(clip,true);
-        Debug.Log(clip.name);
     }
 
     private void PlayerGlideStart()

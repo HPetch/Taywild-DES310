@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56aed56cf2bdb3940a003c0a146eee35, type: 3}
+  m_Name: WarsanTutorial
+  m_EditorClassIdentifier: 
+  <NodeName>k__BackingField: WarsanTutorial
+  <NodeType>k__BackingField: 4
+  <Choices>k__BackingField:
+  - <Text>k__BackingField: Not Accepted
+    <NextDialogue>k__BackingField: {fileID: 11400000, guid: 7d88dc04992d46b49b98621d1b3537b6, type: 2}
+  - <Text>k__BackingField: In Progress
+    <NextDialogue>k__BackingField: {fileID: 11400000, guid: 30bc161d544f70d4b9359a849673bed2, type: 2}
+  - <Text>k__BackingField: Read for Hand-in
+    <NextDialogue>k__BackingField: {fileID: 11400000, guid: 45cd8a81e5690f6419510a473b8b6aed, type: 2}
+  - <Text>k__BackingField: Comlpeted
+    <NextDialogue>k__BackingField: {fileID: 11400000, guid: 2cedc8bfe23cc934390e3021487fbf3f, type: 2}
+  <Character>k__BackingField: {fileID: 0}
+  <DialogueType>k__BackingField: 0
+  <Text>k__BackingField: 
+  <IsStartingDialogue>k__BackingField: 1
+  <SoundEffect>k__BackingField: {fileID: 0}
+  <Delay>k__BackingField: 0
+  <Graph>k__BackingField: {fileID: 0}
+  <Quest>k__BackingField: 0
+  <QuestState>k__BackingField: 0

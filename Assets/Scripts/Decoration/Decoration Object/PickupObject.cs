@@ -62,6 +62,9 @@ public class PickupObject : MonoBehaviour
     private bool isFirstBreak = true;
     [SerializeField, Range(0,20)] private int treeExp;
 
+    [SerializeField] private AudioClip pullingClip;
+    private AudioSource specialSource; //Hold this and stop the sound when pulling is done
+
     #endregion
 
 
@@ -128,9 +131,24 @@ public class PickupObject : MonoBehaviour
             spriteRef.transform.localPosition = Vector2.Lerp(spriteRef.transform.localPosition, _vibrationOffset, vibrationSpeed * Time.deltaTime);
             spriteRef.transform.localRotation = Quaternion.Lerp(spriteRef.transform.localRotation, _rotateVibration, vibrationSpeed * Time.deltaTime);
 
+
+            //Play audio effect!
+            if (PullCurrentDistance() > 0.025f)
+            {
+                //While it is breaking play this sound effect, looping.
+                specialSource = AudioController.Instance.PlayLoopingSound(pullingClip);
+            } else
+            {
+                if (specialSource != null)
+                AudioController.Instance.StopLoopingSound(specialSource);
+            }
+
             // If sprite arm is past break distance then start trying to break the pickup
             if (PullCurrentDistance() > pullBreakDistance * pullBreakMultiplier)
             {
+
+
+
                 if (PullCurrentDistance() > pullBreakDistance) isMaxTravel = true;
 
                 // Checks if a break attmempt has started yet
@@ -182,6 +200,7 @@ public class PickupObject : MonoBehaviour
     // Called by decoration controller when the player releases the mouse button. Also called when removing health from pickup that doesn't break.
     public void CancelPull()
     {
+        AudioController.Instance.StopLoopingSound(specialSource);
         isBeingPulled = false;
         ResetSpriteVibration();
         isTryingToBreak = false;
@@ -190,6 +209,8 @@ public class PickupObject : MonoBehaviour
 
     public void DamagePull()
     {
+        AudioController.Instance.StopLoopingSound(specialSource); //Cancel audio loop
+
         DamageAddItems(false);
         DamageSetSprites();
         spriteArmRef.transform.position = startPosition;
@@ -202,6 +223,7 @@ public class PickupObject : MonoBehaviour
     // Called when pickup has been broken
     public void EndPull() 
     {
+        AudioController.Instance.StopLoopingSound(specialSource);
         DamageSetSprites();
         // Set respawn time to a number of minues equal to respawn cooldown.
         respawnTime = Time.time + (respawnCooldown * 60);

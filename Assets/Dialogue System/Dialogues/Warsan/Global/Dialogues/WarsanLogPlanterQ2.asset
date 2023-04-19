@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56aed56cf2bdb3940a003c0a146eee35, type: 3}
+  m_Name: WarsanLogPlanterQ2
+  m_EditorClassIdentifier: 
+  <NodeName>k__BackingField: WarsanLogPlanterQ2
+  <NodeType>k__BackingField: 4
+  <Choices>k__BackingField:
+  - <Text>k__BackingField: Not Accepted
+    <NextDialogue>k__BackingField: {fileID: 11400000, guid: 4d7eae4ff9137b7449ed8b1ffa27d06e, type: 2}
+  - <Text>k__BackingField: In Progress
+    <NextDialogue>k__BackingField: {fileID: 11400000, guid: e0eb2776d1d1a194c936227f30d756b0, type: 2}
+  - <Text>k__BackingField: Read for Hand-in
+    <NextDialogue>k__BackingField: {fileID: 11400000, guid: 6b28683c970ad6147ad81480fd252959, type: 2}
+  - <Text>k__BackingField: Comlpeted
+    <NextDialogue>k__BackingField: {fileID: 11400000, guid: 15d77428e08c626429097314bd1a8dc9, type: 2}
+  <Character>k__BackingField: {fileID: 0}
+  <DialogueType>k__BackingField: 0
+  <Text>k__BackingField: 
+  <IsStartingDialogue>k__BackingField: 0
+  <SoundEffect>k__BackingField: {fileID: 0}
+  <Delay>k__BackingField: 0
+  <Graph>k__BackingField: {fileID: 0}
+  <Quest>k__BackingField: 2
+  <QuestState>k__BackingField: 0

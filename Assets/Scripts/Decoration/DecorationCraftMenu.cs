@@ -37,6 +37,11 @@ public class DecorationCraftMenu : MonoBehaviour
     [SerializeField] private LeanTweenType openEase;
     [SerializeField] private LeanTweenType closeEase;
 
+    [Header("Audio")]
+    [SerializeField] private AudioClip inventoryOpen;
+    [SerializeField] private AudioClip inventoryClose;
+    [SerializeField] private AudioClip craftClip;
+
 
     private void Awake()
     {
@@ -103,6 +108,7 @@ public class DecorationCraftMenu : MonoBehaviour
         LeanTween.cancel(pullTabArrow); //Stop arrow if it is mid-tween
 
         inventoryIsOpen = true; //Mark the inventory as opening
+        AudioController.Instance.PlaySound(inventoryOpen);//Play sound
         LeanTween.rotateZ(pullTabArrow,180.5f,duration / 2).setEase(LeanTweenType.easeInOutSine); //Rotate arrow alongside actual move (180.5 guarantees it will always rotate clockwise)
         return LeanTween.move(drawerTransform, openPos, duration).setEase(openEase); //Go to open position
     }
@@ -113,6 +119,7 @@ public class DecorationCraftMenu : MonoBehaviour
         LeanTween.cancel(pullTabArrow); //Stop arrow if it is mid-tween
 
         inventoryIsOpen = false; //Mark the inventory as opening
+        AudioController.Instance.PlaySound(inventoryClose);
         LeanTween.rotateZ(pullTabArrow, 0f, duration / 2).setEase(LeanTweenType.easeInOutSine); //Rotate arrow alongside actual move
         return LeanTween.move(drawerTransform, closedPos, duration).setEase(closeEase); //Go to close position
     }
@@ -184,6 +191,7 @@ public class DecorationCraftMenu : MonoBehaviour
                 {
                     CloseInventory();
                     DecorationController.Instance.SpawnFurniture(selectedButton.AssignedFurniture);
+                    AudioController.Instance.PlaySound(craftClip);
                 }
                 else Debug.Log("Not enough to craft");
             }

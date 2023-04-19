@@ -20,14 +20,15 @@ namespace DialogueSystem.ScriptableObjects
         [field: SerializeField] public AudioClip SoundEffect { get; set; }
         [field: SerializeField] public float Delay { get; set; }
         [field: SerializeField] public DialogueSystemDialogueContainerSO Graph { get; set; }
-        [field: SerializeField] public Quests Quest { get; set; }
+        [field: SerializeField] public QuestTypes Quest { get; set; }
+        [field: SerializeField] public QuestStates QuestState { get; set; }
 
-        public void Initialise(string _name, NodeTypes _nodeType, List<DialogueSystemDialogueChoiceData> _choices, DialogueCharacter _character, DialogueTypes _dialogueType, string _text, bool _isStartingDialogue, AudioClip _soundEffect, float _delay, DialogueSystemDialogueContainerSO _graph, Quests _quest)
+        public void Initialise(string _name, NodeTypes _nodeType, List<DialogueSystemDialogueChoiceData> _choices, DialogueCharacter _character, DialogueTypes _dialogueType, string _text, bool _isStartingDialogue, AudioClip _soundEffect, float _delay, DialogueSystemDialogueContainerSO _graph, QuestTypes _quest, QuestStates _questState)
         {
             NodeName = _name;
             NodeType = _nodeType;
             Choices = _choices;
-
+            
             Character = _character;
             DialogueType = _dialogueType;
             Text = _text;
@@ -37,6 +38,8 @@ namespace DialogueSystem.ScriptableObjects
             Delay = _delay;
             Graph = _graph;
             Quest = _quest;
+            QuestState = _questState;
+
         }
     }
 }

@@ -157,21 +157,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8acfdbd7b648a74bb3bd1e1ee3ca7c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  healthMax: 1
   sprite: {fileID: 0}
   spriteBase: {fileID: 0}
   blockingCollider: {fileID: 0}
   pullBreakDistance: 0.3
+  pullBreakMultiplier: 0
+  dragMoveSpeed: 6
+  pullBreakTimeMultiplier: 0
+  forceHealthScaling: 0
   vibrationMax: 0.1
   vibrationSpeed: 10
-  healthMax: 1
   respawnCooldown: 1
   respawnBlockLayerMask:
     serializedVersion: 2
     m_Bits: 257
-  dragMoveSpeed: 6
   damageDisplayedSprites:
     list: []
   pickupBreakItems: []
+  treeExp: 0
+  pullingClip: {fileID: 8300000, guid: b5ef742854faaf241ae902683fa65507, type: 3}
 --- !u!212 &6517203401035013920
 SpriteRenderer:
   m_ObjectHideFlags: 0
