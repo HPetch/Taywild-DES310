@@ -5,8 +5,6 @@ using DialogueSystem.Types;
 
 public class ObjectiveController : MonoBehaviour
 {   
-    public enum QuestState { NotAccepted, InProgress, HandIn, Completed}
-
     public static ObjectiveController Instance { get; private set; }
 
     #region Variables
@@ -26,12 +24,12 @@ public class ObjectiveController : MonoBehaviour
             quests.Add(new Quest((QuestTypes)quest));
         }
 
-        GetQuest(QuestTypes.LucusFlowerQ1b).State = QuestState.HandIn;
-        GetQuest(QuestTypes.LuWaBakedQ2a).State = QuestState.HandIn;
-        GetQuest(QuestTypes.LuWaBakedQ2b).State = QuestState.HandIn;
-        GetQuest(QuestTypes.LuWaIngredientsQ3a).State = QuestState.HandIn;
-        GetQuest(QuestTypes.LuWaIngredientsQ3b).State = QuestState.HandIn;
-        GetQuest(QuestTypes.LuWaGreenhouseQ1b).State = QuestState.HandIn;
+        GetQuest(QuestTypes.LucusFlowerQ1b).State = QuestStates.HandIn;
+        GetQuest(QuestTypes.LuWaBakedQ2a).State = QuestStates.HandIn;
+        GetQuest(QuestTypes.LuWaBakedQ2b).State = QuestStates.HandIn;
+        GetQuest(QuestTypes.LuWaIngredientsQ3a).State = QuestStates.HandIn;
+        GetQuest(QuestTypes.LuWaIngredientsQ3b).State = QuestStates.HandIn;
+        GetQuest(QuestTypes.LuWaGreenhouseQ1b).State = QuestStates.HandIn;
     }
 
     private void Start()
@@ -47,14 +45,14 @@ public class ObjectiveController : MonoBehaviour
 
     public void OnFurnitureObjectPlaced(FurnitureObject _object)
     {
-        if (GetQuest(QuestTypes.WarsanTutorial).State == QuestState.InProgress && _object.UiName == "Hanging Flower Planter")
+        if (GetQuest(QuestTypes.WarsanTutorial).State == QuestStates.InProgress && _object.UiName == "Hanging Flower Planter")
         {
-            GetQuest(QuestTypes.WarsanTutorial).State = QuestState.HandIn;
+            GetQuest(QuestTypes.WarsanTutorial).State = QuestStates.HandIn;
         }
 
         if (_object.UiName == "Hanging Flower Planter")
         {
-            GetQuest(QuestTypes.WarsanBenchQ1).State = QuestState.HandIn;
+            GetQuest(QuestTypes.WarsanBenchQ1).State = QuestStates.HandIn;
         }
     }
 
@@ -65,12 +63,12 @@ public class ObjectiveController : MonoBehaviour
     public class Quest
     {
         [field: SerializeField] public QuestTypes QuestType { get; set; }
-        public QuestState State { get; set; }
+        public QuestStates State { get; set; }
 
         public Quest(QuestTypes _questType)
         {
             QuestType = _questType;
-            State = QuestState.NotAccepted;
+            State = QuestStates.NotAccepted;
         }
     }
 }

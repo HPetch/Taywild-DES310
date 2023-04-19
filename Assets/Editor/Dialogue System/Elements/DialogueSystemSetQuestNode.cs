@@ -9,31 +9,25 @@ namespace DialogueSystem.Elements
     using Utilities;
     using Windows;
     using Types;
-    
-    public class DialogueSystemQuestNode : DialogueSystemNode
+
+    public class DialogueSystemSetQuestNode : DialogueSystemNode
     {
         public override void Initialise(string nodeName, DialogueSystemGraphView dialogueSystemGraphView, Vector2 position)
         {
             base.Initialise(nodeName, dialogueSystemGraphView, position);
 
-            NodeType = NodeTypes.Quest;
+            NodeType = NodeTypes.SetQuest;
 
             mainContainer.AddToClassList("ds-node__main-container");
             extensionContainer.AddToClassList("ds-node__extension-container");
 
-            mainContainer.style.backgroundColor = new Color(1.0f, 0.5f, 0.0f);
+            mainContainer.style.backgroundColor = new Color(1.5f, 0.75f, 0.0f);
 
-            DialogueSystemChoiceSaveData choiceData = new DialogueSystemChoiceSaveData() { Text = "Not Accepted" };
+            DialogueSystemChoiceSaveData choiceData;
+
+            choiceData = new DialogueSystemChoiceSaveData() { Text = "Next Node" };
             Choices.Add(choiceData);
 
-            choiceData = new DialogueSystemChoiceSaveData() { Text = "In Progress" };
-            Choices.Add(choiceData);
-
-            choiceData = new DialogueSystemChoiceSaveData() { Text = "Read for Hand-in" };
-            Choices.Add(choiceData);
-
-            choiceData = new DialogueSystemChoiceSaveData() { Text = "Comlpeted" };
-            Choices.Add(choiceData);
         }
 
         public override void Draw()
@@ -55,11 +49,23 @@ namespace DialogueSystem.Elements
 
             EnumField questEnumField = new EnumField(QuestTypes.LucasFlowerQ1a);
 
-            questEnumField.RegisterValueChangedCallback(callback => {
+            questEnumField.RegisterValueChangedCallback(callback =>
+            {
                 Quest = (QuestTypes)questEnumField.value;
             });
 
             customDataContainer.Add(questEnumField);
+
+            EnumField queststateEnumField = new EnumField(QuestStates.InProgress);
+
+            queststateEnumField.RegisterValueChangedCallback(callback =>
+            {
+                QuestState = (QuestStates)queststateEnumField.value;
+            });
+
+            customDataContainer.Add(queststateEnumField);
+
+
             extensionContainer.Add(customDataContainer);
 
             RefreshExpandedState();

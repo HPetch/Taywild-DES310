@@ -178,7 +178,7 @@ public class DialogueController : MonoBehaviour
                 StartCoroutine(ComputeNode(_node.Choices[0].NextDialogue));
                 yield break;
 
-            case NodeTypes.Quest:
+            case NodeTypes.GetQuest:
                 StartCoroutine(ComputeNode(_node.Choices[0].NextDialogue));
                 yield break;
 

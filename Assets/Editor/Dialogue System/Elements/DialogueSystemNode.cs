@@ -30,8 +30,10 @@ namespace DialogueSystem.Elements
         public AudioClip SoundEffect { get; set; }
         public float Delay { get; set; }
         public DialogueSystemDialogueContainerSO Graph { get; set; }
+
         public QuestTypes Quest { get; set; }
-        
+        public QuestStates QuestState { get; set; }
+
 
         protected DialogueSystemGraphView graphView;
         protected Color defaultBorderColor;
