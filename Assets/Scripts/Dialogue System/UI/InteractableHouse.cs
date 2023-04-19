@@ -50,10 +50,9 @@ public class InteractableHouse : MonoBehaviour
         LeanTween.alpha(houseExterior.gameObject, 0, 0.15f);
 
         LeanTween.cancel(door.gameObject);
-        LeanTween.alpha(door.gameObject, 0, 0.15f);
+        LeanTween.alpha(door.gameObject, 0.4f, 0.15f);
 
         CameraController.Instance.Zoom(zoomLevel);
-
         if(!cameraFollowPlayer) CameraController.Instance.SetTarget(door.transform);
 
         isInHouse = true;
@@ -64,14 +63,11 @@ public class InteractableHouse : MonoBehaviour
         character.SetActive(false);
         houseColliders.SetActive(false);
 
-        //LeanTween.cancel(houseExterior.gameObject);
-        //LeanTween.alpha(houseExterior.gameObject, 1, 0.15f);
+        LeanTween.cancel(houseExterior.gameObject);
+        LeanTween.alpha(houseExterior.gameObject, 1, 0.15f);
 
-        //LeanTween.cancel(door.gameObject);
-        //LeanTween.alpha(door.gameObject, 1, 0.15f);
-
-        door.color = Color.white;
-        houseExterior.color = Color.white;
+        LeanTween.cancel(door.gameObject);
+        LeanTween.alpha(door.gameObject, 1, 0.15f);
 
         CameraController.Instance.ResetTarget();
         CameraController.Instance.ZoomToPartitionSize();

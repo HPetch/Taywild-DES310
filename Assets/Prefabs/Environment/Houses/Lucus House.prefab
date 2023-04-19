@@ -36,7 +36,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -1475, y: -700}
+  m_AnchoredPosition: {x: 75, y: -900}
   m_SizeDelta: {x: 126, y: 126}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!222 &32538295383535861
@@ -436,7 +436,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 16.5, y: 14.25}
+  m_AnchoredPosition: {x: 0, y: 4}
   m_SizeDelta: {x: 600, y: 500}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &6150885609187036614
@@ -627,7 +627,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0.8, y: 0}
+  m_AnchoredPosition: {x: 2.3, y: -9.5}
   m_SizeDelta: {x: 126, y: 126}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &1816352870114972837
@@ -862,7 +862,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4472788497584244933}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 16.25, y: 10.25, z: 0}
+  m_LocalPosition: {x: 0, y: -0.14, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1082,7 +1082,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 5, y: 0.5}
+  m_Size: {x: 4.5, y: 0.5}
   m_EdgeRadius: 0
 --- !u!114 &2834861141636099525
 MonoBehaviour:
@@ -1993,7 +1993,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8772289286187233372}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.5, y: -14.75, z: 0}
+  m_LocalPosition: {x: 19.75, y: -4.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2031,6 +2031,7 @@ MonoBehaviour:
   characterNameTransitionTime: 0.2
   interactCanvasGroup: {fileID: 1307573583840025750}
   dialogueGraph: {fileID: 11400000, guid: 7fae7fc735bd6974caf64bf4c49e7a9d, type: 2}
+  <ConversationZoomLevel>k__BackingField: 10
 --- !u!61 &5555614964198928577
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2044,7 +2045,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -1}
+  m_Offset: {x: 0, y: -11.5}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -2055,7 +2056,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 4, y: 0.5}
+  m_Size: {x: 5, y: 0.5}
   m_EdgeRadius: 0
 --- !u!1 &9140651997145995399
 GameObject:
