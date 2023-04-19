@@ -10,20 +10,22 @@ namespace DialogueSystem.Elements
     using Windows;
     using Types;
     
-    public class DialogueSystemQuestNode : DialogueSystemNode
+    public class DialogueSystemGetQuestNode : DialogueSystemNode
     {
         public override void Initialise(string nodeName, DialogueSystemGraphView dialogueSystemGraphView, Vector2 position)
         {
             base.Initialise(nodeName, dialogueSystemGraphView, position);
 
-            NodeType = NodeTypes.Quest;
+            NodeType = NodeTypes.GetQuest;
 
             mainContainer.AddToClassList("ds-node__main-container");
             extensionContainer.AddToClassList("ds-node__extension-container");
 
             mainContainer.style.backgroundColor = new Color(1.0f, 0.5f, 0.0f);
 
-            DialogueSystemChoiceSaveData choiceData = new DialogueSystemChoiceSaveData() { Text = "Not Accepted" };
+            DialogueSystemChoiceSaveData choiceData;
+
+            choiceData = new DialogueSystemChoiceSaveData() { Text = "Not Accepted" };
             Choices.Add(choiceData);
 
             choiceData = new DialogueSystemChoiceSaveData() { Text = "In Progress" };
@@ -53,13 +55,14 @@ namespace DialogueSystem.Elements
             VisualElement customDataContainer = new VisualElement();
             customDataContainer.AddToClassList("ds-node__custom-data-container");
 
-            EnumField questEnumField = new EnumField(Quests.LucasFlowerQ1a);
+            EnumField questEnumField = new EnumField(Quest);
 
             questEnumField.RegisterValueChangedCallback(callback => {
-                Quest = (Quests)questEnumField.value;
+                Quest = (QuestTypes)questEnumField.value;
             });
 
             customDataContainer.Add(questEnumField);
+
             extensionContainer.Add(customDataContainer);
 
             RefreshExpandedState();

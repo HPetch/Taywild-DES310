@@ -9,7 +9,7 @@ public class DecorationController : MonoBehaviour
     public event Action OnEnterEditMode;
     public event Action OnExitEditMode;
     public event Action OnPickupDecoration;
-    public event Action OnPlaceDecoration;
+    public event Action<FurnitureObject> OnPlaceDecoration;
     public event Action OnPlaceCancelDecoration;
     public event Action OnFurnitureDestroyed;
     public event Action OnPickupDamaged;
@@ -156,8 +156,8 @@ public class DecorationController : MonoBehaviour
         Destroy(CurrentMoveFake);
         CurrentMoveFake = null;
         CurrentMoveTarget.GetComponent<FurnitureObject>().EndPickup();
+        OnPlaceDecoration?.Invoke(CurrentMoveTarget.GetComponent<FurnitureObject>());
         CurrentMoveTarget = null;
-        OnPlaceDecoration?.Invoke();
     }
 
     private void DecorationMoveCancel()

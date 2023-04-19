@@ -10,18 +10,24 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 56aed56cf2bdb3940a003c0a146eee35, type: 3}
-  m_Name: AudioNode
+  m_Name: GetQuestNode
   m_EditorClassIdentifier: 
-  <NodeName>k__BackingField: AudioNode
-  <NodeType>k__BackingField: 3
+  <NodeName>k__BackingField: GetQuestNode
+  <NodeType>k__BackingField: 4
   <Choices>k__BackingField:
-  - <Text>k__BackingField: Next Node
-    <NextDialogue>k__BackingField: {fileID: 11400000, guid: 27881f5d4021bc249883f038a0a542e5, type: 2}
+  - <Text>k__BackingField: Not Accepted
+    <NextDialogue>k__BackingField: {fileID: 11400000, guid: f448affb281f0c94f97b6b846f825f18, type: 2}
+  - <Text>k__BackingField: In Progress
+    <NextDialogue>k__BackingField: {fileID: 0}
+  - <Text>k__BackingField: Read for Hand-in
+    <NextDialogue>k__BackingField: {fileID: 0}
+  - <Text>k__BackingField: Comlpeted
+    <NextDialogue>k__BackingField: {fileID: 0}
   <Character>k__BackingField: {fileID: 0}
   <DialogueType>k__BackingField: 0
   <Text>k__BackingField: 
-  <IsStartingDialogue>k__BackingField: 0
-  <SoundEffect>k__BackingField: {fileID: 8300000, guid: 256b42fdaeec97b44a6038678557228a, type: 3}
+  <IsStartingDialogue>k__BackingField: 1
+  <SoundEffect>k__BackingField: {fileID: 0}
   <Delay>k__BackingField: 0
   <Graph>k__BackingField: {fileID: 0}
   <Quest>k__BackingField: 0
