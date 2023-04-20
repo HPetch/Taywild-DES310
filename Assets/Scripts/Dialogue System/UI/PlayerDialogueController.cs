@@ -17,6 +17,7 @@ public class PlayerDialogueController : CharacterCanvas
     [Range(0, 0.5f)]
     [SerializeField] private float delayBetweenThoughBubbleTransitions = 0.25f;
 
+    public bool IsThoughtBubblesOpen { get; private set; } = false;
     public bool ThoughtBubbleTransitionComplete { get; private set; } = true;
     #endregion
 
@@ -34,6 +35,7 @@ public class PlayerDialogueController : CharacterCanvas
 
     public void ShowThoughtBubbles(DialogueSystemDialogueSO _dialogueNode)
     {
+        IsThoughtBubblesOpen = true;
         ThoughtBubbleTransitionComplete = false;
 
         switch (_dialogueNode.Choices.Count)
@@ -86,6 +88,7 @@ public class PlayerDialogueController : CharacterCanvas
 
     public void HideThoughtBubbles(int _chosenOption)
     {
+        IsThoughtBubblesOpen = false;
         ThoughtBubbleTransitionComplete = false;
 
         if (leftThoughtBubble.IsOpen) leftThoughtBubble.TransitionOut();

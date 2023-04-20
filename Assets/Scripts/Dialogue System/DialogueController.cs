@@ -106,8 +106,20 @@ public class DialogueController : MonoBehaviour
         {
             // If single choice node, display next
             if (dialogueNode.DialogueType == DialogueTypes.SingleChoice) DisplayNext();
-            // else if Multiple choice node, only display next to skip text
-            else if (dialogueNode.DialogueType == DialogueTypes.MultipleChoice && textType != null) DisplayNext();
+            // else if Multiple choice node, only display next to skip text or display options
+            else if (dialogueNode.DialogueType == DialogueTypes.MultipleChoice)
+            {
+                // Skip text type
+                if (textType != null) DisplayNext();
+                // If text type is done, and thought bubles are not open, 
+                else if (!PlayerDialogueController.Instance.IsThoughtBubblesOpen)
+                {
+                    // Close charater speech bubble
+                    Character.CloseTransition();
+                    // Show player options
+                    PlayerDialogueController.Instance.ShowThoughtBubbles(dialogueNode);
+                }
+            }
         }
         
         else if ((Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Keypad1)) && dialogueNode.DialogueType == DialogueTypes.MultipleChoice && PlayerDialogueController.Instance.ThoughtBubbleTransitionComplete) DisplayNext(1);
@@ -149,38 +161,52 @@ public class DialogueController : MonoBehaviour
 
         switch (_node.NodeType)
         {
+            // If the node is a DialogueNode 
             case NodeTypes.Dialogue:
                 dialogueNode = _node;
                 bool resize = true;
 
+                // If the player is talking in the new dialogueNode and the their speech bubble is closed
                 if (IsPlayerTalking && !PlayerDialogueController.Instance.IsOpen)
                 {
+                    // If the character speech bubble is open
                     if (Character.IsOpen)
                     {
+                        // Close the character speech bubble
                         Character.CloseTransition();
+                        // Wait for it to close
                         yield return new WaitForSeconds(Character.ResizeTransitionTime());
                     }
 
+                    // Open player speech bubble
                     PlayerDialogueController.Instance.OpenTransition(dialogueNode.Text);
-
+                    // Change the current active speech canvas to the player's
                     currentDialogueCanvas = PlayerDialogueController.Instance;
+                    // do not resisze as the active talker has changed
                     resize = false;
                 }
+                // If the character is talking and their canvas is not open
                 else if (!IsPlayerTalking && !Character.IsOpen)
                 {
+                    // If the player speech bubble is open
                     if (PlayerDialogueController.Instance.IsOpen)
                     {
+                        // Close it and wait for it to close
                         PlayerDialogueController.Instance.CloseTransition();
                         yield return new WaitForSeconds(PlayerDialogueController.Instance.ResizeTransitionTime());
                     }
 
+                    // Set the active character, this is done here as opposed to at the start of the convo in case the character changes (going from ??? -> recluse)
                     Character.SetCharacter(dialogueNode.Character);
+                    // Open character speech bubble
                     Character.OpenTransition(dialogueNode.Text);
-
+                    // Change the current active speech canvas to the Character's
                     currentDialogueCanvas = Character;
+                    // do not resisze as the active talker has changed
                     resize = false;
                 }
 
+                // If the active talker has not changed, then simply resize the open speech bubble
                 if (resize) currentDialogueCanvas.ResizieTransition(dialogueNode.Text);
 
                 textType = StartCoroutine(TypeSentence(dialogueNode.Text, resize));
@@ -239,9 +265,7 @@ public class DialogueController : MonoBehaviour
             textType = null;
 
             currentDialogueCanvas.SetText(dialogueNode.Text);
-
-            if (dialogueNode.DialogueType == DialogueTypes.MultipleChoice) PlayerDialogueController.Instance.ShowThoughtBubbles(dialogueNode);            
-            else currentDialogueCanvas.ShowContinueIndicator();
+            currentDialogueCanvas.ShowContinueIndicator();
 
             return;
         }
@@ -328,12 +352,12 @@ public class DialogueController : MonoBehaviour
                 }
 
                 continue;
-            }            
+            }
 
             // If a link has been started, cap the link
             if (linkStarted && !richText) currentDialogueCanvas.SetText(textTypeString + "</link>");
             else currentDialogueCanvas.SetText(textTypeString);
-            
+
             // If there is a TextTypeWaitTime set, then wait.
             if (textTypeWaitTime > 0f)
             {
@@ -389,8 +413,7 @@ public class DialogueController : MonoBehaviour
             }
         }
 
-        if (dialogueNode.DialogueType == DialogueTypes.MultipleChoice) PlayerDialogueController.Instance.ShowThoughtBubbles(dialogueNode);
-        else currentDialogueCanvas.ShowContinueIndicator();
+        currentDialogueCanvas.ShowContinueIndicator();
 
         // Sets coroutine to null, to track when it's finished
         textType = null;
