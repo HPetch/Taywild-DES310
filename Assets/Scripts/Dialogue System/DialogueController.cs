@@ -37,24 +37,28 @@ public class DialogueController : MonoBehaviour
 
     [Header("Delays")]
     [Tooltip("Delay between each char in the TextType Coroutine")]
-    [Range(0, 0.25f)]
-    [SerializeField] public float TextTypeDelay = 0.01f;
+    [Range(0, 0.5f)]
+    [SerializeField] public float startConversationDelay = 0.2f;
+
+    [field: Tooltip("Delay between each char in the TextType Coroutine")]
+    [field: Range(0, 0.25f)]
+    [field: SerializeField] public float TextTypeDelay { get; private set; } = 0.01f;
 
     [Tooltip("Delay when a period is used")]
     [Range(0, 0.25f)]
-    [SerializeField] private float TextTypePeriodDelay = 0.05f;
+    [SerializeField] private float textTypePeriodDelay = 0.05f;
 
     [Tooltip("Delay when a comma is used")]
     [Range(0, 0.25f)]
-    [SerializeField] private float TextTypeCommaDelay = 0.05f;
+    [SerializeField] private float textTypeCommaDelay = 0.05f;
 
     [Tooltip("Delay when a colon is used")]
     [Range(0, 0.25f)]
-    [SerializeField] private float TextTypeColonDelay = 0.05f;
+    [SerializeField] private float textTypeColonDelay = 0.05f;
 
     [Tooltip("Delay when a semi-colon is used")]
     [Range(0, 0.25f)]
-    [SerializeField] private float TextTypeSemiColonDelay = 0.05f;
+    [SerializeField] private float textTypeSemiColonDelay = 0.05f;
 
     // Tracks wether the current char is rich text or not (TextTyper)
     private bool richText = false;
@@ -129,7 +133,7 @@ public class DialogueController : MonoBehaviour
 
     private IEnumerator StartConversationDelay(DialogueSystemDialogueSO _startingNode)
     {
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(startConversationDelay);
         StartCoroutine(ComputeNode(_startingNode));
     }
 
@@ -224,7 +228,7 @@ public class DialogueController : MonoBehaviour
     // Displays the next conversation event
     private void DisplayNext(int _buttonIndex = 0)
     {
-        if (Time.time - timeOfLastDisplayNext < 0.2f) { Debug.Log("Display next too soon"); return; }
+        if (Time.time - timeOfLastDisplayNext < 0.2f) return;
 
         timeOfLastDisplayNext = Time.time;
 
@@ -350,25 +354,25 @@ public class DialogueController : MonoBehaviour
                 // If the char is a period
                 case '.':
                     // Wait for the duration of TextTypePeriodDelay
-                    yield return new WaitForSeconds(TextTypePeriodDelay);
+                    yield return new WaitForSeconds(textTypePeriodDelay);
                     continue;
 
                 // If the char is a Comma
                 case ',':
                     // Wait for the duration of TextTypeCommaDelay
-                    yield return new WaitForSeconds(TextTypeCommaDelay);
+                    yield return new WaitForSeconds(textTypeCommaDelay);
                     continue;
 
                 // If the char is a Colon
                 case ':':
                     // Wait for the duration of TextTypeColonDelay
-                    yield return new WaitForSeconds(TextTypeColonDelay);
+                    yield return new WaitForSeconds(textTypeColonDelay);
                     continue;
 
                 // If the char is a Semi-Colon
                 case ';':
                     // Wait for the duration of TextTypeSemiColonDelay
-                    yield return new WaitForSeconds(TextTypeSemiColonDelay);
+                    yield return new WaitForSeconds(textTypeSemiColonDelay);
                     continue;
 
                 // Else for every other character use the default delay
