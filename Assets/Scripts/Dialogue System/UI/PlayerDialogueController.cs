@@ -16,6 +16,9 @@ public class PlayerDialogueController : CharacterCanvas
 
     [Range(0, 0.5f)]
     [SerializeField] private float delayBetweenThoughBubbleTransitions = 0.25f;
+
+    public bool IsThoughtBubblesOpen { get; private set; } = false;
+    public bool ThoughtBubbleTransitionComplete { get; private set; } = true;
     #endregion
 
     #region Methods
@@ -32,6 +35,9 @@ public class PlayerDialogueController : CharacterCanvas
 
     public void ShowThoughtBubbles(DialogueSystemDialogueSO _dialogueNode)
     {
+        IsThoughtBubblesOpen = true;
+        ThoughtBubbleTransitionComplete = false;
+
         switch (_dialogueNode.Choices.Count)
         {
             case 0:
@@ -40,6 +46,10 @@ public class PlayerDialogueController : CharacterCanvas
 
             case 1:
                 middleThoughtBubble.TransitionIn(_dialogueNode.Choices[0]);
+                LeanTween.delayedCall(middleThoughtBubble.GetTransitionTime(), callback =>
+                {
+                    ThoughtBubbleTransitionComplete = true;
+                });
                 break;
 
             case 2:
@@ -47,6 +57,10 @@ public class PlayerDialogueController : CharacterCanvas
                 LeanTween.delayedCall(delayBetweenThoughBubbleTransitions, callback =>
                 {
                     rightThoughtBubble.TransitionIn(_dialogueNode.Choices[1]);
+                    LeanTween.delayedCall(rightThoughtBubble.GetTransitionTime(), callback =>
+                    {
+                        ThoughtBubbleTransitionComplete = true;
+                    });
                 });
                 break;
 
@@ -62,21 +76,35 @@ public class PlayerDialogueController : CharacterCanvas
                     LeanTween.delayedCall(delayBetweenThoughBubbleTransitions, callback =>
                     {
                         rightThoughtBubble.TransitionIn(_dialogueNode.Choices[2]);
+                        LeanTween.delayedCall(rightThoughtBubble.GetTransitionTime(), callback =>
+                        {
+                            ThoughtBubbleTransitionComplete = true;
+                        });
                     });
                 });
                 break;
         }
     }
 
-    public void HideThoughtBubbles(int _chosenThought)
+    public void HideThoughtBubbles(int _chosenOption)
     {
+        IsThoughtBubblesOpen = false;
+        ThoughtBubbleTransitionComplete = false;
+
         if (leftThoughtBubble.IsOpen) leftThoughtBubble.TransitionOut();
         if (middleThoughtBubble.IsOpen) middleThoughtBubble.TransitionOut();
         if (rightThoughtBubble.IsOpen) rightThoughtBubble.TransitionOut();
+
+        LeanTween.delayedCall(middleThoughtBubble.GetTransitionTime(), callback =>
+        {
+            ThoughtBubbleTransitionComplete = true;
+        });
     }
 
     public void OnThoughtBubblePressed(int _chosenThought)
     {
+        if (!ThoughtBubbleTransitionComplete) return;
+
         DialogueController.Instance.BranchButton(_chosenThought);
     }
     #endregion
