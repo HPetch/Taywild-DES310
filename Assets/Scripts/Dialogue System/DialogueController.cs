@@ -96,10 +96,19 @@ public class DialogueController : MonoBehaviour
         if (!canDisplayNext) return;
 
         // If the player inputed continue the conversation
-        if ((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return) || Input.GetMouseButtonDown(0) || Input.GetButtonDown("Interact")) && dialogueNode != null) DisplayNext();
-        else if ((Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Keypad1)) && dialogueNode.DialogueType == DialogueTypes.MultipleChoice) DisplayNext(1);
-        else if ((Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown(KeyCode.Keypad2)) && dialogueNode.DialogueType == DialogueTypes.MultipleChoice) DisplayNext(2);
-        else if ((Input.GetKeyDown(KeyCode.Alpha3) || Input.GetKeyDown(KeyCode.Keypad3)) && dialogueNode.DialogueType == DialogueTypes.MultipleChoice) DisplayNext(3);
+        if (dialogueNode == null) return;
+
+        if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return) || Input.GetMouseButtonDown(0) || Input.GetButtonDown("Interact"))
+        {
+            // If single choice node, display next
+            if (dialogueNode.DialogueType == DialogueTypes.SingleChoice) DisplayNext();
+            // else if Multiple choice node, only display next to skip text
+            else if (dialogueNode.DialogueType == DialogueTypes.MultipleChoice && textType != null) DisplayNext();
+        }
+        
+        else if ((Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Keypad1)) && dialogueNode.DialogueType == DialogueTypes.MultipleChoice && PlayerDialogueController.Instance.ThoughtBubbleTransitionComplete) DisplayNext(1);
+        else if ((Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown(KeyCode.Keypad2)) && dialogueNode.DialogueType == DialogueTypes.MultipleChoice && PlayerDialogueController.Instance.ThoughtBubbleTransitionComplete) DisplayNext(2);
+        else if ((Input.GetKeyDown(KeyCode.Alpha3) || Input.GetKeyDown(KeyCode.Keypad3)) && dialogueNode.DialogueType == DialogueTypes.MultipleChoice && PlayerDialogueController.Instance.ThoughtBubbleTransitionComplete) DisplayNext(3);
     }
 
     /// <summary>
@@ -215,7 +224,7 @@ public class DialogueController : MonoBehaviour
     // Displays the next conversation event
     private void DisplayNext(int _buttonIndex = 0)
     {
-        if (Time.time - timeOfLastDisplayNext < 0.2f) return;
+        if (Time.time - timeOfLastDisplayNext < 0.2f) { Debug.Log("Display next too soon"); return; }
 
         timeOfLastDisplayNext = Time.time;
 
