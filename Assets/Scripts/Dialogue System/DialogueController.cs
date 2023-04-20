@@ -65,6 +65,8 @@ public class DialogueController : MonoBehaviour
     private float textTypeWaitTime = 0;
     private float currentTextTypeDelay = 0.01f;
 
+    private float timeOfLastDisplayNext = 0.0f;
+
     [Tooltip("Wait time when <link='wait_short'> is used")]
     [Range(0, 0.5f)]
     [SerializeField] private float shortWait = 0.2f;
@@ -213,6 +215,10 @@ public class DialogueController : MonoBehaviour
     // Displays the next conversation event
     private void DisplayNext(int _buttonIndex = 0)
     {
+        if (Time.time - timeOfLastDisplayNext < 0.2f) return;
+
+        timeOfLastDisplayNext = Time.time;
+
         // If the text type is not complete, stop that coroutine and display they final result
         if (textType != null)
         {
