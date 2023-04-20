@@ -709,6 +709,8 @@ public class PlayerController : MonoBehaviour
         timeOfLastBouncePad = Time.time;
         ResetActions();
         StartGliding();
+
+        OnPlayerBouncePad?.Invoke();
     }
 
     /// <summary>
