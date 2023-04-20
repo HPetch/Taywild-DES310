@@ -67,14 +67,14 @@ public class TreeLevelController : MonoBehaviour
     public void TotalExpChanged()
     {
         TotalExp = QuestExp + HighestFurnitureExp + PickupCleanExp;
-        Debug.Log("Tree Exp: " + TotalExp);
+        //Debug.Log("Tree Exp: " + TotalExp);
         if (treeLevelExpRequirements.Length > CurrentTreeLevel)
         {
             if (treeLevelExpRequirements[CurrentTreeLevel] <= TotalExp)
             {
                 CurrentTreeLevel++;
                 OnTreeLevelUp?.Invoke();
-                Debug.Log("Level up!");
+                //Debug.Log("Level up!");
             }
         }
         OnExpTotalChanged?.Invoke();
