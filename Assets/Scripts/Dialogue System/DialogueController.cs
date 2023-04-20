@@ -149,7 +149,7 @@ public class DialogueController : MonoBehaviour
         StartCoroutine(ComputeNode(_startingNode));
     }
 
-    private IEnumerator ComputeNode(DialogueSystemDialogueSO _node)
+    private IEnumerator ComputeNode(DialogueSystemDialogueSO _node, float _delay = 0)
     {
         if (_node == null)
         {
@@ -157,12 +157,14 @@ public class DialogueController : MonoBehaviour
             yield break;
         }
 
+        yield return new WaitForSeconds(_delay);
+
         canDisplayNext = false;
 
         switch (_node.NodeType)
         {
             // If the node is a DialogueNode 
-            case NodeTypes.Dialogue:
+            case NodeTypes.Dialogue:               
                 dialogueNode = _node;
                 bool resize = true;
 
@@ -291,7 +293,7 @@ public class DialogueController : MonoBehaviour
                 PlayerDialogueController.Instance.HideThoughtBubbles(_buttonIndex - 1);
 
                 // Compute the next node
-                StartCoroutine(ComputeNode(dialogueNode.Choices[_buttonIndex - 1].NextDialogue));
+                StartCoroutine(ComputeNode(dialogueNode.Choices[_buttonIndex - 1].NextDialogue, 0.3f));
             }
 
             // Else the player has pressed anykey, but as it's a branch they have to select an option

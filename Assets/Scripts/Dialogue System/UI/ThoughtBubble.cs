@@ -6,6 +6,7 @@ using DialogueSystem.Data;
 
 public class ThoughtBubble : MonoBehaviour
 {
+    #region Variables
     public bool IsOpen { get; private set; } = false;
 
     public RectTransform thoughtBubbleRect;
@@ -26,7 +27,11 @@ public class ThoughtBubble : MonoBehaviour
     [Range(0, 0.5f)]
     [SerializeField] private float thoughtBubbleTransitionTime = 0.25f;
 
+    private float sineWaveOffset = 0.0f;
+    #endregion
 
+    #region Methods
+    #region Initialisation
     private void Awake()
     {
         thoughtBubbleSize = thoughtBubbleRect.sizeDelta;
@@ -40,10 +45,22 @@ public class ThoughtBubble : MonoBehaviour
 
         text.SetText("");
     }
+    #endregion
+
+    private void Update()
+    {
+        if (!IsOpen) return;
+
+        float yOffset = Mathf.Sin((Time.time + sineWaveOffset) * 3) * 0.02f;
+        thoughtBubbleRect.anchoredPosition += new Vector2(0, yOffset);
+        mediumBubbleRect.anchoredPosition += new Vector2(0, yOffset / 2);
+        smallBubbleRect.anchoredPosition += new Vector2(0, yOffset / 4);
+    }
 
     public void TransitionIn(DialogueSystemDialogueChoiceData _choiceData)
     {
         IsOpen = true;
+        sineWaveOffset = Random.Range(0f, 1f);
 
         CancelLeanTween();
 
@@ -75,6 +92,7 @@ public class ThoughtBubble : MonoBehaviour
         });
     }
 
+    #region Utility
     void CancelLeanTween()
     {
         LeanTween.cancel(smallBubbleRect);
@@ -83,4 +101,6 @@ public class ThoughtBubble : MonoBehaviour
     }
 
     public float GetTransitionTime() { return smallBubbleTransitionTime + mediumBubbleTransitionTime + thoughtBubbleTransitionTime; }
+    #endregion
+    #endregion
 }
