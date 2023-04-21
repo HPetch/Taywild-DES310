@@ -1,47 +1,54 @@
 ﻿using UnityEngine;
-using System.Collections;
 using System;
-namespace BookCurl
+
+namespace Journal
 {
     public class PageFlipper : MonoBehaviour
     {
-        public float duration;
-        public BookController book;
-        bool isFlipping = false;
-        Action finish;
-        float elapsedTime = 0;
-        //center x-coordinate 
-        float xc, pageWidth, pageHeight;
-        FlipMode flipMode;
-        public static void FlipPage(BookController book, float duration, FlipMode mode, Action OnComplete)
+        public float duration = 0;
+        public JournalController journal = null;
+
+        private bool isFlipping = false;
+        private Action finish;
+        private float elapsedTime = 0;
+
+        private float centerXPosition = 0;
+        private float pageWidth, pageHeight = 0;
+
+        private FlipMode flipMode;
+
+        public static void FlipPage(JournalController _journal, float _duration, FlipMode _mode, Action _OnComplete)
         {
-            PageFlipper flipper = book.GetComponent<PageFlipper>();
+            PageFlipper flipper = _journal.GetComponent<PageFlipper>();
+
             if (!flipper)
-                flipper = book.gameObject.AddComponent<PageFlipper>();
+                flipper = _journal.gameObject.AddComponent<PageFlipper>();
+
             flipper.enabled = true;
-            flipper.book = book;
+            flipper.journal = _journal;
             flipper.isFlipping = true;
-            flipper.duration = duration - Time.deltaTime;
-            flipper.finish = OnComplete;
-            flipper.xc = (book.EndBottomLeft.x + book.EndBottomRight.x) / 2;
-            flipper.pageWidth = (book.EndBottomRight.x - book.EndBottomLeft.x) / 2;
-            flipper.pageHeight = Mathf.Abs(book.EndBottomRight.y);
-            flipper.flipMode = mode;
+            flipper.duration = _duration - Time.deltaTime;
+            flipper.finish = _OnComplete;
+            flipper.centerXPosition = (_journal.EndBottomLeft.x + _journal.EndBottomRight.x) / 2;
+            flipper.pageWidth = (_journal.EndBottomRight.x - _journal.EndBottomLeft.x) / 2;
+            flipper.pageHeight = Mathf.Abs(_journal.EndBottomRight.y);
+            flipper.flipMode = _mode;
             flipper.elapsedTime = 0;
             float x;
-            if (mode == FlipMode.RightToLeft)
+            if (_mode == FlipMode.RightToLeft)
             {
-                x = flipper.xc + (flipper.pageWidth * 0.99f);
-                float y = (-flipper.pageHeight / (flipper.pageWidth * flipper.pageWidth)) * (x - flipper.xc) * (x - flipper.xc);
-                book.DragRightPageToPoint(new Vector3(x, y, 0));
+                x = flipper.centerXPosition + (flipper.pageWidth * 0.99f);
+                float y = (-flipper.pageHeight / (flipper.pageWidth * flipper.pageWidth)) * (x - flipper.centerXPosition) * (x - flipper.centerXPosition);
+                _journal.DragRightPageToPoint(new Vector3(x, y, 0));
             }
             else
             {
-                x = flipper.xc - (flipper.pageWidth * 0.99f);
-                float y = (-flipper.pageHeight / (flipper.pageWidth * flipper.pageWidth)) * (x - flipper.xc) * (x - flipper.xc);
-                book.DragLeftPageToPoint(new Vector3(x, y, 0));
-            }
+                x = flipper.centerXPosition - (flipper.pageWidth * 0.99f);
+                float y = (-flipper.pageHeight / (flipper.pageWidth * flipper.pageWidth)) * (x - flipper.centerXPosition) * (x - flipper.centerXPosition);
+                _journal.DragLeftPageToPoint(new Vector3(x, y, 0));
+            }            
         }
+
         // Update is called once per frame
         void Update()
         {
@@ -52,28 +59,26 @@ namespace BookCurl
                 {
                     if (flipMode == FlipMode.RightToLeft)
                     {
-                        float x = xc + (0.5f - elapsedTime / duration) * 2 * (pageWidth);
-                        float y = (-pageHeight / (pageWidth * pageWidth)) * (x - xc) * (x - xc);
-                        book.UpdateBookRTLToPoint(new Vector3(x, y, 0));
+                        float x = centerXPosition + (0.5f - elapsedTime / duration) * 2 * (pageWidth);
+                        float y = (-pageHeight / (pageWidth * pageWidth)) * (x - centerXPosition) * (x - centerXPosition);
+                        journal.UpdateBookRTLToPoint(new Vector3(x, y, 0));
                     }
                     else
                     {
-                        float x = xc - (0.5f - elapsedTime / duration) * 2 * (pageWidth);
-                        float y = (-pageHeight / (pageWidth * pageWidth)) * (x - xc) * (x - xc);
-                        book.UpdateBookLTRToPoint(new Vector3(x, y, 0));
+                        float x = centerXPosition - (0.5f - elapsedTime / duration) * 2 * (pageWidth);
+                        float y = (-pageHeight / (pageWidth * pageWidth)) * (x - centerXPosition) * (x - centerXPosition);
+                        journal.UpdateBookLTRToPoint(new Vector3(x, y, 0));
                     }
 
                 }
                 else
                 {
-                    book.Flip();
+                    journal.Flip();
                     isFlipping = false;
-                    this.enabled = false;
-                    if (finish != null)
-                        finish();
+                    enabled = false;
+                    finish?.Invoke();
                 }
             }
-
         }
     }
 }

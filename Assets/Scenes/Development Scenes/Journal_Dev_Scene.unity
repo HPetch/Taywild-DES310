@@ -372,6 +372,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Journal Controller
       objectReference: {fileID: 0}
+    - target: {fileID: 6922819966169870618, guid: 7b1ac28686da2c947aef7eccff073303, type: 3}
+      propertyPath: PageFlipTime
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6922819966169870618, guid: 7b1ac28686da2c947aef7eccff073303, type: 3}
+      propertyPath: TimeBetweenPages
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 7b1ac28686da2c947aef7eccff073303, type: 3}

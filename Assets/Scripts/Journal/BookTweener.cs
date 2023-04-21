@@ -1,60 +1,57 @@
 ﻿using UnityEngine;
 using System;
 
-namespace BookCurl
+namespace Journal
 {
     public class BookTweener : MonoBehaviour
     {
+        private Vector3 from, to = Vector3.zero;
+        private float duration = 0;
+        private Action<Vector3> update;
+        private Action finish;
+        private float elapsedtime = 0;
+        private bool isWorking = false;
 
-        Vector3 from, to;
-        float duration;
-        Action<Vector3> update;
-        Action finish;
-        float elapsedtime = 0;
-        bool working = false;
-        public static Vector3 ValueTo(GameObject obj,
-            Vector3 from, Vector3 to, float duration,
-            Action<Vector3> update = null, Action finish = null)
+        public static Vector3 ValueTo(GameObject _obj,
+            Vector3 _from, Vector3 _to, float _duration,
+            Action<Vector3> _update = null, Action _finish = null)
         {
-            BookTweener tween = obj.GetComponent<BookTweener>();
-            if (!tween)
-                tween = obj.AddComponent<BookTweener>();
+            BookTweener tween = _obj.GetComponent<BookTweener>();
+            if (!tween) tween = _obj.AddComponent<BookTweener>();
+
             tween.elapsedtime = 0;
-            tween.working = true;
+            tween.isWorking = true;
             tween.enabled = true;
-            tween.from = from;
-            tween.to = to;
-            tween.duration = duration;
-            tween.update = update;
-            tween.finish = finish;
+            tween.from = _from;
+            tween.to = _to;
+            tween.duration = _duration;
+            tween.update = _update;
+            tween.finish = _finish;
             return Vector3.zero;
         }
-        static Vector3 QuadOut(Vector3 start, Vector3 end, float duration, float elapsedTime)
+        static Vector3 QuadOut(Vector3 _start, Vector3 _end, float _duration, float _elapsedTime)
         {
-            if (elapsedTime >= duration)
-                return end;
+            if (_elapsedTime >= _duration)
+                return _end;
             else
             {
-                return (elapsedTime / duration) * (elapsedTime / duration - 2) * -(end - start) + start;
+                return (_elapsedTime / _duration) * (_elapsedTime / _duration - 2) * -(_end - _start) + _start;
             }
         }
 
         // Update is called once per frame
         void Update()
         {
-            if (working)
+            if (isWorking)
             {
                 elapsedtime += Time.deltaTime;
                 Vector3 value = QuadOut(from, to, duration, elapsedtime);
-                if (update != null) update(value);
+                update?.Invoke(value);
                 if (elapsedtime >= duration)
                 {
-                    working = false;
-                    this.enabled = false;
-                    if (finish != null)
-                    {
-                        finish();
-                    }
+                    isWorking = false;
+                    enabled = false;
+                    finish?.Invoke();
                 }
             }
         }

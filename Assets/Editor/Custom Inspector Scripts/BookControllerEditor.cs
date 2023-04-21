@@ -3,11 +3,11 @@ using UnityEngine.UI;
 using UnityEditor;
 using UnityEditorInternal;
 using System;
-using BookCurl;
+using Journal;
 
-namespace BookCurl.BookEditor
+namespace Journal.BookEditor
 {
-    [CustomEditor(typeof(BookController))]
+    [CustomEditor(typeof(JournalController))]
     public class BookControllerEditor : Editor
     {
         ReorderableList list;
@@ -32,17 +32,11 @@ namespace BookCurl.BookEditor
                 if (EditorUtility.DisplayDialog("Warning!",
                     "Are you sure you want to delete this Paper?\r\nThe paper pages (front and back) will be deleted from the scene", "Yes", "No"))
                 {
-                    BookController book = target as BookController;
+                    JournalController book = target as JournalController;
                     if (book.EndFlippingPaper == book.papers.Length - 1)
                         book.EndFlippingPaper--;
                     OnInspectorGUI();
                     Paper paper = book.papers[l.index];
-
-                    book.leftPageShadowImage.gameObject.SetActive(false);
-                    book.leftPageShadowImage.transform.SetParent(book.transform);
-
-                    book.rightPageShadowImage.gameObject.SetActive(false);
-                    book.rightPageShadowImage.transform.SetParent(book.transform);
 
                     Undo.DestroyObjectImmediate(paper.Back);
                     Undo.DestroyObjectImmediate(paper.Front);
@@ -61,7 +55,7 @@ namespace BookCurl.BookEditor
 
         private void addElement(ReorderableList list)
         {
-            BookController book = target as BookController;
+            JournalController book = target as JournalController;
 
             if (book.EndFlippingPaper == book.papers.Length - 1)
             {
@@ -111,7 +105,7 @@ namespace BookCurl.BookEditor
 
         private void DrawElement(Rect rect, int index, bool isActive, bool isFocused)
         {
-            BookController book = target as BookController;
+            JournalController book = target as JournalController;
 
             var serialzedpaper = list.serializedProperty.GetArrayElementAtIndex(index);
             rect.y += 2;
@@ -150,13 +144,8 @@ namespace BookCurl.BookEditor
                 paper.Back.transform.SetAsLastSibling();
                 BookUtility.ShowPage(paper.Front);
                 paper.Front.transform.SetAsLastSibling();
-
-                book.leftPageShadowImage.gameObject.SetActive(false);
-                book.leftPageShadowImage.transform.SetParent(book.transform);
-
-                book.rightPageShadowImage.gameObject.SetActive(false);
-                book.rightPageShadowImage.transform.SetParent(book.transform);
             }
+
             if (GUI.Button(new Rect(rect.x + 150, rect.y + (int)(2.5 * EditorGUIUtility.singleLineHeight), 80, (int)(1.5 * EditorGUIUtility.singleLineHeight)), "Set Current"))
             {
                 book.CurrentPaper = index;
@@ -174,14 +163,14 @@ namespace BookCurl.BookEditor
             DrawFlippingPapersRange();
             if (GUILayout.Button("Update Pages Order"))
             {
-                (target as BookController).UpdatePages();
+                (target as JournalController).UpdatePages();
             }
             if (GUILayout.Button("Update Pages Names"))
             {
                 if (EditorUtility.DisplayDialog("Warning!",
                     "All Pages will be renamed according to its order", "Ok", "Cancel"))
                 {
-                    BookController book = target as BookController;
+                    JournalController book = target as JournalController;
                     for (int i = 0; i < book.papers.Length; i++)
                     {
                         book.papers[i].Front.name = "Page" + (i * 2);
@@ -194,7 +183,7 @@ namespace BookCurl.BookEditor
 
         private void DrawFlippingPapersRange()
         {
-            BookController book = target as BookController;
+            JournalController book = target as JournalController;
 #if UNITY_5_3_OR_NEWER
             EditorGUILayout.BeginVertical(EditorStyles.helpBox);
 #else
@@ -216,7 +205,7 @@ namespace BookCurl.BookEditor
         private void DrawNavigationPanel()
         {
 
-            BookController book = target as BookController;
+            JournalController book = target as JournalController;
 #if UNITY_5_3_OR_NEWER
             EditorGUILayout.BeginHorizontal(EditorStyles.helpBox);
 #else
