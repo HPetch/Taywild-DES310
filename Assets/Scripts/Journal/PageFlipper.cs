@@ -35,6 +35,7 @@ namespace Journal
             flipper.flipMode = _mode;
             flipper.elapsedTime = 0;
             float x;
+
             if (_mode == FlipMode.RightToLeft)
             {
                 x = flipper.centerXPosition + (flipper.pageWidth * 0.99f);

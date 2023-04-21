@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 146332272273343092}
   - component: {fileID: 566775628338282779}
   - component: {fileID: 6177526326426003132}
-  - component: {fileID: 6922819966169870618}
   m_Layer: 5
   m_Name: Journal
   m_TagString: Untagged
@@ -108,8 +107,6 @@ MonoBehaviour:
   clippingPlane: {fileID: 2469812543182206932}
   leftPageTransform: {fileID: 8269291609012197199}
   rightPageTransform: {fileID: 5886388828843230700}
-  enableShadowEffect: 0
-  hasTransparentPages: 1
   currentPaper: 0
   papers:
   - Front: {fileID: 8365144399042295461}
@@ -123,24 +120,11 @@ MonoBehaviour:
   StartFlippingPaper: 0
   EndFlippingPaper: 3
   interactable: 1
+  siblgePageFlipTime: 0.4
+  multiPageFlipTime: 0.2
   OnFlip:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &6922819966169870618
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2140971060}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e71f10e78f7774d4c893df9622dec13a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  flipMode: 0
-  siblgePageFlipTime: 0.4
-  multiPageFlipTime: 0.2
 --- !u!1 &82695279777283841
 GameObject:
   m_ObjectHideFlags: 0
@@ -919,7 +903,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6298981586689823121}
   m_Layer: 0
-  m_Name: Journal Controller
+  m_Name: Journal - Game
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1101,7 +1085,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6922819966169870618}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: BookCurl.AutoFlip, Assembly-CSharp
         m_MethodName: FlipLeftPage
         m_Mode: 1
@@ -1370,7 +1354,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6922819966169870618}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: BookCurl.AutoFlip, Assembly-CSharp
         m_MethodName: FlipRightPage
         m_Mode: 1

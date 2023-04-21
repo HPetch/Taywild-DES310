@@ -67,7 +67,7 @@ namespace Journal.BookEditor
             var lastElement = list.serializedProperty.GetArrayElementAtIndex(list.count - 1);
 
 
-            GameObject rightPage = Instantiate(book.rightPageTransform.gameObject) as GameObject;
+            GameObject rightPage = Instantiate(book.rightPageTransform.gameObject);
             rightPage.transform.SetParent(book.transform, true);
             rightPage.GetComponent<RectTransform>().sizeDelta = book.rightPageTransform.GetComponent<RectTransform>().sizeDelta;
             rightPage.GetComponent<RectTransform>().pivot = book.rightPageTransform.GetComponent<RectTransform>().pivot;

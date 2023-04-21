@@ -13,8 +13,7 @@ namespace Journal
 
     public class JournalController : MonoBehaviour
     {
-        private AutoFlip autoFlipper = null;
-
+        public static JournalController Instance { get; private set; }
 
         [SerializeField] private RectTransform bookPanel;
         [SerializeField] private Image clippingPlane;
@@ -31,45 +30,30 @@ namespace Journal
         
         public bool interactable = true;
 
-        private Canvas canvas;
+        [SerializeField] private float siblgePageFlipTime = 0.4f;
+        [SerializeField] private float multiPageFlipTime = 0.2f;
+
+        private bool flippingStarted = false;
+        private bool isPageFlipping = false;
+        private float nextPageCountDown = 0;
+        private int targetPaper = 0;
 
         private Image Left;
         private Image Right;
 
         //current flip mode
-        private FlipMode mode;
+        private FlipMode flipMode;
 
         /// <summary>
         /// OnFlip invocation list, called when any page flipped
         /// </summary>
         public UnityEvent OnFlip;
 
-        /// <summary>
-        /// The Current Shown paper (the paper its front shown in right part)
-        /// </summary>
-        public int CurrentPaper
+        void Awake()
         {
-            get { return currentPaper; }
-            set
-            {
-                if (value != currentPaper)
-                {
-                    if (value < StartFlippingPaper)
-                        currentPaper = StartFlippingPaper;
-                    else if (value > EndFlippingPaper + 1)
-                        currentPaper = EndFlippingPaper + 1;
-                    else
-                        currentPaper = value;
-                    UpdatePages();
-                }
-            }
-        }
-
-        // Use this for initialization
-        void Start()
-        {
-            autoFlipper = GetComponent<AutoFlip>();
-            canvas = GetComponentInParent<Canvas>();
+            // If there already exists an Instance of this singleton then destroy this object, else this is the singleton instance
+            if (Instance != null) Destroy(gameObject);
+            else Instance = this;
 
             UpdatePages();
 
@@ -130,7 +114,7 @@ namespace Journal
         public void DragRightPageToPoint(Vector3 point)
         {
             if (currentPaper > EndFlippingPaper) return;
-            mode = FlipMode.RightToLeft;
+            flipMode = FlipMode.RightToLeft;
             followLocation = point;
 
             clippingPlane.rectTransform.pivot = new Vector2(1, 0.35f);
@@ -157,7 +141,7 @@ namespace Journal
         public void DragLeftPageToPoint(Vector3 point)
         {
             if (currentPaper <= StartFlippingPaper) return;
-            mode = FlipMode.LeftToRight;
+            flipMode = FlipMode.LeftToRight;
             followLocation = point;
 
             UpdatePages();
@@ -189,35 +173,89 @@ namespace Journal
             if (Input.GetKeyDown(KeyCode.Alpha3)) FlipToPage(3);
             if (Input.GetKeyDown(KeyCode.Alpha4)) FlipToPage(4);
             if (Input.GetKeyDown(KeyCode.Alpha5)) FlipToPage(5);
+
+            if (flippingStarted)
+            {
+                if (nextPageCountDown < 0)
+                {
+                    if ((CurrentPaper < targetPaper &&
+                        flipMode == FlipMode.RightToLeft) ||
+                        (CurrentPaper > targetPaper &&
+                        flipMode == FlipMode.LeftToRight))
+                    {
+                        isPageFlipping = true;
+                        PageFlipper.FlipPage(this, multiPageFlipTime, flipMode, () => { isPageFlipping = false; });
+                    }
+                    else
+                    {
+                        flippingStarted = false;
+                    }
+
+                    nextPageCountDown = multiPageFlipTime + Time.deltaTime;
+                }
+                nextPageCountDown -= Time.deltaTime;
+            }
         }
 
+        #region Page FLipping
         public void FlipToPage(int _page)
         {
             if (_page < 0) _page = 0;
             if (_page > papers.Length * 2) _page = papers.Length * 2 - 1;
 
-            autoFlipper.StartFlipping((_page + 1) / 2);
+            StartFlipping((_page + 1) / 2);
         }
 
         /// <summary>
-        /// This function called when the page dragging point reached its distenation after releasing the mouse
         /// This function will call the OnFlip invocation list
-        /// if you need to call any fnction after the page flipped just add it to the OnFlip invocation list
         /// </summary>
         public void Flip()
         {
-            if (mode == FlipMode.LeftToRight)
+            if (flipMode == FlipMode.LeftToRight)
                 currentPaper -= 1;
-            //Debug.Log(currentPaper);
+
             Left.transform.SetParent(bookPanel.transform, true);
             Left.rectTransform.pivot = new Vector2(0, 0);
             Right.transform.SetParent(bookPanel.transform, true);
             UpdatePages();
 
             clippingPlane.gameObject.SetActive(false);
-            if (OnFlip != null)
-                OnFlip.Invoke();
-        }    
+            OnFlip?.Invoke();
+        }
+
+        private void StartFlipping(int target)
+        {
+            flippingStarted = true;
+            nextPageCountDown = 0;
+            targetPaper = target;
+
+            if (target > CurrentPaper) flipMode = FlipMode.RightToLeft;
+            else if (target < currentPaper) flipMode = FlipMode.LeftToRight;
+        }
+
+        /// <summary>
+        /// Called by UI, flips page right
+        /// </summary>
+        public void FlipRightPage()
+        {
+            if (isPageFlipping) return;
+            if (CurrentPaper >= papers.Length) return;
+            isPageFlipping = true;
+            PageFlipper.FlipPage(this, siblgePageFlipTime, FlipMode.RightToLeft, () => { isPageFlipping = false; });
+        }
+
+
+        /// <summary>
+        /// Called by UI, flips page left
+        /// </summary>
+        public void FlipLeftPage()
+        {
+            if (isPageFlipping) return;
+            if (CurrentPaper <= 0) return;
+            isPageFlipping = true;
+            PageFlipper.FlipPage(this, siblgePageFlipTime, FlipMode.LeftToRight, () => { isPageFlipping = false; });
+        }
+        #endregion
 
         #region Page Curl Internal Calculations
         //for more info about this part please check this link : http://rbarraza.com/html5-canvas-pageflip/
@@ -244,7 +282,7 @@ namespace Journal
 
         public void UpdateBookRTLToPoint(Vector3 followLocation)
         {
-            mode = FlipMode.RightToLeft;
+            flipMode = FlipMode.RightToLeft;
             this.followLocation = followLocation;
 
             Right.transform.SetParent(clippingPlane.transform, true);
@@ -271,7 +309,7 @@ namespace Journal
         }
         public void UpdateBookLTRToPoint(Vector3 followLocation)
         {
-            mode = FlipMode.LeftToRight;
+            flipMode = FlipMode.LeftToRight;
             this.followLocation = followLocation;
 
             Left.transform.SetParent(clippingPlane.transform, true);
@@ -345,6 +383,29 @@ namespace Journal
             if (C_ST_distance > radius2)
                 c = r2;
             return c;
+        }
+        #endregion
+
+        #region Utility
+        /// <summary>
+        /// The Current Shown paper (the paper its front shown in right part)
+        /// </summary>
+        public int CurrentPaper
+        {
+            get { return currentPaper; }
+            set
+            {
+                if (value != currentPaper)
+                {
+                    if (value < StartFlippingPaper)
+                        currentPaper = StartFlippingPaper;
+                    else if (value > EndFlippingPaper + 1)
+                        currentPaper = EndFlippingPaper + 1;
+                    else
+                        currentPaper = value;
+                    UpdatePages();
+                }
+            }
         }
         #endregion
     }
