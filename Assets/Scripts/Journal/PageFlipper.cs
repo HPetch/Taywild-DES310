@@ -29,9 +29,9 @@ namespace Journal
             flipper.isFlipping = true;
             flipper.duration = _duration - Time.deltaTime;
             flipper.finish = _OnComplete;
-            flipper.centerXPosition = (_journal.EndBottomLeft.x + _journal.EndBottomRight.x) / 2;
-            flipper.pageWidth = (_journal.EndBottomRight.x - _journal.EndBottomLeft.x) / 2;
-            flipper.pageHeight = Mathf.Abs(_journal.EndBottomRight.y);
+            flipper.centerXPosition = (_journal.EdgeBottomLeft.x + _journal.EdgeBottomRight.x) / 2;
+            flipper.pageWidth = (_journal.EdgeBottomRight.x - _journal.EdgeBottomLeft.x) / 2;
+            flipper.pageHeight = Mathf.Abs(_journal.EdgeBottomRight.y);
             flipper.flipMode = _mode;
             flipper.elapsedTime = 0;
             float x;
