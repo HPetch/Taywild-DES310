@@ -168,11 +168,10 @@ namespace Journal
         // Update is called once per frame
         void Update()
         {
+            if (Input.GetKeyDown(KeyCode.Alpha0)) FlipToPage(0);
             if (Input.GetKeyDown(KeyCode.Alpha1)) FlipToPage(1);
             if (Input.GetKeyDown(KeyCode.Alpha2)) FlipToPage(2);
             if (Input.GetKeyDown(KeyCode.Alpha3)) FlipToPage(3);
-            if (Input.GetKeyDown(KeyCode.Alpha4)) FlipToPage(4);
-            if (Input.GetKeyDown(KeyCode.Alpha5)) FlipToPage(5);
 
             if (flippingStarted)
             {
@@ -200,10 +199,22 @@ namespace Journal
         #region Page FLipping
         public void FlipToPage(int _page)
         {
-            if (_page < 0) _page = 0;
-            if (_page > papers.Length * 2) _page = papers.Length * 2 - 1;
+            _page = Math.Clamp(_page, 0, papers.Length * 2 - 1);
 
-            StartFlipping((_page + 1) / 2);
+            if (_page - currentPaper == 1)
+            {
+                FlipRightPage();
+                return;
+            }
+
+            if (_page - currentPaper == -1)
+            {
+                FlipLeftPage();
+                return;
+            }
+
+            // Multi flip
+            StartFlipping(_page);
         }
 
         /// <summary>
