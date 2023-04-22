@@ -95,12 +95,18 @@ public class DialogueController : MonoBehaviour
     /// </summary>
     private void Update()
     {
-        if (GameStateController.Instance.GameState != GameStateController.GameStates.DIALOGUE) return;
+        //if (GameStateController.Instance.GameState != GameStateController.GameStates.DIALOGUE) return;
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            StopCoroutine(textType);
+            PlayerDialogueController.Instance.HideThoughtBubbles(0);
+            PlayerDialogueController.Instance.CloseTransition();
+            Character.CloseTransition();
+            EndConversation();
+        }
 
         if (!canDisplayNext) return;
-
-        // If the player inputed continue the conversation
-        if (dialogueNode == null) return;
 
         if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return) || Input.GetMouseButtonDown(0) || Input.GetButtonDown("Interact"))
         {
@@ -157,9 +163,9 @@ public class DialogueController : MonoBehaviour
             yield break;
         }
 
-        yield return new WaitForSeconds(_delay);
-
         canDisplayNext = false;
+
+        yield return new WaitForSeconds(_delay);
 
         switch (_node.NodeType)
         {
@@ -265,6 +271,7 @@ public class DialogueController : MonoBehaviour
         {
             StopCoroutine(textType);
             textType = null;
+            canDisplayNext = true;
 
             currentDialogueCanvas.SetText(dialogueNode.Text);
             currentDialogueCanvas.ShowContinueIndicator();
@@ -427,8 +434,12 @@ public class DialogueController : MonoBehaviour
     private void EndConversation()
     {
         IsConversing = false;
-        textType = null;
-        dialogueNode = null;
+
+        if (textType != null)
+        {
+            StopCoroutine(textType);
+            textType = null;
+        }
 
         OnConversationEnd?.Invoke();
     }
