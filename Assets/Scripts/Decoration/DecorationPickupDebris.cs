@@ -57,8 +57,7 @@ public class DecorationPickupDebris : MonoBehaviour
         }
         else if (hangTime < Time.time)
         {
-            //// WILL BE REPLACED ONCE CORNER RESOURCE UI IS IN
-            
+            movementSpeed *= 1.05f;
             switch (itemType)
             {
                 case InventoryController.ItemNames.LEAF:
