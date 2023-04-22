@@ -53,7 +53,7 @@ public class ObjectiveController : MonoBehaviour
             }
         }
 
-        if (_object.UiName == "Bench")
+        if (_object.UiName == "Garden Bench")
         {
             Quest warsanBenchQ1 = GetQuest(QuestTypes.WarsanBenchQ1);
 
