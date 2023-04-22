@@ -4,6 +4,7 @@
 /// 2 variants, Pickup Object low health no collision, Pickup Block Object high health collides with player
 /// Once destroyed the items the pickup object contained is added to the Inventory Controller
 
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PickupObject : MonoBehaviour
@@ -176,7 +177,7 @@ public class PickupObject : MonoBehaviour
                 isTryingToBreak = false;
             }
 
-            DecorationController.Instance.DecorationSelector.GetComponent<DecorationSelector>().PickupPullingSelectorOffset(mouseStartPosition, PullCurrentDistance(), isTryingToBreak);
+            DecorationController.Instance.DecorationSelector.GetComponent<DecorationSelector>().PickupPullingSelectorOffset(mouseStartPosition,  Mathf.Clamp( PullCurrentDistance() / pullBreakDistance, 0.0f, 0.9f), isTryingToBreak);
         }
         else if (!isBeingPulled && isActive) spriteArmRef.transform.position = Vector2.Lerp(spriteArmRef.transform.position, targetPosition, dragMoveSpeed * Time.deltaTime);
         // If the is able to respawn then wait until the correct time then respawn
@@ -195,6 +196,7 @@ public class PickupObject : MonoBehaviour
                 Mathf.Clamp(health, 1, 3) * 10; // As the player breaks the object it gets easier to damage
         else pullMoveResistance = forceHealthScaling * 10;
         SetPullBreakState(true, false);
+        DecorationController.Instance.DecorationSelector.GetComponent<DecorationSelector>().StartPullingPickup();
     }
 
     // Called by decoration controller when the player releases the mouse button. Also called when removing health from pickup that doesn't break.
@@ -205,6 +207,7 @@ public class PickupObject : MonoBehaviour
         ResetSpriteVibration();
         isTryingToBreak = false;
         DecorationController.Instance.PickupCancel();
+        DecorationController.Instance.DecorationSelector.GetComponent<DecorationSelector>().EndPullingPickup();
     }
 
     public void DamagePull()
@@ -216,6 +219,7 @@ public class PickupObject : MonoBehaviour
         spriteArmRef.transform.position = startPosition;
         SetPullBreakState(false, false);
         ResetSpriteVibration();
+        DecorationController.Instance.DecorationSelector.GetComponent<DecorationSelector>().EndPullingPickup();
 
         
     }
@@ -239,6 +243,7 @@ public class PickupObject : MonoBehaviour
             TreeLevelController.Instance.AddCleanExp(treeExp);
             isFirstBreak = false;
         }
+        DecorationController.Instance.DecorationSelector.GetComponent<DecorationSelector>().EndPullingPickup();
         
     }
     #endregion

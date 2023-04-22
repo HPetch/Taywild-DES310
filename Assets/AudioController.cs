@@ -52,16 +52,22 @@ public class AudioController : MonoBehaviour
     {
         //Play a oneshot sound effect (switch out clips in the audio source)
         //Assume volume is default (1.0)
-        sources[2].PlayOneShot(sound, 1.0f);
+        if (sound && sound != null) sources[2].PlayOneShot(sound, 1.0f);
     }
+
     public void PlaySound(AudioClip sound, bool varyPitch)
     {
+        if (sound && sound != null)
+        {
+        
+
         if (varyPitch)
             sources[2].pitch = Random.Range(randomPitchMin, randomPitchMax);
         else sources[2].pitch = 1.0f;
         //Play a oneshot sound effect (switch out clips in the audio source)
         //Assume volume is default (1.0)
         sources[2].PlayOneShot(sound, 1.0f);
+        }
     }
 
     public void PlaySound(AudioClip sound, float volume)
@@ -73,11 +79,14 @@ public class AudioController : MonoBehaviour
 
     public void PlaySound(AudioClip sound, float volume, bool varyPitch)
     {
-        if (varyPitch)
-            sources[2].pitch = Random.Range(randomPitchMin, randomPitchMax);
-        else sources[2].pitch = 1.0f;
-        //Play a oneshot sound effect (switch out clips in the audio source)
-        sources[2].PlayOneShot(sound, volume);
+        if (sound && sound != null)
+        {
+            if (varyPitch)
+                sources[2].pitch = Random.Range(randomPitchMin, randomPitchMax);
+            else sources[2].pitch = 1.0f;
+            //Play a oneshot sound effect (switch out clips in the audio source)
+            sources[2].PlayOneShot(sound, volume);
+        }
     }
 
     #endregion
@@ -98,7 +107,7 @@ public class AudioController : MonoBehaviour
     //Stop sound currently looping in an AudioSource
     public void StopLoopingSound(AudioSource source)
     {
-        source.Stop();
+        if (source & source != null) source.Stop();
     }
 
     public void PlayMusic(BGM music)

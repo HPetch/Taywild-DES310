@@ -15,7 +15,10 @@ public class DecorationSelector : MonoBehaviour
     
     private enum SelectorState {EMPTY, PICKABLE, PICKUP_PLACEABLE, BAD, OFFGRID } // All states that the selector can be in
     private SelectorState selectorState = SelectorState.EMPTY; // The selector's current state. EMPTY is the defult state it will be in
-        
+
+    private bool isHoveringOverPickup;
+    private bool isPullingPickup;
+    
     private Vector3 selectorTargetLocation; // Holds mouse location
     [SerializeField] float selectorMoveSpeed; // The speed that the selector follows the mouse.
     //private float pickupPullOffset = 1;
@@ -51,6 +54,7 @@ public class DecorationSelector : MonoBehaviour
 
     private GameObject hoveredFurnitureObject;
     
+    private bool nonEditPickupHoverTeleport;
     
     
     #endregion
@@ -142,7 +146,11 @@ public class DecorationSelector : MonoBehaviour
         // This section of code controls the selector switching between states and visuals depending on what the player is currently doing
         #region SelectorVisualStateSwitching
 
-        if (DecorationController.Instance.CurrentMoveFake)
+        bool _isEditMode = DecorationController.Instance.isEditMode;
+        
+        if (!_isEditMode) isHoveringOverPickup = false;
+
+        if (DecorationController.Instance.CurrentMoveFake && _isEditMode)
         {
             if (DecorationController.Instance.CurrentMoveFake.GetComponent<DecorationMovingFake>().CheckIfPlaceable())
             {
@@ -153,11 +161,11 @@ public class DecorationSelector : MonoBehaviour
                 selectorState = SelectorState.BAD;
             }
         }
-        else if (mouseDownHeldPickup != null) selectorState = SelectorState.OFFGRID;
+        else if (mouseDownHeldPickup != null && _isEditMode) selectorState = SelectorState.OFFGRID;
         else
         {
             Collider2D _objectUnderMouse = CheckObjectUnderMouse();
-            if (_objectUnderMouse)
+            if (_objectUnderMouse & _isEditMode)
             {
                 selectorState = SelectorState.PICKABLE;
                 if (_objectUnderMouse.GetComponent<FurnitureObject>() && hoveredFurnitureObject != _objectUnderMouse.gameObject)
@@ -166,14 +174,14 @@ public class DecorationSelector : MonoBehaviour
                     hoveredFurnitureObject = _objectUnderMouse.gameObject;
                     hoveredFurnitureObject.GetComponent<FurnitureObject>().StartHover();
                 } 
-                else if (hoveredFurnitureObject == _objectUnderMouse.gameObject) hoveredFurnitureObject.GetComponent<FurnitureObject>().StartHover();
+                else if (hoveredFurnitureObject == _objectUnderMouse.gameObject && _isEditMode) hoveredFurnitureObject.GetComponent<FurnitureObject>().StartHover();
                 /*else if (_objectUnderMouse.GetComponent<DecorationObject>())
                 {
                     hoveredFurnitureObject.GetComponent<DecorationObject>().EndHover();
                     hoveredFurnitureObject = _objectUnderMouse.gameObject;
                     hoveredFurnitureObject.GetComponent<DecorationObject>().StartHover();
                 } */
-                else if (_objectUnderMouse.GetComponent<DecorationButton>()) 
+                else if (_objectUnderMouse.GetComponent<DecorationButton>() && _isEditMode) 
                 {
                     if (_objectUnderMouse.GetComponentInParent<FurnitureObject>() && hoveredFurnitureObject != _objectUnderMouse.gameObject)
                     {
@@ -185,19 +193,37 @@ public class DecorationSelector : MonoBehaviour
                 }
                 
             }
-            else
+            else if (_objectUnderMouse && !_isEditMode)
             {
-                selectorState = SelectorState.EMPTY;
+                if (_objectUnderMouse.GetComponent<PickupObject>()) isHoveringOverPickup = true;
             }
+            else selectorState = SelectorState.EMPTY;
         }
+        
+        // Sets selctor start for interacting with pickup object while not in edit mode
+        if ((isHoveringOverPickup || isPullingPickup) && !_isEditMode) selectorState = SelectorState.PICKABLE;
+        
         int state = (int)selectorState; // Casts selector state into an int. (Scrapes the int value from it)
         spriteRenderer.sprite = selectorSpritesArray[state];
         selectorSpinSpeed = selectorSpinSpeedArray[state];
         scaleMultiplier = selectorScaleMultiplierArray[state];
+        
+        if (isHoveringOverPickup || isPullingPickup || _isEditMode) spriteRenderer.color = Color.white;
+        else spriteRenderer.color = Color.clear;
 
-        #endregion 
-        
-        
+        if (isHoveringOverPickup && !isPullingPickup && !_isEditMode)
+        {
+            if (!nonEditPickupHoverTeleport)
+            {
+                transform.position = CameraController.Instance.MouseWorldPosition;
+                nonEditPickupHoverTeleport = true;
+            }
+        }
+        else nonEditPickupHoverTeleport = false;
+
+        #endregion
+
+
     }
 
     #region Selector transform control
@@ -205,8 +231,9 @@ public class DecorationSelector : MonoBehaviour
     {
         // Controls the selector's current position, scale and rotation. Scale and rotation are affected by the selector's state, and spin jump when clicking
 
+        
 
-        if (selectorState != SelectorState.OFFGRID)
+        if (selectorState != SelectorState.OFFGRID && !isPullingPickup)
         {
             selectorTargetLocation = CameraController.Instance.MouseWorldPosition; // Sets target location as mouse position
             pickupDistanceScaleMultiplier = 1;
@@ -224,10 +251,11 @@ public class DecorationSelector : MonoBehaviour
 
     public void PickupPullingSelectorOffset(Vector2 _mouseStart, float _pullDistance , bool _isBreaking)
     {
-        selectorTargetLocation = Vector2.Lerp(_mouseStart, CameraController.Instance.MouseWorldPosition, _pullDistance * 5);
-        pickupDistanceScaleMultiplier = 1 + (_pullDistance*2);
-        if (_isBreaking) pickupDistanceSpinMultiplier = 1 + (_pullDistance*50);
-        else pickupDistanceSpinMultiplier = 1 + (_pullDistance * 10);
+        selectorTargetLocation = Vector2.Lerp(_mouseStart, CameraController.Instance.MouseWorldPosition, 1.0f-_pullDistance);
+        print(_pullDistance);
+        pickupDistanceScaleMultiplier = 1 + (_pullDistance);
+        if (_isBreaking) pickupDistanceSpinMultiplier = 1 + (_pullDistance*5);
+        else pickupDistanceSpinMultiplier = 1 + (_pullDistance);
 
     }
 
@@ -236,9 +264,17 @@ public class DecorationSelector : MonoBehaviour
     public Collider2D CheckObjectUnderMouse()
     {
         return Physics2D.OverlapCircle(CameraController.Instance.MouseWorldPosition, 0.1f, selectorInteractionLayerMask);
-        
     }
 
+    public void StartPullingPickup()
+    {
+        isPullingPickup = true;
+    }
+    public void EndPullingPickup()
+    {
+        isPullingPickup = false;
+    }
+    
     private void ResetSelector()
     {
         mouseDownHeldPickup = null;

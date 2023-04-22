@@ -19,6 +19,8 @@ public class FurnitureObject : DecorationObject
     [field: SerializeField] public Sprite UiImage { get; private set; }
     [field: SerializeField] public DecorationController.UiFurnitureCategories UiFurnitureCategory { get; private set; }
 
+    // If true then only requires one valid placement point to be good to place
+    [field: SerializeField] public bool PlacementRequireOnePoint;
 
 
 
@@ -36,6 +38,7 @@ public class FurnitureObject : DecorationObject
             EditButtonRight = EditButtonHolder.transform.GetChild(1).gameObject;
         }
         InitializeAttachmentPoints();
+        GetComponent<SpriteRenderer>().color = Color.clear;
     }
     // Update is called once per frame
 

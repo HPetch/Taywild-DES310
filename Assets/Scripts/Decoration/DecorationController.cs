@@ -10,7 +10,7 @@ public class DecorationController : MonoBehaviour
     public event Action OnExitEditMode;
     public event Action OnPickupDecoration;
     public event Action<FurnitureObject> OnPlaceDecoration;
-    public event Action OnPlaceCancelDecoration;
+    public event Action<bool> OnPlaceCancelDecoration;
     public event Action OnFurnitureDestroyed;
     //public event Action OnPickupStart; // SET THIS UP
     //public event Action OnPickupMoved; //SET THIS UP
@@ -19,7 +19,7 @@ public class DecorationController : MonoBehaviour
     public event Action OnPickupCancel;
 
     public static DecorationController Instance { get; private set; }
-    [SerializeField] private GameObject decorationSelectorPrefab;
+    //[SerializeField] private GameObject decorationSelectorPrefab;
     [SerializeField] private GameObject decorationMovingFakePrefab;
     public GameObject CurrentMoveTarget { get; private set; }
     public GameObject CurrentMoveFake { get; private set; }
@@ -141,14 +141,17 @@ public class DecorationController : MonoBehaviour
         
         
     }
-    
+
     public void DecorationMoveStart(GameObject _decorationObject)
     {
-        CurrentMoveTarget = _decorationObject;
-        CurrentMoveTarget.GetComponent<FurnitureObject>().StartPickup();
-        CurrentMoveFake = Instantiate(decorationMovingFakePrefab);
-        CurrentMoveFake.GetComponent<DecorationMovingFake>().scrollRotateIndex = CurrentMoveTarget.GetComponent<FurnitureObject>().scrollRotateIndexHolder;
-        OnPickupDecoration?.Invoke();
+        if (isEditMode)
+        {
+            CurrentMoveTarget = _decorationObject;
+            CurrentMoveTarget.GetComponent<FurnitureObject>().StartPickup();
+            CurrentMoveFake = Instantiate(decorationMovingFakePrefab);
+            CurrentMoveFake.GetComponent<DecorationMovingFake>().scrollRotateIndex = CurrentMoveTarget.GetComponent<FurnitureObject>().scrollRotateIndexHolder;
+            OnPickupDecoration?.Invoke();
+        }
     }
 
     private void DecorationMoveEndStart()
@@ -171,13 +174,13 @@ public class DecorationController : MonoBehaviour
     {
         if (CurrentMoveFake)
         {
+            OnPlaceCancelDecoration?.Invoke(CurrentMoveTarget.GetComponent<FurnitureObject>().isFirstTimePlace);
             if (!CurrentMoveTarget.GetComponent<FurnitureObject>().isFirstTimePlace)
             {
                 Destroy(CurrentMoveFake);
                 CurrentMoveFake = null;
                 CurrentMoveTarget.GetComponent<FurnitureObject>().EndPickup();
                 CurrentMoveTarget = null;
-                OnPlaceCancelDecoration?.Invoke();
             }
             else
             {
@@ -195,7 +198,12 @@ public class DecorationController : MonoBehaviour
         {
             InventoryController.Instance.AddItem(_item.Key, _item.Value, _furniture.transform.position);
         }
-        TreeLevelController.Instance.RemoveFurnitureExp(_furniture.GetComponent<FurnitureObject>().treeExp);
+
+        if (!_furniture.GetComponent<FurnitureObject>().isFirstTimePlace)
+        {
+            TreeLevelController.Instance.RemoveFurnitureExp(_furniture.GetComponent<FurnitureObject>().treeExp);
+        }
+
         Destroy(_furniture);
         OnFurnitureDestroyed?.Invoke();
 
@@ -223,7 +231,7 @@ public class DecorationController : MonoBehaviour
         foreach (KeyValuePair<InventoryController.ItemNames, Vector2Int> _item in _itemsReceived) // Go through each item that the pickup dropped
         {
             int _itemAmount = 0;
-            if (_item.Value.y > 0 && _item.Value.y > _item.Value.x) _itemAmount = UnityEngine.Random.Range(_item.Value.x, _item.Value.y); // Randomise the amount dropped using the min and max
+            if (_item.Value.y > 0 && _item.Value.y > _item.Value.x) _itemAmount = UnityEngine.Random.Range(_item.Value.x, _item.Value.y+1); // Randomise the amount dropped using the min and max
             else _itemAmount = _item.Value.x; // If the max is 0 or lower than the min then just use the min instead
             InventoryController.Instance.AddItem(_item.Key, _itemAmount, _position); // Add the item and it's amount to the inventory
         }
@@ -231,7 +239,7 @@ public class DecorationController : MonoBehaviour
 
     public void DecorationButtonPress(GameObject _button)
     {
-        if (_button.GetComponentInParent<FurnitureObject>())
+        if (_button.GetComponentInParent<FurnitureObject>() && isEditMode)
         {
             FurnitureObject _furnitureObject = _button.GetComponentInParent<FurnitureObject>();
             if (_button == _furnitureObject.RemoveButton) DestroyFurniture(_furnitureObject.gameObject); // Pickup object and refund materials to inventory
@@ -254,7 +262,7 @@ public class DecorationController : MonoBehaviour
             CameraController.Instance.ResetTarget();
             DecorationMoveCancel();
             isEditMode = false;
-            Destroy(DecorationSelector);
+            //Destroy(DecorationSelector);
             OnExitEditMode?.Invoke();
             PP.SetActive(false);
             AudioClip clip = closeInterfaceClips[UnityEngine.Random.Range(0, closeInterfaceClips.Length)];
@@ -263,7 +271,7 @@ public class DecorationController : MonoBehaviour
         }
         else if(!isEditMode && PlayerController.Instance.IsGrounded && !DialogueController.Instance.IsConversing)
         {
-            DecorationSelector = Instantiate(decorationSelectorPrefab);
+            //DecorationSelector = Instantiate(decorationSelectorPrefab);
             CameraController.Instance.SetTarget(DecorationSelector.transform);
             isEditMode = true;
             OnEnterEditMode?.Invoke();

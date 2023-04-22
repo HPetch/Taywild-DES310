@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class TreeLevelInterface : MonoBehaviour
@@ -12,11 +13,13 @@ public class TreeLevelInterface : MonoBehaviour
     [field: SerializeField] public Transform LeafSprite { get; private set; }
     [field: SerializeField] public Transform WoodSprite { get; private set; }
     [field: SerializeField] public Transform SapSprite { get; private set; }
+    
+    [SerializeField] private Image expBar;
+    
+    [SerializeField] private Image[] levelImages;
 
-    [SerializeField] private Image ExpBar;
-
-    [SerializeField] private Image[] LevelImages;
-
+    [SerializeField] private TMP_Text levelNumber;
+    
     [Header("Open/close animation")]
     private bool isOpen = false;
     [SerializeField] private RectTransform interfaceParent; //What element needs moving
@@ -41,7 +44,7 @@ public class TreeLevelInterface : MonoBehaviour
         InventoryController.Instance.OnItemQuantityChanged += OpenItem;
 
         TreeLevelController.Instance.OnExpTotalChanged += UpdateExpBar;
-        TreeLevelController.Instance.OnTreeLevelUp += UpdateLevelImg;
+        TreeLevelController.Instance.OnTreeLevelUp += UpdateLevel;
     }
 
     private void Update()
@@ -68,14 +71,15 @@ public class TreeLevelInterface : MonoBehaviour
         int _treeLevel = TreeLevelController.Instance.CurrentTreeLevel;
         float _treeExp = TreeLevelController.Instance.TotalExp;
         int[] _treeLevelUpReqExp = TreeLevelController.Instance.treeLevelExpRequirements;
-        if (_treeLevel > 0) ExpBar.fillAmount = (_treeExp - _treeLevelUpReqExp[_treeLevel - 1]) / _treeLevelUpReqExp[_treeLevel];
-        else ExpBar.fillAmount = _treeExp / _treeLevelUpReqExp[_treeLevel];
+        if (_treeLevel > 0) expBar.fillAmount = (_treeExp - _treeLevelUpReqExp[_treeLevel - 1]) / (_treeLevelUpReqExp[_treeLevel] - _treeLevelUpReqExp[_treeLevel - 1]);
+        else expBar.fillAmount = _treeExp / _treeLevelUpReqExp[_treeLevel];
     }
 
-    private void UpdateLevelImg()
+    private void UpdateLevel()
     {
         int _treeLevel = TreeLevelController.Instance.CurrentTreeLevel;
-        LevelImages[_treeLevel].color = Color.white;
+        levelImages[_treeLevel].color = Color.white;
+        levelNumber.text = _treeLevel.ToString();
     }
 
     //Slide the interface onto the screen

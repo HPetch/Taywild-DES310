@@ -14,12 +14,14 @@ public class DecorationButton : MonoBehaviour
 
     void Update()
     {
+        
         if (buttonType == ButtonType.STYLE_LEFT || buttonType == ButtonType.STYLE_RIGHT)
         {
             editHolderSpacing = transform.parent.GetComponent<DecorationButton>().editHolderSpacing;
             if (buttonType == ButtonType.STYLE_LEFT) { transform.position = new Vector2(transform.parent.position.x - baseHolderSpacing - editHolderSpacing, transform.position.y); }
             else if (buttonType == ButtonType.STYLE_RIGHT) { transform.position = new Vector2(transform.parent.position.x + baseHolderSpacing + editHolderSpacing, transform.position.y); }
         }
+
     }
 }
 
