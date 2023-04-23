@@ -11,9 +11,15 @@ public class TestersInterface : MonoBehaviour
     [SerializeField] private TMP_Text partitionText;
     [SerializeField] private TMP_Text coordsText;
     [SerializeField] private TMP_Text playerControllerText;
+    [SerializeField] private TMP_Text versionText;
 
     [SerializeField] private Canvas canvas;
     #endregion
+
+    private void Awake()
+    {
+        versionText.text = "Version: " + Application.version;
+    }
 
     private void Update()
     {
