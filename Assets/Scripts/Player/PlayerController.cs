@@ -232,7 +232,6 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         movementInput = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
-        Debug.Log(movementInput.x);
         rb.sharedMaterial.friction = IsGrounded && movementInput.x == 0 ? 1 : 0;
 
         CheckMovementDirection();
