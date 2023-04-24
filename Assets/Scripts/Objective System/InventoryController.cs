@@ -9,7 +9,7 @@ using UnityEngine;
 
 public class InventoryController : MonoBehaviour
 {
-    public enum ItemNames { LEAF, WOOD, SAP , QUEST_BLUEFLOWER}
+    public enum ItemNames { LEAF, WOOD, SAP , QUEST_BLUEFLOWER , QUEST_BOOK , QUEST_BERRYS}
 
     public static InventoryController Instance { get; private set; }
 
