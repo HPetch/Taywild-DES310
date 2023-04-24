@@ -1240,7 +1240,7 @@ CapsuleCollider2D:
   m_GameObject: {fileID: 3013080772066457362}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: 16b5fe951b036064a9031520bac62841, type: 2}
+  m_Material: {fileID: 6200000, guid: 4a22f61c9b80d0246aec6c23e943a267, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -1263,7 +1263,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 5.5
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 4a22f61c9b80d0246aec6c23e943a267, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -1334,9 +1334,12 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 4a024ae3da4bcf34886706d8320e9beb, type: 3}
   - {fileID: 8300000, guid: 91d1ee8a565d3af4e84e517284a907e9, type: 3}
   wallHitParticleEffect: {fileID: 0}
-  wallHitAudioClips: []
+  wallHitAudioClips:
+  - {fileID: 8300000, guid: 71f5f75bb3d12b14797978ab053079ac, type: 3}
+  - {fileID: 8300000, guid: c4cb67ce6a698a84d88207bbdf2ca15f, type: 3}
   wallSlideParticleEffect: {fileID: 0}
-  wallSlideAudioClips: []
+  wallSlideAudioClips:
+  - {fileID: 8300000, guid: 627cc8a07ca741448aa8f99fe0981a98, type: 3}
   landParticleEffect: {fileID: 0}
   landAudioClips:
   - {fileID: 8300000, guid: afe4387188dfa4541bc802a592028435, type: 3}

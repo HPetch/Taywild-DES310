@@ -66,13 +66,14 @@ public class DecorationSelector : MonoBehaviour
     {
         sprite = GetComponent<Sprite>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+    }
 
+    private void Start()
+    {
         DecorationController.Instance.OnPickupBroken += ResetSelector;
         DecorationController.Instance.OnPickupDamaged += ResetSelector;
         DecorationController.Instance.OnPickupCancel += ResetSelector;
-    }
-    private void Start()
-    {
+
         selectorTargetLocation = PlayerController.Instance.transform.position;
         transform.position = PlayerController.Instance.transform.position;
     }
