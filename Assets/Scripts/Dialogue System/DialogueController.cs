@@ -108,7 +108,7 @@ public class DialogueController : MonoBehaviour
 
         if (!canDisplayNext) return;
 
-        if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return) || Input.GetMouseButtonDown(0) || Input.GetButtonDown("Interact"))
+        if (Input.GetMouseButtonDown(0))
         {
             // If single choice node, display next
             if (dialogueNode.DialogueType == DialogueTypes.SingleChoice) DisplayNext();
