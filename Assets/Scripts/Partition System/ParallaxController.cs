@@ -9,17 +9,12 @@ public class ParallaxController : MonoBehaviour
 
     private Transform playerCameraTransform = null;
     private Vector3 lastCameraPosition = Vector2.one;
-    private float textureUnitSizeX;
+    [SerializeField] private float textureUnitSizeX = 19.2f * 4;
 
     private void Start()
     {
-        GetComponent<SpriteRenderer>().enabled = true;
-
         playerCameraTransform = CameraController.Instance.transform;
         lastCameraPosition = playerCameraTransform.position;
-
-        Sprite sprite = GetComponent<SpriteRenderer>().sprite;
-        textureUnitSizeX = (sprite.texture.width / sprite.pixelsPerUnit) * 2;
     }
 
     private void LateUpdate()
