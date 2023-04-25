@@ -885,6 +885,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   parallaxEffectMultiplier: {x: 0.5, y: 0.5}
   infiniteScrolling: 1
+  textureUnitSizeX: 76.8
 --- !u!212 &78025449
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1964,12 +1965,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c441e2f45d436946890f34997744994, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  decorationSelectorPrefab: {fileID: 0}
   decorationMovingFakePrefab: {fileID: 0}
   <DecorationSelector>k__BackingField: {fileID: 0}
   <FurnitureObjectPrefabs>k__BackingField:
     list: []
   PP: {fileID: 0}
+  openInterfaceClips: []
+  closeInterfaceClips: []
 --- !u!114 &438263712
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2574,6 +2576,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   parallaxEffectMultiplier: {x: 0.3, y: 0.3}
   infiniteScrolling: 1
+  textureUnitSizeX: 76.8
 --- !u!212 &613779247
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3084,6 +3087,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   parallaxEffectMultiplier: {x: 0.1, y: 0.1}
   infiniteScrolling: 1
+  textureUnitSizeX: 76.8
 --- !u!212 &683697838
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4032,6 +4036,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   parallaxEffectMultiplier: {x: 0.1, y: 0.1}
   infiniteScrolling: 1
+  textureUnitSizeX: 76.8
 --- !u!212 &875310533
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4484,6 +4489,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   parallaxEffectMultiplier: {x: 0.2, y: 0.2}
   infiniteScrolling: 1
+  textureUnitSizeX: 76.8
 --- !u!212 &973000818
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4647,6 +4653,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   parallaxEffectMultiplier: {x: 0.35, y: 0.35}
   infiniteScrolling: 1
+  textureUnitSizeX: 76.8
 --- !u!212 &1096291014
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5438,6 +5445,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   parallaxEffectMultiplier: {x: 1, y: 1}
   infiniteScrolling: 0
+  textureUnitSizeX: 76.8
 --- !u!212 &1323860182
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5750,6 +5758,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   parallaxEffectMultiplier: {x: 0.2, y: 0.2}
   infiniteScrolling: 1
+  textureUnitSizeX: 76.8
 --- !u!212 &1398987584
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -6610,6 +6619,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   parallaxEffectMultiplier: {x: 0.3, y: 0.3}
   infiniteScrolling: 1
+  textureUnitSizeX: 76.8
 --- !u!212 &1677012538
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -7086,6 +7096,30 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1142807451221167852, guid: d610a4bed97be344aa13e681d901912a, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1142807451221167852, guid: d610a4bed97be344aa13e681d901912a, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1142807451221167852, guid: d610a4bed97be344aa13e681d901912a, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1142807451221167852, guid: d610a4bed97be344aa13e681d901912a, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1142807451221167852, guid: d610a4bed97be344aa13e681d901912a, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1142807451221167852, guid: d610a4bed97be344aa13e681d901912a, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1638152980997741043, guid: d610a4bed97be344aa13e681d901912a, type: 3}
       propertyPath: m_SizeDelta.x
       value: 0
@@ -7104,7 +7138,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3506639447406749903, guid: d610a4bed97be344aa13e681d901912a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 17.25
+      value: 10.61
       objectReference: {fileID: 0}
     - target: {fileID: 3506639447406749903, guid: d610a4bed97be344aa13e681d901912a, type: 3}
       propertyPath: m_LocalPosition.z
@@ -7164,6 +7198,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5063491414146837646, guid: d610a4bed97be344aa13e681d901912a, type: 3}
       propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6855271087070870417, guid: d610a4bed97be344aa13e681d901912a, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6855271087070870417, guid: d610a4bed97be344aa13e681d901912a, type: 3}
+      propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

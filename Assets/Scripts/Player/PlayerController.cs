@@ -235,9 +235,7 @@ public class PlayerController : MonoBehaviour
     #region Updates
     private void Update()
     {
-        movementInput = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
-        
-        
+        movementInput = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));        
 
         CheckMovementDirection();
         CheckIfPlayerIsGrounded();
