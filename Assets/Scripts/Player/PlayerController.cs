@@ -246,9 +246,6 @@ public class PlayerController : MonoBehaviour
         CheckIfEndBounce();
 
         HandleActionInput();
-
-        print(rb.velocity);
-
     }
 
     private void FixedUpdate()

@@ -253,7 +253,9 @@ public class DecorationSelector : MonoBehaviour
     public void PickupPullingSelectorOffset(Vector2 _mouseStart, float _pullDistance , bool _isBreaking)
     {
         selectorTargetLocation = Vector2.Lerp(_mouseStart, CameraController.Instance.MouseWorldPosition, 1.0f-_pullDistance);
-        print(_pullDistance);
+        
+        //print(_pullDistance);
+        
         pickupDistanceScaleMultiplier = 1 + (_pullDistance);
         if (_isBreaking) pickupDistanceSpinMultiplier = 1 + (_pullDistance*5);
         else pickupDistanceSpinMultiplier = 1 + (_pullDistance);
