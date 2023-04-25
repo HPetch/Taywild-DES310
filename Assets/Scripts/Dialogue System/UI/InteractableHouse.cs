@@ -80,8 +80,8 @@ public class InteractableHouse : MonoBehaviour
     {
         if (collision.CompareTag("Player") && !DialogueController.Instance.IsConversing && !DecorationController.Instance.isEditMode)
         {
-            //LeanTween.cancel(interactCanvasGroup.gameObject);
-            //LeanTween.alphaCanvas(interactCanvasGroup, 1, 0.15f);
+            LeanTween.cancel(interactCanvasGroup.gameObject);
+            LeanTween.alphaCanvas(interactCanvasGroup, 1, 0.15f);
 
             interactCanvasGroup.alpha = 1;
 
@@ -94,8 +94,8 @@ public class InteractableHouse : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            //LeanTween.cancel(interactCanvasGroup.gameObject);
-            //LeanTween.alphaCanvas(interactCanvasGroup, 0, 0.15f);
+            LeanTween.cancel(interactCanvasGroup.gameObject);
+            LeanTween.alphaCanvas(interactCanvasGroup, 0, 0.15f);
 
             interactCanvasGroup.alpha = 0;
 

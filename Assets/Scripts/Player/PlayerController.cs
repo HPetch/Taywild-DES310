@@ -220,7 +220,7 @@ public class PlayerController : MonoBehaviour
         // Refresh collider to ensure physics material change is applied, shouldn't be required but Unity is not being consistant without this code
         capsuleCollider.enabled = false;
         capsuleCollider.enabled = true;
-        rb.sharedMaterial.friction = 0;
+        SetPlayerPhysicsFriction(0);
     }
 
     private void Start()
@@ -236,10 +236,15 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         movementInput = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
-        rb.sharedMaterial.friction = IsGrounded && movementInput.x == 0 ? 1 : 0;
-        // Refresh collider to ensure physics material change is applied, shouldn't be required but Unity is not being consistant without this code
-        capsuleCollider.enabled = false;
-        capsuleCollider.enabled = true;
+        
+        if (IsGrounded && movementInput.x == 0 && rb.sharedMaterial.friction == 0)
+        {
+            SetPlayerPhysicsFriction(1);
+        }
+        else if (rb.sharedMaterial.friction == 1 && (!IsGrounded || movementInput.x != 0))
+        {
+            SetPlayerPhysicsFriction(0);
+        }
 
         CheckMovementDirection();
         CheckIfPlayerIsGrounded();
@@ -691,6 +696,11 @@ public class PlayerController : MonoBehaviour
     public void ResetPlayerToLastKnownPosition()
     {
         transform.position = lastKnownGroundPosition;
+    }
+
+    private void SetPlayerPhysicsFriction(float _friction)
+    {
+        rb.sharedMaterial.friction = _friction;       
     }
 
     /// <summary>
