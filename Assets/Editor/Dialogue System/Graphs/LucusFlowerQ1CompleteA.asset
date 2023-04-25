@@ -15,39 +15,603 @@ MonoBehaviour:
   <FileName>k__BackingField: 
   <Groups>k__BackingField: []
   <Nodes>k__BackingField:
-  - <ID>k__BackingField: 4e7ca9d9-9fe0-44ca-b335-c3e1f841b1bb
-    <Name>k__BackingField: Unknown1
+  - <ID>k__BackingField: b4154e1f-4410-4e9d-98fd-ef8b528c5622
+    <Name>k__BackingField: Player1
     <NodeType>k__BackingField: 0
     <GroupID>k__BackingField: 
     <Choices>k__BackingField:
-    - <Text>k__BackingField: Next Node
-      <NodeID>k__BackingField: fb4a8a20-5d1e-4094-9f86-0b2725e70fc7
-    <Position>k__BackingField: {x: 1434, y: -327}
-    <DialogueType>k__BackingField: 0
-    <Character>k__BackingField: {fileID: 11400000, guid: 5e54e24b855158c4b886ceb465cabaa4, type: 2}
-    <Text>k__BackingField: Oh you came back.
+    - <Text>k__BackingField: Call him.
+      <NodeID>k__BackingField: 136f9f3f-0c7e-435d-9cc8-543dacf9b068
+    - <Text>k__BackingField: Knock.
+      <NodeID>k__BackingField: b51dcfaf-0e44-4a76-82c2-950c1debd3f4
+    <Position>k__BackingField: {x: 1450, y: -325}
+    <DialogueType>k__BackingField: 1
+    <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
+    <Text>k__BackingField: "I\u2019ve got the flower but I can\u2019t see him\n inside
+      the greenhouse, should I call for him?"
     <SoundEffect>k__BackingField: {fileID: 0}
     <Delay>k__BackingField: 0
     <Graph>k__BackingField: {fileID: 0}
     <Quest>k__BackingField: 0
-  - <ID>k__BackingField: fb4a8a20-5d1e-4094-9f86-0b2725e70fc7
-    <Name>k__BackingField: Unknown2
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: 6cd6157c-d2a7-4bde-a54d-01fb3d5e27bf
+    <Name>k__BackingField: PotCrashing
+    <NodeType>k__BackingField: 3
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: 003ee0bf-8e42-44a2-9921-cccabc11b6bf
+    <Position>k__BackingField: {x: 2400, y: -325}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 0}
+    <Text>k__BackingField: 
+    <SoundEffect>k__BackingField: {fileID: 8300000, guid: 46b304f9aeb47174a88fff22573590f1, type: 3}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: 003ee0bf-8e42-44a2-9921-cccabc11b6bf
+    <Name>k__BackingField: LucusAlt1
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Are you okay?
+      <NodeID>k__BackingField: 85f529ae-3d90-4650-a36f-93f5054cfdb4
+    - <Text>k__BackingField: Sorry.
+      <NodeID>k__BackingField: bf1e2549-a12f-4a44-8cb0-33716dd52c2e
+    <Position>k__BackingField: {x: 2700, y: -325}
+    <DialogueType>k__BackingField: 1
+    <Character>k__BackingField: {fileID: 11400000, guid: 5e54e24b855158c4b886ceb465cabaa4, type: 2}
+    <Text>k__BackingField: Dammit.
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: 85f529ae-3d90-4650-a36f-93f5054cfdb4
+    <Name>k__BackingField: Player3
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: 024637af-5cd1-489e-83f1-54a9f82903a4
+    <Position>k__BackingField: {x: 3075, y: -325}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
+    <Text>k__BackingField: "Are you okay? I didn\u2019t mean to surprise you. "
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: bf1e2549-a12f-4a44-8cb0-33716dd52c2e
+    <Name>k__BackingField: Player4
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: 024637af-5cd1-489e-83f1-54a9f82903a4
+    <Position>k__BackingField: {x: 3075, y: -100}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
+    <Text>k__BackingField: "Sorry, that was my fault.\r"
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: 024637af-5cd1-489e-83f1-54a9f82903a4
+    <Name>k__BackingField: LucusAlt2
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: d38d8ff4-6d74-4594-8270-d22ca2184665
+    <Position>k__BackingField: {x: 3600, y: -325}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 5e54e24b855158c4b886ceb465cabaa4, type: 2}
+    <Text>k__BackingField: "It\u2019s okay, I have more of those."
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: d38d8ff4-6d74-4594-8270-d22ca2184665
+    <Name>k__BackingField: Player5
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: 791f0f1b-e35a-40ce-84c0-53a5b01fbda3
+    <Position>k__BackingField: {x: 3925, y: -325}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
+    <Text>k__BackingField: "\u2026well I brought the flower, so maybe\n I can help
+      you clean up that mess?"
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: 791f0f1b-e35a-40ce-84c0-53a5b01fbda3
+    <Name>k__BackingField: LucusAlt3
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: f0f5c4db-d6a1-4a65-9ccb-4f16a2006474
+    <Position>k__BackingField: {x: 4400, y: -325}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 5e54e24b855158c4b886ceb465cabaa4, type: 2}
+    <Text>k__BackingField: You have the flower?
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: 136f9f3f-0c7e-435d-9cc8-543dacf9b068
+    <Name>k__BackingField: Player2
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: 6cd6157c-d2a7-4bde-a54d-01fb3d5e27bf
+    <Position>k__BackingField: {x: 1950, y: -325}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
+    <Text>k__BackingField: "<link=\"jiggle\">HELLO? Are you there? <link=\"wait_short\">\nI\u2019ve
+      got the flower."
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: b51dcfaf-0e44-4a76-82c2-950c1debd3f4
+    <Name>k__BackingField: Knocking
+    <NodeType>k__BackingField: 3
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: 33a5705f-243f-4ed3-b7a6-1681a7c69960
+    <Position>k__BackingField: {x: 1950, y: 150}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 0}
+    <Text>k__BackingField: 
+    <SoundEffect>k__BackingField: {fileID: 8300000, guid: 46b304f9aeb47174a88fff22573590f1, type: 3}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: 33a5705f-243f-4ed3-b7a6-1681a7c69960
+    <Name>k__BackingField: Player6
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: f3aae165-e544-47e5-85ca-d8e2d4fcb42e
+    <Position>k__BackingField: {x: 2250, y: 150}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
+    <Text>k__BackingField: "Hello? I\u2019m back. "
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: f3aae165-e544-47e5-85ca-d8e2d4fcb42e
+    <Name>k__BackingField: LucusAlt4
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: 77a371ec-5ee9-4d9a-9f76-e7760cab9849
+    <Position>k__BackingField: {x: 2525, y: 150}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 5e54e24b855158c4b886ceb465cabaa4, type: 2}
+    <Text>k__BackingField: ...
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: 77a371ec-5ee9-4d9a-9f76-e7760cab9849
+    <Name>k__BackingField: LucusAlt5
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: 93f1f5eb-e5a5-4b89-aa8d-b87dfe9a1c31
+    <Position>k__BackingField: {x: 2800, y: 150}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 5e54e24b855158c4b886ceb465cabaa4, type: 2}
+    <Text>k__BackingField: "\u2026hello? Who is that?"
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: 93f1f5eb-e5a5-4b89-aa8d-b87dfe9a1c31
+    <Name>k__BackingField: Player7
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: 7444ad4c-2d78-43e6-9012-f3d47130b18e
+    <Position>k__BackingField: {x: 3075, y: 150}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
+    <Text>k__BackingField: "It\u2019s me! I\u2019ve got the crystal flower."
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: 7444ad4c-2d78-43e6-9012-f3d47130b18e
+    <Name>k__BackingField: LucusAlt6
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: 6fd5c67e-0f23-4bf8-8e73-6c940bc9560b
+    <Position>k__BackingField: {x: 3500, y: 150}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 5e54e24b855158c4b886ceb465cabaa4, type: 2}
+    <Text>k__BackingField: You came back?
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: 6fd5c67e-0f23-4bf8-8e73-6c940bc9560b
+    <Name>k__BackingField: LucusAlt7
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: f0f5c4db-d6a1-4a65-9ccb-4f16a2006474
+    <Position>k__BackingField: {x: 3775, y: 150}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 5e54e24b855158c4b886ceb465cabaa4, type: 2}
+    <Text>k__BackingField: 'And you have the flower? '
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: f0f5c4db-d6a1-4a65-9ccb-4f16a2006474
+    <Name>k__BackingField: LucusAlt8
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Present the flower.
+      <NodeID>k__BackingField: 46efd936-6f86-423e-919e-becc25f609e8
+    <Position>k__BackingField: {x: 4775, y: -325}
+    <DialogueType>k__BackingField: 1
+    <Character>k__BackingField: {fileID: 11400000, guid: 5e54e24b855158c4b886ceb465cabaa4, type: 2}
+    <Text>k__BackingField: "<size=60%> \u2026no one has actually gotten the flower
+      before\u2026<size=100%>"
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: 46efd936-6f86-423e-919e-becc25f609e8
+    <Name>k__BackingField: Player8
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: 6b0a856f-4527-4186-a2d9-6cb9e8e2c571
+    <Position>k__BackingField: {x: 5250, y: -325}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
+    <Text>k__BackingField: Hope this is the right one!
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: fa646ce6-b747-439c-8e4f-10c9e5d4f727
+    <Name>k__BackingField: LucusAlt10
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: c1944a18-0918-42f4-9848-7cfbf3d23b31
+    <Position>k__BackingField: {x: 6075, y: -325}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 5e54e24b855158c4b886ceb465cabaa4, type: 2}
+    <Text>k__BackingField: Chrysanthemum Somnium, the Pure Flower!
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: 6b0a856f-4527-4186-a2d9-6cb9e8e2c571
+    <Name>k__BackingField: LucusAlt9
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: fa646ce6-b747-439c-8e4f-10c9e5d4f727
+    <Position>k__BackingField: {x: 5575, y: -325}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 5e54e24b855158c4b886ceb465cabaa4, type: 2}
+    <Text>k__BackingField: <link="jiggle">It is! </link>It's just like the book described
+      it!
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: c1944a18-0918-42f4-9848-7cfbf3d23b31
+    <Name>k__BackingField: LucusAlt11
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: b9a7f4ee-42e8-440b-95be-927314a9a00d
+    <Position>k__BackingField: {x: 6525, y: -325}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 5e54e24b855158c4b886ceb465cabaa4, type: 2}
+    <Text>k__BackingField: "Its petals are said to be the purest crystal in all the
+      dream world\u2026 "
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: b9a7f4ee-42e8-440b-95be-927314a9a00d
+    <Name>k__BackingField: LucusAlt12
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Keep listening.
+      <NodeID>k__BackingField: 09587bb5-8c9f-4650-922e-317ac3cc6ee5
+    - <Text>k__BackingField: Interrupt him.
+      <NodeID>k__BackingField: 2cc6110d-0af8-48d8-ab69-0ef2a646d3ab
+    <Position>k__BackingField: {x: 6950, y: -325}
+    <DialogueType>k__BackingField: 1
+    <Character>k__BackingField: {fileID: 11400000, guid: 5e54e24b855158c4b886ceb465cabaa4, type: 2}
+    <Text>k__BackingField: "\u2026growing only where dreams are their most pure.
+      It\u2019s many properties\u2026"
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: 09587bb5-8c9f-4650-922e-317ac3cc6ee5
+    <Name>k__BackingField: Player9
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: 4de40ae9-9c1a-43a9-902c-6d147a3b2423
+    <Position>k__BackingField: {x: 7425, y: -325}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
+    <Text>k__BackingField: ...
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: 4de40ae9-9c1a-43a9-902c-6d147a3b2423
+    <Name>k__BackingField: LucusAlt13
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: 65258e23-b242-42a9-9394-f7079034f59e
+    <Position>k__BackingField: {x: 7700, y: -325}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 5e54e24b855158c4b886ceb465cabaa4, type: 2}
+    <Text>k__BackingField: "\u2026include a relaxed state of being, improved\n heart
+      health, and a general sense of accomplishment! "
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: 65258e23-b242-42a9-9394-f7079034f59e
+    <Name>k__BackingField: LucusAlt14
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: 2cc15751-174d-4779-9269-abb97bae2c30
+    <Position>k__BackingField: {x: 8150, y: -325}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 5e54e24b855158c4b886ceb465cabaa4, type: 2}
+    <Text>k__BackingField: "Ranked no1 in the Dream Plant Almanac for best\u2026"
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: 2cc15751-174d-4779-9269-abb97bae2c30
+    <Name>k__BackingField: LucusAlt15
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: a295451f-9114-4c80-a527-40218ef17bb2
+    <Position>k__BackingField: {x: 8600, y: -325}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 5e54e24b855158c4b886ceb465cabaa4, type: 2}
+    <Text>k__BackingField: ...
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: a295451f-9114-4c80-a527-40218ef17bb2
+    <Name>k__BackingField: LucusAlt16
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: That's okay!
+      <NodeID>k__BackingField: e11c75ab-bf62-45f7-8518-3f3a7584372e
+    - <Text>k__BackingField: Stay silent.
+      <NodeID>k__BackingField: 4699493c-04d5-40b4-9987-fcdbc86ae422
+    <Position>k__BackingField: {x: 8875, y: -325}
+    <DialogueType>k__BackingField: 1
+    <Character>k__BackingField: {fileID: 11400000, guid: 5e54e24b855158c4b886ceb465cabaa4, type: 2}
+    <Text>k__BackingField: "<size=60%>\u2026sorry. I rambled off again. <size=100%>"
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: e11c75ab-bf62-45f7-8518-3f3a7584372e
+    <Name>k__BackingField: Player10
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: 2087a65c-2ef7-4b71-96ca-df3eff95ab30
+    <Position>k__BackingField: {x: 9350, y: -325}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
+    <Text>k__BackingField: "That\u2019s okay! I would have interrupted \nyou if I
+      didn\u2019t want to hear it."
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: 4699493c-04d5-40b4-9987-fcdbc86ae422
+    <Name>k__BackingField: Player11
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: 2087a65c-2ef7-4b71-96ca-df3eff95ab30
+    <Position>k__BackingField: {x: 9350, y: -75}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
+    <Text>k__BackingField: ...
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: 2087a65c-2ef7-4b71-96ca-df3eff95ab30
+    <Name>k__BackingField: LucusAlt17
     <NodeType>k__BackingField: 0
     <GroupID>k__BackingField: 
     <Choices>k__BackingField:
     - <Text>k__BackingField: Next Node
       <NodeID>k__BackingField: 
-    <Position>k__BackingField: {x: 1800, y: -325}
+    <Position>k__BackingField: {x: 9850, y: -325}
     <DialogueType>k__BackingField: 0
     <Character>k__BackingField: {fileID: 11400000, guid: 5e54e24b855158c4b886ceb465cabaa4, type: 2}
-    <Text>k__BackingField: You can enter now.
+    <Text>k__BackingField: "I\u2019ll let you in now. "
     <SoundEffect>k__BackingField: {fileID: 0}
     <Delay>k__BackingField: 0
     <Graph>k__BackingField: {fileID: 0}
     <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: 2cc6110d-0af8-48d8-ab69-0ef2a646d3ab
+    <Name>k__BackingField: Player12
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: 0cecbc3e-c41d-4928-a94c-826f8b1e9b64
+    <Position>k__BackingField: {x: 7425, y: 25}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
+    <Text>k__BackingField: "Sorry, I hate to interrupt, but can\n we continue this
+      inside? "
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: 0cecbc3e-c41d-4928-a94c-826f8b1e9b64
+    <Name>k__BackingField: Player13
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: 2cffa40b-ed76-4843-a9e8-31c77a3ca5b8
+    <Position>k__BackingField: {x: 7900, y: 25}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
+    <Text>k__BackingField: "It\u2019s hard to have a conversation through glass."
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: 2cffa40b-ed76-4843-a9e8-31c77a3ca5b8
+    <Name>k__BackingField: LucusAlt18
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: c3d82971-88f9-45f6-b917-5960c72bd300
+    <Position>k__BackingField: {x: 8350, y: 25}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 5e54e24b855158c4b886ceb465cabaa4, type: 2}
+    <Text>k__BackingField: ...oh. <link="wait_short"></link> <size=60%> Sorry. <size=100%>
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: c3d82971-88f9-45f6-b917-5960c72bd300
+    <Name>k__BackingField: LucusAlt19
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: 
+    <Position>k__BackingField: {x: 8800, y: 25}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 5e54e24b855158c4b886ceb465cabaa4, type: 2}
+    <Text>k__BackingField: I'll get the door.
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
   <OldGroupNames>k__BackingField: []
   <OldUngroupedNodeNames>k__BackingField:
-  - Unknown1
-  - Unknown2
+  - Player1
+  - PotCrashing
+  - LucusAlt1
+  - Player3
+  - Player4
+  - LucusAlt2
+  - Player5
+  - LucusAlt3
+  - Player2
+  - Knocking
+  - Player6
+  - LucusAlt4
+  - LucusAlt5
+  - Player7
+  - LucusAlt6
+  - LucusAlt7
+  - LucusAlt8
+  - Player8
+  - LucusAlt10
+  - LucusAlt9
+  - LucusAlt11
+  - LucusAlt12
+  - Player9
+  - LucusAlt13
+  - LucusAlt14
+  - LucusAlt15
+  - LucusAlt16
+  - Player10
+  - Player11
+  - LucusAlt17
+  - Player12
+  - Player13
+  - LucusAlt18
+  - LucusAlt19
   <OldGroupedNodeNames>k__BackingField:
     list: []

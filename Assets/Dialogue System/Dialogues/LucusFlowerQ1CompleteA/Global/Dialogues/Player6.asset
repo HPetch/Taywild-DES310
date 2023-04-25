@@ -10,18 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 56aed56cf2bdb3940a003c0a146eee35, type: 3}
-  m_Name: Player
+  m_Name: Player6
   m_EditorClassIdentifier: 
-  <NodeName>k__BackingField: Player
+  <NodeName>k__BackingField: Player6
   <NodeType>k__BackingField: 0
   <Choices>k__BackingField:
   - <Text>k__BackingField: Next Node
-    <NextDialogue>k__BackingField: {fileID: 0}
+    <NextDialogue>k__BackingField: {fileID: 11400000, guid: 8f90751d9cacb474ab7738fc3c8f64f5, type: 2}
   <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
   <DialogueType>k__BackingField: 0
-  <Text>k__BackingField: I need to go and get the Crystal flower before I can enter.
-  <IsStartingDialogue>k__BackingField: 1
+  <Text>k__BackingField: "Hello? I\u2019m back. "
+  <IsStartingDialogue>k__BackingField: 0
   <SoundEffect>k__BackingField: {fileID: 0}
   <Delay>k__BackingField: 0
   <Graph>k__BackingField: {fileID: 0}
   <Quest>k__BackingField: 0
+  <QuestState>k__BackingField: 1
