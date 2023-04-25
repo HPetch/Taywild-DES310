@@ -216,6 +216,10 @@ public class PlayerController : MonoBehaviour
         wallJumpDirection.Normalize();
 
         ResetActions();
+
+        // Refresh collider to ensure physics material change is applied, shouldn't be required but Unity is not being consistant without this code
+        capsuleCollider.enabled = false;
+        capsuleCollider.enabled = true;
         rb.sharedMaterial.friction = 0;
     }
 
@@ -233,6 +237,9 @@ public class PlayerController : MonoBehaviour
     {
         movementInput = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
         rb.sharedMaterial.friction = IsGrounded && movementInput.x == 0 ? 1 : 0;
+        // Refresh collider to ensure physics material change is applied, shouldn't be required but Unity is not being consistant without this code
+        capsuleCollider.enabled = false;
+        capsuleCollider.enabled = true;
 
         CheckMovementDirection();
         CheckIfPlayerIsGrounded();
