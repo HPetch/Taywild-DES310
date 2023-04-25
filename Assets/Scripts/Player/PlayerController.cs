@@ -237,14 +237,7 @@ public class PlayerController : MonoBehaviour
     {
         movementInput = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
         
-        if (IsGrounded && movementInput.x == 0 && rb.sharedMaterial.friction == 0)
-        {
-            SetPlayerPhysicsFriction(1);
-        }
-        else if (rb.sharedMaterial.friction == 1 && (!IsGrounded || movementInput.x != 0))
-        {
-            SetPlayerPhysicsFriction(0);
-        }
+        
 
         CheckMovementDirection();
         CheckIfPlayerIsGrounded();
@@ -256,13 +249,26 @@ public class PlayerController : MonoBehaviour
 
         HandleActionInput();
 
+        print(rb.velocity);
+
     }
 
     private void FixedUpdate()
     {
+        if (IsGrounded && movementInput.x == 0 && rb.sharedMaterial.friction == 0)
+        {
+            SetPlayerPhysicsFriction(1);
+        }
+        else if (rb.sharedMaterial.friction == 1 && (!IsGrounded || movementInput.x != 0))
+        {
+            SetPlayerPhysicsFriction(0);
+        }
+
         if (IsDashing) DashingBehaviour();
 
         if (CanMove) ApplyMovement();
+
+        
     }
     #endregion
 
@@ -700,7 +706,10 @@ public class PlayerController : MonoBehaviour
 
     private void SetPlayerPhysicsFriction(float _friction)
     {
-        rb.sharedMaterial.friction = _friction;       
+        rb.sharedMaterial.friction = _friction;
+
+        capsuleCollider.enabled = false;
+        capsuleCollider.enabled = true;
     }
 
     /// <summary>
