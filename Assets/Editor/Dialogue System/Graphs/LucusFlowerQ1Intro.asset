@@ -47,23 +47,6 @@ MonoBehaviour:
     <Graph>k__BackingField: {fileID: 0}
     <Quest>k__BackingField: 0
     <QuestState>k__BackingField: 1
-  - <ID>k__BackingField: 2977b476-c760-4176-ad54-b3b2a5c6bf6c
-    <Name>k__BackingField: LucusAlt2
-    <NodeType>k__BackingField: 0
-    <GroupID>k__BackingField: 
-    <Choices>k__BackingField:
-    - <Text>k__BackingField: Next Node
-      <NodeID>k__BackingField: 283f57a2-3408-4bf7-8b65-08dc69103633
-    <Position>k__BackingField: {x: 2075, y: -200}
-    <DialogueType>k__BackingField: 0
-    <Character>k__BackingField: {fileID: 11400000, guid: 5e54e24b855158c4b886ceb465cabaa4, type: 2}
-    <Text>k__BackingField: "Listen, I would like to invite you inside\n my greenhouse
-      so we can talk properly. <link=\"wait_short\"></link> \nBut\u2026"
-    <SoundEffect>k__BackingField: {fileID: 0}
-    <Delay>k__BackingField: 0
-    <Graph>k__BackingField: {fileID: 0}
-    <Quest>k__BackingField: 0
-    <QuestState>k__BackingField: 1
   - <ID>k__BackingField: c3410a11-fb36-49cd-97ad-10b1298b4f41
     <Name>k__BackingField: PageTurning
     <NodeType>k__BackingField: 3
@@ -91,24 +74,6 @@ MonoBehaviour:
     <DialogueType>k__BackingField: 0
     <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
     <Text>k__BackingField: But?
-    <SoundEffect>k__BackingField: {fileID: 0}
-    <Delay>k__BackingField: 0
-    <Graph>k__BackingField: {fileID: 0}
-    <Quest>k__BackingField: 0
-    <QuestState>k__BackingField: 1
-  - <ID>k__BackingField: 015285ed-c0c3-4a4b-a197-d5fbb71f42a6
-    <Name>k__BackingField: LucusAlt3
-    <NodeType>k__BackingField: 0
-    <GroupID>k__BackingField: 
-    <Choices>k__BackingField:
-    - <Text>k__BackingField: Why?
-      <NodeID>k__BackingField: 2918f17f-9a24-432d-816e-22bd3ab5551e
-    - <Text>k__BackingField: What's the danger?
-      <NodeID>k__BackingField: c3d72b13-3506-40db-b602-5b358fae4181
-    <Position>k__BackingField: {x: 2900, y: -200}
-    <DialogueType>k__BackingField: 1
-    <Character>k__BackingField: {fileID: 11400000, guid: 5e54e24b855158c4b886ceb465cabaa4, type: 2}
-    <Text>k__BackingField: "It\u2019s not safe. Not safe."
     <SoundEffect>k__BackingField: {fileID: 0}
     <Delay>k__BackingField: 0
     <Graph>k__BackingField: {fileID: 0}
@@ -146,38 +111,6 @@ MonoBehaviour:
     <Graph>k__BackingField: {fileID: 0}
     <Quest>k__BackingField: 0
     <QuestState>k__BackingField: 1
-  - <ID>k__BackingField: ed5a3af4-b68f-4f84-bda4-25b6fe57dd71
-    <Name>k__BackingField: Player5
-    <NodeType>k__BackingField: 0
-    <GroupID>k__BackingField: 
-    <Choices>k__BackingField:
-    - <Text>k__BackingField: Next Node
-      <NodeID>k__BackingField: 67ef2fcc-7ada-4eb7-8885-6bff4a0d7d54
-    <Position>k__BackingField: {x: 4125, y: -200}
-    <DialogueType>k__BackingField: 0
-    <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
-    <Text>k__BackingField: What rot are you talking about?
-    <SoundEffect>k__BackingField: {fileID: 0}
-    <Delay>k__BackingField: 0
-    <Graph>k__BackingField: {fileID: 0}
-    <Quest>k__BackingField: 0
-    <QuestState>k__BackingField: 1
-  - <ID>k__BackingField: d86268e1-916c-4dfa-815d-e40c5a4b7291
-    <Name>k__BackingField: Player6
-    <NodeType>k__BackingField: 0
-    <GroupID>k__BackingField: 
-    <Choices>k__BackingField:
-    - <Text>k__BackingField: Next Node
-      <NodeID>k__BackingField: 67ef2fcc-7ada-4eb7-8885-6bff4a0d7d54
-    <Position>k__BackingField: {x: 4125, y: 25}
-    <DialogueType>k__BackingField: 0
-    <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
-    <Text>k__BackingField: Are you okay?
-    <SoundEffect>k__BackingField: {fileID: 0}
-    <Delay>k__BackingField: 0
-    <Graph>k__BackingField: {fileID: 0}
-    <Quest>k__BackingField: 0
-    <QuestState>k__BackingField: 1
   - <ID>k__BackingField: 9433c238-74a7-495d-9704-1f479225aeee
     <Name>k__BackingField: LucusAlt4
     <NodeType>k__BackingField: 0
@@ -185,7 +118,7 @@ MonoBehaviour:
     <Choices>k__BackingField:
     - <Text>k__BackingField: Rot?
       <NodeID>k__BackingField: ed5a3af4-b68f-4f84-bda4-25b6fe57dd71
-    - <Text>k__BackingField: Are you okay?
+    - <Text>k__BackingField: "I haven\u2019t seen any rot."
       <NodeID>k__BackingField: d86268e1-916c-4dfa-815d-e40c5a4b7291
     <Position>k__BackingField: {x: 3600, y: -200}
     <DialogueType>k__BackingField: 1
@@ -255,8 +188,8 @@ MonoBehaviour:
     <Position>k__BackingField: {x: 5900, y: -200}
     <DialogueType>k__BackingField: 0
     <Character>k__BackingField: {fileID: 11400000, guid: 5e54e24b855158c4b886ceb465cabaa4, type: 2}
-    <Text>k__BackingField: "So\u2026 if you want to come inside, you must protect
-      yourself from the rot."
+    <Text>k__BackingField: "So\u2026 <link=\"wait_short\"></link>\n...if you want
+      to come inside, you must protect yourself from the rot."
     <SoundEffect>k__BackingField: {fileID: 0}
     <Delay>k__BackingField: 0
     <Graph>k__BackingField: {fileID: 0}
@@ -288,26 +221,8 @@ MonoBehaviour:
     <Position>k__BackingField: {x: 6625, y: -200}
     <DialogueType>k__BackingField: 0
     <Character>k__BackingField: {fileID: 11400000, guid: 5e54e24b855158c4b886ceb465cabaa4, type: 2}
-    <Text>k__BackingField: "At the top of the ruins there is a crystal flower and
-      then\u2026"
-    <SoundEffect>k__BackingField: {fileID: 0}
-    <Delay>k__BackingField: 0
-    <Graph>k__BackingField: {fileID: 0}
-    <Quest>k__BackingField: 0
-    <QuestState>k__BackingField: 1
-  - <ID>k__BackingField: a44f7af1-68d0-4cb5-a798-1ed9f79b707d
-    <Name>k__BackingField: LucusAlt9
-    <NodeType>k__BackingField: 0
-    <GroupID>k__BackingField: 
-    <Choices>k__BackingField:
-    - <Text>k__BackingField: I'll do it!
-      <NodeID>k__BackingField: d53d9d95-b460-458d-8745-5df96fecee23
-    - <Text>k__BackingField: I'm not sure...
-      <NodeID>k__BackingField: 588d6723-96b2-43ba-93a5-19afbc6bc5bb
-    <Position>k__BackingField: {x: 7100, y: -200}
-    <DialogueType>k__BackingField: 1
-    <Character>k__BackingField: {fileID: 11400000, guid: 5e54e24b855158c4b886ceb465cabaa4, type: 2}
-    <Text>k__BackingField: "\u2026it will be safe for you to enter."
+    <Text>k__BackingField: There is a crystal flower that grows further along the
+      branch, you will need to climb to reach it.
     <SoundEffect>k__BackingField: {fileID: 0}
     <Delay>k__BackingField: 0
     <Graph>k__BackingField: {fileID: 0}
@@ -394,18 +309,99 @@ MonoBehaviour:
     <Graph>k__BackingField: {fileID: 0}
     <Quest>k__BackingField: 0
     <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: 2977b476-c760-4176-ad54-b3b2a5c6bf6c
+    <Name>k__BackingField: LucusAlt2
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: 283f57a2-3408-4bf7-8b65-08dc69103633
+    <Position>k__BackingField: {x: 2075, y: -200}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 5e54e24b855158c4b886ceb465cabaa4, type: 2}
+    <Text>k__BackingField: "Listen, I would like to invite you inside my greenhouse\nso
+      we can talk properly... <link=\"wait_short\"></link> \n...but..."
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: 015285ed-c0c3-4a4b-a197-d5fbb71f42a6
+    <Name>k__BackingField: LucusAlt3
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Why?
+      <NodeID>k__BackingField: 2918f17f-9a24-432d-816e-22bd3ab5551e
+    - <Text>k__BackingField: What's the danger?
+      <NodeID>k__BackingField: c3d72b13-3506-40db-b602-5b358fae4181
+    <Position>k__BackingField: {x: 2900, y: -200}
+    <DialogueType>k__BackingField: 1
+    <Character>k__BackingField: {fileID: 11400000, guid: 5e54e24b855158c4b886ceb465cabaa4, type: 2}
+    <Text>k__BackingField: "It\u2019s not safe."
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: ed5a3af4-b68f-4f84-bda4-25b6fe57dd71
+    <Name>k__BackingField: Player5
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: 67ef2fcc-7ada-4eb7-8885-6bff4a0d7d54
+    <Position>k__BackingField: {x: 4125, y: -200}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
+    <Text>k__BackingField: Rot? You mean like plant rot?
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: d86268e1-916c-4dfa-815d-e40c5a4b7291
+    <Name>k__BackingField: Player6
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: 67ef2fcc-7ada-4eb7-8885-6bff4a0d7d54
+    <Position>k__BackingField: {x: 4125, y: 25}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
+    <Text>k__BackingField: "I haven\u2019t seen any rot on the tree."
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: a44f7af1-68d0-4cb5-a798-1ed9f79b707d
+    <Name>k__BackingField: LucusAlt9
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: I'll do it!
+      <NodeID>k__BackingField: d53d9d95-b460-458d-8745-5df96fecee23
+    - <Text>k__BackingField: I'm not sure...
+      <NodeID>k__BackingField: 588d6723-96b2-43ba-93a5-19afbc6bc5bb
+    <Position>k__BackingField: {x: 7100, y: -200}
+    <DialogueType>k__BackingField: 1
+    <Character>k__BackingField: {fileID: 11400000, guid: 5e54e24b855158c4b886ceb465cabaa4, type: 2}
+    <Text>k__BackingField: Pluck it and its aura will protect you from the rot.
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
   <OldGroupNames>k__BackingField: []
   <OldUngroupedNodeNames>k__BackingField:
   - LucusAlt1
   - Player1
-  - LucusAlt2
   - PageTurning
   - Player2
-  - LucusAlt3
   - Player3
   - Player4
-  - Player5
-  - Player6
   - LucusAlt4
   - LucusAlt5
   - LucusAlt6
@@ -413,11 +409,15 @@ MonoBehaviour:
   - LucusAlt7
   - Player9
   - LucusAlt8
-  - LucusAlt9
   - Player10
   - Player11
   - LucusAlt10
   - LucusAlt12
   - LucusAlt11
+  - LucusAlt2
+  - LucusAlt3
+  - Player5
+  - Player6
+  - LucusAlt9
   <OldGroupedNodeNames>k__BackingField:
     list: []
