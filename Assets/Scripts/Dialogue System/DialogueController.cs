@@ -370,7 +370,6 @@ public class DialogueController : MonoBehaviour
             // If there is a TextTypeWaitTime set, then wait.
             if (textTypeWaitTime > 0f)
             {
-                Debug.Log("Wait");
                 yield return new WaitForSeconds(textTypeWaitTime);
                 // Once wait has been completed set variable to 0.
                 textTypeWaitTime = 0f;
