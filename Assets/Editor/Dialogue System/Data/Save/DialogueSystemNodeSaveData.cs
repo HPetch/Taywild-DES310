@@ -6,6 +6,7 @@ namespace DialogueSystem.Data.Save
     using Types;
     using Elements;
     using Utilities;
+    using ScriptableObjects;
 
     [System.Serializable]
     public class DialogueSystemNodeSaveData
@@ -23,8 +24,10 @@ namespace DialogueSystem.Data.Save
         [field: SerializeField] public string Text { get; set; }
 
         [field: SerializeField] public AudioClip SoundEffect { get; set; }
-        [field: SerializeField] public float Delay{ get; set; }
-
+        [field: SerializeField] public float Delay { get; set; }
+        [field: SerializeField] public DialogueSystemDialogueContainerSO Graph { get; set; }
+        [field: SerializeField] public QuestTypes Quest { get; set; }
+        [field: SerializeField] public QuestStates QuestState { get; set; }
 
         public DialogueSystemNodeSaveData(DialogueSystemNode _node)
         {
@@ -42,6 +45,9 @@ namespace DialogueSystem.Data.Save
 
             SoundEffect = _node.SoundEffect;
             Delay = _node.Delay;
+            Graph = _node.Graph;
+            Quest = _node.Quest;
+            QuestState = _node.QuestState;
         }
     }
 }

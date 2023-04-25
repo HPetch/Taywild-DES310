@@ -1,0 +1,749 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 403e5cc4e9ab18442bab3ceb18f352e9, type: 3}
+  m_Name: WarsanTutorialIntro
+  m_EditorClassIdentifier: 
+  <FileName>k__BackingField: 
+  <Groups>k__BackingField: []
+  <Nodes>k__BackingField:
+  - <ID>k__BackingField: 3f856845-6fc1-4693-ad41-9120fad94ede
+    <Name>k__BackingField: WarsanAlt1
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: feddaef9-5bda-44de-8cdc-d3a1c0c8b43a
+    <Position>k__BackingField: {x: 0, y: 75.2}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 1ae275c9822baa9458842a0d4e52c537, type: 2}
+    <Text>k__BackingField: Oh my - hello! How did you get here?
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 0
+  - <ID>k__BackingField: feddaef9-5bda-44de-8cdc-d3a1c0c8b43a
+    <Name>k__BackingField: Player1
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: 4efb3e45-4792-4807-8af0-aa4498dd0151
+    <Position>k__BackingField: {x: 475.2, y: 75.2}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
+    <Text>k__BackingField: Oh hi uh-I just followed that little glowing wisp - it
+      led me to that opening in the tree over there.
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 0
+  - <ID>k__BackingField: 4efb3e45-4792-4807-8af0-aa4498dd0151
+    <Name>k__BackingField: WarsanAlt2
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: I'm not sure.
+      <NodeID>k__BackingField: 16ccaec1-76fa-4bc8-945d-2a44ec4ffad1
+    - <Text>k__BackingField: I fell.
+      <NodeID>k__BackingField: 6c1645df-3f0c-43d2-8c56-0e120dc04b62
+    - <Text>k__BackingField: A cocoon? I think?
+      <NodeID>k__BackingField: b67a9729-7434-4ceb-96ae-7eaa60efd50d
+    <Position>k__BackingField: {x: 925.60004, y: 75.2}
+    <DialogueType>k__BackingField: 1
+    <Character>k__BackingField: {fileID: 11400000, guid: 1ae275c9822baa9458842a0d4e52c537, type: 2}
+    <Text>k__BackingField: No I mean *here* - this tree!! Where did you come from?
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 0
+  - <ID>k__BackingField: 16ccaec1-76fa-4bc8-945d-2a44ec4ffad1
+    <Name>k__BackingField: Player2
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: a8c833ae-3e58-48b1-b2d2-611ddfe3d15a
+    <Position>k__BackingField: {x: 1425.6, y: 75.2}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
+    <Text>k__BackingField: "I\u2019m... not really sure."
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 0
+  - <ID>k__BackingField: 6c1645df-3f0c-43d2-8c56-0e120dc04b62
+    <Name>k__BackingField: Player3
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: a8c833ae-3e58-48b1-b2d2-611ddfe3d15a
+    <Position>k__BackingField: {x: 1425.6, y: 300}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
+    <Text>k__BackingField: "I- There was a tree- glowing. I fell- Or- I don\u2019t
+      know."
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 0
+  - <ID>k__BackingField: b67a9729-7434-4ceb-96ae-7eaa60efd50d
+    <Name>k__BackingField: Player4
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: a8c833ae-3e58-48b1-b2d2-611ddfe3d15a
+    <Position>k__BackingField: {x: 1425.6, y: 524.8}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
+    <Text>k__BackingField: A cocoon? I think?
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 0
+  - <ID>k__BackingField: a8c833ae-3e58-48b1-b2d2-611ddfe3d15a
+    <Name>k__BackingField: WarsanAlt3
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: 598f9762-66e3-4f2e-83dd-ed6391e051e8
+    <Position>k__BackingField: {x: 1875.2, y: 75.2}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 1ae275c9822baa9458842a0d4e52c537, type: 2}
+    <Text>k__BackingField: Don't worry, I was pretty disoriented when I first got
+      here too. So was poor Jasper.
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 0
+  - <ID>k__BackingField: 598f9762-66e3-4f2e-83dd-ed6391e051e8
+    <Name>k__BackingField: Jasper1
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Meow.
+      <NodeID>k__BackingField: bb0ee22f-0ad1-4a07-81ee-be4cff8c8c23
+    - <Text>k__BackingField: Aww.
+      <NodeID>k__BackingField: 6277aaef-3458-41bb-8755-49990654c760
+    - <Text>k__BackingField: ...
+      <NodeID>k__BackingField: ba416a82-2ecf-4412-b02b-a950e44cff5f
+    <Position>k__BackingField: {x: 2325.5999, y: 75.2}
+    <DialogueType>k__BackingField: 1
+    <Character>k__BackingField: {fileID: 11400000, guid: e38193d3011ede049b94c8d592e6af09, type: 2}
+    <Text>k__BackingField: meow.
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 0
+  - <ID>k__BackingField: bb0ee22f-0ad1-4a07-81ee-be4cff8c8c23
+    <Name>k__BackingField: Player5
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: dac8d713-f967-4dcc-a937-b0fe303f0c21
+    <Position>k__BackingField: {x: 2700, y: 75.2}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
+    <Text>k__BackingField: Meow to you too, Jasper.
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 0
+  - <ID>k__BackingField: 6277aaef-3458-41bb-8755-49990654c760
+    <Name>k__BackingField: Player6
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: dac8d713-f967-4dcc-a937-b0fe303f0c21
+    <Position>k__BackingField: {x: 2700, y: 300}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
+    <Text>k__BackingField: Aww!!!
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 0
+  - <ID>k__BackingField: ba416a82-2ecf-4412-b02b-a950e44cff5f
+    <Name>k__BackingField: Player7
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: dac8d713-f967-4dcc-a937-b0fe303f0c21
+    <Position>k__BackingField: {x: 2700, y: 524.8}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
+    <Text>k__BackingField: ...
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 0
+  - <ID>k__BackingField: dac8d713-f967-4dcc-a937-b0fe303f0c21
+    <Name>k__BackingField: Warsan1
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: a3c0b019-fc66-4311-93c1-cad3ebde6f09
+    <Position>k__BackingField: {x: 3075.2, y: 75.2}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 42a93fd49028fb743aa99b1e50d959f1, type: 2}
+    <Text>k__BackingField: "Sorry lovey, in all the excitement I completely forgot
+      to introduce myself. I\u2019m Warsan."
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 0
+  - <ID>k__BackingField: a3c0b019-fc66-4311-93c1-cad3ebde6f09
+    <Name>k__BackingField: Player8
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: 03395331-0006-4843-8036-8d72e093b47b
+    <Position>k__BackingField: {x: 3600, y: 75.2}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
+    <Text>k__BackingField: "Nice to meet you! I\u2019m... "
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 0
+  - <ID>k__BackingField: 03395331-0006-4843-8036-8d72e093b47b
+    <Name>k__BackingField: Player9
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: cb2b50be-1519-44cf-b371-0fe8d8742e21
+    <Position>k__BackingField: {x: 3925.5999, y: 75.2}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
+    <Text>k__BackingField: ...
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 0
+  - <ID>k__BackingField: cb2b50be-1519-44cf-b371-0fe8d8742e21
+    <Name>k__BackingField: Player10
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: 1b0e1eec-c70e-41e3-8c29-e3bc80146b3d
+    <Position>k__BackingField: {x: 4250.4004, y: 75.2}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
+    <Text>k__BackingField: "...I can\u2019t remember."
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 0
+  - <ID>k__BackingField: 1b0e1eec-c70e-41e3-8c29-e3bc80146b3d
+    <Name>k__BackingField: Warsan2
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Where are we?
+      <NodeID>k__BackingField: 8a61b585-9060-4dcc-9d54-ad91f0e491d9
+    - <Text>k__BackingField: How did you get here?
+      <NodeID>k__BackingField: 73d44a02-29c8-4766-9fbd-524b193c77d0
+    - <Text>k__BackingField: No questions.
+      <NodeID>k__BackingField: 063fb802-50f6-4ab4-a292-ef4710f6f256
+    <Position>k__BackingField: {x: 4625.6, y: 75.2}
+    <DialogueType>k__BackingField: 1
+    <Character>k__BackingField: {fileID: 11400000, guid: 42a93fd49028fb743aa99b1e50d959f1, type: 2}
+    <Text>k__BackingField: That's okay! I'll just call you my friend for now if that's
+      okay?
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 0
+  - <ID>k__BackingField: 8a61b585-9060-4dcc-9d54-ad91f0e491d9
+    <Name>k__BackingField: Player11
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: b8dc7fc0-6d3a-4fde-a262-6f7b70d88487
+    <Position>k__BackingField: {x: 5100, y: 75.2}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
+    <Text>k__BackingField: Where are we?
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 0
+  - <ID>k__BackingField: b8dc7fc0-6d3a-4fde-a262-6f7b70d88487
+    <Name>k__BackingField: Warsan3
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: 9c105eb2-0e2c-4324-8f62-6c738017fb87
+    <Position>k__BackingField: {x: 5450.4004, y: 75.2}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 42a93fd49028fb743aa99b1e50d959f1, type: 2}
+    <Text>k__BackingField: I haven't explored much further than this little branch.
+      What I do know, though, is that there are plenty of materials here to sustain
+      us.
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 0
+  - <ID>k__BackingField: 9c105eb2-0e2c-4324-8f62-6c738017fb87
+    <Name>k__BackingField: Warsan4
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: 2331534c-c54c-4206-b5ea-f4d9329a0722
+    <Position>k__BackingField: {x: 5925.6, y: 75.2}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 42a93fd49028fb743aa99b1e50d959f1, type: 2}
+    <Text>k__BackingField: "I\u2019ve made so many delicious treats and decorations
+      from things I\u2019ve found around me.\r"
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 0
+  - <ID>k__BackingField: 2331534c-c54c-4206-b5ea-f4d9329a0722
+    <Name>k__BackingField: Warsan5
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: 2ff0f686-da8d-4fde-881a-ee72e712583f
+    <Position>k__BackingField: {x: 6375.2, y: 75.2}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 42a93fd49028fb743aa99b1e50d959f1, type: 2}
+    <Text>k__BackingField: "One day, Jasper went off for longer than usual, and when
+      he came back, he had a little scrap of a book or a journal stuck in his collar
+      - I\u2019m not sure where it came from, but it was handwritten. It said something
+      about propagation. I\u2019m not sure.\r"
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 0
+  - <ID>k__BackingField: 063fb802-50f6-4ab4-a292-ef4710f6f256
+    <Name>k__BackingField: Player13
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: cabfce38-ad4f-4fc8-a56b-a29f739ceb3f
+    <Position>k__BackingField: {x: 5100, y: 624.8}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
+    <Text>k__BackingField: "I don\u2019t have any questions."
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 0
+  - <ID>k__BackingField: 73d44a02-29c8-4766-9fbd-524b193c77d0
+    <Name>k__BackingField: Player12
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: 62cc1792-aef6-4629-8a9a-519813af9b34
+    <Position>k__BackingField: {x: 5100, y: 375.19998}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
+    <Text>k__BackingField: How did you get here?
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 0
+  - <ID>k__BackingField: 62cc1792-aef6-4629-8a9a-519813af9b34
+    <Name>k__BackingField: Warsan6
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: d8878991-4144-460d-bd25-a2d800d4d5a2
+    <Position>k__BackingField: {x: 5450.4004, y: 375.19998}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 42a93fd49028fb743aa99b1e50d959f1, type: 2}
+    <Text>k__BackingField: "I don\u2019t know. My memory from before is hazy - one
+      day I was \t\r\nwith my coven, reading tarot and discussing the plans for our
+      next ceremony. Then all of a sudden I was here.\r"
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 0
+  - <ID>k__BackingField: d8878991-4144-460d-bd25-a2d800d4d5a2
+    <Name>k__BackingField: Player14
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: aba0753d-a817-417e-90a3-14d8d839fbb1
+    <Position>k__BackingField: {x: 5950.4004, y: 375.19998}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
+    <Text>k__BackingField: You don't miss it?
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 0
+  - <ID>k__BackingField: aba0753d-a817-417e-90a3-14d8d839fbb1
+    <Name>k__BackingField: Warsan7
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: 2ff0f686-da8d-4fde-881a-ee72e712583f
+    <Position>k__BackingField: {x: 6375.2, y: 375.19998}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 42a93fd49028fb743aa99b1e50d959f1, type: 2}
+    <Text>k__BackingField: "No. I feel weirdly content. I have no explanation for
+      it, but \tit just feels like I\u2019m *meant* to be here."
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 0
+  - <ID>k__BackingField: cabfce38-ad4f-4fc8-a56b-a29f739ceb3f
+    <Name>k__BackingField: Warsan8
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: 5efae9d7-1a67-4cb9-bce1-534d76b3bb6c
+    <Position>k__BackingField: {x: 5450.4004, y: 624.8}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 42a93fd49028fb743aa99b1e50d959f1, type: 2}
+    <Text>k__BackingField: Okay, well you should take this. It's a basket.
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 0
+  - <ID>k__BackingField: 5fb6e2a4-fcf2-478f-b9ff-2e5bacd992cf
+    <Name>k__BackingField: Warsan9
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Where are we?
+      <NodeID>k__BackingField: 8a61b585-9060-4dcc-9d54-ad91f0e491d9
+    - <Text>k__BackingField: How did you get here?
+      <NodeID>k__BackingField: 73d44a02-29c8-4766-9fbd-524b193c77d0
+    - <Text>k__BackingField: No questions.
+      <NodeID>k__BackingField: 063fb802-50f6-4ab4-a292-ef4710f6f256
+    <Position>k__BackingField: {x: 4625.6, y: -224.8}
+    <DialogueType>k__BackingField: 1
+    <Character>k__BackingField: {fileID: 11400000, guid: 42a93fd49028fb743aa99b1e50d959f1, type: 2}
+    <Text>k__BackingField: Do you have any other questions?
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 0
+  - <ID>k__BackingField: 2ff0f686-da8d-4fde-881a-ee72e712583f
+    <Name>k__BackingField: EdgeNode929bb671-254b-4adf-b57c-5d668f2af169
+    <NodeType>k__BackingField: 1
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: 
+      <NodeID>k__BackingField: e2780636-8d7a-4cb2-8706-b98ef8abe515
+    <Position>k__BackingField: {x: 6800, y: -324.80002}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 0}
+    <Text>k__BackingField: 
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 0
+  - <ID>k__BackingField: e2780636-8d7a-4cb2-8706-b98ef8abe515
+    <Name>k__BackingField: EdgeNode110a7607-c082-437b-9934-8b6e8e0bc4b6
+    <NodeType>k__BackingField: 1
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: 
+      <NodeID>k__BackingField: 5fb6e2a4-fcf2-478f-b9ff-2e5bacd992cf
+    <Position>k__BackingField: {x: 4475.2, y: -324.80002}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 0}
+    <Text>k__BackingField: 
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 0
+  - <ID>k__BackingField: 5efae9d7-1a67-4cb9-bce1-534d76b3bb6c
+    <Name>k__BackingField: Warsan10
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: b0ab8b4f-3883-4c20-b464-1351872dd8c7
+    <Position>k__BackingField: {x: 6000, y: 624.8}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 42a93fd49028fb743aa99b1e50d959f1, type: 2}
+    <Text>k__BackingField: You see all those brambles and bushes around the tree?
+      You can pluck them and get materials! You can store these materials in your
+      basket, and then use them to craft decorations.
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 0
+  - <ID>k__BackingField: b0ab8b4f-3883-4c20-b464-1351872dd8c7
+    <Name>k__BackingField: Warsan11
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: 0f3b0844-ff42-4308-9b8a-07fec7eb402f
+    <Position>k__BackingField: {x: 6475.2, y: 624.8}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 42a93fd49028fb743aa99b1e50d959f1, type: 2}
+    <Text>k__BackingField: "You see those brambles behind my house? It used to be
+      completely overgrown but I\u2019ve been using them to craft these baskets.
+      Jaspers loved the extra space that came from it."
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 0
+  - <ID>k__BackingField: 0f3b0844-ff42-4308-9b8a-07fec7eb402f
+    <Name>k__BackingField: Warsan12
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: 292bc612-b3ca-4889-9be0-e8a196340992
+    <Position>k__BackingField: {x: 7000, y: 624.8}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 42a93fd49028fb743aa99b1e50d959f1, type: 2}
+    <Text>k__BackingField: 'Do you think you could help me out by clearing the rest
+      of the brambles behind my house? Then place a hanging flower planter? Jasper
+      will love it! '
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 0
+  - <ID>k__BackingField: 292bc612-b3ca-4889-9be0-e8a196340992
+    <Name>k__BackingField: Warsan13
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: 048e5a17-6505-4f23-b0d1-26c90f9d647d
+    <Position>k__BackingField: {x: 7500, y: 624.8}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 42a93fd49028fb743aa99b1e50d959f1, type: 2}
+    <Text>k__BackingField: When you're near the brambles, press the TAB key to bring
+      out your basket and use your mouse to click and drag them out of view. Then,
+      once you have enough resources, click on the tab at the bottom of the screen
+      to open the crafting menu.
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 0
+  - <ID>k__BackingField: 048e5a17-6505-4f23-b0d1-26c90f9d647d
+    <Name>k__BackingField: Warsan14
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: b330f29c-6bef-4e3e-8155-561d0440e6ef
+    <Position>k__BackingField: {x: 7950.4004, y: 624.8}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 42a93fd49028fb743aa99b1e50d959f1, type: 2}
+    <Text>k__BackingField: "Click on what you\u2019d like to craft, and then use
+      your mouse to place it in the world. When you're done just press TAB again
+      to put your basket away."
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 0
+  - <ID>k__BackingField: b330f29c-6bef-4e3e-8155-561d0440e6ef
+    <Name>k__BackingField: Warsan15
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: eaee6405-1e52-4dc5-8de7-f918ff67fac0
+    <Position>k__BackingField: {x: 8450.4, y: 624.8}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 42a93fd49028fb743aa99b1e50d959f1, type: 2}
+    <Text>k__BackingField: "Y\u2019know... one time I crafted a gorgeous little cat
+      tree for Jasper and then the weirdest thing happened - there used to be this
+      fog that hung around over the tree and it just suddenly disappeared. "
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 0
+  - <ID>k__BackingField: eaee6405-1e52-4dc5-8de7-f918ff67fac0
+    <Name>k__BackingField: Warsan16
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: 678ed513-ee96-4ad7-8930-964b3c76f6a3
+    <Position>k__BackingField: {x: 8925.601, y: 624.8}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 42a93fd49028fb743aa99b1e50d959f1, type: 2}
+    <Text>k__BackingField: "I\u2019m not sure how, but it felt like my crafts caused
+      it to go away. It hasn\u2019t happened since though..."
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 0
+  - <ID>k__BackingField: d3640533-ed77-4a6f-a48f-7af25aa135ee
+    <Name>k__BackingField: Player15
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: ee8848a8-3d7c-439b-8d97-c7c36e60f5c0
+    <Position>k__BackingField: {x: 9925.601, y: 624.8}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
+    <Text>k__BackingField: Yes, got it!
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 0
+  - <ID>k__BackingField: 678ed513-ee96-4ad7-8930-964b3c76f6a3
+    <Name>k__BackingField: Warsan17
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Yes, got it!
+      <NodeID>k__BackingField: d3640533-ed77-4a6f-a48f-7af25aa135ee
+    - <Text>k__BackingField: Uhh...
+      <NodeID>k__BackingField: ef5ea9b8-3ee4-47bf-bc7f-3b5f87772c51
+    <Position>k__BackingField: {x: 9400, y: 624.8}
+    <DialogueType>k__BackingField: 1
+    <Character>k__BackingField: {fileID: 11400000, guid: 42a93fd49028fb743aa99b1e50d959f1, type: 2}
+    <Text>k__BackingField: "Anyways... That all sound okay? You\u2019d be doing me
+      a huge favour!"
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 0
+  - <ID>k__BackingField: ef5ea9b8-3ee4-47bf-bc7f-3b5f87772c51
+    <Name>k__BackingField: Player16
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: ee8848a8-3d7c-439b-8d97-c7c36e60f5c0
+    <Position>k__BackingField: {x: 9925.601, y: 875.2}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
+    <Text>k__BackingField: Uhh...
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 0
+  - <ID>k__BackingField: ee8848a8-3d7c-439b-8d97-c7c36e60f5c0
+    <Name>k__BackingField: Warsan18
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: 
+    <Position>k__BackingField: {x: 10300, y: 624.8}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 42a93fd49028fb743aa99b1e50d959f1, type: 2}
+    <Text>k__BackingField: "I\u2019m sure you\u2019ll figure it out easy enough!
+      Let me know if you have any questions ^-^"
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 0
+  <OldGroupNames>k__BackingField: []
+  <OldUngroupedNodeNames>k__BackingField:
+  - WarsanAlt1
+  - Player1
+  - WarsanAlt2
+  - Player2
+  - Player3
+  - Player4
+  - WarsanAlt3
+  - Jasper1
+  - Player5
+  - Player6
+  - Player7
+  - Warsan1
+  - Player8
+  - Player9
+  - Player10
+  - Warsan2
+  - Player11
+  - Warsan3
+  - Warsan4
+  - Warsan5
+  - Player13
+  - Player12
+  - Warsan6
+  - Player14
+  - Warsan7
+  - Warsan8
+  - Warsan9
+  - EdgeNode929bb671-254b-4adf-b57c-5d668f2af169
+  - EdgeNode110a7607-c082-437b-9934-8b6e8e0bc4b6
+  - Warsan10
+  - Warsan11
+  - Warsan12
+  - Warsan13
+  - Warsan14
+  - Warsan15
+  - Warsan16
+  - Player15
+  - Warsan17
+  - Player16
+  - Warsan18
+  <OldGroupedNodeNames>k__BackingField:
+    list: []

@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3166174915835629394}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.25, y: 1, z: 0}
+  m_LocalPosition: {x: -0.38, y: 1.34, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4885,6 +4885,7 @@ GameObject:
   - component: {fileID: 692120617741735559}
   - component: {fileID: 8635698749072729021}
   - component: {fileID: 8635698749072729020}
+  - component: {fileID: 1772853707974910854}
   m_Layer: 6
   m_Name: Branch Platform Large
   m_TagString: Ground
@@ -4921,10 +4922,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isFloaitngPlatform: 0
-  bounceEffectStrength: 0.1
-  bounceEffectDuration: 1
-  shakeEffectStrength: 0.05
-  shakeEffectDuration: 0.2
+  bounceEffectStrength: 0.05
+  bounceEffectDuration: 0.5
+  shakeEffectStrength: 0.02
+  shakeEffectDuration: 0.1
+  surfaceType: 2
 --- !u!212 &8635698749072729021
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4966,7 +4968,7 @@ SpriteRenderer:
   m_SortingLayerID: -56501953
   m_SortingLayer: -1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 69de873a68cfbfa478df33ab1d4e80a8, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7f4a64a97ba08eb4f98be880474d6bb4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -4988,18 +4990,37 @@ BoxCollider2D:
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_UsedByEffector: 0
+  m_UsedByEffector: 1
   m_UsedByComposite: 0
-  m_Offset: {x: -0.3, y: 1}
+  m_Offset: {x: -0.48, y: 1.39}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 8.3, y: 3.4}
+    oldSize: {x: 8.6, y: 4.1}
     newSize: {x: 3.61, y: 0.98}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 5, y: 0.75}
+  m_Size: {x: 5, y: 0.6}
   m_EdgeRadius: 0
+--- !u!251 &1772853707974910854
+PlatformEffector2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8635698749072729022}
+  m_Enabled: 1
+  m_UseColliderMask: 1
+  m_ColliderMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RotationalOffset: 0
+  m_UseOneWay: 1
+  m_UseOneWayGrouping: 0
+  m_SurfaceArc: 178
+  m_UseSideFriction: 0
+  m_UseSideBounce: 0
+  m_SideArc: 1

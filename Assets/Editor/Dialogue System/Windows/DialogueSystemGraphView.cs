@@ -184,6 +184,24 @@ namespace DialogueSystem.Windows
             return CreateNode(node, nodeName, position, shouldDraw);
         }
 
+        public DialogueSystemNode CreateGraphNode(string nodeName, Vector2 position, bool shouldDraw = true)
+        {
+            DialogueSystemGraphNode node = new DialogueSystemGraphNode();
+            return CreateNode(node, nodeName, position, shouldDraw);
+        }
+
+        public DialogueSystemNode CreateGetQuestNode(string nodeName, Vector2 position, bool shouldDraw = true)
+        {
+            DialogueSystemGetQuestNode node = new DialogueSystemGetQuestNode();
+            return CreateNode(node, nodeName, position, shouldDraw);
+        }
+
+        public DialogueSystemNode CreateSetQuestNode(string nodeName, Vector2 position, bool shouldDraw = true)
+        {
+            DialogueSystemSetQuestNode node = new DialogueSystemSetQuestNode();
+            return CreateNode(node, nodeName, position, shouldDraw);
+        }
+
         public DialogueSystemNode CreateNode(DialogueSystemNodeSaveData nodeData)
         {
             return nodeData.NodeType switch
@@ -192,6 +210,9 @@ namespace DialogueSystem.Windows
                 NodeTypes.Audio => CreateAudioNode(nodeData.Name, nodeData.Position, false),
                 NodeTypes.Edge => CreateEdgeNode(nodeData.Position, false),
                 NodeTypes.Delay => CreateDelayNode(nodeData.Name, nodeData.Position, false),
+                NodeTypes.Graph => CreateGraphNode(nodeData.Name, nodeData.Position, false),
+                NodeTypes.GetQuest => CreateGetQuestNode(nodeData.Name, nodeData.Position, false),
+                NodeTypes.SetQuest => CreateSetQuestNode(nodeData.Name, nodeData.Position, false),
                 _ => null,
             };
         }

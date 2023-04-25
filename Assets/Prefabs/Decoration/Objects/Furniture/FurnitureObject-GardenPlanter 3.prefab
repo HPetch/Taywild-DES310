@@ -1,5 +1,53 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8518143264602264429
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5403556768207878088}
+  - component: {fileID: 2194912918673266547}
+  m_Layer: 7
+  m_Name: Attach Point (2)
+  m_TagString: Decoration Attach Point
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5403556768207878088
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8518143264602264429}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.061, y: 0.914, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3111399051733843618}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &2194912918673266547
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8518143264602264429}
+  m_Enabled: 0
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.05
 --- !u!1001 &7743426024893402479
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -30,7 +78,11 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: 8a02415761bfbbf4da62868b19436a5e, type: 3}
     - target: {fileID: 2645309099754445559, guid: ba88dae99097da043b24de774bcf5e44, type: 3}
       propertyPath: <treeExp>k__BackingField
-      value: 2
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 2645309099754445559, guid: ba88dae99097da043b24de774bcf5e44, type: 3}
+      propertyPath: PlacementRequireOnePoint
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2645309099754445559, guid: ba88dae99097da043b24de774bcf5e44, type: 3}
       propertyPath: <UiFurnitureCategory>k__BackingField
@@ -70,7 +122,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4637515756716454851, guid: ba88dae99097da043b24de774bcf5e44, type: 3}
       propertyPath: m_Size.y
-      value: 2.2
+      value: 1.05
       objectReference: {fileID: 0}
     - target: {fileID: 4637515756716454851, guid: ba88dae99097da043b24de774bcf5e44, type: 3}
       propertyPath: m_Offset.x
@@ -78,7 +130,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4637515756716454851, guid: ba88dae99097da043b24de774bcf5e44, type: 3}
       propertyPath: m_Offset.y
-      value: -0.2
+      value: -0.86
       objectReference: {fileID: 0}
     - target: {fileID: 4637515756716454851, guid: ba88dae99097da043b24de774bcf5e44, type: 3}
       propertyPath: m_SpriteTilingProperty.pivot.y
@@ -154,16 +206,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4637515758312841598, guid: ba88dae99097da043b24de774bcf5e44, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.44
+      value: -0.061
       objectReference: {fileID: 0}
     - target: {fileID: 4637515758312841598, guid: ba88dae99097da043b24de774bcf5e44, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.71
+      value: 1.143
       objectReference: {fileID: 0}
     - target: {fileID: 4637515758312841599, guid: ba88dae99097da043b24de774bcf5e44, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 4637515756716454861, guid: ba88dae99097da043b24de774bcf5e44, type: 3}
+      insertIndex: 2
+      addedObject: {fileID: 5403556768207878088}
   m_SourcePrefab: {fileID: 100100000, guid: ba88dae99097da043b24de774bcf5e44, type: 3}
+--- !u!4 &3111399051733843618 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4637515756716454861, guid: ba88dae99097da043b24de774bcf5e44, type: 3}
+  m_PrefabInstance: {fileID: 7743426024893402479}
+  m_PrefabAsset: {fileID: 0}

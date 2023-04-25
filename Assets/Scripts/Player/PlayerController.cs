@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
     #region Events
     public event Action OnPlayerJump;
     public event Action OnPlayerGroundJump;
+    public event Action OnPlayerBouncePad;
     public event Action OnPlayerAirJump;
     public event Action OnPlayerWallHop;
     public event Action OnPlayerWallJump;
@@ -190,6 +191,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float glideAirDragMultiplier = 0.95f;
 
     private List<AirCurrent> airCurrents = new List<AirCurrent>();
+    private float timeOfLastBouncePad = 0.0f;
+    private bool bouncePadLock;
     #endregion
 
     #region Utility
@@ -213,6 +216,7 @@ public class PlayerController : MonoBehaviour
         wallJumpDirection.Normalize();
 
         ResetActions();
+        rb.sharedMaterial.friction = 0;
     }
 
     private void Start()
@@ -228,6 +232,7 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         movementInput = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+        rb.sharedMaterial.friction = IsGrounded && movementInput.x == 0 ? 1 : 0;
 
         CheckMovementDirection();
         CheckIfPlayerIsGrounded();
@@ -235,8 +240,10 @@ public class PlayerController : MonoBehaviour
         CheckIfWallStuck();
         CheckIfWallSliding();
         CheckIfDashing();
+        CheckIfEndBounce();
 
         HandleActionInput();
+
     }
 
     private void FixedUpdate()
@@ -337,8 +344,8 @@ public class PlayerController : MonoBehaviour
             }
         }
         // If no Movement Input
-        else
-        {
+        else if (TimeSinceLastBouncePad > 0.5f)
+        {            
             // Slow the player down by the air drag
             _velocity.x *= glideAirDragMultiplier;
         }
@@ -482,6 +489,14 @@ public class PlayerController : MonoBehaviour
     {
         // If Player IsDashing & within dash duration they are still dashing, else they are not
         IsDashing = IsDashing && TimeSinceLastDash < dashDuration;
+    }
+
+    private void CheckIfEndBounce()
+    {
+        if (bouncePadLock && (TimeSinceLastBouncePad > 0.75f || IsGrounded) && (!DialogueController.Instance.IsConversing && !DecorationController.Instance.isEditMode))
+        {
+            bouncePadLock = false;
+        }
     }
     #endregion
 
@@ -691,25 +706,35 @@ public class PlayerController : MonoBehaviour
         rb.constraints = RigidbodyConstraints2D.FreezeRotation;
     }
 
+    public void MushroomBounce() 
+    {
+        bouncePadLock = true;
+        timeOfLastBouncePad = Time.time;
+        ResetActions();
+        StartGliding();
+
+        OnPlayerBouncePad?.Invoke();
+    }
+
     /// <summary>
     /// Returns true if the Player is able to Move, Such as if the play is not sliding or dashing.
     /// </summary>
-    private bool CanMove { get { return !IsDashing && !IsLockedInput; } }
+    private bool CanMove { get { return !IsDashing && !IsLockedInput && !bouncePadLock; } }
 
     /// <summary>
     /// Returns true if the Player is able to Jump.
     /// </summary>
-    private bool CanJump { get { return IsGrounded || IsTouchingWall || CanAirJump; } }
+    private bool CanJump { get { return (IsGrounded || IsTouchingWall || CanAirJump) && !bouncePadLock; } }
 
     /// <summary>
     /// Returns true if the Player is able to air Jump
     /// </summary>
-    private bool CanAirJump { get { return !IsGrounded && !IsTouchingWall && remainingAirJumps > 0; } }
+    private bool CanAirJump { get { return !IsGrounded && !IsTouchingWall && remainingAirJumps > 0 && !bouncePadLock; } }
 
     /// <summary>
     /// Returns true if the Player is able to Dash.
     /// </summary>
-    private bool CanDash { get { return !IsDashing && !IsWallStuck && (remainingDashes > 0 || IsGrounded) && TimeSinceLastDash > dashCoolDown; } }
+    private bool CanDash { get { return !IsDashing && !IsWallStuck && (remainingDashes > 0 || IsGrounded) && TimeSinceLastDash > dashCoolDown && !bouncePadLock; } }
 
     private int FacingDirection { get { return IsFacingRight ? 1 : -1; } }
     private float TimeSinceLastDash { get { return Time.time - timeOfLastDash; } }
@@ -718,6 +743,7 @@ public class PlayerController : MonoBehaviour
     private float TimeSinceLastWallHit { get { return Time.time - timeOfLastWallHit; } }
     private float TimeSinceLastWallJump { get { return Time.time - timeOfLastWallJump; } }
     private float TimeSinceWallHopInput { get { return Time.time - timeOfWallHopInput; } }
+    private float TimeSinceLastBouncePad { get { return Time.time - timeOfLastBouncePad; } }
 
     private bool IsPlayerMoveingIntoWall { get { return IsTouchingWall && (IsFacingRight && movementInput.x > 0) || (!IsFacingRight && movementInput.x < 0); } }
     private bool IsPlayerMoveingAwayFromWall { get { return IsTouchingWall && (IsFacingRight && movementInput.x < 0) || (!IsFacingRight && movementInput.x > 0); } }

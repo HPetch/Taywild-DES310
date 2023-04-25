@@ -11,6 +11,7 @@ namespace DialogueSystem.Elements
     using Utilities;
     using Windows;
     using Types;
+    using ScriptableObjects;
 
     public class DialogueSystemNode : Node
     {
@@ -28,6 +29,10 @@ namespace DialogueSystem.Elements
 
         public AudioClip SoundEffect { get; set; }
         public float Delay { get; set; }
+        public DialogueSystemDialogueContainerSO Graph { get; set; }
+
+        public QuestTypes Quest { get; set; } = QuestTypes.WarsanTutorial;
+        public QuestStates QuestState { get; set; } = QuestStates.InProgress;
 
 
         protected DialogueSystemGraphView graphView;

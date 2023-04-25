@@ -1,9 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using DialogueSystem;
 using DialogueSystem.ScriptableObjects;
 
 public class InteractableCharacter : CharacterCanvas
@@ -19,9 +16,12 @@ public class InteractableCharacter : CharacterCanvas
     [SerializeField] private CanvasGroup interactCanvasGroup;
 
     private CanvasGroup characterNameCanvasGroup;
-    public DialogueSystemDialogueSO StartingNode;
+    public DialogueSystemDialogueContainerSO dialogueGraph;
 
     private bool isPlayerWithinInteractionDistance = false;
+
+    [field: Range(4, 15)]
+    [field: SerializeField] public float ConversationZoomLevel { get; private set; } = 5;
 
     #region Initialisation
     private void Awake()
@@ -31,7 +31,6 @@ public class InteractableCharacter : CharacterCanvas
         
         characterNameCanvasGroup.alpha = 0;
         interactCanvasGroup.alpha = 0;
-        StartingNode = GetComponent<DialogueSystemConversation>().dialogue;
     }
     #endregion
 
@@ -39,7 +38,7 @@ public class InteractableCharacter : CharacterCanvas
     {
         if (isPlayerWithinInteractionDistance && Input.GetButtonDown("Interact") && !DialogueController.Instance.IsConversing && !DecorationController.Instance.isEditMode)
         {
-            DialogueController.Instance.TriggerConversation(StartingNode, this);
+            DialogueController.Instance.TriggerConversation(dialogueGraph, this);
             interactCanvasGroup.alpha = 0;
         }
     }
@@ -101,6 +100,7 @@ public class InteractableCharacter : CharacterCanvas
             isPlayerWithinInteractionDistance = false;
         }
     }
+    #endregion
 
     #region Utility
     protected override void CancelLeanTween()
@@ -108,6 +108,5 @@ public class InteractableCharacter : CharacterCanvas
         base.CancelLeanTween();
         LeanTween.cancel(characterNameCanvasGroup.gameObject);
     }
-    #endregion
     #endregion
 }

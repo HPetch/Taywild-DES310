@@ -104,6 +104,10 @@ public class DecorationMovingFake : MonoBehaviour
                 {
                     placeable = true;
                 }
+                else if (successfulAttachPoints >= 1 && moveTarget.GetComponent<FurnitureObject>().PlacementRequireOnePoint)
+                {
+                    placeable = true;
+                }
             }
         }
         return placeable;

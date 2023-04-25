@@ -9,17 +9,12 @@ public class ParallaxController : MonoBehaviour
 
     private Transform playerCameraTransform = null;
     private Vector3 lastCameraPosition = Vector2.one;
-    private float textureUnitSizeX;
+    [SerializeField] private float textureUnitSizeX = 19.2f * 4;
 
     private void Start()
     {
-        GetComponent<SpriteRenderer>().enabled = true;
-
         playerCameraTransform = CameraController.Instance.transform;
         lastCameraPosition = playerCameraTransform.position;
-
-        Sprite sprite = GetComponent<SpriteRenderer>().sprite;
-        textureUnitSizeX = (sprite.texture.width / sprite.pixelsPerUnit) * 2;
     }
 
     private void LateUpdate()
@@ -33,8 +28,15 @@ public class ParallaxController : MonoBehaviour
             if (Mathf.Abs(playerCameraTransform.position.x - transform.position.x) >= textureUnitSizeX)
             {
                 float offsetPositionX = (playerCameraTransform.position.x - transform.position.x) % textureUnitSizeX;
-                offsetPositionX *= playerCameraTransform.position.x - transform.position.x < 0 ? -1 : 1;
-                transform.position += new Vector3(textureUnitSizeX + offsetPositionX, 0f, 0f);
+
+                if (playerCameraTransform.position.x - transform.position.x < 0)
+                {
+                    transform.position -= new Vector3(textureUnitSizeX + offsetPositionX, 0f, 0f);
+                }
+                else
+                {
+                    transform.position += new Vector3(textureUnitSizeX + offsetPositionX, 0f, 0f);
+                }
             }
         }
     }

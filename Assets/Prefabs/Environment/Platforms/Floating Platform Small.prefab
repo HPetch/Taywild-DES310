@@ -4885,6 +4885,7 @@ GameObject:
   - component: {fileID: -1979016334772210939}
   - component: {fileID: 8303730749609521904}
   - component: {fileID: 8303730749609521905}
+  - component: {fileID: -3119310359566251547}
   m_Layer: 6
   m_Name: Floating Platform Small
   m_TagString: Ground
@@ -4921,10 +4922,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isFloaitngPlatform: 1
-  bounceEffectStrength: 0.2
-  bounceEffectDuration: 1
-  shakeEffectStrength: 0.1
-  shakeEffectDuration: 0.2
+  bounceEffectStrength: 0.1
+  bounceEffectDuration: 0.5
+  shakeEffectStrength: 0.05
+  shakeEffectDuration: 0.1
+  surfaceType: 1
 --- !u!212 &8303730749609521904
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4988,9 +4990,9 @@ BoxCollider2D:
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_UsedByEffector: 0
+  m_UsedByEffector: 1
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.02, y: 0.37}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -5001,5 +5003,24 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2, y: 1}
+  m_Size: {x: 2.06, y: 0.36}
   m_EdgeRadius: 0
+--- !u!251 &-3119310359566251547
+PlatformEffector2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8303730749609521907}
+  m_Enabled: 1
+  m_UseColliderMask: 1
+  m_ColliderMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RotationalOffset: 0
+  m_UseOneWay: 1
+  m_UseOneWayGrouping: 0
+  m_SurfaceArc: 178
+  m_UseSideFriction: 0
+  m_UseSideBounce: 0
+  m_SideArc: 1

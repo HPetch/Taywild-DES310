@@ -39,10 +39,25 @@ namespace DialogueSystem.Windows
                     level = 2
                 },
 
-                new SearchTreeGroupEntry(new GUIContent("Events"), 1),
+                new SearchTreeGroupEntry(new GUIContent("Functionality"), 1),
                 new SearchTreeEntry(new GUIContent("Sound Effect Node", indentationIcon))
                 {
                     userData = new DialogueSystemAudioNode(),
+                    level = 2
+                },
+                new SearchTreeEntry(new GUIContent("Graph Node", indentationIcon))
+                {
+                    userData = new DialogueSystemGraphNode(),
+                    level = 2
+                },
+                new SearchTreeEntry(new GUIContent("Get Quest Node", indentationIcon))
+                {
+                    userData = new DialogueSystemGetQuestNode(),
+                    level = 2
+                },
+                new SearchTreeEntry(new GUIContent("Set Quest Node", indentationIcon))
+                {
+                    userData = new DialogueSystemSetQuestNode(),
                     level = 2
                 },
 
@@ -95,7 +110,7 @@ namespace DialogueSystem.Windows
 
                 case DialogueSystemAudioNode:
                     {
-                        DialogueSystemAudioNode audioNode = (DialogueSystemAudioNode)graphView.CreateAudioNode("NodeName", localMousePosition);
+                        DialogueSystemAudioNode audioNode = (DialogueSystemAudioNode)graphView.CreateAudioNode("AudioNode", localMousePosition);
 
                         graphView.AddElement(audioNode);
 
@@ -113,9 +128,36 @@ namespace DialogueSystem.Windows
 
                 case DialogueSystemDelayNode:
                     {
-                        DialogueSystemDelayNode delayNode = (DialogueSystemDelayNode)graphView.CreateDelayNode("NodeName", localMousePosition);
+                        DialogueSystemDelayNode delayNode = (DialogueSystemDelayNode)graphView.CreateDelayNode("DelayNode", localMousePosition);
 
                         graphView.AddElement(delayNode);
+
+                        return true;
+                    }
+
+                case DialogueSystemGraphNode:
+                    {
+                        DialogueSystemGraphNode graphNode = (DialogueSystemGraphNode)graphView.CreateGraphNode("GraphNode", localMousePosition);
+
+                        graphView.AddElement(graphNode);
+
+                        return true;
+                    }
+
+                case DialogueSystemGetQuestNode:
+                    {
+                        DialogueSystemGetQuestNode questNode = (DialogueSystemGetQuestNode)graphView.CreateGetQuestNode("GetQuestNode", localMousePosition);
+
+                        graphView.AddElement(questNode);
+
+                        return true;
+                    }
+
+                case DialogueSystemSetQuestNode:
+                    {
+                        DialogueSystemSetQuestNode questNode = (DialogueSystemSetQuestNode)graphView.CreateSetQuestNode("SetQuestNode", localMousePosition);
+
+                        graphView.AddElement(questNode);
 
                         return true;
                     }

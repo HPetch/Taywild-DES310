@@ -21,6 +21,13 @@ public class Platform : MonoBehaviour
     private ParticleSystem playerLandParticleEffect;
     private Vector2 defaultPosition;
 
+    //Surface type for landed events in player effect controller.
+    [SerializeField] private PlayerEffectController.SURFACE_TYPE surfaceType;
+    public PlayerEffectController.SURFACE_TYPE getSurfaceType()
+    {
+        return surfaceType;
+    }
+
     private void Start()
     {
         PlayerController.Instance.OnPlayerLand += OnPlayerLanded;

@@ -4,6 +4,7 @@
 /// 2 variants, Pickup Object low health no collision, Pickup Block Object high health collides with player
 /// Once destroyed the items the pickup object contained is added to the Inventory Controller
 
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PickupObject : MonoBehaviour
@@ -61,6 +62,9 @@ public class PickupObject : MonoBehaviour
 
     private bool isFirstBreak = true;
     [SerializeField, Range(0,20)] private int treeExp;
+
+    [SerializeField] private AudioClip pullingClip;
+    private AudioSource specialSource; //Hold this and stop the sound when pulling is done
 
     #endregion
 
@@ -128,9 +132,24 @@ public class PickupObject : MonoBehaviour
             spriteRef.transform.localPosition = Vector2.Lerp(spriteRef.transform.localPosition, _vibrationOffset, vibrationSpeed * Time.deltaTime);
             spriteRef.transform.localRotation = Quaternion.Lerp(spriteRef.transform.localRotation, _rotateVibration, vibrationSpeed * Time.deltaTime);
 
+
+            //Play audio effect!
+            if (PullCurrentDistance() > 0.025f)
+            {
+                //While it is breaking play this sound effect, looping.
+                specialSource = AudioController.Instance.PlayLoopingSound(pullingClip);
+            } else
+            {
+                if (specialSource != null)
+                AudioController.Instance.StopLoopingSound(specialSource);
+            }
+
             // If sprite arm is past break distance then start trying to break the pickup
             if (PullCurrentDistance() > pullBreakDistance * pullBreakMultiplier)
             {
+
+
+
                 if (PullCurrentDistance() > pullBreakDistance) isMaxTravel = true;
 
                 // Checks if a break attmempt has started yet
@@ -158,7 +177,7 @@ public class PickupObject : MonoBehaviour
                 isTryingToBreak = false;
             }
 
-            DecorationController.Instance.DecorationSelector.GetComponent<DecorationSelector>().PickupPullingSelectorOffset(mouseStartPosition, PullCurrentDistance(), isTryingToBreak);
+            DecorationController.Instance.DecorationSelector.GetComponent<DecorationSelector>().PickupPullingSelectorOffset(mouseStartPosition,  Mathf.Clamp( PullCurrentDistance() / pullBreakDistance, 0.0f, 0.9f), isTryingToBreak);
         }
         else if (!isBeingPulled && isActive) spriteArmRef.transform.position = Vector2.Lerp(spriteArmRef.transform.position, targetPosition, dragMoveSpeed * Time.deltaTime);
         // If the is able to respawn then wait until the correct time then respawn
@@ -177,24 +196,30 @@ public class PickupObject : MonoBehaviour
                 Mathf.Clamp(health, 1, 3) * 10; // As the player breaks the object it gets easier to damage
         else pullMoveResistance = forceHealthScaling * 10;
         SetPullBreakState(true, false);
+        DecorationController.Instance.DecorationSelector.GetComponent<DecorationSelector>().StartPullingPickup();
     }
 
     // Called by decoration controller when the player releases the mouse button. Also called when removing health from pickup that doesn't break.
     public void CancelPull()
     {
+        AudioController.Instance.StopLoopingSound(specialSource);
         isBeingPulled = false;
         ResetSpriteVibration();
         isTryingToBreak = false;
         DecorationController.Instance.PickupCancel();
+        DecorationController.Instance.DecorationSelector.GetComponent<DecorationSelector>().EndPullingPickup();
     }
 
     public void DamagePull()
     {
+        AudioController.Instance.StopLoopingSound(specialSource); //Cancel audio loop
+
         DamageAddItems(false);
         DamageSetSprites();
         spriteArmRef.transform.position = startPosition;
         SetPullBreakState(false, false);
         ResetSpriteVibration();
+        DecorationController.Instance.DecorationSelector.GetComponent<DecorationSelector>().EndPullingPickup();
 
         
     }
@@ -202,6 +227,7 @@ public class PickupObject : MonoBehaviour
     // Called when pickup has been broken
     public void EndPull() 
     {
+        AudioController.Instance.StopLoopingSound(specialSource);
         DamageSetSprites();
         // Set respawn time to a number of minues equal to respawn cooldown.
         respawnTime = Time.time + (respawnCooldown * 60);
@@ -217,6 +243,7 @@ public class PickupObject : MonoBehaviour
             TreeLevelController.Instance.AddCleanExp(treeExp);
             isFirstBreak = false;
         }
+        DecorationController.Instance.DecorationSelector.GetComponent<DecorationSelector>().EndPullingPickup();
         
     }
     #endregion

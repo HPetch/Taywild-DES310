@@ -152,9 +152,9 @@ public class CameraController : MonoBehaviour
         targetTransform = playerTransform;
     }
 
-    public void ZoomToDefault()
+    public void ZoomToPartitionSize()
     {
-        Zoom(defaultSize);
+        Zoom(partitionTargetZoomSize);
     }
 
     private void PartitionTransition(Partition partition)
@@ -165,19 +165,18 @@ public class CameraController : MonoBehaviour
 
     private void OnConversationStarted()
     {
-        Vector2 midPoint = Vector2.Lerp(playerTransform.position, DialogueController.Instance.Character.transform.position, 0.5f);
+        InteractableCharacter character = DialogueController.Instance.Character;
+        Vector2 midPoint = Vector2.Lerp(playerTransform.position, character.transform.position, 0.5f);
         dialogueOffset.x = midPoint.x - playerTransform.position.x;
         offset = dialogueOffset;
-        Zoom(5);
+        Zoom(character.ConversationZoomLevel);
     }
 
     private void OnConversationEnded()
     {
         offset = playerOffset;
         Zoom(partitionTargetZoomSize);
-    }
-
-    
+    }    
 
     public void PunchIn(float strength, float speed, bool _holdPunch = false)
     {

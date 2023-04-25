@@ -97,7 +97,8 @@ GameObject:
   - component: {fileID: 2362404074480899592}
   - component: {fileID: 60702050243363674}
   - component: {fileID: 2578423513495669269}
-  m_Layer: 6
+  - component: {fileID: 2371402060573577170}
+  m_Layer: 0
   m_Name: BouncePad
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -131,7 +132,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2cdef80d005e164da7d5588565d54f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bounceFactor: 30
+  inactiveBounceFactor: 20
+  activeBounceFactor: 20
+  bounceSounds:
+  - {fileID: 8300000, guid: 75c4e7a581b6c4c4a9eb0ca23dafdbfa, type: 3}
+  - {fileID: 8300000, guid: 312ab70d5eb5e8d40a6386d82c2c19f9, type: 3}
+  isTreeLevelRequired: 0
 --- !u!1971053207 &2362404074480899592
 SpriteShapeRenderer:
   m_ObjectHideFlags: 0
@@ -278,6 +284,25 @@ EdgeCollider2D:
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
   m_UseAdjacentEndPoint: 0
+--- !u!251 &2371402060573577170
+PlatformEffector2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4850892037257031314}
+  m_Enabled: 1
+  m_UseColliderMask: 1
+  m_ColliderMask:
+    serializedVersion: 2
+    m_Bits: 2147483647
+  m_RotationalOffset: 180
+  m_UseOneWay: 1
+  m_UseOneWayGrouping: 0
+  m_SurfaceArc: 92
+  m_UseSideFriction: 0
+  m_UseSideBounce: 0
+  m_SideArc: 1
 --- !u!1 &7337383889407868270
 GameObject:
   m_ObjectHideFlags: 0
@@ -309,5 +334,5 @@ Transform:
   - {fileID: 9018673042673370580}
   - {fileID: 9020607142206619798}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

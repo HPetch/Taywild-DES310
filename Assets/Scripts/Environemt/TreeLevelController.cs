@@ -19,7 +19,7 @@ public class TreeLevelController : MonoBehaviour
 
     public int CurrentTreeLevel { get; private set; }
 
-    [SerializeField] private int[] treeLevelExpRequirements;
+    [field: SerializeField] public int[] treeLevelExpRequirements { get; private set; }
 
     public TreeLevelInterface UIref { get; private set; }
     #endregion
@@ -67,17 +67,17 @@ public class TreeLevelController : MonoBehaviour
     public void TotalExpChanged()
     {
         TotalExp = QuestExp + HighestFurnitureExp + PickupCleanExp;
-        OnExpTotalChanged?.Invoke();
-        Debug.Log("Tree Exp: " + TotalExp);
+        //Debug.Log("Tree Exp: " + TotalExp);
         if (treeLevelExpRequirements.Length > CurrentTreeLevel)
         {
             if (treeLevelExpRequirements[CurrentTreeLevel] <= TotalExp)
             {
                 CurrentTreeLevel++;
                 OnTreeLevelUp?.Invoke();
-                Debug.Log("Level up!");
+                //Debug.Log("Level up!");
             }
         }
+        OnExpTotalChanged?.Invoke();
     }
     #endregion
 }

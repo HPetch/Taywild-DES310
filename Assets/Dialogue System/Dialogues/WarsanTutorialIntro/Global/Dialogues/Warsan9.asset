@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56aed56cf2bdb3940a003c0a146eee35, type: 3}
+  m_Name: Warsan9
+  m_EditorClassIdentifier: 
+  <NodeName>k__BackingField: Warsan9
+  <NodeType>k__BackingField: 0
+  <Choices>k__BackingField:
+  - <Text>k__BackingField: Where are we?
+    <NextDialogue>k__BackingField: {fileID: 11400000, guid: 87dee7edbd0c2aa4f85926a27fa6fdd4, type: 2}
+  - <Text>k__BackingField: How did you get here?
+    <NextDialogue>k__BackingField: {fileID: 11400000, guid: 2086c32871690c445ba503d184d94191, type: 2}
+  - <Text>k__BackingField: No questions.
+    <NextDialogue>k__BackingField: {fileID: 11400000, guid: 5155c72776a464b418cf3aedfe7d1577, type: 2}
+  <Character>k__BackingField: {fileID: 11400000, guid: 42a93fd49028fb743aa99b1e50d959f1, type: 2}
+  <DialogueType>k__BackingField: 1
+  <Text>k__BackingField: Do you have any other questions?
+  <IsStartingDialogue>k__BackingField: 0
+  <SoundEffect>k__BackingField: {fileID: 0}
+  <Delay>k__BackingField: 0
+  <Graph>k__BackingField: {fileID: 0}
+  <Quest>k__BackingField: 0
+  <QuestState>k__BackingField: 0

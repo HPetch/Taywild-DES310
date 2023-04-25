@@ -22,6 +22,7 @@ public class DialogueController : MonoBehaviour
     #region Variables
     public bool IsConversing { get; private set; } = false;
     public InteractableCharacter Character { get; private set; } = null;
+    public DialogueSystemDialogueContainerSO CurrentGraph { get; private set; } = null;
 
     private DialogueSystemDialogueSO dialogueNode = null;
     private CharacterCanvas currentDialogueCanvas = null;
@@ -31,25 +32,33 @@ public class DialogueController : MonoBehaviour
 
     private string textTypeString = "";
 
+    [Header("Audio clips")]
+    [SerializeField] private AudioClip zoomInClip;
+
+    [Header("Delays")]
     [Tooltip("Delay between each char in the TextType Coroutine")]
-    [Range(0, 0.25f)]
-    [SerializeField] public float TextTypeDelay = 0.01f;
+    [Range(0, 0.5f)]
+    [SerializeField] public float startConversationDelay = 0.2f;
+
+    [field: Tooltip("Delay between each char in the TextType Coroutine")]
+    [field: Range(0, 0.25f)]
+    [field: SerializeField] public float TextTypeDelay { get; private set; } = 0.01f;
 
     [Tooltip("Delay when a period is used")]
     [Range(0, 0.25f)]
-    [SerializeField] private float TextTypePeriodDelay = 0.05f;
+    [SerializeField] private float textTypePeriodDelay = 0.05f;
 
     [Tooltip("Delay when a comma is used")]
     [Range(0, 0.25f)]
-    [SerializeField] private float TextTypeCommaDelay = 0.05f;
+    [SerializeField] private float textTypeCommaDelay = 0.05f;
 
     [Tooltip("Delay when a colon is used")]
     [Range(0, 0.25f)]
-    [SerializeField] private float TextTypeColonDelay = 0.05f;
+    [SerializeField] private float textTypeColonDelay = 0.05f;
 
     [Tooltip("Delay when a semi-colon is used")]
     [Range(0, 0.25f)]
-    [SerializeField] private float TextTypeSemiColonDelay = 0.05f;
+    [SerializeField] private float textTypeSemiColonDelay = 0.05f;
 
     // Tracks wether the current char is rich text or not (TextTyper)
     private bool richText = false;
@@ -59,6 +68,8 @@ public class DialogueController : MonoBehaviour
 
     private float textTypeWaitTime = 0;
     private float currentTextTypeDelay = 0.01f;
+
+    private float timeOfLastDisplayNext = 0.0f;
 
     [Tooltip("Wait time when <link='wait_short'> is used")]
     [Range(0, 0.5f)]
@@ -84,39 +95,67 @@ public class DialogueController : MonoBehaviour
     /// </summary>
     private void Update()
     {
-        if (GameStateController.Instance.GameState != GameStateController.GameStates.DIALOGUE) return;
+        //if (GameStateController.Instance.GameState != GameStateController.GameStates.DIALOGUE) return;
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            StopCoroutine(textType);
+            PlayerDialogueController.Instance.HideThoughtBubbles(0);
+            PlayerDialogueController.Instance.CloseTransition();
+            Character.CloseTransition();
+            EndConversation();
+        }
 
         if (!canDisplayNext) return;
 
-        // If the player inputed continue the conversation
-        if ((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return) || Input.GetMouseButtonDown(0) || Input.GetButtonDown("Interact")) && dialogueNode != null && dialogueNode.DialogueType != DialogueTypes.MultipleChoice) DisplayNext();
-        else if ((Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Keypad1)) && dialogueNode.DialogueType == DialogueTypes.MultipleChoice) DisplayNext(1);
-        else if ((Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown(KeyCode.Keypad2)) && dialogueNode.DialogueType == DialogueTypes.MultipleChoice) DisplayNext(2);
-        else if ((Input.GetKeyDown(KeyCode.Alpha3) || Input.GetKeyDown(KeyCode.Keypad3)) && dialogueNode.DialogueType == DialogueTypes.MultipleChoice) DisplayNext(3);
+        if (Input.GetMouseButtonDown(0))
+        {
+            // If single choice node, display next
+            if (dialogueNode.DialogueType == DialogueTypes.SingleChoice) DisplayNext();
+            // else if Multiple choice node, only display next to skip text or display options
+            else if (dialogueNode.DialogueType == DialogueTypes.MultipleChoice)
+            {
+                // Skip text type
+                if (textType != null) DisplayNext();
+                // If text type is done, and thought bubles are not open, 
+                else if (!PlayerDialogueController.Instance.IsThoughtBubblesOpen)
+                {
+                    // Close charater speech bubble
+                    Character.CloseTransition();
+                    // Show player options
+                    PlayerDialogueController.Instance.ShowThoughtBubbles(dialogueNode);
+                }
+            }
+        }
+        
+        else if ((Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Keypad1)) && dialogueNode.DialogueType == DialogueTypes.MultipleChoice && PlayerDialogueController.Instance.ThoughtBubbleTransitionComplete) DisplayNext(1);
+        else if ((Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown(KeyCode.Keypad2)) && dialogueNode.DialogueType == DialogueTypes.MultipleChoice && PlayerDialogueController.Instance.ThoughtBubbleTransitionComplete) DisplayNext(2);
+        else if ((Input.GetKeyDown(KeyCode.Alpha3) || Input.GetKeyDown(KeyCode.Keypad3)) && dialogueNode.DialogueType == DialogueTypes.MultipleChoice && PlayerDialogueController.Instance.ThoughtBubbleTransitionComplete) DisplayNext(3);
     }
 
     /// <summary>
     /// Starts a new conversation
     /// </summary>
-    public void TriggerConversation(DialogueSystemDialogueSO _startingNode, InteractableCharacter _character)
+    public void TriggerConversation(DialogueSystemDialogueContainerSO _graph, InteractableCharacter _character)
     {
-        if (IsConversing) return;
-
         IsConversing = true;        
         Character = _character;
+        CurrentGraph = _graph;
 
+        ////Audio on dialogue zoom here
+        AudioController.Instance.PlaySound(zoomInClip,true);
         OnConversationStart?.Invoke();
 
-        StartCoroutine(StartConversationDelay(_startingNode));
+        StartCoroutine(StartConversationDelay(_graph.StartingNode));
     }
 
     private IEnumerator StartConversationDelay(DialogueSystemDialogueSO _startingNode)
     {
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(startConversationDelay);
         StartCoroutine(ComputeNode(_startingNode));
     }
 
-    private IEnumerator ComputeNode(DialogueSystemDialogueSO _node)
+    private IEnumerator ComputeNode(DialogueSystemDialogueSO _node, float _delay = 0)
     {
         if (_node == null)
         {
@@ -126,59 +165,91 @@ public class DialogueController : MonoBehaviour
 
         canDisplayNext = false;
 
+        yield return new WaitForSeconds(_delay);
+
         switch (_node.NodeType)
         {
-            case NodeTypes.Dialogue:
+            // If the node is a DialogueNode 
+            case NodeTypes.Dialogue:               
                 dialogueNode = _node;
                 bool resize = true;
 
+                // If the player is talking in the new dialogueNode and the their speech bubble is closed
                 if (IsPlayerTalking && !PlayerDialogueController.Instance.IsOpen)
                 {
+                    // If the character speech bubble is open
                     if (Character.IsOpen)
                     {
+                        // Close the character speech bubble
                         Character.CloseTransition();
+                        // Wait for it to close
                         yield return new WaitForSeconds(Character.ResizeTransitionTime());
                     }
 
+                    // Open player speech bubble
                     PlayerDialogueController.Instance.OpenTransition(dialogueNode.Text);
-
+                    // Change the current active speech canvas to the player's
                     currentDialogueCanvas = PlayerDialogueController.Instance;
+                    // do not resisze as the active talker has changed
                     resize = false;
                 }
+                // If the character is talking and their canvas is not open
                 else if (!IsPlayerTalking && !Character.IsOpen)
                 {
+                    // If the player speech bubble is open
                     if (PlayerDialogueController.Instance.IsOpen)
                     {
+                        // Close it and wait for it to close
                         PlayerDialogueController.Instance.CloseTransition();
                         yield return new WaitForSeconds(PlayerDialogueController.Instance.ResizeTransitionTime());
                     }
 
+                    // Set the active character, this is done here as opposed to at the start of the convo in case the character changes (going from ??? -> recluse)
                     Character.SetCharacter(dialogueNode.Character);
+                    // Open character speech bubble
                     Character.OpenTransition(dialogueNode.Text);
-
+                    // Change the current active speech canvas to the Character's
                     currentDialogueCanvas = Character;
+                    // do not resisze as the active talker has changed
                     resize = false;
                 }
 
+                // If the active talker has not changed, then simply resize the open speech bubble
                 if (resize) currentDialogueCanvas.ResizieTransition(dialogueNode.Text);
 
                 textType = StartCoroutine(TypeSentence(dialogueNode.Text, resize));
                 break;
                 
             case NodeTypes.Audio:
-                if (_node.Choices.Count == 0) EndConversation();
-                else StartCoroutine(ComputeNode(_node.Choices[0].NextDialogue));
+                StartCoroutine(ComputeNode(_node.Choices[0].NextDialogue));
                 yield break;
 
             case NodeTypes.Edge:
-                if (_node.Choices.Count == 0) EndConversation();
-                else StartCoroutine(ComputeNode(_node.Choices[0].NextDialogue));
+                StartCoroutine(ComputeNode(_node.Choices[0].NextDialogue));
                 yield break;
 
             case NodeTypes.Delay:
                 yield return new WaitForSeconds(_node.Delay);
-                if (_node.Choices.Count == 0) EndConversation();
-                else StartCoroutine(ComputeNode(_node.Choices[0].NextDialogue));
+                StartCoroutine(ComputeNode(_node.Choices[0].NextDialogue));
+                yield break;
+                
+            case NodeTypes.GetQuest:
+                QuestStates questState = ObjectiveController.Instance.GetQuest(_node.Quest).State;
+                StartCoroutine(ComputeNode(_node.Choices[(int)questState].NextDialogue));
+                yield break;
+
+            case NodeTypes.SetQuest:
+                ObjectiveController.Quest quest = ObjectiveController.Instance.GetQuest(_node.Quest);
+                quest.State = _node.QuestState;
+                if (_node.QuestState == QuestStates.InProgress && quest.questObjectiveCompleteBeforeQuestIssued)
+                {
+                    quest.State = QuestStates.HandIn;
+                }
+                StartCoroutine(ComputeNode(_node.Choices[0].NextDialogue));
+                yield break;
+
+            case NodeTypes.Graph:
+                TriggerConversation(_node.Graph, Character);
                 yield break;
 
             default:
@@ -191,16 +262,19 @@ public class DialogueController : MonoBehaviour
     // Displays the next conversation event
     private void DisplayNext(int _buttonIndex = 0)
     {
+        if (Time.time - timeOfLastDisplayNext < 0.2f) return;
+
+        timeOfLastDisplayNext = Time.time;
+
         // If the text type is not complete, stop that coroutine and display they final result
         if (textType != null)
         {
             StopCoroutine(textType);
             textType = null;
+            canDisplayNext = true;
 
             currentDialogueCanvas.SetText(dialogueNode.Text);
-
-            if (dialogueNode.DialogueType == DialogueTypes.MultipleChoice) PlayerDialogueController.Instance.ShowThoughtBubbles(dialogueNode);            
-            else currentDialogueCanvas.ShowContinueIndicator();
+            currentDialogueCanvas.ShowContinueIndicator();
 
             return;
         }
@@ -226,7 +300,7 @@ public class DialogueController : MonoBehaviour
                 PlayerDialogueController.Instance.HideThoughtBubbles(_buttonIndex - 1);
 
                 // Compute the next node
-                StartCoroutine(ComputeNode(dialogueNode.Choices[_buttonIndex - 1].NextDialogue));
+                StartCoroutine(ComputeNode(dialogueNode.Choices[_buttonIndex - 1].NextDialogue, 0.3f));
             }
 
             // Else the player has pressed anykey, but as it's a branch they have to select an option
@@ -287,12 +361,12 @@ public class DialogueController : MonoBehaviour
                 }
 
                 continue;
-            }            
+            }
 
             // If a link has been started, cap the link
             if (linkStarted && !richText) currentDialogueCanvas.SetText(textTypeString + "</link>");
             else currentDialogueCanvas.SetText(textTypeString);
-            
+
             // If there is a TextTypeWaitTime set, then wait.
             if (textTypeWaitTime > 0f)
             {
@@ -306,42 +380,49 @@ public class DialogueController : MonoBehaviour
             {
                 // If the char is a space
                 case ' ':
+
                     // skip to next letter
                     continue;
 
                 // If the char is a period
                 case '.':
                     // Wait for the duration of TextTypePeriodDelay
-                    yield return new WaitForSeconds(TextTypePeriodDelay);
+                    yield return new WaitForSeconds(textTypePeriodDelay);
                     continue;
 
                 // If the char is a Comma
                 case ',':
                     // Wait for the duration of TextTypeCommaDelay
-                    yield return new WaitForSeconds(TextTypeCommaDelay);
+                    yield return new WaitForSeconds(textTypeCommaDelay);
                     continue;
 
                 // If the char is a Colon
                 case ':':
                     // Wait for the duration of TextTypeColonDelay
-                    yield return new WaitForSeconds(TextTypeColonDelay);
+                    yield return new WaitForSeconds(textTypeColonDelay);
                     continue;
 
                 // If the char is a Semi-Colon
                 case ';':
                     // Wait for the duration of TextTypeSemiColonDelay
-                    yield return new WaitForSeconds(TextTypeSemiColonDelay);
+                    yield return new WaitForSeconds(textTypeSemiColonDelay);
                     continue;
 
                 // Else for every other character use the default delay
                 default:
+
+                    //Play typewriter sound here
+                    if (dialogueNode.Character.Voice.name == "SFX_Talk_Misc")
+                        AudioController.Instance.PlaySound(dialogueNode.Character.Voice, false);
+                    else
+                        AudioController.Instance.PlaySound(dialogueNode.Character.Voice, true);
+
                     yield return new WaitForSeconds(currentTextTypeDelay);
                     continue;
             }
         }
 
-        if (dialogueNode.DialogueType == DialogueTypes.MultipleChoice) PlayerDialogueController.Instance.ShowThoughtBubbles(dialogueNode);
-        else currentDialogueCanvas.ShowContinueIndicator();
+        currentDialogueCanvas.ShowContinueIndicator();
 
         // Sets coroutine to null, to track when it's finished
         textType = null;
@@ -353,8 +434,12 @@ public class DialogueController : MonoBehaviour
     private void EndConversation()
     {
         IsConversing = false;
-        textType = null;
-        dialogueNode = null;
+
+        if (textType != null)
+        {
+            StopCoroutine(textType);
+            textType = null;
+        }
 
         OnConversationEnd?.Invoke();
     }
