@@ -10,18 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 56aed56cf2bdb3940a003c0a146eee35, type: 3}
-  m_Name: Unknown1
+  m_Name: Player5
   m_EditorClassIdentifier: 
-  <NodeName>k__BackingField: Unknown1
+  <NodeName>k__BackingField: Player5
   <NodeType>k__BackingField: 0
   <Choices>k__BackingField:
   - <Text>k__BackingField: Next Node
-    <NextDialogue>k__BackingField: {fileID: 11400000, guid: 7413b812bf88f7e4187af1fc1166d66f, type: 2}
-  <Character>k__BackingField: {fileID: 11400000, guid: 5e54e24b855158c4b886ceb465cabaa4, type: 2}
+    <NextDialogue>k__BackingField: {fileID: 11400000, guid: b393b8278c305fb4ab99c036e16d91a2, type: 2}
+  <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
   <DialogueType>k__BackingField: 0
-  <Text>k__BackingField: Hello? Who are you? Never mind. It does not matter.
-  <IsStartingDialogue>k__BackingField: 1
+  <Text>k__BackingField: What rot are you talking about?
+  <IsStartingDialogue>k__BackingField: 0
   <SoundEffect>k__BackingField: {fileID: 0}
   <Delay>k__BackingField: 0
   <Graph>k__BackingField: {fileID: 0}
   <Quest>k__BackingField: 0
+  <QuestState>k__BackingField: 1

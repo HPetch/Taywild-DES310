@@ -10,18 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 56aed56cf2bdb3940a003c0a146eee35, type: 3}
-  m_Name: Unknown2
+  m_Name: Player8
   m_EditorClassIdentifier: 
-  <NodeName>k__BackingField: Unknown2
+  <NodeName>k__BackingField: Player8
   <NodeType>k__BackingField: 0
   <Choices>k__BackingField:
   - <Text>k__BackingField: Next Node
-    <NextDialogue>k__BackingField: {fileID: 0}
-  <Character>k__BackingField: {fileID: 11400000, guid: 5e54e24b855158c4b886ceb465cabaa4, type: 2}
+    <NextDialogue>k__BackingField: {fileID: 11400000, guid: 5c469ec0035027b41b995e9176cf3755, type: 2}
+  <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
   <DialogueType>k__BackingField: 0
-  <Text>k__BackingField: Talk to me again if you want to enter the greenhouse.
+  <Text>k__BackingField: "Oh\u2026 that wouldn\u2019t be good."
   <IsStartingDialogue>k__BackingField: 0
   <SoundEffect>k__BackingField: {fileID: 0}
   <Delay>k__BackingField: 0
   <Graph>k__BackingField: {fileID: 0}
   <Quest>k__BackingField: 0
+  <QuestState>k__BackingField: 1
