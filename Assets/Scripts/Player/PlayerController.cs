@@ -190,13 +190,18 @@ public class PlayerController : MonoBehaviour
     [Range(0, 1)]
     [SerializeField] private float glideAirDragMultiplier = 0.95f;
 
-    private List<AirCurrent> airCurrents = new List<AirCurrent>();
+    //private List<AirCurrent> airCurrents = new List<AirCurrent>();
     private float timeOfLastBouncePad = 0.0f;
     private bool bouncePadLock;
     #endregion
 
     #region Utility
-    private Vector2 lastKnownGroundPosition;
+    /// <summary>
+    /// Tracks the current house the player is in, is null when player is not in house
+    /// </summary>
+    public InteractableHouse CurrentHouse { get; private set; } = null;
+
+    private Vector2 lastKnownGroundPosition = Vector2.zero;
     #endregion
     #endregion
 
@@ -322,26 +327,27 @@ public class PlayerController : MonoBehaviour
     {
         _velocity.y = _velocity.y < -glideFallSpeed ? -glideFallSpeed : _velocity.y;
 
-        foreach (AirCurrent airCurrent in airCurrents)
-        {
-            switch (airCurrent.AirCurrentDirectionType)
-            {
-                case AirCurrent.AirCurrentDirectionTypes.UP:
-                    _velocity.y = _velocity.y < airCurrent.AirCurrentSpeed ? airCurrent.AirCurrentSpeed : _velocity.y;
-                    break;
+        // AIR CURRENT
+        //foreach (AirCurrent airCurrent in airCurrents)
+        //{
+        //    switch (airCurrent.AirCurrentDirectionType)
+        //    {
+        //        case AirCurrent.AirCurrentDirectionTypes.UP:
+        //            _velocity.y = _velocity.y < airCurrent.AirCurrentSpeed ? airCurrent.AirCurrentSpeed : _velocity.y;
+        //            break;
 
-                case AirCurrent.AirCurrentDirectionTypes.LEFT:
-                    if (movementInput.x > 0) _velocity.x = _velocity.x > airCurrent.AirCurrentFightSpeed ? airCurrent.AirCurrentFightSpeed : _velocity.x;
-                    else _velocity.x = _velocity.x > -airCurrent.AirCurrentSpeed ? -airCurrent.AirCurrentSpeed : _velocity.x;
+        //        case AirCurrent.AirCurrentDirectionTypes.LEFT:
+        //            if (movementInput.x > 0) _velocity.x = _velocity.x > airCurrent.AirCurrentFightSpeed ? airCurrent.AirCurrentFightSpeed : _velocity.x;
+        //            else _velocity.x = _velocity.x > -airCurrent.AirCurrentSpeed ? -airCurrent.AirCurrentSpeed : _velocity.x;
 
-                    break;
+        //            break;
 
-                case AirCurrent.AirCurrentDirectionTypes.RIGHT:
-                    if (movementInput.x < 0) _velocity.x = _velocity.x < -airCurrent.AirCurrentFightSpeed ? -airCurrent.AirCurrentFightSpeed : _velocity.x;
-                    else _velocity.x = _velocity.x < airCurrent.AirCurrentSpeed ? airCurrent.AirCurrentSpeed : _velocity.x;
-                    break;
-            }
-        }
+        //        case AirCurrent.AirCurrentDirectionTypes.RIGHT:
+        //            if (movementInput.x < 0) _velocity.x = _velocity.x < -airCurrent.AirCurrentFightSpeed ? -airCurrent.AirCurrentFightSpeed : _velocity.x;
+        //            else _velocity.x = _velocity.x < airCurrent.AirCurrentSpeed ? airCurrent.AirCurrentSpeed : _velocity.x;
+        //            break;
+        //    }
+        //}
 
         // If Movement Input
         if (movementInput.x != 0 && TimeSinceLastWallJump > airMovementDisabledDelayAfterWallJump)
@@ -769,18 +775,24 @@ public class PlayerController : MonoBehaviour
     private bool IsPlayerMoveingIntoWall { get { return IsTouchingWall && (IsFacingRight && movementInput.x > 0) || (!IsFacingRight && movementInput.x < 0); } }
     private bool IsPlayerMoveingAwayFromWall { get { return IsTouchingWall && (IsFacingRight && movementInput.x < 0) || (!IsFacingRight && movementInput.x > 0); } }
 
-    public void AddAirCurrent(AirCurrent _airCurrent)
-    {
-        if (!airCurrents.Contains(_airCurrent))
-        {
-            airCurrents.Add(_airCurrent);
-            StartGliding();
-        }
-    }
+    //AIR CURRENT
+    //public void AddAirCurrent(AirCurrent _airCurrent)
+    //{
+    //    if (!airCurrents.Contains(_airCurrent))
+    //    {
+    //        airCurrents.Add(_airCurrent);
+    //        StartGliding();
+    //    }
+    //}
 
-    public void RemoveAirCurrent(AirCurrent _airCurrent)
+    //public void RemoveAirCurrent(AirCurrent _airCurrent)
+    //{
+    //    if (airCurrents.Contains(_airCurrent)) airCurrents.Remove(_airCurrent);       
+    //}
+
+    public void SetCurrentHouse(InteractableHouse _house)
     {
-        if (airCurrents.Contains(_airCurrent)) airCurrents.Remove(_airCurrent);       
+        CurrentHouse = _house;
     }
     #endregion
 

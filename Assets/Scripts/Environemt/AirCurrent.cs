@@ -68,13 +68,13 @@ public class AirCurrent : MonoBehaviour
 #endif    
         */
 
-        if (airCurrentRect.Contains(PlayerController.Instance.transform.position))
-        {
-            PlayerController.Instance.AddAirCurrent(this);
-        }
-        else
-        {
-            PlayerController.Instance.RemoveAirCurrent(this);
-        }
+        //if (airCurrentRect.Contains(PlayerController.Instance.transform.position))
+        //{
+        //    PlayerController.Instance.AddAirCurrent(this);
+        //}
+        //else
+        //{
+        //    PlayerController.Instance.RemoveAirCurrent(this);
+        //}
     }
 }
