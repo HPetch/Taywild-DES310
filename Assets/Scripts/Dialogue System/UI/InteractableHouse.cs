@@ -52,10 +52,16 @@ public class InteractableHouse : MonoBehaviour
         LeanTween.cancel(door.gameObject);
         LeanTween.alpha(door.gameObject, 0.4f, 0.15f);
 
-        CameraController.Instance.Zoom(zoomLevel);
-        if(!cameraFollowPlayer) CameraController.Instance.SetTarget(door.transform);
+        HouseZoom();
 
         isInHouse = true;
+        PlayerController.Instance.SetCurrentHouse(this);
+    }
+
+    public void HouseZoom()
+    {
+        CameraController.Instance.Zoom(zoomLevel);
+        if (!cameraFollowPlayer) CameraController.Instance.SetTarget(door.transform);
     }
 
     private void ExitHouse()
@@ -73,6 +79,7 @@ public class InteractableHouse : MonoBehaviour
         CameraController.Instance.ZoomToPartitionSize();
 
         isInHouse = false;
+        PlayerController.Instance.SetCurrentHouse(null);
     }
 
     #region Collision
