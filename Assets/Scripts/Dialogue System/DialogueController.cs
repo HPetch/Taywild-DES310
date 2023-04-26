@@ -204,8 +204,6 @@ public class DialogueController : MonoBehaviour
                         yield return new WaitForSeconds(PlayerDialogueController.Instance.ResizeTransitionTime());
                     }
 
-                    // Set the active character, this is done here as opposed to at the start of the convo in case the character changes (going from ??? -> recluse)
-                    Character.SetCharacter(dialogueNode.Character);
                     // Open character speech bubble
                     Character.OpenTransition(dialogueNode.Text);
                     // Change the current active speech canvas to the Character's
@@ -213,6 +211,9 @@ public class DialogueController : MonoBehaviour
                     // do not resisze as the active talker has changed
                     resize = false;
                 }
+
+                // Set the active character, this is done here as opposed to at the start of the convo in case the character changes (going from ??? -> recluse)
+                if(!IsPlayerTalking) Character.SetCharacter(dialogueNode.Character);
 
                 // If the active talker has not changed, then simply resize the open speech bubble
                 if (resize) currentDialogueCanvas.ResizieTransition(dialogueNode.Text);

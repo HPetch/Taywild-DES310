@@ -256,6 +256,10 @@ PrefabInstance:
       propertyPath: m_WasSpriteAssigned
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4857343202834697529, guid: 156c009500725a64483aa777e59eeba1, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 07b394d0d5ce7a24292cb55a080ae5a2, type: 2}
     - target: {fileID: 8909044261731129213, guid: 156c009500725a64483aa777e59eeba1, type: 3}
       propertyPath: m_Size.x
       value: 1.6
@@ -272,6 +276,10 @@ PrefabInstance:
       propertyPath: m_WasSpriteAssigned
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8909044261731129213, guid: 156c009500725a64483aa777e59eeba1, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 07b394d0d5ce7a24292cb55a080ae5a2, type: 2}
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 156c009500725a64483aa777e59eeba1, type: 3}

@@ -175,7 +175,9 @@ public class CameraController : MonoBehaviour
     private void OnConversationEnded()
     {
         offset = playerOffset;
-        Zoom(partitionTargetZoomSize);
+
+        if (PlayerController.Instance.CurrentHouse != null) PlayerController.Instance.CurrentHouse.HouseZoom();
+        else Zoom(partitionTargetZoomSize);
     }    
 
     public void PunchIn(float strength, float speed, bool _holdPunch = false)
