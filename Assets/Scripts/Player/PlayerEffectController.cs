@@ -93,6 +93,7 @@ public class PlayerEffectController : MonoBehaviour
         animator.SetBool("Grounded", player.IsGrounded);
         animator.SetBool("Gliding", player.IsGliding);
         animator.SetFloat("Y_Velocity", rb.velocity.y);
+        animator.SetBool("Wall_Grabbed", player.IsWallStuck);
     }
 
     private void PlayerJump()
