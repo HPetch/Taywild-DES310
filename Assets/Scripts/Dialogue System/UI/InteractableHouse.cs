@@ -56,6 +56,7 @@ public class InteractableHouse : MonoBehaviour
         if(!cameraFollowPlayer) CameraController.Instance.SetTarget(door.transform);
 
         isInHouse = true;
+        DecorationController.Instance.SetInsideHouse(isInHouse);
     }
 
     private void ExitHouse()
@@ -73,6 +74,7 @@ public class InteractableHouse : MonoBehaviour
         CameraController.Instance.ZoomToPartitionSize();
 
         isInHouse = false;
+        DecorationController.Instance.SetInsideHouse(isInHouse);
     }
 
     #region Collision

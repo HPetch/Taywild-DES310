@@ -400,8 +400,8 @@ public class PlayerController : MonoBehaviour
         bool isGroundedThisFrame = raycastHit;
         DrawDebugInfo();
 
-        // If the player is grounded this frame
-        if (isGroundedThisFrame)
+        // If the player is grounded this frame. Only checks when the player doesn't have positive y velocity to prevent gaining grounded by jumping through a platform.
+        if (isGroundedThisFrame && rb.velocity.y <= 0)
         {
             // And coyote time has passed since the last ground jump
             if (TimeSinceLastGroundedJump > coyoteTime)
@@ -410,7 +410,7 @@ public class PlayerController : MonoBehaviour
                 timeOfLastTrueIsGrounded = Time.time;
                 lastKnownGroundPosition = transform.position;
 
-                // If the player was not grounded on the previous frame but is grounded this frame, then they have landed
+                // If the player was not grounded on the previous frame but is grounded this frame, then they have landed. 
                 if (!IsGrounded)
                 {
                     // Reset air jumps

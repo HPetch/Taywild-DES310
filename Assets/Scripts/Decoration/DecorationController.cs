@@ -33,7 +33,9 @@ public class DecorationController : MonoBehaviour
     [SerializeField] private AudioClip[] openInterfaceClips;
     [SerializeField] private AudioClip[] closeInterfaceClips;
 
-    public enum UiFurnitureCategories {INDOOR, OUTDOOR, LIGHTING, IDK, SOMETHINGELSE}
+    private bool isInHouse;
+
+    public enum UiFurnitureCategories {FURNITURE, DECORATION, LIGHTING, IDK, SOMETHINGELSE}
 
    // Start is called before the first frame update
    private void Awake()
@@ -269,7 +271,7 @@ public class DecorationController : MonoBehaviour
             AudioController.Instance.PlaySound(clip);
             
         }
-        else if(!isEditMode && PlayerController.Instance.IsGrounded && !DialogueController.Instance.IsConversing)
+        else if(!isEditMode && PlayerController.Instance.IsGrounded && !DialogueController.Instance.IsConversing && !isInHouse)
         {
             //DecorationSelector = Instantiate(decorationSelectorPrefab);
             CameraController.Instance.SetTarget(DecorationSelector.transform);
@@ -279,5 +281,10 @@ public class DecorationController : MonoBehaviour
             AudioClip clip = openInterfaceClips[UnityEngine.Random.Range(0, openInterfaceClips.Length)];
             AudioController.Instance.PlaySound(clip);
         }
+    }
+
+    public void SetInsideHouse(bool _bool)
+    {
+        isInHouse = _bool;
     }
 }

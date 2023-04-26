@@ -14,7 +14,7 @@ public class DecorationCraftMenu : MonoBehaviour
     [SerializeField] private TMP_Text resource2CostText;
     [SerializeField] private TMP_Text resource3CostText;
 
-    private DecorationController.UiFurnitureCategories activeCatagory = DecorationController.UiFurnitureCategories.INDOOR;
+    private DecorationController.UiFurnitureCategories activeCatagory = DecorationController.UiFurnitureCategories.FURNITURE;
     [SerializeField] SerializableDictionary<Button, DecorationController.UiFurnitureCategories> categoryButtons;
 
     [SerializeField] private Button placeButton;
@@ -70,7 +70,7 @@ public class DecorationCraftMenu : MonoBehaviour
         }
 
 
-        RebuildFurnitureMenu(DecorationController.UiFurnitureCategories.INDOOR);
+        RebuildFurnitureMenu(DecorationController.UiFurnitureCategories.FURNITURE);
 
         //Get drawerTransform
         drawerTransform = drawer.GetComponent<RectTransform>();
