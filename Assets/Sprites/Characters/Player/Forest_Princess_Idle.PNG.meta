@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 31ea333054c5d8e478834a86e3313e38
+guid: a28607bb37b583a45b3a3b37a4de5990
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -116,7 +116,43 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
     buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Windows Store Apps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: tvOS
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -131,7 +167,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Forest_Princess_Idle_0
+      name: Forest_Princess_Idle 1_0
       rect:
         serializedVersion: 2
         x: 0
@@ -145,14 +181,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 22ceb9977b3b31d478348d783a381ec4
-      internalID: 1737598581
+      spriteID: 330f2d7804d982a48a308abae595a633
+      internalID: 1708939193
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Forest_Princess_Idle_1
+      name: Forest_Princess_Idle 1_1
       rect:
         serializedVersion: 2
         x: 500
@@ -166,14 +202,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9f2d13ccffd40804c92ed84b680e4ddb
-      internalID: -1156844112
+      spriteID: 2e8ad98d8b0ad5543bfcea293373083c
+      internalID: 1837638886
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Forest_Princess_Idle_2
+      name: Forest_Princess_Idle 1_2
       rect:
         serializedVersion: 2
         x: 1000
@@ -187,14 +223,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6f1b56aa5e610454ba36b2260bf59828
-      internalID: 76374740
+      spriteID: b89069d90d16eb1418037bae009ca36e
+      internalID: 570853546
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Forest_Princess_Idle_3
+      name: Forest_Princess_Idle 1_3
       rect:
         serializedVersion: 2
         x: 1500
@@ -208,14 +244,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1d4b0074a3066254c9d868652e86b3c6
-      internalID: 1113560025
+      spriteID: 3178928c304ac3a418c45d7a8d5bbfe7
+      internalID: 1167402617
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Forest_Princess_Idle_4
+      name: Forest_Princess_Idle 1_4
       rect:
         serializedVersion: 2
         x: 2000
@@ -229,14 +265,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e64a7f51518855244bc9272e3ffd4209
-      internalID: -20616444
+      spriteID: f186a92e5e3429844ad43ec1c8488d8a
+      internalID: 242043806
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Forest_Princess_Idle_5
+      name: Forest_Princess_Idle 1_5
       rect:
         serializedVersion: 2
         x: 2500
@@ -250,8 +286,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c33eda747ef58ec4f8640e5aea734e4d
-      internalID: -1339649074
+      spriteID: d9b1cc509f47d324cae8324b2e6259e3
+      internalID: -1857056546
       vertices: []
       indices: 
       edges: []
@@ -267,12 +303,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Forest_Princess_Idle_1: -1156844112
-      Forest_Princess_Idle_3: 1113560025
-      Forest_Princess_Idle_4: -20616444
-      Forest_Princess_Idle_5: -1339649074
-      Forest_Princess_Idle_2: 76374740
-      Forest_Princess_Idle_0: 1737598581
+      Forest_Princess_Idle 1_2: 570853546
+      Forest_Princess_Idle 1_0: 1708939193
+      Forest_Princess_Idle 1_4: 242043806
+      Forest_Princess_Idle 1_1: 1837638886
+      Forest_Princess_Idle 1_3: 1167402617
+      Forest_Princess_Idle 1_5: -1857056546
   spritePackingTag: 
   pSDRemoveMatte: 0
   userData: 
