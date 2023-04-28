@@ -45,10 +45,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   zoomInClip: {fileID: 8300000, guid: c90ce9b1c4a38d343948f16e034635c4, type: 3}
-  TextTypeDelay: 0.04
-  TextTypePeriodDelay: 0.07
-  TextTypeCommaDelay: 0.05
-  TextTypeColonDelay: 0.05
-  TextTypeSemiColonDelay: 0.05
+  startConversationDelay: 0.2
+  <TextTypeDelay>k__BackingField: 0.02
+  textTypePeriodDelay: 0.05
+  textTypeCommaDelay: 0.05
+  textTypeColonDelay: 0.05
+  textTypeSemiColonDelay: 0.05
   shortWait: 0.3
   longWait: 0.6

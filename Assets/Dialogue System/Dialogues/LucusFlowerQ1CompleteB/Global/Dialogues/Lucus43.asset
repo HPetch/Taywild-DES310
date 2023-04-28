@@ -10,19 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 56aed56cf2bdb3940a003c0a146eee35, type: 3}
-  m_Name: Lucus
+  m_Name: Lucus43
   m_EditorClassIdentifier: 
-  <NodeName>k__BackingField: Lucus
+  <NodeName>k__BackingField: Lucus43
   <NodeType>k__BackingField: 0
   <Choices>k__BackingField:
-  - <Text>k__BackingField: Next Node
+  - <Text>k__BackingField: In what way?
+    <NextDialogue>k__BackingField: {fileID: 11400000, guid: fe90ba553b3eb5641ac552b82e6feb67, type: 2}
+  - <Text>k__BackingField: ...
     <NextDialogue>k__BackingField: {fileID: 0}
   <Character>k__BackingField: {fileID: 11400000, guid: 49268ee1c8a3bee44b0063741027d804, type: 2}
-  <DialogueType>k__BackingField: 0
-  <Text>k__BackingField: 'Thank you for fetching the flower, my name is Lucus. Welcome
-    to my greenhouse. '
-  <IsStartingDialogue>k__BackingField: 1
+  <DialogueType>k__BackingField: 1
+  <Text>k__BackingField: "\u2026an influence I suppose."
+  <IsStartingDialogue>k__BackingField: 0
   <SoundEffect>k__BackingField: {fileID: 0}
   <Delay>k__BackingField: 0
   <Graph>k__BackingField: {fileID: 0}
   <Quest>k__BackingField: 0
+  <QuestState>k__BackingField: 1

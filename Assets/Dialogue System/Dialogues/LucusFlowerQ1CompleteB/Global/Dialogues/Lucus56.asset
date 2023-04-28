@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56aed56cf2bdb3940a003c0a146eee35, type: 3}
+  m_Name: Lucus56
+  m_EditorClassIdentifier: 
+  <NodeName>k__BackingField: Lucus56
+  <NodeType>k__BackingField: 0
+  <Choices>k__BackingField:
+  - <Text>k__BackingField: Sorry what?
+    <NextDialogue>k__BackingField: {fileID: 11400000, guid: 10de660aebe197244a9fbc2c5bf8b127, type: 2}
+  - <Text>k__BackingField: Have I offended you?
+    <NextDialogue>k__BackingField: {fileID: 11400000, guid: 97fa83e49e59f674085aad699211b896, type: 2}
+  - <Text>k__BackingField: I was about to say no!
+    <NextDialogue>k__BackingField: {fileID: 11400000, guid: 2c4cffd14dd911a46a8f5c5d3713628a, type: 2}
+  <Character>k__BackingField: {fileID: 11400000, guid: 49268ee1c8a3bee44b0063741027d804, type: 2}
+  <DialogueType>k__BackingField: 1
+  <Text>k__BackingField: "Why are you talking to me? \r"
+  <IsStartingDialogue>k__BackingField: 0
+  <SoundEffect>k__BackingField: {fileID: 0}
+  <Delay>k__BackingField: 0
+  <Graph>k__BackingField: {fileID: 0}
+  <Quest>k__BackingField: 0
+  <QuestState>k__BackingField: 1
