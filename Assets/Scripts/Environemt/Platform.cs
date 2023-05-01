@@ -18,7 +18,7 @@ public class Platform : MonoBehaviour
     [Range(0, 1)]
     [SerializeField] private float shakeEffectDuration = 0.2f;
 
-    private ParticleSystem playerLandParticleEffect;
+    private ParticleSystem[] playerLandParticleEffects;
     private Vector2 defaultPosition;
 
     //Surface type for landed events in player effect controller.
@@ -32,7 +32,7 @@ public class Platform : MonoBehaviour
     {
         PlayerController.Instance.OnPlayerLand += OnPlayerLanded;
 
-        playerLandParticleEffect = GetComponentInChildren<ParticleSystem>();
+        playerLandParticleEffects = GetComponentsInChildren<ParticleSystem>();
         defaultPosition = transform.localPosition;
     }
 
@@ -43,7 +43,11 @@ public class Platform : MonoBehaviour
             LeanTween.cancel(gameObject);
             transform.localPosition = defaultPosition;
 
-            playerLandParticleEffect.Play();
+            foreach (ParticleSystem particleEffect in playerLandParticleEffects)
+            {
+                particleEffect.Play();
+            }
+
 
             if (isFloaitngPlatform)
             {
