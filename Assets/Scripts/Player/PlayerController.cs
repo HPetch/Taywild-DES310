@@ -751,7 +751,7 @@ public class PlayerController : MonoBehaviour
     /// <summary>
     /// Returns true if the Player is able to Jump.
     /// </summary>
-    private bool CanJump { get { return (IsGrounded || IsTouchingWall || CanAirJump) && !bouncePadLock; } }
+    private bool CanJump { get { return (IsGrounded || IsTouchingWall || CanAirJump) && rb.velocity.y < 5 && !bouncePadLock; } }
 
     /// <summary>
     /// Returns true if the Player is able to air Jump
