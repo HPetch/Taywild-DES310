@@ -8,6 +8,10 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 152466634187770368, guid: ba88dae99097da043b24de774bcf5e44, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 152466634187770374, guid: ba88dae99097da043b24de774bcf5e44, type: 3}
       propertyPath: m_LocalPosition.y
       value: -2.23
@@ -35,7 +39,7 @@ PrefabInstance:
     - target: {fileID: 2645309099754445559, guid: ba88dae99097da043b24de774bcf5e44, type: 3}
       propertyPath: <UiImage>k__BackingField
       value: 
-      objectReference: {fileID: 21300000, guid: 680bdb78c2bbf614898ee7a6c4aad1b3, type: 3}
+      objectReference: {fileID: 21300000, guid: 46cc8b69f15c9db4c841dbac99161dd8, type: 3}
     - target: {fileID: 2645309099754445559, guid: ba88dae99097da043b24de774bcf5e44, type: 3}
       propertyPath: <treeExp>k__BackingField
       value: 30
