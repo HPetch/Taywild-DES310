@@ -808,7 +808,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -2.5}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -116.9, y: -44.5}
+  m_AnchoredPosition: {x: 49, y: -53}
   m_SizeDelta: {x: 67.5188, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &361772381114068666
@@ -957,7 +957,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -2.5}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 46.699963, y: -50.499958}
+  m_AnchoredPosition: {x: -116.5, y: -44.5}
   m_SizeDelta: {x: 67.5188, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6467219574426719363
@@ -1721,7 +1721,7 @@ Transform:
   m_Children:
   - {fileID: 4515244574645697189}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &9124429802042330701
 MonoBehaviour:
@@ -1755,8 +1755,8 @@ MonoBehaviour:
   - {fileID: 4748183369128429068}
   MaterialTexts:
   - {fileID: 1885368373681648773}
-  - {fileID: 7485055511339375891}
   - {fileID: 345402066114678926}
+  - {fileID: 7485055511339375891}
   <LeafSprite>k__BackingField: {fileID: 2075796175356642671}
   <WoodSprite>k__BackingField: {fileID: 2540855207098141509}
   <SapSprite>k__BackingField: {fileID: 7452147921737677466}
