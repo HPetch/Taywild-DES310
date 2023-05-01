@@ -86,7 +86,7 @@ public class DialogueController : MonoBehaviour
     {
         // If there already exists an Instance of this singleton then destroy this object, else this is the singleton instance
         if (Instance != null) Destroy(gameObject);
-        else Instance = this;
+        else Instance = this;        
     }
     #endregion
 
@@ -222,6 +222,7 @@ public class DialogueController : MonoBehaviour
                 break;
                 
             case NodeTypes.Audio:
+                AudioController.Instance.PlaySound(_node.SoundEffect, false);
                 StartCoroutine(ComputeNode(_node.Choices[0].NextDialogue));
                 yield break;
 
@@ -456,6 +457,8 @@ public class DialogueController : MonoBehaviour
 
     #region Utility
     private bool IsPlayerTalking { get { return dialogueNode.Character.CharacterName == "Player"; } }
+
+    public string GetCurrentNodeName() { return dialogueNode.NodeName; }
     #endregion
     #endregion
 }
