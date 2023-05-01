@@ -22,13 +22,18 @@ public class FurnitureObject : DecorationObject
     // If true then only requires one valid placement point to be good to place
     [field: SerializeField] public bool PlacementRequireOnePoint;
 
+    private Material editModeMaterial;
+    [SerializeField] private Material normalModeMaterial;
 
 
 
+    private void Awake()
+    {
+        DecorationController.Instance.OnEnterEditMode += DisplayOutline;
+        DecorationController.Instance.OnExitEditMode += HideOutline;
+    }
 
-
-
-// Start is called before the first frame update
+    // Start is called before the first frame update
     void Start()
     {
         AttachmentPointRadius = GetComponentInChildren<CircleCollider2D>().radius;
@@ -38,6 +43,7 @@ public class FurnitureObject : DecorationObject
             EditButtonRight = EditButtonHolder.transform.GetChild(1).gameObject;
         }
         InitializeAttachmentPoints();
+        editModeMaterial = GetComponent<SpriteRenderer>().material;
         GetComponent<SpriteRenderer>().color = Color.clear;
     }
     // Update is called once per frame
@@ -68,7 +74,14 @@ public class FurnitureObject : DecorationObject
         }
     }
 
-    
+    private void DisplayOutline()
+    {
+        GetComponent<SpriteRenderer>().material = editModeMaterial;
+    }
+    private void HideOutline()
+    {
+        GetComponent<SpriteRenderer>().material = normalModeMaterial;
+    }
 
     public void SetScrollRotateIndexHolder(int _index) { scrollRotateIndexHolder = _index; }
 
