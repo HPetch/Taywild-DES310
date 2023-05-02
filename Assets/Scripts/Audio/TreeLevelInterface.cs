@@ -61,7 +61,7 @@ public class TreeLevelInterface : MonoBehaviour
             if (item.GetComponent<TreeLevelMaterialType>().MaterialType == type)
             {
                 //Update text with value here
-                item.text = (int.Parse(item.text) + value).ToString();
+                item.text = Mathf.Clamp((int.Parse(item.text) + value),0,999).ToString();
             }
         }
     }
