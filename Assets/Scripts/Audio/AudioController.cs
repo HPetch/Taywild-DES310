@@ -8,7 +8,6 @@ public class AudioController : MonoBehaviour
 {
     #region Variables
     public static AudioController Instance { get; private set; }
-    [SerializeField] private AudioMixer mixer;
     [SerializeField] private AudioSource[] sources; //0 = BGM, 1 = BGA, 2 = SFX
     [SerializeField] private AudioSource specialSource; //For looping SFX ONLY - only ONE CLIP CAN PLAY AT A TIME IN THIS SOURCE
     [SerializeField] private AudioClip[] musics; //0 = Main, 1 = Generic, 2 = Warsan, 3 = Lucus
@@ -33,7 +32,7 @@ public class AudioController : MonoBehaviour
 
     public enum SOUND_TYPE
     {
-        BGM, BGA, SFX
+        BGM, BGA, SFX, Master
     }
     #endregion
 
@@ -169,6 +168,7 @@ public class AudioController : MonoBehaviour
     }
 
     //Fade out, swap track in channel with selected, fade in of x seconds
+    //Affects the AudioSource, NOT the Mixers itself!
     //Adapted from https://johnleonardfrench.com/how-to-fade-audio-in-unity-i-tested-every-method-this-ones-the-best/#second_method
     private IEnumerator SwapLoopingTrack(AudioSource track, AudioClip clipToPlay, float fadeOutTime, float fadeInTime)
     {
