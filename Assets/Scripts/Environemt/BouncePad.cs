@@ -8,6 +8,10 @@ public class BouncePad : MonoBehaviour
     [SerializeField] private float inactiveBounceFactor = 20f;
     [SerializeField] private float activeBounceFactor = 20f;
 
+    [SerializeField] private SpriteRenderer spriteRenderer;
+    [SerializeField] private Sprite inactiveSprite;
+    [SerializeField] private Sprite activeSprite;
+
     [SerializeField] private AudioClip[] bounceSounds;
 
     [SerializeField] private bool isTreeLevelRequired;
@@ -19,7 +23,16 @@ public class BouncePad : MonoBehaviour
 
     private void Start()
     {
-        if (isTreeLevelRequired) TreeLevelController.Instance.OnTreeLevelUp += treeLevelUpUpdate;
+        if (isTreeLevelRequired)
+        {
+            TreeLevelController.Instance.OnTreeLevelUp += treeLevelUpUpdate;
+            spriteRenderer.sprite = inactiveSprite;
+
+        }
+        else
+        {
+            spriteRenderer.sprite = activeSprite;
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -40,8 +53,10 @@ public class BouncePad : MonoBehaviour
         }
     }
 
+    //Called when tree level is updated
     private void treeLevelUpUpdate()
     {
-        if (TreeLevelController.Instance.CurrentTreeLevel == 1) GetComponent<UnityEngine.U2D.SpriteShapeRenderer>().color = new Vector4(0.9f,0.5f,0.5f,1f);
+        //Swap sprite
+        if (TreeLevelController.Instance.CurrentTreeLevel == 1) spriteRenderer.sprite = activeSprite;
     }
 }
