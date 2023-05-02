@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56aed56cf2bdb3940a003c0a146eee35, type: 3}
+  m_Name: Lucus17
+  m_EditorClassIdentifier: 
+  <NodeName>k__BackingField: Lucus17
+  <NodeType>k__BackingField: 0
+  <Choices>k__BackingField:
+  - <Text>k__BackingField: "I\u2019ll keep my eye out!"
+    <NextDialogue>k__BackingField: {fileID: 11400000, guid: ace6f405a41780547a90b3010bec2744, type: 2}
+  - <Text>k__BackingField: Will do!
+    <NextDialogue>k__BackingField: {fileID: 11400000, guid: 022bbdfe25db898418186cb598c36a38, type: 2}
+  <Character>k__BackingField: {fileID: 11400000, guid: 49268ee1c8a3bee44b0063741027d804, type: 2}
+  <DialogueType>k__BackingField: 1
+  <Text>k__BackingField: "If you would be so inclined, please find me one of the
+    \u2018Steward\u2019s books and Dream Berries. "
+  <IsStartingDialogue>k__BackingField: 0
+  <SoundEffect>k__BackingField: {fileID: 0}
+  <Delay>k__BackingField: 0
+  <Graph>k__BackingField: {fileID: 0}
+  <Quest>k__BackingField: 0
+  <QuestState>k__BackingField: 1
