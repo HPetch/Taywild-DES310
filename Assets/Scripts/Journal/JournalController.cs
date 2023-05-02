@@ -172,6 +172,11 @@ namespace Journal
             if (Input.GetKeyDown(KeyCode.Alpha1)) FlipToPage(1);
             if (Input.GetKeyDown(KeyCode.Alpha2)) FlipToPage(2);
             if (Input.GetKeyDown(KeyCode.Alpha3)) FlipToPage(3);
+            if (Input.GetKeyDown(KeyCode.Alpha4)) FlipToPage(4);
+            if (Input.GetKeyDown(KeyCode.Alpha5)) FlipToPage(5);
+            if (Input.GetKeyDown(KeyCode.Alpha6)) FlipToPage(6);
+            if (Input.GetKeyDown(KeyCode.LeftArrow)) FlipLeftPage();
+            if (Input.GetKeyDown(KeyCode.RightArrow)) FlipRightPage();
 
             if (flippingStarted)
             {
