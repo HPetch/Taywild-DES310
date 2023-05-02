@@ -447,7 +447,7 @@ public class DialogueController : MonoBehaviour
     #region Utility
     private bool IsPlayerTalking { get { return dialogueNode.Character.CharacterName == "Player"; } }
 
-    public string GetCurrentNodeName() { return dialogueNode.NodeName; }
+    public string GetCurrentNodeName() { if (dialogueNode != null) return dialogueNode.NodeName; else return "null"; }
     #endregion
     #endregion
 }
