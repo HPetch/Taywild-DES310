@@ -1153,7 +1153,7 @@ SpriteShapeRenderer:
   m_SortingLayerID: 1892015123
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Color: {r: 0.47058827, g: 0.5372549, b: 0.5294118, a: 1}
+  m_Color: {r: 0.23529412, g: 0.34901962, b: 0.36078432, a: 1}
   m_MaskInteraction: 0
   m_ShapeTexture: {fileID: 2800000, guid: b281b91a70a624a0da1c43adc1c30c7b, type: 3}
   m_Sprites:
@@ -11812,7 +11812,7 @@ SpriteShapeRenderer:
   m_SortingLayerID: 1892015123
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Color: {r: 0.47058827, g: 0.5411765, b: 0.53333336, a: 1}
+  m_Color: {r: 0.23529412, g: 0.34901962, b: 0.36078432, a: 1}
   m_MaskInteraction: 0
   m_ShapeTexture: {fileID: 2800000, guid: b281b91a70a624a0da1c43adc1c30c7b, type: 3}
   m_Sprites:
@@ -17976,7 +17976,7 @@ SpriteShapeRenderer:
   m_SortingLayerID: 1892015123
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Color: {r: 0.47058827, g: 0.5372549, b: 0.5294118, a: 1}
+  m_Color: {r: 0.23529412, g: 0.34901962, b: 0.36078432, a: 1}
   m_MaskInteraction: 0
   m_ShapeTexture: {fileID: 2800000, guid: b281b91a70a624a0da1c43adc1c30c7b, type: 3}
   m_Sprites:
@@ -18424,7 +18424,7 @@ SpriteShapeRenderer:
   m_SortingLayerID: 1892015123
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Color: {r: 0.47058827, g: 0.5372549, b: 0.5294118, a: 1}
+  m_Color: {r: 0.23529412, g: 0.34901962, b: 0.36078432, a: 1}
   m_MaskInteraction: 0
   m_ShapeTexture: {fileID: 2800000, guid: b281b91a70a624a0da1c43adc1c30c7b, type: 3}
   m_Sprites:
@@ -21784,6 +21784,50 @@ PrefabInstance:
       propertyPath: m_Name
       value: E_Decal_SunFlower_2
       objectReference: {fileID: 0}
+    - target: {fileID: 4886194678340794450, guid: 645c244f7f580264181fc1b2d5e06012, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 13.89
+      objectReference: {fileID: 0}
+    - target: {fileID: 4886194678340794450, guid: 645c244f7f580264181fc1b2d5e06012, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.07
+      objectReference: {fileID: 0}
+    - target: {fileID: 4886194678340794450, guid: 645c244f7f580264181fc1b2d5e06012, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7326156613752290839, guid: 645c244f7f580264181fc1b2d5e06012, type: 3}
+      propertyPath: m_Type
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7326156613752290839, guid: 645c244f7f580264181fc1b2d5e06012, type: 3}
+      propertyPath: m_Range
+      value: 6.49
+      objectReference: {fileID: 0}
+    - target: {fileID: 7326156613752290839, guid: 645c244f7f580264181fc1b2d5e06012, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7326156613752290839, guid: 645c244f7f580264181fc1b2d5e06012, type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7326156613752290839, guid: 645c244f7f580264181fc1b2d5e06012, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7326156613752290839, guid: 645c244f7f580264181fc1b2d5e06012, type: 3}
+      propertyPath: m_Intensity
+      value: 7.57
+      objectReference: {fileID: 0}
+    - target: {fileID: 7326156613752290839, guid: 645c244f7f580264181fc1b2d5e06012, type: 3}
+      propertyPath: m_Shadows.m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7326156613752290839, guid: 645c244f7f580264181fc1b2d5e06012, type: 3}
+      propertyPath: m_BounceIntensity
+      value: 3.06
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 645c244f7f580264181fc1b2d5e06012, type: 3}
@@ -23561,7 +23605,7 @@ SpriteShapeRenderer:
   m_SortingLayerID: 1892015123
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Color: {r: 0.47058827, g: 0.5372549, b: 0.5294118, a: 1}
+  m_Color: {r: 0.23529412, g: 0.34901962, b: 0.36078432, a: 1}
   m_MaskInteraction: 0
   m_ShapeTexture: {fileID: 2800000, guid: b281b91a70a624a0da1c43adc1c30c7b, type: 3}
   m_Sprites:
@@ -29252,7 +29296,7 @@ SpriteShapeRenderer:
   m_SortingLayerID: 1892015123
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Color: {r: 0.47058827, g: 0.5372549, b: 0.5294118, a: 1}
+  m_Color: {r: 0.23529412, g: 0.34901962, b: 0.36078432, a: 1}
   m_MaskInteraction: 0
   m_ShapeTexture: {fileID: 2800000, guid: b281b91a70a624a0da1c43adc1c30c7b, type: 3}
   m_Sprites:
@@ -32714,7 +32758,7 @@ SpriteShapeRenderer:
   m_SortingLayerID: 1892015123
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Color: {r: 0.47058827, g: 0.5411765, b: 0.53333336, a: 1}
+  m_Color: {r: 0.23529412, g: 0.34901962, b: 0.36078432, a: 1}
   m_MaskInteraction: 0
   m_ShapeTexture: {fileID: 2800000, guid: b281b91a70a624a0da1c43adc1c30c7b, type: 3}
   m_Sprites:
@@ -33003,7 +33047,7 @@ SpriteShapeRenderer:
   m_SortingLayerID: 1892015123
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Color: {r: 0.47058827, g: 0.5411765, b: 0.53333336, a: 1}
+  m_Color: {r: 0.23529412, g: 0.34901962, b: 0.36078432, a: 1}
   m_MaskInteraction: 0
   m_ShapeTexture: {fileID: 2800000, guid: b281b91a70a624a0da1c43adc1c30c7b, type: 3}
   m_Sprites:
@@ -33362,7 +33406,7 @@ SpriteShapeRenderer:
   m_SortingLayerID: 1892015123
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Color: {r: 0.47058827, g: 0.5411765, b: 0.53333336, a: 1}
+  m_Color: {r: 0.23529412, g: 0.34901962, b: 0.36078432, a: 1}
   m_MaskInteraction: 0
   m_ShapeTexture: {fileID: 2800000, guid: b281b91a70a624a0da1c43adc1c30c7b, type: 3}
   m_Sprites:
@@ -35515,7 +35559,7 @@ SpriteShapeRenderer:
   m_SortingLayerID: 1892015123
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Color: {r: 0.47058827, g: 0.5411765, b: 0.53333336, a: 1}
+  m_Color: {r: 0.23529412, g: 0.34901962, b: 0.36078432, a: 1}
   m_MaskInteraction: 0
   m_ShapeTexture: {fileID: 2800000, guid: b281b91a70a624a0da1c43adc1c30c7b, type: 3}
   m_Sprites:
@@ -47793,7 +47837,7 @@ SpriteShapeRenderer:
   m_SortingLayerID: 1892015123
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Color: {r: 0.47058827, g: 0.5411765, b: 0.53333336, a: 1}
+  m_Color: {r: 0.23529412, g: 0.34901962, b: 0.36078432, a: 1}
   m_MaskInteraction: 0
   m_ShapeTexture: {fileID: 2800000, guid: b281b91a70a624a0da1c43adc1c30c7b, type: 3}
   m_Sprites:
@@ -49469,7 +49513,7 @@ SpriteShapeRenderer:
   m_SortingLayerID: 1892015123
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Color: {r: 0.47058827, g: 0.5411765, b: 0.53333336, a: 1}
+  m_Color: {r: 0.23529412, g: 0.34901962, b: 0.36078432, a: 1}
   m_MaskInteraction: 0
   m_ShapeTexture: {fileID: 2800000, guid: b281b91a70a624a0da1c43adc1c30c7b, type: 3}
   m_Sprites:
@@ -62609,7 +62653,7 @@ SpriteShapeRenderer:
   m_SortingLayerID: 1892015123
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Color: {r: 0.47058827, g: 0.5411765, b: 0.53333336, a: 1}
+  m_Color: {r: 0.23529412, g: 0.34901962, b: 0.36078432, a: 1}
   m_MaskInteraction: 0
   m_ShapeTexture: {fileID: 2800000, guid: b281b91a70a624a0da1c43adc1c30c7b, type: 3}
   m_Sprites:
