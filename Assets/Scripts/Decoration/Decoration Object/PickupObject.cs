@@ -188,15 +188,15 @@ public class PickupObject : MonoBehaviour
         // If the is able to respawn then wait until the correct time then respawn
         else if (Time.time > respawnTime && !isActive && respawnCooldown != 0) Respawn();
 
-        if (Vector2.Distance(transform.position, PlayerController.Instance.transform.position) < pickupOutlineDisplayRange || pickupOutlineDisplayRange == 0)
+        if ((Vector2.Distance(transform.position, PlayerController.Instance.transform.position) < pickupOutlineDisplayRange || pickupOutlineDisplayRange == 0) && health > 0)
         {
-            spriteRef.GetComponent<SpriteRenderer>().material = inRangeMaterial;
             GetComponent<BoxCollider2D>().enabled = true;
+            spriteRef.GetComponent<SpriteRenderer>().material = inRangeMaterial;
         }
         else
         {
-            spriteRef.GetComponent<SpriteRenderer>().material = outRangeMaterial;
             GetComponent<BoxCollider2D>().enabled = false;
+            spriteRef.GetComponent<SpriteRenderer>().material = outRangeMaterial;
         }
             
     }
