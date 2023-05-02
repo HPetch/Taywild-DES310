@@ -14,6 +14,8 @@ public class TestersInterface : MonoBehaviour
     [SerializeField] private TMP_Text versionText;
 
     [SerializeField] private Canvas canvas;
+    [SerializeField] private TMP_Text graphInfoText;
+    [SerializeField] private TMP_Text nodeInfoText;
     #endregion
 
     private void Awake()
@@ -42,16 +44,45 @@ public class TestersInterface : MonoBehaviour
         coordsText.text = "Pos: " + positionInPartition.ToString("F2");
 
         //Show detailed state info
-        if (PlayerController.Instance.IsLockedInput) playerControllerText.text = "Input is Locked.";
+        if (PlayerController.Instance.IsLockedInput)
+        {
+            playerControllerText.text = "Input is Locked.";
+            //Show dialogue info if its happening
+            if (DialogueController.Instance.IsConversing)
+            {
+                //As long as dialogue exists show the current node and etc.
+                if (DialogueController.Instance.CurrentGraph != null)
+                {
+                    graphInfoText.text = "Graph name: " + DialogueController.Instance.CurrentGraph.FileName;
+                    nodeInfoText.text = "Node name: " + DialogueController.Instance.GetCurrentNodeName();
+                }
+                else
+                {
+                    graphInfoText.text = "Graph name: cannot find! This is a big bug, report this please!";
+                    nodeInfoText.text = "Node name: null";
+                }
+            }
+            else //If dialogue is not happening just show it as null
+            {
+                graphInfoText.text = "Graph name: null";
+                nodeInfoText.text = "Node name: null";
+            }
+        }
         else
+        {
+            //Say graph text = null, etc
+            graphInfoText.text = "Graph name: null";
+            nodeInfoText.text = "Node name: null";
+
+            //Detailed state info for player controller if not locked in place.
             playerControllerText.text = "Facing right: " + PlayerController.Instance.IsFacingRight + "\n"
                 + "Grounded: " + PlayerController.Instance.IsGrounded + "\n"
                 + "Dashing: " + PlayerController.Instance.IsDashing + "\n"
                 + "Gliding: " + PlayerController.Instance.IsGliding + "\n"
-                + "Touching wall: " + PlayerController.Instance.IsTouchingWall + "\n"
+                + "Touching walljump wall: " + PlayerController.Instance.IsTouchingWall + "\n"
                 + "Sticky wall: " + PlayerController.Instance.IsWallStuck + "\n"
                 + "Wall sliding: " + PlayerController.Instance.IsWallSliding + "\n";
-
+        }
     }
 
 }
