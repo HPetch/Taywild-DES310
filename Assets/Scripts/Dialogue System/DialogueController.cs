@@ -95,17 +95,6 @@ public class DialogueController : MonoBehaviour
     /// </summary>
     private void Update()
     {
-        //if (GameStateController.Instance.GameState != GameStateController.GameStates.DIALOGUE) return;
-
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            StopCoroutine(textType);
-            PlayerDialogueController.Instance.HideThoughtBubbles(0);
-            PlayerDialogueController.Instance.CloseTransition();
-            Character.CloseTransition();
-            EndConversation();
-        }
-
         if (!canDisplayNext) return;
 
         if (Input.GetMouseButtonDown(0))
