@@ -54,6 +54,9 @@ public class FurnitureObject : DecorationObject
         {
             transform.position = DecorationController.Instance.CurrentMoveFake.transform.position;
         }
+
+        if(PlayerController.Instance.CurrentHouse || PlayerController.Instance.CurrentHouse != null) GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0.25f);
+        else if (!DecorationController.Instance.isEditMode) GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1);
     }
 
 
