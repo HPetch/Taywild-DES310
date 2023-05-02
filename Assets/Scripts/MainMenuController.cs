@@ -62,8 +62,13 @@ public class MainMenuController : MonoBehaviour
 
     public void ExitButton()
     {
+    #if UNITY_STANDALONE_WIN
         Application.Quit();
+    #endif
     }
     #endregion
+
+
     #endregion
+
 }
