@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56aed56cf2bdb3940a003c0a146eee35, type: 3}
+  m_Name: Warsan6
+  m_EditorClassIdentifier: 
+  <NodeName>k__BackingField: Warsan6
+  <NodeType>k__BackingField: 0
+  <Choices>k__BackingField:
+  - <Text>k__BackingField: Similar?
+    <NextDialogue>k__BackingField: {fileID: 11400000, guid: 00040fea966653f439fd55ba721aebc9, type: 2}
+  - <Text>k__BackingField: West Agate Valley?
+    <NextDialogue>k__BackingField: {fileID: 11400000, guid: 711cde883081dc14da5eecd98a723b91, type: 2}
+  - <Text>k__BackingField: Partner?
+    <NextDialogue>k__BackingField: {fileID: 11400000, guid: 2cfc40aa9ac79594d9698c28af3967bd, type: 2}
+  <Character>k__BackingField: {fileID: 11400000, guid: 42a93fd49028fb743aa99b1e50d959f1, type: 2}
+  <DialogueType>k__BackingField: 1
+  <Text>k__BackingField: It's not though - very similar but not exact.
+  <IsStartingDialogue>k__BackingField: 0
+  <SoundEffect>k__BackingField: {fileID: 0}
+  <Delay>k__BackingField: 0
+  <Graph>k__BackingField: {fileID: 0}
+  <Quest>k__BackingField: 0
+  <QuestState>k__BackingField: 1
