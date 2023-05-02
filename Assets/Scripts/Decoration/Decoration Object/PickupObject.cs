@@ -66,6 +66,11 @@ public class PickupObject : MonoBehaviour
     [SerializeField] private AudioClip pullingClip;
     private AudioSource specialSource; //Hold this and stop the sound when pulling is done
 
+    // 0, means always active
+    [SerializeField, Range(0, 12)] private int pickupOutlineDisplayRange;
+
+    [SerializeField] private Material inRangeMaterial;
+    [SerializeField] private Material outRangeMaterial;
     #endregion
 
 
@@ -182,6 +187,18 @@ public class PickupObject : MonoBehaviour
         else if (!isBeingPulled && isActive) spriteArmRef.transform.position = Vector2.Lerp(spriteArmRef.transform.position, targetPosition, dragMoveSpeed * Time.deltaTime);
         // If the is able to respawn then wait until the correct time then respawn
         else if (Time.time > respawnTime && !isActive && respawnCooldown != 0) Respawn();
+
+        if (Vector2.Distance(transform.position, PlayerController.Instance.transform.position) < pickupOutlineDisplayRange || pickupOutlineDisplayRange == 0)
+        {
+            spriteRef.GetComponent<SpriteRenderer>().material = inRangeMaterial;
+            GetComponent<BoxCollider2D>().enabled = true;
+        }
+        else
+        {
+            spriteRef.GetComponent<SpriteRenderer>().material = outRangeMaterial;
+            GetComponent<BoxCollider2D>().enabled = false;
+        }
+            
     }
     #endregion
 
@@ -290,7 +307,10 @@ public class PickupObject : MonoBehaviour
     private void ToggleObject(bool _toggle)
     {
         isActive = _toggle;
-        if (_toggle) spriteRef.GetComponent<SpriteRenderer>().color = Color.white;
+        if (_toggle)
+        {
+            spriteRef.GetComponent<SpriteRenderer>().color = Color.white;
+        }
         else
         {
             spriteRef.GetComponent<SpriteRenderer>().color = Color.clear;
@@ -369,8 +389,8 @@ public class PickupObject : MonoBehaviour
                 damageDisplayedSprites.Add(healthMax - i, new Sprite[2]);
             }
         }
-        
 
+        
     }
     #endregion
 
