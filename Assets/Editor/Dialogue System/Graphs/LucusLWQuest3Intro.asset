@@ -16,57 +16,269 @@ MonoBehaviour:
   <Groups>k__BackingField: []
   <Nodes>k__BackingField:
   - <ID>k__BackingField: eb06820e-1568-41f8-a531-cbc681b9ebbb
-    <Name>k__BackingField: Lucus
+    <Name>k__BackingField: Lucus2
     <NodeType>k__BackingField: 0
     <GroupID>k__BackingField: 
     <Choices>k__BackingField:
-    - <Text>k__BackingField: Yes.
-      <NodeID>k__BackingField: ab242804-8cac-49b7-aa0b-7457a92deec2
-    - <Text>k__BackingField: No.
-      <NodeID>k__BackingField: 486d69ba-56bc-46d2-af66-72291132782c
+    - <Text>k__BackingField: Go ahead.
+      <NodeID>k__BackingField: 0b4bbc2c-7207-419d-a6cc-11f989942454
+    - <Text>k__BackingField: Shoot it.
+      <NodeID>k__BackingField: 5acab9e0-27b1-4bec-8373-8d5c70e1cbf5
     <Position>k__BackingField: {x: 2250, y: -275}
     <DialogueType>k__BackingField: 1
     <Character>k__BackingField: {fileID: 11400000, guid: 49268ee1c8a3bee44b0063741027d804, type: 2}
-    <Text>k__BackingField: 'Hello again, could you possibly do me a favour and bring
-      these ingredients to Warsan? I think she might find them useful for her baking. '
+    <Text>k__BackingField: 'I have a request, if you would be willing. '
     <SoundEffect>k__BackingField: {fileID: 0}
     <Delay>k__BackingField: 0
     <Graph>k__BackingField: {fileID: 0}
     <Quest>k__BackingField: 0
-  - <ID>k__BackingField: ab242804-8cac-49b7-aa0b-7457a92deec2
+    <QuestState>k__BackingField: 0
+  - <ID>k__BackingField: ca3cf88e-9f7c-42d9-8a96-f3943a5131b1
+    <Name>k__BackingField: Lucus1
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: eb06820e-1568-41f8-a531-cbc681b9ebbb
+    <Position>k__BackingField: {x: 1800, y: -275}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 49268ee1c8a3bee44b0063741027d804, type: 2}
+    <Text>k__BackingField: Ah good, I was hoping you would visit.
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: 5acab9e0-27b1-4bec-8373-8d5c70e1cbf5
     <Name>k__BackingField: Player1
     <NodeType>k__BackingField: 0
     <GroupID>k__BackingField: 
     <Choices>k__BackingField:
     - <Text>k__BackingField: Next Node
-      <NodeID>k__BackingField: 
-    <Position>k__BackingField: {x: 2800, y: -275}
+      <NodeID>k__BackingField: 31a5d9d8-57e4-4ec0-badc-9c852a0fbbcd
+    <Position>k__BackingField: {x: 2700, y: -50}
     <DialogueType>k__BackingField: 0
     <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
-    <Text>k__BackingField: Yes.
+    <Text>k__BackingField: Shoot it.
     <SoundEffect>k__BackingField: {fileID: 0}
     <Delay>k__BackingField: 0
     <Graph>k__BackingField: {fileID: 0}
     <Quest>k__BackingField: 0
-  - <ID>k__BackingField: 486d69ba-56bc-46d2-af66-72291132782c
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: 0b4bbc2c-7207-419d-a6cc-11f989942454
     <Name>k__BackingField: Player2
     <NodeType>k__BackingField: 0
     <GroupID>k__BackingField: 
     <Choices>k__BackingField:
     - <Text>k__BackingField: Next Node
-      <NodeID>k__BackingField: 
-    <Position>k__BackingField: {x: 2800, y: -25}
+      <NodeID>k__BackingField: c2db4515-789a-4bcc-8390-7e1ce36f86dc
+    <Position>k__BackingField: {x: 2700, y: -275}
     <DialogueType>k__BackingField: 0
     <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
-    <Text>k__BackingField: Dialogue text.
+    <Text>k__BackingField: Go ahead.
     <SoundEffect>k__BackingField: {fileID: 0}
     <Delay>k__BackingField: 0
     <Graph>k__BackingField: {fileID: 0}
     <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: 31a5d9d8-57e4-4ec0-badc-9c852a0fbbcd
+    <Name>k__BackingField: Lucus3
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: c2db4515-789a-4bcc-8390-7e1ce36f86dc
+    <Position>k__BackingField: {x: 3000, y: -50}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 49268ee1c8a3bee44b0063741027d804, type: 2}
+    <Text>k__BackingField: Indeed. <i>Lucus makes finger guns and gestures them awkwardly
+      at you.</i>
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: c2db4515-789a-4bcc-8390-7e1ce36f86dc
+    <Name>k__BackingField: Lucus4
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: 4962d2dd-0757-468a-98da-7334ea5572f8
+    <Position>k__BackingField: {x: 3425, y: -275}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 49268ee1c8a3bee44b0063741027d804, type: 2}
+    <Text>k__BackingField: I am ready to make a reply to Warsan.
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: 4962d2dd-0757-468a-98da-7334ea5572f8
+    <Name>k__BackingField: Lucus5
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Can do!
+      <NodeID>k__BackingField: 2c081d13-7367-46c3-b54d-b36ff52d24f0
+    - <Text>k__BackingField: What's in the basket?
+      <NodeID>k__BackingField: b7548113-ac49-4e7c-ac7e-fc8c4e900ec2
+    <Position>k__BackingField: {x: 3925, y: -275}
+    <DialogueType>k__BackingField: 1
+    <Character>k__BackingField: {fileID: 11400000, guid: 49268ee1c8a3bee44b0063741027d804, type: 2}
+    <Text>k__BackingField: 'If you would please, there is a basket on the floor,
+      take it to her for me. '
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: 2c081d13-7367-46c3-b54d-b36ff52d24f0
+    <Name>k__BackingField: Player3
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: bb36b0bc-0e23-401a-8aec-e49698a2f3d3
+    <Position>k__BackingField: {x: 4375, y: -275}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
+    <Text>k__BackingField: Can do!
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: b7548113-ac49-4e7c-ac7e-fc8c4e900ec2
+    <Name>k__BackingField: Player4
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: eb0f55d2-9163-420a-86e1-769725a77489
+    <Position>k__BackingField: {x: 4375, y: -50}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
+    <Text>k__BackingField: "What\u2019s in the basket? "
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: eb0f55d2-9163-420a-86e1-769725a77489
+    <Name>k__BackingField: Player5
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: e99e11ba-a2a6-4eee-8508-f8fed7043045
+    <Position>k__BackingField: {x: 4650, y: -50}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
+    <Text>k__BackingField: "Any mysterious notes or letters\u2026?"
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: e99e11ba-a2a6-4eee-8508-f8fed7043045
+    <Name>k__BackingField: Lucus6
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: 6387a394-8169-4a4f-bb5f-e691aef16f7c
+    <Position>k__BackingField: {x: 5100, y: -50}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 49268ee1c8a3bee44b0063741027d804, type: 2}
+    <Text>k__BackingField: "Herbs, specialist ingredients, I thought I would repay
+      the gift she gave me\u2026"
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: 6387a394-8169-4a4f-bb5f-e691aef16f7c
+    <Name>k__BackingField: Player6
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: a604fadd-8ea2-4583-bb7f-5b54a3592010
+    <Position>k__BackingField: {x: 5525, y: -50}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
+    <Text>k__BackingField: And...?
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: a604fadd-8ea2-4583-bb7f-5b54a3592010
+    <Name>k__BackingField: Lucus7
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: 256c9487-4a98-4548-9de3-a10faecb6546
+    <Position>k__BackingField: {x: 5800, y: -50}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 49268ee1c8a3bee44b0063741027d804, type: 2}
+    <Text>k__BackingField: "\u2026a mysterious note. Please do yourself the courtesy
+      of not reading it. It would ruin the surprise. "
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: 256c9487-4a98-4548-9de3-a10faecb6546
+    <Name>k__BackingField: Player7
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: bb36b0bc-0e23-401a-8aec-e49698a2f3d3
+    <Position>k__BackingField: {x: 6275, y: -50}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
+    <Text>k__BackingField: "\u2026fine."
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: bb36b0bc-0e23-401a-8aec-e49698a2f3d3
+    <Name>k__BackingField: Lucus8
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: 
+    <Position>k__BackingField: {x: 6550, y: -275}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 49268ee1c8a3bee44b0063741027d804, type: 2}
+    <Text>k__BackingField: Thank you.
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
   <OldGroupNames>k__BackingField: []
   <OldUngroupedNodeNames>k__BackingField:
-  - Lucus
+  - Lucus2
+  - Lucus1
   - Player1
   - Player2
+  - Lucus3
+  - Lucus4
+  - Lucus5
+  - Player3
+  - Player4
+  - Player5
+  - Lucus6
+  - Player6
+  - Lucus7
+  - Player7
+  - Lucus8
   <OldGroupedNodeNames>k__BackingField:
     list: []

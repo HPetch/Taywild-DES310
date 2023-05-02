@@ -15,26 +15,479 @@ MonoBehaviour:
   <FileName>k__BackingField: 
   <Groups>k__BackingField: []
   <Nodes>k__BackingField:
-  - <ID>k__BackingField: 623c8ba5-fd09-4ddd-8682-547788be97bc
+  - <ID>k__BackingField: cf379e54-29e4-4697-818f-69b2ad023b27
+    <Name>k__BackingField: Player1
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: b68ee437-cb9e-4ed5-880d-e03b78a23bb4
+    <Position>k__BackingField: {x: 2800, y: -200}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
+    <Text>k__BackingField: "I\u2019ve got a gift just for you!"
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: c1627b59-41b5-4de9-9192-b34b2717ee75
     <Name>k__BackingField: Lucus1
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: "I\u2019ve got a gift!"
+      <NodeID>k__BackingField: cf379e54-29e4-4697-818f-69b2ad023b27
+    - <Text>k__BackingField: Hold out hamper
+      <NodeID>k__BackingField: 2598ab86-eccf-4e97-8030-6ff1ff1472a1
+    <Position>k__BackingField: {x: 2450, y: -200}
+    <DialogueType>k__BackingField: 1
+    <Character>k__BackingField: {fileID: 11400000, guid: 49268ee1c8a3bee44b0063741027d804, type: 2}
+    <Text>k__BackingField: 'What can I do for you today? '
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: 2598ab86-eccf-4e97-8030-6ff1ff1472a1
+    <Name>k__BackingField: Player2
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: b68ee437-cb9e-4ed5-880d-e03b78a23bb4
+    <Position>k__BackingField: {x: 2800, y: 50}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
+    <Text>k__BackingField: "Here, I\u2019ve brought a gift!"
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: b68ee437-cb9e-4ed5-880d-e03b78a23bb4
+    <Name>k__BackingField: Lucus2
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: 23371c38-5ba3-486b-8eac-aa32109fadca
+    <Position>k__BackingField: {x: 3100, y: -200}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 49268ee1c8a3bee44b0063741027d804, type: 2}
+    <Text>k__BackingField: A gift? Wha-
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: 23371c38-5ba3-486b-8eac-aa32109fadca
+    <Name>k__BackingField: Lucus3
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: 642b3ee8-116f-4a6d-93b7-1995c0879c64
+    <Position>k__BackingField: {x: 3375, y: -200}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 49268ee1c8a3bee44b0063741027d804, type: 2}
+    <Text>k__BackingField: Ohhhhh, those smell so gooood.
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: 642b3ee8-116f-4a6d-93b7-1995c0879c64
+    <Name>k__BackingField: Lucus4
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Pass them
+      <NodeID>k__BackingField: 2b32ac4b-7146-4c70-9f04-7e7ffc9c91a0
+    <Position>k__BackingField: {x: 3825, y: -200}
+    <DialogueType>k__BackingField: 1
+    <Character>k__BackingField: {fileID: 11400000, guid: 49268ee1c8a3bee44b0063741027d804, type: 2}
+    <Text>k__BackingField: Pass them up here post-haste.
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: 2b32ac4b-7146-4c70-9f04-7e7ffc9c91a0
+    <Name>k__BackingField: Lucus5
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: "They\u2019re not from me."
+      <NodeID>k__BackingField: 08ce0769-9933-4588-85f1-86c510d984e0
+    - <Text>k__BackingField: Warsan made them!
+      <NodeID>k__BackingField: 8b79a794-9f47-4600-a37a-c6f20c351367
+    <Position>k__BackingField: {x: 4125, y: -200}
+    <DialogueType>k__BackingField: 1
+    <Character>k__BackingField: {fileID: 11400000, guid: 49268ee1c8a3bee44b0063741027d804, type: 2}
+    <Text>k__BackingField: 'Thank you. You did not have to give me such a gift, but
+      I will enjoy these pastries fully. '
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: 08ce0769-9933-4588-85f1-86c510d984e0
+    <Name>k__BackingField: Player3
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: a784d755-3b10-4ca4-97e7-6dae831f996e
+    <Position>k__BackingField: {x: 4575, y: -200}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
+    <Text>k__BackingField: "These aren\u2019t from me, I am just the deliverer.\r"
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: 8b79a794-9f47-4600-a37a-c6f20c351367
+    <Name>k__BackingField: Player4
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: 655ff7f0-a81c-4ba4-a77c-260f51f0b061
+    <Position>k__BackingField: {x: 4575, y: 50}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
+    <Text>k__BackingField: Warsan made them for you! I am just the deliverer.
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: a784d755-3b10-4ca4-97e7-6dae831f996e
+    <Name>k__BackingField: Lucus6
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: ba903acd-efd5-49f5-9709-dd3f520a2bb0
+    <Position>k__BackingField: {x: 5050, y: -200}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 49268ee1c8a3bee44b0063741027d804, type: 2}
+    <Text>k__BackingField: "If not you then from who\u2026"
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: 655ff7f0-a81c-4ba4-a77c-260f51f0b061
+    <Name>k__BackingField: Lucus7
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: ba903acd-efd5-49f5-9709-dd3f520a2bb0
+    <Position>k__BackingField: {x: 5050, y: 50}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 49268ee1c8a3bee44b0063741027d804, type: 2}
+    <Text>k__BackingField: Warsan? Who?
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: ba903acd-efd5-49f5-9709-dd3f520a2bb0
+    <Name>k__BackingField: Lucus8
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: e1a18a2a-66d7-4f9d-970b-a43600fc7c6c
+    <Position>k__BackingField: {x: 5400, y: -200}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 49268ee1c8a3bee44b0063741027d804, type: 2}
+    <Text>k__BackingField: ...
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: e1a18a2a-66d7-4f9d-970b-a43600fc7c6c
+    <Name>k__BackingField: Lucus9
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: "She\u2019s a squirrel."
+      <NodeID>k__BackingField: 41d56905-d406-455b-a218-981c6441be6f
+    - <Text>k__BackingField: She lives in a cottage.
+      <NodeID>k__BackingField: 44919491-a858-4fd2-a543-995316145844
+    <Position>k__BackingField: {x: 5750, y: -200}
+    <DialogueType>k__BackingField: 1
+    <Character>k__BackingField: {fileID: 11400000, guid: 49268ee1c8a3bee44b0063741027d804, type: 2}
+    <Text>k__BackingField: 'Who is this mysterious baker of unrivalled quality goods?
+      I must know them. '
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: 41d56905-d406-455b-a218-981c6441be6f
+    <Name>k__BackingField: Player5
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: b8930bb0-be73-4e46-861f-1a5e2181cb29
+    <Position>k__BackingField: {x: 6250, y: -200}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
+    <Text>k__BackingField: "She is a kind squirrel by the name of Warsan.\r"
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: 44919491-a858-4fd2-a543-995316145844
+    <Name>k__BackingField: Player6
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: b8930bb0-be73-4e46-861f-1a5e2181cb29
+    <Position>k__BackingField: {x: 6250, y: 50}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
+    <Text>k__BackingField: She is Warsan, a friendly witch who lives on one of the
+      lower branches in a cottage.
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: b8930bb0-be73-4e46-861f-1a5e2181cb29
+    <Name>k__BackingField: Player7
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: 922fd3a0-9df2-47ae-9de8-e8fca2497208
+    <Position>k__BackingField: {x: 6700, y: -200}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
+    <Text>k__BackingField: 'Her and her cat Jasper have been very welcoming to me. '
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: 922fd3a0-9df2-47ae-9de8-e8fca2497208
+    <Name>k__BackingField: Player8
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: 0f258b30-cb13-4ba5-8812-0bae61277d59
+    <Position>k__BackingField: {x: 7125, y: -200}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
+    <Text>k__BackingField: She wanted me to bring these baked goods to you as a friendly
+      hello!
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: 0f258b30-cb13-4ba5-8812-0bae61277d59
+    <Name>k__BackingField: Lucus10
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: de1dd06b-3d38-48cb-aad6-a54907c3ed58
+    <Position>k__BackingField: {x: 7575, y: -200}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 49268ee1c8a3bee44b0063741027d804, type: 2}
+    <Text>k__BackingField: "I see\u2026"
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: de1dd06b-3d38-48cb-aad6-a54907c3ed58
+    <Name>k__BackingField: Lucus11
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: b77bf010-a690-4d9c-bdef-9a634dbed316
+    <Position>k__BackingField: {x: 7875, y: -200}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 49268ee1c8a3bee44b0063741027d804, type: 2}
+    <Text>k__BackingField: Oh.
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: b77bf010-a690-4d9c-bdef-9a634dbed316
+    <Name>k__BackingField: Lucus12
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: c991990a-6984-4277-a67f-28e3ea5cfb00
+    <Position>k__BackingField: {x: 8150, y: -200}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 49268ee1c8a3bee44b0063741027d804, type: 2}
+    <Text>k__BackingField: "There is a note in the hamper\u2026\r"
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: c991990a-6984-4277-a67f-28e3ea5cfb00
+    <Name>k__BackingField: Lucus13
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: 79a2afee-d79a-4b9d-828e-c8b0cbc95f75
+    <Position>k__BackingField: {x: 8575, y: -200}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 49268ee1c8a3bee44b0063741027d804, type: 2}
+    <Text>k__BackingField: "\u2026"
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: 79a2afee-d79a-4b9d-828e-c8b0cbc95f75
+    <Name>k__BackingField: Lucus14
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: ac56d163-0ad0-42d3-a252-207b317c6bd0
+    <Position>k__BackingField: {x: 8875, y: -200}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 49268ee1c8a3bee44b0063741027d804, type: 2}
+    <Text>k__BackingField: 'I see. '
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: ac56d163-0ad0-42d3-a252-207b317c6bd0
+    <Name>k__BackingField: Lucus15
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: What did it say?
+      <NodeID>k__BackingField: 55821e82-cb3b-4e13-b34c-805c079773ec
+    - <Text>k__BackingField: Will do!
+      <NodeID>k__BackingField: 866f5090-41f9-4666-85ab-f75fb7d7aa2c
+    <Position>k__BackingField: {x: 9200, y: -200}
+    <DialogueType>k__BackingField: 1
+    <Character>k__BackingField: {fileID: 11400000, guid: 49268ee1c8a3bee44b0063741027d804, type: 2}
+    <Text>k__BackingField: 'Please give her my thanks and tell her I will answer
+      her question in due time. '
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: 55821e82-cb3b-4e13-b34c-805c079773ec
+    <Name>k__BackingField: Player9
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: 77d09b57-5d49-423f-8b04-8915dd6976e7
+    <Position>k__BackingField: {x: 9700, y: -200}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
+    <Text>k__BackingField: What did the note say?
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: 866f5090-41f9-4666-85ab-f75fb7d7aa2c
+    <Name>k__BackingField: Player10
     <NodeType>k__BackingField: 0
     <GroupID>k__BackingField: 
     <Choices>k__BackingField:
     - <Text>k__BackingField: Next Node
       <NodeID>k__BackingField: 
-    <Position>k__BackingField: {x: 2400, y: -275}
+    <Position>k__BackingField: {x: 9700, y: 25}
     <DialogueType>k__BackingField: 0
-    <Character>k__BackingField: {fileID: 11400000, guid: 49268ee1c8a3bee44b0063741027d804, type: 2}
-    <Text>k__BackingField: 'Baked goods? From Warsan? Thank you, they are my favourite,
-      please give her my thanks.
-
-'
+    <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
+    <Text>k__BackingField: Will do next time I see her!
     <SoundEffect>k__BackingField: {fileID: 0}
     <Delay>k__BackingField: 0
     <Graph>k__BackingField: {fileID: 0}
     <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: 77d09b57-5d49-423f-8b04-8915dd6976e7
+    <Name>k__BackingField: Lucus16
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: e0d773bd-471d-4da7-a99e-ec3ac2258cf5
+    <Position>k__BackingField: {x: 10000, y: -200}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 49268ee1c8a3bee44b0063741027d804, type: 2}
+    <Text>k__BackingField: "\u2026I will keep it to myself for now."
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: e0d773bd-471d-4da7-a99e-ec3ac2258cf5
+    <Name>k__BackingField: Lucus17
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: 
+    <Position>k__BackingField: {x: 10450, y: -200}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 49268ee1c8a3bee44b0063741027d804, type: 2}
+    <Text>k__BackingField: Even I like to have a little fun and mystery.
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
   <OldGroupNames>k__BackingField: []
   <OldUngroupedNodeNames>k__BackingField:
+  - Player1
   - Lucus1
+  - Player2
+  - Lucus2
+  - Lucus3
+  - Lucus4
+  - Lucus5
+  - Player3
+  - Player4
+  - Lucus6
+  - Lucus7
+  - Lucus8
+  - Lucus9
+  - Player5
+  - Player6
+  - Player7
+  - Player8
+  - Lucus10
+  - Lucus11
+  - Lucus12
+  - Lucus13
+  - Lucus14
+  - Lucus15
+  - Player9
+  - Player10
+  - Lucus16
+  - Lucus17
   <OldGroupedNodeNames>k__BackingField:
     list: []

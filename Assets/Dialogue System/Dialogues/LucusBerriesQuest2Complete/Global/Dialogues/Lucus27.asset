@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56aed56cf2bdb3940a003c0a146eee35, type: 3}
+  m_Name: Lucus27
+  m_EditorClassIdentifier: 
+  <NodeName>k__BackingField: Lucus27
+  <NodeType>k__BackingField: 0
+  <Choices>k__BackingField:
+  - <Text>k__BackingField: Why?
+    <NextDialogue>k__BackingField: {fileID: 11400000, guid: 57b2276ad21212b46bc09a6e4dc8587b, type: 2}
+  - <Text>k__BackingField: That sounds tough.
+    <NextDialogue>k__BackingField: {fileID: 11400000, guid: d0cec5a4c42149d4cab1c9301c1652e3, type: 2}
+  - <Text>k__BackingField: Keep cleaning
+    <NextDialogue>k__BackingField: {fileID: 11400000, guid: f36b7294e0d173a4db9a9fc0d4b7b7c0, type: 2}
+  <Character>k__BackingField: {fileID: 11400000, guid: 49268ee1c8a3bee44b0063741027d804, type: 2}
+  <DialogueType>k__BackingField: 1
+  <Text>k__BackingField: She told me I was a foolish idiot.
+  <IsStartingDialogue>k__BackingField: 0
+  <SoundEffect>k__BackingField: {fileID: 0}
+  <Delay>k__BackingField: 0
+  <Graph>k__BackingField: {fileID: 0}
+  <Quest>k__BackingField: 0
+  <QuestState>k__BackingField: 1
