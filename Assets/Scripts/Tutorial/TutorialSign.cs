@@ -10,7 +10,7 @@ public class TutorialSign : MonoBehaviour
     [SerializeField] private GameObject leftPage;
     [SerializeField] private GameObject rightPage;
 
-    [Range(-750f,0f)][SerializeField] private float heightOffset = 0f;
+    [Range(-750f,75f)][SerializeField] private float heightOffset = 0f;
     [SerializeField] private LeanTweenType easeIn = LeanTweenType.linear;
     [SerializeField] private LeanTweenType easeOut = LeanTweenType.linear;
 
