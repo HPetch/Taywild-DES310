@@ -8,13 +8,16 @@ public class LoadingController : MonoBehaviour
 {
     public static LoadingController Instance { get; private set; }
 
-    [SerializeField] private CanvasGroup loadingScreen = null;
+    private CanvasGroup loadingCanvas = null;
+    [SerializeField] private CanvasGroup loadingVisualCanvasGroup = null;
 
     [SerializeField] private Slider loadingSlider = null;
     [SerializeField] private RectTransform jasper = null;
 
-    private bool isLoading = false;
+    private bool isAsyncLoading = false;
     private AsyncOperation loadSceneAsyncOperation = null;
+
+    [SerializeField] private string targetScene;
 
     private void Awake()
     {
@@ -22,8 +25,11 @@ public class LoadingController : MonoBehaviour
         if (Instance != null) Destroy(gameObject);
         else Instance = this;
 
-        loadingScreen.alpha = 0;
-        loadingScreen.blocksRaycasts = false;
+        loadingCanvas = GetComponent<CanvasGroup>();
+        loadingCanvas.alpha = 0;
+        loadingCanvas.blocksRaycasts = false;
+
+        loadingVisualCanvasGroup.alpha = 1;
 
         loadingSlider.value = 0f;
         jasper.anchoredPosition = new Vector2(Mathf.Lerp(-270, 245, loadingSlider.value), -294);
@@ -31,8 +37,8 @@ public class LoadingController : MonoBehaviour
 
     private void Update()
     {
-        if (!isLoading) return;
-        if (loadingScreen.alpha < 1.0f) return;
+        if (!isAsyncLoading) return;
+        if (loadingCanvas.alpha < 1.0f) return;
 
         if (loadSceneAsyncOperation.progress < 0.9f)
         {
@@ -46,24 +52,36 @@ public class LoadingController : MonoBehaviour
             return;
         }
 
-        loadSceneAsyncOperation.allowSceneActivation = true;
+        isAsyncLoading = false;
+        StartCoroutine(SceneLoaded());
     }
 
     public void StartLoad()
     {
-        if (isLoading) return;
+        if (isAsyncLoading) return;
 
-        isLoading = true;
-        loadingScreen.blocksRaycasts = true;
-        LeanTween.alphaCanvas(loadingScreen, 1, 0.25f);
+        isAsyncLoading = true;
+        loadingCanvas.blocksRaycasts = true;
+        LeanTween.alphaCanvas(loadingCanvas, 1, 0.25f);
 
-        loadSceneAsyncOperation = SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1);
+#if UNITY_EDITOR
+        SceneManager.LoadScene(targetScene);
+#else
+        loadSceneAsyncOperation = SceneManager.LoadSceneAsync(targetScene);
         loadSceneAsyncOperation.allowSceneActivation = false;
+#endif
     }
 
     private void MoveSlider(float _value)
     {
         loadingSlider.value = Mathf.Lerp(loadingSlider.value, _value, 2f * Time.deltaTime);
         jasper.anchoredPosition = new Vector2(Mathf.Lerp(-270, 245, loadingSlider.value), -294);
+    }
+
+    private IEnumerator SceneLoaded()
+    {
+        LeanTween.alphaCanvas(loadingVisualCanvasGroup, 0, 0.2f);
+        yield return new WaitForSeconds(0.2f);
+        loadSceneAsyncOperation.allowSceneActivation = true;
     }
 }
