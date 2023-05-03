@@ -10,16 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 56aed56cf2bdb3940a003c0a146eee35, type: 3}
-  m_Name: Player2
+  m_Name: Player3
   m_EditorClassIdentifier: 
-  <NodeName>k__BackingField: Player2
+  <NodeName>k__BackingField: Player3
   <NodeType>k__BackingField: 0
   <Choices>k__BackingField:
   - <Text>k__BackingField: Next Node
-    <NextDialogue>k__BackingField: {fileID: 0}
+    <NextDialogue>k__BackingField: {fileID: 11400000, guid: 2f20a644004239a46a615f1d5f1fa06b, type: 2}
   <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
   <DialogueType>k__BackingField: 0
-  <Text>k__BackingField: "I\u2019ll let you know if I find anything!"
+  <Text>k__BackingField: "He is quite nervous about visitors, afraid of \u2018rot\u2019,
+    so I would be cautious. "
   <IsStartingDialogue>k__BackingField: 0
   <SoundEffect>k__BackingField: {fileID: 0}
   <Delay>k__BackingField: 0

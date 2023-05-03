@@ -10,17 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 56aed56cf2bdb3940a003c0a146eee35, type: 3}
-  m_Name: Player2
+  m_Name: Player1
   m_EditorClassIdentifier: 
-  <NodeName>k__BackingField: Player2
+  <NodeName>k__BackingField: Player1
   <NodeType>k__BackingField: 0
   <Choices>k__BackingField:
   - <Text>k__BackingField: Next Node
-    <NextDialogue>k__BackingField: {fileID: 0}
+    <NextDialogue>k__BackingField: {fileID: 11400000, guid: 7ba7560f83c09fd40871430aee462d9c, type: 2}
   <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
   <DialogueType>k__BackingField: 0
-  <Text>k__BackingField: "I\u2019ll let you know if I find anything!"
-  <IsStartingDialogue>k__BackingField: 0
+  <Text>k__BackingField: "I\u2019m back! I gave Lucus the basket, he said he will
+    \u201CAnswer her question in due time\u201D, whatever that means\u2026\r"
+  <IsStartingDialogue>k__BackingField: 1
   <SoundEffect>k__BackingField: {fileID: 0}
   <Delay>k__BackingField: 0
   <Graph>k__BackingField: {fileID: 0}

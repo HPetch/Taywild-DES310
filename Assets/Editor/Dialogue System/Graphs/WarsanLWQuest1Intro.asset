@@ -15,58 +15,111 @@ MonoBehaviour:
   <FileName>k__BackingField: 
   <Groups>k__BackingField: []
   <Nodes>k__BackingField:
-  - <ID>k__BackingField: 67c4090d-5baf-4aac-aede-937b90e90949
+  - <ID>k__BackingField: 3d7ebfb9-91de-4ee4-bdc2-05f026070c6c
     <Name>k__BackingField: Warsan1
     <NodeType>k__BackingField: 0
     <GroupID>k__BackingField: 
     <Choices>k__BackingField:
-    - <Text>k__BackingField: Yes.
-      <NodeID>k__BackingField: b27989bb-b12d-4f3a-98ac-52df05533272
-    - <Text>k__BackingField: No.
-      <NodeID>k__BackingField: 2f8bb861-1f7c-419b-a715-2fd41e8db9da
-    <Position>k__BackingField: {x: 864, y: -347}
-    <DialogueType>k__BackingField: 1
-    <Character>k__BackingField: {fileID: 11400000, guid: 42a93fd49028fb743aa99b1e50d959f1, type: 2}
-    <Text>k__BackingField: "I\u2019ve seen a greenhouse on the branch higher up,
-      do you think you could find out who lives there for me?"
-    <SoundEffect>k__BackingField: {fileID: 0}
-    <Delay>k__BackingField: 0
-    <Graph>k__BackingField: {fileID: 0}
-    <Quest>k__BackingField: 0
-  - <ID>k__BackingField: 2f8bb861-1f7c-419b-a715-2fd41e8db9da
-    <Name>k__BackingField: Player2
-    <NodeType>k__BackingField: 0
-    <GroupID>k__BackingField: 
-    <Choices>k__BackingField:
     - <Text>k__BackingField: Next Node
-      <NodeID>k__BackingField: 
-    <Position>k__BackingField: {x: 1375, y: -125}
+      <NodeID>k__BackingField: b27989bb-b12d-4f3a-98ac-52df05533272
+    <Position>k__BackingField: {x: 800, y: -375}
     <DialogueType>k__BackingField: 0
-    <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
-    <Text>k__BackingField: No.
+    <Character>k__BackingField: {fileID: 11400000, guid: 42a93fd49028fb743aa99b1e50d959f1, type: 2}
+    <Text>k__BackingField: Hello again, I hope you are settling in!
     <SoundEffect>k__BackingField: {fileID: 0}
     <Delay>k__BackingField: 0
     <Graph>k__BackingField: {fileID: 0}
     <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
   - <ID>k__BackingField: b27989bb-b12d-4f3a-98ac-52df05533272
     <Name>k__BackingField: Player1
     <NodeType>k__BackingField: 0
     <GroupID>k__BackingField: 
     <Choices>k__BackingField:
     - <Text>k__BackingField: Next Node
-      <NodeID>k__BackingField: 
-    <Position>k__BackingField: {x: 1375, y: -375}
+      <NodeID>k__BackingField: 69ccd55b-b160-4204-a192-b04ea22e15af
+    <Position>k__BackingField: {x: 1275, y: -375}
     <DialogueType>k__BackingField: 0
     <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
-    <Text>k__BackingField: Yes.
+    <Text>k__BackingField: I am!
     <SoundEffect>k__BackingField: {fileID: 0}
     <Delay>k__BackingField: 0
     <Graph>k__BackingField: {fileID: 0}
     <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 0
+  - <ID>k__BackingField: 69ccd55b-b160-4204-a192-b04ea22e15af
+    <Name>k__BackingField: Warsan2
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: 1ff88c14-e311-40ee-80be-9fc8a32922f1
+    <Position>k__BackingField: {x: 1575, y: -375}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 42a93fd49028fb743aa99b1e50d959f1, type: 2}
+    <Text>k__BackingField: "I\u2019m glad to hear it. "
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: 1ff88c14-e311-40ee-80be-9fc8a32922f1
+    <Name>k__BackingField: Warsan3
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: 85041a0a-9f99-424f-b155-db7cbc30aef0
+    <Position>k__BackingField: {x: 1925, y: -375}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 42a93fd49028fb743aa99b1e50d959f1, type: 2}
+    <Text>k__BackingField: I was out wandering with Jasper the other day when I noticed
+      what looks like a greenhouse on a higher branch.
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: 85041a0a-9f99-424f-b155-db7cbc30aef0
+    <Name>k__BackingField: Warsan4
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: 21b5ebe8-6b70-4a7b-9792-645d7e54cbda
+    <Position>k__BackingField: {x: 2425, y: -375}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 42a93fd49028fb743aa99b1e50d959f1, type: 2}
+    <Text>k__BackingField: If you are passing by, I would be interested to know if
+      anyone lives there!
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: 21b5ebe8-6b70-4a7b-9792-645d7e54cbda
+    <Name>k__BackingField: Player2
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: 
+    <Position>k__BackingField: {x: 2925, y: -375}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
+    <Text>k__BackingField: "I\u2019ll let you know if I find anything!"
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
   <OldGroupNames>k__BackingField: []
   <OldUngroupedNodeNames>k__BackingField:
   - Warsan1
-  - Player2
   - Player1
+  - Warsan2
+  - Warsan3
+  - Warsan4
+  - Player2
   <OldGroupedNodeNames>k__BackingField:
     list: []
