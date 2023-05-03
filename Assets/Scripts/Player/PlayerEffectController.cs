@@ -227,4 +227,12 @@ public class PlayerEffectController : MonoBehaviour
 
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Vine"))
+        {
+            collision.GetComponent<Rigidbody2D>().AddForce(rb.velocity, ForceMode2D.Impulse);
+        }
+    }
+
 }
