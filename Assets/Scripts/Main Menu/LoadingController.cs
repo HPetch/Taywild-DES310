@@ -24,6 +24,9 @@ public class LoadingController : MonoBehaviour
 
         loadingScreen.alpha = 0;
         loadingScreen.blocksRaycasts = false;
+
+        loadingSlider.value = 0f;
+        jasper.anchoredPosition = new Vector2(Mathf.Lerp(-270, 245, loadingSlider.value), -294);
     }
 
     private void Update()
@@ -60,7 +63,7 @@ public class LoadingController : MonoBehaviour
 
     private void MoveSlider(float _value)
     {
-        loadingSlider.value = Mathf.Lerp(loadingSlider.value, _value, 10 * Time.deltaTime);
+        loadingSlider.value = Mathf.Lerp(loadingSlider.value, _value, 2f * Time.deltaTime);
         jasper.anchoredPosition = new Vector2(Mathf.Lerp(-270, 245, loadingSlider.value), -294);
     }
 }
