@@ -1,6 +1,5 @@
 using Journal;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class MainMenuController : MonoBehaviour
 {
@@ -42,7 +41,7 @@ public class MainMenuController : MonoBehaviour
     #region UI Buttons
     public void PlayButton()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        LoadingController.Instance.StartLoad();
     }
 
     public void LoadButton()
@@ -67,8 +66,5 @@ public class MainMenuController : MonoBehaviour
     #endif
     }
     #endregion
-
-
     #endregion
-
 }
