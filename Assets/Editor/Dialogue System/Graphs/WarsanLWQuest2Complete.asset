@@ -15,24 +15,79 @@ MonoBehaviour:
   <FileName>k__BackingField: 
   <Groups>k__BackingField: []
   <Nodes>k__BackingField:
+  - <ID>k__BackingField: ac470a96-fe30-4716-98c0-6dda1ffcd797
+    <Name>k__BackingField: Player1
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: cda3d25f-7a29-4e04-b24b-a523620fb3a6
+    <Position>k__BackingField: {x: 850, y: -175}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
+    <Text>k__BackingField: "I\u2019m back! I gave Lucus the basket, he said he will
+      \u201CAnswer her question in due time\u201D, whatever that means\u2026\r"
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
   - <ID>k__BackingField: cda3d25f-7a29-4e04-b24b-a523620fb3a6
-    <Name>k__BackingField: Warsan
+    <Name>k__BackingField: Warsan1
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: 63ee5b15-c5f6-4c50-878b-f0c0b5581e7f
+    <Position>k__BackingField: {x: 1350, y: -175}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 42a93fd49028fb743aa99b1e50d959f1, type: 2}
+    <Text>k__BackingField: "Thank you love, I'm glad to hear that. Did he enjoy the
+      baked goods?\r"
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 0
+  - <ID>k__BackingField: 63ee5b15-c5f6-4c50-878b-f0c0b5581e7f
+    <Name>k__BackingField: Player2
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: fdc46945-0523-4382-9840-9e6726c1f6c3
+    <Position>k__BackingField: {x: 1800, y: -175}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
+    <Text>k__BackingField: "He was very pleased to receive them, I haven\u2019t ever
+      seen him that excited."
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: fdc46945-0523-4382-9840-9e6726c1f6c3
+    <Name>k__BackingField: Warsan2
     <NodeType>k__BackingField: 0
     <GroupID>k__BackingField: 
     <Choices>k__BackingField:
     - <Text>k__BackingField: Next Node
       <NodeID>k__BackingField: 
-    <Position>k__BackingField: {x: 1350, y: -175}
+    <Position>k__BackingField: {x: 2275, y: -175}
     <DialogueType>k__BackingField: 0
     <Character>k__BackingField: {fileID: 11400000, guid: 42a93fd49028fb743aa99b1e50d959f1, type: 2}
-    <Text>k__BackingField: "I\u2019m glad he enjoyed them. Thank you for giving them
-      to him."
+    <Text>k__BackingField: 'Brilliant! That has made my day. Thank you again, I will
+      await his reply eagerly. '
     <SoundEffect>k__BackingField: {fileID: 0}
     <Delay>k__BackingField: 0
     <Graph>k__BackingField: {fileID: 0}
     <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
   <OldGroupNames>k__BackingField: []
   <OldUngroupedNodeNames>k__BackingField:
-  - Warsan
+  - Player1
+  - Warsan1
+  - Player2
+  - Warsan2
   <OldGroupedNodeNames>k__BackingField:
     list: []

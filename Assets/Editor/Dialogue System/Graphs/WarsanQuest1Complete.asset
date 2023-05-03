@@ -15,25 +15,6 @@ MonoBehaviour:
   <FileName>k__BackingField: 
   <Groups>k__BackingField: []
   <Nodes>k__BackingField:
-  - <ID>k__BackingField: d47f3527-d695-49c7-aa4c-2c3722b8f429
-    <Name>k__BackingField: Warsan1
-    <NodeType>k__BackingField: 0
-    <GroupID>k__BackingField: 
-    <Choices>k__BackingField:
-    - <Text>k__BackingField: Bench??
-      <NodeID>k__BackingField: 456bf5fa-efc5-4f21-a0cc-c4a386ec1b5f
-    - <Text>k__BackingField: Calm down!
-      <NodeID>k__BackingField: 562ee3a5-7c47-4418-a504-fbca9534f08f
-    <Position>k__BackingField: {x: 1150, y: 750}
-    <DialogueType>k__BackingField: 1
-    <Character>k__BackingField: {fileID: 11400000, guid: 42a93fd49028fb743aa99b1e50d959f1, type: 2}
-    <Text>k__BackingField: Hi love! You look excited about something - is my bench
-      ready?!?!
-    <SoundEffect>k__BackingField: {fileID: 0}
-    <Delay>k__BackingField: 0
-    <Graph>k__BackingField: {fileID: 0}
-    <Quest>k__BackingField: 0
-    <QuestState>k__BackingField: 1
   - <ID>k__BackingField: 456bf5fa-efc5-4f21-a0cc-c4a386ec1b5f
     <Name>k__BackingField: Player1
     <NodeType>k__BackingField: 0
@@ -536,7 +517,7 @@ MonoBehaviour:
     <Quest>k__BackingField: 0
     <QuestState>k__BackingField: 1
   - <ID>k__BackingField: 07d0eaf8-2a9c-494d-99d3-b9dafce9a5e6
-    <Name>k__BackingField: EdgeNode07d0eaf8-2a9c-494d-99d3-b9dafce9a5e6
+    <Name>k__BackingField: EdgeNode6416721e-2f39-4343-9c45-e387d6bf8100
     <NodeType>k__BackingField: 1
     <GroupID>k__BackingField: 
     <Choices>k__BackingField:
@@ -567,9 +548,27 @@ MonoBehaviour:
     <Graph>k__BackingField: {fileID: 0}
     <Quest>k__BackingField: 0
     <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: d47f3527-d695-49c7-aa4c-2c3722b8f429
+    <Name>k__BackingField: Warsan1
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Bench??
+      <NodeID>k__BackingField: 456bf5fa-efc5-4f21-a0cc-c4a386ec1b5f
+    - <Text>k__BackingField: Calm down!
+      <NodeID>k__BackingField: 562ee3a5-7c47-4418-a504-fbca9534f08f
+    <Position>k__BackingField: {x: 1150, y: 750}
+    <DialogueType>k__BackingField: 1
+    <Character>k__BackingField: {fileID: 11400000, guid: 42a93fd49028fb743aa99b1e50d959f1, type: 2}
+    <Text>k__BackingField: Hi love! You look excited about something - is my bench
+      ready?!?!
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
   <OldGroupNames>k__BackingField: []
   <OldUngroupedNodeNames>k__BackingField:
-  - Warsan1
   - Player1
   - Player2
   - Warsan2
@@ -600,7 +599,8 @@ MonoBehaviour:
   - Warsan18
   - Warsan19
   - Player12
-  - EdgeNode07d0eaf8-2a9c-494d-99d3-b9dafce9a5e6
+  - EdgeNode6416721e-2f39-4343-9c45-e387d6bf8100
   - Warsan20
+  - Warsan1
   <OldGroupedNodeNames>k__BackingField:
     list: []
