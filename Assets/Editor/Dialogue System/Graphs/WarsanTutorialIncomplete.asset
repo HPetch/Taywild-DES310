@@ -15,26 +15,6 @@ MonoBehaviour:
   <FileName>k__BackingField: 
   <Groups>k__BackingField: []
   <Nodes>k__BackingField:
-  - <ID>k__BackingField: cf6d958d-fc60-4437-9880-fadd1e3cef27
-    <Name>k__BackingField: Warsan1
-    <NodeType>k__BackingField: 0
-    <GroupID>k__BackingField: 
-    <Choices>k__BackingField:
-    - <Text>k__BackingField: I'm working on it!
-      <NodeID>k__BackingField: f81498b0-1eb5-451e-94c3-7412bf482dab
-    - <Text>k__BackingField: Remind what to do.
-      <NodeID>k__BackingField: e27c14b1-a440-4be6-9804-53d4057a39fe
-    - <Text>k__BackingField: How do it do it?
-      <NodeID>k__BackingField: eeda541b-b8f8-46d4-b45a-e8e3d794e830
-    <Position>k__BackingField: {x: 5225, y: 0}
-    <DialogueType>k__BackingField: 1
-    <Character>k__BackingField: {fileID: 11400000, guid: 42a93fd49028fb743aa99b1e50d959f1, type: 2}
-    <Text>k__BackingField: Everything going okay friend? Have you been able to clear
-      those brambles yet?
-    <SoundEffect>k__BackingField: {fileID: 0}
-    <Delay>k__BackingField: 0
-    <Graph>k__BackingField: {fileID: 0}
-    <Quest>k__BackingField: 0
   - <ID>k__BackingField: f81498b0-1eb5-451e-94c3-7412bf482dab
     <Name>k__BackingField: Player1
     <NodeType>k__BackingField: 0
@@ -50,6 +30,7 @@ MonoBehaviour:
     <Delay>k__BackingField: 0
     <Graph>k__BackingField: {fileID: 0}
     <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 0
   - <ID>k__BackingField: 3a5e997a-880c-4b3f-8ef6-08219d9a2733
     <Name>k__BackingField: Warsan2
     <NodeType>k__BackingField: 0
@@ -66,6 +47,7 @@ MonoBehaviour:
     <Delay>k__BackingField: 0
     <Graph>k__BackingField: {fileID: 0}
     <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 0
   - <ID>k__BackingField: e27c14b1-a440-4be6-9804-53d4057a39fe
     <Name>k__BackingField: Player2
     <NodeType>k__BackingField: 0
@@ -81,6 +63,7 @@ MonoBehaviour:
     <Delay>k__BackingField: 0
     <Graph>k__BackingField: {fileID: 0}
     <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 0
   - <ID>k__BackingField: 6cbe6ee0-9ee2-4133-b57e-123a993797ec
     <Name>k__BackingField: Warsan3
     <NodeType>k__BackingField: 0
@@ -99,6 +82,7 @@ MonoBehaviour:
     <Delay>k__BackingField: 0
     <Graph>k__BackingField: {fileID: 0}
     <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 0
   - <ID>k__BackingField: 037a66c2-152e-4fec-8961-72861d072c81
     <Name>k__BackingField: Player3
     <NodeType>k__BackingField: 0
@@ -114,41 +98,24 @@ MonoBehaviour:
     <Delay>k__BackingField: 0
     <Graph>k__BackingField: {fileID: 0}
     <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 0
   - <ID>k__BackingField: 1b80393d-a035-4885-ad9e-9fec5df8cf87
     <Name>k__BackingField: Warsan4
     <NodeType>k__BackingField: 0
     <GroupID>k__BackingField: 
     <Choices>k__BackingField:
     - <Text>k__BackingField: Next Node
-      <NodeID>k__BackingField: 6d65815e-12c6-4d9b-9711-a5c36ebf16b0
+      <NodeID>k__BackingField: 93345014-e07b-4bdd-bfd8-c024b2464b25
     <Position>k__BackingField: {x: 7150, y: 525}
     <DialogueType>k__BackingField: 0
     <Character>k__BackingField: {fileID: 11400000, guid: 42a93fd49028fb743aa99b1e50d959f1, type: 2}
-    <Text>k__BackingField: "When you're near the brambles, press the TAB key to bring
-      out your basket and use your mouse to click and drag them out of view. Then,
-      once you have enough resources, click on the tab at the bottom of the screen
-      to open the crafting menu. Click on what you\u2019d like to craft, and then
-      use your mouse to place it in the world. When you're done just press TAB again
-      to put your basket away."
+    <Text>k__BackingField: 'When you''re near the brambles, click and drag to pluck
+      them from the ground. '
     <SoundEffect>k__BackingField: {fileID: 0}
     <Delay>k__BackingField: 0
     <Graph>k__BackingField: {fileID: 0}
     <Quest>k__BackingField: 0
-  - <ID>k__BackingField: 6d65815e-12c6-4d9b-9711-a5c36ebf16b0
-    <Name>k__BackingField: Player5
-    <NodeType>k__BackingField: 0
-    <GroupID>k__BackingField: 
-    <Choices>k__BackingField:
-    - <Text>k__BackingField: Next Node
-      <NodeID>k__BackingField: 
-    <Position>k__BackingField: {x: 7575, y: 525}
-    <DialogueType>k__BackingField: 0
-    <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
-    <Text>k__BackingField: Got it!
-    <SoundEffect>k__BackingField: {fileID: 0}
-    <Delay>k__BackingField: 0
-    <Graph>k__BackingField: {fileID: 0}
-    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 0
   - <ID>k__BackingField: 25255ebf-477e-4cd3-a89a-7120626a21f9
     <Name>k__BackingField: Player4
     <NodeType>k__BackingField: 0
@@ -164,120 +131,127 @@ MonoBehaviour:
     <Delay>k__BackingField: 0
     <Graph>k__BackingField: {fileID: 0}
     <Quest>k__BackingField: 0
-  - <ID>k__BackingField: eeda541b-b8f8-46d4-b45a-e8e3d794e830
-    <Name>k__BackingField: Player6
+    <QuestState>k__BackingField: 0
+  - <ID>k__BackingField: cf6d958d-fc60-4437-9880-fadd1e3cef27
+    <Name>k__BackingField: Warsan1
     <NodeType>k__BackingField: 0
     <GroupID>k__BackingField: 
     <Choices>k__BackingField:
-    - <Text>k__BackingField: Next Node
-      <NodeID>k__BackingField: a546ca48-bf20-4b75-80e3-944736c1a8c7
-    <Position>k__BackingField: {x: 5725, y: 950}
-    <DialogueType>k__BackingField: 0
-    <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
-    <Text>k__BackingField: Can you remind me how to clear brambles and place furniture?
+    - <Text>k__BackingField: I'm working on it!
+      <NodeID>k__BackingField: f81498b0-1eb5-451e-94c3-7412bf482dab
+    - <Text>k__BackingField: Remind what to do.
+      <NodeID>k__BackingField: e27c14b1-a440-4be6-9804-53d4057a39fe
+    - <Text>k__BackingField: How do it do it?
+      <NodeID>k__BackingField: 25255ebf-477e-4cd3-a89a-7120626a21f9
+    <Position>k__BackingField: {x: 5225, y: 0}
+    <DialogueType>k__BackingField: 1
+    <Character>k__BackingField: {fileID: 11400000, guid: 42a93fd49028fb743aa99b1e50d959f1, type: 2}
+    <Text>k__BackingField: Everything going okay friend? Have you been able to clear
+      those brambles yet?
     <SoundEffect>k__BackingField: {fileID: 0}
     <Delay>k__BackingField: 0
     <Graph>k__BackingField: {fileID: 0}
     <Quest>k__BackingField: 0
-  - <ID>k__BackingField: a546ca48-bf20-4b75-80e3-944736c1a8c7
-    <Name>k__BackingField: Warsan5
+    <QuestState>k__BackingField: 0
+  - <ID>k__BackingField: 93345014-e07b-4bdd-bfd8-c024b2464b25
+    <Name>k__BackingField: Warsan7
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: e53878bb-4242-4f78-9ca2-d24ae5f4e7a0
+    <Position>k__BackingField: {x: 7600, y: 525}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 42a93fd49028fb743aa99b1e50d959f1, type: 2}
+    <Text>k__BackingField: Then, once you have enough resources, click on the tab
+      at the bottom of the screen to open the crafting menu.
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: e53878bb-4242-4f78-9ca2-d24ae5f4e7a0
+    <Name>k__BackingField: Warsan8
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: 6b006c72-e4dc-46eb-a167-86ad08575740
+    <Position>k__BackingField: {x: 8050, y: 525}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 42a93fd49028fb743aa99b1e50d959f1, type: 2}
+    <Text>k__BackingField: "Click on what you\u2019d like to craft, and then use
+      your mouse to place it in the world."
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: 6b006c72-e4dc-46eb-a167-86ad08575740
+    <Name>k__BackingField: Warsan9
     <NodeType>k__BackingField: 0
     <GroupID>k__BackingField: 
     <Choices>k__BackingField:
     - <Text>k__BackingField: Got it!
-      <NodeID>k__BackingField: a5f6db73-6e5d-4f4d-93fa-6e3de359e629
-    - <Text>k__BackingField: Where should I do this?
-      <NodeID>k__BackingField: cc64ca4e-0504-4f5f-92a7-96e37f2b4f7b
-    <Position>k__BackingField: {x: 6175, y: 950}
+      <NodeID>k__BackingField: 
+    - <Text>k__BackingField: Can you repeart that?
+      <NodeID>k__BackingField: d9edb167-7d8f-4e5d-bd88-e8ee7883a215
+    <Position>k__BackingField: {x: 8500, y: 525}
     <DialogueType>k__BackingField: 1
     <Character>k__BackingField: {fileID: 11400000, guid: 42a93fd49028fb743aa99b1e50d959f1, type: 2}
-    <Text>k__BackingField: "When you're near the brambles, press the TAB key to bring
-      out your basket and use your mouse to click and drag them out of view. Then,
-      once you have enough resources, click on the tab at the bottom of the screen
-      to open the crafting menu. Click on what you\u2019d like to craft, and then
-      use your mouse to place it in the world. When you're done just press TAB again
-      to put your basket away."
+    <Text>k__BackingField: "When you're done just press TAB again to put your basket
+      away.\r"
     <SoundEffect>k__BackingField: {fileID: 0}
     <Delay>k__BackingField: 0
     <Graph>k__BackingField: {fileID: 0}
     <Quest>k__BackingField: 0
-  - <ID>k__BackingField: a5f6db73-6e5d-4f4d-93fa-6e3de359e629
-    <Name>k__BackingField: Player7
-    <NodeType>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: d9edb167-7d8f-4e5d-bd88-e8ee7883a215
+    <Name>k__BackingField: EdgeNoded9edb167-7d8f-4e5d-bd88-e8ee7883a215
+    <NodeType>k__BackingField: 1
     <GroupID>k__BackingField: 
     <Choices>k__BackingField:
-    - <Text>k__BackingField: Next Node
-      <NodeID>k__BackingField: 
-    <Position>k__BackingField: {x: 6625, y: 950}
+    - <Text>k__BackingField: 
+      <NodeID>k__BackingField: c1521265-f277-4e4a-b828-23778aed48e5
+    <Position>k__BackingField: {x: 8925, y: 800}
     <DialogueType>k__BackingField: 0
-    <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
-    <Text>k__BackingField: Got it!
+    <Character>k__BackingField: {fileID: 0}
+    <Text>k__BackingField: 
     <SoundEffect>k__BackingField: {fileID: 0}
     <Delay>k__BackingField: 0
     <Graph>k__BackingField: {fileID: 0}
     <Quest>k__BackingField: 0
-  - <ID>k__BackingField: cc64ca4e-0504-4f5f-92a7-96e37f2b4f7b
-    <Name>k__BackingField: Player8
-    <NodeType>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: c1521265-f277-4e4a-b828-23778aed48e5
+    <Name>k__BackingField: EdgeNodec1521265-f277-4e4a-b828-23778aed48e5
+    <NodeType>k__BackingField: 1
     <GroupID>k__BackingField: 
     <Choices>k__BackingField:
-    - <Text>k__BackingField: Next Node
-      <NodeID>k__BackingField: 30cf1633-b6a0-4f1d-a721-7906ec783804
-    <Position>k__BackingField: {x: 6625, y: 1200}
+    - <Text>k__BackingField: 
+      <NodeID>k__BackingField: 1b80393d-a035-4885-ad9e-9fec5df8cf87
+    <Position>k__BackingField: {x: 7050, y: 775}
     <DialogueType>k__BackingField: 0
-    <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
-    <Text>k__BackingField: Where should I do this?
+    <Character>k__BackingField: {fileID: 0}
+    <Text>k__BackingField: 
     <SoundEffect>k__BackingField: {fileID: 0}
     <Delay>k__BackingField: 0
     <Graph>k__BackingField: {fileID: 0}
     <Quest>k__BackingField: 0
-  - <ID>k__BackingField: 30cf1633-b6a0-4f1d-a721-7906ec783804
-    <Name>k__BackingField: Warsan6
-    <NodeType>k__BackingField: 0
-    <GroupID>k__BackingField: 
-    <Choices>k__BackingField:
-    - <Text>k__BackingField: Next Node
-      <NodeID>k__BackingField: 5cf3a9eb-4c82-49a0-aa4f-7b4443269a2d
-    <Position>k__BackingField: {x: 6925, y: 1200}
-    <DialogueType>k__BackingField: 0
-    <Character>k__BackingField: {fileID: 11400000, guid: 42a93fd49028fb743aa99b1e50d959f1, type: 2}
-    <Text>k__BackingField: Could you clear out the brambles behind my house, and
-      then place a hanging plant in the new space?
-    <SoundEffect>k__BackingField: {fileID: 0}
-    <Delay>k__BackingField: 0
-    <Graph>k__BackingField: {fileID: 0}
-    <Quest>k__BackingField: 0
-  - <ID>k__BackingField: 5cf3a9eb-4c82-49a0-aa4f-7b4443269a2d
-    <Name>k__BackingField: Player9
-    <NodeType>k__BackingField: 0
-    <GroupID>k__BackingField: 
-    <Choices>k__BackingField:
-    - <Text>k__BackingField: Next Node
-      <NodeID>k__BackingField: 
-    <Position>k__BackingField: {x: 7375, y: 1200}
-    <DialogueType>k__BackingField: 0
-    <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
-    <Text>k__BackingField: Dialogue text.
-    <SoundEffect>k__BackingField: {fileID: 0}
-    <Delay>k__BackingField: 0
-    <Graph>k__BackingField: {fileID: 0}
-    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
   <OldGroupNames>k__BackingField: []
   <OldUngroupedNodeNames>k__BackingField:
-  - Warsan1
   - Player1
   - Warsan2
   - Player2
   - Warsan3
   - Player3
   - Warsan4
-  - Player5
   - Player4
-  - Player6
-  - Warsan5
-  - Player7
-  - Player8
-  - Warsan6
-  - Player9
+  - Warsan1
+  - Warsan7
+  - Warsan8
+  - Warsan9
+  - EdgeNoded9edb167-7d8f-4e5d-bd88-e8ee7883a215
+  - EdgeNodec1521265-f277-4e4a-b828-23778aed48e5
   <OldGroupedNodeNames>k__BackingField:
     list: []

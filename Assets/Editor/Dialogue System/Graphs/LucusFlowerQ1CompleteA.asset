@@ -15,22 +15,6 @@ MonoBehaviour:
   <FileName>k__BackingField: 
   <Groups>k__BackingField: []
   <Nodes>k__BackingField:
-  - <ID>k__BackingField: 6cd6157c-d2a7-4bde-a54d-01fb3d5e27bf
-    <Name>k__BackingField: PotCrashing
-    <NodeType>k__BackingField: 3
-    <GroupID>k__BackingField: 
-    <Choices>k__BackingField:
-    - <Text>k__BackingField: Next Node
-      <NodeID>k__BackingField: 003ee0bf-8e42-44a2-9921-cccabc11b6bf
-    <Position>k__BackingField: {x: 2400, y: -325}
-    <DialogueType>k__BackingField: 0
-    <Character>k__BackingField: {fileID: 0}
-    <Text>k__BackingField: 
-    <SoundEffect>k__BackingField: {fileID: 8300000, guid: 46b304f9aeb47174a88fff22573590f1, type: 3}
-    <Delay>k__BackingField: 0
-    <Graph>k__BackingField: {fileID: 0}
-    <Quest>k__BackingField: 0
-    <QuestState>k__BackingField: 1
   - <ID>k__BackingField: 003ee0bf-8e42-44a2-9921-cccabc11b6bf
     <Name>k__BackingField: LucusAlt1
     <NodeType>k__BackingField: 0
@@ -143,22 +127,6 @@ MonoBehaviour:
     <Text>k__BackingField: "<link=\"jiggle\">HELLO? Are you there? <link=\"wait_short\">\nI\u2019ve
       got the flower."
     <SoundEffect>k__BackingField: {fileID: 0}
-    <Delay>k__BackingField: 0
-    <Graph>k__BackingField: {fileID: 0}
-    <Quest>k__BackingField: 0
-    <QuestState>k__BackingField: 1
-  - <ID>k__BackingField: b51dcfaf-0e44-4a76-82c2-950c1debd3f4
-    <Name>k__BackingField: Knocking
-    <NodeType>k__BackingField: 3
-    <GroupID>k__BackingField: 
-    <Choices>k__BackingField:
-    - <Text>k__BackingField: Next Node
-      <NodeID>k__BackingField: 33a5705f-243f-4ed3-b7a6-1681a7c69960
-    <Position>k__BackingField: {x: 1950, y: 150}
-    <DialogueType>k__BackingField: 0
-    <Character>k__BackingField: {fileID: 0}
-    <Text>k__BackingField: 
-    <SoundEffect>k__BackingField: {fileID: 8300000, guid: 46b304f9aeb47174a88fff22573590f1, type: 3}
     <Delay>k__BackingField: 0
     <Graph>k__BackingField: {fileID: 0}
     <Quest>k__BackingField: 0
@@ -577,9 +545,40 @@ MonoBehaviour:
     <Graph>k__BackingField: {fileID: 0}
     <Quest>k__BackingField: 0
     <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: 6cd6157c-d2a7-4bde-a54d-01fb3d5e27bf
+    <Name>k__BackingField: PotCrashing
+    <NodeType>k__BackingField: 3
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: 003ee0bf-8e42-44a2-9921-cccabc11b6bf
+    <Position>k__BackingField: {x: 2400, y: -325}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 0}
+    <Text>k__BackingField: 
+    <SoundEffect>k__BackingField: {fileID: 8300000, guid: cb59b7ea1a85ce6458e6afb44e21af7b, type: 3}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: b51dcfaf-0e44-4a76-82c2-950c1debd3f4
+    <Name>k__BackingField: Knocking
+    <NodeType>k__BackingField: 3
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: 33a5705f-243f-4ed3-b7a6-1681a7c69960
+    <Position>k__BackingField: {x: 1950, y: 150}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 0}
+    <Text>k__BackingField: 
+    <SoundEffect>k__BackingField: {fileID: 8300000, guid: 1107168c7c614c2438c6c03d62449b20, type: 3}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
   <OldGroupNames>k__BackingField: []
   <OldUngroupedNodeNames>k__BackingField:
-  - PotCrashing
   - LucusAlt1
   - Player3
   - Player4
@@ -587,7 +586,6 @@ MonoBehaviour:
   - Player5
   - LucusAlt3
   - Player2
-  - Knocking
   - Player6
   - LucusAlt4
   - LucusAlt5
@@ -613,5 +611,7 @@ MonoBehaviour:
   - LucusAlt13
   - Player12
   - Player10
+  - PotCrashing
+  - Knocking
   <OldGroupedNodeNames>k__BackingField:
     list: []

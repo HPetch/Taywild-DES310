@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56aed56cf2bdb3940a003c0a146eee35, type: 3}
+  m_Name: Warsan13
+  m_EditorClassIdentifier: 
+  <NodeName>k__BackingField: Warsan13
+  <NodeType>k__BackingField: 0
+  <Choices>k__BackingField:
+  - <Text>k__BackingField: I'm sorry.
+    <NextDialogue>k__BackingField: {fileID: 11400000, guid: fe4ded4ed2625ff42b0ff78a2de45d32, type: 2}
+  - <Text>k__BackingField: I shoudn't have pried.
+    <NextDialogue>k__BackingField: {fileID: 11400000, guid: 31e9fa705a99e7840bc2100dbf6a2a55, type: 2}
+  - <Text>k__BackingField: ...
+    <NextDialogue>k__BackingField: {fileID: 11400000, guid: 02994c21aff08914780f36795f961b2c, type: 2}
+  <Character>k__BackingField: {fileID: 11400000, guid: 42a93fd49028fb743aa99b1e50d959f1, type: 2}
+  <DialogueType>k__BackingField: 1
+  <Text>k__BackingField: "Oh, they passed away 7 years ago. It\u2019s been just me
+    and Jasp for a little while now."
+  <IsStartingDialogue>k__BackingField: 0
+  <SoundEffect>k__BackingField: {fileID: 0}
+  <Delay>k__BackingField: 0
+  <Graph>k__BackingField: {fileID: 0}
+  <Quest>k__BackingField: 0
+  <QuestState>k__BackingField: 1

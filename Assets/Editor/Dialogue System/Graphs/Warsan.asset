@@ -125,22 +125,6 @@ MonoBehaviour:
     <Graph>k__BackingField: {fileID: 0}
     <Quest>k__BackingField: 10
     <QuestState>k__BackingField: 0
-  - <ID>k__BackingField: 9c4dc27d-b218-40bf-aaf0-e2cbb5e3417e
-    <Name>k__BackingField: Warsan1
-    <NodeType>k__BackingField: 0
-    <GroupID>k__BackingField: 
-    <Choices>k__BackingField:
-    - <Text>k__BackingField: Next Node
-      <NodeID>k__BackingField: 
-    <Position>k__BackingField: {x: 3350, y: 3275}
-    <DialogueType>k__BackingField: 0
-    <Character>k__BackingField: {fileID: 11400000, guid: 42a93fd49028fb743aa99b1e50d959f1, type: 2}
-    <Text>k__BackingField: 'Hello dear, are you doing well? '
-    <SoundEffect>k__BackingField: {fileID: 0}
-    <Delay>k__BackingField: 0
-    <Graph>k__BackingField: {fileID: 0}
-    <Quest>k__BackingField: 0
-    <QuestState>k__BackingField: 0
   - <ID>k__BackingField: 3305c2f0-64d6-4357-b322-2a93af238a30
     <Name>k__BackingField: SetQuestNode1
     <NodeType>k__BackingField: 5
@@ -617,6 +601,71 @@ MonoBehaviour:
     <Graph>k__BackingField: {fileID: 11400000, guid: 0de271d19088d4f49a79a1339a2a7b62, type: 2}
     <Quest>k__BackingField: 0
     <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: 9c4dc27d-b218-40bf-aaf0-e2cbb5e3417e
+    <Name>k__BackingField: Warsan1
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: fcbddfba-6d17-44f3-ae01-e217f5ca5f3e
+    <Position>k__BackingField: {x: 3350, y: 3275}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 42a93fd49028fb743aa99b1e50d959f1, type: 2}
+    <Text>k__BackingField: "Sorry - can\u2019t talk!"
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 0
+  - <ID>k__BackingField: fcbddfba-6d17-44f3-ae01-e217f5ca5f3e
+    <Name>k__BackingField: Warsan2
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: efee9186-8eb0-41dc-8a8a-54cdd2eccffb
+    <Position>k__BackingField: {x: 3650, y: 3325}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 42a93fd49028fb743aa99b1e50d959f1, type: 2}
+    <Text>k__BackingField: 'Jasper ate the string of my favourite necklace and the
+      beads are scattered everywhere!! '
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: efee9186-8eb0-41dc-8a8a-54cdd2eccffb
+    <Name>k__BackingField: Warsan3
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: 97039345-1c6f-4e24-87f5-152ae8fc2e26
+    <Position>k__BackingField: {x: 4100, y: 3325}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 42a93fd49028fb743aa99b1e50d959f1, type: 2}
+    <Text>k__BackingField: "I just have four more to find\u2026"
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: 97039345-1c6f-4e24-87f5-152ae8fc2e26
+    <Name>k__BackingField: Warsan4
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: 
+    <Position>k__BackingField: {x: 4425, y: 3325}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 42a93fd49028fb743aa99b1e50d959f1, type: 2}
+    <Text>k__BackingField: 'AH! Got one! '
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
   <OldGroupNames>k__BackingField: []
   <OldUngroupedNodeNames>k__BackingField:
   - WarsanTutorial
@@ -624,7 +673,6 @@ MonoBehaviour:
   - LuWaBakedQ2a
   - LuWaBakedQ2b
   - LuWaIngredientsQ3a
-  - Warsan1
   - SetQuestNode1
   - GraphNode1
   - SetQuestNode2
@@ -655,5 +703,9 @@ MonoBehaviour:
   - GraphNode13
   - SetQuestNode12
   - GraphNode14
+  - Warsan1
+  - Warsan2
+  - Warsan3
+  - Warsan4
   <OldGroupedNodeNames>k__BackingField:
     list: []

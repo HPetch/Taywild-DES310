@@ -389,8 +389,8 @@ MonoBehaviour:
     <Position>k__BackingField: {x: 2700, y: 1950}
     <DialogueType>k__BackingField: 0
     <Character>k__BackingField: {fileID: 11400000, guid: 49268ee1c8a3bee44b0063741027d804, type: 2}
-    <Text>k__BackingField: I hope you are enjoying my greenhouse. If you want to
-      know anything about the plants, just ask!
+    <Text>k__BackingField: 'Make yourself comfortable within my greenhouse. Please
+      do not tread on the plants. '
     <SoundEffect>k__BackingField: {fileID: 0}
     <Delay>k__BackingField: 0
     <Graph>k__BackingField: {fileID: 0}
@@ -412,20 +412,6 @@ MonoBehaviour:
     <Graph>k__BackingField: {fileID: 0}
     <Quest>k__BackingField: 5
     <QuestState>k__BackingField: 3
-  - <ID>k__BackingField: 5e2e7cbf-78be-4874-a2a8-bf92368a4e79
-    <Name>k__BackingField: GraphNode10
-    <NodeType>k__BackingField: 6
-    <GroupID>k__BackingField: 
-    <Choices>k__BackingField: []
-    <Position>k__BackingField: {x: 3075, y: 1775}
-    <DialogueType>k__BackingField: 0
-    <Character>k__BackingField: {fileID: 0}
-    <Text>k__BackingField: 
-    <SoundEffect>k__BackingField: {fileID: 0}
-    <Delay>k__BackingField: 0
-    <Graph>k__BackingField: {fileID: 11400000, guid: 3b64bc59f99461d4db44e15cccf86cc9, type: 2}
-    <Quest>k__BackingField: 0
-    <QuestState>k__BackingField: 1
   - <ID>k__BackingField: 564fda16-3690-49a2-a354-0189086834a4
     <Name>k__BackingField: GraphNode5
     <NodeType>k__BackingField: 6
@@ -518,6 +504,72 @@ MonoBehaviour:
     <Graph>k__BackingField: {fileID: 0}
     <Quest>k__BackingField: 6
     <QuestState>k__BackingField: 3
+  - <ID>k__BackingField: 92a5f41a-68a3-4949-8cea-52f7a5ac55e0
+    <Name>k__BackingField: LucusIntro
+    <NodeType>k__BackingField: 4
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Not Accepted
+      <NodeID>k__BackingField: dbb927b6-1d26-4a81-8ceb-95e9535c442e
+    - <Text>k__BackingField: In Progress
+      <NodeID>k__BackingField: dbb927b6-1d26-4a81-8ceb-95e9535c442e
+    - <Text>k__BackingField: Read for Hand-in
+      <NodeID>k__BackingField: dbb927b6-1d26-4a81-8ceb-95e9535c442e
+    - <Text>k__BackingField: Comlpeted
+      <NodeID>k__BackingField: 605eaca4-f0ea-4d12-ba72-a64f2d0fb38b
+    <Position>k__BackingField: {x: -900, y: -325}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 0}
+    <Text>k__BackingField: 
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 12
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: dbb927b6-1d26-4a81-8ceb-95e9535c442e
+    <Name>k__BackingField: SetQuestNode
+    <NodeType>k__BackingField: 5
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: edc5169e-9eaa-4731-bf56-d707085a016c
+    <Position>k__BackingField: {x: -600, y: -325}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 0}
+    <Text>k__BackingField: 
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 12
+    <QuestState>k__BackingField: 3
+  - <ID>k__BackingField: edc5169e-9eaa-4731-bf56-d707085a016c
+    <Name>k__BackingField: GraphNode
+    <NodeType>k__BackingField: 6
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField: []
+    <Position>k__BackingField: {x: -325, y: -325}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 0}
+    <Text>k__BackingField: 
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 11400000, guid: 3e7daaf4ddaa2534c816a063f9233372, type: 2}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: 5e2e7cbf-78be-4874-a2a8-bf92368a4e79
+    <Name>k__BackingField: GraphNode10
+    <NodeType>k__BackingField: 6
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField: []
+    <Position>k__BackingField: {x: 3075, y: 1775}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 0}
+    <Text>k__BackingField: 
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 11400000, guid: 3b64bc59f99461d4db44e15cccf86cc9, type: 2}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
   <OldGroupNames>k__BackingField: []
   <OldUngroupedNodeNames>k__BackingField:
   - LucusFlowerQ1b
@@ -543,12 +595,15 @@ MonoBehaviour:
   - GraphNode9
   - Lucus1
   - SetQuestNode9
-  - GraphNode10
   - GraphNode5
   - SetQuestNode10
   - SetQuestNode7
   - GraphNode4
   - SetQuestNode12
   - SetQuestNode11
+  - LucusIntro
+  - SetQuestNode
+  - GraphNode
+  - GraphNode10
   <OldGroupedNodeNames>k__BackingField:
     list: []

@@ -15,24 +15,76 @@ MonoBehaviour:
   <FileName>k__BackingField: 
   <Groups>k__BackingField: []
   <Nodes>k__BackingField:
-  - <ID>k__BackingField: 4a225da6-7796-44e6-b282-004ea6f142c1
+  - <ID>k__BackingField: 4cd1577f-df31-4eec-a9b9-68448a06bda1
     <Name>k__BackingField: Warsan1
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Not yet!
+      <NodeID>k__BackingField: 07d58553-57a8-460c-a849-8b64375db91d
+    <Position>k__BackingField: {x: 1050, y: 525}
+    <DialogueType>k__BackingField: 1
+    <Character>k__BackingField: {fileID: 11400000, guid: 42a93fd49028fb743aa99b1e50d959f1, type: 2}
+    <Text>k__BackingField: "Hi friend! Is that bench ready yet? I\u2019m so excited!"
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: 07d58553-57a8-460c-a849-8b64375db91d
+    <Name>k__BackingField: Player1
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: 9d5e79b9-ccaa-48d0-879c-48ea52271df8
+    <Position>k__BackingField: {x: 1475, y: 525}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
+    <Text>k__BackingField: Not yet! Can you remind me where you want me to put it?
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: 9d5e79b9-ccaa-48d0-879c-48ea52271df8
+    <Name>k__BackingField: Warsan2
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: 9dc4d5d0-6dd6-4653-a8fe-6da14975723a
+    <Position>k__BackingField: {x: 1900, y: 525}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 42a93fd49028fb743aa99b1e50d959f1, type: 2}
+    <Text>k__BackingField: In that little area between my house and the main tree
+      trunk.
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: 9dc4d5d0-6dd6-4653-a8fe-6da14975723a
+    <Name>k__BackingField: Player2
     <NodeType>k__BackingField: 0
     <GroupID>k__BackingField: 
     <Choices>k__BackingField:
     - <Text>k__BackingField: Next Node
       <NodeID>k__BackingField: 
-    <Position>k__BackingField: {x: 1000, y: 550}
+    <Position>k__BackingField: {x: 2350, y: 525}
     <DialogueType>k__BackingField: 0
-    <Character>k__BackingField: {fileID: 11400000, guid: 42a93fd49028fb743aa99b1e50d959f1, type: 2}
-    <Text>k__BackingField: Have you made the bench yet? You need to put it on the
-      big ledge above me.
+    <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
+    <Text>k__BackingField: "Got it! It\u2019ll be ready soon!"
     <SoundEffect>k__BackingField: {fileID: 0}
     <Delay>k__BackingField: 0
     <Graph>k__BackingField: {fileID: 0}
     <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
   <OldGroupNames>k__BackingField: []
   <OldUngroupedNodeNames>k__BackingField:
   - Warsan1
+  - Player1
+  - Warsan2
+  - Player2
   <OldGroupedNodeNames>k__BackingField:
     list: []

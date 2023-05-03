@@ -15,13 +15,16 @@ MonoBehaviour:
   <NodeName>k__BackingField: Lucus1
   <NodeType>k__BackingField: 0
   <Choices>k__BackingField:
-  - <Text>k__BackingField: Next Node
-    <NextDialogue>k__BackingField: {fileID: 11400000, guid: 0dc8ac3fae178284fa8259ba87cdf537, type: 2}
+  - <Text>k__BackingField: Go ahead!
+    <NextDialogue>k__BackingField: {fileID: 11400000, guid: 52c5b820e91828841830678cb351eb2d, type: 2}
+  - <Text>k__BackingField: What about?
+    <NextDialogue>k__BackingField: {fileID: 11400000, guid: 65559ac657ff0774a85d28e003eb888c, type: 2}
   <Character>k__BackingField: {fileID: 11400000, guid: 49268ee1c8a3bee44b0063741027d804, type: 2}
-  <DialogueType>k__BackingField: 0
-  <Text>k__BackingField: Hello again, I have another quest for you.
+  <DialogueType>k__BackingField: 1
+  <Text>k__BackingField: Ah! You have returned. I have something to talk to you about.
   <IsStartingDialogue>k__BackingField: 1
   <SoundEffect>k__BackingField: {fileID: 0}
   <Delay>k__BackingField: 0
   <Graph>k__BackingField: {fileID: 0}
   <Quest>k__BackingField: 0
+  <QuestState>k__BackingField: 1

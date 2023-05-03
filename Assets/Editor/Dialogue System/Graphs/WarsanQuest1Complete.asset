@@ -15,24 +15,592 @@ MonoBehaviour:
   <FileName>k__BackingField: 
   <Groups>k__BackingField: []
   <Nodes>k__BackingField:
-  - <ID>k__BackingField: 06b0dcc9-aa4e-4ad1-b70f-30f4db21fecd
-    <Name>k__BackingField: WarsanQuest1Complete
+  - <ID>k__BackingField: d47f3527-d695-49c7-aa4c-2c3722b8f429
+    <Name>k__BackingField: Warsan1
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Bench??
+      <NodeID>k__BackingField: 456bf5fa-efc5-4f21-a0cc-c4a386ec1b5f
+    - <Text>k__BackingField: Calm down!
+      <NodeID>k__BackingField: 562ee3a5-7c47-4418-a504-fbca9534f08f
+    <Position>k__BackingField: {x: 1150, y: 750}
+    <DialogueType>k__BackingField: 1
+    <Character>k__BackingField: {fileID: 11400000, guid: 42a93fd49028fb743aa99b1e50d959f1, type: 2}
+    <Text>k__BackingField: Hi love! You look excited about something - is my bench
+      ready?!?!
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: 456bf5fa-efc5-4f21-a0cc-c4a386ec1b5f
+    <Name>k__BackingField: Player1
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: cd9b9502-72d9-45e0-9b71-39748de48fce
+    <Position>k__BackingField: {x: 1600, y: 750}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
+    <Text>k__BackingField: "Bench?? I have no idea what you\u2019re talking about."
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: 562ee3a5-7c47-4418-a504-fbca9534f08f
+    <Name>k__BackingField: Player2
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: c87efdf4-847d-426f-a3de-0fbedac065cd
+    <Position>k__BackingField: {x: 1600, y: 1000}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
+    <Text>k__BackingField: Calm down!
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: cd9b9502-72d9-45e0-9b71-39748de48fce
+    <Name>k__BackingField: Warsan2
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: 740baa63-6ec2-4a1b-83d5-f07173ec0a03
+    <Position>k__BackingField: {x: 2025, y: 750}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 42a93fd49028fb743aa99b1e50d959f1, type: 2}
+    <Text>k__BackingField: Oh very funny. Really though, is it ready?
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: 740baa63-6ec2-4a1b-83d5-f07173ec0a03
+    <Name>k__BackingField: Player3
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: 60b75aa5-40b0-4e15-9987-4df0968f8863
+    <Position>k__BackingField: {x: 2450, y: 750}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
+    <Text>k__BackingField: "Yes, it\u2019s ready!"
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: c87efdf4-847d-426f-a3de-0fbedac065cd
+    <Name>k__BackingField: Warsan3
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: b033de4c-6972-4a1f-9513-ef3f81986d1d
+    <Position>k__BackingField: {x: 1900, y: 1000}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 42a93fd49028fb743aa99b1e50d959f1, type: 2}
+    <Text>k__BackingField: Sorry. This just really means a lot to me.
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: b033de4c-6972-4a1f-9513-ef3f81986d1d
+    <Name>k__BackingField: Player4
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: 60b75aa5-40b0-4e15-9987-4df0968f8863
+    <Position>k__BackingField: {x: 2350, y: 1000}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
+    <Text>k__BackingField: "I understand, sorry. It\u2019s ready though!"
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: 60b75aa5-40b0-4e15-9987-4df0968f8863
+    <Name>k__BackingField: Warsan4
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: ba32a766-61b9-4f7d-b350-969d81677920
+    <Position>k__BackingField: {x: 2800, y: 750}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 42a93fd49028fb743aa99b1e50d959f1, type: 2}
+    <Text>k__BackingField: 'Oh really? Thank you so much!! '
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: ba32a766-61b9-4f7d-b350-969d81677920
+    <Name>k__BackingField: Player5
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: bd587fa4-15f0-4a8a-a04e-69d371312886
+    <Position>k__BackingField: {x: 3250, y: 750}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
+    <Text>k__BackingField: "It\u2019s really no problem."
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: bd587fa4-15f0-4a8a-a04e-69d371312886
+    <Name>k__BackingField: Player6
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: 0f738e2d-c1a8-4f72-97ab-60f316cd8854
+    <Position>k__BackingField: {x: 3550, y: 750}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
+    <Text>k__BackingField: "You\u2019ll have to come find me to let me know what
+      you think once you go see it."
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: 0f738e2d-c1a8-4f72-97ab-60f316cd8854
+    <Name>k__BackingField: Warsan5
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Of course.
+      <NodeID>k__BackingField: 42571c01-a915-474a-8e53-8c6a8d18f937
+    - <Text>k__BackingField: 'Maybe another time. '
+      <NodeID>k__BackingField: ab39260c-bd30-4fd4-a1f4-cb76f9010b3e
+    <Position>k__BackingField: {x: 4000, y: 750}
+    <DialogueType>k__BackingField: 1
+    <Character>k__BackingField: {fileID: 11400000, guid: 42a93fd49028fb743aa99b1e50d959f1, type: 2}
+    <Text>k__BackingField: Can I tell you a story? About Rowan? How we met?
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: 42571c01-a915-474a-8e53-8c6a8d18f937
+    <Name>k__BackingField: Player7
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: dbfece9a-617f-4ffb-a145-73935d3f9cf9
+    <Position>k__BackingField: {x: 4450, y: 750}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
+    <Text>k__BackingField: Of course.
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: ab39260c-bd30-4fd4-a1f4-cb76f9010b3e
+    <Name>k__BackingField: Player8
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: 4f784915-3e03-4102-a0e9-7c9910551564
+    <Position>k__BackingField: {x: 4450, y: 975}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
+    <Text>k__BackingField: "Why don\u2019t I just sit with you instead. Enjoy the
+      quiet. Maybe another time?"
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: dbfece9a-617f-4ffb-a145-73935d3f9cf9
+    <Name>k__BackingField: Warsan6
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: aff5ae1a-15f4-4ed3-a1e1-4dc7a44922f6
+    <Position>k__BackingField: {x: 4825, y: 750}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 42a93fd49028fb743aa99b1e50d959f1, type: 2}
+    <Text>k__BackingField: "We met when we were 20. Both in uni, I was studying \t\tmedicine
+      and they were studying fine art. "
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: aff5ae1a-15f4-4ed3-a1e1-4dc7a44922f6
+    <Name>k__BackingField: Warsan7
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: 71af15e2-c52f-483d-addf-d269d6b8e176
+    <Position>k__BackingField: {x: 5275, y: 750}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 42a93fd49028fb743aa99b1e50d959f1, type: 2}
+    <Text>k__BackingField: We originally met at a party, then we just kept running
+      into each other, in bars, in hallways, even at the shops.
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: 71af15e2-c52f-483d-addf-d269d6b8e176
+    <Name>k__BackingField: Warsan8
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: aa7c4fbf-a27c-4cc1-a085-8ac4bc77b243
+    <Position>k__BackingField: {x: 5750, y: 750}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 42a93fd49028fb743aa99b1e50d959f1, type: 2}
+    <Text>k__BackingField: "After the night we first met, I just kept hoping we\u2019d
+      meet again. And when we did, I got too nervous to say anything. "
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: aa7c4fbf-a27c-4cc1-a085-8ac4bc77b243
+    <Name>k__BackingField: Warsan9
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: e51bbc41-9aa7-440e-b40f-7ec52ef1d329
+    <Position>k__BackingField: {x: 6200, y: 750}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 42a93fd49028fb743aa99b1e50d959f1, type: 2}
+    <Text>k__BackingField: So when I ran into them in the Library, on the bus, and
+      then in a book shop, all in the same afternoon, I knew it was fate.
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: e51bbc41-9aa7-440e-b40f-7ec52ef1d329
+    <Name>k__BackingField: Warsan10
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: d04d878a-c981-4317-87e4-2cc764809bde
+    <Position>k__BackingField: {x: 6675, y: 750}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 42a93fd49028fb743aa99b1e50d959f1, type: 2}
+    <Text>k__BackingField: "At this point, it had become somewhat of a joke between
+      \t\tus - that we kept running into each other."
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: d04d878a-c981-4317-87e4-2cc764809bde
+    <Name>k__BackingField: Warsan11
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: 8dba9695-dd50-40f7-9758-b1a8ce5e1013
+    <Position>k__BackingField: {x: 7125, y: 750}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 42a93fd49028fb743aa99b1e50d959f1, type: 2}
+    <Text>k__BackingField: "\u201CY\u2019know, we really should try to run into each
+      other on \t\tpurpose one of these days\u201D they had joked. "
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: 8dba9695-dd50-40f7-9758-b1a8ce5e1013
+    <Name>k__BackingField: Warsan12
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: 1f37ace7-449e-414b-ba97-150822cf7b62
+    <Position>k__BackingField: {x: 7625, y: 750}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 42a93fd49028fb743aa99b1e50d959f1, type: 2}
+    <Text>k__BackingField: 'I responded by asking them on a date. '
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: 1f37ace7-449e-414b-ba97-150822cf7b62
+    <Name>k__BackingField: Warsan13
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: 86eda7e4-2ef1-4aae-a58c-ccffa9531827
+    <Position>k__BackingField: {x: 8075, y: 750}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 42a93fd49028fb743aa99b1e50d959f1, type: 2}
+    <Text>k__BackingField: "\u201CMeet me right here\u201D I said, in the middle
+      of the bookshop. \u201C2 o\u2019clock on monday?\u201D"
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: 86eda7e4-2ef1-4aae-a58c-ccffa9531827
+    <Name>k__BackingField: Warsan14
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: "Weren\u2019t you nervous?"
+      <NodeID>k__BackingField: 7ca61a56-c700-456a-9518-dba2a59ac576
+    - <Text>k__BackingField: What books did you get?
+      <NodeID>k__BackingField: eeba7f2d-b5d5-4027-88ed-3afecd340b60
+    - <Text>k__BackingField: ...
+      <NodeID>k__BackingField: b6936956-5272-493f-862e-5900c68c2e7d
+    <Position>k__BackingField: {x: 8525, y: 750}
+    <DialogueType>k__BackingField: 1
+    <Character>k__BackingField: {fileID: 11400000, guid: 42a93fd49028fb743aa99b1e50d959f1, type: 2}
+    <Text>k__BackingField: "They agreed, we met up, and we bought each other books.
+      I \tstill have mine. Somewhere."
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: 7ca61a56-c700-456a-9518-dba2a59ac576
+    <Name>k__BackingField: Player9
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: ca231721-9e19-4b8e-8687-c1642295a0fa
+    <Position>k__BackingField: {x: 8975, y: 750}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
+    <Text>k__BackingField: "Weren\u2019t you nervous?"
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: b6936956-5272-493f-862e-5900c68c2e7d
+    <Name>k__BackingField: Player11
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: 07d0eaf8-2a9c-494d-99d3-b9dafce9a5e6
+    <Position>k__BackingField: {x: 8975, y: 1200}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
+    <Text>k__BackingField: ...
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: ca231721-9e19-4b8e-8687-c1642295a0fa
+    <Name>k__BackingField: Warsan15
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: 0f7ca580-b181-489c-874f-e2746238026f
+    <Position>k__BackingField: {x: 9275, y: 750}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 42a93fd49028fb743aa99b1e50d959f1, type: 2}
+    <Text>k__BackingField: "Oh SO nervous. I bought them flowers and on my way \t\tthere
+      I tripped and fell over because I was so \t\tdistracted. "
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: 0f7ca580-b181-489c-874f-e2746238026f
+    <Name>k__BackingField: Warsan16
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: 012a71ea-c177-40b8-912f-27732219d6fe
+    <Position>k__BackingField: {x: 9725, y: 750}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 42a93fd49028fb743aa99b1e50d959f1, type: 2}
+    <Text>k__BackingField: Crushed every single one of them.
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: eeba7f2d-b5d5-4027-88ed-3afecd340b60
+    <Name>k__BackingField: Player10
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: f51e1a1a-5a74-4a70-a2cc-2a6f248615b6
+    <Position>k__BackingField: {x: 8975, y: 975}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
+    <Text>k__BackingField: What books did you get each other?
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: f51e1a1a-5a74-4a70-a2cc-2a6f248615b6
+    <Name>k__BackingField: Warsan17
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: f48b3286-7a62-49db-b45d-e4e21268a0e3
+    <Position>k__BackingField: {x: 9425, y: 975}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 42a93fd49028fb743aa99b1e50d959f1, type: 2}
+    <Text>k__BackingField: "Well, we didn\u2019t know much about each other, so we
+      \t\t\twent for \u201Ccoffee table books\u201D. Books you might not \t\t\tactually
+      read, but you like to have them on display."
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: f48b3286-7a62-49db-b45d-e4e21268a0e3
+    <Name>k__BackingField: Warsan18
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: 012a71ea-c177-40b8-912f-27732219d6fe
+    <Position>k__BackingField: {x: 9850, y: 975}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 42a93fd49028fb743aa99b1e50d959f1, type: 2}
+    <Text>k__BackingField: "I got them a book on the history of floral painting.
+      \t\t\tThey got me a book of poems about cats."
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: 012a71ea-c177-40b8-912f-27732219d6fe
+    <Name>k__BackingField: Warsan19
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: 2ecdcd79-b1f5-404e-80f7-f2d79d3f960c
+    <Position>k__BackingField: {x: 10325, y: 750}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 42a93fd49028fb743aa99b1e50d959f1, type: 2}
+    <Text>k__BackingField: "Anyways. Thanks for listening to me. It\u2019s nice to
+      talk \t\tabout Rowan. Do you mind sitting here with me for a bit?"
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: 2ecdcd79-b1f5-404e-80f7-f2d79d3f960c
+    <Name>k__BackingField: Player12
     <NodeType>k__BackingField: 0
     <GroupID>k__BackingField: 
     <Choices>k__BackingField:
     - <Text>k__BackingField: Next Node
       <NodeID>k__BackingField: 
-    <Position>k__BackingField: {x: 1125, y: 500}
+    <Position>k__BackingField: {x: 10775, y: 750}
     <DialogueType>k__BackingField: 0
-    <Character>k__BackingField: {fileID: 11400000, guid: 42a93fd49028fb743aa99b1e50d959f1, type: 2}
-    <Text>k__BackingField: Thank you for placing the bench down. I shall enjoy sitting
-      on it.
+    <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
+    <Text>k__BackingField: Of course.
     <SoundEffect>k__BackingField: {fileID: 0}
     <Delay>k__BackingField: 0
     <Graph>k__BackingField: {fileID: 0}
     <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: 07d0eaf8-2a9c-494d-99d3-b9dafce9a5e6
+    <Name>k__BackingField: EdgeNode07d0eaf8-2a9c-494d-99d3-b9dafce9a5e6
+    <NodeType>k__BackingField: 1
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: 
+      <NodeID>k__BackingField: 012a71ea-c177-40b8-912f-27732219d6fe
+    <Position>k__BackingField: {x: 10225, y: 1200}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 0}
+    <Text>k__BackingField: 
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: 4f784915-3e03-4102-a0e9-7c9910551564
+    <Name>k__BackingField: Warsan20
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: 
+    <Position>k__BackingField: {x: 4925, y: 1000}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 42a93fd49028fb743aa99b1e50d959f1, type: 2}
+    <Text>k__BackingField: "Of course, that\u2019s okay."
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
   <OldGroupNames>k__BackingField: []
   <OldUngroupedNodeNames>k__BackingField:
-  - WarsanQuest1Complete
+  - Warsan1
+  - Player1
+  - Player2
+  - Warsan2
+  - Player3
+  - Warsan3
+  - Player4
+  - Warsan4
+  - Player5
+  - Player6
+  - Warsan5
+  - Player7
+  - Player8
+  - Warsan6
+  - Warsan7
+  - Warsan8
+  - Warsan9
+  - Warsan10
+  - Warsan11
+  - Warsan12
+  - Warsan13
+  - Warsan14
+  - Player9
+  - Player11
+  - Warsan15
+  - Warsan16
+  - Player10
+  - Warsan17
+  - Warsan18
+  - Warsan19
+  - Player12
+  - EdgeNode07d0eaf8-2a9c-494d-99d3-b9dafce9a5e6
+  - Warsan20
   <OldGroupedNodeNames>k__BackingField:
     list: []

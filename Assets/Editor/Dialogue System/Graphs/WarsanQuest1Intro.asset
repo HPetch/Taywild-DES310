@@ -15,6 +15,28 @@ MonoBehaviour:
   <FileName>k__BackingField: 
   <Groups>k__BackingField: []
   <Nodes>k__BackingField:
+  - <ID>k__BackingField: eb257422-d8f0-4a84-b2d4-ef0f8c1bde95
+    <Name>k__BackingField: Warsan1
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: "I\u2019ve been exploring!"
+      <NodeID>k__BackingField: b04c4ed1-0c55-4f74-9184-ac585396d5c4
+    - <Text>k__BackingField: "I\u2019ve been cleaning!"
+      <NodeID>k__BackingField: ba718df6-03e6-48e7-a1ec-0724ae214187
+    - <Text>k__BackingField: "I\u2019ve been decorating!"
+      <NodeID>k__BackingField: 9f7b4ffb-e583-43a8-bf7b-d8eb0805da4b
+    <Position>k__BackingField: {x: 675, y: 650}
+    <DialogueType>k__BackingField: 1
+    <Character>k__BackingField: {fileID: 11400000, guid: 42a93fd49028fb743aa99b1e50d959f1, type: 2}
+    <Text>k__BackingField: 'Hi dear, what have you been up to?
+
+'
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 0
   - <ID>k__BackingField: b04c4ed1-0c55-4f74-9184-ac585396d5c4
     <Name>k__BackingField: Player1
     <NodeType>k__BackingField: 0
@@ -25,66 +47,831 @@ MonoBehaviour:
     <Position>k__BackingField: {x: 1225, y: 650}
     <DialogueType>k__BackingField: 0
     <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
-    <Text>k__BackingField: Yes.
+    <Text>k__BackingField: "I\u2019ve been exploring! Isn\u2019t this place so beautiful?"
     <SoundEffect>k__BackingField: {fileID: 0}
     <Delay>k__BackingField: 0
     <Graph>k__BackingField: {fileID: 0}
     <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 0
   - <ID>k__BackingField: ba718df6-03e6-48e7-a1ec-0724ae214187
     <Name>k__BackingField: Player2
     <NodeType>k__BackingField: 0
     <GroupID>k__BackingField: 
     <Choices>k__BackingField:
     - <Text>k__BackingField: Next Node
-      <NodeID>k__BackingField: 
+      <NodeID>k__BackingField: 4887dad7-54c6-4cb6-afba-aec97b9f038d
     <Position>k__BackingField: {x: 1225, y: 900}
     <DialogueType>k__BackingField: 0
     <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
-    <Text>k__BackingField: No.
+    <Text>k__BackingField: "I\u2019ve been cleaning! It really makes this place feel
+      brighter!"
     <SoundEffect>k__BackingField: {fileID: 0}
     <Delay>k__BackingField: 0
     <Graph>k__BackingField: {fileID: 0}
     <Quest>k__BackingField: 0
-  - <ID>k__BackingField: eb257422-d8f0-4a84-b2d4-ef0f8c1bde95
-    <Name>k__BackingField: Warsan1
+    <QuestState>k__BackingField: 0
+  - <ID>k__BackingField: 9f7b4ffb-e583-43a8-bf7b-d8eb0805da4b
+    <Name>k__BackingField: Player3
     <NodeType>k__BackingField: 0
     <GroupID>k__BackingField: 
     <Choices>k__BackingField:
-    - <Text>k__BackingField: Yes.
-      <NodeID>k__BackingField: b04c4ed1-0c55-4f74-9184-ac585396d5c4
-    - <Text>k__BackingField: No.
-      <NodeID>k__BackingField: ba718df6-03e6-48e7-a1ec-0724ae214187
-    <Position>k__BackingField: {x: 700, y: 650}
-    <DialogueType>k__BackingField: 1
-    <Character>k__BackingField: {fileID: 11400000, guid: 42a93fd49028fb743aa99b1e50d959f1, type: 2}
-    <Text>k__BackingField: Can you do a favour for me? I like to sit at the overhanging
-      branch above me and it would be lovely if there was a bench for me to sit on?
-      Do you think you could make one for me?
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: 4887dad7-54c6-4cb6-afba-aec97b9f038d
+    <Position>k__BackingField: {x: 1225, y: 1150}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
+    <Text>k__BackingField: "I\u2019ve been decorating! It\u2019s brought so much
+      life to this tree of ours."
     <SoundEffect>k__BackingField: {fileID: 0}
     <Delay>k__BackingField: 0
     <Graph>k__BackingField: {fileID: 0}
     <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
   - <ID>k__BackingField: 4887dad7-54c6-4cb6-afba-aec97b9f038d
     <Name>k__BackingField: Warsan2
     <NodeType>k__BackingField: 0
     <GroupID>k__BackingField: 
     <Choices>k__BackingField:
     - <Text>k__BackingField: Next Node
-      <NodeID>k__BackingField: 
-    <Position>k__BackingField: {x: 1575, y: 650}
+      <NodeID>k__BackingField: 997b61ca-43b0-42ee-8d8a-ab2d913caf36
+    <Position>k__BackingField: {x: 1800, y: 650}
     <DialogueType>k__BackingField: 0
     <Character>k__BackingField: {fileID: 11400000, guid: 42a93fd49028fb743aa99b1e50d959f1, type: 2}
-    <Text>k__BackingField: Thank you. You might have to collect more materials to
-      be able to make it.
+    <Text>k__BackingField: "Oh that's great! I\u2019m glad you seem to be settling
+      in well. "
     <SoundEffect>k__BackingField: {fileID: 0}
     <Delay>k__BackingField: 0
     <Graph>k__BackingField: {fileID: 0}
     <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 0
+  - <ID>k__BackingField: 997b61ca-43b0-42ee-8d8a-ab2d913caf36
+    <Name>k__BackingField: Warsan3
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: 92076c20-9529-47db-a74e-dd113678e1ed
+    <Position>k__BackingField: {x: 2225, y: 650}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 42a93fd49028fb743aa99b1e50d959f1, type: 2}
+    <Text>k__BackingField: "You\u2019ve inspired me to explore this place a bit too,
+      I\u2019ve been heading down the branch a lot more often."
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: 92076c20-9529-47db-a74e-dd113678e1ed
+    <Name>k__BackingField: Warsan4
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: 182abc88-0308-4cbd-ae97-530cf148b7c5
+    <Position>k__BackingField: {x: 2650, y: 650}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 42a93fd49028fb743aa99b1e50d959f1, type: 2}
+    <Text>k__BackingField: "The view is gorgeous isn\u2019t it?"
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: 182abc88-0308-4cbd-ae97-530cf148b7c5
+    <Name>k__BackingField: Player4
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: f171bf0c-346a-4ce3-8b73-0a91227211e4
+    <Position>k__BackingField: {x: 2925, y: 650}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
+    <Text>k__BackingField: Yes, it feels vaguely familiar... but I can't place it.
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: f171bf0c-346a-4ce3-8b73-0a91227211e4
+    <Name>k__BackingField: Warsan5
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: 76c79fe0-22e5-4e8e-aa41-43c010bed84d
+    <Position>k__BackingField: {x: 3400, y: 650}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 42a93fd49028fb743aa99b1e50d959f1, type: 2}
+    <Text>k__BackingField: 'Really? It looks almost exactly like The West Agate Valley.
+      I used to visit there a lot with my partner. '
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: 76c79fe0-22e5-4e8e-aa41-43c010bed84d
+    <Name>k__BackingField: Warsan6
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Similar?
+      <NodeID>k__BackingField: f1b9aa22-0a87-45e3-bebe-d77d59c2a269
+    - <Text>k__BackingField: West Agate Valley?
+      <NodeID>k__BackingField: e96cfeb4-4d4e-4f47-9677-7480187a8ae2
+    - <Text>k__BackingField: Partner?
+      <NodeID>k__BackingField: 7d897043-f160-4761-8ea6-fca21ee240d5
+    <Position>k__BackingField: {x: 3875, y: 650}
+    <DialogueType>k__BackingField: 1
+    <Character>k__BackingField: {fileID: 11400000, guid: 42a93fd49028fb743aa99b1e50d959f1, type: 2}
+    <Text>k__BackingField: It's not though - very similar but not exact.
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: e96cfeb4-4d4e-4f47-9677-7480187a8ae2
+    <Name>k__BackingField: Player6
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: 1ebeb6a7-8baa-4f51-ac2f-3853ae0eb447
+    <Position>k__BackingField: {x: 4350, y: 875}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
+    <Text>k__BackingField: West Agate Valley?
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: 7d897043-f160-4761-8ea6-fca21ee240d5
+    <Name>k__BackingField: Player7
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: 893ec32f-a380-4cca-9af1-28068c5dc9c6
+    <Position>k__BackingField: {x: 4350, y: 1100}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
+    <Text>k__BackingField: Partner?
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: f1b9aa22-0a87-45e3-bebe-d77d59c2a269
+    <Name>k__BackingField: Player5
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: 65a70916-1488-48b2-bf48-4125fa8dba88
+    <Position>k__BackingField: {x: 4350, y: 625}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
+    <Text>k__BackingField: Similar?
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: 65a70916-1488-48b2-bf48-4125fa8dba88
+    <Name>k__BackingField: Warsan7
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: f68c0d8e-a958-42ae-8c65-f101f79331ee
+    <Position>k__BackingField: {x: 4675, y: 625}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 42a93fd49028fb743aa99b1e50d959f1, type: 2}
+    <Text>k__BackingField: "Oh just small things, the trees are just a bit too tall,
+      the clouds too low, the mountain just the tiniest bit too short.\r\nOh- and
+      the mine is gone. \r"
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: 1ebeb6a7-8baa-4f51-ac2f-3853ae0eb447
+    <Name>k__BackingField: Warsan9
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: 0f9477fa-239c-4b3c-9eeb-9899c245c4e7
+    <Position>k__BackingField: {x: 4675, y: 875}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 42a93fd49028fb743aa99b1e50d959f1, type: 2}
+    <Text>k__BackingField: 'Yes, it was our favourite spot. We once rented a little
+      cabin right by the old mine. '
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: 0f9477fa-239c-4b3c-9eeb-9899c245c4e7
+    <Name>k__BackingField: Warsan10
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: f1993bca-5800-4495-b8dd-f5e2993b1a55
+    <Position>k__BackingField: {x: 5125, y: 875}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 42a93fd49028fb743aa99b1e50d959f1, type: 2}
+    <Text>k__BackingField: It was totally off the grid - we spent a week sleeping
+      under the glass roof watching the stars and eating freshly roasted nuts and
+      rabbit.
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: 893ec32f-a380-4cca-9af1-28068c5dc9c6
+    <Name>k__BackingField: Warsan11
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: 2f7dc8f9-a491-451a-a110-3d09cd4dcdce
+    <Position>k__BackingField: {x: 4675, y: 1100}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 42a93fd49028fb743aa99b1e50d959f1, type: 2}
+    <Text>k__BackingField: "Rowan. It was a long time ago\u2026 This trip was before
+      we got Jasper so... nine years ago. "
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: 2f7dc8f9-a491-451a-a110-3d09cd4dcdce
+    <Name>k__BackingField: Warsan12
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: a8830cf8-95b3-4ef6-b80b-7f176192b0cf
+    <Position>k__BackingField: {x: 5125, y: 1100}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 42a93fd49028fb743aa99b1e50d959f1, type: 2}
+    <Text>k__BackingField: Yes. Nine years ago.
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: a8830cf8-95b3-4ef6-b80b-7f176192b0cf
+    <Name>k__BackingField: Player8
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: 5d8a059f-72a3-4175-8ae4-88520754fa90
+    <Position>k__BackingField: {x: 5425, y: 1100}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
+    <Text>k__BackingField: "Your partner didn\u2019t come here with you?"
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: 5d8a059f-72a3-4175-8ae4-88520754fa90
+    <Name>k__BackingField: Warsan13
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: I'm sorry.
+      <NodeID>k__BackingField: ba9cd9c5-95eb-4c7c-8469-6da1d9714a64
+    - <Text>k__BackingField: I shoudn't have pried.
+      <NodeID>k__BackingField: 48ddc4a7-41c2-4bc5-ae6e-f39c2a9d8158
+    - <Text>k__BackingField: ...
+      <NodeID>k__BackingField: af9dd11f-9a90-491a-a86e-606b13e29c66
+    <Position>k__BackingField: {x: 5900, y: 1100}
+    <DialogueType>k__BackingField: 1
+    <Character>k__BackingField: {fileID: 11400000, guid: 42a93fd49028fb743aa99b1e50d959f1, type: 2}
+    <Text>k__BackingField: "Oh, they passed away 7 years ago. It\u2019s been just
+      me and Jasp for a little while now."
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: ba9cd9c5-95eb-4c7c-8469-6da1d9714a64
+    <Name>k__BackingField: Player9
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: 8364f226-afca-4059-adc8-f3556dfb4ecb
+    <Position>k__BackingField: {x: 6400, y: 1100}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
+    <Text>k__BackingField: "I\u2019m sorry to hear that."
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: 48ddc4a7-41c2-4bc5-ae6e-f39c2a9d8158
+    <Name>k__BackingField: Player10
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: f885f780-f398-4b53-9e43-3d496e8cf72c
+    <Position>k__BackingField: {x: 6400, y: 1325}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
+    <Text>k__BackingField: "I shouldn\u2019t have pried, I\u2019m sorry."
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: af9dd11f-9a90-491a-a86e-606b13e29c66
+    <Name>k__BackingField: Player11
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: 56fa2be6-2ebd-4632-ace4-6719bff31011
+    <Position>k__BackingField: {x: 6400, y: 1550}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
+    <Text>k__BackingField: ...
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: 8364f226-afca-4059-adc8-f3556dfb4ecb
+    <Name>k__BackingField: Warsan14
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: 70b6e71f-cd48-46f8-9a27-94df7fb32e4a
+    <Position>k__BackingField: {x: 6800, y: 1100}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 42a93fd49028fb743aa99b1e50d959f1, type: 2}
+    <Text>k__BackingField: "Hey, it\u2019s okay. Lil Jasp keeps me company"
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: 70b6e71f-cd48-46f8-9a27-94df7fb32e4a
+    <Name>k__BackingField: Meow
+    <NodeType>k__BackingField: 3
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: 64e9ea65-bc7a-4b18-a2c7-958e762dbc24
+    <Position>k__BackingField: {x: 7275, y: 1100}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 0}
+    <Text>k__BackingField: 
+    <SoundEffect>k__BackingField: {fileID: 8300000, guid: 87a836d0ab2de7249a04709aba2415b0, type: 3}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: 64e9ea65-bc7a-4b18-a2c7-958e762dbc24
+    <Name>k__BackingField: DelayNode
+    <NodeType>k__BackingField: 2
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: 1debf209-26e0-4659-9caa-0fae73c0b652
+    <Position>k__BackingField: {x: 7550, y: 1100}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 0}
+    <Text>k__BackingField: 
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: 1debf209-26e0-4659-9caa-0fae73c0b652
+    <Name>k__BackingField: Jasper1
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: ad9e1cf4-9491-4b2b-b868-752e03bb2c0b
+    <Position>k__BackingField: {x: 7850, y: 1100}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: e38193d3011ede049b94c8d592e6af09, type: 2}
+    <Text>k__BackingField: meow.
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: f885f780-f398-4b53-9e43-3d496e8cf72c
+    <Name>k__BackingField: Warsan15
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: 9a92bcee-6137-46ca-af8d-223f6bbba716
+    <Position>k__BackingField: {x: 6825, y: 1325}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 42a93fd49028fb743aa99b1e50d959f1, type: 2}
+    <Text>k__BackingField: "Hey, it\u2019s okay. If you had crossed a boundary I
+      would have let you know about it."
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: 9a92bcee-6137-46ca-af8d-223f6bbba716
+    <Name>k__BackingField: Warsan16
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Sure.
+      <NodeID>k__BackingField: 2233ad65-643b-4a7c-aead-725b3a47f9c4
+    - <Text>k__BackingField: What am I promising?
+      <NodeID>k__BackingField: ee058944-e1ed-4d49-bbc5-f7a5259d5795
+    <Position>k__BackingField: {x: 7275, y: 1325}
+    <DialogueType>k__BackingField: 1
+    <Character>k__BackingField: {fileID: 11400000, guid: 42a93fd49028fb743aa99b1e50d959f1, type: 2}
+    <Text>k__BackingField: Can you promise me something?
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: 2233ad65-643b-4a7c-aead-725b3a47f9c4
+    <Name>k__BackingField: Player12
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: c7269795-dd8e-45a8-a7c9-fcd4f29755f5
+    <Position>k__BackingField: {x: 7725, y: 1325}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
+    <Text>k__BackingField: Sure.
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: ee058944-e1ed-4d49-bbc5-f7a5259d5795
+    <Name>k__BackingField: Player13
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: c7269795-dd8e-45a8-a7c9-fcd4f29755f5
+    <Position>k__BackingField: {x: 7725, y: 1575}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
+    <Text>k__BackingField: What am I promising?
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: c7269795-dd8e-45a8-a7c9-fcd4f29755f5
+    <Name>k__BackingField: Warsan17
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: a16e37f3-0230-4a37-ae91-d320203c7a0c
+    <Position>k__BackingField: {x: 8025, y: 1325}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 42a93fd49028fb743aa99b1e50d959f1, type: 2}
+    <Text>k__BackingField: "If I ever cross a boundary or make you uncomfortable,
+      I\u2019d like you to tell me."
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: a16e37f3-0230-4a37-ae91-d320203c7a0c
+    <Name>k__BackingField: Warsan18
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Good idea.
+      <NodeID>k__BackingField: 43116ea5-09e7-4949-ba63-064433b0bc61
+    - <Text>k__BackingField: I think I can do that.
+      <NodeID>k__BackingField: 07315517-5169-4a94-8972-b95e5df40471
+    <Position>k__BackingField: {x: 8450, y: 1325}
+    <DialogueType>k__BackingField: 1
+    <Character>k__BackingField: {fileID: 11400000, guid: 42a93fd49028fb743aa99b1e50d959f1, type: 2}
+    <Text>k__BackingField: "I\u2019ll do the same for you."
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: 43116ea5-09e7-4949-ba63-064433b0bc61
+    <Name>k__BackingField: Player14
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: ad9e1cf4-9491-4b2b-b868-752e03bb2c0b
+    <Position>k__BackingField: {x: 8800, y: 1325}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
+    <Text>k__BackingField: That sounds like a good idea.
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: 07315517-5169-4a94-8972-b95e5df40471
+    <Name>k__BackingField: Player15
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: ad9e1cf4-9491-4b2b-b868-752e03bb2c0b
+    <Position>k__BackingField: {x: 8800, y: 1550}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
+    <Text>k__BackingField: ' I think I can do that.'
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: ad9e1cf4-9491-4b2b-b868-752e03bb2c0b
+    <Name>k__BackingField: Warsan19
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: 27a74452-e674-42af-8407-fb2c9e9a127f
+    <Position>k__BackingField: {x: 9125, y: 1325}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 42a93fd49028fb743aa99b1e50d959f1, type: 2}
+    <Text>k__BackingField: 'Anyways... I really like going out and looking out over
+      the valley. It feels peaceful. '
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: 27a74452-e674-42af-8407-fb2c9e9a127f
+    <Name>k__BackingField: Warsan20
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: fc2facb8-9ffe-492b-b02a-2e72888521a2
+    <Position>k__BackingField: {x: 9575, y: 1325}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 42a93fd49028fb743aa99b1e50d959f1, type: 2}
+    <Text>k__BackingField: "Once we got Jasper, Rowan got too sick so we didn\u2019t
+      get to go on our usual adventures. "
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: fc2facb8-9ffe-492b-b02a-2e72888521a2
+    <Name>k__BackingField: Warsan21
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: 66b7a2c3-e9aa-4476-9d46-fcdb2dff3d9d
+    <Position>k__BackingField: {x: 10050, y: 1325}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 42a93fd49028fb743aa99b1e50d959f1, type: 2}
+    <Text>k__BackingField: 'Jasp never got a chance to see the Agate Valley but I
+      think he knows it is important to me, he naps there a lot. '
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: 66b7a2c3-e9aa-4476-9d46-fcdb2dff3d9d
+    <Name>k__BackingField: Warsan22
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: cba7045a-16f9-4d65-b202-49810cbba8ee
+    <Position>k__BackingField: {x: 10525, y: 1325}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 42a93fd49028fb743aa99b1e50d959f1, type: 2}
+    <Text>k__BackingField: "It\u2019s not very comfortable though, standing on the
+      branch, so I usually don't stay very long."
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: cba7045a-16f9-4d65-b202-49810cbba8ee
+    <Name>k__BackingField: Player16
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: 9d04fbbc-549d-4f4f-ae5d-20e6dcade3b8
+    <Position>k__BackingField: {x: 10975, y: 1325}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
+    <Text>k__BackingField: I'm pretty sure I could craft a bench out of some wood,
+      I'll use sap to glue it together, and some leaves to make it comfy.
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: 9d04fbbc-549d-4f4f-ae5d-20e6dcade3b8
+    <Name>k__BackingField: Warsan23
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: 1cfeb569-27c4-47db-8b50-2cef1a4ec7a7
+    <Position>k__BackingField: {x: 11400, y: 1325}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 42a93fd49028fb743aa99b1e50d959f1, type: 2}
+    <Text>k__BackingField: "I\u2019ll put some extra padding in for Jasp."
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: 1cfeb569-27c4-47db-8b50-2cef1a4ec7a7
+    <Name>k__BackingField: Warsan24
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: 37712c7f-20bb-42f9-a583-c90825555575
+    <Position>k__BackingField: {x: 11850, y: 1325}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 42a93fd49028fb743aa99b1e50d959f1, type: 2}
+    <Text>k__BackingField: 'Oh wow, that would mean so much to me! '
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: 37712c7f-20bb-42f9-a583-c90825555575
+    <Name>k__BackingField: Warsan25
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: be0d20e7-05ed-4418-818d-c1c012781e48
+    <Position>k__BackingField: {x: 12300, y: 1325}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 42a93fd49028fb743aa99b1e50d959f1, type: 2}
+    <Text>k__BackingField: "Can I ask one thing - I like to go out at night when
+      I can\u2019t sleep, but it's very dark and a little spooky. "
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: be0d20e7-05ed-4418-818d-c1c012781e48
+    <Name>k__BackingField: Warsan26
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: 3c22bf90-a18f-4738-a2bd-e45ee14847af
+    <Position>k__BackingField: {x: 12750, y: 1325}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 42a93fd49028fb743aa99b1e50d959f1, type: 2}
+    <Text>k__BackingField: Do you think you might be able to craft a lamp to go next
+      to the bench? Here, take this recipe I found a while ago.
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: 3c22bf90-a18f-4738-a2bd-e45ee14847af
+    <Name>k__BackingField: Player17
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: 
+    <Position>k__BackingField: {x: 13225, y: 1325}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
+    <Text>k__BackingField: Of course!
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: 56fa2be6-2ebd-4632-ace4-6719bff31011
+    <Name>k__BackingField: EdgeNode56fa2be6-2ebd-4632-ace4-6719bff31011
+    <NodeType>k__BackingField: 1
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: 
+      <NodeID>k__BackingField: ad9e1cf4-9491-4b2b-b868-752e03bb2c0b
+    <Position>k__BackingField: {x: 8975, y: 2025}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 0}
+    <Text>k__BackingField: 
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: f68c0d8e-a958-42ae-8c65-f101f79331ee
+    <Name>k__BackingField: Warsan8
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: f1993bca-5800-4495-b8dd-f5e2993b1a55
+    <Position>k__BackingField: {x: 5125, y: 625}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 42a93fd49028fb743aa99b1e50d959f1, type: 2}
+    <Text>k__BackingField: There used to be a mine entrance on the south-west face,
+      in its place is a tall cliff.
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: f1993bca-5800-4495-b8dd-f5e2993b1a55
+    <Name>k__BackingField: EdgeNodef1993bca-5800-4495-b8dd-f5e2993b1a55
+    <NodeType>k__BackingField: 1
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: 
+      <NodeID>k__BackingField: 7d897043-f160-4761-8ea6-fca21ee240d5
+    <Position>k__BackingField: {x: 5600, y: 750}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 0}
+    <Text>k__BackingField: 
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
   <OldGroupNames>k__BackingField: []
   <OldUngroupedNodeNames>k__BackingField:
+  - Warsan1
   - Player1
   - Player2
-  - Warsan1
+  - Player3
   - Warsan2
+  - Warsan3
+  - Warsan4
+  - Player4
+  - Warsan5
+  - Warsan6
+  - Player6
+  - Player7
+  - Player5
+  - Warsan7
+  - Warsan9
+  - Warsan10
+  - Warsan11
+  - Warsan12
+  - Player8
+  - Warsan13
+  - Player9
+  - Player10
+  - Player11
+  - Warsan14
+  - Meow
+  - DelayNode
+  - Jasper1
+  - Warsan15
+  - Warsan16
+  - Player12
+  - Player13
+  - Warsan17
+  - Warsan18
+  - Player14
+  - Player15
+  - Warsan19
+  - Warsan20
+  - Warsan21
+  - Warsan22
+  - Player16
+  - Warsan23
+  - Warsan24
+  - Warsan25
+  - Warsan26
+  - Player17
+  - EdgeNode56fa2be6-2ebd-4632-ace4-6719bff31011
+  - Warsan8
+  - EdgeNodef1993bca-5800-4495-b8dd-f5e2993b1a55
   <OldGroupedNodeNames>k__BackingField:
     list: []

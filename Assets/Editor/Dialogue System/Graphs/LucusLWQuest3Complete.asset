@@ -15,24 +15,268 @@ MonoBehaviour:
   <FileName>k__BackingField: 
   <Groups>k__BackingField: []
   <Nodes>k__BackingField:
+  - <ID>k__BackingField: 2c13028c-5e0d-4a90-b680-ba9328654d19
+    <Name>k__BackingField: Player1
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: 86636ffa-35fb-4181-b788-0a6498ecf7af
+    <Position>k__BackingField: {x: 2375, y: -250}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
+    <Text>k__BackingField: I dropped off the basket to Warsan!
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
   - <ID>k__BackingField: 86636ffa-35fb-4181-b788-0a6498ecf7af
-    <Name>k__BackingField: Lucus
+    <Name>k__BackingField: Lucus1
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: 3707690d-6e83-4b89-9b7d-1541c77592fa
+    <Position>k__BackingField: {x: 2800, y: -250}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 49268ee1c8a3bee44b0063741027d804, type: 2}
+    <Text>k__BackingField: Good. What did she say?
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 0
+  - <ID>k__BackingField: 3707690d-6e83-4b89-9b7d-1541c77592fa
+    <Name>k__BackingField: Player2
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: 02775ead-50bc-4834-b419-0747baa25b6b
+    <Position>k__BackingField: {x: 3100, y: -250}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
+    <Text>k__BackingField: "She laughed and said, \u201CThat is the most brilliant
+      idea, tell him I accept his proposal.\u201D\r"
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: 02775ead-50bc-4834-b419-0747baa25b6b
+    <Name>k__BackingField: Lucus2
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: What is so funny??
+      <NodeID>k__BackingField: 2a305aee-cd2e-4dc5-b2d0-dc4d01a8f116
+    - <Text>k__BackingField: "She wouldn\u2019t tell me anymore\u2026 "
+      <NodeID>k__BackingField: fbd2f4e2-f9be-48eb-8561-e101f4f33c43
+    <Position>k__BackingField: {x: 3525, y: -250}
+    <DialogueType>k__BackingField: 1
+    <Character>k__BackingField: {fileID: 11400000, guid: 49268ee1c8a3bee44b0063741027d804, type: 2}
+    <Text>k__BackingField: "Heh heh. Good.\r"
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: 2a305aee-cd2e-4dc5-b2d0-dc4d01a8f116
+    <Name>k__BackingField: Player3
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: fe67998f-5d23-473c-addc-915bef9b27f7
+    <Position>k__BackingField: {x: 3925, y: -250}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
+    <Text>k__BackingField: What is so funny??
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: fbd2f4e2-f9be-48eb-8561-e101f4f33c43
+    <Name>k__BackingField: Player4
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: 4d4dc7e2-3cc0-406f-99ce-d1cf331732d7
+    <Position>k__BackingField: {x: 3925, y: 0}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
+    <Text>k__BackingField: "She wouldn\u2019t tell me anymore\u2026 "
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: fe67998f-5d23-473c-addc-915bef9b27f7
+    <Name>k__BackingField: Player5
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: 46924924-8b94-4d8c-b44b-abdaa3e1ca46
+    <Position>k__BackingField: {x: 4250, y: -250}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
+    <Text>k__BackingField: "I\u2019ve never heard you laugh before\u2026"
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: 46924924-8b94-4d8c-b44b-abdaa3e1ca46
+    <Name>k__BackingField: Lucus3
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: 529cf610-ad2b-4b1b-aa9a-15ab4fd56df2
+    <Position>k__BackingField: {x: 4675, y: -250}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 49268ee1c8a3bee44b0063741027d804, type: 2}
+    <Text>k__BackingField: We all have surprises.
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: 529cf610-ad2b-4b1b-aa9a-15ab4fd56df2
+    <Name>k__BackingField: Lucus4
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: 49925270-cf52-4411-839d-8894143fa013
+    <Position>k__BackingField: {x: 4975, y: -250}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 49268ee1c8a3bee44b0063741027d804, type: 2}
+    <Text>k__BackingField: ...
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: 49925270-cf52-4411-839d-8894143fa013
+    <Name>k__BackingField: Lucus5
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: a1c1d797-5e4b-4cc7-85a2-808e9ac7a182
+    <Position>k__BackingField: {x: 5275, y: -250}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 49268ee1c8a3bee44b0063741027d804, type: 2}
+    <Text>k__BackingField: You will find out what it is in time.
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: 4d4dc7e2-3cc0-406f-99ce-d1cf331732d7
+    <Name>k__BackingField: Player6
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: 06405ab6-1fb3-44b3-a16f-56497d4e5658
+    <Position>k__BackingField: {x: 4375, y: 0}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
+    <Text>k__BackingField: "Both you and her are being so mysterious\u2026"
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: 06405ab6-1fb3-44b3-a16f-56497d4e5658
+    <Name>k__BackingField: Lucus6
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: a1c1d797-5e4b-4cc7-85a2-808e9ac7a182
+    <Position>k__BackingField: {x: 4825, y: 0}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 49268ee1c8a3bee44b0063741027d804, type: 2}
+    <Text>k__BackingField: 'We are simply forming a friendship, and you are its intermediary.
+
+'
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: a1c1d797-5e4b-4cc7-85a2-808e9ac7a182
+    <Name>k__BackingField: Lucus7
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: 23f1cf5c-dd76-4717-b8bd-e73591732ff7
+    <Position>k__BackingField: {x: 5750, y: -250}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 49268ee1c8a3bee44b0063741027d804, type: 2}
+    <Text>k__BackingField: I have invited Warsan to my greenhouse, when she is around,
+      we will then share our secret with you.
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: 23f1cf5c-dd76-4717-b8bd-e73591732ff7
+    <Name>k__BackingField: Player7
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: f6525996-9ecd-4596-9f11-744371ffcda1
+    <Position>k__BackingField: {x: 6225, y: -250}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
+    <Text>k__BackingField: "Still so cryptic\u2026"
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: f6525996-9ecd-4596-9f11-744371ffcda1
+    <Name>k__BackingField: Player8
     <NodeType>k__BackingField: 0
     <GroupID>k__BackingField: 
     <Choices>k__BackingField:
     - <Text>k__BackingField: Next Node
       <NodeID>k__BackingField: 
-    <Position>k__BackingField: {x: 2666, y: -252}
+    <Position>k__BackingField: {x: 6550, y: -250}
     <DialogueType>k__BackingField: 0
-    <Character>k__BackingField: {fileID: 11400000, guid: 49268ee1c8a3bee44b0063741027d804, type: 2}
-    <Text>k__BackingField: 'Did you drop off the ingredients? Thank you, I hope she
-      liked them. '
+    <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
+    <Text>k__BackingField: 'But fine! I will wait patiently for that time. '
     <SoundEffect>k__BackingField: {fileID: 0}
     <Delay>k__BackingField: 0
     <Graph>k__BackingField: {fileID: 0}
     <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
   <OldGroupNames>k__BackingField: []
   <OldUngroupedNodeNames>k__BackingField:
-  - Lucus
+  - Player1
+  - Lucus1
+  - Player2
+  - Lucus2
+  - Player3
+  - Player4
+  - Player5
+  - Lucus3
+  - Lucus4
+  - Lucus5
+  - Player6
+  - Lucus6
+  - Lucus7
+  - Player7
+  - Player8
   <OldGroupedNodeNames>k__BackingField:
     list: []

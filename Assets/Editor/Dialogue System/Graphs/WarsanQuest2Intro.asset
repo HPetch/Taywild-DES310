@@ -15,40 +15,23 @@ MonoBehaviour:
   <FileName>k__BackingField: 
   <Groups>k__BackingField: []
   <Nodes>k__BackingField:
-  - <ID>k__BackingField: 7a18447c-36c7-4b46-b249-825f6cbda8a4
-    <Name>k__BackingField: Warsan1
-    <NodeType>k__BackingField: 0
-    <GroupID>k__BackingField: 
-    <Choices>k__BackingField:
-    - <Text>k__BackingField: Yes.
-      <NodeID>k__BackingField: 4d99693f-9594-4979-a76b-d8c1158e4788
-    - <Text>k__BackingField: No.
-      <NodeID>k__BackingField: 4e7be0c7-06a8-400b-9792-77331a20efbe
-    <Position>k__BackingField: {x: 875, y: 400}
-    <DialogueType>k__BackingField: 1
-    <Character>k__BackingField: {fileID: 11400000, guid: 42a93fd49028fb743aa99b1e50d959f1, type: 2}
-    <Text>k__BackingField: "Hello again, can I ask you to make something else for
-      me?\r"
-    <SoundEffect>k__BackingField: {fileID: 0}
-    <Delay>k__BackingField: 0
-    <Graph>k__BackingField: {fileID: 0}
-    <Quest>k__BackingField: 0
   - <ID>k__BackingField: e56ca3de-5ae6-45a7-8aa4-bb903c4005ab
     <Name>k__BackingField: Warsan2
     <NodeType>k__BackingField: 0
     <GroupID>k__BackingField: 
     <Choices>k__BackingField:
     - <Text>k__BackingField: Next Node
-      <NodeID>k__BackingField: 
+      <NodeID>k__BackingField: e22d718a-719f-4f90-b4c7-87e1f9155f7b
     <Position>k__BackingField: {x: 1700, y: 400}
     <DialogueType>k__BackingField: 0
     <Character>k__BackingField: {fileID: 11400000, guid: 42a93fd49028fb743aa99b1e50d959f1, type: 2}
-    <Text>k__BackingField: "On Lucus\u2019s branch, there is a small area above the
-      ruins. Can you build a log planter for me? \r"
+    <Text>k__BackingField: 'I got this recipe for a log planter, and I think Jasper
+      will love it. '
     <SoundEffect>k__BackingField: {fileID: 0}
     <Delay>k__BackingField: 0
     <Graph>k__BackingField: {fileID: 0}
     <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 0
   - <ID>k__BackingField: 4d99693f-9594-4979-a76b-d8c1158e4788
     <Name>k__BackingField: Player1
     <NodeType>k__BackingField: 0
@@ -59,31 +42,67 @@ MonoBehaviour:
     <Position>k__BackingField: {x: 1375, y: 400}
     <DialogueType>k__BackingField: 0
     <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
-    <Text>k__BackingField: Yes.
+    <Text>k__BackingField: "What\u2019s up?"
     <SoundEffect>k__BackingField: {fileID: 0}
     <Delay>k__BackingField: 0
     <Graph>k__BackingField: {fileID: 0}
     <Quest>k__BackingField: 0
-  - <ID>k__BackingField: 4e7be0c7-06a8-400b-9792-77331a20efbe
+    <QuestState>k__BackingField: 0
+  - <ID>k__BackingField: e7ae1801-50e4-4cd9-8eb7-a3ef1c7cafb5
+    <Name>k__BackingField: Warsan1
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: 4d99693f-9594-4979-a76b-d8c1158e4788
+    <Position>k__BackingField: {x: 850, y: 400}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 42a93fd49028fb743aa99b1e50d959f1, type: 2}
+    <Text>k__BackingField: Hi friend! I have a favour to ask.
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: e22d718a-719f-4f90-b4c7-87e1f9155f7b
+    <Name>k__BackingField: Warsan3
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: b91b84a9-3f4c-48c9-9c39-fd88f11dc617
+    <Position>k__BackingField: {x: 2150, y: 400}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 42a93fd49028fb743aa99b1e50d959f1, type: 2}
+    <Text>k__BackingField: "Do you think you could craft it for me? And place it
+      wherever you want. I\u2019m hoping it\u2019ll encourage him to forage a bit."
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: b91b84a9-3f4c-48c9-9c39-fd88f11dc617
     <Name>k__BackingField: Player2
     <NodeType>k__BackingField: 0
     <GroupID>k__BackingField: 
     <Choices>k__BackingField:
     - <Text>k__BackingField: Next Node
       <NodeID>k__BackingField: 
-    <Position>k__BackingField: {x: 1375, y: 675}
+    <Position>k__BackingField: {x: 2575, y: 400}
     <DialogueType>k__BackingField: 0
     <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
-    <Text>k__BackingField: No.
+    <Text>k__BackingField: "Of course! I'll let you know when I\u2019m done."
     <SoundEffect>k__BackingField: {fileID: 0}
     <Delay>k__BackingField: 0
     <Graph>k__BackingField: {fileID: 0}
     <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
   <OldGroupNames>k__BackingField: []
   <OldUngroupedNodeNames>k__BackingField:
-  - Warsan1
   - Warsan2
   - Player1
+  - Warsan1
+  - Warsan3
   - Player2
   <OldGroupedNodeNames>k__BackingField:
     list: []
