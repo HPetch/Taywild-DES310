@@ -195,15 +195,30 @@ public class PickupObject : MonoBehaviour
             
             spriteRef.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1);
         }
+        // If the player walks out of range of the pickup object or enters a house
         else
         {
+            // Disables the pickup collider preventing the player from interacting with the object
             GetComponent<BoxCollider2D>().enabled = false;
+            
+            // Change to a thin outline to displayer the object being disabled to the player, but still has a thin outline to show it is an interactable object.
             spriteRef.GetComponent<SpriteRenderer>().material = outRangeMaterial;
 
-            if (PlayerController.Instance.CurrentHouse || PlayerController.Instance.CurrentHouse != null) spriteRef.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0.25f);
+            // Ensure that no pickup object is being held
+            if (health > 0 && isBeingPulled) CancelPull();
+            
+            if (PlayerController.Instance.CurrentHouse || PlayerController.Instance.CurrentHouse != null)
+            {
+                // While cancel pull above should prevent pickup object being destroyed when entering a house it can be done so this is here to ensure the pickup object is destroyed properly
+                if(health == 0) spriteRef.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0);
+                
+                // If pickup object isn't destroyed and player is inside house then become mostly translucent
+                else spriteRef.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0.25f);
+            }
+                
+            // After leaving a house ensures that the pickup object is colored correctly
             else if (health > 0) spriteRef.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1);
-            if (health > 0) CancelPull();
-            else spriteRef.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0);
+            
         }
         
 
