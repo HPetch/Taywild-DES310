@@ -70,7 +70,7 @@ public class DecorationCraftMenu : MonoBehaviour
         }
 
 
-        RebuildFurnitureMenu(DecorationController.UiFurnitureCategories.FURNITURE);
+        RebuildFurnitureMenu(DecorationController.UiFurnitureCategories.DECORATION);
 
         //Get drawerTransform
         drawerTransform = drawer.GetComponent<RectTransform>();
