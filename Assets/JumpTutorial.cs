@@ -59,13 +59,27 @@ public class JumpTutorial : MonoBehaviour
         LeanTween.scale(jumpPrompt.gameObject, Vector3.one, duration / 12).setEase(buttonReleaseEase);
 
         //Move player up
-        LeanTween.moveY(player, playerEnd, duration).setEase(playerMoveEase).setOnComplete(Move2);
+        LeanTween.moveY(player, playerEnd, duration / 2).setEase(playerMoveEase).setOnComplete(Move2);
     }
 
     private void Move2()
     {
-        //Move player down
-        LeanTween.moveY(player, playerStart.y, duration/2).setEase(playerFallEase).setOnComplete(Move1);
+        //Move player down halfway
+        LeanTween.moveY(player, playerEnd/1.5f, duration/4).setEase(playerFallEase).setOnComplete(Move3);
+    }
+
+    private void Move3()
+    {
+        //Double jump
+        LeanTween.scale(jumpPrompt.gameObject, shrinkVector, duration / 4).setEase(buttonPressEase).setDelay(duration / 4); //Wait for button to tween and then pop it up again (tapping button)
+        LeanTween.scale(jumpPrompt.gameObject, Vector3.one, duration / 12).setEase(buttonReleaseEase);
+
+        LeanTween.moveY(player, playerEnd+50, duration/2).setEase(playerMoveEase).setOnComplete(Move4);
+    }
+    private void Move4()
+    {
+        //Move player down to reset
+        LeanTween.moveY(player, playerStart.y, duration / 2).setEase(playerFallEase).setOnComplete(Move1);
     }
     #endregion
 }
