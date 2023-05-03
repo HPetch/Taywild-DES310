@@ -58,7 +58,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 9f52b5354276c4447adb1a8dc0d2f90a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -137,6 +137,8 @@ MonoBehaviour:
   <UiName>k__BackingField: NaN
   <UiImage>k__BackingField: {fileID: 0}
   <UiFurnitureCategory>k__BackingField: 0
+  PlacementRequireOnePoint: 0
+  normalModeMaterial: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!1 &4637515757402210687
 GameObject:
   m_ObjectHideFlags: 0
