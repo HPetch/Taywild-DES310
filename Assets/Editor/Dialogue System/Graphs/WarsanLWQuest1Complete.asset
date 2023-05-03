@@ -15,24 +15,113 @@ MonoBehaviour:
   <FileName>k__BackingField: 
   <Groups>k__BackingField: []
   <Nodes>k__BackingField:
+  - <ID>k__BackingField: 22c65e2d-c461-4ab2-b94d-d0d8f06da173
+    <Name>k__BackingField: Player1
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: 17914eda-5de6-46ad-86ba-f65a6e5f3f7d
+    <Position>k__BackingField: {x: 475, y: -375}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
+    <Text>k__BackingField: Hey Warsan! I went to the greenhouse.
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
   - <ID>k__BackingField: 17914eda-5de6-46ad-86ba-f65a6e5f3f7d
-    <Name>k__BackingField: Warsan
+    <Name>k__BackingField: Warsan1
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: 669b6538-23dd-4027-98b8-0add2427a77a
+    <Position>k__BackingField: {x: 975, y: -375}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 42a93fd49028fb743aa99b1e50d959f1, type: 2}
+    <Text>k__BackingField: Oh? And what did you find?
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 0
+  - <ID>k__BackingField: 669b6538-23dd-4027-98b8-0add2427a77a
+    <Name>k__BackingField: Player2
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: d60ee7bd-372a-4844-b567-1afeada76bae
+    <Position>k__BackingField: {x: 1300, y: -375}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
+    <Text>k__BackingField: Someone lives there! His name is Lucus, he is quite nervous
+      but friendly.
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: d60ee7bd-372a-4844-b567-1afeada76bae
+    <Name>k__BackingField: Warsan2
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: 6f51f52d-9e1b-4a67-865e-ff6c29ecc919
+    <Position>k__BackingField: {x: 1725, y: -375}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 42a93fd49028fb743aa99b1e50d959f1, type: 2}
+    <Text>k__BackingField: "So someone does live in the greenhouse\u2026 What an
+      odd fellow this Lucus sounds. I\u2019ll have to visit him sometime\u2026"
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: 6f51f52d-9e1b-4a67-865e-ff6c29ecc919
+    <Name>k__BackingField: Player3
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: 512e7d14-a00b-4a47-99c2-9e58ac7af53f
+    <Position>k__BackingField: {x: 2200, y: -375}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
+    <Text>k__BackingField: "He is quite nervous about visitors, afraid of \u2018rot\u2019,
+      so I would be cautious. "
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: 512e7d14-a00b-4a47-99c2-9e58ac7af53f
+    <Name>k__BackingField: Warsan3
     <NodeType>k__BackingField: 0
     <GroupID>k__BackingField: 
     <Choices>k__BackingField:
     - <Text>k__BackingField: Next Node
       <NodeID>k__BackingField: 
-    <Position>k__BackingField: {x: 1031, y: -360}
+    <Position>k__BackingField: {x: 2650, y: -375}
     <DialogueType>k__BackingField: 0
     <Character>k__BackingField: {fileID: 11400000, guid: 42a93fd49028fb743aa99b1e50d959f1, type: 2}
-    <Text>k__BackingField: "So someone does live in the greenhouse\u2026 What an
-      odd fellow he sounds. I\u2019ll have to visit him sometime.\r"
+    <Text>k__BackingField: I see. Well perhaps I will bake him something instead.
+      Thank you anyway!
     <SoundEffect>k__BackingField: {fileID: 0}
     <Delay>k__BackingField: 0
     <Graph>k__BackingField: {fileID: 0}
     <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
   <OldGroupNames>k__BackingField: []
   <OldUngroupedNodeNames>k__BackingField:
-  - Warsan
+  - Player1
+  - Warsan1
+  - Player2
+  - Warsan2
+  - Player3
+  - Warsan3
   <OldGroupedNodeNames>k__BackingField:
     list: []
