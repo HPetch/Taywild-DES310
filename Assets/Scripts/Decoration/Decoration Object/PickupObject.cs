@@ -4,7 +4,6 @@
 /// 2 variants, Pickup Object low health no collision, Pickup Block Object high health collides with player
 /// Once destroyed the items the pickup object contained is added to the Inventory Controller
 
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class PickupObject : MonoBehaviour

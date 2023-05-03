@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -114,6 +113,12 @@ public class FurnitureObject : DecorationObject
         }
         
         
+    }
+
+    private void OnDestroy()
+    {
+        DecorationController.Instance.OnEnterEditMode -= DisplayOutline;
+        DecorationController.Instance.OnExitEditMode -= HideOutline;
     }
 
 }
