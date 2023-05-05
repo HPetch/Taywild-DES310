@@ -95,6 +95,7 @@ public class DialogueController : MonoBehaviour
     /// </summary>
     private void Update()
     {
+        if (!IsConversing) return;
         if (!canDisplayNext) return;
 
         if (Input.GetMouseButtonDown(0))
@@ -246,15 +247,14 @@ public class DialogueController : MonoBehaviour
             default:
                 yield break;
         }
-
-        yield return null;
     }
 
     // Displays the next conversation event
     private void DisplayNext(int _buttonIndex = 0)
     {
-        if (Time.time - timeOfLastDisplayNext < 0.2f) return;
+        if (!IsConversing) return;
 
+        if (Time.time - timeOfLastDisplayNext < 0.2f) return;
         timeOfLastDisplayNext = Time.time;
 
         // If the text type is not complete, stop that coroutine and display they final result
@@ -424,13 +424,6 @@ public class DialogueController : MonoBehaviour
     private void EndConversation()
     {
         IsConversing = false;
-
-        if (textType != null)
-        {
-            StopCoroutine(textType);
-            textType = null;
-        }
-
         OnConversationEnd?.Invoke();
     }
 

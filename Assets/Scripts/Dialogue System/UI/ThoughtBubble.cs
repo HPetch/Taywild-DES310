@@ -1,8 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using DialogueSystem.Data;
+using UnityEngine.UI;
 
 public class ThoughtBubble : MonoBehaviour
 {
@@ -28,6 +27,8 @@ public class ThoughtBubble : MonoBehaviour
     [SerializeField] private float thoughtBubbleTransitionTime = 0.25f;
 
     private float sineWaveOffset = 0.0f;
+
+    [SerializeField] private Button button = null;
     #endregion
 
     #region Methods
@@ -44,6 +45,8 @@ public class ThoughtBubble : MonoBehaviour
         smallBubbleRect.sizeDelta = Vector2.zero;
 
         text.SetText("");
+
+        button.interactable = false;
     }
     #endregion
 
@@ -72,6 +75,7 @@ public class ThoughtBubble : MonoBehaviour
             {
                 LeanTween.size(thoughtBubbleRect, thoughtBubbleSize, thoughtBubbleTransitionTime);
                 AudioController.Instance.PlaySound(thoughtBubbleClip, true);
+                button.interactable = true;
             });
         });
     }
@@ -79,6 +83,7 @@ public class ThoughtBubble : MonoBehaviour
     public void TransitionOut()
     {
         IsOpen = false;
+        button.interactable = false;
 
         CancelLeanTween();
 

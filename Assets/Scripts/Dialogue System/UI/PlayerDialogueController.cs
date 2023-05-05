@@ -103,8 +103,11 @@ public class PlayerDialogueController : CharacterCanvas
 
     public void OnThoughtBubblePressed(int _chosenThought)
     {
-        if (!ThoughtBubbleTransitionComplete) return;
+        if (!IsThoughtBubblesOpen) return;
 
+        if (!ThoughtBubbleTransitionComplete) return;
+        if (!DialogueController.Instance.IsConversing) return;
+        
         DialogueController.Instance.BranchButton(_chosenThought);
     }
     #endregion

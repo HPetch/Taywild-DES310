@@ -39,7 +39,12 @@ public class InteractableCharacter : CharacterCanvas
         if (isPlayerWithinInteractionDistance && Input.GetButtonDown("Interact") && !DialogueController.Instance.IsConversing && !DecorationController.Instance.isEditMode)
         {
             DialogueController.Instance.TriggerConversation(dialogueGraph, this);
-            interactCanvasGroup.alpha = 0;
+            LeanTween.alphaCanvas(interactCanvasGroup, 0, 0.15f);
+        }
+
+        if (isPlayerWithinInteractionDistance && !DialogueController.Instance.IsConversing && !DecorationController.Instance.isEditMode && interactCanvasGroup.alpha == 0)
+        {
+            LeanTween.alphaCanvas(interactCanvasGroup, 1, 0.15f);
         }
     }
 
@@ -87,7 +92,7 @@ public class InteractableCharacter : CharacterCanvas
     {
         if (collision.CompareTag("Player") && !DialogueController.Instance.IsConversing)
         {
-            interactCanvasGroup.alpha = 1;
+            LeanTween.alphaCanvas(interactCanvasGroup, 1, 0.15f);
             isPlayerWithinInteractionDistance = true;
         }
     }
@@ -96,7 +101,7 @@ public class InteractableCharacter : CharacterCanvas
     {
         if (collision.CompareTag("Player") && !DialogueController.Instance.IsConversing)
         {
-            interactCanvasGroup.alpha = 0;
+            LeanTween.alphaCanvas(interactCanvasGroup, 0, 0.15f);
             isPlayerWithinInteractionDistance = false;
         }
     }
