@@ -10,11 +10,14 @@ public class TutorialSign : MonoBehaviour
     [SerializeField] private GameObject leftPage;
     [SerializeField] private GameObject rightPage;
 
-    [Range(-750f,75f)][SerializeField] private float heightOffset = 0f;
-    [SerializeField] private LeanTweenType easeIn = LeanTweenType.linear;
-    [SerializeField] private LeanTweenType easeOut = LeanTweenType.linear;
+    [SerializeField] private CanvasGroup interactCanvasGroup = null;
 
-    private static float tutorialJournalTransitionTime = 0.3f;
+    [Range(-750f,75f)][SerializeField] private float heightOffset = 0f;
+
+    private static readonly float tutorialJournalTransitionTime = 0.3f;
+
+    private bool isTutorialJournalOpen = false;
+    private bool isPlayerWithinInteractionDistance = false;
     #endregion
 
     #region Methods
@@ -23,19 +26,52 @@ public class TutorialSign : MonoBehaviour
     {
         leftPage.SetActive(false);
         rightPage.SetActive(false);
+
+        interactCanvasGroup.alpha = 0;
     }
     #endregion
+
+    private void Update()
+    {
+        if (!isPlayerWithinInteractionDistance) return;
+
+        if (Input.GetButtonDown("Interact"))
+        {
+            if (isTutorialJournalOpen) HideJournal();
+            else ShowJournal();
+        }
+    }
+
+    private void ShowJournal()
+    {
+        isTutorialJournalOpen = true;
+
+        CancelLeanTween();
+
+        leftPage.SetActive(true);
+        rightPage.SetActive(true);
+        LeanTween.moveY(tutorialJournal, heightOffset, tutorialJournalTransitionTime).setEase(LeanTweenType.linear);
+    }
+
+    private void HideJournal()
+    {
+        isTutorialJournalOpen = false;
+        CancelLeanTween();
+
+        LeanTween.moveY(tutorialJournal, -1000, tutorialJournalTransitionTime).setEase(LeanTweenType.linear).setOnComplete(callback =>
+        {
+            leftPage.SetActive(false);
+            rightPage.SetActive(false);
+        });
+    }
 
     #region Collision
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
-            CancelLeanTween();
-
-            leftPage.SetActive(true);
-            rightPage.SetActive(true);
-            LeanTween.moveY(tutorialJournal, heightOffset, tutorialJournalTransitionTime).setEase(easeIn);
+            LeanTween.alphaCanvas(interactCanvasGroup, 1, 0.15f);
+            isPlayerWithinInteractionDistance = true;
         }
     }
 
@@ -43,13 +79,10 @@ public class TutorialSign : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            CancelLeanTween();
+            LeanTween.alphaCanvas(interactCanvasGroup, 0, 0.15f);
+            isPlayerWithinInteractionDistance = false;
 
-            LeanTween.moveY(tutorialJournal, -1000, tutorialJournalTransitionTime).setEase(easeOut).setOnComplete(callback =>
-            {
-                leftPage.SetActive(false);
-                rightPage.SetActive(false);
-            });
+            if (isTutorialJournalOpen) HideJournal();
         }
     }
     #endregion
