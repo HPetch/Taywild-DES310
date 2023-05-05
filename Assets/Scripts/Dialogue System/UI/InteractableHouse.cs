@@ -88,8 +88,6 @@ public class InteractableHouse : MonoBehaviour
             LeanTween.cancel(interactCanvasGroup.gameObject);
             LeanTween.alphaCanvas(interactCanvasGroup, 1, 0.15f);
 
-            interactCanvasGroup.alpha = 1;
-
             door.sprite = ajarDoor;
             isNextToDoor = true;
         }
@@ -101,8 +99,6 @@ public class InteractableHouse : MonoBehaviour
         {
             LeanTween.cancel(interactCanvasGroup.gameObject);
             LeanTween.alphaCanvas(interactCanvasGroup, 0, 0.15f);
-
-            interactCanvasGroup.alpha = 0;
 
             door.sprite = closedDoor;
             isNextToDoor = false;
