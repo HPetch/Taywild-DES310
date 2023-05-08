@@ -82,33 +82,41 @@ public class DecorationMovingFake : MonoBehaviour
     public bool CheckIfPlaceable() // Checks if any decorations are overlaping the held decoration's placement, and if all attach points are valid
     {
         bool placeable = false;
-        Vector2 placementColliderPosition = new Vector2(transform.position.x, transform.position.y) + moveTarget.GetComponent<BoxCollider2D>().offset;
-        Vector2 placementColliderSize = moveTarget.GetComponent<BoxCollider2D>().size;
-    
-        Collider2D[] placementCollisionCheckResults = Physics2D.OverlapBoxAll(placementColliderPosition, placementColliderSize, scrollRotateArray[scrollRotateIndex]); // ADD ROTATION // Checks if any other decorations or a platform is overlapping the decoration
-        if (placementCollisionCheckResults.Length == 0 || (placementCollisionCheckResults.Length == 1 && placementCollisionCheckResults[0].gameObject == moveTarget)) // Checks if target location is overlapping other furniture or any platforms, ignoring itself
+        if (moveTarget && moveTarget != null)
         {
-            int successfulAttachPoints = 0;
-            
-            foreach (Vector3 _attachPointLocal in moveTarget.GetComponent<FurnitureObject>().AttachmentPointsList) // Goes through each attach point
+            Vector2 placementColliderPosition = new Vector2(transform.position.x, transform.position.y) + moveTarget.GetComponent<BoxCollider2D>().offset;
+            Vector2 placementColliderSize = moveTarget.GetComponent<BoxCollider2D>().size;
+
+            Collider2D[] placementCollisionCheckResults = Physics2D.OverlapBoxAll(placementColliderPosition, placementColliderSize, scrollRotateArray[scrollRotateIndex]); // ADD ROTATION // Checks if any other decorations or a platform is overlapping the decoration
+            if (placementCollisionCheckResults.Length == 0 || (placementCollisionCheckResults.Length == 1 && placementCollisionCheckResults[0].gameObject == moveTarget)) // Checks if target location is overlapping other furniture or any platforms, ignoring itself
             {
+                int successfulAttachPoints = 0;
+
+                foreach (Vector3 _attachPointLocal in moveTarget.GetComponent<FurnitureObject>().AttachmentPointsList) // Goes through each attach point
+                {
 
 
 
-                Vector2 attachPointGlobal = RotatePointAroundPivot(_attachPointLocal + transform.position, transform.position, scrollRotateArray[scrollRotateIndex]) ;
-                if (Physics2D.OverlapCircle(attachPointGlobal, moveTarget.GetComponent<FurnitureObject>().AttachmentPointRadius, collisionCheckLayerMask))
-                {
-                    successfulAttachPoints++;
-                }
-                if (successfulAttachPoints == moveTarget.GetComponent<FurnitureObject>().AttachmentPointsList.Count) // Checks if all attach points are valid
-                {
-                    placeable = true;
-                }
-                else if (successfulAttachPoints >= 1 && moveTarget.GetComponent<FurnitureObject>().PlacementRequireOnePoint)
-                {
-                    placeable = true;
+                    Vector2 attachPointGlobal = RotatePointAroundPivot(_attachPointLocal + transform.position, transform.position, scrollRotateArray[scrollRotateIndex]);
+                    if (Physics2D.OverlapCircle(attachPointGlobal, moveTarget.GetComponent<FurnitureObject>().AttachmentPointRadius, collisionCheckLayerMask))
+                    {
+                        successfulAttachPoints++;
+                    }
+
+                    if (successfulAttachPoints == moveTarget.GetComponent<FurnitureObject>().AttachmentPointsList.Count) // Checks if all attach points are valid
+                    {
+                        placeable = true;
+                    }
+                    else if (successfulAttachPoints >= 1 && moveTarget.GetComponent<FurnitureObject>().PlacementRequireOnePoint)
+                    {
+                        placeable = true;
+                    }
                 }
             }
+        }
+        else
+        {
+            Debug.LogError("Decoration move Fake doesn't have a target");
         }
         return placeable;
     }
