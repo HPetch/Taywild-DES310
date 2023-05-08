@@ -57,6 +57,10 @@ public class PlayerController : MonoBehaviour
     [Range(0, 1)]
     [SerializeField] private float airDragMultiplier = 0.95f;
 
+    [Tooltip("How fast the player can fall")]
+    [Range(20, 80)]
+    [SerializeField] private float maximumFallSpeed = 40.0f;
+
     private Vector2 movementInput = Vector2.zero;
     #endregion
 
@@ -173,7 +177,7 @@ public class PlayerController : MonoBehaviour
     [Header("Gliding Settings")]
 
     [Tooltip("How fast the player has to fall to trigger gliding")]
-    [Range(0, 20)]
+    [Range(0, 40)]
     [SerializeField] private float fallSpeedThatTriggersGliding = 10f;
 
     [Tooltip("How fast the player falls when gliding")]
@@ -287,6 +291,7 @@ public class PlayerController : MonoBehaviour
         else if (!IsTouchingWall)
         {
             if (velocity.y < -fallSpeedThatTriggersGliding) StartGliding();
+            velocity.y = velocity.y < -maximumFallSpeed ? -maximumFallSpeed : velocity.y;
 
             velocity = IsGliding ? GlidingMovement(velocity) : AirMovement(velocity);
         }
