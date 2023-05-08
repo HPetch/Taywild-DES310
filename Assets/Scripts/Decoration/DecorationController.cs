@@ -58,14 +58,13 @@ public class DecorationController : MonoBehaviour
             }
             else // If a decoration is being moved, cursor shouldn't interact with anything else
             {
-                if (CurrentMoveFake.GetComponent<DecorationMovingFake>().CheckIfPlaceable()) // If the movement fake is in a viable placement location
+                // If the movement fake is in a viable placement location when releasing it
+                if(Input.GetMouseButtonUp(0))
                 {
-                    if(Input.GetMouseButtonUp(0))
-                    {
-                        DecorationMoveEndStart(); // Delete the movement fake and place the actual decoration in it's place
-                    }
+                    if (CurrentMoveFake.GetComponent<DecorationMovingFake>().CheckIfPlaceable()) DecorationMoveEndStart(); // Delete the movement fake and place the actual decoration in it's place
+                    else if (!CurrentMoveTarget.GetComponent<FurnitureObject>().isFirstTimePlace) DecorationMoveCancel();
                 }
-
+                
                 if (Input.GetMouseButtonDown(1))
                 {
                     DecorationMoveCancel();
@@ -118,7 +117,7 @@ public class DecorationController : MonoBehaviour
 
     public void SelectorDecorationObjectInteract(GameObject _selectedObject, bool _isMouseClickDown)
     {
-        if (_isMouseClickDown)
+        if (_isMouseClickDown && (!CurrentMoveTarget || CurrentMoveTarget == null))
         {
             if (_selectedObject.GetComponent<FurnitureObject>() && _selectedObject != CurrentMoveTarget)
             {
