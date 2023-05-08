@@ -10,17 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 56aed56cf2bdb3940a003c0a146eee35, type: 3}
-  m_Name: LucusFlowerQ1B
+  m_Name: LucusFlowrQ1bFix
   m_EditorClassIdentifier: 
-  <NodeName>k__BackingField: LucusFlowerQ1B
+  <NodeName>k__BackingField: LucusFlowrQ1bFix
   <NodeType>k__BackingField: 4
   <Choices>k__BackingField:
   - <Text>k__BackingField: Not Accepted
-    <NextDialogue>k__BackingField: {fileID: 11400000, guid: 90cfa8d1d81f7fa49bad8696cd7627bf, type: 2}
+    <NextDialogue>k__BackingField: {fileID: 11400000, guid: 4f0ff6e90575e2d49bb9984cbcfd7c50, type: 2}
   - <Text>k__BackingField: In Progress
-    <NextDialogue>k__BackingField: {fileID: 11400000, guid: 48cb36c547394524096faf160982cd81, type: 2}
+    <NextDialogue>k__BackingField: {fileID: 11400000, guid: 4f0ff6e90575e2d49bb9984cbcfd7c50, type: 2}
   - <Text>k__BackingField: Read for Hand-in
-    <NextDialogue>k__BackingField: {fileID: 11400000, guid: 48cb36c547394524096faf160982cd81, type: 2}
+    <NextDialogue>k__BackingField: {fileID: 11400000, guid: 4f0ff6e90575e2d49bb9984cbcfd7c50, type: 2}
   - <Text>k__BackingField: Comlpeted
     <NextDialogue>k__BackingField: {fileID: 11400000, guid: 48cb36c547394524096faf160982cd81, type: 2}
   <Character>k__BackingField: {fileID: 0}
@@ -30,5 +30,5 @@ MonoBehaviour:
   <SoundEffect>k__BackingField: {fileID: 0}
   <Delay>k__BackingField: 0
   <Graph>k__BackingField: {fileID: 0}
-  <Quest>k__BackingField: 4
+  <Quest>k__BackingField: 5
   <QuestState>k__BackingField: 1
