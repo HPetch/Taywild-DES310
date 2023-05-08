@@ -200,6 +200,9 @@ public class PlayerController : MonoBehaviour
     public InteractableHouse CurrentHouse { get; private set; } = null;
 
     private Vector2 lastKnownGroundPosition = Vector2.zero;
+    
+    // Work around for a build only bug
+    private bool isEditModeLockedInput;
     #endregion
     #endregion
 
@@ -230,8 +233,8 @@ public class PlayerController : MonoBehaviour
     {
         DialogueController.Instance.OnConversationStart += LockPlayerInput;
         DialogueController.Instance.OnConversationEnd += UnLockPlayerInput;
-        DecorationController.Instance.OnEnterEditMode += LockPlayerInput;
-        DecorationController.Instance.OnExitEditMode += UnLockPlayerInput;
+        DecorationController.Instance.OnEnterEditMode += EditModeLockPlayerInput;
+        DecorationController.Instance.OnExitEditMode += EditModeUnLockPlayerInput;
     }
     #endregion
 
@@ -247,6 +250,7 @@ public class PlayerController : MonoBehaviour
         CheckIfWallSliding();
         CheckIfDashing();
         CheckIfEndBounce();
+        CheckIfMoveLockedEditMode();
 
         HandleActionInput();
     }
@@ -515,6 +519,12 @@ public class PlayerController : MonoBehaviour
             bouncePadLock = false;
         }
     }
+
+    // Work around for a build only bug that allowed for the player to move in decoration mode
+    private void CheckIfMoveLockedEditMode()
+    {
+        if (isEditModeLockedInput && !IsLockedInput) LockPlayerInput();
+    }
     #endregion
 
     #region ActionInputs
@@ -729,6 +739,17 @@ public class PlayerController : MonoBehaviour
     {
         IsLockedInput = false;
         rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+    }
+
+    private void EditModeLockPlayerInput()
+    {
+        isEditModeLockedInput = true;
+    }
+    
+    private void EditModeUnLockPlayerInput()
+    {
+        isEditModeLockedInput = false;
+        UnLockPlayerInput();
     }
 
     public void MushroomBounce() 
