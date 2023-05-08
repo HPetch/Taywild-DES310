@@ -22,6 +22,9 @@ public class DialogueController : MonoBehaviour
     #region Variables
     public bool IsConversing { get; private set; } = false;
     public InteractableCharacter Character { get; private set; } = null;
+    private PlayerDialogueController playerDialogueController = null;
+
+
     public DialogueSystemDialogueContainerSO CurrentGraph { get; private set; } = null;
 
     private DialogueSystemDialogueSO dialogueNode = null;
@@ -88,6 +91,11 @@ public class DialogueController : MonoBehaviour
         if (Instance != null) Destroy(gameObject);
         else Instance = this;        
     }
+
+    private void Start()
+    {
+        playerDialogueController = PlayerDialogueController.Instance;
+    }
     #endregion
 
     /// <summary>
@@ -108,19 +116,19 @@ public class DialogueController : MonoBehaviour
                 // Skip text type
                 if (textType != null) DisplayNext();
                 // If text type is done, and thought bubles are not open, 
-                else if (!PlayerDialogueController.Instance.IsThoughtBubblesOpen)
+                else if (!playerDialogueController.IsThoughtBubblesOpen)
                 {
                     // Close charater speech bubble
-                    Character.CloseTransition();
+                    currentDialogueCanvas.CloseTransition();
                     // Show player options
-                    PlayerDialogueController.Instance.ShowThoughtBubbles(dialogueNode);
+                    playerDialogueController.ShowThoughtBubbles(dialogueNode);
                 }
             }
         }
         
-        else if ((Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Keypad1)) && dialogueNode.DialogueType == DialogueTypes.MultipleChoice && PlayerDialogueController.Instance.ThoughtBubbleTransitionComplete) DisplayNext(1);
-        else if ((Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown(KeyCode.Keypad2)) && dialogueNode.DialogueType == DialogueTypes.MultipleChoice && PlayerDialogueController.Instance.ThoughtBubbleTransitionComplete) DisplayNext(2);
-        else if ((Input.GetKeyDown(KeyCode.Alpha3) || Input.GetKeyDown(KeyCode.Keypad3)) && dialogueNode.DialogueType == DialogueTypes.MultipleChoice && PlayerDialogueController.Instance.ThoughtBubbleTransitionComplete) DisplayNext(3);
+        else if ((Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Keypad1)) && dialogueNode.DialogueType == DialogueTypes.MultipleChoice && playerDialogueController.ThoughtBubbleTransitionComplete) DisplayNext(1);
+        else if ((Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown(KeyCode.Keypad2)) && dialogueNode.DialogueType == DialogueTypes.MultipleChoice && playerDialogueController.ThoughtBubbleTransitionComplete) DisplayNext(2);
+        else if ((Input.GetKeyDown(KeyCode.Alpha3) || Input.GetKeyDown(KeyCode.Keypad3)) && dialogueNode.DialogueType == DialogueTypes.MultipleChoice && playerDialogueController.ThoughtBubbleTransitionComplete) DisplayNext(3);
     }
 
     /// <summary>
@@ -165,7 +173,7 @@ public class DialogueController : MonoBehaviour
                 bool resize = true;
 
                 // If the player is talking in the new dialogueNode and the their speech bubble is closed
-                if (IsPlayerTalking && !PlayerDialogueController.Instance.IsOpen)
+                if (IsPlayerTalking && !playerDialogueController.IsOpen)
                 {
                     // If the character speech bubble is open
                     if (Character.IsOpen)
@@ -177,9 +185,9 @@ public class DialogueController : MonoBehaviour
                     }
 
                     // Open player speech bubble
-                    PlayerDialogueController.Instance.OpenTransition(dialogueNode.Text);
+                    playerDialogueController.OpenTransition(dialogueNode.Text);
                     // Change the current active speech canvas to the player's
-                    currentDialogueCanvas = PlayerDialogueController.Instance;
+                    currentDialogueCanvas = playerDialogueController;
                     // do not resisze as the active talker has changed
                     resize = false;
                 }
@@ -187,11 +195,11 @@ public class DialogueController : MonoBehaviour
                 else if (!IsPlayerTalking && !Character.IsOpen)
                 {
                     // If the player speech bubble is open
-                    if (PlayerDialogueController.Instance.IsOpen)
+                    if (playerDialogueController.IsOpen)
                     {
                         // Close it and wait for it to close
-                        PlayerDialogueController.Instance.CloseTransition();
-                        yield return new WaitForSeconds(PlayerDialogueController.Instance.ResizeTransitionTime());
+                        playerDialogueController.CloseTransition();
+                        yield return new WaitForSeconds(playerDialogueController.ResizeTransitionTime());
                     }
 
                     // Open character speech bubble
@@ -288,7 +296,7 @@ public class DialogueController : MonoBehaviour
                 // If option 2 was selected and there's only 1 option, assume they meant option 1 (as the only option is in the 2nd option spot)
                 _buttonIndex = dialogueNode.Choices.Count == 1 && _buttonIndex == 2 || _buttonIndex == 1 ? 1 : _buttonIndex;
 
-                PlayerDialogueController.Instance.HideThoughtBubbles(_buttonIndex - 1);
+                playerDialogueController.HideThoughtBubbles(_buttonIndex - 1);
 
                 // Compute the next node
                 StartCoroutine(ComputeNode(dialogueNode.Choices[_buttonIndex - 1].NextDialogue, 0.3f));
