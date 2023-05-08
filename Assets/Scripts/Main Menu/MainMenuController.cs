@@ -3,12 +3,18 @@ using UnityEngine;
 
 public class MainMenuController : MonoBehaviour
 {
+    
     public enum MenuPages { Cover, MainMenu, Settings, Credits}
 
     public static MainMenuController Instance { get; private set; }
 
     #region Variables
     [SerializeField] private JournalController journal = null;
+
+    [Header("Audio")]
+    [SerializeField] private AudioClip hoverSound;
+    [SerializeField] private AudioClip unhoverSound;
+    [SerializeField] private AudioClip[] pageFlips;
     #endregion
 
     #region Methods
@@ -37,6 +43,18 @@ public class MainMenuController : MonoBehaviour
         }
     }
 
+    public void OnHover()
+    {
+        AudioController.Instance.PlaySound(hoverSound);
+    }
+    public void OnUnhover()
+    {
+        AudioController.Instance.PlaySound(unhoverSound);
+    }
+    public void OnPageFlip()
+    {
+        AudioController.Instance.PlaySound(pageFlips[Random.Range(0, pageFlips.Length - 1)], true);
+    }
 
     #region UI Buttons
     public void PlayButton()
