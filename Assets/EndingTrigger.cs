@@ -9,6 +9,7 @@ public class EndingTrigger : MonoBehaviour
     private static readonly float journalTransitionTime = 0.3f;
 
     private bool isJournalOpen = false;
+    private bool triggered = false;
     #endregion
 
     #region Methods
@@ -21,24 +22,37 @@ public class EndingTrigger : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetMouseButtonUp(0) && (isJournalOpen))
+        if (triggered) return;
+
+        foreach (ObjectiveController.Quest quest in ObjectiveController.Instance.Quests)
         {
-            HideJournal();
+            if (Input.GetKeyDown(KeyCode.P)) quest.State = DialogueSystem.Types.QuestStates.Completed;
+
+            if (quest.State != DialogueSystem.Types.QuestStates.Completed)
+            {
+                return;
+            }
         }
+
+        triggered = true;
+        ShowJournal();
     }
 
-    public void ShowJournal()
+    private void ShowJournal()
     {
-        isJournalOpen = true;
+        if (isJournalOpen) return;
 
+        isJournalOpen = true;
         CancelLeanTween();
 
         journal.gameObject.SetActive(true);
         LeanTween.moveY(journal, 0, journalTransitionTime).setEase(LeanTweenType.linear);
     }
 
-    private void HideJournal()
+    public void HideJournal()
     {
+        if (!isJournalOpen) return;
+
         isJournalOpen = false;
         CancelLeanTween();
 
