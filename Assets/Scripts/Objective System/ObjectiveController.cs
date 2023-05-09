@@ -8,7 +8,7 @@ public class ObjectiveController : MonoBehaviour
     public static ObjectiveController Instance { get; private set; }
 
     #region Variables
-    private List<Quest> quests = new List<Quest>();
+    public List<Quest> Quests { get; private set; } = new List<Quest>();
     #endregion
 
     #region Functions
@@ -21,7 +21,7 @@ public class ObjectiveController : MonoBehaviour
 
         for (int quest = 0; quest < System.Enum.GetValues(typeof(QuestTypes)).Length; quest++)
         {
-            quests.Add(new Quest((QuestTypes)quest));
+            Quests.Add(new Quest((QuestTypes)quest));
         }
     }
 
@@ -34,7 +34,7 @@ public class ObjectiveController : MonoBehaviour
 
     public Quest GetQuest(QuestTypes _quest)
     {
-        return quests[(int)_quest];
+        return Quests[(int)_quest];
     }
 
     public void OnFurnitureObjectPlaced(FurnitureObject _object)
@@ -98,33 +98,33 @@ public class ObjectiveController : MonoBehaviour
             }
         }
 
-        //if (_item == InventoryController.ItemNames.BERRY && InventoryController.Instance.ItemQuantity(InventoryController.ItemNames.BOOK) > 0)
-        //{            
-        //    Quest LucusBerriesQ2 = GetQuest(QuestTypes.LucusBerriesQ2);
+        if (_item == InventoryController.ItemNames.QUEST_BOOK && InventoryController.Instance.ItemQuantity(InventoryController.ItemNames.QUEST_BOOK) > 0)
+        {
+            Quest LucusBerriesQ2 = GetQuest(QuestTypes.LucusBerriesQ2);
 
-        //    if (LucusBerriesQ2.State == QuestStates.NotAccepted)
-        //    {
-        //        LucusBerriesQ2.questObjectiveCompleteBeforeQuestIssued = true;
-        //    }
-        //    else if (LucusBerriesQ2.State == QuestStates.InProgress)
-        //    {
-        //        LucusBerriesQ2.State = QuestStates.HandIn;
-        //    }
-        //}
+            if (LucusBerriesQ2.State == QuestStates.NotAccepted)
+            {
+                LucusBerriesQ2.questObjectiveCompleteBeforeQuestIssued = true;
+            }
+            else if (LucusBerriesQ2.State == QuestStates.InProgress)
+            {
+                LucusBerriesQ2.State = QuestStates.HandIn;
+            }
+        }
 
-        //if (_item == InventoryController.ItemNames.BOOK && InventoryController.Instance.ItemQuantity(InventoryController.ItemNames.BERRY) > 0)
-        //{
-        //    Quest LucusBerriesQ2 = GetQuest(QuestTypes.LucusBerriesQ2);
+        if (_item == InventoryController.ItemNames.QUEST_BERRYS && InventoryController.Instance.ItemQuantity(InventoryController.ItemNames.QUEST_BERRYS) > 0)
+        {
+            Quest LucusBerriesQ2 = GetQuest(QuestTypes.LucusBerriesQ2);
 
-        //    if (LucusBerriesQ2.State == QuestStates.NotAccepted)
-        //    {
-        //        LucusBerriesQ2.questObjectiveCompleteBeforeQuestIssued = true;
-        //    }
-        //    else if (LucusBerriesQ2.State == QuestStates.InProgress)
-        //    {
-        //        LucusBerriesQ2.State = QuestStates.HandIn;
-        //    }
-        //}
+            if (LucusBerriesQ2.State == QuestStates.NotAccepted)
+            {
+                LucusBerriesQ2.questObjectiveCompleteBeforeQuestIssued = true;
+            }
+            else if (LucusBerriesQ2.State == QuestStates.InProgress)
+            {
+                LucusBerriesQ2.State = QuestStates.HandIn;
+            }
+        }
     }
     #endregion
 
