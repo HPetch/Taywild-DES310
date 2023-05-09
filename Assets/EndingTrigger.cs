@@ -26,7 +26,9 @@ public class EndingTrigger : MonoBehaviour
 
         foreach (ObjectiveController.Quest quest in ObjectiveController.Instance.Quests)
         {
+#if UNITY_EDITOR
             if (Input.GetKeyDown(KeyCode.P)) quest.State = DialogueSystem.Types.QuestStates.Completed;
+#endif
 
             if (quest.State != DialogueSystem.Types.QuestStates.Completed)
             {
