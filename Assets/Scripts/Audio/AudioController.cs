@@ -41,6 +41,8 @@ public class AudioController : MonoBehaviour
         else Instance = this;
         BGMRoutine = null;
         BGARoutine = null;
+
+        DontDestroyOnLoad(gameObject);
     }
 
     #region PlaySound
