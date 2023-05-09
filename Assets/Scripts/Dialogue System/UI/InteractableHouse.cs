@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class InteractableHouse : MonoBehaviour
 {
-    [SerializeField] private SpriteRenderer houseExterior;
+    [SerializeField] private SpriteRenderer[] houseExterior;
     [SerializeField] private SpriteRenderer door;
     [SerializeField] private Sprite closedDoor;
     [SerializeField] private Sprite ajarDoor;
@@ -44,8 +44,11 @@ public class InteractableHouse : MonoBehaviour
         character.SetActive(true);
         houseColliders.SetActive(true);
 
-        LeanTween.cancel(houseExterior.gameObject);
-        LeanTween.alpha(houseExterior.gameObject, 0, 0.15f);
+        foreach (SpriteRenderer spriteRenderer in houseExterior)
+        {
+            LeanTween.cancel(spriteRenderer.gameObject);
+            LeanTween.alpha(spriteRenderer.gameObject, 0, 0.15f);
+        }
 
         LeanTween.cancel(door.gameObject);
         LeanTween.alpha(door.gameObject, 0.4f, 0.15f);
@@ -67,8 +70,11 @@ public class InteractableHouse : MonoBehaviour
         character.SetActive(false);
         houseColliders.SetActive(false);
 
-        LeanTween.cancel(houseExterior.gameObject);
-        LeanTween.alpha(houseExterior.gameObject, 1, 0.15f);
+        foreach (SpriteRenderer spriteRenderer in houseExterior)
+        {
+            LeanTween.cancel(spriteRenderer.gameObject);
+            LeanTween.alpha(spriteRenderer.gameObject, 1, 0.15f);
+        }
 
         LeanTween.cancel(door.gameObject);
         LeanTween.alpha(door.gameObject, 1, 0.15f);
