@@ -3,19 +3,26 @@ using TMPro;
 
 public class Sign : MonoBehaviour
 {
-    private TextMeshProUGUI textComponent = null;
+    #region Variables
+    private CanvasGroup canvasGroup = null;
+    #endregion
 
+    #region Methods
+    #region Initialisation
     private void Awake()
     {
-        textComponent = GetComponentInChildren<TextMeshProUGUI>();
-        textComponent.gameObject.SetActive(false);
+        canvasGroup = GetComponentInChildren<CanvasGroup>();
+        canvasGroup.alpha = 0;
     }
+    #endregion
 
+    #region Collision
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
-            textComponent.gameObject.SetActive(true);
+            LeanTween.cancel(gameObject);
+            LeanTween.alphaCanvas(canvasGroup, 1, 0.15f);
         }
     }
 
@@ -23,7 +30,10 @@ public class Sign : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            textComponent.gameObject.SetActive(false);
+            LeanTween.cancel(gameObject);
+            LeanTween.alphaCanvas(canvasGroup, 0, 0.60f);
         }
     }
+    #endregion
+    #endregion
 }
