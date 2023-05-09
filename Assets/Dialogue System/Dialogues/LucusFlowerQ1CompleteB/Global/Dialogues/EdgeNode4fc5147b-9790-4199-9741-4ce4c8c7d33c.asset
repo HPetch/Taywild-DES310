@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 56aed56cf2bdb3940a003c0a146eee35, type: 3}
-  m_Name: SetQuestNode
+  m_Name: EdgeNode4fc5147b-9790-4199-9741-4ce4c8c7d33c
   m_EditorClassIdentifier: 
-  <NodeName>k__BackingField: SetQuestNode
-  <NodeType>k__BackingField: 5
+  <NodeName>k__BackingField: EdgeNode4fc5147b-9790-4199-9741-4ce4c8c7d33c
+  <NodeType>k__BackingField: 1
   <Choices>k__BackingField:
-  - <Text>k__BackingField: Next Node
-    <NextDialogue>k__BackingField: {fileID: 0}
+  - <Text>k__BackingField: 
+    <NextDialogue>k__BackingField: {fileID: 11400000, guid: 0fef450257d46b84c8207858a47fb224, type: 2}
   <Character>k__BackingField: {fileID: 0}
   <DialogueType>k__BackingField: 0
   <Text>k__BackingField: 
@@ -24,5 +24,5 @@ MonoBehaviour:
   <SoundEffect>k__BackingField: {fileID: 0}
   <Delay>k__BackingField: 0
   <Graph>k__BackingField: {fileID: 0}
-  <Quest>k__BackingField: 4
-  <QuestState>k__BackingField: 3
+  <Quest>k__BackingField: 0
+  <QuestState>k__BackingField: 1

@@ -792,7 +792,7 @@ MonoBehaviour:
     <Quest>k__BackingField: 0
     <QuestState>k__BackingField: 1
   - <ID>k__BackingField: 28dc086b-31df-4ac1-955a-e4ed6bbf2e29
-    <Name>k__BackingField: EdgeNode34224514-3111-43db-9ded-a6e3351072cb
+    <Name>k__BackingField: EdgeNode9948aba7-53a2-42b7-bd39-b8686ac160a4
     <NodeType>k__BackingField: 1
     <GroupID>k__BackingField: 
     <Choices>k__BackingField:
@@ -808,7 +808,7 @@ MonoBehaviour:
     <Quest>k__BackingField: 0
     <QuestState>k__BackingField: 1
   - <ID>k__BackingField: c0ec669c-e32a-4efd-bbe2-687ada7bd7b7
-    <Name>k__BackingField: EdgeNodec85d41d2-85f3-4d81-87e3-ecb2623322a1
+    <Name>k__BackingField: EdgeNode736f3e17-86b6-451a-9813-47f34baa2593
     <NodeType>k__BackingField: 1
     <GroupID>k__BackingField: 
     <Choices>k__BackingField:
@@ -2016,7 +2016,7 @@ MonoBehaviour:
     <GroupID>k__BackingField: 
     <Choices>k__BackingField:
     - <Text>k__BackingField: Next Node
-      <NodeID>k__BackingField: 7115e010-c75d-4054-872a-9f483420d98a
+      <NodeID>k__BackingField: 
     <Position>k__BackingField: {x: 23550, y: -325}
     <DialogueType>k__BackingField: 0
     <Character>k__BackingField: {fileID: 11400000, guid: 49268ee1c8a3bee44b0063741027d804, type: 2}
@@ -2043,7 +2043,7 @@ MonoBehaviour:
     <Quest>k__BackingField: 0
     <QuestState>k__BackingField: 1
   - <ID>k__BackingField: cc281e29-5ebf-47f8-b63c-2e08a809d1d6
-    <Name>k__BackingField: EdgeNodeec50ccc8-dec6-4894-adf1-47d6b05c53dc
+    <Name>k__BackingField: EdgeNode4fc5147b-9790-4199-9741-4ce4c8c7d33c
     <NodeType>k__BackingField: 1
     <GroupID>k__BackingField: 
     <Choices>k__BackingField:
@@ -2380,22 +2380,6 @@ MonoBehaviour:
     <Graph>k__BackingField: {fileID: 0}
     <Quest>k__BackingField: 0
     <QuestState>k__BackingField: 1
-  - <ID>k__BackingField: 7115e010-c75d-4054-872a-9f483420d98a
-    <Name>k__BackingField: SetQuestNode
-    <NodeType>k__BackingField: 5
-    <GroupID>k__BackingField: 
-    <Choices>k__BackingField:
-    - <Text>k__BackingField: Next Node
-      <NodeID>k__BackingField: 
-    <Position>k__BackingField: {x: 23975, y: -325}
-    <DialogueType>k__BackingField: 0
-    <Character>k__BackingField: {fileID: 0}
-    <Text>k__BackingField: 
-    <SoundEffect>k__BackingField: {fileID: 0}
-    <Delay>k__BackingField: 0
-    <Graph>k__BackingField: {fileID: 0}
-    <Quest>k__BackingField: 4
-    <QuestState>k__BackingField: 3
   <OldGroupNames>k__BackingField: []
   <OldUngroupedNodeNames>k__BackingField:
   - Lucus1
@@ -2445,8 +2429,8 @@ MonoBehaviour:
   - Lucus28
   - Lucus29
   - Lucus30
-  - EdgeNode34224514-3111-43db-9ded-a6e3351072cb
-  - EdgeNodec85d41d2-85f3-4d81-87e3-ecb2623322a1
+  - EdgeNode9948aba7-53a2-42b7-bd39-b8686ac160a4
+  - EdgeNode736f3e17-86b6-451a-9813-47f34baa2593
   - Lucus31
   - Lucus32
   - Lucus33
@@ -2520,7 +2504,7 @@ MonoBehaviour:
   - Lucus53
   - Lucus55
   - Lucus54
-  - EdgeNodeec50ccc8-dec6-4894-adf1-47d6b05c53dc
+  - EdgeNode4fc5147b-9790-4199-9741-4ce4c8c7d33c
   - Player52
   - Lucus67
   - Player60
@@ -2540,6 +2524,5 @@ MonoBehaviour:
   - Lucus74
   - Lucus66
   - Lucus75
-  - SetQuestNode
   <OldGroupedNodeNames>k__BackingField:
     list: []
