@@ -5,6 +5,7 @@ public class Sign : MonoBehaviour
 {
     #region Variables
     private CanvasGroup canvasGroup = null;
+    private bool isVisible;
     #endregion
 
     #region Methods
@@ -19,8 +20,9 @@ public class Sign : MonoBehaviour
     #region Collision
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player"))
+        if (collision.CompareTag("Player") && !isVisible)
         {
+            isVisible = true;
             LeanTween.cancel(gameObject);
             LeanTween.alphaCanvas(canvasGroup, 1, 0.15f);
         }
@@ -28,12 +30,14 @@ public class Sign : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player"))
+        if (collision.CompareTag("Player") && isVisible)
         {
+            isVisible = false;
             LeanTween.cancel(gameObject);
-            LeanTween.alphaCanvas(canvasGroup, 0, 0.60f);
+            LeanTween.alphaCanvas(canvasGroup, 0, 0.15f);
         }
     }
+
     #endregion
     #endregion
 }
