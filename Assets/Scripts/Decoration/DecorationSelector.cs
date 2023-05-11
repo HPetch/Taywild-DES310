@@ -107,7 +107,7 @@ public class DecorationSelector : MonoBehaviour
         // Controls the visual and funcionality of mouse clicks, object iteraction is passed through to Decoration Controller rather than being handled here
         #region Click control
 
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && !DecorationController.Instance.MouseOverCraftUI)
         {
             mouseDownSlowDown = 0.9f; // Slows to rotation and reduced the scale of the selector slightly while holding a click
             if (CheckObjectUnderMouse()) // If an interactable object is below the mouse

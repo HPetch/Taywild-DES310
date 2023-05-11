@@ -42,7 +42,6 @@ public class DecorationCraftMenu : MonoBehaviour
     [SerializeField] private AudioClip inventoryClose;
     [SerializeField] private AudioClip craftClip;
 
-
     private void Awake()
     {
         foreach (KeyValuePair<Button, DecorationController.UiFurnitureCategories> _button in categoryButtons)
@@ -88,6 +87,10 @@ public class DecorationCraftMenu : MonoBehaviour
             else placeButton.GetComponent<Image>().color = Color.black;
         }
         else placeButton.GetComponent<Image>().color = Color.black;
+
+        // Checks if the player's mouse is over the crafting menu
+        if (RectTransformUtility.RectangleContainsScreenPoint(drawerTransform, Input.mousePosition) && DecorationController.Instance.isEditMode) DecorationController.Instance.StartMouseOverCraftUI();
+        else DecorationController.Instance.EndMouseOverCraftUI();
 
     }
 
