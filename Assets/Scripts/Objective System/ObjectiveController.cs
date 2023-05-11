@@ -39,7 +39,7 @@ public class ObjectiveController : MonoBehaviour
 
     public void OnFurnitureObjectPlaced(FurnitureObject _object)
     {
-        if (_object.UiName == "Hanging Flower Planter")
+        if (_object.UiName == "Hanging Flower Planter" || _object.UiName == "Hanging Ivy Planter" || _object.UiName == "Hanging Rose Planter")
         {
             Quest warsanTutorial = GetQuest(QuestTypes.WarsanTutorial);
 

@@ -11,8 +11,6 @@ public class DecorationController : MonoBehaviour
     public event Action<FurnitureObject> OnPlaceDecoration;
     public event Action<bool> OnPlaceCancelDecoration;
     public event Action OnFurnitureDestroyed;
-    //public event Action OnPickupStart; // SET THIS UP
-    //public event Action OnPickupMoved; //SET THIS UP
     public event Action OnPickupDamaged;
     public event Action OnPickupBroken;
     public event Action OnPickupCancel;
@@ -24,6 +22,9 @@ public class DecorationController : MonoBehaviour
     public GameObject CurrentMoveFake { get; private set; }
     [field: SerializeField] public GameObject DecorationSelector { get; private set; }
     public bool isEditMode { get; private set; }
+
+    // While true prevents interacting with objects behind the crafting UI
+    public bool MouseOverCraftUI { get; private set; }
 
     [field: SerializeField] public SerializableDictionary<GameObject, bool> FurnitureObjectPrefabs { get; private set; }
 
@@ -224,6 +225,17 @@ public class DecorationController : MonoBehaviour
         OnPickupCancel?.Invoke();
     }
 
+    public void StartMouseOverCraftUI()
+    {
+        MouseOverCraftUI = true;
+    }
+    
+    public void EndMouseOverCraftUI()
+    {
+        MouseOverCraftUI = false;
+    }
+    
+
     private void PickupAddItems(SerializableDictionary<InventoryController.ItemNames, Vector2Int> _itemsReceived, Vector2 _position)
     {
         foreach (KeyValuePair<InventoryController.ItemNames, Vector2Int> _item in _itemsReceived) // Go through each item that the pickup dropped
@@ -251,7 +263,6 @@ public class DecorationController : MonoBehaviour
     
 
     // Event: Enter edit mode
-    // Instantiate decoration selector
 
     private void ToggleEditMode()
     {
@@ -263,6 +274,7 @@ public class DecorationController : MonoBehaviour
             //Destroy(DecorationSelector);
             OnExitEditMode?.Invoke();
             PP.SetActive(false);
+            MouseOverCraftUI = false;
             AudioClip clip = closeInterfaceClips[UnityEngine.Random.Range(0, closeInterfaceClips.Length)];
             AudioController.Instance.PlaySound(clip);
             
