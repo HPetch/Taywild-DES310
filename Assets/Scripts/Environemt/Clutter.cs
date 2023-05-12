@@ -2,15 +2,17 @@ using UnityEngine;
 
 public class Clutter : MonoBehaviour
 {
+    [SerializeField] private bool shake = true;
+
     [Range(0, 2)]
-    [SerializeField] private float shakeEffectStrength = 0.1f;
+    [SerializeField] private float shakeStrength = 0.1f;
 
     [Range(0, 1)]
-    [SerializeField] private float shakeEffectDuration = 0.2f;
+    [SerializeField] private float shakeDuration = 0.2f;
 
     [Range(0, 2)]
-    [SerializeField] private float shakeEffectCooldown = 1.0f;
-    private float timeOfLastShake = 0.0f;
+    [SerializeField] private float effectCooldown = 1.0f;
+    private float timeOfLastEffect = 0.0f;
 
     private Vector2 defaultPosition = Vector2.zero;
     private ParticleSystem[] particleEffects = null;
@@ -25,18 +27,21 @@ public class Clutter : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            if (Time.time - timeOfLastShake > shakeEffectCooldown)
+            if (Time.time - timeOfLastEffect > effectCooldown)
             {
-                timeOfLastShake = Time.time;
+                timeOfLastEffect = Time.time;
 
                 foreach (ParticleSystem particleEffect in particleEffects)
                 {
                     particleEffect.Play();
                 }
 
-                LeanTween.cancel(gameObject);
-                transform.localPosition = defaultPosition;
-                LeanTween.moveLocal(gameObject, (Vector2)transform.localPosition - new Vector2(shakeEffectStrength, shakeEffectStrength), shakeEffectDuration).setEaseShake();
+                if (shake)
+                {
+                    LeanTween.cancel(gameObject);
+                    transform.localPosition = defaultPosition;
+                    LeanTween.moveLocal(gameObject, (Vector2)transform.localPosition - new Vector2(shakeStrength, shakeStrength / 5f), shakeDuration).setEaseShake();
+                }
             }
         }                
     }
