@@ -36,7 +36,7 @@ public class Clutter : MonoBehaviour
 
                 LeanTween.cancel(gameObject);
                 transform.localPosition = defaultPosition;
-                LeanTween.moveLocal(gameObject, (Vector2)transform.localPosition - new Vector2(shakeEffectStrength, shakeEffectStrength), shakeEffectDuration).setEaseShake();
+                LeanTween.moveLocal(gameObject, (Vector2)transform.localPosition - new Vector2(shakeEffectStrength, shakeEffectStrength / 5f), shakeEffectDuration).setEaseShake();
             }
         }                
     }
