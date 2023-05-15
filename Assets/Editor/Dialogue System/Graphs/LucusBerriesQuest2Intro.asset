@@ -66,23 +66,6 @@ MonoBehaviour:
     <Graph>k__BackingField: {fileID: 0}
     <Quest>k__BackingField: 0
     <QuestState>k__BackingField: 1
-  - <ID>k__BackingField: 1b611977-7164-436c-b68b-fb7ab670b471
-    <Name>k__BackingField: Lucus2
-    <NodeType>k__BackingField: 0
-    <GroupID>k__BackingField: 
-    <Choices>k__BackingField:
-    - <Text>k__BackingField: Next Node
-      <NodeID>k__BackingField: 1865ceba-37c5-4faa-a291-2df94ba050b3
-    <Position>k__BackingField: {x: 2575, y: -50}
-    <DialogueType>k__BackingField: 0
-    <Character>k__BackingField: {fileID: 11400000, guid: 49268ee1c8a3bee44b0063741027d804, type: 2}
-    <Text>k__BackingField: "I was sitting down to further study the crystal flower
-      with my Dream Plant Almenac\u2026"
-    <SoundEffect>k__BackingField: {fileID: 0}
-    <Delay>k__BackingField: 0
-    <Graph>k__BackingField: {fileID: 0}
-    <Quest>k__BackingField: 0
-    <QuestState>k__BackingField: 1
   - <ID>k__BackingField: 1865ceba-37c5-4faa-a291-2df94ba050b3
     <Name>k__BackingField: Lucus3
     <NodeType>k__BackingField: 0
@@ -215,23 +198,6 @@ MonoBehaviour:
     <DialogueType>k__BackingField: 0
     <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
     <Text>k__BackingField: What did the note say?
-    <SoundEffect>k__BackingField: {fileID: 0}
-    <Delay>k__BackingField: 0
-    <Graph>k__BackingField: {fileID: 0}
-    <Quest>k__BackingField: 0
-    <QuestState>k__BackingField: 1
-  - <ID>k__BackingField: 8d8031b4-ee22-43ef-8798-e6ce4fdd4535
-    <Name>k__BackingField: Lucus7
-    <NodeType>k__BackingField: 0
-    <GroupID>k__BackingField: 
-    <Choices>k__BackingField:
-    - <Text>k__BackingField: Next Node
-      <NodeID>k__BackingField: 5029583d-fcf6-4185-b23a-8cea354d267c
-    <Position>k__BackingField: {x: 5625, y: -50}
-    <DialogueType>k__BackingField: 0
-    <Character>k__BackingField: {fileID: 11400000, guid: 49268ee1c8a3bee44b0063741027d804, type: 2}
-    <Text>k__BackingField: Seems to have been an author documenting their time on
-      the tree. A fellow scholar and appreciator of fauna.
     <SoundEffect>k__BackingField: {fileID: 0}
     <Delay>k__BackingField: 0
     <Graph>k__BackingField: {fileID: 0}
@@ -488,25 +454,6 @@ MonoBehaviour:
     <Graph>k__BackingField: {fileID: 0}
     <Quest>k__BackingField: 0
     <QuestState>k__BackingField: 1
-  - <ID>k__BackingField: 8b5c78d7-94c8-4901-9b26-09bc8567b237
-    <Name>k__BackingField: Lucus17
-    <NodeType>k__BackingField: 0
-    <GroupID>k__BackingField: 
-    <Choices>k__BackingField:
-    - <Text>k__BackingField: "I\u2019ll keep my eye out!"
-      <NodeID>k__BackingField: fbb3a18d-b2d7-496e-b868-49e6dfefcb9f
-    - <Text>k__BackingField: Will do!
-      <NodeID>k__BackingField: e4658b2d-2442-46c8-8f4f-8f6f32bb6cf2
-    <Position>k__BackingField: {x: 10850, y: -50}
-    <DialogueType>k__BackingField: 1
-    <Character>k__BackingField: {fileID: 11400000, guid: 49268ee1c8a3bee44b0063741027d804, type: 2}
-    <Text>k__BackingField: "If you would be so inclined, please find me one of the
-      \u2018Steward\u2019s books and Dream Berries. "
-    <SoundEffect>k__BackingField: {fileID: 0}
-    <Delay>k__BackingField: 0
-    <Graph>k__BackingField: {fileID: 0}
-    <Quest>k__BackingField: 0
-    <QuestState>k__BackingField: 1
   - <ID>k__BackingField: fbb3a18d-b2d7-496e-b868-49e6dfefcb9f
     <Name>k__BackingField: Player13
     <NodeType>k__BackingField: 0
@@ -539,12 +486,64 @@ MonoBehaviour:
     <Graph>k__BackingField: {fileID: 0}
     <Quest>k__BackingField: 0
     <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: 8b5c78d7-94c8-4901-9b26-09bc8567b237
+    <Name>k__BackingField: Lucus17
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: "I\u2019ll keep my eye out!"
+      <NodeID>k__BackingField: fbb3a18d-b2d7-496e-b868-49e6dfefcb9f
+    - <Text>k__BackingField: Will do!
+      <NodeID>k__BackingField: e4658b2d-2442-46c8-8f4f-8f6f32bb6cf2
+    <Position>k__BackingField: {x: 10850, y: -50}
+    <DialogueType>k__BackingField: 1
+    <Character>k__BackingField: {fileID: 11400000, guid: 49268ee1c8a3bee44b0063741027d804, type: 2}
+    <Text>k__BackingField: "If you would be so inclined, please find me one of the
+      Steward\u2019s books and Dream Berries. "
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: 8d8031b4-ee22-43ef-8798-e6ce4fdd4535
+    <Name>k__BackingField: Lucus7
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: 5029583d-fcf6-4185-b23a-8cea354d267c
+    <Position>k__BackingField: {x: 5625, y: -50}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 49268ee1c8a3bee44b0063741027d804, type: 2}
+    <Text>k__BackingField: Seems to have been an author documenting their time on
+      the tree. A fellow scholar and appreciator of flora.
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: 1b611977-7164-436c-b68b-fb7ab670b471
+    <Name>k__BackingField: Lucus2
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: 1865ceba-37c5-4faa-a291-2df94ba050b3
+    <Position>k__BackingField: {x: 2575, y: -50}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 49268ee1c8a3bee44b0063741027d804, type: 2}
+    <Text>k__BackingField: "I was sitting down to further study the crystal flower
+      with my Dream Plant Almanac\u2026"
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
   <OldGroupNames>k__BackingField: []
   <OldUngroupedNodeNames>k__BackingField:
   - Lucus1
   - Player1
   - Player2
-  - Lucus2
   - Lucus3
   - Player3
   - Player4
@@ -553,7 +552,6 @@ MonoBehaviour:
   - Lucus6
   - Player5
   - Player6
-  - Lucus7
   - Lucus8
   - Lucus9
   - Player7
@@ -569,8 +567,10 @@ MonoBehaviour:
   - Player12
   - Lucus15
   - Lucus16
-  - Lucus17
   - Player13
   - Player14
+  - Lucus17
+  - Lucus7
+  - Lucus2
   <OldGroupedNodeNames>k__BackingField:
     list: []

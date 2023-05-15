@@ -169,7 +169,7 @@ MonoBehaviour:
     <Quest>k__BackingField: 0
     <QuestState>k__BackingField: 0
   - <ID>k__BackingField: e2780636-8d7a-4cb2-8706-b98ef8abe515
-    <Name>k__BackingField: EdgeNodefcbd3998-86cd-471f-a9ec-4f5ef376fc71
+    <Name>k__BackingField: EdgeNode031e42a4-f0ec-48f1-a080-370c791c0dba
     <NodeType>k__BackingField: 1
     <GroupID>k__BackingField: 
     <Choices>k__BackingField:
@@ -419,23 +419,6 @@ MonoBehaviour:
     <Graph>k__BackingField: {fileID: 0}
     <Quest>k__BackingField: 0
     <QuestState>k__BackingField: 1
-  - <ID>k__BackingField: 2331534c-c54c-4206-b5ea-f4d9329a0722
-    <Name>k__BackingField: Warsan5
-    <NodeType>k__BackingField: 0
-    <GroupID>k__BackingField: 
-    <Choices>k__BackingField:
-    - <Text>k__BackingField: Next Node
-      <NodeID>k__BackingField: e0555021-59ca-430d-9e7d-fe03dbffdb44
-    <Position>k__BackingField: {x: 6375, y: 75}
-    <DialogueType>k__BackingField: 0
-    <Character>k__BackingField: {fileID: 11400000, guid: 42a93fd49028fb743aa99b1e50d959f1, type: 2}
-    <Text>k__BackingField: "One day, Jasper went off for longer than usual, and when
-      he came back, he had a little scrap of a book or a journal stuck in his collar.\r1"
-    <SoundEffect>k__BackingField: {fileID: 0}
-    <Delay>k__BackingField: 0
-    <Graph>k__BackingField: {fileID: 0}
-    <Quest>k__BackingField: 0
-    <QuestState>k__BackingField: 0
   - <ID>k__BackingField: 5fb6e2a4-fcf2-478f-b9ff-2e5bacd992cf
     <Name>k__BackingField: Warsan9
     <NodeType>k__BackingField: 0
@@ -555,7 +538,7 @@ MonoBehaviour:
     <Quest>k__BackingField: 0
     <QuestState>k__BackingField: 1
   - <ID>k__BackingField: 2ff0f686-da8d-4fde-881a-ee72e712583f
-    <Name>k__BackingField: EdgeNode50f72b9d-c522-40fc-a68d-b0fceabeccb5
+    <Name>k__BackingField: EdgeNodec9de6d8f-d212-45ff-b7d4-b54b3593c24c
     <NodeType>k__BackingField: 1
     <GroupID>k__BackingField: 
     <Choices>k__BackingField:
@@ -922,6 +905,24 @@ MonoBehaviour:
     <Graph>k__BackingField: {fileID: 0}
     <Quest>k__BackingField: 0
     <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: 2331534c-c54c-4206-b5ea-f4d9329a0722
+    <Name>k__BackingField: Warsan5
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: e0555021-59ca-430d-9e7d-fe03dbffdb44
+    <Position>k__BackingField: {x: 6375, y: 75}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 42a93fd49028fb743aa99b1e50d959f1, type: 2}
+    <Text>k__BackingField: "\rOne day, Jasper went off for longer than usual, and
+      when he came back, he had a little scrap of a book or a journal stuck in his
+      collar."
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 0
   <OldGroupNames>k__BackingField: []
   <OldUngroupedNodeNames>k__BackingField:
   - Player2
@@ -933,7 +934,7 @@ MonoBehaviour:
   - Warsan4
   - Player13
   - Player12
-  - EdgeNodefcbd3998-86cd-471f-a9ec-4f5ef376fc71
+  - EdgeNode031e42a4-f0ec-48f1-a080-370c791c0dba
   - WarsanAlt2
   - Player3
   - Player10
@@ -948,7 +949,6 @@ MonoBehaviour:
   - Meow
   - DelayNode
   - Warsan20
-  - Warsan5
   - Warsan9
   - Warsan6
   - Warsan7
@@ -956,7 +956,7 @@ MonoBehaviour:
   - Warsan21
   - Warsan22
   - Warsan23
-  - EdgeNode50f72b9d-c522-40fc-a68d-b0fceabeccb5
+  - EdgeNodec9de6d8f-d212-45ff-b7d4-b54b3593c24c
   - Warsan8
   - Warsan24
   - Warsan25
@@ -978,5 +978,6 @@ MonoBehaviour:
   - Player17
   - Player18
   - Warsan41
+  - Warsan5
   <OldGroupedNodeNames>k__BackingField:
     list: []
