@@ -132,27 +132,6 @@ MonoBehaviour:
     <Graph>k__BackingField: {fileID: 0}
     <Quest>k__BackingField: 0
     <QuestState>k__BackingField: 0
-  - <ID>k__BackingField: cf6d958d-fc60-4437-9880-fadd1e3cef27
-    <Name>k__BackingField: Warsan1
-    <NodeType>k__BackingField: 0
-    <GroupID>k__BackingField: 
-    <Choices>k__BackingField:
-    - <Text>k__BackingField: I'm working on it!
-      <NodeID>k__BackingField: f81498b0-1eb5-451e-94c3-7412bf482dab
-    - <Text>k__BackingField: Remind what to do.
-      <NodeID>k__BackingField: e27c14b1-a440-4be6-9804-53d4057a39fe
-    - <Text>k__BackingField: How do it do it?
-      <NodeID>k__BackingField: 25255ebf-477e-4cd3-a89a-7120626a21f9
-    <Position>k__BackingField: {x: 5225, y: 0}
-    <DialogueType>k__BackingField: 1
-    <Character>k__BackingField: {fileID: 11400000, guid: 42a93fd49028fb743aa99b1e50d959f1, type: 2}
-    <Text>k__BackingField: Everything going okay friend? Have you been able to clear
-      those brambles yet?
-    <SoundEffect>k__BackingField: {fileID: 0}
-    <Delay>k__BackingField: 0
-    <Graph>k__BackingField: {fileID: 0}
-    <Quest>k__BackingField: 0
-    <QuestState>k__BackingField: 0
   - <ID>k__BackingField: 93345014-e07b-4bdd-bfd8-c024b2464b25
     <Name>k__BackingField: Warsan7
     <NodeType>k__BackingField: 0
@@ -194,7 +173,7 @@ MonoBehaviour:
     <Choices>k__BackingField:
     - <Text>k__BackingField: Got it!
       <NodeID>k__BackingField: 
-    - <Text>k__BackingField: Can you repeart that?
+    - <Text>k__BackingField: Can you repeat that?
       <NodeID>k__BackingField: d9edb167-7d8f-4e5d-bd88-e8ee7883a215
     <Position>k__BackingField: {x: 8500, y: 525}
     <DialogueType>k__BackingField: 1
@@ -207,7 +186,7 @@ MonoBehaviour:
     <Quest>k__BackingField: 0
     <QuestState>k__BackingField: 1
   - <ID>k__BackingField: d9edb167-7d8f-4e5d-bd88-e8ee7883a215
-    <Name>k__BackingField: EdgeNoded9edb167-7d8f-4e5d-bd88-e8ee7883a215
+    <Name>k__BackingField: EdgeNodef22fdc1c-e36c-49f0-b9a7-14e8d91a253f
     <NodeType>k__BackingField: 1
     <GroupID>k__BackingField: 
     <Choices>k__BackingField:
@@ -223,7 +202,7 @@ MonoBehaviour:
     <Quest>k__BackingField: 0
     <QuestState>k__BackingField: 1
   - <ID>k__BackingField: c1521265-f277-4e4a-b828-23778aed48e5
-    <Name>k__BackingField: EdgeNodec1521265-f277-4e4a-b828-23778aed48e5
+    <Name>k__BackingField: EdgeNode88636074-d9f8-4214-8696-d27d1885d1f2
     <NodeType>k__BackingField: 1
     <GroupID>k__BackingField: 
     <Choices>k__BackingField:
@@ -238,6 +217,27 @@ MonoBehaviour:
     <Graph>k__BackingField: {fileID: 0}
     <Quest>k__BackingField: 0
     <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: cf6d958d-fc60-4437-9880-fadd1e3cef27
+    <Name>k__BackingField: Warsan1
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: I'm working on it!
+      <NodeID>k__BackingField: f81498b0-1eb5-451e-94c3-7412bf482dab
+    - <Text>k__BackingField: Remind what to do.
+      <NodeID>k__BackingField: e27c14b1-a440-4be6-9804-53d4057a39fe
+    - <Text>k__BackingField: How do it do it?
+      <NodeID>k__BackingField: 25255ebf-477e-4cd3-a89a-7120626a21f9
+    <Position>k__BackingField: {x: 5225, y: 0}
+    <DialogueType>k__BackingField: 1
+    <Character>k__BackingField: {fileID: 11400000, guid: 42a93fd49028fb743aa99b1e50d959f1, type: 2}
+    <Text>k__BackingField: Everything going okay friend? Have you been able to clear
+      those brambles yet?
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 0
   <OldGroupNames>k__BackingField: []
   <OldUngroupedNodeNames>k__BackingField:
   - Player1
@@ -247,11 +247,11 @@ MonoBehaviour:
   - Player3
   - Warsan4
   - Player4
-  - Warsan1
   - Warsan7
   - Warsan8
   - Warsan9
-  - EdgeNoded9edb167-7d8f-4e5d-bd88-e8ee7883a215
-  - EdgeNodec1521265-f277-4e4a-b828-23778aed48e5
+  - EdgeNodef22fdc1c-e36c-49f0-b9a7-14e8d91a253f
+  - EdgeNode88636074-d9f8-4214-8696-d27d1885d1f2
+  - Warsan1
   <OldGroupedNodeNames>k__BackingField:
     list: []

@@ -692,22 +692,6 @@ MonoBehaviour:
     <Graph>k__BackingField: {fileID: 0}
     <Quest>k__BackingField: 0
     <QuestState>k__BackingField: 1
-  - <ID>k__BackingField: 9d04fbbc-549d-4f4f-ae5d-20e6dcade3b8
-    <Name>k__BackingField: Warsan23
-    <NodeType>k__BackingField: 0
-    <GroupID>k__BackingField: 
-    <Choices>k__BackingField:
-    - <Text>k__BackingField: Next Node
-      <NodeID>k__BackingField: 1cfeb569-27c4-47db-8b50-2cef1a4ec7a7
-    <Position>k__BackingField: {x: 11400, y: 1325}
-    <DialogueType>k__BackingField: 0
-    <Character>k__BackingField: {fileID: 11400000, guid: 42a93fd49028fb743aa99b1e50d959f1, type: 2}
-    <Text>k__BackingField: "I\u2019ll put some extra padding in for Jasp."
-    <SoundEffect>k__BackingField: {fileID: 0}
-    <Delay>k__BackingField: 0
-    <Graph>k__BackingField: {fileID: 0}
-    <Quest>k__BackingField: 0
-    <QuestState>k__BackingField: 1
   - <ID>k__BackingField: 1cfeb569-27c4-47db-8b50-2cef1a4ec7a7
     <Name>k__BackingField: Warsan24
     <NodeType>k__BackingField: 0
@@ -775,7 +759,7 @@ MonoBehaviour:
     <Quest>k__BackingField: 0
     <QuestState>k__BackingField: 1
   - <ID>k__BackingField: 56fa2be6-2ebd-4632-ace4-6719bff31011
-    <Name>k__BackingField: EdgeNode56fa2be6-2ebd-4632-ace4-6719bff31011
+    <Name>k__BackingField: EdgeNode59128efe-ddd9-438b-8b14-44dd6e44db7e
     <NodeType>k__BackingField: 1
     <GroupID>k__BackingField: 
     <Choices>k__BackingField:
@@ -808,7 +792,7 @@ MonoBehaviour:
     <Quest>k__BackingField: 0
     <QuestState>k__BackingField: 1
   - <ID>k__BackingField: f1993bca-5800-4495-b8dd-f5e2993b1a55
-    <Name>k__BackingField: EdgeNodef1993bca-5800-4495-b8dd-f5e2993b1a55
+    <Name>k__BackingField: EdgeNode2d9aa5f0-f528-4bc8-82dc-b519a045ada8
     <NodeType>k__BackingField: 1
     <GroupID>k__BackingField: 
     <Choices>k__BackingField:
@@ -818,6 +802,22 @@ MonoBehaviour:
     <DialogueType>k__BackingField: 0
     <Character>k__BackingField: {fileID: 0}
     <Text>k__BackingField: 
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: 9d04fbbc-549d-4f4f-ae5d-20e6dcade3b8
+    <Name>k__BackingField: Warsan23
+    <NodeType>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: 1cfeb569-27c4-47db-8b50-2cef1a4ec7a7
+    <Position>k__BackingField: {x: 11400, y: 1325}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 11400000, guid: 1426fb706e97b8940a6e9ccac78384cd, type: 2}
+    <Text>k__BackingField: "I\u2019ll put some extra padding in for Jasp."
     <SoundEffect>k__BackingField: {fileID: 0}
     <Delay>k__BackingField: 0
     <Graph>k__BackingField: {fileID: 0}
@@ -865,13 +865,13 @@ MonoBehaviour:
   - Warsan21
   - Warsan22
   - Player16
-  - Warsan23
   - Warsan24
   - Warsan25
   - Warsan26
   - Player17
-  - EdgeNode56fa2be6-2ebd-4632-ace4-6719bff31011
+  - EdgeNode59128efe-ddd9-438b-8b14-44dd6e44db7e
   - Warsan8
-  - EdgeNodef1993bca-5800-4495-b8dd-f5e2993b1a55
+  - EdgeNode2d9aa5f0-f528-4bc8-82dc-b519a045ada8
+  - Warsan23
   <OldGroupedNodeNames>k__BackingField:
     list: []

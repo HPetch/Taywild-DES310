@@ -276,44 +276,6 @@ MonoBehaviour:
     <Graph>k__BackingField: {fileID: 11400000, guid: e6e84413d57336143b92c3e833ce2bf5, type: 2}
     <Quest>k__BackingField: 0
     <QuestState>k__BackingField: 1
-  - <ID>k__BackingField: c70688e9-7d72-4a67-a159-c0121f34b731
-    <Name>k__BackingField: SetQuestNode7
-    <NodeType>k__BackingField: 5
-    <GroupID>k__BackingField: 
-    <Choices>k__BackingField:
-    - <Text>k__BackingField: Next Node
-      <NodeID>k__BackingField: 05bf139d-a342-4bb9-a2d6-cd87146460af
-    <Position>k__BackingField: {x: 1625, y: 1475}
-    <DialogueType>k__BackingField: 0
-    <Character>k__BackingField: {fileID: 0}
-    <Text>k__BackingField: 
-    <SoundEffect>k__BackingField: {fileID: 0}
-    <Delay>k__BackingField: 0
-    <Graph>k__BackingField: {fileID: 0}
-    <Quest>k__BackingField: 12
-    <QuestState>k__BackingField: 3
-  - <ID>k__BackingField: 92a5f41a-68a3-4949-8cea-52f7a5ac55e0
-    <Name>k__BackingField: LucusIntro
-    <NodeType>k__BackingField: 4
-    <GroupID>k__BackingField: 
-    <Choices>k__BackingField:
-    - <Text>k__BackingField: Not Accepted
-      <NodeID>k__BackingField: dbb927b6-1d26-4a81-8ceb-95e9535c442e
-    - <Text>k__BackingField: In Progress
-      <NodeID>k__BackingField: dbb927b6-1d26-4a81-8ceb-95e9535c442e
-    - <Text>k__BackingField: Read for Hand-in
-      <NodeID>k__BackingField: dbb927b6-1d26-4a81-8ceb-95e9535c442e
-    - <Text>k__BackingField: Comlpeted
-      <NodeID>k__BackingField: 605eaca4-f0ea-4d12-ba72-a64f2d0fb38b
-    <Position>k__BackingField: {x: -900, y: -325}
-    <DialogueType>k__BackingField: 0
-    <Character>k__BackingField: {fileID: 0}
-    <Text>k__BackingField: 
-    <SoundEffect>k__BackingField: {fileID: 0}
-    <Delay>k__BackingField: 0
-    <Graph>k__BackingField: {fileID: 0}
-    <Quest>k__BackingField: 12
-    <QuestState>k__BackingField: 1
   - <ID>k__BackingField: dbb927b6-1d26-4a81-8ceb-95e9535c442e
     <Name>k__BackingField: SetQuestNode
     <NodeType>k__BackingField: 5
@@ -328,7 +290,7 @@ MonoBehaviour:
     <SoundEffect>k__BackingField: {fileID: 0}
     <Delay>k__BackingField: 0
     <Graph>k__BackingField: {fileID: 0}
-    <Quest>k__BackingField: 12
+    <Quest>k__BackingField: 13
     <QuestState>k__BackingField: 3
   - <ID>k__BackingField: edc5169e-9eaa-4731-bf56-d707085a016c
     <Name>k__BackingField: GraphNode
@@ -390,20 +352,6 @@ MonoBehaviour:
     <Graph>k__BackingField: {fileID: 0}
     <Quest>k__BackingField: 10
     <QuestState>k__BackingField: 2
-  - <ID>k__BackingField: 05bf139d-a342-4bb9-a2d6-cd87146460af
-    <Name>k__BackingField: GraphNode7
-    <NodeType>k__BackingField: 6
-    <GroupID>k__BackingField: 
-    <Choices>k__BackingField: []
-    <Position>k__BackingField: {x: 1900, y: 1500}
-    <DialogueType>k__BackingField: 0
-    <Character>k__BackingField: {fileID: 0}
-    <Text>k__BackingField: 
-    <SoundEffect>k__BackingField: {fileID: 0}
-    <Delay>k__BackingField: 0
-    <Graph>k__BackingField: {fileID: 11400000, guid: 49a6d81d87745a74fadfaccd913c1d08, type: 2}
-    <Quest>k__BackingField: 0
-    <QuestState>k__BackingField: 1
   - <ID>k__BackingField: 27e308d6-0f30-447d-91d0-94e7bc95fea6
     <Name>k__BackingField: GraphNode8
     <NodeType>k__BackingField: 6
@@ -570,6 +518,58 @@ MonoBehaviour:
     <Graph>k__BackingField: {fileID: 0}
     <Quest>k__BackingField: 5
     <QuestState>k__BackingField: 2
+  - <ID>k__BackingField: d23d4e89-c52a-4146-ab3f-5c7004d940f5
+    <Name>k__BackingField: GraphNode7
+    <NodeType>k__BackingField: 6
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField: []
+    <Position>k__BackingField: {x: 1875, y: 1475}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 0}
+    <Text>k__BackingField: 
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 11400000, guid: 49a6d81d87745a74fadfaccd913c1d08, type: 2}
+    <Quest>k__BackingField: 0
+    <QuestState>k__BackingField: 1
+  - <ID>k__BackingField: c70688e9-7d72-4a67-a159-c0121f34b731
+    <Name>k__BackingField: SetQuestNode7
+    <NodeType>k__BackingField: 5
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Node
+      <NodeID>k__BackingField: d23d4e89-c52a-4146-ab3f-5c7004d940f5
+    <Position>k__BackingField: {x: 1600, y: 1475}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 0}
+    <Text>k__BackingField: 
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 12
+    <QuestState>k__BackingField: 3
+  - <ID>k__BackingField: 92a5f41a-68a3-4949-8cea-52f7a5ac55e0
+    <Name>k__BackingField: LucusIntro
+    <NodeType>k__BackingField: 4
+    <GroupID>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Not Accepted
+      <NodeID>k__BackingField: dbb927b6-1d26-4a81-8ceb-95e9535c442e
+    - <Text>k__BackingField: In Progress
+      <NodeID>k__BackingField: dbb927b6-1d26-4a81-8ceb-95e9535c442e
+    - <Text>k__BackingField: Read for Hand-in
+      <NodeID>k__BackingField: dbb927b6-1d26-4a81-8ceb-95e9535c442e
+    - <Text>k__BackingField: Comlpeted
+      <NodeID>k__BackingField: 605eaca4-f0ea-4d12-ba72-a64f2d0fb38b
+    <Position>k__BackingField: {x: -900, y: -325}
+    <DialogueType>k__BackingField: 0
+    <Character>k__BackingField: {fileID: 0}
+    <Text>k__BackingField: 
+    <SoundEffect>k__BackingField: {fileID: 0}
+    <Delay>k__BackingField: 0
+    <Graph>k__BackingField: {fileID: 0}
+    <Quest>k__BackingField: 13
+    <QuestState>k__BackingField: 1
   <OldGroupNames>k__BackingField: []
   <OldUngroupedNodeNames>k__BackingField:
   - LuWaIngredientsQ3a
@@ -587,14 +587,11 @@ MonoBehaviour:
   - GraphNode9
   - Lucus1
   - GraphNode5
-  - SetQuestNode7
-  - LucusIntro
   - SetQuestNode
   - GraphNode
   - GraphNode10
   - SetQuestNode10
   - SetQuestNode15
-  - GraphNode7
   - GraphNode8
   - SetQuestNode9
   - LuWaBakedQ2a
@@ -605,5 +602,8 @@ MonoBehaviour:
   - SetQuestNode17
   - GraphNode0
   - SetQuestNode18
+  - GraphNode7
+  - SetQuestNode7
+  - LucusIntro
   <OldGroupedNodeNames>k__BackingField:
     list: []
